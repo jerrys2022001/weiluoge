@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VelocAI · Optimization Mobile Apps</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="va-header">
+  <div class="va-container va-header-inner">
+    <a href="#top" class="va-brand">
+      <img src="2.png" alt="VelocAI logo" class="va-brand-logo">
+      <span class="va-brand-name">VelocAI</span>
+    </a>
+    <nav class="va-nav">
+      <button class="va-nav-toggle" aria-label="展开导航" aria-expanded="false" aria-controls="va-nav-list">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul id="va-nav-list" class="va-nav-list">
+        <li><a href="#who">关于我们</a></li>
+        <li><a href="#innovate">我们的创新</a></li>
+        <li><a href="#mission">使命愿景</a></li>
+        <li><a href="#product">产品</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="va-main">
+  <div class="va-container va-hero">
+    <section class="va-hero-text">
+      <p class="va-kicker">VelocAI</p>
+      <h1 class="va-hero-title">Optimization<br>Mobile Apps</h1>
+      <section id="who" class="va-copy-block">
+        <h2 class="va-copy-title">Who We Are</h2>
+        <p class="va-copy-text">
+          VelocAI 专注于打造高质量、易上手的智能移动应用，为用户提供更流畅、更可靠的体验。
+        </p>
+      </section>
+      <section id="innovate" class="va-copy-block">
+        <h2 class="va-copy-title">How We Innovate</h2>
+        <p class="va-copy-text">
+          通过 AI 算法与系统级优化，VelocAI 能够智能分析应用与存储状态，自动清理冗余文件，释放空间。
+        </p>
+      </section>
+      <section id="mission" class="va-copy-block">
+        <h2 class="va-copy-title">What Our Mission Is</h2>
+        <p class="va-copy-text">
+          我们的目标是持续提升设备性能与稳定性，让每一位用户都能享受到极速、顺滑的使用体验。
+        </p>
+      </section>
+      <section id="product" class="va-copy-block">
+        <h2 class="va-copy-title">Our Product</h2>
+        <p class="va-copy-text">
+          VelocAI App 能够一键扫描应用与系统缓存，智能整理存储空间，并提供实时优化建议。
+        </p>
+      </section>
+      <section id="contact" class="va-copy-block">
+        <h2 class="va-copy-title">Get in Touch</h2>
+        <p class="va-copy-text">
+          想进一步了解 VelocAI 或合作机会，欢迎随时通过邮箱与我们联系：
+          <a class="va-mail" href="mailto:contact@velocai.app">contact@velocai.app</a>
+        </p>
+      </section>
+    </section>
+
+    <aside class="va-hero-visual">
+      <div class="va-hero-circle"></div>
+      <div class="va-phone">
+        <div class="va-phone-notch">
+          <span class="va-phone-camera"></span>
+          <span class="va-phone-sensor"></span>
+        </div>
+        <div class="va-phone-screen">
+          <div class="va-phone-logo">
+            <img src="2.png" alt="VelocAI app logo">
+          </div>
+          <p class="va-phone-tagline">Clean. Fast. Intelligent.</p>
+        </div>
+      </div>
+      <div class="va-floating-shapes">
+        <span class="va-shape va-shape-circle"></span>
+        <span class="va-shape va-shape-square"></span>
+        <span class="va-shape va-shape-diamond"></span>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>
+const toggle = document.querySelector('.va-nav-toggle');
+const navList = document.querySelector('.va-nav-list');
+
+function setNavOpen(isOpen) {
+  if (!toggle || !navList) return;
+  navList.classList.toggle('va-nav-open', isOpen);
+  toggle.classList.toggle('va-nav-toggle-open', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+if (toggle && navList) {
+  toggle.addEventListener('click', function () {
+    const isOpen = navList.classList.contains('va-nav-open');
+    setNavOpen(!isOpen);
+  });
+
+  navList.addEventListener('click', function (e) {
+    const target = e.target;
+    if (target && target.tagName === 'A') setNavOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setNavOpen(false);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!navList.classList.contains('va-nav-open')) return;
+    const target = e.target;
+    if (!target) return;
+    if (toggle.contains(target) || navList.contains(target)) return;
+    setNavOpen(false);
+  });
+}
+</script>
+</body>
+</html>
