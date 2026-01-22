@@ -59,10 +59,10 @@
     <p class="meta">Last updated: 2026-01-21</p>
 
     <div class="important">
-      <h2>Important Notes (for App Review)</h2>
+      <h2>Important Notes</h2>
       <p>This document explains AI Find’s AI/algorithm-related features, input data, processing approach, and on-device storage practices, aiming to meet Apple’s requirements on transparency and user control.</p>
       <p><strong>Core principle</strong>: data used for device finding (Bluetooth signals, location, and UWB when applicable) is processed on-device. We do not upload this data to our servers for analytics or training, and we do not track users across apps or websites.</p>
-      <p>This document covers <strong>device-finding related</strong> data and processing only. For general privacy terms and other disclosures, see <a href="../privacy-policy.html">privacy-policy.html</a>.</p>
+      <p>This document covers <strong>device-finding related</strong> data and processing only.</p>
     </div>
 
     <h2>1. App Scope</h2>
@@ -99,12 +99,11 @@
         </tr>
       </tbody>
     </table>
-    <p>AI Find does not provide generative AI (no text/image/audio/video generation), no conversational AI model, and does not train models on user data in the background.</p>
 
     <h2>3. Data Inputs Used by AI / Algorithms</h2>
     <h3>3.1 Bluetooth</h3>
     <ul>
-      <li><strong>Peripheral identifier</strong>: system-generated UUID (<code>CBPeripheral.identifier</code>) used for on-device deduplication, pinning, and “last seen” records.</li>
+      <li><strong>Peripheral identifier</strong>: system-provided peripheral identifier (<code>CBPeripheral.identifier</code>) used for on-device deduplication, pinning, and “last seen” records.</li>
       <li><strong>Advertisement data</strong>: e.g., LocalName, connectable flag, Manufacturer Data (for company ID parsing to assist type inference).</li>
       <li><strong>RSSI (dBm)</strong>: used for distance estimation and signal strength UI.</li>
     </ul>
@@ -131,7 +130,7 @@
     <h2>5. On-Device Storage & Retention (AI Device related)</h2>
     <h3>5.1 Pinned devices</h3>
     <ul>
-      <li>Device UUID, name snapshot, inferred device type, pinned timestamp.</li>
+      <li>Device identifier, name snapshot, inferred device type, pinned timestamp.</li>
       <li>Last seen timestamp.</li>
       <li>Last seen latitude/longitude (last_lat / last_lng) for offline “last seen location/distance” clues.</li>
     </ul>
@@ -155,10 +154,6 @@
       <li><strong>Intended use</strong>: only for locating devices owned by the user or with authorization.</li>
     </ul>
 
-    <h2>8. Related Document</h2>
-    <ul>
-      <li>Privacy policy (HTML): <a href="../privacy-policy.html">privacy-policy.html</a></li>
-    </ul>
   </div>
 </body>
 </html>
