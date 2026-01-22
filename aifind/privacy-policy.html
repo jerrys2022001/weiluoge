@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Find - AI Device Compliance</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #1a1a1a; margin-bottom: 10px; font-size: 2.2em; }
+    h2 {
+      color: #2c3e50;
+      margin-top: 34px;
+      margin-bottom: 16px;
+      font-size: 1.6em;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    h3 { color: #34495e; margin-top: 22px; margin-bottom: 10px; font-size: 1.25em; }
+    p { margin-bottom: 14px; text-align: justify; }
+    ul { margin-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 8px; }
+    a { color: #3498db; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .important {
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 18px 0;
+      background: #f8fbff;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.95em;
+      margin-top: 6px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+    th { background-color: #3498db; color: #fff; }
+    tr:nth-child(even) { background-color: #f7f7f7; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><strong>AI Find</strong> · AI Device Compliance</h1>
+    <p class="meta">Last updated: 2026-01-21</p>
+
+    <div class="important">
+      <h2>Important Notes (for App Review)</h2>
+      <p>This document explains AI Find’s AI/algorithm-related features, input data, processing approach, and on-device storage practices, aiming to meet Apple’s requirements on transparency and user control.</p>
+      <p><strong>Core principle</strong>: data used for device finding (Bluetooth signals, location, and UWB when applicable) is processed on-device. We do not upload this data to our servers for analytics or training, and we do not track users across apps or websites.</p>
+      <p>This document covers <strong>device-finding related</strong> data and processing only. For general privacy terms and other disclosures, see <a href="../privacy-policy.html">privacy-policy.html</a>.</p>
+    </div>
+
+    <h2>1. App Scope</h2>
+    <p>AI Find is a close-range device finding app. It discovers nearby Bluetooth devices, estimates distance, and provides map/navigation assistance to help users get closer to a target device. On supported devices and when pairing conditions are met, UWB (NearbyInteraction) may be used to provide more precise distance/direction hints.</p>
+
+    <h2>2. AI / Algorithmic Features</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Purpose</th>
+          <th>Generates Content</th>
+          <th>Cloud Processing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Distance estimation (RSSI → approximate meters)</td>
+          <td>Converts Bluetooth RSSI into an approximate distance and smooths short-term jitter</td>
+          <td>No</td>
+          <td>No (on-device)</td>
+        </tr>
+        <tr>
+          <td>Device type recognition (heuristic categorization)</td>
+          <td>Infers a device category (earbuds/watch/laptop, etc.) based on name and advertisement signals</td>
+          <td>No</td>
+          <td>No (on-device)</td>
+        </tr>
+        <tr>
+          <td>Navigation locating (UWB or Bluetooth fallback)</td>
+          <td>Outputs distance/direction and derived coordinates for map display and guidance</td>
+          <td>No</td>
+          <td>No (on-device)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>AI Find does not provide generative AI (no text/image/audio/video generation), no conversational AI model, and does not train models on user data in the background.</p>
+
+    <h2>3. Data Inputs Used by AI / Algorithms</h2>
+    <h3>3.1 Bluetooth</h3>
+    <ul>
+      <li><strong>Peripheral identifier</strong>: system-generated UUID (<code>CBPeripheral.identifier</code>) used for on-device deduplication, pinning, and “last seen” records.</li>
+      <li><strong>Advertisement data</strong>: e.g., LocalName, connectable flag, Manufacturer Data (for company ID parsing to assist type inference).</li>
+      <li><strong>RSSI (dBm)</strong>: used for distance estimation and signal strength UI.</li>
+    </ul>
+
+    <h3>3.2 Location & Sensors (for map/navigation and offline clues)</h3>
+    <ul>
+      <li><strong>Current location</strong>: used to display the user on the map and to estimate distance to the last seen location.</li>
+      <li><strong>Heading</strong>: used for bearing/direction estimation.</li>
+    </ul>
+
+    <h3>3.3 UWB (only when supported and the user enters the related navigation flow)</h3>
+    <ul>
+      <li><strong>NearbyInteraction outputs</strong>: distance and direction vector (e.g., <code>NINearbyObject.distance</code> / <code>NINearbyObject.direction</code>).</li>
+      <li><strong>Discovery token</strong>: <code>NIDiscoveryToken</code> to establish a NearbyInteraction session.</li>
+    </ul>
+
+    <h2>4. Processing (On-Device vs. Server)</h2>
+    <ul>
+      <li>All estimations and recognition are performed locally on the device.</li>
+      <li>We do not upload device-finding data (Bluetooth scan results, RSSI, location, or UWB data) to our servers for analytics or training.</li>
+      <li>The app does not use third-party AI/LLM APIs to process the above data.</li>
+    </ul>
+
+    <h2>5. On-Device Storage & Retention (AI Device related)</h2>
+    <h3>5.1 Pinned devices</h3>
+    <ul>
+      <li>Device UUID, name snapshot, inferred device type, pinned timestamp.</li>
+      <li>Last seen timestamp.</li>
+      <li>Last seen latitude/longitude (last_lat / last_lng) for offline “last seen location/distance” clues.</li>
+    </ul>
+
+    <h3>5.2 Device type recognition data</h3>
+    <ul>
+      <li>User-confirmed type overrides to improve future UI categorization.</li>
+      <li>Recognition feedback samples (predicted vs corrected + signals summary) to improve recognition in future; currently stored on-device only.</li>
+    </ul>
+
+    <p>Retention: stored in the app’s local database (app sandbox) until the user unpins devices, clears app data, or uninstalls the app.</p>
+
+    <h2>6. Third Parties & Sharing</h2>
+    <p>We do not share device-finding data (Bluetooth signals, location, UWB data) with third parties for advertising or cross-service tracking.</p>
+    <p>If subscriptions/in-app purchases are enabled, transactions are handled by Apple. We may read purchase status on-device to unlock features.</p>
+
+    <h2>7. User Controls & Transparency</h2>
+    <ul>
+      <li><strong>Permissions</strong>: users can disable Location/Bluetooth permissions in iOS Settings; related features will be limited or unavailable.</li>
+      <li><strong>Accuracy notice</strong>: distance/direction are estimates and can be affected by obstacles, reflections, interference, and device hardware differences.</li>
+      <li><strong>Intended use</strong>: only for locating devices owned by the user or with authorization.</li>
+    </ul>
+
+    <h2>8. Related Document</h2>
+    <ul>
+      <li>Privacy policy (HTML): <a href="../privacy-policy.html">privacy-policy.html</a></li>
+    </ul>
+  </div>
+</body>
+</html>
