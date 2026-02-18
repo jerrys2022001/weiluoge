@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bluetooth Explorer - AI Debugger Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #1a1a1a; margin-bottom: 10px; font-size: 2.2em; }
+    h2 {
+      color: #2c3e50;
+      margin-top: 34px;
+      margin-bottom: 16px;
+      font-size: 1.6em;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    h3 { color: #34495e; margin-top: 22px; margin-bottom: 10px; font-size: 1.25em; }
+    p { margin-bottom: 14px; text-align: justify; }
+    ul { margin-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 8px; }
+    a { color: #3498db; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .important {
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 18px 0;
+      background: #f8fbff;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.95em;
+      margin-top: 6px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+    th { background-color: #3498db; color: #fff; }
+    tr:nth-child(even) { background-color: #f7f7f7; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><strong>Bluetooth Explorer</strong> · AI Debugger Privacy Policy</h1>
+    <p class="meta">Last updated: 2026-02-19</p>
+
+    <div class="important">
+      <h2>Important Notes</h2>
+      <p>This document explains Bluetooth Explorer’s AI/algorithm-related features, input data, processing approach, and on-device storage practices, aiming to meet Apple’s requirements on transparency and user control.</p>
+      <p><strong>Core principle</strong>: data used for debugging, AI diagnosis, device finding (Bluetooth signals, connection logs, location, and UWB when applicable) is processed on-device. We do not upload this data to our servers for analytics or training, and we do not track users across apps or websites.</p>
+      <p>This document covers <strong>debugging, diagnosis, and device-finding related</strong> data and processing only.</p>
+    </div>
+
+    <h2>1. App Scope</h2>
+    <p>Bluetooth Explorer is a professional Bluetooth (BLE) debugging tool and device finder. It discovers nearby Bluetooth devices, provides detailed service/characteristic information, offers AI-powered connection diagnosis and protocol identification, and assists users in locating devices using RSSI and UWB (NearbyInteraction).</p>
+
+    <h2>2. AI / Algorithmic Features</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Purpose</th>
+          <th>Generates Content</th>
+          <th>Cloud Processing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI Intelligent Diagnosis</td>
+          <td>Analyzes connection failures, timeouts, and permission errors to provide repair suggestions</td>
+          <td>Yes (diagnostic report)</td>
+          <td>No (on-device)</td>
+        </tr>
+        <tr>
+          <td>Protocol Automatic Identification</td>
+          <td>Infers device protocol (e.g., Nordic UART, Apple Accessory) based on advertisement data and service UUIDs</td>
+          <td>Yes (protocol hint)</td>
+          <td>No (on-device)</td>
+        </tr>
+        <tr>
+          <td>Distance estimation (RSSI → approximate meters)</td>
+          <td>Converts Bluetooth RSSI into an approximate distance and smooths short-term jitter</td>
+          <td>No</td>
+          <td>No (on-device)</td>
+        </tr>
+        <tr>
+          <td>Navigation locating (UWB or Bluetooth fallback)</td>
+          <td>Outputs distance/direction and derived coordinates for map display and guidance</td>
+          <td>No</td>
+          <td>No (on-device)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Data Inputs Used by AI / Algorithms</h2>
+    <h3>3.1 Bluetooth & Connection Logs</h3>
+    <ul>
+      <li><strong>Peripheral identifier</strong>: system-provided peripheral identifier (<code>CBPeripheral.identifier</code>) used for on-device deduplication, pinning, and logging.</li>
+      <li><strong>Advertisement data</strong>: e.g., LocalName, Service UUIDs, Manufacturer Data (used for protocol identification).</li>
+      <li><strong>Connection States & Errors</strong>: connection timeouts, error codes, and service discovery results (used for AI diagnosis).</li>
+      <li><strong>RSSI (dBm)</strong>: used for distance estimation and signal strength UI.</li>
+    </ul>
+
+    <h3>3.2 Location & Sensors (for map/navigation)</h3>
+    <ul>
+      <li><strong>Current location</strong>: used to display the user on the map and to estimate distance to the last seen location.</li>
+      <li><strong>Heading</strong>: used for bearing/direction estimation.</li>
+    </ul>
+
+    <h3>3.3 UWB (only when supported and the user enters the related navigation flow)</h3>
+    <ul>
+      <li><strong>NearbyInteraction outputs</strong>: distance and direction vector (e.g., <code>NINearbyObject.distance</code> / <code>NINearbyObject.direction</code>).</li>
+      <li><strong>Discovery token</strong>: <code>NIDiscoveryToken</code> to establish a NearbyInteraction session.</li>
+    </ul>
+
+    <h2>4. Processing (On-Device vs. Server)</h2>
+    <ul>
+      <li>All AI diagnostics, protocol identification, and location estimations are performed locally on the device.</li>
+      <li>We do not upload debugging data (Bluetooth scan results, connection logs, location, or UWB data) to our servers for analytics or training.</li>
+      <li>The app does not use third-party AI/LLM APIs to process the above data.</li>
+    </ul>
+
+    <h2>5. On-Device Storage & Retention (AI Debugger related)</h2>
+    <h3>5.1 Debugging & Logs</h3>
+    <ul>
+      <li><strong>Session Logs</strong>: TX/RX data and connection events stored locally for user review and export.</li>
+      <li><strong>Custom Packets</strong>: User-defined command packets stored locally for reuse.</li>
+    </ul>
+
+    <h3>5.2 Pinned devices & History</h3>
+    <ul>
+      <li>Device identifier, name snapshot, inferred protocol/type, pinned timestamp.</li>
+      <li>Last seen timestamp and location (latitude/longitude) for offline tracking.</li>
+    </ul>
+
+    <p>Retention: stored in the app’s local database (app sandbox) until the user deletes logs, unpins devices, clears app data, or uninstalls the app.</p>
+
+    <h2>6. Third Parties & Sharing</h2>
+    <p>We do not share debugging or device-finding data (Bluetooth signals, logs, location, UWB data) with third parties for advertising or cross-service tracking.</p>
+    <p>If subscriptions/in-app purchases are enabled, transactions are handled by Apple. We may read purchase status on-device to unlock Pro features.</p>
+
+    <h2>7. User Controls & Transparency</h2>
+    <ul>
+      <li><strong>Permissions</strong>: users can disable Location/Bluetooth permissions in iOS Settings; related features will be limited or unavailable.</li>
+      <li><strong>Data Management</strong>: users can manually clear logs and delete saved packets or pinned devices within the app.</li>
+      <li><strong>Accuracy notice</strong>: AI diagnosis and distance estimates are based on heuristics and signal physics; results may vary based on environment and device hardware.</li>
+    </ul>
+
+  </div>
+</body>
+</html>
