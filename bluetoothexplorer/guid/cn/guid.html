@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bluetooth Explorer 用户手册</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0f1727;
+      --panel: rgba(17, 26, 43, 0.82);
+      --panel-strong: #121d31;
+      --line: rgba(120, 170, 255, 0.18);
+      --text: #e9f0ff;
+      --muted: #a6b6d3;
+      --accent: #4aa8ff;
+      --accent-2: #63f0b6;
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(74, 168, 255, 0.24), transparent 36%),
+        radial-gradient(circle at 88% 14%, rgba(99, 240, 182, 0.14), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, 100% - 40px);
+      margin: 24px auto 40px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(19, 33, 58, 0.9), rgba(11, 19, 34, 0.9));
+      border-radius: var(--radius-xl);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -130px;
+      top: -140px;
+      background: radial-gradient(circle, rgba(74, 168, 255, 0.28), transparent 64%);
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(99, 240, 182, 0.4);
+      color: #b8ffe3;
+      background: rgba(16, 41, 44, 0.42);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.14;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.3vw, 18px);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(23, 37, 62, 0.72);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #d6e3ff;
+    }
+
+    .layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9dc2ff;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 10px;
+      margin: 6px 0;
+      border-radius: 10px;
+      color: #d7e4ff;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .toc a:hover {
+      background: rgba(74, 168, 255, 0.12);
+      border-color: rgba(74, 168, 255, 0.26);
+    }
+
+    .content {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: linear-gradient(165deg, rgba(18, 30, 49, 0.9), rgba(13, 22, 38, 0.9));
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .figure {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #02060d;
+      position: relative;
+    }
+
+    .figure::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .step-index {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #001e3d;
+      background: linear-gradient(135deg, #67c0ff, #75ffd0);
+      flex: 0 0 32px;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: clamp(18px, 2.1vw, 24px);
+      line-height: 1.2;
+    }
+
+    .step p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .block-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #98b6ea;
+      margin: 12px 0 6px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      color: #d6e3ff;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .flow-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      background: var(--panel-strong);
+    }
+
+    .flow-card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .flow-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(99, 240, 182, 0.35);
+      background: rgba(14, 39, 36, 0.45);
+      padding: 12px;
+      color: #c4ffe9;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .toc a {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: min(100% - 20px, 1200px);
+      }
+
+      .hero {
+        padding: 20px 16px 18px;
+      }
+
+      .section,
+      .step {
+        padding: 14px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .toc nav {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" id="top">
+      <span class="tag">Bluetooth Explorer:AI Terminal</span>
+      <h1>用户手册</h1>
+      <p class="subtitle">
+        按截图顺序完成完整调试流程：扫描设备、查看服务、读写特征、分析日志、结合 AI 提示快速定位问题。
+      </p>
+      <div class="chips">
+        <span class="chip">PC 与移动端无缝适配</span>
+        <span class="chip">9 步图文引导</span>
+        <span class="chip">开发调试 + 现场排障</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="toc">
+        <h2>目录</h2>
+        <nav>
+          <a href="#overview">手册说明</a>
+          <a href="#step-1">1. 扫描页</a>
+          <a href="#step-2">2. 设备信息页</a>
+          <a href="#step-3">3. 重命名与纠正类型</a>
+          <a href="#step-4">4. 特征调试页</a>
+          <a href="#step-5">5. 选择命令包</a>
+          <a href="#step-6">6. 导航查找</a>
+          <a href="#step-7">7. Packet 库</a>
+          <a href="#step-8">8. 日志页</a>
+          <a href="#step-9">9. AI Insights</a>
+          <a href="#workflows">推荐使用方案</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="section" id="overview">
+          <h2>如何阅读本手册</h2>
+          <p>
+            本手册与 App 操作顺序一致。你可以一边看截图、一边按步骤执行。若要最快完成调试，建议从第 1 步连续走到第 9 步。
+          </p>
+        </section>
+
+        <article class="step" id="step-1">
+          <div class="figure"><img src="../1.jpg" alt="扫描页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">1</span><h3>Scanner 首页：发现目标设备</h3></div>
+            <p>从 Scanner Tab 开始，快速发现周围蓝牙设备并锁定目标。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>扫描控制（停止 / 普通 / 快速）、搜索框、筛选标签。</li>
+              <li>设备卡片展示名称、厂商、电量、在线状态。</li>
+              <li>每个设备卡片支持一键 Connect。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>先用快速扫描找设备，再切普通扫描降低噪声。</li>
+              <li>设备较多时用 Named/Favorites 快速收敛列表。</li>
+              <li>点击目标设备 Connect 进入后续信息与调试流程。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-2">
+          <div class="figure"><img src="../2.jpg" alt="信息页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">2</span><h3>Information 页：状态总览与服务树</h3></div>
+            <p>连接后进入信息页，查看连接状态、服务数量，并进入特征级调试。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>信号强度、连接状态、服务数等关键指标。</li>
+              <li>Export / Broadcast / Navigation 快捷入口。</li>
+              <li>AI Diagnostics 一键入口，快速获取诊断建议。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>先确认连接稳定，再进入特征读写。</li>
+              <li>点击服务或特征进入读写调试页面。</li>
+              <li>需要看广播原始字段时，从 Broadcast 入口查看。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-3">
+          <div class="figure"><img src="../3.jpg" alt="编辑设备名弹窗" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">3</span><h3>设备重命名与类型纠正</h3></div>
+            <p>为设备设置可读别名，便于团队协作和日志复盘。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>设备名编辑弹窗，支持恢复原名、保存、取消。</li>
+              <li>键盘输入可快速完成现场设备标注。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>建议命名：产线-机位-设备号（如 LineA-Node03）。</li>
+              <li>设备识别异常时可恢复原名重新校准。</li>
+              <li>保存后再导出日志，便于多人协作定位问题。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-4">
+          <div class="figure"><img src="../4.jpg" alt="特征调试页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">4</span><h3>Characteristic 调试控制台</h3></div>
+            <p>这是核心调试页面：支持多编码模式发送、接收与回写结果验证。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>发送模式：Hex / Text / Bin / DEC。</li>
+              <li>发送输入框 + 输出区域（ACK、写入校验反馈）。</li>
+              <li>Select Packet 与 Send 快捷操作，提升调试效率。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>先发一条安全命令确认链路可用，再进行复杂写入。</li>
+              <li>按固件协议选择编码方式，避免解析错误。</li>
+              <li>通过输出区确认写入是否成功及设备返回内容。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-5">
+          <div class="figure"><img src="../5.jpg" alt="选择命令包" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">5</span><h3>Select Packet：复用调试命令</h3></div>
+            <p>通过命令包复用机制，避免重复输入，提升回归测试一致性。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>底部弹层展示已保存命令包（名称、内容、模式）。</li>
+              <li>支持新增命令包，形成团队共享的调试模板。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>按用途维护命令包：握手、版本查询、状态查询等。</li>
+              <li>命名建议简短清晰，便于现场快速选择。</li>
+              <li>结合日志导出，形成稳定回归测试证据链。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-6">
+          <div class="figure"><img src="../6.jpg" alt="导航查找页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">6</span><h3>Navigation：设备查找与靠近</h3></div>
+            <p>当你需要在现实环境中定位设备时，可使用导航查找功能辅助靠近目标。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>地图与目标点位展示，附带实时进度环。</li>
+              <li>距离、在线状态、更新时间等信息面板。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>缓慢移动并观察信号变化趋势判断方向。</li>
+              <li>信号变弱时调整角度再靠近，避免金属遮挡干扰。</li>
+              <li>确认设备位置后点击 Found 完成本次查找。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-7">
+          <div class="figure"><img src="../7.jpg" alt="Packet 库页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">7</span><h3>Packet 页面：命令库管理</h3></div>
+            <p>在 Packet Tab 统一维护调试命令，提高多人协同与版本迭代效率。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>命令包列表展示名称、内容、模式。</li>
+              <li>右上角 + 支持快速新增命令包。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>每个固件版本维护对应命令包集合。</li>
+              <li>协议更新后及时清理旧命令，防止误发。</li>
+              <li>测试团队统一命令命名规范，减少沟通成本。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-8">
+          <div class="figure"><img src="../8.jpg" alt="日志页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">8</span><h3>Log 页面：全链路事件时间线</h3></div>
+            <p>日志页按时间记录扫描、连接、收发数据等关键行为，是排障核心依据。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>带时间戳和级别标签的日志流（INFO/CONN 等）。</li>
+              <li>Clear、Export、模式切换等实用操作。</li>
+              <li>底部 AI Insights 入口，一键生成诊断建议。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>问题复现后第一时间导出日志，保留上下文。</li>
+              <li>新测试前先 Clear，减少历史噪声干扰。</li>
+              <li>结合命令包名称快速定位关键事件片段。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-9">
+          <div class="figure"><img src="../9.jpg" alt="AI Insights 页面" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">9</span><h3>AI Insights：智能诊断建议</h3></div>
+            <p>AI 将日志与设备上下文转换为可执行建议，帮助更快定位协议和配对问题。</p>
+            <div class="block-title">界面功能</div>
+            <ul>
+              <li>设备信息、日志条数、协议提示卡片。</li>
+              <li>置信度分值，便于判断建议优先级。</li>
+            </ul>
+            <div class="block-title">使用方案</div>
+            <ul>
+              <li>至少完成一次连接+读写后再看 AI 结果更准确。</li>
+              <li>先按 AI 建议调整，再回到调试页复测验证。</li>
+              <li>AI 结论建议与原始日志交叉确认，形成闭环。</li>
+            </ul>
+          </div>
+        </article>
+
+        <section class="section" id="workflows">
+          <h2>推荐使用方案</h2>
+          <p>根据目标选择最短路径，提升调试效率。</p>
+          <div class="workflow">
+            <div class="flow-card">
+              <h3>快速联调流程</h3>
+              <p>1 → 2 → 4 → 8 → 9<br />扫描、连接、读写验证、日志导出、AI 诊断闭环。</p>
+            </div>
+            <div class="flow-card">
+              <h3>现场找设备流程</h3>
+              <p>1 → 2 → 6<br />先确认目标身份，再通过导航能力完成物理定位。</p>
+            </div>
+            <div class="flow-card">
+              <h3>回归测试流程</h3>
+              <p>7 → 5 → 4 → 8<br />加载命令包批量测试，导出日志用于版本对比。</p>
+            </div>
+          </div>
+          <div class="footer-note">
+            建议：在复杂射频环境进行协议验证时，尽量只保留一个目标设备处于活跃状态，减少广播与连接干扰。
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

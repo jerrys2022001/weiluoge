@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bluetooth Explorer User Guide</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0f1727;
+      --panel: rgba(17, 26, 43, 0.82);
+      --panel-strong: #121d31;
+      --line: rgba(120, 170, 255, 0.18);
+      --text: #e9f0ff;
+      --muted: #a6b6d3;
+      --accent: #4aa8ff;
+      --accent-2: #63f0b6;
+      --shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(74, 168, 255, 0.24), transparent 36%),
+        radial-gradient(circle at 88% 14%, rgba(99, 240, 182, 0.14), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Avenir Next", "SF Pro Text", "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, 100% - 40px);
+      margin: 24px auto 40px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(19, 33, 58, 0.9), rgba(11, 19, 34, 0.9));
+      border-radius: var(--radius-xl);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -130px;
+      top: -140px;
+      background: radial-gradient(circle, rgba(74, 168, 255, 0.28), transparent 64%);
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(99, 240, 182, 0.4);
+      color: #b8ffe3;
+      background: rgba(16, 41, 44, 0.42);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.14;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.3vw, 18px);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(23, 37, 62, 0.72);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #d6e3ff;
+    }
+
+    .layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9dc2ff;
+    }
+
+    .toc a {
+      display: block;
+      padding: 9px 10px;
+      margin: 6px 0;
+      border-radius: 10px;
+      color: #d7e4ff;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .toc a:hover {
+      background: rgba(74, 168, 255, 0.12);
+      border-color: rgba(74, 168, 255, 0.26);
+    }
+
+    .content {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: linear-gradient(165deg, rgba(18, 30, 49, 0.9), rgba(13, 22, 38, 0.9));
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .figure {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #02060d;
+      position: relative;
+    }
+
+    .figure::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .step-index {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #001e3d;
+      background: linear-gradient(135deg, #67c0ff, #75ffd0);
+      flex: 0 0 32px;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: clamp(18px, 2.1vw, 24px);
+      line-height: 1.2;
+    }
+
+    .step p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .block-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #98b6ea;
+      margin: 12px 0 6px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      color: #d6e3ff;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .flow-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      background: var(--panel-strong);
+    }
+
+    .flow-card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .flow-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(99, 240, 182, 0.35);
+      background: rgba(14, 39, 36, 0.45);
+      padding: 12px;
+      color: #c4ffe9;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .toc a {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: min(100% - 20px, 1200px);
+      }
+
+      .hero {
+        padding: 20px 16px 18px;
+      }
+
+      .section,
+      .step {
+        padding: 14px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .toc nav {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" id="top">
+      <span class="tag">Bluetooth Explorer:AI Terminal</span>
+      <h1>User Guide</h1>
+      <p class="subtitle">
+        Follow the screenshots in order to complete a full workflow: scan devices, inspect services,
+        debug characteristic data, analyze logs, and use AI hints to resolve issues faster.
+      </p>
+      <div class="chips">
+        <span class="chip">PC + Mobile Seamless Layout</span>
+        <span class="chip">9-Step Guided Flow</span>
+        <span class="chip">Developer + Field Debug Use Cases</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="toc">
+        <h2>Contents</h2>
+        <nav>
+          <a href="#overview">Overview</a>
+          <a href="#step-1">1. Scanner</a>
+          <a href="#step-2">2. Device Information</a>
+          <a href="#step-3">3. Rename & Type</a>
+          <a href="#step-4">4. Characteristic Debug</a>
+          <a href="#step-5">5. Select Packet</a>
+          <a href="#step-6">6. Navigation Finder</a>
+          <a href="#step-7">7. Packet Library</a>
+          <a href="#step-8">8. Session Log</a>
+          <a href="#step-9">9. AI Insights</a>
+          <a href="#workflows">Recommended Workflows</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="section" id="overview">
+          <h2>How to Use This Manual</h2>
+          <p>
+            This guide mirrors your in-app journey. Open each section, compare it with the screenshot,
+            then follow the action checklist. For fastest debugging: complete Step 1 to Step 9 in sequence.
+          </p>
+        </section>
+
+        <article class="step" id="step-1">
+          <div class="figure"><img src="../1.jpg" alt="Scanner page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">1</span><h3>Scanner Home</h3></div>
+            <p>Start from the Scanner tab to discover nearby Bluetooth devices and pick a target quickly.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Scan controls (stop / play / fast), search box, and filter chips.</li>
+              <li>Device cards with name, manufacturer, battery, and online state.</li>
+              <li>Direct <strong>Connect</strong> action for each device.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Use fast scan during discovery, then switch to normal scan to reduce noise.</li>
+              <li>Filter by <em>Named</em> or Favorites when too many devices are present.</li>
+              <li>Tap <strong>Connect</strong> on your target device to enter interrogation flow.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-2">
+          <div class="figure"><img src="../2.jpg" alt="Information page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">2</span><h3>Device Information & Service Tree</h3></div>
+            <p>After connection, this page gives a full status snapshot and all discovered services/characteristics.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Signal, connection state, service count, and quick actions (Export/Broadcast/Navigation).</li>
+              <li>Service sections with characteristics you can inspect and debug.</li>
+              <li>AI diagnostics entry point for one-click analysis.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Confirm connection is healthy before writing payloads.</li>
+              <li>Open a characteristic row to enter read/write debug mode.</li>
+              <li>Use Broadcast when you need raw advertising details from the same device.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-3">
+          <div class="figure"><img src="../3.jpg" alt="Edit device name dialog" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">3</span><h3>Rename Device & Correct Type</h3></div>
+            <p>Apply a project-friendly alias so your team can identify test units instantly.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Edit Device Name dialog with restore and save controls.</li>
+              <li>Keyboard input for quick alias updates on-site.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Use naming convention like <em>LineA-Node03</em> or <em>AirPods-Test-01</em>.</li>
+              <li>Tap Restore Original if you need to match manufacturer naming again.</li>
+              <li>Save before exporting logs so reports remain consistent.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-4">
+          <div class="figure"><img src="../4.jpg" alt="Characteristic debug page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">4</span><h3>Characteristic Debug Console</h3></div>
+            <p>The core terminal for payload write/read verification across HEX, Text, Binary, and Decimal modes.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Send mode selector and payload input area.</li>
+              <li>Live send output with ACK/write verification feedback.</li>
+              <li>Receive mode section and quick actions: Select Packet / Send.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Pick an encoding mode matching your firmware protocol.</li>
+              <li>Send a known safe command first to confirm path integrity.</li>
+              <li>Review output text to validate write success and expected response.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-5">
+          <div class="figure"><img src="../5.jpg" alt="Select packet sheet" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">5</span><h3>Select Packet for Repeatable Tests</h3></div>
+            <p>Reuse saved command packets to avoid manual retyping and improve regression consistency.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Bottom sheet packet picker with packet name, payload, and mode.</li>
+              <li>Quick add entry point for creating new reusable packets.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Define packets for handshake, version check, and diagnostics.</li>
+              <li>Use packet names that encode intent, for example <em>auth init</em>.</li>
+              <li>Combine with Step 8 logs to compare packet outcomes across builds.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-6">
+          <div class="figure"><img src="../6.jpg" alt="Navigation finder page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">6</span><h3>Navigation Finder</h3></div>
+            <p>Use signal-aware navigation assistance when you need to physically locate the connected device.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Map context with target marker and live progress indicator.</li>
+              <li>Distance, mode, and real-time status panel.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Walk slowly and monitor signal/percentage trends.</li>
+              <li>If signal drops, rotate and re-approach from another direction.</li>
+              <li>Tap <strong>Found</strong> when target confirmation is complete.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-7">
+          <div class="figure"><img src="../7.jpg" alt="Packet library page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">7</span><h3>Packet Library Management</h3></div>
+            <p>Maintain a clean command library for team-wide reuse and quick test setup.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Packet list by name and mode, plus add button.</li>
+              <li>A dedicated tab to centralize command management.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Create one packet set per firmware feature area.</li>
+              <li>Keep packet names short but explicit for faster lookup.</li>
+              <li>Review stale packets after protocol revisions.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-8">
+          <div class="figure"><img src="../8.jpg" alt="Log page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">8</span><h3>Session Log Timeline</h3></div>
+            <p>Track every key event in one place: scanning, connection, writes, reads, and diagnostic outputs.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Timestamped rows with level tags (INFO / CONN / etc.).</li>
+              <li>Clear, Export, and mode controls for practical analysis.</li>
+              <li>AI Insights entry at the bottom for instant summary.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Export logs right after reproducing an issue.</li>
+              <li>Mark key commands in packet names to correlate log events faster.</li>
+              <li>Use clear before a fresh test run to isolate noise.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="step" id="step-9">
+          <div class="figure"><img src="../9.jpg" alt="AI Insights page" /></div>
+          <div>
+            <div class="step-head"><span class="step-index">9</span><h3>AI Insights</h3></div>
+            <p>Convert raw communication history into actionable hints for protocol and pairing troubleshooting.</p>
+            <div class="block-title">What You See</div>
+            <ul>
+              <li>Device context, log sample size, and protocol hint card.</li>
+              <li>Confidence score to help prioritize next debugging actions.</li>
+            </ul>
+            <div class="block-title">How to Use</div>
+            <ul>
+              <li>Read AI hints after at least one full connect/read/write cycle.</li>
+              <li>Use confidence score as guidance, then validate against raw logs.</li>
+              <li>Apply recommendations, rerun packet tests, and compare outcomes.</li>
+            </ul>
+          </div>
+        </article>
+
+        <section class="section" id="workflows">
+          <h2>Recommended Workflows</h2>
+          <p>Choose the path that matches your objective.</p>
+          <div class="workflow">
+            <div class="flow-card">
+              <h3>Fast Device Bring-up</h3>
+              <p>Step 1 → 2 → 4 → 8 → 9<br />Scan, inspect, write test payloads, export logs, and confirm AI diagnosis.</p>
+            </div>
+            <div class="flow-card">
+              <h3>Field Finder Flow</h3>
+              <p>Step 1 → 2 → 6<br />Find the right device, verify identity, then navigate physically to target.</p>
+            </div>
+            <div class="flow-card">
+              <h3>Regression Packet Run</h3>
+              <p>Step 7 → 5 → 4 → 8<br />Load saved packets, run repeatable commands, and archive test evidence.</p>
+            </div>
+          </div>
+          <div class="footer-note">
+            Tip: for stable debugging in noisy RF environments, keep only one target device nearby when validating packet-level behavior.
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
