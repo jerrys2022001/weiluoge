@@ -182,6 +182,30 @@ ul {
   color: #3f3f3f;
 }
 
+.va-product-grid {
+  margin-top: 8px;
+  display: grid;
+  gap: 12px;
+}
+
+.va-product-card {
+  border: 1px solid rgba(255, 180, 58, 0.4);
+  border-radius: 12px;
+  background: #fffaf0;
+  padding: 12px 14px;
+}
+
+.va-product-title {
+  font-size: 15px;
+  font-weight: 650;
+  margin-bottom: 4px;
+}
+
+.va-product-text {
+  font-size: 14px;
+  color: #3f3f3f;
+}
+
 .va-mail {
   border-bottom: 2px solid rgba(255, 180, 58, 0.6);
   padding-bottom: 1px;
@@ -345,6 +369,11 @@ ul {
 
   .va-copy-text {
     font-size: 15px;
+  }
+
+  .va-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 }
 

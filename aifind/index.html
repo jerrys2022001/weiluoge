@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find AI: Bluetooth Finder App | Find Lost AirPods and Earbuds</title>
+  <meta name="description" content="Find AI helps you find lost AirPods, earbuds, Beats, and other nearby Bluetooth devices with real-time distance radar and last seen map guidance." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://velocai.net/aifind/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="VelocAI" />
+  <meta property="og:title" content="Find AI: Bluetooth Finder App | Find Lost AirPods and Earbuds" />
+  <meta property="og:description" content="Use Find AI distance radar, smart device grouping, and last seen map to recover nearby lost Bluetooth devices fast." />
+  <meta property="og:url" content="https://velocai.net/aifind/" />
+  <meta property="og:image" content="https://velocai.net/2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Find AI: Bluetooth Finder App" />
+  <meta name="twitter:description" content="Find lost AirPods and Bluetooth devices quickly with real-time distance radar." />
+  <meta name="twitter:image" content="https://velocai.net/2.png" />
+  <meta name="apple-itunes-app" content="app-id=6757230039, app-argument=https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" />
+  <link rel="icon" type="image/png" href="/2.png" />
+  <link rel="apple-touch-icon" href="/2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #06131d;
+      --bg-soft: #0d2232;
+      --panel: rgba(13, 34, 50, 0.75);
+      --panel-solid: #123149;
+      --text: #f6fbff;
+      --muted: #b3ccdf;
+      --line: rgba(145, 194, 227, 0.25);
+      --primary: #5ad4ff;
+      --primary-strong: #19ba94;
+      --shadow: 0 24px 48px rgba(4, 13, 23, 0.45);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at 8% -10%, rgba(90, 212, 255, 0.25), transparent 45%),
+        radial-gradient(circle at 95% 12%, rgba(25, 186, 148, 0.18), transparent 46%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", "Avenir Next", "Segoe UI", sans-serif;
+      line-height: 1.65;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: #ffffff;
+      color: #041425;
+      font-weight: 700;
+      z-index: 999;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      background: rgba(6, 19, 29, 0.86);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Outfit", "Avenir Next", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Outfit", "Avenir Next", sans-serif;
+      line-height: 1.14;
+      letter-spacing: 0.01em;
+    }
+
+    main {
+      padding-bottom: 70px;
+    }
+
+    .hero {
+      padding: 56px 0 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(90, 212, 255, 0.45);
+      border-radius: 999px;
+      padding: 7px 12px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.07em;
+      color: #bde9ff;
+    }
+
+    h1 {
+      margin-top: 14px;
+      font-size: clamp(34px, 5vw, 56px);
+      max-width: 15ch;
+    }
+
+    .lede {
+      margin-top: 16px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 57ch;
+    }
+
+    .cta-row {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(2, 13, 22, 0.35);
+    }
+
+    .btn-primary {
+      color: #042132;
+      background: linear-gradient(130deg, #6ddaff, #45e8bf);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(179, 204, 223, 0.42);
+      color: var(--text);
+      background: rgba(20, 44, 64, 0.45);
+    }
+
+    .proof-list {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .proof-list li {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(18, 49, 73, 0.48);
+      padding: 10px 12px;
+      color: #d2e6f6;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(123, 181, 217, 0.34);
+      background: linear-gradient(160deg, rgba(15, 36, 53, 0.94), rgba(12, 29, 45, 0.94));
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+      animation: float-card 6s ease-in-out infinite;
+    }
+
+    @keyframes float-card {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -120px auto auto -120px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(90, 212, 255, 0.22), transparent 66%);
+    }
+
+    .app-mark {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .app-mark img {
+      width: 64px;
+      height: 64px;
+      border-radius: 17px;
+    }
+
+    .app-mark p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .radar {
+      position: relative;
+      z-index: 1;
+      margin-top: 4px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(123, 181, 217, 0.35);
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(23, 143, 182, 0.35), transparent 65%),
+        linear-gradient(180deg, rgba(15, 38, 57, 0.72), rgba(8, 23, 36, 0.72));
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(152, 214, 245, 0.32);
+      animation: pulse 3.2s linear infinite;
+    }
+
+    .ring.r1 {
+      width: 65px;
+      height: 65px;
+      animation-delay: 0s;
+    }
+
+    .ring.r2 {
+      width: 120px;
+      height: 120px;
+      animation-delay: 0.7s;
+    }
+
+    .ring.r3 {
+      width: 170px;
+      height: 170px;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.85;
+      }
+      100% {
+        opacity: 0.08;
+      }
+    }
+
+    .radar-center {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #73e1ff;
+      box-shadow: 0 0 22px rgba(115, 225, 255, 0.9);
+    }
+
+    .card-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 32px 0;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      max-width: 19ch;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      font-size: 22px;
+    }
+
+    .panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .panel-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .steps li {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(17, 44, 66, 0.56);
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .step-index {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(109, 218, 255, 0.28), rgba(69, 232, 191, 0.25));
+      color: #d6f4ff;
+      font-family: "Outfit", "Avenir Next", sans-serif;
+      font-weight: 700;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(18, 49, 73, 0.52);
+      padding: 14px 16px;
+    }
+
+    summary {
+      font-family: "Outfit", "Avenir Next", sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    details p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      margin-top: 28px;
+      border: 1px solid rgba(112, 191, 228, 0.38);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(160deg, rgba(14, 37, 54, 0.95), rgba(11, 30, 43, 0.95));
+      padding: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(26px, 3vw, 34px);
+      max-width: 20ch;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 42px;
+      padding: 18px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-list,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Find AI: Bluetooth Finder App",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS",
+        "description": "Find AI helps users find lost AirPods, earbuds, Beats, and nearby Bluetooth devices with real-time distance radar and last seen map guidance.",
+        "url": "https://velocai.net/aifind/",
+        "downloadUrl": "https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039",
+        "image": "https://velocai.net/2.png",
+        "publisher": {
+          "@type": "Organization",
+          "name": "VelocAI LTD",
+          "url": "https://velocai.net/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "privacyPolicy": "https://velocai.net/aifind/privacy-policy.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can Find AI help me find lost AirPods?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Find AI scans nearby Bluetooth signals and shows a live distance radar to guide you toward your lost AirPods or earbuds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Find AI work with non-Apple earbuds or headphones?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Find AI works with many Bluetooth devices such as earbuds, headphones, and Beats-compatible accessories when they are nearby and discoverable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when my device is out of range?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Find AI stores last seen time and location on device, so you can return to the last detected area and continue scanning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Find AI private and secure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Find AI processes Bluetooth finder data on device. According to the privacy policy, device-finding data is not uploaded for analytics or model training."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="https://velocai.net/">
+        <img src="/2.png" alt="VelocAI app icon" width="72" height="72" />
+        <span>VelocAI</span>
+      </a>
+      <nav class="nav" aria-label="Find AI sections">
+        <a href="#use-cases">Use Cases</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+        <a href="/aifind/privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">US App Store - Utilities</p>
+        <h1 id="hero-title">Find lost AirPods and Bluetooth devices in minutes.</h1>
+        <p class="lede">
+          Find AI is a bluetooth finder app built for everyday recovery: scan nearby signals,
+          follow real-time distance radar, and return to your last seen map point when a device slips out of range.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+          <a class="btn btn-secondary" href="#faq">View FAQ</a>
+          <a class="btn btn-secondary" href="/aifind/privacy-policy.html">Read Privacy Policy</a>
+        </div>
+        <ul class="proof-list">
+          <li>Find lost AirPods, earbuds, and Beats faster.</li>
+          <li>Live distance radar for nearby bluetooth finder scans.</li>
+          <li>Last seen location for out-of-range devices.</li>
+          <li>On-device data processing for privacy-first use.</li>
+        </ul>
+      </div>
+      <aside class="hero-card" aria-label="Find AI bluetooth finder preview">
+        <div class="app-mark">
+          <img src="/2.png" alt="Find AI bluetooth finder and airpods finder app icon" width="128" height="128" />
+          <p>Find AI: Bluetooth Finder App</p>
+        </div>
+        <div class="radar" role="img" aria-label="Realtime distance radar animation for Find AI bluetooth finder workflow">
+          <span class="ring r1" aria-hidden="true"></span>
+          <span class="ring r2" aria-hidden="true"></span>
+          <span class="ring r3" aria-hidden="true"></span>
+          <span class="radar-center" aria-hidden="true"></span>
+        </div>
+        <p class="card-note">Real-time radar feedback helps you move from cold signal to close proximity without guesswork.</p>
+      </aside>
+    </section>
+
+    <section id="use-cases" class="section" aria-labelledby="use-cases-title">
+      <div class="section-head">
+        <h2 id="use-cases-title">Common lost-device scenarios</h2>
+        <p>These are the top recovery moments we optimize for in the US market: lost AirPods at home, misplaced earbuds in office settings, and missing headphones in transit.</p>
+      </div>
+      <div class="grid-3">
+        <article class="panel">
+          <img class="panel-icon" src="/2.png" alt="AirPods finder quick scan icon in Find AI bluetooth finder app" width="80" height="80" loading="lazy" decoding="async" />
+          <h3>AirPods at home</h3>
+          <p>Use the scanner to isolate your AirPods signal and walk toward the strongest distance reading.</p>
+        </article>
+        <article class="panel">
+          <img class="panel-icon" src="/2.png" alt="Bluetooth finder workflow icon for earbuds and headphones" width="80" height="80" loading="lazy" decoding="async" />
+          <h3>Earbuds in shared spaces</h3>
+          <p>Filter nearby device noise and keep your known devices pinned for faster rediscovery in crowded areas.</p>
+        </article>
+        <article class="panel">
+          <img class="panel-icon" src="/2.png" alt="Last seen map icon for airpods finder and bluetooth finder recovery" width="80" height="80" loading="lazy" decoding="async" />
+          <h3>Out-of-range recovery</h3>
+          <p>Open your on-device last seen map clue, return to the point, and continue scanning once the device is near again.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="section-head">
+        <h2 id="features-title">Feature modules built for recovery speed</h2>
+        <p>The app flow follows a practical sequence: detect, sort, move, and confirm. Every screen is designed to reduce search time without exposing your data to third-party trackers.</p>
+      </div>
+      <div class="grid-2">
+        <article class="panel">
+          <h3>Real-time distance radar</h3>
+          <p>Converts RSSI signal strength into practical near/far guidance to help you close distance quickly.</p>
+        </article>
+        <article class="panel">
+          <h3>Smart device grouping</h3>
+          <p>Separates known devices from unknown signals so you can focus on your target instead of scrolling noise.</p>
+        </article>
+        <article class="panel">
+          <h3>Pin and prioritize</h3>
+          <p>Keep your most important earbuds and headphones pinned for immediate access in future scan sessions.</p>
+        </article>
+        <article class="panel">
+          <h3>Last seen memory</h3>
+          <p>Stores last seen location and timestamp on device to support offline recovery workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section" aria-labelledby="how-title">
+      <div class="section-head">
+        <h2 id="how-title">How Find AI works</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-index">1</span>
+          <div>
+            <h3>Scan nearby Bluetooth devices</h3>
+            <p>Open Find AI and start a live scan to discover nearby AirPods, earbuds, Beats, and other bluetooth finder targets.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-index">2</span>
+          <div>
+            <h3>Select and lock your target</h3>
+            <p>Pick the device you want and use signal strength plus distance hints to move in the right direction.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-index">3</span>
+          <div>
+            <h3>Use last seen data when needed</h3>
+            <p>If the device is out of range, revisit the last detected location and resume scanning to finish recovery.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="section-head">
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Can Find AI help me find lost AirPods?</summary>
+          <p>Yes. Find AI scans nearby Bluetooth signals and shows a live distance radar to guide you toward your lost AirPods or earbuds.</p>
+        </details>
+        <details>
+          <summary>Does Find AI work with non-Apple earbuds or headphones?</summary>
+          <p>Yes. Find AI works with many Bluetooth devices such as earbuds, headphones, and Beats-compatible accessories when they are nearby and discoverable.</p>
+        </details>
+        <details>
+          <summary>What happens when my device is out of range?</summary>
+          <p>Find AI stores last seen time and location on device, so you can return to the last detected area and continue scanning.</p>
+        </details>
+        <details>
+          <summary>Is Find AI private and secure?</summary>
+          <p>Find AI processes Bluetooth finder data on device. According to the privacy policy, device-finding data is not uploaded for analytics or model training.</p>
+        </details>
+      </div>
+
+      <div class="final-cta">
+        <div>
+          <h2>Ready to find your lost AirPods or earbuds?</h2>
+          <p>Install Find AI and start your bluetooth finder recovery flow in under a minute.</p>
+        </div>
+        <a class="btn btn-primary" href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">Get Find AI</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-links">
+        <a href="https://velocai.net/">VelocAI Home</a>
+        <a href="/aifind/privacy-policy.html">Find AI Privacy Policy</a>
+        <a href="mailto:vp@velocai.net">Contact: vp@velocai.net</a>
+      </div>
+      <p>Copyright <span id="copyright-year">2026</span> VelocAI LTD. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var year = new Date().getFullYear();
+      var yearNode = document.getElementById("copyright-year");
+      if (yearNode) yearNode.textContent = String(year);
+    })();
+  </script>
+</body>
+</html>

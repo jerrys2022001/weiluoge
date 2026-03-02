@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Cleanup PRO Super Cleaner for iPhone | VelocAI</title>
+  <meta name="description" content="AI Cleanup PRO is a photo cleaner iPhone app for duplicate photo cleanup, video compression, and contact organization with privacy-first on-device processing.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/ai-cleanup-pro/">
+  <link rel="icon" type="image/png" href="/2.png">
+  <link rel="apple-touch-icon" href="/2.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="AI Cleanup PRO Super Cleaner for iPhone | VelocAI">
+  <meta property="og:description" content="Clean duplicate photos, compress large videos, and organize contacts on iPhone with AI Cleanup PRO.">
+  <meta property="og:url" content="https://velocai.net/ai-cleanup-pro/">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Cleanup PRO Super Cleaner for iPhone">
+  <meta name="twitter:description" content="A privacy-first iPhone cleaner app for duplicate photos, video cleanup, and contact organization.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <meta name="apple-itunes-app" content="app-id=6757135968, app-argument=https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fbf7ef;
+      --bg-soft: #fffdf8;
+      --ink: #131722;
+      --ink-soft: #3a4257;
+      --line: #e8dcc5;
+      --accent: #de7f25;
+      --accent-strong: #b45712;
+      --accent-soft: #fff1df;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow: 0 20px 44px rgba(50, 34, 12, 0.14);
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Public Sans", "Avenir Next", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 1%, rgba(240, 183, 111, 0.18), transparent 36%),
+        radial-gradient(circle at 95% 12%, rgba(255, 223, 170, 0.35), transparent 44%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.64;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      z-index: 30;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      left: 8px;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 247, 239, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Sora", "Avenir Next", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      box-shadow: 0 12px 20px rgba(50, 34, 12, 0.16);
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 56px 0 22px;
+      display: grid;
+      gap: 30px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #f0ce9f;
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 14px;
+      color: #7b4a17;
+      background: #fff5e7;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Sora", "Avenir Next", sans-serif;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5.1vw, 53px);
+      max-width: 16ch;
+    }
+
+    .lede {
+      margin: 18px 0 0;
+      color: var(--ink-soft);
+      font-size: 18px;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(50, 34, 12, 0.16);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f2a64d, #dd6b1a);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid #edd4af;
+    }
+
+    .hero-points {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+
+    .hero-points li {
+      border: 1px solid #efd9bb;
+      border-radius: 12px;
+      background: #fff9f0;
+      padding: 10px 12px;
+      color: #5a4632;
+      font-size: 14px;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(165deg, #fffdf8, #fff5e8);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      min-height: 100%;
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+
+    .hero-card .app-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      box-shadow: 0 18px 24px rgba(50, 34, 12, 0.18);
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .section {
+      padding: 22px 0;
+    }
+
+    .section h2 {
+      font-size: clamp(24px, 3.6vw, 36px);
+      max-width: 22ch;
+    }
+
+    .section-intro {
+      margin-top: 14px;
+      color: var(--ink-soft);
+      max-width: 70ch;
+    }
+
+    .feature-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .workflow {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      border-radius: 14px;
+      background: #fff4e4;
+      border: 1px solid #f0d6b3;
+      padding: 16px;
+    }
+
+    .step .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: #e67724;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 14px;
+      color: #5f4f3b;
+    }
+
+    .faq {
+      margin-top: 22px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 14px 16px;
+    }
+
+    .faq summary {
+      font-family: "Sora", "Avenir Next", sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      padding-right: 18px;
+      position: relative;
+    }
+
+    .faq summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-weight: 700;
+      color: #c0621d;
+    }
+
+    .faq details[open] summary::after {
+      content: "-";
+    }
+
+    .faq p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .cta-panel {
+      margin-top: 34px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #efceb0;
+      background: linear-gradient(130deg, #fff6ea, #ffe3c2);
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(86, 46, 11, 0.14);
+    }
+
+    .cta-panel h2 {
+      font-size: clamp(24px, 3.4vw, 34px);
+      max-width: 20ch;
+    }
+
+    .cta-panel p {
+      margin: 12px 0 0;
+      color: #5f4d38;
+      max-width: 64ch;
+    }
+
+    .cta-panel .cta-row {
+      margin-top: 18px;
+    }
+
+    .footer {
+      margin-top: 36px;
+      border-top: 1px solid var(--line);
+      padding: 22px 0 38px;
+      color: #5e5b58;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      border-bottom: 1px solid rgba(222, 127, 37, 0.45);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--container), calc(100% - 30px));
+      }
+
+      .topbar-inner {
+        padding: 12px 0;
+      }
+
+      .nav {
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .lede {
+        font-size: 16px;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Cleanup PRO - Super Cleaner",
+    "operatingSystem": "iOS, iPadOS",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "AI Cleanup PRO helps iPhone users remove duplicate photos, compress videos, and organize contacts with privacy-first on-device processing.",
+    "url": "https://velocai.net/ai-cleanup-pro/",
+    "downloadUrl": "https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "HKD",
+      "url": "https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VelocAI",
+      "url": "https://velocai.net/"
+    },
+    "featureList": [
+      "Duplicate photo cleaner with smart grouping",
+      "Clean up videos iPhone storage with compression options",
+      "Organize contacts and merge duplicate cards",
+      "Privacy-first local processing for personal media"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What can AI Cleanup PRO clean on iPhone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI Cleanup PRO can detect duplicate and similar photos, surface large videos for compression, and help organize contacts so you can recover storage with fewer manual steps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does AI Cleanup PRO work as a duplicate photo cleaner?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The app groups similar images and exact duplicates so you can review batches quickly, keep the best shot, and clear extra copies from your library."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the app clean up videos on iPhone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI Cleanup PRO highlights large videos and provides compression paths so you can reduce file size while keeping a usable version of your memories and recordings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI Cleanup PRO organize contacts too?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can detect duplicate contact cards, merge repeated entries, and keep important details in one clean profile for faster calling and messaging."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI Cleanup PRO privacy-first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Based on the product policy, photo, video, and contact analysis is designed around on-device handling, so your personal content is not uploaded for advertising tracking."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "VelocAI",
+        "item": "https://velocai.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Cleanup PRO",
+        "item": "https://velocai.net/ai-cleanup-pro/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/">
+        <img src="/2.png" alt="VelocAI logo" width="96" height="96">
+        <span>VelocAI</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="/privacy-policy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AI Cleanup App</p>
+          <h1>AI Cleanup PRO - Super Cleaner for iPhone</h1>
+          <p class="lede">
+            AI Cleanup PRO is built for people who need a reliable photo cleaner iPhone workflow without endless manual sorting.
+            From duplicate photo cleaner automation to smart video cleanup and contact organization, the app is designed to save time every week while helping users recover storage before it becomes urgent.
+            It is a practical super cleaner app focused on fast decisions, visible results, and privacy-first behavior that keeps sensitive personal content under your control.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+            <a class="btn btn-secondary" href="#features">Explore Features</a>
+          </div>
+          <ul class="hero-points">
+            <li>AI cleanup app for iPhone and iPad</li>
+            <li>Duplicate photo cleaner with quick review</li>
+            <li>Clean up videos iPhone storage pressure</li>
+            <li>Organize contacts and remove duplicates</li>
+          </ul>
+        </div>
+
+        <aside class="hero-card" aria-label="App highlights">
+          <img class="app-icon" src="/2.png" alt="AI Cleanup PRO app icon" width="512" height="512">
+          <h2>Storage clarity without the chaos</h2>
+          <p>
+            Use one cleaner workflow to review similar photos, reduce oversized videos, and fix duplicate contacts.
+            AI Cleanup PRO keeps each task in clear review steps so you can make confident cleanup decisions instead of deleting blindly.
+          </p>
+          <a class="btn btn-primary" href="https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+        </aside>
+      </section>
+
+      <section class="section" id="features">
+        <h2>Powerful cleanup tools for real iPhone storage pressure</h2>
+        <p class="section-intro">
+          The product is structured around high-impact cleanup actions users repeat often. Each feature focuses on one storage problem, keeps the decision flow simple, and provides clear progress so cleanup is fast even on large libraries.
+        </p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Duplicate Photo Cleaner with Smart Grouping</h3>
+            <p>
+              AI Cleanup PRO acts as a duplicate photo cleaner that groups exact duplicates and near-similar shots into reviewable sets. Instead of scrolling thousands of items manually, users get compact groups with representative previews and can keep the best frame quickly. This reduces decision fatigue and turns photo cleanup into a short routine. The grouping flow is designed for real camera-roll behavior, where burst shots, repeated screenshots, and similar edits accumulate over time and silently consume storage.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Clean Up Videos iPhone Storage with Compression Paths</h3>
+            <p>
+              Large videos often become the biggest storage bottleneck, especially after travel or social recording. AI Cleanup PRO surfaces heavy files quickly and supports clean up videos iPhone workflows by prioritizing what frees the most space first. Users can decide between deleting unneeded files or compressing selected clips to preserve important moments in a lighter format. The result is a practical balance between memory savings and media quality, making it easier to keep space available for new captures and app updates.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Organize Contacts and Merge Repeated Entries</h3>
+            <p>
+              Messy address books slow down calling, messaging, and sharing. AI Cleanup PRO helps organize contacts by detecting likely duplicates and exposing merge suggestions in a clear sequence. Users can combine repeated cards, preserve key fields, and remove stale entries without rebuilding their contact list from scratch. This feature is useful for people who switch devices, import multiple accounts, or use messaging apps that create fragmented records. Clean contacts improve communication speed and reduce errors when selecting recipients.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Privacy-First AI Cleanup App Design</h3>
+            <p>
+              For personal libraries, privacy is not optional. AI Cleanup PRO is built with a privacy-first model where sensitive media and contact handling is designed to stay on the device. That local-first approach supports trust while still delivering helpful automation. Users get practical cleanup recommendations without turning private memories into ad data. Combined with direct controls and explicit review steps, this design helps people clean storage confidently while keeping ownership of photos, videos, and contacts in their own hands.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <h2>Three steps from cluttered storage to clean space</h2>
+        <div class="workflow">
+          <article class="step">
+            <span class="num">1</span>
+            <h3>Scan categories</h3>
+            <p>Open photo, video, and contact cleanup categories to see where storage can be recovered fastest.</p>
+          </article>
+          <article class="step">
+            <span class="num">2</span>
+            <h3>Review suggestions</h3>
+            <p>Inspect grouped duplicates or large files, keep important items, and remove the extra copies.</p>
+          </article>
+          <article class="step">
+            <span class="num">3</span>
+            <h3>Free up space</h3>
+            <p>Apply cleanup changes and repeat weekly to keep your iPhone organized and responsive.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>What can AI Cleanup PRO clean on iPhone?</summary>
+            <p>It helps with duplicate and similar photos, large videos, and repeated contacts so you can recover storage with fewer manual steps.</p>
+          </details>
+          <details>
+            <summary>Is this a duplicate photo cleaner for daily use?</summary>
+            <p>Yes. It is designed for ongoing cleanup, so users can process new duplicates in short sessions instead of waiting for storage emergencies.</p>
+          </details>
+          <details>
+            <summary>How does clean up videos iPhone workflow work?</summary>
+            <p>The app highlights large videos first, then lets you decide what to delete or compress based on your quality and storage priorities.</p>
+          </details>
+          <details>
+            <summary>Can the app organize contacts too?</summary>
+            <p>Yes. You can review duplicate cards and merge repeated contact entries into cleaner, more reliable profiles.</p>
+          </details>
+          <details>
+            <summary>Where can I read the data policy?</summary>
+            <p>You can review details on the <a href="/privacy-policy.html">AI Cleanup PRO privacy policy page</a>.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <h2>Ready to clean your iPhone faster?</h2>
+        <p>
+          Start using AI Cleanup PRO to remove duplicates, clear oversized videos, and keep contacts organized with privacy-first workflows.
+          Download from the official App Store listing and begin your first cleanup in minutes.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://apps.apple.com/hk/app/ai-cleanup-pro-super-cleaner/id6757135968" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+          <a class="btn btn-secondary" href="/privacy-policy.html">Read Privacy Policy</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>(c) VelocAI</span>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+          <a href="/privacy-policy.html">AI Cleanup PRO Privacy Policy</a>
+          <a href="mailto:vp@velocai.net">vp@velocai.net</a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
