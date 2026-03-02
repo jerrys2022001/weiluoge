@@ -81,6 +81,8 @@ ul {
   align-items: center;
   gap: 28px;
   font-size: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .va-nav-list a {
@@ -387,6 +389,7 @@ ul {
     top: 64px;
     right: 18px;
     flex-direction: column;
+    align-items: flex-start;
     gap: 14px;
     background: #ffffff;
     border-radius: 12px;
