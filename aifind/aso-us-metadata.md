@@ -50,4 +50,4 @@ Version 1.5
 
 ## Backup keyword set (if airpods finder ranking stalls after day 10)
 
-`airpods locator,bluetooth finder,find earbuds,lost headphones,device tracker,earbud finder,find beats`
+`airpods locator,bluetooth finder,find earbuds,lost headphones,device tracker,earbud locator,beats`
