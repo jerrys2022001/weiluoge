@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bluetooth GATT UUID Lookup Table (0x1800-0x2B1F) | Bluetooth Explorer</title>
+  <meta name="description" content="Complete Bluetooth GATT UUID lookup table (0x1800-0x2B1F) with name, type, UTI, assigned number, and specification code from GATT.pdf." />
+  <meta name="keywords" content="Bluetooth GATT UUID lookup, BLE assigned numbers, service UUID, characteristic UUID, descriptor UUID, attribute UUID, 0x1800, 0x2B1F" />
+  <meta name="author" content="VelocAI" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#d5d5d8" />
+  <meta name="format-detection" content="telephone=no,address=no,email=no" />
+  <link rel="canonical" href="https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html" />
+  <link rel="alternate" hreflang="en-US" href="https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html" />
+  <link rel="alternate" hreflang="x-default" href="https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html" />
+  <link rel="icon" type="image/png" href="/bluetoothexplorer/icon-bluetooth.png" />
+  <link rel="apple-touch-icon" href="/bluetoothexplorer/icon-bluetooth.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="VelocAI" />
+  <meta property="og:title" content="Bluetooth GATT UUID Lookup Table (0x1800-0x2B1F)" />
+  <meta property="og:description" content="Complete BLE GATT assigned numbers table with names, UUID types, UTIs, and spec codes." />
+  <meta property="og:url" content="https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html" />
+  <meta property="og:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
+  <meta property="og:image:alt" content="Bluetooth GATT UUID lookup table for services, characteristics, descriptors, and attributes" />
+  <meta property="article:published_time" content="2026-03-04T00:00:00+08:00" />
+  <meta property="article:modified_time" content="2026-03-04T00:00:00+08:00" />
+  <meta property="article:author" content="VelocAI" />
+  <meta property="article:section" content="Bluetooth GATT Reference" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bluetooth GATT UUID Lookup Table (0x1800-0x2B1F)" />
+  <meta name="twitter:description" content="BLE UUID quick lookup with name, type, UTI, assigned number, and specification." />
+  <meta name="twitter:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
+  <meta name="twitter:label1" content="Rows" />
+  <meta name="twitter:data1" content="273 UUID entries" />
+  <meta name="twitter:label2" content="Coverage" />
+  <meta name="twitter:data2" content="0x1800-0x2B1F" />
+  <link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Mono,v1" referrerpolicy="origin-when-cross-origin" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "Bluetooth GATT UUID Lookup Table (0x1800-0x2B1F)",
+        "description": "Complete Bluetooth GATT assigned numbers lookup for services, characteristics, descriptors, and attributes.",
+        "url": "https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html",
+        "inLanguage": "en-US",
+        "datePublished": "2026-03-04",
+        "dateModified": "2026-03-04",
+        "keywords": ["Bluetooth", "GATT", "BLE", "Service UUID", "Characteristic UUID", "Descriptor UUID", "Attribute UUID", "Assigned Numbers"],
+        "articleSection": ["Bluetooth GATT", "BLE Debugging", "Assigned Numbers"],
+        "about": [
+          {"@type": "Thing", "name": "Bluetooth Low Energy"},
+          {"@type": "Thing", "name": "GATT"},
+          {"@type": "Thing", "name": "Assigned Numbers"}
+        ],
+        "citation": [
+          "https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/GATT.pdf",
+          "https://www.bluetooth.com/specifications/gatt/services/"
+        ],
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "url": "https://velocai.net/bluetoothexplorer/document/en/index.html",
+          "name": "Bluetooth GATT XML Documentation Index"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "VelocAI",
+          "url": "https://velocai.net/"
+        }
+      },
+      {
+        "@type": "Dataset",
+        "name": "Bluetooth GATT Assigned Numbers",
+        "description": "273 rows parsed from local GATT.pdf including services, characteristics, descriptors, and attributes.",
+        "url": "https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/GATT.pdf",
+        "inLanguage": "en-US",
+        "keywords": ["Bluetooth GATT UUID", "BLE Assigned Numbers", "UTI", "Services", "Characteristics", "Descriptors", "Attributes"],
+        "variableMeasured": ["Name", "Type", "Uniform Type Identifier", "Assigned Number", "Specification"],
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "text/csv",
+          "contentUrl": "https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.csv"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://velocai.net/"},
+          {"@type": "ListItem", "position": 2, "name": "Bluetooth Explorer", "item": "https://velocai.net/bluetoothexplorer/"},
+          {"@type": "ListItem", "position": 3, "name": "Documentation", "item": "https://velocai.net/bluetoothexplorer/document/en/index.html"},
+          {"@type": "ListItem", "position": 4, "name": "Bluetooth GATT UUID Lookup Table", "item": "https://velocai.net/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What UUID range is covered on this page?",
+            "acceptedAnswer": {"@type": "Answer", "text": "This page covers 273 GATT assigned numbers from 0x1800 to 0x2B1F."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does this table include only services?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. It includes services, characteristics, descriptors, and GATT attributes parsed from GATT.pdf."}
+          },
+          {
+            "@type": "Question",
+            "name": "How can I map a 16-bit UUID to a Bluetooth UTI?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Find the assigned number in the table and read the corresponding Uniform Type Identifier (org.bluetooth.*)."}
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a machine-readable export?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. A CSV export is available on this page for indexing and automation workflows."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-subtle: #fbfbfd;
+      --line: #d2d2d7;
+      --line-soft: #e5e5ea;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --link: #0066cc;
+      --link-strong: #0054a8;
+      --radius: 14px;
+      --radius-lg: 18px;
+      --container: 1240px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+      line-height: 1.58;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover, a:focus-visible { color: var(--link-strong); text-decoration: underline; text-underline-offset: 3px; }
+
+    code, pre { font-family: "SF Mono", "Menlo", "Consolas", monospace; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      z-index: 1000;
+      background: #000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 12px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 251, 253, 0.92);
+      border-bottom: 1px solid var(--line-soft);
+      backdrop-filter: saturate(1.4) blur(10px);
+    }
+
+    .topbar-inner {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .topnav a { color: var(--muted); }
+    .topnav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+    .page {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 16px auto 48px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .breadcrumbs span[aria-hidden="true"] { color: #8e8e93; }
+
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 66px;
+      max-height: calc(100vh - 78px);
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .doc-index {
+      display: grid;
+      gap: 10px;
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: 12px;
+    }
+
+    .toc .doc-index h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      text-transform: none;
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .doc-index-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .doc-index-group {
+      margin-top: 2px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .doc-list {
+      display: grid;
+      gap: 6px;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .doc-link {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 8px 9px;
+      color: #2f2f33;
+      font-size: 13px;
+      line-height: 1.35;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .doc-link:hover, .doc-link:focus-visible {
+      background: #f1f1f5;
+      border-color: #dfdfe5;
+      text-decoration: none;
+    }
+
+    .doc-link.is-active {
+      background: #e8e8ee;
+      border-color: #d7d7dd;
+      color: #1d1d1f;
+      font-weight: 600;
+    }
+
+    .toc h2 {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .toc nav { display: grid; gap: 8px; }
+    .toc nav a { font-size: 14px; color: #333336; }
+
+    .toc-facts {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      display: grid;
+      gap: 7px;
+    }
+
+    .toc-facts strong { color: var(--text); font-weight: 600; }
+
+    .content { display: grid; gap: 14px; }
+
+    .hero, .section {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.18;
+      font-family: "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(30px, 4.5vw, 44px);
+      font-weight: 700;
+      max-width: 24ch;
+    }
+
+    .signature {
+      margin-top: 14px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      padding: 11px 13px;
+      overflow-x: auto;
+      color: #2f2f33;
+      font-size: 14px;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 78ch;
+      color: #2f2f33;
+      font-size: 18px;
+    }
+
+    .section h2 {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      margin: 0 0 14px;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    caption {
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #5a5a61;
+      background: #eceef1;
+      border-bottom: 1px solid var(--line-soft);
+      font-weight: 500;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    th {
+      background: #fafafc;
+      color: #3a3a3f;
+      font-weight: 600;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+
+    .mono {
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+      font-size: 13px;
+      color: #1f1f22;
+    }
+
+    .decode-note {
+      margin: 0 0 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8f8fb;
+      border: 1px solid var(--line-soft);
+      color: #3a3a3f;
+    }
+
+    pre {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f9f9fc;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 13px;
+      color: #242427;
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fcfcfe;
+    }
+
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { margin: 0; color: #3a3a3f; font-size: 15px; }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: #3a3a3f;
+      display: grid;
+      gap: 8px;
+    }
+
+    .faq { display: grid; gap: 10px; }
+
+    .faq-item {
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      background: #fcfcfe;
+      padding: 14px;
+    }
+
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; }
+    .faq-item p { margin: 0; color: #3a3a3f; }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #fafafc;
+      color: #2f2f33;
+      font-size: 14px;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .link-chip:hover,
+    .link-chip:focus-visible {
+      transform: translateY(-1px);
+      border-color: #b4b4be;
+      text-decoration: none;
+    }
+
+    .tiny {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a { color: var(--muted); }
+
+    @media (max-width: 1120px) {
+      .doc-layout { grid-template-columns: 1fr; }
+      .toc {
+        position: static;
+        max-height: none;
+      }
+      .cards { grid-template-columns: 1fr; }
+      .doc-list { max-height: none; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner,
+      .page,
+      .footer-inner { width: calc(100% - 24px); }
+
+      .hero,
+      .section,
+      .toc { padding: 16px; }
+
+      .topbar-inner {
+        align-items: flex-start;
+      }
+    }
+
+  
+    .hero {
+      background: #ffffff;
+      border-color: #d8d8dc;
+    }
+
+    .hero h1 {
+      max-width: none;
+      font-size: clamp(44px, 6.5vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    .hero .subtitle {
+      margin: 16px 0 0;
+      font-size: 21px;
+      color: #4e4e54;
+    }
+
+    .section {
+      background: #f7f7f9;
+      border-color: #d5d5db;
+    }
+
+    .source-card {
+      margin: 0;
+      font-size: 18px;
+      color: #4e4e54;
+      font-weight: 600;
+    }
+
+    .source-card a {
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    table {
+      min-width: 980px;
+      font-size: 16px;
+    }
+
+    th {
+      background: #d7dadd;
+      color: #46464c;
+      font-size: 18px;
+    }
+
+    td {
+      color: #4f4f55;
+      background: #f5f6f8;
+    }
+
+    td.center {
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+      font-weight: 600;
+      color: #515157;
+    }
+
+    .uuid-link {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 8px;
+      border: 1px solid #9ab4d4;
+      background: #e9f1fb;
+      color: #1f4f86;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    }
+
+    .uuid-link:hover,
+    .uuid-link:focus-visible {
+      background: #dceafe;
+      border-color: #6f97c8;
+      color: #143a67;
+      text-decoration: underline;
+    }
+
+    .mono {
+      font-size: 15px;
+      word-break: break-word;
+    }
+
+  
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/bluetoothexplorer/">
+        <img src="/bluetoothexplorer/icon-bluetooth.png" alt="Bluetooth Explorer icon" width="103" height="103" />
+        <span>Bluetooth Explorer Documentation</span>
+      </a>
+      <nav class="topnav" aria-label="Global">
+        <a href="/">Home</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+        <a href="/bluetoothexplorer/document/en/index.html">Docs Index</a>
+        <a href="/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html" aria-current="page">Current Doc</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://velocai.net/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      <span aria-hidden="true">/</span>
+      <a href="/bluetoothexplorer/document/en/index.html">Documentation</a>
+      <span aria-hidden="true">/</span>
+      <span>Bluetooth GATT UUID Lookup Table</span>
+    </nav>
+
+    <div class="doc-layout">
+      <aside class="toc" aria-label="Documentation sidebar">
+<div class="doc-index">
+        <h2>Documentation</h2>
+        <a class="doc-index-back" href="/bluetoothexplorer/document/en/index.html">&larr; All GATT XML Docs</a>
+        <div>
+        <div class="doc-index-group">Reference Tables</div>
+        <div class="doc-list">
+        <a class="doc-link is-active" href="/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html">Bluetooth GATT Service UUID Lookup Table</a>
+        </div>
+        </div>
+
+        <div>
+        <div class="doc-index-group">Characteristics</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-lower-limit.html">Aerobic Heart Rate Lower Limit (0x2A7E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-upper-limit.html">Aerobic Heart Rate Upper Limit (0x2A84)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-threshold.html">Aerobic Threshold (0x2A7F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-age.html">Age (0x2A80)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aggregate.html">Aggregate (0x2A5A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id.html">Alert Category ID (0x2A43)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html">Alert Category ID Bit Mask (0x2A42)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-level.html">Alert Level (0x2A06)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-notification-control-point.html">Alert Notification Control Point (0x2A44)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-status.html">Alert Status (0x2A3F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-altitude.html">Altitude (0x2AB3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-lower-limit.html">Anaerobic Heart Rate Lower Limit (0x2A81)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-upper-limit.html">Anaerobic Heart Rate Upper Limit (0x2A82)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-threshold.html">Anaerobic Threshold (0x2A83)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-analog.html">Analog (0x2A58)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-direction.html">Apparent Wind Direction (0x2A73)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-speed.html">Apparent Wind Speed (0x2A72)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-appearance.html">Appearance (0x2A01)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-barometric-pressure-trend.html">Barometric Pressure Trend (0x2AA3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-battery-level.html">Battery Level (0x2A19)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-feature.html">Blood Pressure Feature (0x2A49)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-measurement.html">Blood Pressure Measurement (0x2A35)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-feature.html">Body Composition Feature (0x2A9B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-measurement.html">Body Composition Measurement (0x2A9C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-sensor-location.html">Body Sensor Location (0x2A38)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-control-point.html">Bond Management Control Point (0x2AA4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-feature.html">Bond Management Features (0x2AA5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-input-report.html">Boot Keyboard Input Report (0x2A22)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-output-report.html">Boot Keyboard Output Report (0x2A32)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-mouse-input-report.html">Boot Mouse Input Report (0x2A33)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-central-address-resolution.html">Central Address Resolution (0x2AA6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-feature.html">CGM Feature (0x2AA8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-measurement.html">CGM Measurement (0x2AA7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-run-time.html">CGM Session Run Time (0x2AAB)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-start-time.html">CGM Session Start Time (0x2AAA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-specific-ops-control-point.html">CGM Specific Ops Control Point (0x2AAC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-status.html">CGM Status (0x2AA9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cross-trainer-data.html">Cross Trainer Data (0x2ACE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-csc-feature.html">CSC Feature (0x2A5C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-csc-measurement.html">CSC Measurement (0x2A5B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-current-time.html">Current Time (0x2A2B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-control-point.html">Cycling Power Control Point (0x2A66)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-feature.html">Cycling Power Feature (0x2A65)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-measurement.html">Cycling Power Measurement (0x2A63)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-vector.html">Cycling Power Vector (0x2A64)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-database-change-increment.html">Database Change Increment (0x2A99)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-of-birth.html">Date of Birth (0x2A85)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-of-threshold-assessment.html">Date of Threshold Assessment (0x2A86)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-time.html">Date Time (0x2A08)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-day-date-time.html">Day Date Time (0x2A0A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-day-of-week.html">Day of Week (0x2A09)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-descriptor-value-changed.html">Descriptor Value Changed (0x2A7D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-device-name.html">Device Name (0x2A00)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-dew-point.html">Dew Point (0x2A7B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-digital.html">Digital (0x2A56)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-dst-offset.html">DST Offset (0x2A0D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-elevation.html">Elevation (0x2A6C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-email-address.html">Email Address (0x2A87)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-exact-time-256.html">Exact Time 256 (0x2A0C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-lower-limit.html">Fat Burn Heart Rate Lower Limit (0x2A88)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-upper-limit.html">Fat Burn Heart Rate Upper Limit (0x2A89)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-firmware-revision-string.html">Firmware Revision String (0x2A26)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-first-name.html">First Name (0x2A8A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-control-point.html">Fitness Machine Control Point (0x2AD9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-feature.html">Fitness Machine Feature (0x2ACC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-status.html">Fitness Machine Status (0x2ADA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-five-zone-heart-rate-limits.html">Five Zone Heart Rate Limits (0x2A8B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-floor-number.html">Floor Number (0x2AB2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gender.html">Gender (0x2A8C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-feature.html">Glucose Feature (0x2A51)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement.html">Glucose Measurement (0x2A18)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html">Glucose Measurement Context (0x2A34)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gust-factor.html">Gust Factor (0x2A74)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hardware-revision-string.html">Hardware Revision String (0x2A27)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-control-point.html">Heart Rate Control Point (0x2A39)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-max.html">Heart Rate Max (0x2A8D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html">Heart Rate Measurement (0x2A37)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heat-index.html">Heat Index (0x2A7A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-height.html">Height (0x2A8E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hid-control-point.html">HID Control Point (0x2A4C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hid-information.html">HID Information (0x2A4A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hip-circumference.html">Hip Circumference (0x2A8F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-control-point.html">HTTP Control Point (0x2ABA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-entity-body.html">HTTP Entity Body (0x2AB9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-headers.html">HTTP Headers (0x2AB7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-status-code.html">HTTP Status Code (0x2AB8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-https-security.html">HTTPS Security (0x2ABB)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-humidity.html">Humidity (0x2A6F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-indoor-bike-data.html">Indoor Bike Data (0x2AD2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-indoor-positioning-configuration.html">Indoor Positioning Configuration (0x2AAD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-cuff-pressure.html">Intermediate Cuff Pressure (0x2A36)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-temperature.html">Intermediate Temperature (0x2A1E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-irradiance.html">Irradiance (0x2A77)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-language.html">Language (0x2AA2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-last-name.html">Last Name (0x2A90)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-latitude.html">Latitude (0x2AAE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ln-control-point.html">LN Control Point (0x2A6B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ln-feature.html">LN Feature (0x2A6A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-east-coordinate.html">Local East Coordinate (0x2AB1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-north-coordinate.html">Local North Coordinate (0x2AB0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-time-information.html">Local Time Information (0x2A0F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-location-and-speed.html">Location and Speed Characteristic (0x2A67)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-location-name.html">Location Name (0x2AB5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-longitude.html">Longitude (0x2AAF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-declination.html">Magnetic Declination (0x2A2C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">Magnetic Flux Density - 2D (0x2AA0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html">Magnetic Flux Density - 3D (0x2AA1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html">Manufacturer Name String (0x2A29)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-maximum-recommended-heart-rate.html">Maximum Recommended Heart Rate (0x2A91)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-measurement-interval.html">Measurement Interval (0x2A21)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-model-number-string.html">Model Number String (0x2A24)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-navigation.html">Navigation (0x2A68)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-new-alert.html">New Alert (0x2A46)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-action-control-point.html">Object Action Control Point (0x2AC5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-changed.html">Object Changed (0x2AC8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-first-created.html">Object First-Created (0x2AC1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-id.html">Object ID (0x2AC3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-last-modified.html">Object Last-Modified (0x2AC2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-list-control-point.html">Object List Control Point (0x2AC6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-list-filter.html">Object List Filter (0x2AC7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-name.html">Object Name (0x2ABE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-properties.html">Object Properties (0x2AC4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-size.html">Object Size (0x2AC0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-type.html">Object Type (0x2ABF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ots-feature.html">OTS Feature (0x2ABD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-preferred-connection-parameters.html">Peripheral Preferred Connection Parameters (0x2A04)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-privacy-flag.html">Peripheral Privacy Flag (0x2A02)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-continuous-measurement.html">PLX Continuous Measurement Characteristic (0x2A5F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-features.html">PLX Features (0x2A60)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-spot-check-measurement.html">PLX Spot-Check Measurement (0x2A5E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pnp-id.html">PnP ID (0x2A50)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pollen-concentration.html">Pollen Concentration (0x2A75)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-position-quality.html">Position Quality (0x2A69)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pressure.html">Pressure (0x2A6D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-protocol-mode.html">Protocol Mode (0x2A4E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rainfall.html">Rainfall (0x2A78)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-reconnection-address.html">Reconnection Address (0x2A03)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-record-access-control-point.html">Record Access Control Point (0x2A52)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-reference-time-information.html">Reference Time Information (0x2A14)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-report.html">Report (0x2A4D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-report-map.html">Report Map (0x2A4B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-resolvable-private-address-only.html">Resolvable Private Address Only (0x2AC9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-resting-heart-rate.html">Resting Heart Rate (0x2A92)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ringer-control-point.html">Ringer Control point (0x2A40)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ringer-setting.html">Ringer Setting (0x2A41)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rower-data.html">Rower Data (0x2AD1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rsc-feature.html">RSC Feature (0x2A54)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rsc-measurement.html">RSC Measurement (0x2A53)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sc-control-point.html">SC Control Point (0x2A55)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-scan-interval-window.html">Scan Interval Window (0x2A4F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-scan-refresh.html">Scan Refresh (0x2A31)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sensor-location.html">Sensor Location (0x2A5D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-serial-number-string.html">Serial Number String (0x2A25)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gatt-service-changed.html">Service Changed (0x2A05)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-software-revision-string.html">Software Revision String (0x2A28)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sport-type-for-aerobic-and-anaerobic-thresholds.html">Sport Type for Aerobic and Anaerobic Thresholds (0x2A93)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-stair-climber-data.html">Stair Climber Data (0x2AD0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-step-climber-data.html">Step Climber Data (0x2ACF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-heart-rate-range.html">Supported Heart Rate Range (0x2AD7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-inclination-range.html">Supported Inclination Range (0x2AD5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-new-alert-category.html">Supported New Alert Category (0x2A47)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-power-range.html">Supported Power Range (0x2AD8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-resistance-level-range.html">Supported Resistance Level Range (0x2AD6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-speed-range.html">Supported Speed Range (0x2AD4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-unread-alert-category.html">Supported Unread Alert Category (0x2A48)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-system-id.html">System ID (0x2A23)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-tds-control-point.html">TDS Control Point (0x2ABC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature.html">Temperature (0x2A6E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature-measurement.html">Temperature Measurement (0x2A1C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature-type.html">Temperature Type (0x2A1D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-three-zone-heart-rate-limits.html">Three Zone Heart Rate Limits (0x2A94)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-accuracy.html">Time Accuracy (0x2A12)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-source.html">Time Source (0x2A13)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-update-control-point.html">Time Update Control Point (0x2A16)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-update-state.html">Time Update State (0x2A17)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-with-dst.html">Time with DST (0x2A11)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-zone.html">Time Zone (0x2A0E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-training-status.html">Training Status (0x2AD3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-treadmill-data.html">Treadmill Data (0x2ACD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-direction.html">True Wind Direction (0x2A71)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-speed.html">True Wind Speed (0x2A70)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-two-zone-heart-rate-limit.html">Two Zone Heart Rate Limit (0x2A95)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-tx-power-level.html">Tx Power Level (0x2A07)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uncertainty.html">Uncertainty (0x2AB4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-unread-alert-status.html">Unread Alert Status (0x2A45)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uri.html">URI (0x2AB6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-user-control-point.html">User Control Point (0x2A9F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-user-index.html">User Index (0x2A9A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uv-index.html">UV Index (0x2A76)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-vo2-max.html">VO2 Max (0x2A96)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-waist-circumference.html">Waist Circumference (0x2A97)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight.html">Weight (0x2A98)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight-measurement.html">Weight Measurement (0x2A9D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight-scale-feature.html">Weight Scale Feature (0x2A9E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-wind-chill.html">Wind Chill (0x2A79)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">Services</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-alert-notification.html">Alert Notification Service (0x1811)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-automation-io.html">Automation IO (0x1815)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-battery-service.html">Battery Service (0x180F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-blood-pressure.html">Blood Pressure (0x1810)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-body-composition.html">Body Composition (0x181B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-bond-management.html">Bond Management Service (0x181E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-continuous-glucose-monitoring.html">Continuous Glucose Monitoring (0x181F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-current-time.html">Current Time Service (0x1805)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-cycling-power.html">Cycling Power (0x1818)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-cycling-speed-and-cadence.html">Cycling Speed and Cadence (0x1816)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-device-information.html">Device Information (0x180A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-environmental-sensing.html">Environmental Sensing (0x181A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-fitness-machine.html">Fitness Machine (0x1826)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-generic-access.html">Generic Access (0x1800)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-generic-attribute.html">Generic Attribute (0x1801)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-glucose.html">Glucose (0x1808)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-health-thermometer.html">Health Thermometer (0x1809)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-heart-rate.html">Heart Rate (0x180D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-http-proxy.html">HTTP Proxy (0x1823)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-human-interface-device.html">Human Interface Device (0x1812)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-immediate-alert.html">Immediate Alert (0x1802)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-indoor-positioning.html">Indoor Positioning (0x1821)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-internet-protocol-support.html">Internet Protocol Support Service (0x1820)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-link-loss.html">Link Loss (0x1803)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-location-and-navigation.html">Location and Navigation (0x1819)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-next-dst-change.html">Next DST Change Service (0x1807)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-object-transfer.html">Object Transfer Service (0x1825)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-phone-alert-status.html">Phone Alert Status Service (0x180E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-pulse-oximeter.html">Pulse Oximeter Service (0x1822)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-reference-time-update.html">Reference Time Update Service (0x1806)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-running-speed-and-cadence.html">Running Speed and Cadence (0x1814)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-scan-parameters.html">Scan Parameters (0x1813)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-transport-discovery.html">Transport Discovery (0x1824)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-tx-power.html">Tx Power (0x1804)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-user-data.html">User Data (0x181C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-weight-scale.html">Weight Scale (0x181D)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">Descriptors</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-aggregate-format.html">Characteristic Aggregate Format (0x2905)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-extended-properties.html">Characteristic Extended Properties (0x2900)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-presentation-format.html">Characteristic Presentation Format (0x2904)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-user-description.html">Characteristic User Description (0x2901)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html">Client Characteristic Configuration (0x2902)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-configuration.html">Environmental Sensing Configuration (0x290B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-measurement.html">Environmental Sensing Measurement (0x290C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-trigger-setting.html">Environmental Sensing Trigger Setting (0x290D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-external-report-reference.html">External Report Reference (0x2907)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-number-of-digitals.html">Number of Digitals (0x2909)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-report-reference.html">Report Reference (0x2908)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-server-characteristic-configuration.html">Server Characteristic Configuration (0x2903)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-time-trigger-setting.html">Time Trigger Setting (0x290E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-valid-range.html">Valid Range (0x2906)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-value-trigger-setting.html">Value Trigger Setting (0x290A)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">GATT Attributes</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-include-declaration.html">Include (0x2802)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-primary-service-declaration.html">Primary Service (0x2800)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html">Secondary Service (0x2801)</a>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="toc-section">
+        <h2>On This Page</h2>
+        <nav>
+        <a href="#quick-answer">Quick Answer</a>
+        <a href="#summary">Quick Summary</a>
+        <a href="#source">Data Source</a>
+        <a href="#table">UUID Lookup Table</a>
+        <a href="#usage">Usage Tips</a>
+        <a href="#faq">FAQ</a>
+        <a href="#related">Related Docs</a>
+        </nav>
+        </div>
+        <div class="toc-facts">
+          <div><strong>Rows:</strong> 273</div>
+          <div><strong>Services:</strong> 39</div>
+          <div><strong>Characteristics:</strong> 215</div>
+          <div><strong>Descriptors:</strong> 15</div>
+          <div><strong>Attributes:</strong> 4</div>
+          <div><strong>Source File:</strong> GATT.pdf</div>
+          <div><strong>Last Updated:</strong> 2026-03-04</div>
+        </div>
+      </aside>
+
+      <article class="content">
+        <section class="hero" aria-labelledby="doc-title">
+          <p class="eyebrow">Bluetooth Explorer · Reference Document</p>
+          <h1 id="doc-title">Bluetooth GATT UUID Lookup Table</h1>
+          <p class="subtitle">Complete Assigned Numbers Reference (0x1800-0x2B1F)</p>
+        </section>
+
+        <section class="section" id="quick-answer" aria-labelledby="quick-answer-title">
+          <h2 id="quick-answer-title">Quick Answer (for SEO & GEO)</h2>
+          <p class="section-intro">This page provides a complete, machine-readable Bluetooth GATT assigned-number lookup for BLE analysis, protocol debugging, firmware validation, and AI retrieval workflows.</p>
+          <div class="cards">
+            <article class="card">
+              <h3>Coverage</h3>
+              <p>273 assigned numbers across services, characteristics, descriptors, and attributes.</p>
+            </article>
+            <article class="card">
+              <h3>Range</h3>
+              <p><span class="mono">0x1800</span> to <span class="mono">0x2B1F</span>, including all entries available in the source PDF.</p>
+            </article>
+            <article class="card">
+              <h3>Export</h3>
+              <p>Use the CSV export for search indexing, script-based mapping, and test automation.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Quick Summary</h2>
+          <p class="section-intro">The table maps each Bluetooth GATT item to name, type, UTI, assigned number, and specification code. It is sourced directly from <span class="mono">GATT.pdf</span> in this project and converted to an English-only reference format.</p>
+        </section>
+
+        <section class="section" id="source" aria-labelledby="source-title">
+          <h2 id="source-title">Data Source</h2>
+          <p class="source-card">Project PDF: <a href="/bluetoothexplorer/document/GATT.pdf" target="_blank" rel="noopener noreferrer">/bluetoothexplorer/document/GATT.pdf</a></p>
+          <p class="source-card">Reference URL: <a href="https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/GATT.pdf" target="_blank" rel="noopener noreferrer">https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/res/GATT.pdf</a></p>
+          <p class="source-card">Bluetooth SIG: <a href="https://www.bluetooth.com/specifications/gatt/services/" target="_blank" rel="noopener noreferrer">https://www.bluetooth.com/specifications/gatt/services/</a></p>
+          <p class="source-card">CSV Export: <a href="/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.csv">bluetooth-gatt-service-uuid-lookup-table.csv</a></p>
+        </section>
+
+        <section class="section" id="table" aria-labelledby="table-title">
+          <h2 id="table-title">Bluetooth GATT UUID Lookup Table</h2>
+          <div class="table-wrap">
+            <table aria-describedby="table-note">
+              <caption id="table-note">Complete Bluetooth GATT assigned-number mapping from GATT.pdf</caption>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Uniform Type Identifier</th>
+                  <th>Assigned Number</th>
+                  <th>Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+            <tr><td>Generic Access</td><td class="center">Service</td><td class="mono">org.bluetooth.service.generic_access</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-generic-access.html" title="Open Generic Access (0x1800)">0x1800</a></td><td class="center">GSS</td></tr>
+            <tr><td>Generic Attribute</td><td class="center">Service</td><td class="mono">org.bluetooth.service.generic_attribute</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-generic-attribute.html" title="Open Generic Attribute (0x1801)">0x1801</a></td><td class="center">GSS</td></tr>
+            <tr><td>Immediate Alert</td><td class="center">Service</td><td class="mono">org.bluetooth.service.immediate_alert</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-immediate-alert.html" title="Open Immediate Alert (0x1802)">0x1802</a></td><td class="center">GSS</td></tr>
+            <tr><td>Link Loss</td><td class="center">Service</td><td class="mono">org.bluetooth.service.link_loss</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-link-loss.html" title="Open Link Loss (0x1803)">0x1803</a></td><td class="center">GSS</td></tr>
+            <tr><td>Tx Power</td><td class="center">Service</td><td class="mono">org.bluetooth.service.tx_power</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-tx-power.html" title="Open Tx Power (0x1804)">0x1804</a></td><td class="center">GSS</td></tr>
+            <tr><td>Current Time Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.current_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-current-time.html" title="Open Current Time Service (0x1805)">0x1805</a></td><td class="center">GSS</td></tr>
+            <tr><td>Reference Time Update Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.reference_time_update</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-reference-time-update.html" title="Open Reference Time Update Service (0x1806)">0x1806</a></td><td class="center">GSS</td></tr>
+            <tr><td>Next DST Change Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.next_dst_change</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-next-dst-change.html" title="Open Next DST Change Service (0x1807)">0x1807</a></td><td class="center">GSS</td></tr>
+            <tr><td>Glucose</td><td class="center">Service</td><td class="mono">org.bluetooth.service.glucose</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-glucose.html" title="Open Glucose (0x1808)">0x1808</a></td><td class="center">GSS</td></tr>
+            <tr><td>Health Thermometer</td><td class="center">Service</td><td class="mono">org.bluetooth.service.health_thermometer</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-health-thermometer.html" title="Open Health Thermometer (0x1809)">0x1809</a></td><td class="center">GSS</td></tr>
+            <tr><td>Device Information</td><td class="center">Service</td><td class="mono">org.bluetooth.service.device_information</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-device-information.html" title="Open Device Information (0x180A)">0x180A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Heart Rate</td><td class="center">Service</td><td class="mono">org.bluetooth.service.heart_rate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-heart-rate.html" title="Open Heart Rate (0x180D)">0x180D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Phone Alert Status Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.phone_alert_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-phone-alert-status.html" title="Open Phone Alert Status Service (0x180E)">0x180E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Battery Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.battery_service</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-battery-service.html" title="Open Battery Service (0x180F)">0x180F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Blood Pressure</td><td class="center">Service</td><td class="mono">org.bluetooth.service.blood_pressure</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-blood-pressure.html" title="Open Blood Pressure (0x1810)">0x1810</a></td><td class="center">GSS</td></tr>
+            <tr><td>Alert Notification Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.alert_notification</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-alert-notification.html" title="Open Alert Notification Service (0x1811)">0x1811</a></td><td class="center">GSS</td></tr>
+            <tr><td>Human Interface Device</td><td class="center">Service</td><td class="mono">org.bluetooth.service.human_interface_device</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-human-interface-device.html" title="Open Human Interface Device (0x1812)">0x1812</a></td><td class="center">GSS</td></tr>
+            <tr><td>Scan Parameters</td><td class="center">Service</td><td class="mono">org.bluetooth.service.scan_parameters</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-scan-parameters.html" title="Open Scan Parameters (0x1813)">0x1813</a></td><td class="center">GSS</td></tr>
+            <tr><td>Running Speed and Cadence</td><td class="center">Service</td><td class="mono">org.bluetooth.service.running_speed_and_cadence</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-running-speed-and-cadence.html" title="Open Running Speed and Cadence (0x1814)">0x1814</a></td><td class="center">GSS</td></tr>
+            <tr><td>Automation IO</td><td class="center">Service</td><td class="mono">org.bluetooth.service.automation_io</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-automation-io.html" title="Open Automation IO (0x1815)">0x1815</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Speed and Cadence</td><td class="center">Service</td><td class="mono">org.bluetooth.service.cycling_speed_and_cadence</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-cycling-speed-and-cadence.html" title="Open Cycling Speed and Cadence (0x1816)">0x1816</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Power</td><td class="center">Service</td><td class="mono">org.bluetooth.service.cycling_power</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-cycling-power.html" title="Open Cycling Power (0x1818)">0x1818</a></td><td class="center">GSS</td></tr>
+            <tr><td>Location and Navigation</td><td class="center">Service</td><td class="mono">org.bluetooth.service.location_and_navigation</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-location-and-navigation.html" title="Open Location and Navigation (0x1819)">0x1819</a></td><td class="center">GSS</td></tr>
+            <tr><td>Environmental Sensing</td><td class="center">Service</td><td class="mono">org.bluetooth.service.environmental_sensing</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-environmental-sensing.html" title="Open Environmental Sensing (0x181A)">0x181A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Body Composition</td><td class="center">Service</td><td class="mono">org.bluetooth.service.body_composition</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-body-composition.html" title="Open Body Composition (0x181B)">0x181B</a></td><td class="center">GSS</td></tr>
+            <tr><td>User Data</td><td class="center">Service</td><td class="mono">org.bluetooth.service.user_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-user-data.html" title="Open User Data (0x181C)">0x181C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Weight Scale</td><td class="center">Service</td><td class="mono">org.bluetooth.service.weight_scale</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-weight-scale.html" title="Open Weight Scale (0x181D)">0x181D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Bond Management Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.bond_management</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-bond-management.html" title="Open Bond Management Service (0x181E)">0x181E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Continuous Glucose Monitoring</td><td class="center">Service</td><td class="mono">org.bluetooth.service.continuous_glucose_monitoring</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-continuous-glucose-monitoring.html" title="Open Continuous Glucose Monitoring (0x181F)">0x181F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Internet Protocol Support Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.internet_protocol_support</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-internet-protocol-support.html" title="Open Internet Protocol Support Service (0x1820)">0x1820</a></td><td class="center">GSS</td></tr>
+            <tr><td>Indoor Positioning</td><td class="center">Service</td><td class="mono">org.bluetooth.service.indoor_positioning</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-indoor-positioning.html" title="Open Indoor Positioning (0x1821)">0x1821</a></td><td class="center">GSS</td></tr>
+            <tr><td>Pulse Oximeter Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.pulse_oximeter</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-pulse-oximeter.html" title="Open Pulse Oximeter Service (0x1822)">0x1822</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTP Proxy</td><td class="center">Service</td><td class="mono">org.bluetooth.service.http_proxy</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-http-proxy.html" title="Open HTTP Proxy (0x1823)">0x1823</a></td><td class="center">GSS</td></tr>
+            <tr><td>Transport Discovery</td><td class="center">Service</td><td class="mono">org.bluetooth.service.transport_discovery</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-transport-discovery.html" title="Open Transport Discovery (0x1824)">0x1824</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Transfer Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.object_transfer</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-object-transfer.html" title="Open Object Transfer Service (0x1825)">0x1825</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fitness Machine</td><td class="center">Service</td><td class="mono">org.bluetooth.service.fitness_machine</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/service-fitness-machine.html" title="Open Fitness Machine (0x1826)">0x1826</a></td><td class="center">GSS</td></tr>
+            <tr><td>Mesh Provisioning Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.mesh_provisioning</td><td class="center">0x1827</td><td class="center">GSS</td></tr>
+            <tr><td>Mesh Proxy Service</td><td class="center">Service</td><td class="mono">org.bluetooth.service.mesh_proxy</td><td class="center">0x1828</td><td class="center">GSS</td></tr>
+            <tr><td>Reconnection Configuration</td><td class="center">Service</td><td class="mono">org.bluetooth.service.reconnection_configuration</td><td class="center">0x1829</td><td class="center">GSS</td></tr>
+            <tr><td>Primary Service</td><td class="center">Attribute</td><td class="mono">org.bluetooth.attribute.gatt.primary_service_declaration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/attribute-gatt-primary-service-declaration.html" title="Open Primary Service (0x2800)">0x2800</a></td><td class="center">GSS</td></tr>
+            <tr><td>Secondary Service</td><td class="center">Attribute</td><td class="mono">org.bluetooth.attribute.gatt.secondary_service_declaration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html" title="Open Secondary Service (0x2801)">0x2801</a></td><td class="center">GSS</td></tr>
+            <tr><td>Include</td><td class="center">Attribute</td><td class="mono">org.bluetooth.attribute.gatt.include_declaration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/attribute-gatt-include-declaration.html" title="Open Include (0x2802)">0x2802</a></td><td class="center">GSS</td></tr>
+            <tr><td>Characteristic Declaration</td><td class="center">Attribute</td><td class="mono">org.bluetooth.attribute.gatt.characteristic_declaration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html" title="Open Characteristic Declaration (0x2803)">0x2803</a></td><td class="center">GSS</td></tr>
+            <tr><td>Characteristic Extended Properties</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.characteristic_extended_properties</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-extended-properties.html" title="Open Characteristic Extended Properties (0x2900)">0x2900</a></td><td class="center">GSS</td></tr>
+            <tr><td>Characteristic User Description</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.characteristic_user_description</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-user-description.html" title="Open Characteristic User Description (0x2901)">0x2901</a></td><td class="center">GSS</td></tr>
+            <tr><td>Client Characteristic Configuration</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.client_characteristic_configuration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html" title="Open Client Characteristic Configuration (0x2902)">0x2902</a></td><td class="center">GSS</td></tr>
+            <tr><td>Server Characteristic Configuration</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.server_characteristic_configuration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-server-characteristic-configuration.html" title="Open Server Characteristic Configuration (0x2903)">0x2903</a></td><td class="center">GSS</td></tr>
+            <tr><td>Characteristic Presentation Format</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.characteristic_presentation_format</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-presentation-format.html" title="Open Characteristic Presentation Format (0x2904)">0x2904</a></td><td class="center">GSS</td></tr>
+            <tr><td>Characteristic Aggregate Format</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.gatt.characteristic_aggregate_format</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-aggregate-format.html" title="Open Characteristic Aggregate Format (0x2905)">0x2905</a></td><td class="center">GSS</td></tr>
+            <tr><td>Valid Range</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.valid_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-valid-range.html" title="Open Valid Range (0x2906)">0x2906</a></td><td class="center">GSS</td></tr>
+            <tr><td>External Report Reference</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.external_report_reference</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-external-report-reference.html" title="Open External Report Reference (0x2907)">0x2907</a></td><td class="center">GSS</td></tr>
+            <tr><td>Report Reference</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.report_reference</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-report-reference.html" title="Open Report Reference (0x2908)">0x2908</a></td><td class="center">GSS</td></tr>
+            <tr><td>Number of Digitals</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.number_of_digitals</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-number-of-digitals.html" title="Open Number of Digitals (0x2909)">0x2909</a></td><td class="center">GSS</td></tr>
+            <tr><td>Value Trigger Setting</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.value_trigger_setting</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-value-trigger-setting.html" title="Open Value Trigger Setting (0x290A)">0x290A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Environmental Sensing Configuration</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.es_configuration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-es-configuration.html" title="Open Environmental Sensing Configuration (0x290B)">0x290B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Environmental Sensing Measurement</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.es_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-es-measurement.html" title="Open Environmental Sensing Measurement (0x290C)">0x290C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Environmental Sensing Trigger Setting</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.es_trigger_setting</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-es-trigger-setting.html" title="Open Environmental Sensing Trigger Setting (0x290D)">0x290D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Trigger Setting</td><td class="center">Descriptor</td><td class="mono">org.bluetooth.descriptor.time_trigger_setting</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/descriptor-time-trigger-setting.html" title="Open Time Trigger Setting (0x290E)">0x290E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Device Name</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.device_name</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-device-name.html" title="Open Device Name (0x2A00)">0x2A00</a></td><td class="center">GSS</td></tr>
+            <tr><td>Appearance</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.appearance</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-appearance.html" title="Open Appearance (0x2A01)">0x2A01</a></td><td class="center">GSS</td></tr>
+            <tr><td>Peripheral Privacy Flag</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.peripheral_privacy_flag</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-privacy-flag.html" title="Open Peripheral Privacy Flag (0x2A02)">0x2A02</a></td><td class="center">GSS</td></tr>
+            <tr><td>Reconnection Address</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.reconnection_address</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-reconnection-address.html" title="Open Reconnection Address (0x2A03)">0x2A03</a></td><td class="center">GSS</td></tr>
+            <tr><td>Peripheral Preferred Connection Parameters</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.peripheral_preferred_connection_parameters</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-preferred-connection-parameters.html" title="Open Peripheral Preferred Connection Parameters (0x2A04)">0x2A04</a></td><td class="center">GSS</td></tr>
+            <tr><td>Service Changed</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gatt.service_changed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gatt-service-changed.html" title="Open Service Changed (0x2A05)">0x2A05</a></td><td class="center">GSS</td></tr>
+            <tr><td>Alert Level</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.alert_level</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-alert-level.html" title="Open Alert Level (0x2A06)">0x2A06</a></td><td class="center">GSS</td></tr>
+            <tr><td>Tx Power Level</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.tx_power_level</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-tx-power-level.html" title="Open Tx Power Level (0x2A07)">0x2A07</a></td><td class="center">GSS</td></tr>
+            <tr><td>Date Time</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.date_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-date-time.html" title="Open Date Time (0x2A08)">0x2A08</a></td><td class="center">GSS</td></tr>
+            <tr><td>Day of Week</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.day_of_week</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-day-of-week.html" title="Open Day of Week (0x2A09)">0x2A09</a></td><td class="center">GSS</td></tr>
+            <tr><td>Day Date Time</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.day_date_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-day-date-time.html" title="Open Day Date Time (0x2A0A)">0x2A0A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Exact Time 100</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.exact_time_100</td><td class="center">0x2A0B</td><td class="center">GSS</td></tr>
+            <tr><td>Exact Time 256</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.exact_time_256</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-exact-time-256.html" title="Open Exact Time 256 (0x2A0C)">0x2A0C</a></td><td class="center">GSS</td></tr>
+            <tr><td>DST Offset</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.dst_offset</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-dst-offset.html" title="Open DST Offset (0x2A0D)">0x2A0D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Zone</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_zone</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-zone.html" title="Open Time Zone (0x2A0E)">0x2A0E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Local Time Information</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.local_time_information</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-local-time-information.html" title="Open Local Time Information (0x2A0F)">0x2A0F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Secondary Time Zone</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.secondary_time_zone</td><td class="center">0x2A10</td><td class="center">GSS</td></tr>
+            <tr><td>Time with DST</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_with_dst</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-with-dst.html" title="Open Time with DST (0x2A11)">0x2A11</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Accuracy</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_accuracy</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-accuracy.html" title="Open Time Accuracy (0x2A12)">0x2A12</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Source</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_source</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-source.html" title="Open Time Source (0x2A13)">0x2A13</a></td><td class="center">GSS</td></tr>
+            <tr><td>Reference Time Information</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.reference_time_information</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-reference-time-information.html" title="Open Reference Time Information (0x2A14)">0x2A14</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Broadcast</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_broadcast</td><td class="center">0x2A15</td><td class="center">GSS</td></tr>
+            <tr><td>Time Update Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_update_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-update-control-point.html" title="Open Time Update Control Point (0x2A16)">0x2A16</a></td><td class="center">GSS</td></tr>
+            <tr><td>Time Update State</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.time_update_state</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-time-update-state.html" title="Open Time Update State (0x2A17)">0x2A17</a></td><td class="center">GSS</td></tr>
+            <tr><td>Glucose Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.glucose_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement.html" title="Open Glucose Measurement (0x2A18)">0x2A18</a></td><td class="center">GSS</td></tr>
+            <tr><td>Battery Level</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.battery_level</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-battery-level.html" title="Open Battery Level (0x2A19)">0x2A19</a></td><td class="center">GSS</td></tr>
+            <tr><td>Battery Power State</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.battery_power_state</td><td class="center">0x2A1A</td><td class="center">GSS</td></tr>
+            <tr><td>Battery Level State</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.battery_level_state</td><td class="center">0x2A1B</td><td class="center">GSS</td></tr>
+            <tr><td>Temperature Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.temperature_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-temperature-measurement.html" title="Open Temperature Measurement (0x2A1C)">0x2A1C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Temperature Type</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.temperature_type</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-temperature-type.html" title="Open Temperature Type (0x2A1D)">0x2A1D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Intermediate Temperature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.intermediate_temperature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-temperature.html" title="Open Intermediate Temperature (0x2A1E)">0x2A1E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Temperature Celsius</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.temperature_celsius</td><td class="center">0x2A1F</td><td class="center">GSS</td></tr>
+            <tr><td>Temperature Fahrenheit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.temperature_fahrenheit</td><td class="center">0x2A20</td><td class="center">GSS</td></tr>
+            <tr><td>Measurement Interval</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.measurement_interval</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-measurement-interval.html" title="Open Measurement Interval (0x2A21)">0x2A21</a></td><td class="center">GSS</td></tr>
+            <tr><td>Boot Keyboard Input Report</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.boot_keyboard_input_report</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-input-report.html" title="Open Boot Keyboard Input Report (0x2A22)">0x2A22</a></td><td class="center">GSS</td></tr>
+            <tr><td>System ID</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.system_id</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-system-id.html" title="Open System ID (0x2A23)">0x2A23</a></td><td class="center">GSS</td></tr>
+            <tr><td>Model Number String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.model_number_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-model-number-string.html" title="Open Model Number String (0x2A24)">0x2A24</a></td><td class="center">GSS</td></tr>
+            <tr><td>Serial Number String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.serial_number_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-serial-number-string.html" title="Open Serial Number String (0x2A25)">0x2A25</a></td><td class="center">GSS</td></tr>
+            <tr><td>Firmware Revision String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.firmware_revision_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-firmware-revision-string.html" title="Open Firmware Revision String (0x2A26)">0x2A26</a></td><td class="center">GSS</td></tr>
+            <tr><td>Hardware Revision String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.hardware_revision_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-hardware-revision-string.html" title="Open Hardware Revision String (0x2A27)">0x2A27</a></td><td class="center">GSS</td></tr>
+            <tr><td>Software Revision String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.software_revision_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-software-revision-string.html" title="Open Software Revision String (0x2A28)">0x2A28</a></td><td class="center">GSS</td></tr>
+            <tr><td>Manufacturer Name String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.manufacturer_name_string</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html" title="Open Manufacturer Name String (0x2A29)">0x2A29</a></td><td class="center">GSS</td></tr>
+            <tr><td>Current Time</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.current_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-current-time.html" title="Open Current Time (0x2A2B)">0x2A2B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Magnetic Declination</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.magnetic_declination</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-declination.html" title="Open Magnetic Declination (0x2A2C)">0x2A2C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Position 2D</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.position_2d</td><td class="center">0x2A2F</td><td class="center">GSS</td></tr>
+            <tr><td>Position 3D</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.position_3d</td><td class="center">0x2A30</td><td class="center">GSS</td></tr>
+            <tr><td>Scan Refresh</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.scan_refresh</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-scan-refresh.html" title="Open Scan Refresh (0x2A31)">0x2A31</a></td><td class="center">GSS</td></tr>
+            <tr><td>Boot Keyboard Output Report</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.boot_keyboard_output_report</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-output-report.html" title="Open Boot Keyboard Output Report (0x2A32)">0x2A32</a></td><td class="center">GSS</td></tr>
+            <tr><td>Boot Mouse Input Report</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.boot_mouse_input_report</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-boot-mouse-input-report.html" title="Open Boot Mouse Input Report (0x2A33)">0x2A33</a></td><td class="center">GSS</td></tr>
+            <tr><td>Glucose Measurement Context</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.glucose_measurement_context</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html" title="Open Glucose Measurement Context (0x2A34)">0x2A34</a></td><td class="center">GSS</td></tr>
+            <tr><td>Blood Pressure Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.blood_pressure_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-measurement.html" title="Open Blood Pressure Measurement (0x2A35)">0x2A35</a></td><td class="center">GSS</td></tr>
+            <tr><td>Intermediate Cuff Pressure</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.intermediate_cuff_pressure</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-cuff-pressure.html" title="Open Intermediate Cuff Pressure (0x2A36)">0x2A36</a></td><td class="center">GSS</td></tr>
+            <tr><td>Heart Rate Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.heart_rate_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html" title="Open Heart Rate Measurement (0x2A37)">0x2A37</a></td><td class="center">GSS</td></tr>
+            <tr><td>Body Sensor Location</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.body_sensor_location</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-body-sensor-location.html" title="Open Body Sensor Location (0x2A38)">0x2A38</a></td><td class="center">GSS</td></tr>
+            <tr><td>Heart Rate Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.heart_rate_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-control-point.html" title="Open Heart Rate Control Point (0x2A39)">0x2A39</a></td><td class="center">GSS</td></tr>
+            <tr><td>Removable</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.removable</td><td class="center">0x2A3A</td><td class="center">GSS</td></tr>
+            <tr><td>Service Required</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.service_required</td><td class="center">0x2A3B</td><td class="center">GSS</td></tr>
+            <tr><td>Scientific Temperature Celsius</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.scientific_temperature_celsius</td><td class="center">0x2A3C</td><td class="center">GSS</td></tr>
+            <tr><td>String</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.string</td><td class="center">0x2A3D</td><td class="center">GSS</td></tr>
+            <tr><td>Network Availability</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.network_availability</td><td class="center">0x2A3E</td><td class="center">GSS</td></tr>
+            <tr><td>Alert Status</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.alert_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-alert-status.html" title="Open Alert Status (0x2A3F)">0x2A3F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Ringer Control point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.ringer_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-ringer-control-point.html" title="Open Ringer Control point (0x2A40)">0x2A40</a></td><td class="center">GSS</td></tr>
+            <tr><td>Ringer Setting</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.ringer_setting</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-ringer-setting.html" title="Open Ringer Setting (0x2A41)">0x2A41</a></td><td class="center">GSS</td></tr>
+            <tr><td>Alert Category ID Bit Mask</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.alert_category_id_bit_mask</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html" title="Open Alert Category ID Bit Mask (0x2A42)">0x2A42</a></td><td class="center">GSS</td></tr>
+            <tr><td>Alert Category ID</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.alert_category_id</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id.html" title="Open Alert Category ID (0x2A43)">0x2A43</a></td><td class="center">GSS</td></tr>
+            <tr><td>Alert Notification Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.alert_notification_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-alert-notification-control-point.html" title="Open Alert Notification Control Point (0x2A44)">0x2A44</a></td><td class="center">GSS</td></tr>
+            <tr><td>Unread Alert Status</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.unread_alert_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-unread-alert-status.html" title="Open Unread Alert Status (0x2A45)">0x2A45</a></td><td class="center">GSS</td></tr>
+            <tr><td>New Alert</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.new_alert</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-new-alert.html" title="Open New Alert (0x2A46)">0x2A46</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported New Alert Category</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_new_alert_category</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-new-alert-category.html" title="Open Supported New Alert Category (0x2A47)">0x2A47</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Unread Alert Category</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_unread_alert_category</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-unread-alert-category.html" title="Open Supported Unread Alert Category (0x2A48)">0x2A48</a></td><td class="center">GSS</td></tr>
+            <tr><td>Blood Pressure Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.blood_pressure_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-feature.html" title="Open Blood Pressure Feature (0x2A49)">0x2A49</a></td><td class="center">GSS</td></tr>
+            <tr><td>HID Information</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.hid_information</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-hid-information.html" title="Open HID Information (0x2A4A)">0x2A4A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Report Map</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.report_map</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-report-map.html" title="Open Report Map (0x2A4B)">0x2A4B</a></td><td class="center">GSS</td></tr>
+            <tr><td>HID Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.hid_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-hid-control-point.html" title="Open HID Control Point (0x2A4C)">0x2A4C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Report</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.report</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-report.html" title="Open Report (0x2A4D)">0x2A4D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Protocol Mode</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.protocol_mode</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-protocol-mode.html" title="Open Protocol Mode (0x2A4E)">0x2A4E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Scan Interval Window</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.scan_interval_window</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-scan-interval-window.html" title="Open Scan Interval Window (0x2A4F)">0x2A4F</a></td><td class="center">GSS</td></tr>
+            <tr><td>PnP ID</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.pnp_id</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-pnp-id.html" title="Open PnP ID (0x2A50)">0x2A50</a></td><td class="center">GSS</td></tr>
+            <tr><td>Glucose Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.glucose_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-glucose-feature.html" title="Open Glucose Feature (0x2A51)">0x2A51</a></td><td class="center">GSS</td></tr>
+            <tr><td>Record Access Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.record_access_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-record-access-control-point.html" title="Open Record Access Control Point (0x2A52)">0x2A52</a></td><td class="center">GSS</td></tr>
+            <tr><td>RSC Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rsc_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-rsc-measurement.html" title="Open RSC Measurement (0x2A53)">0x2A53</a></td><td class="center">GSS</td></tr>
+            <tr><td>RSC Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rsc_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-rsc-feature.html" title="Open RSC Feature (0x2A54)">0x2A54</a></td><td class="center">GSS</td></tr>
+            <tr><td>SC Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.sc_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-sc-control-point.html" title="Open SC Control Point (0x2A55)">0x2A55</a></td><td class="center">GSS</td></tr>
+            <tr><td>Digital</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.digital</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-digital.html" title="Open Digital (0x2A56)">0x2A56</a></td><td class="center">GSS</td></tr>
+            <tr><td>Digital Output</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.digital_output</td><td class="center">0x2A57</td><td class="center">GSS</td></tr>
+            <tr><td>Analog</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.analog</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-analog.html" title="Open Analog (0x2A58)">0x2A58</a></td><td class="center">GSS</td></tr>
+            <tr><td>Analog Output</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.analog_output</td><td class="center">0x2A59</td><td class="center">GSS</td></tr>
+            <tr><td>Aggregate</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.aggregate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-aggregate.html" title="Open Aggregate (0x2A5A)">0x2A5A</a></td><td class="center">GSS</td></tr>
+            <tr><td>CSC Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.csc_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-csc-measurement.html" title="Open CSC Measurement (0x2A5B)">0x2A5B</a></td><td class="center">GSS</td></tr>
+            <tr><td>CSC Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.csc_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-csc-feature.html" title="Open CSC Feature (0x2A5C)">0x2A5C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Sensor Location</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.sensor_location</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-sensor-location.html" title="Open Sensor Location (0x2A5D)">0x2A5D</a></td><td class="center">GSS</td></tr>
+            <tr><td>PLX Spot-Check Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.plx_spot_check_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-plx-spot-check-measurement.html" title="Open PLX Spot-Check Measurement (0x2A5E)">0x2A5E</a></td><td class="center">GSS</td></tr>
+            <tr><td>PLX Continuous Measurement Characteristic</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.plx_continuous_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-plx-continuous-measurement.html" title="Open PLX Continuous Measurement Characteristic (0x2A5F)">0x2A5F</a></td><td class="center">GSS</td></tr>
+            <tr><td>PLX Features</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.plx_features</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-plx-features.html" title="Open PLX Features (0x2A60)">0x2A60</a></td><td class="center">GSS</td></tr>
+            <tr><td>Pulse Oximetry Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.pulse_oximetry_control_point</td><td class="center">0x2A62</td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Power Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cycling_power_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-measurement.html" title="Open Cycling Power Measurement (0x2A63)">0x2A63</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Power Vector</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cycling_power_vector</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-vector.html" title="Open Cycling Power Vector (0x2A64)">0x2A64</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Power Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cycling_power_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-feature.html" title="Open Cycling Power Feature (0x2A65)">0x2A65</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cycling Power Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cycling_power_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-control-point.html" title="Open Cycling Power Control Point (0x2A66)">0x2A66</a></td><td class="center">GSS</td></tr>
+            <tr><td>Location and Speed Characteristic</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.location_and_speed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-location-and-speed.html" title="Open Location and Speed Characteristic (0x2A67)">0x2A67</a></td><td class="center">GSS</td></tr>
+            <tr><td>Navigation</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.navigation</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-navigation.html" title="Open Navigation (0x2A68)">0x2A68</a></td><td class="center">GSS</td></tr>
+            <tr><td>Position Quality</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.position_quality</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-position-quality.html" title="Open Position Quality (0x2A69)">0x2A69</a></td><td class="center">GSS</td></tr>
+            <tr><td>LN Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.ln_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-ln-feature.html" title="Open LN Feature (0x2A6A)">0x2A6A</a></td><td class="center">GSS</td></tr>
+            <tr><td>LN Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.ln_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-ln-control-point.html" title="Open LN Control Point (0x2A6B)">0x2A6B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Elevation</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.elevation</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-elevation.html" title="Open Elevation (0x2A6C)">0x2A6C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Pressure</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.pressure</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-pressure.html" title="Open Pressure (0x2A6D)">0x2A6D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Temperature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.temperature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-temperature.html" title="Open Temperature (0x2A6E)">0x2A6E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Humidity</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.humidity</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-humidity.html" title="Open Humidity (0x2A6F)">0x2A6F</a></td><td class="center">GSS</td></tr>
+            <tr><td>True Wind Speed</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.true_wind_speed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-speed.html" title="Open True Wind Speed (0x2A70)">0x2A70</a></td><td class="center">GSS</td></tr>
+            <tr><td>True Wind Direction</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.true_wind_direction</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-direction.html" title="Open True Wind Direction (0x2A71)">0x2A71</a></td><td class="center">GSS</td></tr>
+            <tr><td>Apparent Wind Speed</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.apparent_wind_speed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-speed.html" title="Open Apparent Wind Speed (0x2A72)">0x2A72</a></td><td class="center">GSS</td></tr>
+            <tr><td>Apparent Wind Direction</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.apparent_wind_direction</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-direction.html" title="Open Apparent Wind Direction (0x2A73)">0x2A73</a></td><td class="center">GSS</td></tr>
+            <tr><td>Gust Factor</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gust_factor</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gust-factor.html" title="Open Gust Factor (0x2A74)">0x2A74</a></td><td class="center">GSS</td></tr>
+            <tr><td>Pollen Concentration</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.pollen_concentration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-pollen-concentration.html" title="Open Pollen Concentration (0x2A75)">0x2A75</a></td><td class="center">GSS</td></tr>
+            <tr><td>UV Index</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.uv_index</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-uv-index.html" title="Open UV Index (0x2A76)">0x2A76</a></td><td class="center">GSS</td></tr>
+            <tr><td>Irradiance</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.irradiance</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-irradiance.html" title="Open Irradiance (0x2A77)">0x2A77</a></td><td class="center">GSS</td></tr>
+            <tr><td>Rainfall</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rainfall</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-rainfall.html" title="Open Rainfall (0x2A78)">0x2A78</a></td><td class="center">GSS</td></tr>
+            <tr><td>Wind Chill</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.wind_chill</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-wind-chill.html" title="Open Wind Chill (0x2A79)">0x2A79</a></td><td class="center">GSS</td></tr>
+            <tr><td>Heat Index</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.heat_index</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-heat-index.html" title="Open Heat Index (0x2A7A)">0x2A7A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Dew Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.dew_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-dew-point.html" title="Open Dew Point (0x2A7B)">0x2A7B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Descriptor Value Changed</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.descriptor_value_changed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-descriptor-value-changed.html" title="Open Descriptor Value Changed (0x2A7D)">0x2A7D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Aerobic Heart Rate Lower Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.aerobic_heart_rate_lower_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-lower-limit.html" title="Open Aerobic Heart Rate Lower Limit (0x2A7E)">0x2A7E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Aerobic Threshold</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.aerobic_threshold</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-threshold.html" title="Open Aerobic Threshold (0x2A7F)">0x2A7F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Age</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.age</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-age.html" title="Open Age (0x2A80)">0x2A80</a></td><td class="center">GSS</td></tr>
+            <tr><td>Anaerobic Heart Rate Lower Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.anaerobic_heart_rate_lower_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-lower-limit.html" title="Open Anaerobic Heart Rate Lower Limit (0x2A81)">0x2A81</a></td><td class="center">GSS</td></tr>
+            <tr><td>Anaerobic Heart Rate Upper Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.anaerobic_heart_rate_upper_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-upper-limit.html" title="Open Anaerobic Heart Rate Upper Limit (0x2A82)">0x2A82</a></td><td class="center">GSS</td></tr>
+            <tr><td>Anaerobic Threshold</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.anaerobic_threshold</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-threshold.html" title="Open Anaerobic Threshold (0x2A83)">0x2A83</a></td><td class="center">GSS</td></tr>
+            <tr><td>Aerobic Heart Rate Upper Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.aerobic_heart_rate_upper_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-upper-limit.html" title="Open Aerobic Heart Rate Upper Limit (0x2A84)">0x2A84</a></td><td class="center">GSS</td></tr>
+            <tr><td>Date of Birth</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.date_of_birth</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-date-of-birth.html" title="Open Date of Birth (0x2A85)">0x2A85</a></td><td class="center">GSS</td></tr>
+            <tr><td>Date of Threshold Assessment</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.date_of_threshold_assessment</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-date-of-threshold-assessment.html" title="Open Date of Threshold Assessment (0x2A86)">0x2A86</a></td><td class="center">GSS</td></tr>
+            <tr><td>Email Address</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.email_address</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-email-address.html" title="Open Email Address (0x2A87)">0x2A87</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fat Burn Heart Rate Lower Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.fat_burn_heart_rate_lower_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-lower-limit.html" title="Open Fat Burn Heart Rate Lower Limit (0x2A88)">0x2A88</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fat Burn Heart Rate Upper Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.fat_burn_heart_rate_upper_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-upper-limit.html" title="Open Fat Burn Heart Rate Upper Limit (0x2A89)">0x2A89</a></td><td class="center">GSS</td></tr>
+            <tr><td>First Name</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.first_name</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-first-name.html" title="Open First Name (0x2A8A)">0x2A8A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Five Zone Heart Rate Limits</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.five_zone_heart_rate_limits</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-five-zone-heart-rate-limits.html" title="Open Five Zone Heart Rate Limits (0x2A8B)">0x2A8B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Gender</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gender</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gender.html" title="Open Gender (0x2A8C)">0x2A8C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Heart Rate Max</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.heart_rate_max</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-max.html" title="Open Heart Rate Max (0x2A8D)">0x2A8D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Height</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.height</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-height.html" title="Open Height (0x2A8E)">0x2A8E</a></td><td class="center">GSS</td></tr>
+            <tr><td>Hip Circumference</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.hip_circumference</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-hip-circumference.html" title="Open Hip Circumference (0x2A8F)">0x2A8F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Last Name</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.last_name</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-last-name.html" title="Open Last Name (0x2A90)">0x2A90</a></td><td class="center">GSS</td></tr>
+            <tr><td>Maximum Recommended Heart Rate</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.maximum_recommended_heart_rate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-maximum-recommended-heart-rate.html" title="Open Maximum Recommended Heart Rate (0x2A91)">0x2A91</a></td><td class="center">GSS</td></tr>
+            <tr><td>Resting Heart Rate</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.resting_heart_rate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-resting-heart-rate.html" title="Open Resting Heart Rate (0x2A92)">0x2A92</a></td><td class="center">GSS</td></tr>
+            <tr><td>Sport Type for Aerobic and Anaerobic Thresholds</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.sport_type_for_aerobic_and_anaerobic_thresholds</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-sport-type-for-aerobic-and-anaerobic-thresholds.html" title="Open Sport Type for Aerobic and Anaerobic Thresholds (0x2A93)">0x2A93</a></td><td class="center">GSS</td></tr>
+            <tr><td>Three Zone Heart Rate Limits</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.three_zone_heart_rate_limits</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-three-zone-heart-rate-limits.html" title="Open Three Zone Heart Rate Limits (0x2A94)">0x2A94</a></td><td class="center">GSS</td></tr>
+            <tr><td>Two Zone Heart Rate Limit</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.two_zone_heart_rate_limit</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-two-zone-heart-rate-limit.html" title="Open Two Zone Heart Rate Limit (0x2A95)">0x2A95</a></td><td class="center">GSS</td></tr>
+            <tr><td>VO2 Max</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.vo2_max</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-vo2-max.html" title="Open VO2 Max (0x2A96)">0x2A96</a></td><td class="center">GSS</td></tr>
+            <tr><td>Waist Circumference</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.waist_circumference</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-waist-circumference.html" title="Open Waist Circumference (0x2A97)">0x2A97</a></td><td class="center">GSS</td></tr>
+            <tr><td>Weight</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.weight</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-weight.html" title="Open Weight (0x2A98)">0x2A98</a></td><td class="center">GSS</td></tr>
+            <tr><td>Database Change Increment</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.database_change_increment</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-database-change-increment.html" title="Open Database Change Increment (0x2A99)">0x2A99</a></td><td class="center">GSS</td></tr>
+            <tr><td>User Index</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.user_index</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-user-index.html" title="Open User Index (0x2A9A)">0x2A9A</a></td><td class="center">GSS</td></tr>
+            <tr><td>Body Composition Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.body_composition_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-feature.html" title="Open Body Composition Feature (0x2A9B)">0x2A9B</a></td><td class="center">GSS</td></tr>
+            <tr><td>Body Composition Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.body_composition_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-measurement.html" title="Open Body Composition Measurement (0x2A9C)">0x2A9C</a></td><td class="center">GSS</td></tr>
+            <tr><td>Weight Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.weight_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-weight-measurement.html" title="Open Weight Measurement (0x2A9D)">0x2A9D</a></td><td class="center">GSS</td></tr>
+            <tr><td>Weight Scale Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.weight_scale_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-weight-scale-feature.html" title="Open Weight Scale Feature (0x2A9E)">0x2A9E</a></td><td class="center">GSS</td></tr>
+            <tr><td>User Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.user_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-user-control-point.html" title="Open User Control Point (0x2A9F)">0x2A9F</a></td><td class="center">GSS</td></tr>
+            <tr><td>Magnetic Flux Density - 2D</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.Magnetic_flux_density_2D</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html" title="Open Magnetic Flux Density - 2D (0x2AA0)">0x2AA0</a></td><td class="center">GSS</td></tr>
+            <tr><td>Magnetic Flux Density - 3D</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.Magnetic_flux_density_3D</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html" title="Open Magnetic Flux Density - 3D (0x2AA1)">0x2AA1</a></td><td class="center">GSS</td></tr>
+            <tr><td>Language</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.language</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-language.html" title="Open Language (0x2AA2)">0x2AA2</a></td><td class="center">GSS</td></tr>
+            <tr><td>Barometric Pressure Trend</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.barometric_pressure_trend</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-barometric-pressure-trend.html" title="Open Barometric Pressure Trend (0x2AA3)">0x2AA3</a></td><td class="center">GSS</td></tr>
+            <tr><td>Bond Management Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.bond_management_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-control-point.html" title="Open Bond Management Control Point (0x2AA4)">0x2AA4</a></td><td class="center">GSS</td></tr>
+            <tr><td>Bond Management Features</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.bond_management_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-feature.html" title="Open Bond Management Features (0x2AA5)">0x2AA5</a></td><td class="center">GSS</td></tr>
+            <tr><td>Central Address Resolution</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.gap.central_address_resolution</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-gap-central-address-resolution.html" title="Open Central Address Resolution (0x2AA6)">0x2AA6</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Measurement</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_measurement</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-measurement.html" title="Open CGM Measurement (0x2AA7)">0x2AA7</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-feature.html" title="Open CGM Feature (0x2AA8)">0x2AA8</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Status</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-status.html" title="Open CGM Status (0x2AA9)">0x2AA9</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Session Start Time</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_session_start_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-start-time.html" title="Open CGM Session Start Time (0x2AAA)">0x2AAA</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Session Run Time</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_session_run_time</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-run-time.html" title="Open CGM Session Run Time (0x2AAB)">0x2AAB</a></td><td class="center">GSS</td></tr>
+            <tr><td>CGM Specific Ops Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cgm_specific_ops_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cgm-specific-ops-control-point.html" title="Open CGM Specific Ops Control Point (0x2AAC)">0x2AAC</a></td><td class="center">GSS</td></tr>
+            <tr><td>Indoor Positioning Configuration</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.indoor_positioning_configuration</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-indoor-positioning-configuration.html" title="Open Indoor Positioning Configuration (0x2AAD)">0x2AAD</a></td><td class="center">GSS</td></tr>
+            <tr><td>Latitude</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.latitude</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-latitude.html" title="Open Latitude (0x2AAE)">0x2AAE</a></td><td class="center">GSS</td></tr>
+            <tr><td>Longitude</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.Longitude</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-longitude.html" title="Open Longitude (0x2AAF)">0x2AAF</a></td><td class="center">GSS</td></tr>
+            <tr><td>Local North Coordinate</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.local_north_coordinate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-local-north-coordinate.html" title="Open Local North Coordinate (0x2AB0)">0x2AB0</a></td><td class="center">GSS</td></tr>
+            <tr><td>Local East Coordinate</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.local_east_coordinate</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-local-east-coordinate.html" title="Open Local East Coordinate (0x2AB1)">0x2AB1</a></td><td class="center">GSS</td></tr>
+            <tr><td>Floor Number</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.floor_number</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-floor-number.html" title="Open Floor Number (0x2AB2)">0x2AB2</a></td><td class="center">GSS</td></tr>
+            <tr><td>Altitude</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.altitude</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-altitude.html" title="Open Altitude (0x2AB3)">0x2AB3</a></td><td class="center">GSS</td></tr>
+            <tr><td>Uncertainty</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.uncertainty</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-uncertainty.html" title="Open Uncertainty (0x2AB4)">0x2AB4</a></td><td class="center">GSS</td></tr>
+            <tr><td>Location Name</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.location_name</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-location-name.html" title="Open Location Name (0x2AB5)">0x2AB5</a></td><td class="center">GSS</td></tr>
+            <tr><td>URI</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.uri</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-uri.html" title="Open URI (0x2AB6)">0x2AB6</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTP Headers</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.http_headers</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-http-headers.html" title="Open HTTP Headers (0x2AB7)">0x2AB7</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTP Status Code</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.http_status_code</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-http-status-code.html" title="Open HTTP Status Code (0x2AB8)">0x2AB8</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTP Entity Body</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.http_entity_body</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-http-entity-body.html" title="Open HTTP Entity Body (0x2AB9)">0x2AB9</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTP Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.http_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-http-control-point.html" title="Open HTTP Control Point (0x2ABA)">0x2ABA</a></td><td class="center">GSS</td></tr>
+            <tr><td>HTTPS Security</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.https_security</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-https-security.html" title="Open HTTPS Security (0x2ABB)">0x2ABB</a></td><td class="center">GSS</td></tr>
+            <tr><td>TDS Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.tds_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-tds-control-point.html" title="Open TDS Control Point (0x2ABC)">0x2ABC</a></td><td class="center">GSS</td></tr>
+            <tr><td>OTS Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.ots_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-ots-feature.html" title="Open OTS Feature (0x2ABD)">0x2ABD</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Name</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_name</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-name.html" title="Open Object Name (0x2ABE)">0x2ABE</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Type</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_type</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-type.html" title="Open Object Type (0x2ABF)">0x2ABF</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Size</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_size</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-size.html" title="Open Object Size (0x2AC0)">0x2AC0</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object First-Created</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_first_created</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-first-created.html" title="Open Object First-Created (0x2AC1)">0x2AC1</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Last-Modified</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_last_modified</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-last-modified.html" title="Open Object Last-Modified (0x2AC2)">0x2AC2</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object ID</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_id</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-id.html" title="Open Object ID (0x2AC3)">0x2AC3</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Properties</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_properties</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-properties.html" title="Open Object Properties (0x2AC4)">0x2AC4</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Action Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_action_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-action-control-point.html" title="Open Object Action Control Point (0x2AC5)">0x2AC5</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object List Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_list_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-list-control-point.html" title="Open Object List Control Point (0x2AC6)">0x2AC6</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object List Filter</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_list_filter</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-list-filter.html" title="Open Object List Filter (0x2AC7)">0x2AC7</a></td><td class="center">GSS</td></tr>
+            <tr><td>Object Changed</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.object_changed</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-object-changed.html" title="Open Object Changed (0x2AC8)">0x2AC8</a></td><td class="center">GSS</td></tr>
+            <tr><td>Resolvable Private Address Only</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.resolvable_private_address_only</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-resolvable-private-address-only.html" title="Open Resolvable Private Address Only (0x2AC9)">0x2AC9</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fitness Machine Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.fitness_machine_feature</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-feature.html" title="Open Fitness Machine Feature (0x2ACC)">0x2ACC</a></td><td class="center">GSS</td></tr>
+            <tr><td>Treadmill Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.treadmill_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-treadmill-data.html" title="Open Treadmill Data (0x2ACD)">0x2ACD</a></td><td class="center">GSS</td></tr>
+            <tr><td>Cross Trainer Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.cross_trainer_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-cross-trainer-data.html" title="Open Cross Trainer Data (0x2ACE)">0x2ACE</a></td><td class="center">GSS</td></tr>
+            <tr><td>Step Climber Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.step_climber_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-step-climber-data.html" title="Open Step Climber Data (0x2ACF)">0x2ACF</a></td><td class="center">GSS</td></tr>
+            <tr><td>Stair Climber Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.stair_climber_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-stair-climber-data.html" title="Open Stair Climber Data (0x2AD0)">0x2AD0</a></td><td class="center">GSS</td></tr>
+            <tr><td>Rower Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rower_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-rower-data.html" title="Open Rower Data (0x2AD1)">0x2AD1</a></td><td class="center">GSS</td></tr>
+            <tr><td>Indoor Bike Data</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.indoor_bike_data</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-indoor-bike-data.html" title="Open Indoor Bike Data (0x2AD2)">0x2AD2</a></td><td class="center">GSS</td></tr>
+            <tr><td>Training Status</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.training_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-training-status.html" title="Open Training Status (0x2AD3)">0x2AD3</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Speed Range</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_speed_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-speed-range.html" title="Open Supported Speed Range (0x2AD4)">0x2AD4</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Inclination Range</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_inclination_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-inclination-range.html" title="Open Supported Inclination Range (0x2AD5)">0x2AD5</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Resistance Level Range</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_resistance_level_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-resistance-level-range.html" title="Open Supported Resistance Level Range (0x2AD6)">0x2AD6</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Heart Rate Range</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_heart_rate_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-heart-rate-range.html" title="Open Supported Heart Rate Range (0x2AD7)">0x2AD7</a></td><td class="center">GSS</td></tr>
+            <tr><td>Supported Power Range</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.supported_power_range</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-supported-power-range.html" title="Open Supported Power Range (0x2AD8)">0x2AD8</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fitness Machine Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.fitness_machine_control_point</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-control-point.html" title="Open Fitness Machine Control Point (0x2AD9)">0x2AD9</a></td><td class="center">GSS</td></tr>
+            <tr><td>Fitness Machine Status</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.fitness_machine_status</td><td class="center"><a class="uuid-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-status.html" title="Open Fitness Machine Status (0x2ADA)">0x2ADA</a></td><td class="center">GSS</td></tr>
+            <tr><td>RC Feature</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rc_feature</td><td class="center">0x2B1D</td><td class="center">GSS</td></tr>
+            <tr><td>RC Settings</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.rc_settings</td><td class="center">0x2B1E</td><td class="center">GSS</td></tr>
+            <tr><td>Reconnection Configuration Control Point</td><td class="center">Characteristic</td><td class="mono">org.bluetooth.characteristic.reconnection_configuration_control_point</td><td class="center">0x2B1F</td><td class="center">GSS</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="usage" aria-labelledby="usage-title">
+          <h2 id="usage-title">Usage Tips</h2>
+          <ul class="list">
+            <li>When you see a 16-bit UUID in logs (for example <span class="mono">0x180F</span> or <span class="mono">0x2A37</span>), locate it in the Assigned Number column first.</li>
+            <li>Use the UTI column to map entries to canonical Bluetooth naming (<span class="mono">org.bluetooth.*</span>).</li>
+            <li>Use the Type column to quickly separate Service, Characteristic, Descriptor, and Attribute UUIDs.</li>
+            <li>For automation and indexing, consume the CSV export instead of scraping HTML.</li>
+          </ul>
+          <p class="tiny">Note: This page mirrors the supplied GATT.pdf content. Rebuild this page when assigned numbers are updated by the Bluetooth specification.</p>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <div class="faq">
+            <article class="faq-item">
+              <h3>Does this table include only service UUIDs?</h3>
+              <p>No. It includes service, characteristic, descriptor, and attribute entries parsed from the source PDF.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How many UUID rows are included?</h3>
+              <p>The page includes <span class="mono">273</span> rows covering the 0x1800-0x2B1F range present in the source document.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How do I map a 16-bit UUID to official naming?</h3>
+              <p>Find the Assigned Number, then use the corresponding Uniform Type Identifier column to map it to the canonical Bluetooth term.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Can I use this page for GEO/LLM retrieval workflows?</h3>
+              <p>Yes. The page provides semantic HTML, JSON-LD, and CSV output to improve both search-engine and generative-engine retrieval quality.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="related" aria-labelledby="related-title">
+          <h2 id="related-title">Related BLE Documentation</h2>
+          <div class="links">
+            <a class="link-chip" href="/bluetoothexplorer/document/en/index.html">All GATT Docs Index</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/service-battery-service.html">Battery Service (0x180F)</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/service-generic-access.html">Generic Access (0x1800)</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html">Heart Rate Measurement (0x2A37)</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html">Client Characteristic Configuration (0x2902)</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>VelocAI - Bluetooth Explorer Documentation</span>
+      <div class="footer-links">
+        <a href="https://velocai.net/">Home</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+        <a href="/bluetoothexplorer/document/en/index.html">Docs Index</a>
+        <a href="/bluetoothexplorer/privacy-policy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
