@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characteristic Declaration (0x2803) | Bluetooth GATT Documentation</title>
-  <meta name="description" content="Characteristic Declaration (UUID 0x2803) Bluetooth GATT attribute reference with properties bitfield, handle/UUID layout, parse examples, and implementation FAQ." />
+  <meta name="description" content="Characteristic Declaration (0x2803) Bluetooth GATT attribute reference. Characteristic Declaration is defined in the Bluetooth GATT XML specification with type…" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <meta name="theme-color" content="#f5f5f7" />
   <link rel="canonical" href="https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html" />
@@ -14,127 +14,56 @@
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="VelocAI" />
-  <meta property="og:title" content="Characteristic Declaration (0x2803) Bluetooth GATT Attribute" />
-  <meta property="og:description" content="Decode 0x2803 characteristic declaration payloads and map characteristic properties bits for reliable BLE discovery." />
+  <meta property="og:title" content="Characteristic Declaration (0x2803) | Bluetooth GATT Documentation" />
+  <meta property="og:description" content="Characteristic Declaration (0x2803) Bluetooth GATT attribute reference. Characteristic Declaration is defined in the Bluetooth GATT XML specification with type…" />
   <meta property="og:url" content="https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html" />
   <meta property="og:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Characteristic Declaration (0x2803) Bluetooth GATT Attribute" />
-  <meta name="twitter:description" content="BLE documentation for 0x2803 with field definitions, bit table, parse examples, and FAQ." />
+  <meta name="twitter:title" content="Characteristic Declaration (0x2803) | Bluetooth GATT Documentation" />
+  <meta name="twitter:description" content="Characteristic Declaration (0x2803) Bluetooth GATT attribute reference. Characteristic Declaration is defined in the Bluetooth GATT XML specification with type…" />
   <meta name="twitter:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
   <link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Mono,v1" referrerpolicy="origin-when-cross-origin" />
 
-  <script type="application/ld+json">
-  {
+  <script type="application/ld+json">{
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "TechArticle",
-        "headline": "Characteristic Declaration (0x2803) Bluetooth GATT Attribute",
-        "description": "Developer reference for Bluetooth GATT Characteristic Declaration including properties bitfield, value handle, and characteristic UUID parsing.",
+        "headline": "Characteristic Declaration (0x2803) | Bluetooth GATT Documentation",
+        "description": "Characteristic Declaration (0x2803) Bluetooth GATT attribute reference. Characteristic Declaration is defined in the Bluetooth GATT XML specification with type…",
         "url": "https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html",
         "inLanguage": "en-US",
         "datePublished": "2026-03-04",
         "dateModified": "2026-03-04",
-        "about": [
-          "Bluetooth GATT",
-          "Characteristic Declaration",
-          "Attribute UUID 0x2803",
-          "Characteristic Properties Bitfield"
-        ],
-        "publisher": {
-          "@type": "Organization",
-          "name": "VelocAI",
-          "url": "https://velocai.net/"
-        }
+        "about": ["Bluetooth GATT", "Characteristic Declaration", "0x2803", "Attribute"],
+        "publisher": {"@type": "Organization", "name": "VelocAI", "url": "https://velocai.net/"}
       },
       {
         "@type": "DefinedTerm",
         "name": "Characteristic Declaration",
         "termCode": "0x2803",
-        "description": "GATT attribute declaration containing characteristic properties, characteristic value handle, and characteristic UUID.",
+        "description": "Characteristic Declaration is defined in the Bluetooth GATT XML specification with type org.bluetooth.attribute.gatt.characteristic_declaration and UUID 0x2803.",
         "inDefinedTermSet": "https://www.bluetooth.com/specifications/specs/"
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is GATT Characteristic Declaration 0x2803?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "0x2803 is the Characteristic Declaration attribute in Bluetooth GATT. It announces characteristic properties, the value handle, and the characteristic UUID."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What fields are included in a 0x2803 declaration?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The declaration includes Characteristic Properties (uint8), Characteristic Value Handle (uint16), and Characteristic UUID (gatt_uuid)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How long is a Characteristic Declaration payload?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The payload is 5 bytes when the characteristic UUID is 16-bit, or 19 bytes when it is a full 128-bit UUID."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I determine if notifications are supported?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Check bit 4 in Characteristic Properties. When bit 4 is set, Notify is supported for the declared characteristic."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the difference between declaration handle and value handle?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The declaration handle stores metadata about a characteristic, while the value handle points to the separate attribute that contains the characteristic value data."
-            }
-          }
-        ]
+        "mainEntity": [{"@type":"Question","name":"What is Characteristic Declaration in Bluetooth GATT?","acceptedAnswer":{"@type":"Answer","text":"Characteristic Declaration is defined as a Bluetooth GATT attribute entry with type org.bluetooth.attribute.gatt.characteristic_declaration and UUID 0x2803."}},{"@type":"Question","name":"What UUID identifies Characteristic Declaration?","acceptedAnswer":{"@type":"Answer","text":"The UUID for Characteristic Declaration is 0x2803."}},{"@type":"Question","name":"How should I parse Characteristic Declaration?","acceptedAnswer":{"@type":"Answer","text":"Payload length ranges from 5 to 19 bytes depending on UUID width or variable fields."}},{"@type":"Question","name":"Where does this definition come from?","acceptedAnswer":{"@type":"Answer","text":"This page is generated from the Bluetooth SIG mirror XML in the oesmith/gatt-xml repository."}},{"@type":"Question","name":"How does this help SEO and GEO retrieval?","acceptedAnswer":{"@type":"Answer","text":"The page includes structured tables, direct Q&amp;A blocks, and JSON-LD metadata so search engines and AI systems can extract facts reliably."}}]
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://velocai.net/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Bluetooth Explorer",
-            "item": "https://velocai.net/bluetoothexplorer/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Documentation",
-            "item": "https://velocai.net/bluetoothexplorer/document/en/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Characteristic Declaration (0x2803)",
-            "item": "https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html"
-          }
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://velocai.net/"},
+          {"@type":"ListItem","position":2,"name":"Bluetooth Explorer","item":"https://velocai.net/bluetoothexplorer/"},
+          {"@type":"ListItem","position":3,"name":"Documentation","item":"https://velocai.net/bluetoothexplorer/document/en/index.html"},
+          {"@type":"ListItem","position":4,"name":"Characteristic Declaration (0x2803)","item":"https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html"}
         ]
       }
     ]
-  }
-  </script>
+  }</script>
 
   <style>
+
     :root {
       --bg: #f5f5f7;
       --surface: #ffffff;
@@ -147,16 +76,13 @@
       --link-strong: #0054a8;
       --radius: 14px;
       --radius-lg: 18px;
-      --container: 1160px;
+      --container: 1240px;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: var(--bg);
@@ -165,22 +91,10 @@
       line-height: 1.58;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover, a:focus-visible { color: var(--link-strong); text-decoration: underline; text-underline-offset: 3px; }
 
-    a:hover,
-    a:focus-visible {
-      color: var(--link-strong);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    code,
-    pre {
-      font-family: "SF Mono", "Menlo", "Consolas", monospace;
-    }
+    code, pre { font-family: "SF Mono", "Menlo", "Consolas", monospace; }
 
     .skip-link {
       position: absolute;
@@ -193,10 +107,7 @@
       border-radius: 8px;
       font-weight: 600;
     }
-
-    .skip-link:focus {
-      left: 12px;
-    }
+    .skip-link:focus { left: 12px; }
 
     .topbar {
       position: sticky;
@@ -210,11 +121,12 @@
     .topbar-inner {
       width: min(var(--container), calc(100% - 40px));
       margin: 0 auto;
-      height: 54px;
+      min-height: 54px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      padding: 8px 0;
     }
 
     .brand {
@@ -239,20 +151,14 @@
       font-size: 13px;
     }
 
-    .topnav a {
-      color: var(--muted);
-    }
-
-    .topnav a[aria-current="page"] {
-      color: var(--text);
-      font-weight: 600;
-    }
+    .topnav a { color: var(--muted); }
+    .topnav a[aria-current="page"] { color: var(--text); font-weight: 600; }
 
     .page {
       width: min(var(--container), calc(100% - 40px));
-      margin: 26px auto 48px;
+      margin: 16px auto 48px;
       display: grid;
-      gap: 16px;
+      gap: 12px;
     }
 
     .breadcrumbs {
@@ -264,72 +170,20 @@
       color: var(--muted);
     }
 
-    .breadcrumbs span[aria-hidden="true"] {
-      color: #8e8e93;
-    }
-
-    .hero {
-      background: var(--surface);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
-
-    .eyebrow {
-      margin: 0;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin: 0;
-      letter-spacing: -0.01em;
-      line-height: 1.18;
-      font-family: "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-    }
-
-    h1 {
-      margin-top: 10px;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 700;
-      max-width: 24ch;
-    }
-
-    .signature {
-      margin-top: 14px;
-      background: var(--surface-subtle);
-      border: 1px solid var(--line-soft);
-      border-radius: 10px;
-      padding: 11px 13px;
-      overflow-x: auto;
-      color: #2f2f33;
-      font-size: 14px;
-      font-family: "SF Mono", "Menlo", "Consolas", monospace;
-    }
-
-    .hero p {
-      margin: 16px 0 0;
-      max-width: 78ch;
-      color: #2f2f33;
-      font-size: 18px;
-    }
+    .breadcrumbs span[aria-hidden="true"] { color: #8e8e93; }
 
     .doc-layout {
       display: grid;
-      grid-template-columns: 250px minmax(0, 1fr);
+      grid-template-columns: 330px minmax(0, 1fr);
       gap: 16px;
       align-items: start;
     }
 
     .toc {
       position: sticky;
-      top: 70px;
+      top: 66px;
+      max-height: calc(100vh - 78px);
+      overflow-y: auto;
       background: var(--surface);
       border: 1px solid var(--line-soft);
       border-radius: var(--radius);
@@ -346,12 +200,14 @@
       padding-bottom: 12px;
     }
 
-    .doc-index h2 {
+    .toc .doc-index h2 {
+      margin: 0;
       font-size: 18px;
       letter-spacing: -0.01em;
       text-transform: none;
       color: var(--text);
       font-weight: 700;
+      line-height: 1.2;
     }
 
     .doc-index-back {
@@ -376,20 +232,22 @@
     .doc-list {
       display: grid;
       gap: 6px;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
     .doc-link {
       border: 1px solid transparent;
       border-radius: 10px;
-      padding: 9px 10px;
+      padding: 8px 9px;
       color: #2f2f33;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.35;
       transition: background 0.18s ease, border-color 0.18s ease;
     }
 
-    .doc-link:hover,
-    .doc-link:focus-visible {
+    .doc-link:hover, .doc-link:focus-visible {
       background: #f1f1f5;
       border-color: #dfdfe5;
       text-decoration: none;
@@ -403,22 +261,17 @@
     }
 
     .toc h2 {
+      margin: 0;
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       font-weight: 600;
+      line-height: 1.2;
     }
 
-    .toc nav {
-      display: grid;
-      gap: 8px;
-    }
-
-    .toc nav a {
-      font-size: 14px;
-      color: #333336;
-    }
+    .toc nav { display: grid; gap: 8px; }
+    .toc nav a { font-size: 14px; color: #333336; }
 
     .toc-facts {
       border-top: 1px solid var(--line-soft);
@@ -429,22 +282,58 @@
       gap: 7px;
     }
 
-    .toc-facts strong {
-      color: var(--text);
-      font-weight: 600;
-    }
+    .toc-facts strong { color: var(--text); font-weight: 600; }
 
-    .content {
-      display: grid;
-      gap: 14px;
-    }
+    .content { display: grid; gap: 14px; }
 
-    .section {
+    .hero, .section {
       background: var(--surface);
       border: 1px solid var(--line-soft);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 22px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.18;
+      font-family: "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(30px, 4.5vw, 44px);
+      font-weight: 700;
+      max-width: 24ch;
+    }
+
+    .signature {
+      margin-top: 14px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      padding: 11px 13px;
+      overflow-x: auto;
+      color: #2f2f33;
+      font-size: 14px;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 78ch;
+      color: #2f2f33;
+      font-size: 18px;
     }
 
     .section h2 {
@@ -472,8 +361,7 @@
       font-size: 15px;
     }
 
-    th,
-    td {
+    th, td {
       text-align: left;
       vertical-align: top;
       padding: 12px 14px;
@@ -486,9 +374,7 @@
       font-weight: 600;
     }
 
-    tbody tr:last-child td {
-      border-bottom: 0;
-    }
+    tbody tr:last-child td { border-bottom: 0; }
 
     .mono {
       font-family: "SF Mono", "Menlo", "Consolas", monospace;
@@ -530,16 +416,8 @@
       background: #fcfcfe;
     }
 
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      margin: 0;
-      color: #3a3a3f;
-      font-size: 15px;
-    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { margin: 0; color: #3a3a3f; font-size: 15px; }
 
     .list {
       margin: 0;
@@ -549,10 +427,7 @@
       gap: 8px;
     }
 
-    .faq {
-      display: grid;
-      gap: 10px;
-    }
+    .faq { display: grid; gap: 10px; }
 
     .faq-item {
       border: 1px solid var(--line-soft);
@@ -561,15 +436,8 @@
       padding: 14px;
     }
 
-    .faq-item h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .faq-item p {
-      margin: 0;
-      color: #3a3a3f;
-    }
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; }
+    .faq-item p { margin: 0; color: #3a3a3f; }
 
     .links {
       display: flex;
@@ -626,43 +494,32 @@
       gap: 10px;
     }
 
-    .footer-links a {
-      color: var(--muted);
-    }
+    .footer-links a { color: var(--muted); }
 
-    @media (max-width: 1024px) {
-      .doc-layout {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 1120px) {
+      .doc-layout { grid-template-columns: 1fr; }
       .toc {
         position: static;
+        max-height: none;
       }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
+      .cards { grid-template-columns: 1fr; }
+      .doc-list { max-height: none; }
     }
 
     @media (max-width: 680px) {
       .topbar-inner,
       .page,
-      .footer-inner {
-        width: calc(100% - 24px);
-      }
+      .footer-inner { width: calc(100% - 24px); }
 
       .hero,
-      .section {
-        padding: 16px;
-      }
+      .section,
+      .toc { padding: 16px; }
 
       .topbar-inner {
-        height: auto;
-        padding: 10px 0;
         align-items: flex-start;
-        flex-direction: column;
       }
     }
+
   </style>
 </head>
 <body>
@@ -677,8 +534,8 @@
       <nav class="topnav" aria-label="Global">
         <a href="/">Home</a>
         <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
-        <a href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">0x2AA0 Docs</a>
-        <a href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html" aria-current="page">0x2803 Docs</a>
+        <a href="/bluetoothexplorer/document/en/index.html">Docs Index</a>
+        <a href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html" aria-current="page">Current Doc</a>
       </nav>
     </div>
   </header>
@@ -689,116 +546,340 @@
       <span aria-hidden="true">/</span>
       <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
       <span aria-hidden="true">/</span>
-      <span>Documentation</span>
+      <a href="/bluetoothexplorer/document/en/index.html">Documentation</a>
       <span aria-hidden="true">/</span>
       <span>Characteristic Declaration (0x2803)</span>
     </nav>
 
-    <section class="hero" aria-labelledby="doc-title">
-      <p class="eyebrow">Bluetooth GATT Attribute Reference</p>
-      <h1 id="doc-title">Characteristic Declaration (0x2803)</h1>
-      <div class="signature">org.bluetooth.attribute.gatt.characteristic_declaration</div>
-      <p>
-        Characteristic Declaration defines how a characteristic is announced in the GATT attribute table.
-        It combines a one-byte properties bitfield, a two-byte characteristic value handle, and a characteristic UUID
-        (<span class="mono">gatt_uuid</span>) so clients can discover capabilities before reading or writing values.
-      </p>
-    </section>
-
     <div class="doc-layout">
       <aside class="toc" aria-label="Documentation sidebar">
         <div class="doc-index">
-          <h2>Documentation</h2>
-          <a class="doc-index-back" href="/bluetoothexplorer/">&larr; All Bluetooth Explorer Docs</a>
-          <div>
-            <div class="doc-index-group">Characteristic APIs</div>
-            <div class="doc-list">
-              <a class="doc-link" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">Magnetic Flux Density 2D (0x2AA0)</a>
-            </div>
-          </div>
-          <div>
-            <div class="doc-index-group">GATT Attributes</div>
-            <div class="doc-list">
-              <a class="doc-link is-active" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
-            </div>
-          </div>
+        <h2>Documentation</h2>
+        <a class="doc-index-back" href="/bluetoothexplorer/document/en/index.html">&larr; All GATT XML Docs</a>
+        <div>
+        <div class="doc-index-group">Characteristics</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-lower-limit.html">Aerobic Heart Rate Lower Limit (0x2A7E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-upper-limit.html">Aerobic Heart Rate Upper Limit (0x2A84)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aerobic-threshold.html">Aerobic Threshold (0x2A7F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-age.html">Age (0x2A80)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-aggregate.html">Aggregate (0x2A5A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id.html">Alert Category ID (0x2A43)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html">Alert Category ID Bit Mask (0x2A42)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-level.html">Alert Level (0x2A06)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-notification-control-point.html">Alert Notification Control Point (0x2A44)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-alert-status.html">Alert Status (0x2A3F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-altitude.html">Altitude (0x2AB3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-lower-limit.html">Anaerobic Heart Rate Lower Limit (0x2A81)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-upper-limit.html">Anaerobic Heart Rate Upper Limit (0x2A82)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-anaerobic-threshold.html">Anaerobic Threshold (0x2A83)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-analog.html">Analog (0x2A58)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-direction.html">Apparent Wind Direction (0x2A73)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-apparent-wind-speed.html">Apparent Wind Speed (0x2A72)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-appearance.html">Appearance (0x2A01)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-barometric-pressure-trend.html">Barometric Pressure Trend (0x2AA3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-battery-level.html">Battery Level (0x2A19)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-feature.html">Blood Pressure Feature (0x2A49)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-blood-pressure-measurement.html">Blood Pressure Measurement (0x2A35)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-feature.html">Body Composition Feature (0x2A9B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-composition-measurement.html">Body Composition Measurement (0x2A9C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-body-sensor-location.html">Body Sensor Location (0x2A38)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-control-point.html">Bond Management Control Point (0x2AA4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-bond-management-feature.html">Bond Management Features (0x2AA5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-input-report.html">Boot Keyboard Input Report (0x2A22)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-keyboard-output-report.html">Boot Keyboard Output Report (0x2A32)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-boot-mouse-input-report.html">Boot Mouse Input Report (0x2A33)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-central-address-resolution.html">Central Address Resolution (0x2AA6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-feature.html">CGM Feature (0x2AA8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-measurement.html">CGM Measurement (0x2AA7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-run-time.html">CGM Session Run Time (0x2AAB)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-session-start-time.html">CGM Session Start Time (0x2AAA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-specific-ops-control-point.html">CGM Specific Ops Control Point (0x2AAC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cgm-status.html">CGM Status (0x2AA9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cross-trainer-data.html">Cross Trainer Data (0x2ACE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-csc-feature.html">CSC Feature (0x2A5C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-csc-measurement.html">CSC Measurement (0x2A5B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-current-time.html">Current Time (0x2A2B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-control-point.html">Cycling Power Control Point (0x2A66)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-feature.html">Cycling Power Feature (0x2A65)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-measurement.html">Cycling Power Measurement (0x2A63)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-cycling-power-vector.html">Cycling Power Vector (0x2A64)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-database-change-increment.html">Database Change Increment (0x2A99)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-of-birth.html">Date of Birth (0x2A85)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-of-threshold-assessment.html">Date of Threshold Assessment (0x2A86)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-date-time.html">Date Time (0x2A08)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-day-date-time.html">Day Date Time (0x2A0A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-day-of-week.html">Day of Week (0x2A09)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-descriptor-value-changed.html">Descriptor Value Changed (0x2A7D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-device-name.html">Device Name (0x2A00)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-dew-point.html">Dew Point (0x2A7B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-digital.html">Digital (0x2A56)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-dst-offset.html">DST Offset (0x2A0D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-elevation.html">Elevation (0x2A6C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-email-address.html">Email Address (0x2A87)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-exact-time-256.html">Exact Time 256 (0x2A0C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-lower-limit.html">Fat Burn Heart Rate Lower Limit (0x2A88)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-upper-limit.html">Fat Burn Heart Rate Upper Limit (0x2A89)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-firmware-revision-string.html">Firmware Revision String (0x2A26)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-first-name.html">First Name (0x2A8A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-control-point.html">Fitness Machine Control Point (0x2AD9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-feature.html">Fitness Machine Feature (0x2ACC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-fitness-machine-status.html">Fitness Machine Status (0x2ADA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-five-zone-heart-rate-limits.html">Five Zone Heart Rate Limits (0x2A8B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-floor-number.html">Floor Number (0x2AB2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gender.html">Gender (0x2A8C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-feature.html">Glucose Feature (0x2A51)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement.html">Glucose Measurement (0x2A18)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html">Glucose Measurement Context (0x2A34)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gust-factor.html">Gust Factor (0x2A74)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hardware-revision-string.html">Hardware Revision String (0x2A27)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-control-point.html">Heart Rate Control Point (0x2A39)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-max.html">Heart Rate Max (0x2A8D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html">Heart Rate Measurement (0x2A37)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-heat-index.html">Heat Index (0x2A7A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-height.html">Height (0x2A8E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hid-control-point.html">HID Control Point (0x2A4C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hid-information.html">HID Information (0x2A4A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-hip-circumference.html">Hip Circumference (0x2A8F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-control-point.html">HTTP Control Point (0x2ABA)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-entity-body.html">HTTP Entity Body (0x2AB9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-headers.html">HTTP Headers (0x2AB7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-http-status-code.html">HTTP Status Code (0x2AB8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-https-security.html">HTTPS Security (0x2ABB)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-humidity.html">Humidity (0x2A6F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-indoor-bike-data.html">Indoor Bike Data (0x2AD2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-indoor-positioning-configuration.html">Indoor Positioning Configuration (0x2AAD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-cuff-pressure.html">Intermediate Cuff Pressure (0x2A36)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-intermediate-temperature.html">Intermediate Temperature (0x2A1E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-irradiance.html">Irradiance (0x2A77)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-language.html">Language (0x2AA2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-last-name.html">Last Name (0x2A90)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-latitude.html">Latitude (0x2AAE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ln-control-point.html">LN Control Point (0x2A6B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ln-feature.html">LN Feature (0x2A6A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-east-coordinate.html">Local East Coordinate (0x2AB1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-north-coordinate.html">Local North Coordinate (0x2AB0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-local-time-information.html">Local Time Information (0x2A0F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-location-and-speed.html">Location and Speed Characteristic (0x2A67)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-location-name.html">Location Name (0x2AB5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-longitude.html">Longitude (0x2AAF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-declination.html">Magnetic Declination (0x2A2C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">Magnetic Flux Density - 2D (0x2AA0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html">Magnetic Flux Density - 3D (0x2AA1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html">Manufacturer Name String (0x2A29)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-maximum-recommended-heart-rate.html">Maximum Recommended Heart Rate (0x2A91)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-measurement-interval.html">Measurement Interval (0x2A21)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-model-number-string.html">Model Number String (0x2A24)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-navigation.html">Navigation (0x2A68)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-new-alert.html">New Alert (0x2A46)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-action-control-point.html">Object Action Control Point (0x2AC5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-changed.html">Object Changed (0x2AC8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-first-created.html">Object First-Created (0x2AC1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-id.html">Object ID (0x2AC3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-last-modified.html">Object Last-Modified (0x2AC2)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-list-control-point.html">Object List Control Point (0x2AC6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-list-filter.html">Object List Filter (0x2AC7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-name.html">Object Name (0x2ABE)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-properties.html">Object Properties (0x2AC4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-size.html">Object Size (0x2AC0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-object-type.html">Object Type (0x2ABF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ots-feature.html">OTS Feature (0x2ABD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-preferred-connection-parameters.html">Peripheral Preferred Connection Parameters (0x2A04)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-peripheral-privacy-flag.html">Peripheral Privacy Flag (0x2A02)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-continuous-measurement.html">PLX Continuous Measurement Characteristic (0x2A5F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-features.html">PLX Features (0x2A60)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-plx-spot-check-measurement.html">PLX Spot-Check Measurement (0x2A5E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pnp-id.html">PnP ID (0x2A50)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pollen-concentration.html">Pollen Concentration (0x2A75)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-position-quality.html">Position Quality (0x2A69)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-pressure.html">Pressure (0x2A6D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-protocol-mode.html">Protocol Mode (0x2A4E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rainfall.html">Rainfall (0x2A78)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gap-reconnection-address.html">Reconnection Address (0x2A03)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-record-access-control-point.html">Record Access Control Point (0x2A52)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-reference-time-information.html">Reference Time Information (0x2A14)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-report.html">Report (0x2A4D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-report-map.html">Report Map (0x2A4B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-resolvable-private-address-only.html">Resolvable Private Address Only (0x2AC9)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-resting-heart-rate.html">Resting Heart Rate (0x2A92)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ringer-control-point.html">Ringer Control point (0x2A40)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-ringer-setting.html">Ringer Setting (0x2A41)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rower-data.html">Rower Data (0x2AD1)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rsc-feature.html">RSC Feature (0x2A54)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-rsc-measurement.html">RSC Measurement (0x2A53)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sc-control-point.html">SC Control Point (0x2A55)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-scan-interval-window.html">Scan Interval Window (0x2A4F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-scan-refresh.html">Scan Refresh (0x2A31)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sensor-location.html">Sensor Location (0x2A5D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-serial-number-string.html">Serial Number String (0x2A25)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-gatt-service-changed.html">Service Changed (0x2A05)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-software-revision-string.html">Software Revision String (0x2A28)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-sport-type-for-aerobic-and-anaerobic-thresholds.html">Sport Type for Aerobic and Anaerobic Thresholds (0x2A93)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-stair-climber-data.html">Stair Climber Data (0x2AD0)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-step-climber-data.html">Step Climber Data (0x2ACF)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-heart-rate-range.html">Supported Heart Rate Range (0x2AD7)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-inclination-range.html">Supported Inclination Range (0x2AD5)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-new-alert-category.html">Supported New Alert Category (0x2A47)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-power-range.html">Supported Power Range (0x2AD8)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-resistance-level-range.html">Supported Resistance Level Range (0x2AD6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-speed-range.html">Supported Speed Range (0x2AD4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-supported-unread-alert-category.html">Supported Unread Alert Category (0x2A48)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-system-id.html">System ID (0x2A23)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-tds-control-point.html">TDS Control Point (0x2ABC)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature.html">Temperature (0x2A6E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature-measurement.html">Temperature Measurement (0x2A1C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-temperature-type.html">Temperature Type (0x2A1D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-three-zone-heart-rate-limits.html">Three Zone Heart Rate Limits (0x2A94)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-accuracy.html">Time Accuracy (0x2A12)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-source.html">Time Source (0x2A13)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-update-control-point.html">Time Update Control Point (0x2A16)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-update-state.html">Time Update State (0x2A17)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-with-dst.html">Time with DST (0x2A11)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-time-zone.html">Time Zone (0x2A0E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-training-status.html">Training Status (0x2AD3)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-treadmill-data.html">Treadmill Data (0x2ACD)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-direction.html">True Wind Direction (0x2A71)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-true-wind-speed.html">True Wind Speed (0x2A70)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-two-zone-heart-rate-limit.html">Two Zone Heart Rate Limit (0x2A95)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-tx-power-level.html">Tx Power Level (0x2A07)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uncertainty.html">Uncertainty (0x2AB4)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-unread-alert-status.html">Unread Alert Status (0x2A45)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uri.html">URI (0x2AB6)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-user-control-point.html">User Control Point (0x2A9F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-user-index.html">User Index (0x2A9A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-uv-index.html">UV Index (0x2A76)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-vo2-max.html">VO2 Max (0x2A96)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-waist-circumference.html">Waist Circumference (0x2A97)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight.html">Weight (0x2A98)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight-measurement.html">Weight Measurement (0x2A9D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-weight-scale-feature.html">Weight Scale Feature (0x2A9E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/characteristic-wind-chill.html">Wind Chill (0x2A79)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">Services</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-alert-notification.html">Alert Notification Service (0x1811)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-automation-io.html">Automation IO (0x1815)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-battery-service.html">Battery Service (0x180F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-blood-pressure.html">Blood Pressure (0x1810)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-body-composition.html">Body Composition (0x181B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-bond-management.html">Bond Management Service (0x181E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-continuous-glucose-monitoring.html">Continuous Glucose Monitoring (0x181F)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-current-time.html">Current Time Service (0x1805)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-cycling-power.html">Cycling Power (0x1818)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-cycling-speed-and-cadence.html">Cycling Speed and Cadence (0x1816)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-device-information.html">Device Information (0x180A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-environmental-sensing.html">Environmental Sensing (0x181A)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-fitness-machine.html">Fitness Machine (0x1826)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-generic-access.html">Generic Access (0x1800)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-generic-attribute.html">Generic Attribute (0x1801)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-glucose.html">Glucose (0x1808)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-health-thermometer.html">Health Thermometer (0x1809)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-heart-rate.html">Heart Rate (0x180D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-http-proxy.html">HTTP Proxy (0x1823)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-human-interface-device.html">Human Interface Device (0x1812)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-immediate-alert.html">Immediate Alert (0x1802)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-indoor-positioning.html">Indoor Positioning (0x1821)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-internet-protocol-support.html">Internet Protocol Support Service (0x1820)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-link-loss.html">Link Loss (0x1803)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-location-and-navigation.html">Location and Navigation (0x1819)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-next-dst-change.html">Next DST Change Service (0x1807)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-object-transfer.html">Object Transfer Service (0x1825)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-phone-alert-status.html">Phone Alert Status Service (0x180E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-pulse-oximeter.html">Pulse Oximeter Service (0x1822)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-reference-time-update.html">Reference Time Update Service (0x1806)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-running-speed-and-cadence.html">Running Speed and Cadence (0x1814)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-scan-parameters.html">Scan Parameters (0x1813)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-transport-discovery.html">Transport Discovery (0x1824)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-tx-power.html">Tx Power (0x1804)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-user-data.html">User Data (0x181C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/service-weight-scale.html">Weight Scale (0x181D)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">Descriptors</div>
+        <div class="doc-list">
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-aggregate-format.html">Characteristic Aggregate Format (0x2905)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-extended-properties.html">Characteristic Extended Properties (0x2900)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-presentation-format.html">Characteristic Presentation Format (0x2904)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-characteristic-user-description.html">Characteristic User Description (0x2901)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html">Client Characteristic Configuration (0x2902)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-configuration.html">Environmental Sensing Configuration (0x290B)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-measurement.html">Environmental Sensing Measurement (0x290C)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-es-trigger-setting.html">Environmental Sensing Trigger Setting (0x290D)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-external-report-reference.html">External Report Reference (0x2907)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-number-of-digitals.html">Number of Digitals (0x2909)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-report-reference.html">Report Reference (0x2908)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-gatt-server-characteristic-configuration.html">Server Characteristic Configuration (0x2903)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-time-trigger-setting.html">Time Trigger Setting (0x290E)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-valid-range.html">Valid Range (0x2906)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/descriptor-value-trigger-setting.html">Value Trigger Setting (0x290A)</a>
+        </div>
+        </div>
+        <div>
+        <div class="doc-index-group">GATT Attributes</div>
+        <div class="doc-list">
+        <a class="doc-link is-active" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-include-declaration.html">Include (0x2802)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-primary-service-declaration.html">Primary Service (0x2800)</a>
+        <a class="doc-link" href="/bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html">Secondary Service (0x2801)</a>
+        </div>
+        </div>
         </div>
         <div class="toc-section">
-          <h2>On This Page</h2>
-          <nav>
-            <a href="#summary">Quick Summary</a>
-            <a href="#at-a-glance">At a Glance</a>
-            <a href="#field-specification">Field Specification</a>
-            <a href="#bitfield">Properties Bit Map</a>
-            <a href="#decode">Byte and Decode</a>
-            <a href="#use-cases">Use Cases</a>
-            <a href="#faq">FAQ</a>
-            <a href="#related-links">Related Links</a>
-          </nav>
+        <h2>On This Page</h2>
+        <nav>
+        <a href="#summary">Quick Summary</a>
+        <a href="#at-a-glance">At a Glance</a>
+        <a href="#field-specification">Field Specification</a>
+        <a href="#bitfield">Bit Map</a>
+        <a href="#decode">Byte and Decode</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#faq">FAQ</a>
+        <a href="#related-links">Related Links</a>
+        </nav>
         </div>
         <div class="toc-facts">
           <div><strong>UUID:</strong> 0x2803</div>
-          <div><strong>Type:</strong> GATT Attribute</div>
-          <div><strong>Properties:</strong> uint8 bitfield</div>
-          <div><strong>Handle:</strong> uint16</div>
+          <div><strong>Type:</strong> Attribute</div>
+          <div><strong>Fields:</strong> 3</div>
+          <div><strong>Source:</strong> org.bluetooth.attribute.gatt.characteristic_declaration.xml</div>
         </div>
       </aside>
 
       <article class="content">
+        <section class="hero" aria-labelledby="doc-title">
+          <p class="eyebrow">Bluetooth GATT Attribute Reference</p>
+          <h1 id="doc-title">Characteristic Declaration (0x2803)</h1>
+          <div class="signature">org.bluetooth.attribute.gatt.characteristic_declaration</div>
+          <p>Characteristic Declaration is defined in the Bluetooth GATT XML specification with type org.bluetooth.attribute.gatt.characteristic_declaration and UUID 0x2803.</p>
+        </section>
+
         <section class="section" id="summary" aria-labelledby="summary-title">
           <h2 id="summary-title">Quick Summary</h2>
-          <p class="section-intro">
-            UUID <span class="mono">0x2803</span> declares each characteristic entry in a GATT service.
-            The payload is <span class="mono">5 bytes</span> for 16-bit UUID characteristics or <span class="mono">19 bytes</span>
-            for 128-bit UUID characteristics. Byte 0 is properties, bytes 1-2 are value handle (little-endian),
-            and the remaining bytes are characteristic UUID.
-          </p>
+          <p class="section-intro">Payload length ranges from 5 to 19 bytes depending on UUID width or variable fields. This page is generated from official GATT XML to provide machine-readable facts and developer-friendly guidance.</p>
         </section>
 
         <section class="section" id="at-a-glance" aria-labelledby="facts-title">
           <h2 id="facts-title">At a Glance</h2>
-          <p class="section-intro">
-            Structured reference data for engineers, search indexing, and machine retrieval.
-          </p>
+          <p class="section-intro">Structured reference data for SEO and GEO indexing, AI retrieval, and BLE implementation workflows.</p>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr>
-                  <th scope="col">Property</th>
-                  <th scope="col">Value</th>
-                </tr>
+                <tr><th scope="col">Property</th><th scope="col">Value</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Attribute Name</td>
-                  <td>Characteristic Declaration</td>
-                </tr>
-                <tr>
-                  <td>UUID</td>
-                  <td class="mono">0x2803</td>
-                </tr>
-                <tr>
-                  <td>Type</td>
-                  <td class="mono">org.bluetooth.attribute.gatt.characteristic_declaration</td>
-                </tr>
-                <tr>
-                  <td>Field Count</td>
-                  <td>3 mandatory fields</td>
-                </tr>
-                <tr>
-                  <td>Primary Purpose</td>
-                  <td>Declare characteristic metadata before the characteristic value attribute</td>
-                </tr>
+                <tr><td>Name</td><td class="">Characteristic Declaration</td></tr><tr><td>UUID</td><td class="mono">0x2803</td></tr><tr><td>Type</td><td class="mono">org.bluetooth.attribute.gatt.characteristic_declaration</td></tr><tr><td>XML Root</td><td class="">Attribute</td></tr><tr><td>Source File</td><td class="">org.bluetooth.attribute.gatt.characteristic_declaration.xml</td></tr><tr><td>Field Count</td><td class="">3</td></tr>
               </tbody>
             </table>
           </div>
         </section>
 
+        
         <section class="section" id="field-specification" aria-labelledby="field-title">
           <h2 id="field-title">Field Specification</h2>
-          <p class="section-intro">
-            All declaration fields are mandatory and parsed in strict order.
-          </p>
+          <p class="section-intro">Parsed field definitions from the source XML value structure.</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -806,190 +887,77 @@
                   <th scope="col">Field</th>
                   <th scope="col">Requirement</th>
                   <th scope="col">Format</th>
-                  <th scope="col">Typical Size</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Exponent</th>
+                  <th scope="col">Notes</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Characteristic Properties</td>
-                  <td>Mandatory</td>
-                  <td class="mono">uint8</td>
-                  <td>1 byte</td>
-                  <td>Bitmask describing capabilities such as Read, Write, Notify, and Indicate.</td>
-                </tr>
-                <tr>
-                  <td>Characteristic Value Handle</td>
-                  <td>Mandatory</td>
-                  <td class="mono">uint16</td>
-                  <td>2 bytes</td>
-                  <td>Handle of the characteristic value attribute to read/write/subscribe against.</td>
-                </tr>
-                <tr>
-                  <td>Characteristic UUID</td>
-                  <td>Mandatory</td>
-                  <td class="mono">gatt_uuid</td>
-                  <td>2 or 16 bytes</td>
-                  <td>16-bit or 128-bit UUID identifying the characteristic type.</td>
-                </tr>
+                <tr><td>Characteristic Properties</td><td>Mandatory</td><td class="mono">uint8</td><td>-</td><td class="mono">-</td><td>-</td></tr><tr><td>Characteristic Value Handle</td><td>Mandatory</td><td class="mono">uint16</td><td>-</td><td class="mono">-</td><td>-</td></tr><tr><td>Characteristic UUID</td><td>Mandatory</td><td class="mono">gatt_uuid</td><td>-</td><td class="mono">-</td><td>-</td></tr>
               </tbody>
             </table>
           </div>
         </section>
-
+        
+        
         <section class="section" id="bitfield" aria-labelledby="bitfield-title">
-          <h2 id="bitfield-title">Characteristic Properties Bit Map</h2>
-          <p class="section-intro">
-            Property bits from the XML definition for <span class="mono">Characteristic Properties</span>.
-          </p>
+          <h2 id="bitfield-title">Bit Map</h2>
+          <p class="section-intro">Bit-level enumerations extracted from the XML BitField definition.</p>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
+                  <th scope="col">Field</th>
                   <th scope="col">Bit</th>
+                  <th scope="col">Size</th>
                   <th scope="col">Name</th>
                   <th scope="col">0 Means</th>
                   <th scope="col">1 Means</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td class="mono">0</td>
-                  <td>Broadcast</td>
-                  <td>No Broadcast</td>
-                  <td>Broadcast</td>
-                </tr>
-                <tr>
-                  <td class="mono">1</td>
-                  <td>Read</td>
-                  <td>No Read</td>
-                  <td>Read</td>
-                </tr>
-                <tr>
-                  <td class="mono">2</td>
-                  <td>Write Without Response</td>
-                  <td>No Write Without Response</td>
-                  <td>Write Without Response</td>
-                </tr>
-                <tr>
-                  <td class="mono">3</td>
-                  <td>Write</td>
-                  <td>No Write</td>
-                  <td>Write</td>
-                </tr>
-                <tr>
-                  <td class="mono">4</td>
-                  <td>Notify</td>
-                  <td>No Notify</td>
-                  <td>Notify</td>
-                </tr>
-                <tr>
-                  <td class="mono">5</td>
-                  <td>Indicate</td>
-                  <td>No Indicate</td>
-                  <td>Indicate</td>
-                </tr>
-                <tr>
-                  <td class="mono">6</td>
-                  <td>Authenticated Signed Writes</td>
-                  <td>No Authenticated Signed Writes</td>
-                  <td>Authenticated Signed Writes</td>
-                </tr>
-                <tr>
-                  <td class="mono">7</td>
-                  <td>Extended Properties</td>
-                  <td>No Extended Properties</td>
-                  <td>Extended Properties</td>
-                </tr>
+                <tr><td>Characteristic Properties</td><td class="mono">0</td><td class="mono">1</td><td>Broadcast</td><td>No Broadcast</td><td>Broadcast</td></tr><tr><td>Characteristic Properties</td><td class="mono">1</td><td class="mono">1</td><td>Read</td><td>No Read</td><td>Read</td></tr><tr><td>Characteristic Properties</td><td class="mono">2</td><td class="mono">1</td><td>Write Without Response</td><td>No Write Without Response</td><td>Write Without Response</td></tr><tr><td>Characteristic Properties</td><td class="mono">3</td><td class="mono">1</td><td>Write</td><td>No Write</td><td>Write</td></tr><tr><td>Characteristic Properties</td><td class="mono">4</td><td class="mono">1</td><td>Notify</td><td>No Notify</td><td>Notify</td></tr><tr><td>Characteristic Properties</td><td class="mono">5</td><td class="mono">1</td><td>Indicate</td><td>No Indicate</td><td>Indicate</td></tr><tr><td>Characteristic Properties</td><td class="mono">6</td><td class="mono">1</td><td>Authenticated Signed Writes</td><td>No Authenticated Signed Writes</td><td>Authenticated Signed Writes</td></tr><tr><td>Characteristic Properties</td><td class="mono">7</td><td class="mono">1</td><td>Extended Properties</td><td>No Extended Properties</td><td>Extended Properties</td></tr>
               </tbody>
             </table>
           </div>
         </section>
-
+        
+        
+        
         <section class="section" id="decode" aria-labelledby="decode-title">
           <h2 id="decode-title">Byte Layout and Decode</h2>
-          <p class="decode-note">
-            Validate payload length first: 5 bytes for 16-bit UUID declarations or 19 bytes for 128-bit UUID declarations.
-          </p>
-          <pre><code>function decodeCharacteristicDeclaration(payload) {
-  if (payload.length !== 5 && payload.length !== 19) {
-    throw new Error("Invalid 0x2803 payload length");
-  }
-
-  const properties = payload[0];
-  const valueHandle = payload[1] | (payload[2] &lt;&lt; 8);
-  const uuidBytes = payload.slice(3);
-
-  const is16BitUuid = uuidBytes.length === 2;
-  const characteristicUuid = is16BitUuid
-    ? `0x${(uuidBytes[0] | (uuidBytes[1] &lt;&lt; 8)).toString(16).padStart(4, "0")}`
-    : Array.from(uuidBytes).map((b) =&gt; b.toString(16).padStart(2, "0")).join("");
-
-  return { properties, valueHandle, characteristicUuid };
-}
-
-// Example 16-bit declaration payload: 12 2A 00 A0 2A
-// properties = 0x12 (Read + Notify)
-// valueHandle = 0x002A
-// characteristicUuid = 0x2AA0</code></pre>
+          <p class="decode-note">Payload length ranges from 5 to 19 bytes depending on UUID width or variable fields.</p>
+          <pre><code>function decodePayload(dataView, offset = 0) {
+  const characteristic_properties = dataView.getUint8(offset + 0);
+  const characteristic_value_handle = dataView.getUint16(offset + 1, true);
+  const characteristic_uuidRaw = new Uint8Array(dataView.buffer, dataView.byteOffset + offset + 3);
+  const characteristic_uuid = characteristic_uuidRaw.length === 2
+    ? `0x${characteristic_uuidRaw[0].toString(16).padStart(2, &quot;0&quot;)}${characteristic_uuidRaw[1].toString(16).padStart(2, &quot;0&quot;)}`
+    : Array.from(characteristic_uuidRaw).map((b) =&gt; b.toString(16).padStart(2, &quot;0&quot;)).join(&quot;&quot;);
+  // UUID width can be 2 bytes (16-bit) or 16 bytes (128-bit).
+  return { characteristic_properties, characteristic_value_handle, characteristic_uuid };
+}</code></pre>
         </section>
+        
 
         <section class="section" id="use-cases" aria-labelledby="use-cases-title">
           <h2 id="use-cases-title">Use Cases and Integration Notes</h2>
-          <div class="cards">
-            <article class="card">
-              <h3>Service Discovery Parsers</h3>
-              <p>Decode declarations to build client-side capability maps before issuing reads, writes, or subscriptions.</p>
-            </article>
-            <article class="card">
-              <h3>Auto-generated BLE SDKs</h3>
-              <p>Use properties bits to enforce operation rules and avoid unsupported ATT operations in generated APIs.</p>
-            </article>
-            <article class="card">
-              <h3>Debug and Compliance Tools</h3>
-              <p>Verify declaration consistency against actual handles and UUIDs to catch firmware table mistakes early.</p>
-            </article>
-          </div>
+          <div class="cards"><article class="card"><h3>GATT Table Parsing</h3><p>Interpret declaration attributes to build reliable handles and operation maps in clients.</p></article><article class="card"><h3>Code Generation</h3><p>Use attribute metadata to auto-generate strongly-typed BLE client APIs.</p></article><article class="card"><h3>Firmware QA</h3><p>Check declaration consistency against actual values to catch table defects early.</p></article></div>
           <h3 style="margin:16px 0 8px;">Implementation Checklist</h3>
-          <ul class="list">
-            <li>Decode properties as bit flags and map to capability booleans for app logic.</li>
-            <li>Treat declaration handle and characteristic value handle as separate addresses.</li>
-            <li>Support both 16-bit and 128-bit characteristic UUID payload variants.</li>
-            <li>Cross-check discovered declaration UUID against expected profile schema in QA.</li>
-          </ul>
+          <ul class="list"><li>Parse attribute fields strictly in declared order and format.</li><li>Treat handles and value references as separate entities where required.</li><li>Guard for variable-width UUID formats in mixed 16-bit and 128-bit profiles.</li><li>Log parsed attribute metadata for post-run debugging and audits.</li></ul>
+          
         </section>
 
         <section class="section" id="faq" aria-labelledby="faq-title">
           <h2 id="faq-title">FAQ</h2>
-          <div class="faq">
-            <article class="faq-item">
-              <h3>What is GATT Characteristic Declaration 0x2803?</h3>
-              <p>It is the metadata attribute that declares characteristic properties, the characteristic value handle, and characteristic UUID.</p>
-            </article>
-            <article class="faq-item">
-              <h3>How long is the declaration payload?</h3>
-              <p>5 bytes with 16-bit UUIDs or 19 bytes with 128-bit UUIDs.</p>
-            </article>
-            <article class="faq-item">
-              <h3>How do I detect Notify support?</h3>
-              <p>Check bit 4 of Characteristic Properties. If set, the characteristic supports notifications.</p>
-            </article>
-            <article class="faq-item">
-              <h3>What does value handle point to?</h3>
-              <p>It points to the separate characteristic value attribute, which is where data read/write operations occur.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Should I parse declaration before enabling CCCD?</h3>
-              <p>Yes. Read declaration properties first to confirm Notify/Indicate support before writing CCCD.</p>
-            </article>
-          </div>
+          <div class="faq"><article class="faq-item"><h3>What is Characteristic Declaration in Bluetooth GATT?</h3><p>Characteristic Declaration is defined as a Bluetooth GATT attribute entry with type org.bluetooth.attribute.gatt.characteristic_declaration and UUID 0x2803.</p></article><article class="faq-item"><h3>What UUID identifies Characteristic Declaration?</h3><p>The UUID for Characteristic Declaration is 0x2803.</p></article><article class="faq-item"><h3>How should I parse Characteristic Declaration?</h3><p>Payload length ranges from 5 to 19 bytes depending on UUID width or variable fields.</p></article><article class="faq-item"><h3>Where does this definition come from?</h3><p>This page is generated from the Bluetooth SIG mirror XML in the oesmith/gatt-xml repository.</p></article><article class="faq-item"><h3>How does this help SEO and GEO retrieval?</h3><p>The page includes structured tables, direct Q&amp;A blocks, and JSON-LD metadata so search engines and AI systems can extract facts reliably.</p></article></div>
         </section>
 
         <section class="section" id="related-links" aria-labelledby="related-title">
           <h2 id="related-title">Related Links</h2>
           <div class="links">
+            <a class="link-chip" href="/bluetoothexplorer/document/en/index.html">Documentation Index</a>
             <a class="link-chip" href="/bluetoothexplorer/">Bluetooth Explorer Home</a>
-            <a class="link-chip" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">Magnetic Flux Density 2D (0x2AA0)</a>
             <a class="link-chip" href="/bluetoothexplorer/guid/en/guid.html">Bluetooth Explorer User Guide</a>
             <a class="link-chip" href="https://github.com/oesmith/gatt-xml/blob/master/org.bluetooth.attribute.gatt.characteristic_declaration.xml" target="_blank" rel="noopener noreferrer">Original GATT XML Source</a>
           </div>
