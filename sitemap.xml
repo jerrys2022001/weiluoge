@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-explorer-ble-debugging-guide-2026-03-04.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/find-lost-airpods-bluetooth-finder-guide.html</loc>
