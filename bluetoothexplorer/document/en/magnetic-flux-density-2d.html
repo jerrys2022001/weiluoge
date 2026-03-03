@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magnetic Flux Density 2D (0x2AA0) | Bluetooth Explorer Documentation</title>
+  <meta name="description" content="Magnetic Flux Density 2D (0x2AA0) Bluetooth GATT documentation with payload layout, field specification, decode example, use cases, and FAQ." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <link rel="canonical" href="https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html" />
+  <link rel="icon" type="image/png" href="/bluetoothexplorer/icon-bluetooth.png" />
+  <link rel="apple-touch-icon" href="/bluetoothexplorer/icon-bluetooth.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="VelocAI" />
+  <meta property="og:title" content="Magnetic Flux Density 2D (0x2AA0) Bluetooth GATT Characteristic" />
+  <meta property="og:description" content="Understand X/Y sint16 payload decoding, gauss units, and BLE integration details for 0x2AA0." />
+  <meta property="og:url" content="https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html" />
+  <meta property="og:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Magnetic Flux Density 2D (0x2AA0) Bluetooth GATT Characteristic" />
+  <meta name="twitter:description" content="Developer docs for characteristic 0x2AA0 with facts table, decode notes, and FAQ." />
+  <meta name="twitter:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
+  <link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Mono,v1" referrerpolicy="origin-when-cross-origin" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "Magnetic Flux Density 2D (0x2AA0) Bluetooth GATT Characteristic",
+        "description": "Developer reference for Bluetooth GATT characteristic 0x2AA0 including field definitions, payload decoding, and implementation guidance.",
+        "url": "https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html",
+        "inLanguage": "en-US",
+        "datePublished": "2026-03-04",
+        "dateModified": "2026-03-04",
+        "about": [
+          "Bluetooth GATT",
+          "Magnetic Flux Density 2D",
+          "Characteristic 0x2AA0",
+          "BLE Telemetry"
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "VelocAI",
+          "url": "https://velocai.net/"
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Magnetic Flux Density 2D",
+        "termCode": "0x2AA0",
+        "description": "Bluetooth GATT characteristic with two mandatory signed 16-bit fields representing X-axis and Y-axis magnetic flux density in gauss.",
+        "inDefinedTermSet": "https://www.bluetooth.com/specifications/specs/"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Bluetooth characteristic 0x2AA0?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "0x2AA0 is Magnetic Flux Density 2D, a Bluetooth GATT characteristic that reports two signed 16-bit values for magnetic flux on the X and Y axes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many bytes are in a Magnetic Flux Density 2D payload?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The payload is 4 bytes total: 2 bytes for X-axis and 2 bytes for Y-axis, each encoded as signed 16-bit integers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What unit is used by 0x2AA0 values?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The unit is gauss with decimal exponent 0, so the raw integer value already represents gauss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I decode negative values from 0x2AA0?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Decode each axis using signed 16-bit interpretation in little-endian order. Values above 0x7FFF represent negative numbers in two's complement form."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I convert gauss to microtesla for UI display?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Multiply gauss by 100 to convert to microtesla. For example, 12 gauss equals 1200 microtesla."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://velocai.net/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bluetooth Explorer",
+            "item": "https://velocai.net/bluetoothexplorer/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Documentation",
+            "item": "https://velocai.net/bluetoothexplorer/document/en/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Magnetic Flux Density 2D (0x2AA0)",
+            "item": "https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-subtle: #fbfbfd;
+      --line: #d2d2d7;
+      --line-soft: #e5e5ea;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --link: #0066cc;
+      --link-strong: #0054a8;
+      --radius: 14px;
+      --radius-lg: 18px;
+      --container: 1160px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+      line-height: 1.58;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--link-strong);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    code,
+    pre {
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      z-index: 1000;
+      background: #000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(251, 251, 253, 0.92);
+      border-bottom: 1px solid var(--line-soft);
+      backdrop-filter: saturate(1.4) blur(10px);
+    }
+
+    .topbar-inner {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .topnav a {
+      color: var(--muted);
+    }
+
+    .topnav a[aria-current="page"] {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .page {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 26px auto 48px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .breadcrumbs span[aria-hidden="true"] {
+      color: #8e8e93;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.18;
+      font-family: "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      max-width: 24ch;
+    }
+
+    .signature {
+      margin-top: 14px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      padding: 11px 13px;
+      overflow-x: auto;
+      color: #2f2f33;
+      font-size: 14px;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 78ch;
+      color: #2f2f33;
+      font-size: 18px;
+    }
+
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 70px;
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .doc-index {
+      display: grid;
+      gap: 10px;
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: 12px;
+    }
+
+    .doc-index h2 {
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      text-transform: none;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .doc-index-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .doc-index-group {
+      margin-top: 2px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .doc-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .doc-link {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 9px 10px;
+      color: #2f2f33;
+      font-size: 14px;
+      line-height: 1.35;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .doc-link:hover,
+    .doc-link:focus-visible {
+      background: #f1f1f5;
+      border-color: #dfdfe5;
+      text-decoration: none;
+    }
+
+    .doc-link.is-active {
+      background: #e8e8ee;
+      border-color: #d7d7dd;
+      color: #1d1d1f;
+      font-weight: 600;
+    }
+
+    .toc h2 {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .toc nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc nav a {
+      font-size: 14px;
+      color: #333336;
+    }
+
+    .toc-facts {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      display: grid;
+      gap: 7px;
+    }
+
+    .toc-facts strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .content {
+      display: grid;
+      gap: 14px;
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .section h2 {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      margin: 0 0 14px;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    th {
+      background: #fafafc;
+      color: #3a3a3f;
+      font-weight: 600;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .mono {
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+      font-size: 13px;
+      color: #1f1f22;
+    }
+
+    .decode-note {
+      margin: 0 0 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8f8fb;
+      border: 1px solid var(--line-soft);
+      color: #3a3a3f;
+    }
+
+    pre {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f9f9fc;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 13px;
+      color: #242427;
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fcfcfe;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #3a3a3f;
+      font-size: 15px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: #3a3a3f;
+      display: grid;
+      gap: 8px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      background: #fcfcfe;
+      padding: 14px;
+    }
+
+    .faq-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #3a3a3f;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #fafafc;
+      color: #2f2f33;
+      font-size: 14px;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .link-chip:hover,
+    .link-chip:focus-visible {
+      transform: translateY(-1px);
+      border-color: #b4b4be;
+      text-decoration: none;
+    }
+
+    .tiny {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    @media (max-width: 1024px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner,
+      .page,
+      .footer-inner {
+        width: calc(100% - 24px);
+      }
+
+      .hero,
+      .section {
+        padding: 16px;
+      }
+
+      .topbar-inner {
+        height: auto;
+        padding: 10px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/bluetoothexplorer/">
+        <img src="/bluetoothexplorer/icon-bluetooth.png" alt="Bluetooth Explorer icon" width="103" height="103" />
+        <span>Bluetooth Explorer Documentation</span>
+      </a>
+      <nav class="topnav" aria-label="Global">
+        <a href="/">Home</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+        <a href="/bluetoothexplorer/guid/en/guid.html">User Guide</a>
+        <a href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html" aria-current="page">API Reference</a>
+        <a href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">0x2803 Docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://velocai.net/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      <span aria-hidden="true">/</span>
+      <span>Documentation</span>
+      <span aria-hidden="true">/</span>
+      <span>Magnetic Flux Density 2D (0x2AA0)</span>
+    </nav>
+
+    <section class="hero" aria-labelledby="doc-title">
+      <p class="eyebrow">Bluetooth GATT Characteristic Reference</p>
+      <h1 id="doc-title">Magnetic Flux Density 2D (0x2AA0)</h1>
+      <div class="signature">org.bluetooth.characteristic.magnetic_flux_density_2D</div>
+      <p>
+        This characteristic represents two-dimensional magnetic flux density with two mandatory
+        <strong>sint16</strong> values: <strong>X-Axis</strong> and <strong>Y-Axis</strong>. Both fields use
+        <strong>gauss</strong> as the unit and a decimal exponent of <strong>0</strong>.
+      </p>
+    </section>
+
+    <div class="doc-layout">
+      <aside class="toc" aria-label="Documentation sidebar">
+        <div class="doc-index">
+          <h2>Documentation</h2>
+          <a class="doc-index-back" href="/bluetoothexplorer/">&larr; All Bluetooth Explorer Docs</a>
+          <div>
+            <div class="doc-index-group">Characteristic APIs</div>
+            <div class="doc-list">
+              <a class="doc-link is-active" href="/bluetoothexplorer/document/en/magnetic-flux-density-2d.html">Magnetic Flux Density 2D (0x2AA0)</a>
+            </div>
+          </div>
+          <div>
+            <div class="doc-index-group">GATT Attributes</div>
+            <div class="doc-list">
+              <a class="doc-link" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
+            </div>
+          </div>
+        </div>
+        <div class="toc-section">
+          <h2>On This Page</h2>
+          <nav>
+            <a href="#summary">Quick Summary</a>
+            <a href="#at-a-glance">At a Glance</a>
+            <a href="#field-specification">Field Specification</a>
+            <a href="#decode">Byte and Decode</a>
+            <a href="#use-cases">Use Cases</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related-links">Related Links</a>
+          </nav>
+        </div>
+        <div class="toc-facts">
+          <div><strong>UUID:</strong> 0x2AA0</div>
+          <div><strong>Size:</strong> 4 bytes</div>
+          <div><strong>Axes:</strong> X, Y</div>
+          <div><strong>Unit:</strong> gauss</div>
+        </div>
+      </aside>
+
+      <article class="content">
+        <section class="section" id="summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Quick Summary</h2>
+          <p class="section-intro">
+            Characteristic <span class="mono">0x2AA0</span> reports 2D magnetic flux density as a fixed-length
+            payload. Parse bytes <span class="mono">[0..1]</span> as X-axis and bytes <span class="mono">[2..3]</span>
+            as Y-axis, both signed 16-bit little-endian integers in gauss.
+          </p>
+        </section>
+
+        <section class="section" id="at-a-glance" aria-labelledby="facts-title">
+          <h2 id="facts-title">At a Glance</h2>
+          <p class="section-intro">
+            Machine-readable facts for search indexing, AI retrieval, and implementation docs.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Characteristic Name</td>
+                  <td>Magnetic Flux Density 2D</td>
+                </tr>
+                <tr>
+                  <td>UUID</td>
+                  <td class="mono">0x2AA0</td>
+                </tr>
+                <tr>
+                  <td>Type</td>
+                  <td class="mono">org.bluetooth.characteristic.magnetic_flux_density_2D</td>
+                </tr>
+                <tr>
+                  <td>Source Type</td>
+                  <td class="mono">0x2A</td>
+                </tr>
+                <tr>
+                  <td>Requirement</td>
+                  <td>Mandatory</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="field-specification" aria-labelledby="field-title">
+          <h2 id="field-title">Field Specification</h2>
+          <p class="section-intro">
+            The characteristic includes two required fields with the same encoding rules.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <th scope="col">Requirement</th>
+                  <th scope="col">Format</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Decimal Exponent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>X-Axis</td>
+                  <td>Mandatory</td>
+                  <td class="mono">sint16</td>
+                  <td>gauss</td>
+                  <td class="mono">0</td>
+                </tr>
+                <tr>
+                  <td>Y-Axis</td>
+                  <td>Mandatory</td>
+                  <td class="mono">sint16</td>
+                  <td>gauss</td>
+                  <td class="mono">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="decode" aria-labelledby="decode-title">
+          <h2 id="decode-title">Byte Layout and Decode</h2>
+          <p class="decode-note">
+            Payload size is always 4 bytes. Decode each axis as little-endian signed 16-bit data.
+          </p>
+          <pre><code>function decodeMagneticFluxDensity2D(dataView, offset = 0) {
+  const xAxisGauss = dataView.getInt16(offset, true);
+  const yAxisGauss = dataView.getInt16(offset + 2, true);
+  return { xAxisGauss, yAxisGauss };
+}
+
+// Example payload: 34 12 CE FF
+// X = 0x1234 = 4660 gauss
+// Y = 0xFFCE = -50 gauss
+// Conversion: microtesla = gauss * 100</code></pre>
+        </section>
+
+        <section class="section" id="use-cases" aria-labelledby="use-cases-title">
+          <h2 id="use-cases-title">Use Cases and Integration Notes</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Compass Calibration</h3>
+              <p>Track X/Y magnetic drift and gate unstable values during calibration workflows.</p>
+            </article>
+            <article class="card">
+              <h3>Anomaly Detection</h3>
+              <p>Detect interference from motors, magnets, or enclosures that skew orientation logic.</p>
+            </article>
+            <article class="card">
+              <h3>BLE Telemetry</h3>
+              <p>Stream 0x2AA0 data to QA dashboards to compare firmware behavior over time.</p>
+            </article>
+          </div>
+          <h3 style="margin:16px 0 8px;">Implementation Checklist</h3>
+          <ul class="list">
+            <li>Validate UUID <span class="mono">0x2AA0</span> before subscribing to notifications.</li>
+            <li>Reject payloads with length other than 4 bytes before parsing.</li>
+            <li>Decode as signed integers and convert units at presentation time only.</li>
+            <li>Store timestamped X/Y values for debugging and regression analysis.</li>
+          </ul>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">FAQ</h2>
+          <div class="faq">
+            <article class="faq-item">
+              <h3>What is Bluetooth characteristic 0x2AA0?</h3>
+              <p>It is Magnetic Flux Density 2D, used to report signed X-axis and Y-axis magnetic flux values.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How many bytes are in the payload?</h3>
+              <p>4 bytes total: 2 bytes for X-axis and 2 bytes for Y-axis.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How do I decode negative values?</h3>
+              <p>Use signed 16-bit little-endian parsing; two's complement handles negative values.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Does decimal exponent 0 require scaling?</h3>
+              <p>No. The decoded integer already represents gauss directly.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How do I convert gauss to microtesla?</h3>
+              <p>Multiply gauss by 100.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="related-links" aria-labelledby="related-title">
+          <h2 id="related-title">Related Links</h2>
+          <div class="links">
+            <a class="link-chip" href="/bluetoothexplorer/">Bluetooth Explorer Home</a>
+            <a class="link-chip" href="/bluetoothexplorer/guid/en/guid.html">Bluetooth Explorer User Guide</a>
+            <a class="link-chip" href="/bluetoothexplorer/#features">Bluetooth GATT Inspector Features</a>
+            <a class="link-chip" href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">Characteristic Declaration (0x2803)</a>
+            <a class="link-chip" href="https://github.com/oesmith/gatt-xml/blob/master/org.bluetooth.characteristic.Magnetic_flux_density_2D.xml" target="_blank" rel="noopener noreferrer">Original GATT XML Source</a>
+          </div>
+          <p class="tiny">Last updated: 2026-03-04</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>VelocAI - Bluetooth Explorer Documentation</span>
+      <div class="footer-links">
+        <a href="https://velocai.net/">VelocAI Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+        <a href="/bluetoothexplorer/privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

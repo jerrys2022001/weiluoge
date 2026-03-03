@@ -67,6 +67,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/bluetoothexplorer/guid/en/guid.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>monthly</changefreq>
