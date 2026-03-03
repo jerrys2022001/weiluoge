@@ -300,6 +300,72 @@
       max-width: 24ch;
     }
 
+    .hero {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .hero-main {
+      display: grid;
+      gap: 0;
+    }
+
+    .hero-aside {
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      background: #fafafc;
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-aside h2 {
+      font-size: 19px;
+      margin: 0;
+      line-height: 1.24;
+    }
+
+    .hero-aside p {
+      margin: 0;
+      color: #4f4f55;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .intro-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #4f4f55;
+      font-size: 14px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .hero-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-quick a {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: #fff;
+      color: #2f2f33;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
     .signature {
       margin-top: 14px;
       background: var(--surface-subtle);
@@ -317,6 +383,13 @@
       max-width: 78ch;
       color: #2f2f33;
       font-size: 18px;
+    }
+
+    .hero .hero-aside p {
+      margin: 0;
+      max-width: none;
+      color: #4f4f55;
+      font-size: 14px;
     }
 
     .section h2 {
@@ -487,6 +560,7 @@
       }
       .cards { grid-template-columns: 1fr; }
       .doc-list { max-height: none; }
+      .hero-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
@@ -531,10 +605,28 @@
     </nav>
 
     <section class="hero" aria-labelledby="index-title">
-      <p class="eyebrow">Bluetooth GATT XML Coverage</p>
-      <h1 id="index-title">Documentation Index</h1>
-      <div class="signature">250 XML files indexed</div>
-      <p>This index covers the full set of XML definitions from <span class="mono">oesmith/gatt-xml</span>. Characteristics: 195 | Services: 36 | Descriptors: 15 | GATT Attributes: 4</p>
+      <div class="hero-grid">
+        <div class="hero-main">
+          <p class="eyebrow">Bluetooth GATT XML Coverage</p>
+          <h1 id="index-title">Documentation Index</h1>
+          <div class="signature">250 XML files indexed</div>
+          <p>This index covers the full set of XML definitions from <span class="mono">oesmith/gatt-xml</span>. Characteristics: 195 | Services: 36 | Descriptors: 15 | GATT Attributes: 4</p>
+        </div>
+        <aside class="hero-aside" aria-label="Index overview">
+          <h2>What You Can Find Here</h2>
+          <p>This page is your BLE lookup entry point. Every item links to a dedicated documentation page for fast protocol checks.</p>
+          <ul class="intro-list">
+            <li>UUID-oriented pages for services, characteristics, descriptors, and attributes.</li>
+            <li>Consistent structure for quick scanning during debugging sessions.</li>
+            <li>SEO/GEO-ready references with structured metadata and deep links.</li>
+          </ul>
+          <div class="hero-quick">
+            <a href="/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html">UUID Lookup Table</a>
+            <a href="/bluetoothexplorer/document/en/service-battery-service.html">Battery Service</a>
+            <a href="/bluetoothexplorer/document/en/gatt-characteristic-declaration.html">0x2803 Reference</a>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <section class="section">
