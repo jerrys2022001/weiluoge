@@ -319,6 +319,7 @@ ul {
   object-fit: cover;
   object-position: center;
   display: block;
+  filter: saturate(0.9) contrast(1.02) brightness(0.95);
 }
 
 .va-float-card {
@@ -340,6 +341,7 @@ ul {
   height: 38px;
   border-radius: 10px;
   object-fit: cover;
+  filter: saturate(0.88) brightness(0.96);
 }
 
 .va-float-card p {
@@ -416,6 +418,7 @@ ul {
   height: 220px;
   object-fit: cover;
   display: block;
+  filter: saturate(0.9) contrast(1.02) brightness(0.96);
 }
 
 .va-app-body {
@@ -517,6 +520,7 @@ ul {
   object-fit: cover;
   object-position: center;
   display: block;
+  filter: saturate(0.92) contrast(1.02) brightness(0.95);
 }
 
 .va-gallery-item-large {
