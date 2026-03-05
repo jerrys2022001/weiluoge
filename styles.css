@@ -127,9 +127,11 @@ ul {
 }
 
 .va-brand-logo {
-  width: 42px;
+  width: auto;
   height: 42px;
+  max-width: 60px;
   object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 0 10px rgba(37, 144, 241, 0.34));
 }
 

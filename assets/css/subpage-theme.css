@@ -187,8 +187,11 @@ img {
 
 .brand img,
 .brand-logo {
-  width: 38px;
+  width: auto;
   height: 38px;
+  max-width: 54px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 10px;
   box-shadow: 0 0 16px rgba(37, 144, 241, 0.32);
 }
