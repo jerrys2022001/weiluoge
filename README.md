@@ -39,3 +39,19 @@ Installed tasks:
 Runtime files:
 - Plans: `D:\Operation Log\TwitterStoryBot\plans\YYYY-MM-DD.json`
 - Logs: `D:\Operation Log\TwitterStoryBot\logs\YYYY-MM-DD.log`
+
+## Daily Blog Auto Publishing (20:00)
+
+This task publishes one English blog post per day about Bluetooth + phone cleanup,
+updates `blog/index.html`, and updates `sitemap.xml` for SEO/GEO visibility.
+
+1. Dry run once:
+`python scripts/blog_daily_scheduler.py run --dry-run`
+2. Publish immediately (manual run):
+`python scripts/blog_daily_scheduler.py run`
+3. Install the daily Windows scheduled task (default: 20:00):
+`powershell -ExecutionPolicy Bypass -File scripts/install_blog_daily_task.ps1`
+
+Optional:
+- Change schedule time: `-PublishAt "20:00"`
+- Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
