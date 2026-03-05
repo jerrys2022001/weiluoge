@@ -340,11 +340,17 @@ h1 {
 }
 
 body.theme-explorer .hero-card > img,
-body.theme-explorer .hero-card > video {
+body.theme-explorer .hero-card > video,
+body.theme-explorer .hero-card > iframe {
   width: 66.6667%;
   height: auto;
   margin-inline: auto;
   display: block;
+}
+
+body.theme-explorer .hero-embed {
+  aspect-ratio: 9 / 19.5;
+  border: 0;
 }
 
 .app-mark {
@@ -402,6 +408,7 @@ body.theme-findai .hero-app-icon {
   width: 100%;
   height: 100%;
   display: block;
+  border: 0;
   object-fit: contain;
   object-position: center;
   background: #070b18;
