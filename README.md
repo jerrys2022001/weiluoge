@@ -28,9 +28,9 @@
 
 1. Ensure `.env` already has valid X credentials (`X_API_KEY`, `X_API_KEY_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`).
 2. Dry run once:
-`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 10 --max-posts 16`
+`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 10 --max-posts 20`
 3. Install Windows scheduled tasks:
-`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 10 -MaxPosts 16`
+`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 10 -MaxPosts 20`
 
 Installed tasks:
 - `WeiLuoGe-XStory-Plan`: creates daily random posting plan.

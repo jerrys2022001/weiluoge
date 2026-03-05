@@ -3,7 +3,7 @@ param(
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$LogRoot = "D:\Operation Log",
   [int]$MinPosts = 10,
-  [int]$MaxPosts = 16,
+  [int]$MaxPosts = 20,
   [string]$DayStart = "08:00",
   [string]$DayEnd = "23:30",
   [string]$PlanTime = "00:05",
@@ -31,9 +31,9 @@ if (-not (Test-Path $ScriptPath)) {
   throw "Missing script: $ScriptPath"
 }
 
-& $PythonExe --version | Out-Null
-if ($LASTEXITCODE -ne 0) {
-  throw "Cannot run Python command: $PythonExe"
+$PythonCommand = (Get-Command $PythonExe -ErrorAction Stop).Source
+if (-not $PythonCommand) {
+  throw "Cannot resolve Python command: $PythonExe"
 }
 
 New-Item -ItemType Directory -Path $LogRoot -Force | Out-Null
@@ -41,22 +41,30 @@ New-Item -ItemType Directory -Path $LogRoot -Force | Out-Null
 $PlanTaskName = "$TaskPrefix-Plan"
 $WorkerTaskName = "$TaskPrefix-Worker"
 
-$PlanCommand = "`"$PythonExe`" `"$ScriptPath`" plan --log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd"
-$WorkerCommand = "`"$PythonExe`" `"$ScriptPath`" run --log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd"
+$CommonArgs = "--log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd"
+$PlanArgs = "`"$ScriptPath`" plan $CommonArgs"
+$WorkerArgs = "`"$ScriptPath`" run $CommonArgs"
 
-& schtasks /Create /F /TN $PlanTaskName /SC DAILY /ST $PlanTime /TR $PlanCommand | Out-Null
-& schtasks /Create /F /TN $WorkerTaskName /SC MINUTE /MO $WorkerEveryMinutes /TR $WorkerCommand | Out-Null
+$PlanAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $PlanArgs
+$WorkerAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $WorkerArgs
 
-if ($LASTEXITCODE -ne 0) {
-  throw "Failed to create one or more scheduled tasks."
-}
+$PlanTrigger = New-ScheduledTaskTrigger -Daily -At $PlanTime
+
+$WorkerTrigger = New-ScheduledTaskTrigger `
+  -Once `
+  -At (Get-Date).Date.AddMinutes(1) `
+  -RepetitionInterval (New-TimeSpan -Minutes $WorkerEveryMinutes) `
+  -RepetitionDuration (New-TimeSpan -Days 3650)
+
+Register-ScheduledTask -TaskName $PlanTaskName -Action $PlanAction -Trigger $PlanTrigger -Force | Out-Null
+Register-ScheduledTask -TaskName $WorkerTaskName -Action $WorkerAction -Trigger $WorkerTrigger -Force | Out-Null
 
 Write-Output "Installed tasks:"
 Write-Output " - $PlanTaskName"
 Write-Output " - $WorkerTaskName"
 Write-Output ""
 Write-Output "Task commands:"
-Write-Output " - $PlanCommand"
-Write-Output " - $WorkerCommand"
+Write-Output " - $PythonCommand $PlanArgs"
+Write-Output " - $PythonCommand $WorkerArgs"
 Write-Output ""
 Write-Output "Logs and plans are stored under: $LogRoot\TwitterStoryBot"

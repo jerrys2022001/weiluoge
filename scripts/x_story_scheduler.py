@@ -19,7 +19,7 @@ from post_to_x import load_credentials, load_dotenv, send_tweet
 DEFAULT_LOG_ROOT = Path(r"D:\Operation Log")
 BOT_DIR = "TwitterStoryBot"
 DEFAULT_MIN_POSTS = 10
-DEFAULT_MAX_POSTS = 16
+DEFAULT_MAX_POSTS = 20
 DEFAULT_DAY_START = "08:00"
 DEFAULT_DAY_END = "23:30"
 MAX_TWEET_LEN = 280
@@ -388,16 +388,11 @@ def release_lock(lock_file: Path) -> None:
 
 def process_due_items(
     plan: dict[str, Any],
+    due_items: list[dict[str, Any]],
     paths: BotPaths,
     dry_run: bool,
-    max_per_run: int,
     creds: tuple[str, str, str, str] | None,
 ) -> tuple[int, int]:
-    now = now_local()
-    due_items = due_pending_items(plan, now)
-    if max_per_run > 0:
-        due_items = due_items[:max_per_run]
-
     posted_now = 0
     attempted_now = 0
 
@@ -522,15 +517,19 @@ def cmd_run(args: argparse.Namespace, paths: BotPaths) -> int:
         if added > 0:
             write_log(paths, f"plan_topped_up added={added}", target_day)
 
+        due_items = due_pending_items(plan, now_local())
+        if args.max_per_run > 0:
+            due_items = due_items[: args.max_per_run]
+
         creds: tuple[str, str, str, str] | None = None
-        if not args.dry_run:
+        if due_items and not args.dry_run:
             creds = load_credentials()
 
         attempted_now, posted_now = process_due_items(
             plan=plan,
+            due_items=due_items,
             paths=paths,
             dry_run=args.dry_run,
-            max_per_run=args.max_per_run,
             creds=creds,
         )
         save_json(plan_file, plan)
