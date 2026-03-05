@@ -1,0 +1,45 @@
+﻿Deleted by lowest average saturation on 2026-03-05
+Rule: sort by AvgSat asc, then file size asc; delete first 40
+
+AvgSat | Bytes | Path
+---|---:|---
+0.0662 | 183011 | assets\images\stock-2026-03-picsum-50\stock-14.jpg
+0.0706 | 507439 | assets\images\stock-2026-03-extra20\stock-extra-05.jpg
+0.0754 | 54116 | assets\images\stock-2026-03-picsum-50\stock-22.jpg
+0.1012 | 264823 | assets\images\stock-2026-03-extra20\stock-extra-10.jpg
+0.1189 | 175426 | assets\images\stock-2026-03-picsum-50\stock-23.jpg
+0.1205 | 303229 | assets\images\stock-2026-03-extra20\stock-extra-03.jpg
+0.1365 | 152547 | assets\images\stock-2026-03-picsum-50\stock-39.jpg
+0.1374 | 155467 | assets\images\stock-2026-03-picsum-50\stock-21.jpg
+0.1502 | 321633 | assets\images\stock-2026-03-extra20\stock-extra-08.jpg
+0.1527 | 170020 | assets\images\stock-2026-03-extra20\stock-extra-09.jpg
+0.1557 | 296203 | assets\images\stock-2026-03-picsum-50\stock-18.jpg
+0.1652 | 350411 | assets\images\stock-2026-03-extra20\stock-extra-04.jpg
+0.1709 | 181406 | assets\images\stock-2026-03\stock-03.jpg
+0.1717 | 263230 | assets\images\stock-2026-03-picsum-50\stock-42.jpg
+0.1726 | 99615 | assets\images\stock-2026-03\stock-07.jpg
+0.1751 | 144260 | assets\images\stock-2026-03\stock-05.jpg
+0.1805 | 190815 | assets\images\stock-2026-03-picsum-50\stock-49.jpg
+0.182 | 107762 | assets\images\stock-2026-03-extra20\stock-extra-07.jpg
+0.1968 | 326900 | assets\images\stock-2026-03-extra20\stock-extra-17.jpg
+0.2023 | 457121 | assets\images\stock-2026-03-picsum-50\stock-17.jpg
+0.2244 | 154115 | assets\images\stock-2026-03\stock-10.jpg
+0.2319 | 227914 | assets\images\stock-2026-03-extra20\stock-extra-12.jpg
+0.233 | 177554 | assets\images\stock-2026-03\stock-08.jpg
+0.2367 | 100822 | assets\images\stock-2026-03-picsum-50\stock-02.jpg
+0.2371 | 261155 | assets\images\stock-2026-03\stock-09.jpg
+0.2426 | 98435 | assets\images\stock-2026-03\stock-01.jpg
+0.2458 | 66883 | assets\images\stock-2026-03-picsum-50\stock-29.jpg
+0.2463 | 231454 | assets\images\stock-2026-03\stock-06.jpg
+0.2492 | 453127 | assets\images\stock-2026-03-extra20\stock-extra-19.jpg
+0.2589 | 109561 | assets\images\stock-2026-03-picsum-50\stock-06.jpg
+0.2728 | 489696 | assets\images\stock-2026-03-extra20\stock-extra-15.jpg
+0.2783 | 116421 | assets\images\stock-2026-03-picsum-50\stock-24.jpg
+0.2885 | 94765 | assets\images\stock-2026-03-picsum-50\stock-05.jpg
+0.2916 | 183248 | assets\images\stock-2026-03-picsum-50\stock-10.jpg
+0.2986 | 310964 | assets\images\stock-2026-03-extra20\stock-extra-13.jpg
+0.2999 | 294514 | assets\images\stock-2026-03-picsum-50\stock-33.jpg
+0.3015 | 91808 | assets\images\stock-2026-03-picsum-50\stock-04.jpg
+0.3147 | 258973 | assets\images\stock-2026-03-picsum-50\stock-30.jpg
+0.3431 | 311111 | assets\images\stock-2026-03-picsum-50\stock-13.jpg
+0.3499 | 179049 | assets\images\stock-2026-03-extra20\stock-extra-20.jpg

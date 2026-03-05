@@ -90,14 +90,36 @@
   }
   </script>
   <style>
+    @font-face {
+      font-family: "Haffer XH SemiBold";
+      src: url("https://framerusercontent.com/assets/vftVnc6yUzw6474LMjfC8eXV7hE.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Fragment Mono";
+      src: url("https://fonts.gstatic.com/s/fragmentmono/v6/4iCr6K5wfMRRjxp0DA6-2CLnB4NHhg.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
     :root {
-      --bg: #f5f8fd;
-      --panel: #ffffff;
-      --line: #d9e2f2;
-      --text: #1b2435;
-      --muted: #4a5a78;
-      --accent: #2d6cdf;
-      --radius: 16px;
+      --bg: #0f1020;
+      --panel: #1b1f35;
+      --panel-soft: #202541;
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.24);
+      --text: #f7f7ff;
+      --muted: #a6acca;
+      --blue: #2590f1;
+      --violet: #6b66da;
+      --pink: #f866db;
+      --yellow: #fbe74e;
+      --accent: #2590f1;
+      --radius: 18px;
     }
 
     * {
@@ -106,11 +128,12 @@
 
     body {
       margin: 0;
-      font-family: "Avenir Next", "Inter", "Segoe UI", sans-serif;
+      font-family: "Inter", "Avenir Next", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 8% 2%, rgba(107, 153, 244, 0.16), transparent 35%),
-        var(--bg);
+        radial-gradient(circle at 8% 2%, rgba(37, 144, 241, 0.22), transparent 35%),
+        radial-gradient(circle at 88% -8%, rgba(248, 102, 219, 0.2), transparent 34%),
+        linear-gradient(180deg, #0f1020, #14182d);
       line-height: 1.65;
     }
 
@@ -126,7 +149,7 @@
 
     header {
       border-bottom: 1px solid var(--line);
-      background: rgba(245, 248, 253, 0.9);
+      background: rgba(15, 16, 32, 0.84);
       backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
@@ -149,8 +172,17 @@
       font-size: 14px;
     }
 
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
     nav a:hover {
-      color: var(--text);
+      color: #ffffff;
+      background: rgba(37, 144, 241, 0.16);
+      border-color: rgba(37, 144, 241, 0.42);
     }
 
     .brand {
@@ -164,6 +196,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
+      box-shadow: 0 0 16px rgba(37, 144, 241, 0.32);
     }
 
     main {
@@ -177,8 +210,10 @@
     }
 
     h1 {
+      font-family: "Haffer XH SemiBold", "Inter", sans-serif;
       font-size: clamp(26px, 4.2vw, 42px);
       max-width: 30ch;
+      letter-spacing: -0.03em;
       text-wrap: balance;
     }
 
@@ -198,13 +233,37 @@
     article {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--panel);
+      background: linear-gradient(180deg, var(--panel-soft), var(--panel));
       padding: 20px;
-      box-shadow: 0 14px 24px rgba(29, 53, 99, 0.08);
+      box-shadow: 0 18px 30px rgba(8, 9, 18, 0.34);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    article:nth-child(1) {
+      border-color: rgba(251, 231, 78, 0.3);
+    }
+
+    article:nth-child(2) {
+      border-color: rgba(248, 102, 219, 0.3);
+    }
+
+    article:nth-child(3) {
+      border-color: rgba(37, 144, 241, 0.34);
+    }
+
+    article:nth-child(4) {
+      border-color: rgba(107, 102, 218, 0.34);
+    }
+
+    article:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
     }
 
     article h2 {
-      font-size: 27px;
+      font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+      font-size: 29px;
+      letter-spacing: -0.02em;
     }
 
     article p {
@@ -217,17 +276,29 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      color: #3f5f9f;
-      font-size: 13px;
+      color: #d3d9ff;
+      font-size: 12px;
       font-weight: 600;
+      font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .read {
       display: inline-flex;
       margin-top: 16px;
       font-weight: 700;
-      color: var(--accent);
-      border-bottom: 1px solid #9fb8ec;
+      color: #edf2ff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 144, 241, 0.44);
+      background: rgba(37, 144, 241, 0.14);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .read:hover {
+      transform: translateY(-1px);
+      background: rgba(37, 144, 241, 0.24);
     }
   </style>
 </head>
