@@ -336,6 +336,12 @@ h1 {
   gap: 14px;
 }
 
+body.theme-explorer .hero-card > img {
+  width: 66.6667%;
+  height: auto;
+  margin-inline: auto;
+}
+
 .app-mark {
   display: inline-flex;
   align-items: center;
