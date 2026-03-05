@@ -139,8 +139,11 @@
     }
 
     .brand img {
-      width: 36px;
+      width: auto;
       height: 36px;
+      max-width: 52px;
+      object-fit: contain;
+      object-position: center;
       border-radius: 10px;
       box-shadow: 0 0 16px rgba(37, 144, 241, 0.32);
     }
@@ -334,7 +337,7 @@
   <header>
     <div class="wrap top">
       <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="72" height="72">
+        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
         <span>VelocAI Apps</span>
       </a>
       <nav aria-label="Main">
