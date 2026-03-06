@@ -343,7 +343,7 @@ h1 {
 body.theme-explorer .hero-card > img,
 body.theme-explorer .hero-card > video,
 body.theme-explorer .hero-card > iframe {
-  width: min(100%, 430px);
+  width: min(100%, 452px);
   max-width: 100%;
   height: auto;
   margin-inline: auto;
@@ -521,7 +521,7 @@ body.theme-explorer .hero > :first-child .hero-points {
 }
 
 body.theme-explorer figure.video-shell > .video-fallback-image {
-  width: min(100%, 430px);
+  width: min(100%, 452px);
   max-width: 100%;
   height: auto;
   aspect-ratio: var(--explorer-hero-media-ratio);
