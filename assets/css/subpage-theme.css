@@ -423,10 +423,21 @@ body.theme-cleanup .hero-card {
 
 body.theme-cleanup .hero-card .hero-card-note {
   width: min(100%, 368px);
-  margin-top: 0;
-  padding: 2px 2px 0;
-  font-size: 16px;
-  line-height: 1.5;
+  margin-top: 2px;
+  padding: 2px 0 0;
+  color: #b4c4f0;
+  font-size: 15.5px;
+  line-height: 1.58;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+
+body.theme-cleanup .hero-card .hero-card-note span {
+  display: block;
+}
+
+body.theme-cleanup .hero-card .hero-card-note span + span {
+  margin-top: 8px;
 }
 
 body.theme-findai .hero-card .radar {
@@ -570,29 +581,6 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
   body.theme-explorer .hero > :first-child .hero-points li {
     padding: 9px 11px;
     line-height: 1.42;
-  }
-}
-
-@media (min-width: 1280px) {
-  body.theme-explorer .container {
-    width: min(1480px, calc(100% - 38px));
-  }
-
-  body.theme-explorer .hero {
-    grid-template-columns: minmax(0, 1fr) 700px;
-  }
-
-  body.theme-explorer .hero-card {
-    width: 700px;
-    max-width: 700px;
-    min-height: 970px;
-    justify-self: end;
-  }
-
-  body.theme-explorer .hero-card > img,
-  body.theme-explorer .hero-card > video,
-  body.theme-explorer .hero-card > iframe {
-    width: min(100%, 620px);
   }
 }
 
