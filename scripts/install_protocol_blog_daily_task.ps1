@@ -2,14 +2,14 @@
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$PublishAt = "20:00",
-  [string]$TaskName = "WeiLuoGe-Blog-Daily-20-00"
+  [string]$PublishAt = "10:00",
+  [string]$TaskName = "WeiLuoGe-Bluetooth-Protocol-Blog-Daily-10-00"
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$ScriptPath = Join-Path $RepoRoot "scripts\blog_daily_scheduler.py"
+$ScriptPath = Join-Path $RepoRoot "scripts\blog_protocol_daily_scheduler.py"
 if (-not (Test-Path $ScriptPath)) {
   throw "Missing script: $ScriptPath"
 }

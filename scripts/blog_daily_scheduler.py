@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -220,6 +222,79 @@ class PostMeta:
     teaser: str
     topic: str
     published_iso: str
+
+
+def add_git_publish_args(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    parser.add_argument("--git-commit", action="store_true", help="Commit generated blog files to git.")
+    parser.add_argument("--git-push", action="store_true", help="Push committed blog files to git remote.")
+    parser.add_argument("--git-remote", default="origin", help="Git remote name for --git-push.")
+    parser.add_argument("--git-branch", default="main", help="Git branch name for --git-push.")
+    return parser
+
+
+def resolve_git_command() -> str:
+    resolved = shutil.which("git")
+    if resolved:
+        return resolved
+
+    candidates = [
+        Path(r"C:\Program Files\Git\cmd\git.exe"),
+        Path(r"C:\Program Files\Git\bin\git.exe"),
+        Path.home() / "AppData" / "Local" / "Programs" / "Git" / "cmd" / "git.exe",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return str(candidate)
+
+    raise ValueError("Cannot resolve Git executable for automatic publish.")
+
+
+def run_git_command(repo_root: Path, git_command: str, args: list[str]) -> subprocess.CompletedProcess[str]:
+    result = subprocess.run(
+        [git_command, *args],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip()
+        raise ValueError(f"Git command failed: {' '.join(args)}\n{detail}")
+    return result
+
+
+def publish_blog_post_to_git(
+    repo_root: Path,
+    post: PostMeta,
+    remote: str,
+    branch: str,
+    push: bool,
+) -> str:
+    git_command = resolve_git_command()
+    tracked_paths = [
+        (Path("blog") / post.filename).as_posix(),
+        BLOG_INDEX_REL.as_posix(),
+        SITEMAP_REL.as_posix(),
+    ]
+
+    run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
+    staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+    if not staged.stdout.strip():
+        return "unchanged"
+
+    run_git_command(
+        repo_root,
+        git_command,
+        ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
+    )
+
+    if push:
+        run_git_command(repo_root, git_command, ["push", remote, branch])
+        return f"committed+pushed({remote}/{branch})"
+
+    return "committed"
 
 
 def now_local_date() -> date:
@@ -777,6 +852,7 @@ def run(args: argparse.Namespace) -> int:
     article_state = "unchanged"
     index_changed = False
     sitemap_changed = False
+    git_state = "skipped"
 
     existed_before = article_path.exists()
     if existed_before and not args.force:
@@ -800,11 +876,21 @@ def run(args: argparse.Namespace) -> int:
     index_changed = update_blog_index(index_path, post)
     sitemap_changed = update_sitemap(sitemap_path, post)
 
+    if args.git_commit or args.git_push:
+        git_state = publish_blog_post_to_git(
+            repo_root,
+            post,
+            remote=args.git_remote,
+            branch=args.git_branch,
+            push=args.git_push,
+        )
+
     print(
         "done "
         f"article={article_state} "
         f"index={'updated' if index_changed else 'unchanged'} "
         f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
+        f"git={git_state} "
         f"file={article_path.name}"
     )
     return 0
@@ -819,7 +905,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
     parser.add_argument("--force", action="store_true", help="Overwrite article file if it already exists.")
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
-    return parser
+    return add_git_publish_args(parser)
 
 
 def main() -> int:
