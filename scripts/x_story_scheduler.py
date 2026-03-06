@@ -18,8 +18,8 @@ from post_to_x import load_credentials, load_dotenv, send_tweet
 
 DEFAULT_LOG_ROOT = Path(r"D:\Operation Log")
 BOT_DIR = "TwitterStoryBot"
-DEFAULT_MIN_POSTS = 10
-DEFAULT_MAX_POSTS = 20
+DEFAULT_MIN_POSTS = 5
+DEFAULT_MAX_POSTS = 10
 DEFAULT_DAY_START = "08:00"
 DEFAULT_DAY_END = "23:30"
 MAX_TWEET_LEN = 280

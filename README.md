@@ -28,13 +28,12 @@
 
 1. Ensure `.env` already has valid X credentials (`X_API_KEY`, `X_API_KEY_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`).
 2. Dry run once:
-`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 10 --max-posts 20`
+`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 5 --max-posts 10`
 3. Install Windows scheduled tasks:
-`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 10 -MaxPosts 20`
+`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 5 -MaxPosts 10`
 
-Installed tasks:
-- `WeiLuoGe-XStory-Plan`: creates daily random posting plan.
-- `WeiLuoGe-XStory-Worker`: runs every 5 minutes and posts due items.
+Installed task:
+- `WeiLuoGe-XStory-Plan`: runs every 1 hour, auto-creates daily plan if missing, and posts due items.
 
 Runtime files:
 - Plans: `D:\Operation Log\TwitterStoryBot\plans\YYYY-MM-DD.json`

@@ -2,12 +2,11 @@ param(
   [string]$PythonExe = "python",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$LogRoot = "D:\Operation Log",
-  [int]$MinPosts = 10,
-  [int]$MaxPosts = 20,
+  [int]$MinPosts = 5,
+  [int]$MaxPosts = 10,
   [string]$DayStart = "08:00",
   [string]$DayEnd = "23:30",
-  [string]$PlanTime = "00:05",
-  [int]$WorkerEveryMinutes = 5,
+  [int]$WorkerEveryMinutes = 60,
   [string]$TaskPrefix = "WeiLuoGe-XStory"
 )
 
@@ -38,33 +37,30 @@ if (-not $PythonCommand) {
 
 New-Item -ItemType Directory -Path $LogRoot -Force | Out-Null
 
-$PlanTaskName = "$TaskPrefix-Plan"
-$WorkerTaskName = "$TaskPrefix-Worker"
+$MergedTaskName = "$TaskPrefix-Plan"
+$LegacyWorkerTaskName = "$TaskPrefix-Worker"
 
 $CommonArgs = "--log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd"
-$PlanArgs = "`"$ScriptPath`" plan $CommonArgs"
-$WorkerArgs = "`"$ScriptPath`" run $CommonArgs"
+$RunArgs = "`"$ScriptPath`" run $CommonArgs"
 
-$PlanAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $PlanArgs
-$WorkerAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $WorkerArgs
+$RunAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $RunArgs
 
-$PlanTrigger = New-ScheduledTaskTrigger -Daily -At $PlanTime
-
-$WorkerTrigger = New-ScheduledTaskTrigger `
+$RunTrigger = New-ScheduledTaskTrigger `
   -Once `
   -At (Get-Date).Date.AddMinutes(1) `
   -RepetitionInterval (New-TimeSpan -Minutes $WorkerEveryMinutes) `
   -RepetitionDuration (New-TimeSpan -Days 3650)
 
-Register-ScheduledTask -TaskName $PlanTaskName -Action $PlanAction -Trigger $PlanTrigger -Force | Out-Null
-Register-ScheduledTask -TaskName $WorkerTaskName -Action $WorkerAction -Trigger $WorkerTrigger -Force | Out-Null
+if (Get-ScheduledTask -TaskName $LegacyWorkerTaskName -ErrorAction SilentlyContinue) {
+  Unregister-ScheduledTask -TaskName $LegacyWorkerTaskName -Confirm:$false | Out-Null
+}
 
-Write-Output "Installed tasks:"
-Write-Output " - $PlanTaskName"
-Write-Output " - $WorkerTaskName"
+Register-ScheduledTask -TaskName $MergedTaskName -Action $RunAction -Trigger $RunTrigger -Force | Out-Null
+
+Write-Output "Installed task:"
+Write-Output " - $MergedTaskName"
 Write-Output ""
-Write-Output "Task commands:"
-Write-Output " - $PythonCommand $PlanArgs"
-Write-Output " - $PythonCommand $WorkerArgs"
+Write-Output "Task command:"
+Write-Output " - $PythonCommand $RunArgs"
 Write-Output ""
 Write-Output "Logs and plans are stored under: $LogRoot\TwitterStoryBot"
