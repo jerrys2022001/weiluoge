@@ -422,14 +422,17 @@ body.theme-cleanup .hero-card {
 }
 
 body.theme-cleanup .hero-card .hero-card-note {
-  width: min(100%, 368px);
+  width: 100%;
+  max-width: none;
   margin-top: 2px;
   padding: 2px 0 0;
-  color: #b4c4f0;
+  color: #b8c8f2;
   font-size: 15.5px;
-  line-height: 1.58;
-  letter-spacing: 0;
+  line-height: 1.6;
+  letter-spacing: 0.002em;
   text-wrap: pretty;
+  display: grid;
+  gap: 10px;
 }
 
 body.theme-cleanup .hero-card .hero-card-note span {
@@ -437,7 +440,7 @@ body.theme-cleanup .hero-card .hero-card-note span {
 }
 
 body.theme-cleanup .hero-card .hero-card-note span + span {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 body.theme-findai .hero-card .radar {
