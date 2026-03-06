@@ -486,6 +486,11 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
 }
 
 @media (min-width: 1081px) {
+  body.theme-explorer .hero > :first-child {
+    padding-top: 20px;
+    padding-bottom: 92px;
+  }
+
   body.theme-explorer .hero .eyebrow {
     margin-bottom: 2px;
   }
