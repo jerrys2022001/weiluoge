@@ -401,7 +401,12 @@ body.theme-findai .hero-app-icon {
 
 body.theme-cleanup .hero-card .radar {
   max-width: 380px;
-  min-height: 460px;
+  aspect-ratio: 9 / 13;
+  min-height: 0;
+}
+
+body.theme-cleanup .hero {
+  align-items: end;
 }
 
 body.theme-findai .hero {
@@ -757,7 +762,8 @@ footer,
 
   body.theme-cleanup .hero-card .radar {
     max-width: 360px;
-    min-height: 420px;
+    aspect-ratio: 9 / 13;
+    min-height: 0;
   }
 
   .grid-3,
@@ -816,6 +822,7 @@ footer,
 
   body.theme-cleanup .hero-card .radar {
     max-width: 340px;
-    min-height: 340px;
+    aspect-ratio: 9 / 13;
+    min-height: 0;
   }
 }
