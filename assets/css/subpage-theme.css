@@ -405,17 +405,30 @@ body.theme-cleanup .hero-card .radar {
   min-height: 0;
 }
 
-body.theme-cleanup .hero {
-  align-items: end;
-}
-
-body.theme-findai .hero {
-  align-items: end;
-}
-
 body.theme-findai .hero-card .radar {
   aspect-ratio: 9 / 13;
   min-height: 0;
+}
+
+body.theme-explorer .hero,
+body.theme-findai .hero,
+body.theme-cleanup .hero {
+  align-items: stretch;
+}
+
+body.theme-explorer .hero > :first-child,
+body.theme-findai .hero > :first-child,
+body.theme-cleanup .hero > :first-child {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-explorer .hero > :first-child .hero-points,
+body.theme-findai .hero > :first-child .proof-list,
+body.theme-cleanup .hero > :first-child .hero-points {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .radar-gif {
