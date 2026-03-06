@@ -573,6 +573,29 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
   }
 }
 
+@media (min-width: 1280px) {
+  body.theme-explorer .container {
+    width: min(1480px, calc(100% - 38px));
+  }
+
+  body.theme-explorer .hero {
+    grid-template-columns: minmax(0, 1fr) 700px;
+  }
+
+  body.theme-explorer .hero-card {
+    width: 700px;
+    max-width: 700px;
+    min-height: 970px;
+    justify-self: end;
+  }
+
+  body.theme-explorer .hero-card > img,
+  body.theme-explorer .hero-card > video,
+  body.theme-explorer .hero-card > iframe {
+    width: min(100%, 620px);
+  }
+}
+
 .ring {
   position: absolute;
   border-radius: 50%;
