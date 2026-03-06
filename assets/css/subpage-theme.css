@@ -449,6 +449,31 @@ body.theme-cleanup .hero > :first-child .hero-points {
   background: #070b18;
 }
 
+.video-shell .video-fallback-image {
+  width: 100%;
+  height: 100%;
+  display: none;
+  object-fit: cover;
+  object-position: center;
+  background: #070b18;
+}
+
+.video-shell.video-fallback-active .video-fallback-image {
+  display: block;
+}
+
+.video-shell.video-fallback-active iframe[data-video-fallback] {
+  display: none;
+}
+
+body.theme-explorer figure.video-shell > .video-fallback-image {
+  width: min(100%, 430px);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  margin-inline: auto;
+}
+
 .ring {
   position: absolute;
   border-radius: 50%;

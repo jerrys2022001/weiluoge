@@ -27,6 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/subpage-theme.css" />
+  <script src="/assets/js/video-fallback.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -172,9 +173,10 @@
         </div>
 
         <aside class="hero-card" aria-label="App highlights">
-          <div class="radar">
+          <div class="radar video-shell">
             <iframe
               class="radar-video"
+              data-video-fallback="tech-11"
               src="https://www.youtube.com/embed/Cgq-T90Pevk?rel=0&modestbranding=1&playsinline=1"
               title="AI Cleanup PRO Shorts Preview"
               loading="lazy"
@@ -182,6 +184,7 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
             </iframe>
+            <img class="video-fallback-image" src="/assets/images/stock-2026-03-pexels-tech-40/tech-11.jpg" alt="Tech-11 fallback preview" loading="lazy" decoding="async">
           </div>
         </aside>
       </section>

@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/subpage-theme.css" />
+  <script src="/assets/js/video-fallback.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -136,9 +137,10 @@
         </ul>
       </div>
       <aside class="hero-card" aria-label="Find AI bluetooth finder preview">
-        <div class="radar">
+        <div class="radar video-shell">
           <iframe
             class="radar-video"
+            data-video-fallback="tech-11"
             src="https://www.youtube.com/embed/lILUwF6FixA?rel=0&modestbranding=1&playsinline=1"
             title="Find AI Shorts Preview"
             loading="lazy"
@@ -146,6 +148,7 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
+          <img class="video-fallback-image" src="/assets/images/stock-2026-03-pexels-tech-40/tech-11.jpg" alt="Tech-11 fallback preview" loading="lazy" decoding="async" />
         </div>
         <p class="card-note">Real-time radar feedback helps you move from cold signal to close proximity without guesswork.</p>
       </aside>
