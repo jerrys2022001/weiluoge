@@ -402,7 +402,7 @@ body.theme-findai .hero-app-icon {
 
 body.theme-cleanup .hero-card .radar {
   max-width: 380px;
-  aspect-ratio: 9 / 13;
+  aspect-ratio: 9 / 12;
   min-height: 0;
 }
 
@@ -414,6 +414,19 @@ body.theme-cleanup .hero-card .radar {
   font-size: 17px;
   line-height: 1.55;
   letter-spacing: 0.003em;
+}
+
+body.theme-cleanup .hero-card {
+  padding: 16px 18px;
+  gap: 10px;
+}
+
+body.theme-cleanup .hero-card .hero-card-note {
+  width: min(100%, 368px);
+  margin-top: 0;
+  padding: 2px 2px 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 body.theme-findai .hero-card .radar {
@@ -440,6 +453,22 @@ body.theme-findai .hero > :first-child .proof-list,
 body.theme-cleanup .hero > :first-child .hero-points {
   margin-top: auto;
   padding-top: 16px;
+}
+
+body.theme-explorer .hero {
+  align-items: start;
+}
+
+body.theme-explorer .hero-card {
+  align-self: start;
+}
+
+body.theme-explorer .hero > :first-child {
+  min-height: auto;
+}
+
+body.theme-explorer .hero > :first-child .hero-points {
+  margin-top: 24px;
 }
 
 .radar-gif {
@@ -489,6 +518,30 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
   body.theme-explorer .hero > :first-child {
     padding-top: 20px;
     padding-bottom: 92px;
+  }
+
+  body.theme-cleanup .hero h1 {
+    margin-top: 12px;
+    font-size: clamp(32px, 4.7vw, 50px);
+  }
+
+  body.theme-cleanup .hero .lede {
+    margin-top: 12px;
+    font-size: 17px;
+  }
+
+  body.theme-cleanup .hero .cta-row {
+    margin-top: 20px;
+  }
+
+  body.theme-cleanup .hero > :first-child .hero-points {
+    padding-top: 12px;
+    gap: 8px;
+  }
+
+  body.theme-cleanup .hero > :first-child .hero-points li {
+    padding: 9px 11px;
+    line-height: 1.42;
   }
 
   body.theme-explorer .hero .eyebrow {
