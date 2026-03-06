@@ -404,6 +404,15 @@ body.theme-cleanup .hero-card .radar {
   min-height: 460px;
 }
 
+body.theme-findai .hero {
+  align-items: end;
+}
+
+body.theme-findai .hero-card .radar {
+  aspect-ratio: 9 / 13;
+  min-height: 0;
+}
+
 .radar-gif {
   width: 100%;
   height: 100%;
