@@ -456,19 +456,19 @@ body.theme-cleanup .hero > :first-child .hero-points {
 }
 
 body.theme-explorer .hero {
-  align-items: start;
+  align-items: stretch;
 }
 
 body.theme-explorer .hero-card {
-  align-self: start;
+  align-self: stretch;
 }
 
 body.theme-explorer .hero > :first-child {
-  min-height: auto;
+  min-height: 100%;
 }
 
 body.theme-explorer .hero > :first-child .hero-points {
-  margin-top: 24px;
+  margin-top: auto;
 }
 
 .radar-gif {
@@ -516,8 +516,8 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
 
 @media (min-width: 1081px) {
   body.theme-explorer .hero > :first-child {
-    padding-top: 20px;
-    padding-bottom: 92px;
+    padding-top: 12px;
+    padding-bottom: 0;
   }
 
   body.theme-cleanup .hero h1 {
