@@ -9,7 +9,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$ScriptPath = Join-Path $RepoRoot "scripts\blog_daily_scheduler.py"
+$ScriptPath = Join-Path $RepoRoot "scripts\blog_cleanup_focus_scheduler.py"
 if (-not (Test-Path $ScriptPath)) {
   throw "Missing script: $ScriptPath"
 }
