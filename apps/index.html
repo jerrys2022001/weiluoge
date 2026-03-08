@@ -235,6 +235,21 @@
       letter-spacing: -0.02em;
     }
 
+    .card-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-title-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 18px rgba(8, 9, 18, 0.32);
+    }
+
     .card p {
       margin: 0;
       color: var(--muted);
@@ -355,7 +370,7 @@
 
     <section class="grid" aria-label="VelocAI products">
       <article class="card">
-        <h2>AI Cleanup PRO</h2>
+        <h2 class="card-title"><img class="card-title-icon" src="/ai-cleanup-pro/AICleanup.png" alt="" width="44" height="44">AI Cleanup PRO</h2>
         <p>Clean duplicate photos, remove large videos, and organize contacts with privacy-first on-device processing.</p>
         <div class="tags">
           <span>Photo Cleaner iPhone</span>
@@ -370,7 +385,7 @@
       </article>
 
       <article class="card">
-        <h2>Find AI</h2>
+        <h2 class="card-title"><img class="card-title-icon" src="/aifind/find-ai.png" alt="" width="44" height="44">Find AI</h2>
         <p>Find lost AirPods and nearby Bluetooth devices with live signal distance radar and last-seen location guidance.</p>
         <div class="tags">
           <span>Bluetooth Finder</span>
@@ -385,7 +400,7 @@
       </article>
 
       <article class="card">
-        <h2>Bluetooth Explorer</h2>
+        <h2 class="card-title"><img class="card-title-icon" src="/bluetoothexplorer/icon-bluetooth.png" alt="" width="44" height="44">Bluetooth Explorer</h2>
         <p>Scan BLE devices, inspect GATT services, send packets, and diagnose connection issues with AI-assisted insights.</p>
         <div class="tags">
           <span>BLE Scanner</span>
