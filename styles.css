@@ -383,6 +383,9 @@ ul {
   background: rgba(27, 31, 53, 0.9);
   box-shadow: var(--shadow-soft);
   animation: va-float 6s ease-in-out infinite;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .va-float-card img {
@@ -398,6 +401,17 @@ ul {
   font-size: 13px;
   font-weight: 600;
   color: #f4f5ff;
+}
+
+.va-float-card:hover {
+  background: rgba(35, 40, 68, 0.96);
+  box-shadow: 0 20px 34px rgba(8, 9, 18, 0.42);
+}
+
+.va-float-card:focus-visible {
+  outline: none;
+  background: rgba(35, 40, 68, 0.98);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14), 0 20px 34px rgba(8, 9, 18, 0.42);
 }
 
 .va-float-card-a {
