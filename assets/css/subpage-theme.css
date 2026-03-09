@@ -445,8 +445,27 @@ body.theme-cleanup .hero-card .hero-card-note span + span {
 }
 
 body.theme-findai .hero-card .radar {
+  max-width: 380px;
   aspect-ratio: 9 / 13;
   min-height: 0;
+}
+
+body.theme-findai .hero-card {
+  align-self: stretch;
+  padding: 16px 18px;
+  gap: 10px;
+}
+
+body.theme-findai .hero-card .card-note {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 2px 0 0;
+  color: #b8c8f2;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.002em;
+  text-wrap: pretty;
 }
 
 body.theme-explorer .hero,
@@ -468,6 +487,11 @@ body.theme-findai .hero > :first-child .proof-list,
 body.theme-cleanup .hero > :first-child .hero-points {
   margin-top: auto;
   padding-top: 16px;
+}
+
+body.theme-findai .hero > :first-child .proof-list {
+  margin-top: 20px;
+  padding-top: 0;
 }
 
 body.theme-explorer .hero {
