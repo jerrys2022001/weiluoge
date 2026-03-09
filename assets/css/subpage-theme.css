@@ -477,8 +477,8 @@ body.theme-explorer .hero {
 body.theme-explorer .hero-card {
   align-self: stretch;
   min-height: 100%;
-  padding: 16px 18px;
-  gap: 12px;
+  padding: 14px 16px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -494,7 +494,7 @@ body.theme-explorer .hero > :first-child .hero-points {
 body.theme-explorer .hero-card .radar {
   width: 100%;
   max-width: 380px;
-  min-height: clamp(500px, 46vw, 700px);
+  min-height: clamp(360px, 32vw, 486px);
   height: 100%;
   flex: 1 1 auto;
   aspect-ratio: auto;
@@ -510,8 +510,8 @@ body.theme-explorer .hero-card .hero-card-note {
   margin-top: 0;
   padding: 2px 0 0;
   color: #b8c8f2;
-  font-size: 15.5px;
-  line-height: 1.6;
+  font-size: 14.5px;
+  line-height: 1.5;
   letter-spacing: 0.002em;
   text-wrap: pretty;
 }
@@ -596,31 +596,34 @@ body.theme-explorer figure.video-shell > .video-fallback-image {
   }
 
   body.theme-explorer .hero .eyebrow {
-    margin-bottom: 2px;
+    margin-bottom: 0;
   }
 
   body.theme-explorer .hero h1 {
-    margin-top: 10px;
-    font-size: clamp(32px, 4.55vw, 50px);
+    margin-top: 8px;
+    max-width: 17ch;
+    font-size: clamp(31px, 4.2vw, 46px);
+    line-height: 1.08;
   }
 
   body.theme-explorer .hero .lede {
-    margin-top: 12px;
-    font-size: 17px;
+    margin-top: 10px;
+    font-size: 16px;
   }
 
   body.theme-explorer .hero .cta-row {
-    margin-top: 20px;
+    margin-top: 18px;
   }
 
   body.theme-explorer .hero > :first-child .hero-points {
-    padding-top: 12px;
-    gap: 8px;
+    padding-top: 10px;
+    gap: 7px;
+    font-size: 13px;
   }
 
   body.theme-explorer .hero > :first-child .hero-points li {
-    padding: 9px 11px;
-    line-height: 1.42;
+    padding: 8px 10px;
+    line-height: 1.34;
   }
 }
 
@@ -945,7 +948,7 @@ footer,
 
   body.theme-explorer .hero-card .radar {
     max-width: 360px;
-    min-height: clamp(440px, 58vw, 620px);
+    min-height: clamp(340px, 46vw, 430px);
   }
 
   .radar {
@@ -1015,7 +1018,7 @@ footer,
 
   body.theme-explorer .hero-card .radar {
     max-width: 340px;
-    min-height: clamp(360px, 78vw, 520px);
+    min-height: clamp(300px, 62vw, 390px);
     border-radius: 22px;
   }
 
