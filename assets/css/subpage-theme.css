@@ -326,6 +326,7 @@ h1 {
 }
 
 .hero-card {
+  margin: 0;
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-xl);
@@ -475,6 +476,11 @@ body.theme-explorer .hero {
 
 body.theme-explorer .hero-card {
   align-self: stretch;
+  min-height: 100%;
+  padding: 16px 18px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 body.theme-explorer .hero > :first-child {
@@ -483,6 +489,35 @@ body.theme-explorer .hero > :first-child {
 
 body.theme-explorer .hero > :first-child .hero-points {
   margin-top: auto;
+}
+
+body.theme-explorer .hero-card .radar {
+  width: 100%;
+  max-width: 380px;
+  min-height: clamp(500px, 46vw, 700px);
+  height: 100%;
+  flex: 1 1 auto;
+  aspect-ratio: auto;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at center, rgba(37, 144, 241, 0.22), transparent 65%),
+    linear-gradient(180deg, rgba(20, 37, 66, 0.78), rgba(13, 24, 45, 0.86));
+}
+
+body.theme-explorer .hero-card .hero-card-note {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 2px 0 0;
+  color: #b8c8f2;
+  font-size: 15.5px;
+  line-height: 1.6;
+  letter-spacing: 0.002em;
+  text-wrap: pretty;
+}
+
+body.theme-explorer .hero-card .hero-card-note span {
+  display: block;
 }
 
 .radar-gif {
@@ -498,6 +533,7 @@ body.theme-explorer .hero > :first-child .hero-points {
   height: 100%;
   display: block;
   border: 0;
+  border-radius: inherit;
   object-fit: contain;
   object-position: center;
   background: #070b18;
@@ -507,6 +543,7 @@ body.theme-explorer .hero > :first-child .hero-points {
   width: 100%;
   height: 100%;
   display: none;
+  border-radius: inherit;
   object-fit: cover;
   object-position: center;
   background: #070b18;
@@ -906,6 +943,11 @@ footer,
     width: min(100%, 390px);
   }
 
+  body.theme-explorer .hero-card .radar {
+    max-width: 360px;
+    min-height: clamp(440px, 58vw, 620px);
+  }
+
   .radar {
     width: min(100%, 390px);
     min-height: 460px;
@@ -969,6 +1011,12 @@ footer,
   body.theme-explorer .hero-card > video,
   body.theme-explorer .hero-card > iframe {
     width: min(100%, 360px);
+  }
+
+  body.theme-explorer .hero-card .radar {
+    max-width: 340px;
+    min-height: clamp(360px, 78vw, 520px);
+    border-radius: 22px;
   }
 
   .radar {
