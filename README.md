@@ -87,6 +87,11 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
+## Storage Cleanup + System Impact Blog (09:15, 1/day)
+
+Install:
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 09:15`
+
 ## Bluetooth Protocol Blog (09:30~10:00, 2/day)
 
 This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
