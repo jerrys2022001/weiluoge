@@ -24,8 +24,8 @@ function Parse-HHMM([string]$value) {
 }
 
 function Format-HHMM([int]$minutes) {
-  $h = [math]::Floor($minutes / 60)
-  $m = $minutes % 60
+  $h = [int]($minutes / 60)
+  $m = [int]($minutes % 60)
   return ("{0:D2}:{1:D2}" -f $h, $m)
 }
 
