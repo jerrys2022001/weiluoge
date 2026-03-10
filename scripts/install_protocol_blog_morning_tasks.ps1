@@ -12,7 +12,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 function Parse-HHMM([string]$value) {
-  if ($value -notmatch '^(?<h>\\d{1,2}):(?<m>\\d{2})$') {
+  if ($value -notmatch '^(?<h>\d{1,2}):(?<m>\d{2})$') {
     throw "Invalid time format (expected HH:MM): $value"
   }
   $h = [int]$Matches['h']
