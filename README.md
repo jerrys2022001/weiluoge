@@ -87,6 +87,14 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
+## Bluetooth Protocol Blog (09:30~10:00, 2/day)
+
+This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
+It installs 2 scheduled tasks (default: 09:30 and 09:45) and uses `--angle-offset` to avoid duplicates.
+
+Install:
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 09:30 -WindowEnd 10:00 -PostsPerDay 2`
+
 ## Google Index Request Task (10:30)
 
 Google does not offer an official API to click `Request indexing` for normal web pages.

@@ -123,8 +123,8 @@ ANGLES: list[ProtocolAngle] = [
 ]
 
 
-def pick_angle(day: date) -> ProtocolAngle:
-    return ANGLES[day.toordinal() % len(ANGLES)]
+def pick_angle(day: date, *, offset: int = 0) -> ProtocolAngle:
+    return ANGLES[(day.toordinal() + offset) % len(ANGLES)]
 
 
 def dedupe_keep_order(values: list[str]) -> list[str]:
@@ -406,7 +406,7 @@ def run(args: argparse.Namespace) -> int:
         return 1
 
     target_day = parse_iso_date(args.date)
-    angle = pick_angle(target_day)
+    angle = pick_angle(target_day, offset=args.angle_offset)
     post = build_post_meta(target_day, angle)
     article_path = blog_dir / post.filename
 
@@ -454,6 +454,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("run", nargs="?", default="run", help="Subcommand placeholder for compatibility.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
+    parser.add_argument(
+        "--angle-offset",
+        type=int,
+        default=0,
+        help="Offset into the protocol angle rotation (use different values to publish multiple posts per day).",
+    )
     parser.add_argument("--force", action="store_true", help="Overwrite article file if it already exists.")
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
     return add_git_publish_args(parser)
