@@ -5,7 +5,8 @@ param(
   [string]$WindowStart = "09:30",
   [string]$WindowEnd = "10:00",
   [int]$PostsPerDay = 2,
-  [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning"
+  [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning",
+  [bool]$ReplaceExisting = $true
 )
 
 Set-StrictMode -Version Latest
@@ -24,8 +25,8 @@ function Parse-HHMM([string]$value) {
 }
 
 function Format-HHMM([int]$minutes) {
-  $h = [int]($minutes / 60)
-  $m = [int]($minutes % 60)
+  $h = [int][math]::Floor($minutes / 60)
+  $m = [int]($minutes - ($h * 60))
   return ("{0:D2}:{1:D2}" -f $h, $m)
 }
 
@@ -54,6 +55,14 @@ if ($interval -lt 1) {
   throw "Window too small for PostsPerDay. durationMinutes=$duration posts=$PostsPerDay"
 }
 
+if ($ReplaceExisting) {
+  $prefixPattern = "$TaskNamePrefix-*"
+  $existing = Get-ScheduledTask -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -like $prefixPattern }
+  foreach ($task in $existing) {
+    Unregister-ScheduledTask -TaskName $task.TaskName -Confirm:$false -ErrorAction SilentlyContinue | Out-Null
+  }
+}
+
 for ($i = 0; $i -lt $PostsPerDay; $i++) {
   $publishMin = $startMin + ($i * $interval)
   if ($publishMin -ge $endMin) {
@@ -61,8 +70,7 @@ for ($i = 0; $i -lt $PostsPerDay; $i++) {
   }
 
   $publishAt = Format-HHMM $publishMin
-  $safeTime = $publishAt.Replace(":", "-")
-  $taskName = "$TaskNamePrefix-$($i + 1)-$safeTime"
+  $taskName = "$TaskNamePrefix-$($i + 1)"
 
   $Args = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --angle-offset $i --git-commit --git-push"
   $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
