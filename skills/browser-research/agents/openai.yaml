@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "Browser Research"
+  short_description: "Open a real browser and extract information from live pages"
+  default_prompt: "Open the relevant website in a real browser, gather the requested information from live pages, and return a concise answer with source links."

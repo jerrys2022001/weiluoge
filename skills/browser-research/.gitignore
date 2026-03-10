@@ -1,0 +1,4 @@
+.npm-cache/
+.playwright-browsers/
+.localapp/
+LocalLow/

@@ -1,0 +1,9 @@
+# Optional note ideas you can adapt into real update posts later.
+# One line per idea.
+
+Find AI: faster nearby refresh for crowded Bluetooth environments
+Find AI: clearer last-seen hints for AirPods recovery
+AI Cleanup PRO: safer duplicate review before deleting large videos
+AI Cleanup PRO: clearer contact cleanup steps for bulk actions
+Bluetooth Explorer: cleaner service and characteristic summaries
+Bluetooth Explorer: more readable BLE logs for repeat debugging sessions

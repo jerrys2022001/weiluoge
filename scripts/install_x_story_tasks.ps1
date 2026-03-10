@@ -6,6 +6,11 @@ param(
   [int]$MaxPosts = 10,
   [string]$DayStart = "08:00",
   [string]$DayEnd = "23:30",
+  [ValidateSet("classic", "velocai-mix")]
+  [string]$ContentMode = "classic",
+  [ValidateSet("playwright-first", "api-first", "playwright", "api")]
+  [string]$PostMode = "playwright-first",
+  [string]$UpdateTopicsFile = "",
   [int]$WorkerEveryMinutes = 60,
   [string]$TaskPrefix = "WeiLuoGe-XStory"
 )
@@ -40,7 +45,10 @@ New-Item -ItemType Directory -Path $LogRoot -Force | Out-Null
 $MergedTaskName = "$TaskPrefix-Plan"
 $LegacyWorkerTaskName = "$TaskPrefix-Worker"
 
-$CommonArgs = "--log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd"
+$CommonArgs = "--log-root `"$LogRoot`" --min-posts $MinPosts --max-posts $MaxPosts --day-start $DayStart --day-end $DayEnd --content-mode $ContentMode --post-mode $PostMode"
+if ($UpdateTopicsFile) {
+  $CommonArgs += " --update-topics-file `"$UpdateTopicsFile`""
+}
 $RunArgs = "`"$ScriptPath`" run $CommonArgs"
 
 $RunAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $RunArgs

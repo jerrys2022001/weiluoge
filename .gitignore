@@ -1,3 +1,22 @@
 .env
 .env.*
 !.env.example
+
+# Local browser profiles / caches
+.playwright*/
+.gsc-playwright-profile/
+.gsc-playwright-profile-snapshot/
+.x-playwright-profile*/
+.tmp*/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local outputs
+output/
+
+# Local scratch
+.codex-write-test.txt
+scripts/write-test.txt
+assets/videos/_test.mp4

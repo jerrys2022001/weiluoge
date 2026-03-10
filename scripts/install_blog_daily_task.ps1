@@ -2,8 +2,8 @@
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$PublishAt = "20:00",
-  [string]$TaskName = "WeiLuoGe-Blog-Daily-20-00"
+  [string]$PublishAt = "09:30",
+  [string]$TaskName = "WeiLuoGe-Blog-Daily-09-30"
 )
 
 Set-StrictMode -Version Latest
