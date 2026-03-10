@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes | VelocAI Blog</title>
+  <meta name="description" content="Use this practical 2026 debugging playbook to fix Android Bluetooth device discovery and companion pairing failures, with concrete logs, callbacks, and recovery checks.">
+  <meta name="keywords" content="android bluetooth debugging, companion device pairing, bluetooth device discovery failure, bluetooth scan no devices found, association request android, bluetooth troubleshooting checklist">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/android-companion-device-pairing-debugging-2026-03-10.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes">
+  <meta property="og:description" content="A source-backed workflow to debug Android Bluetooth discovery and association failures in real devices.">
+  <meta property="og:url" content="https://velocai.net/blog/android-companion-device-pairing-debugging-2026-03-10.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes">
+  <meta name="twitter:description" content="Practical steps for Android Bluetooth scan, association, and reconnect debugging.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes",
+  "description": "Use this practical 2026 debugging playbook to fix Android Bluetooth device discovery and companion pairing failures, with concrete logs, callbacks, and recovery checks.",
+  "datePublished": "2026-03-10",
+  "dateModified": "2026-03-10",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/android-companion-device-pairing-debugging-2026-03-10.html",
+  "keywords": [
+    "android bluetooth debugging",
+    "companion device pairing",
+    "bluetooth device discovery failure",
+    "association request android",
+    "bluetooth scan troubleshooting",
+    "bluetooth pairing checklist"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f5f9ff; --text:#14253a; --muted:#48607a; --line:#d0deee; --panel:#ffffff; --brand:#165ec8; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 10% 0%, rgba(22,94,200,.14), transparent 36%), radial-gradient(circle at 90% -8%, rgba(50,171,142,.12), transparent 34%), var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(245,249,255,.92); position:sticky; top:0; backdrop-filter:blur(8px); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.24; }
+    h1 { font-size:clamp(30px, 4.1vw, 47px); max-width:27ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#30465e; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .hero,.panel { border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }
+    .panel { margin-top:24px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .steps li { margin-bottom:8px; }
+    .sources a { color:var(--brand); border-bottom:1px solid #b5c9ea; }
+    .links { margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; }
+    .links a { border:1px solid #bfd0ee; border-radius:999px; padding:8px 12px; color:var(--brand); font-weight:600; font-size:14px; background:#fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <strong>VelocAI Blog</strong>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes</h1>
+        <p class="meta">Published on March 10, 2026 · Topic: Android Bluetooth Discovery Debugging</p>
+        <p>If your app intermittently shows no nearby device, fails to complete association, or pairs once and never reconnects reliably, the fastest path to a fix is callback-level debugging. This guide turns recent Android Bluetooth guidance into a concrete troubleshooting workflow.</p>
+      </div>
+
+      <h2>Why This Matters in 2026</h2>
+      <p>Android's companion-device flow can reduce permission friction and improve pairing UX, but only if your device filters, callbacks, and association lifecycle are instrumented. Google's latest documentation updates in 2026 emphasize callback handling and presence observation as first-class parts of reliable device discovery.</p>
+
+      <div class="panel">
+        <h2>Practical Bluetooth Discovery and Pairing Troubleshooting Steps</h2>
+        <ol class="steps">
+          <li><strong>Log every association callback with timestamps:</strong> capture <code>onAssociationPending</code>, <code>onAssociationCreated</code>, and <code>onFailure</code> so each failure is tied to a specific phase.</li>
+          <li><strong>Validate your device filter early:</strong> overly strict filters can hide real devices, while loose filters flood candidates and mask target-device misses.</li>
+          <li><strong>Correlate user prompt timing with scan state:</strong> record when system pairing UI appears versus when your scan starts and stops.</li>
+          <li><strong>Track association IDs and reconnect behavior:</strong> once paired, verify that association identity is reused correctly for return sessions.</li>
+          <li><strong>Use presence observation for regression checks:</strong> monitor device appearance/disappearance to detect edge cases where discovery succeeds but follow-up logic fails.</li>
+          <li><strong>Separate initial pairing bugs from reconnection bugs:</strong> they often share symptoms but require different fixes in app state handling.</li>
+          <li><strong>Run matrix tests across Android versions and vendors:</strong> the same code path can fail only on selected OEM stacks.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Debug Signals to Include in Every Bug Report</h2>
+        <ul>
+          <li>Time-to-first-device (scan start to first candidate)</li>
+          <li>Association success rate by phone model and Android version</li>
+          <li>Distribution of callback outcomes (pending, created, failure)</li>
+          <li>Reconnect success after app restart and Bluetooth toggle</li>
+          <li>False-negative rate where device is visible in system settings but not in-app</li>
+        </ul>
+      </div>
+
+      <h2>Short FAQ</h2>
+      <p><strong>Why does discovery fail only for some users?</strong><br>
+      Bluetooth stack behavior can vary by OEM and Android version, so filter logic and callback sequencing must be tested on a broad device matrix.</p>
+
+      <p><strong>Is one successful association enough to prove reliability?</strong><br>
+      No. You also need repeatable reconnect and presence-detection behavior across app restarts and Bluetooth state changes.</p>
+
+      <p><strong>What is the highest-leverage first fix?</strong><br>
+      Implement callback-level logging and classify failures by phase before changing UI or scan timings.</p>
+
+      <section class="sources" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/companion-device-pairing" target="_blank" rel="noopener noreferrer">Android Developers: Companion device pairing (updated 2026-02-10 UTC)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2025-02-10 UTC)</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/apps/">Browse VelocAI apps</a>
+        <a href="/bluetoothexplorer/">Open Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
