@@ -75,32 +75,68 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         item_count=3,
     ),
     BriefSource(
-        slug="world",
-        eyebrow="Major International Event",
-        source_name="BBC World",
-        source_url="https://www.bbc.com/news/world",
-        feed_url="https://feeds.bbci.co.uk/news/world/rss.xml",
-        keywords=("attack", "war", "iran", "ukraine", "tariff", "election", "summit", "sanction", "ceasefire"),
-        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
-        item_count=2,
-    ),
-    BriefSource(
-        slug="wireless",
-        eyebrow="Wireless Standards Update",
-        source_name="GSMA Newsroom",
-        source_url="https://www.gsma.com/newsroom/",
-        feed_url="https://www.gsma.com/newsroom/feed/",
-        keywords=("5g", "6g", "api", "open gateway", "satellite", "network", "wireless", "spectrum", "regulatory", "connectivity"),
-        fallback_image="/assets/images/stock-2026-03/stock-07.jpg",
+        slug="semiconductor",
+        eyebrow="Semiconductor Breakthroughs",
+        source_name="Semiconductor Engineering",
+        source_url="https://semiengineering.com/",
+        feed_url="https://semiengineering.com/feed/",
+        keywords=(
+            "chip",
+            "semiconductor",
+            "yield",
+            "nanosheet",
+            "packaging",
+            "nand",
+            "memory",
+            "fab",
+            "transistor",
+            "radar",
+            "lithography",
+            "breakthrough",
+        ),
+        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
         item_count=3,
     ),
     BriefSource(
+        slug="ai",
+        eyebrow="AI Developments",
+        source_name="OpenAI News",
+        source_url="https://openai.com/news/",
+        feed_url="https://openai.com/news/rss.xml",
+        keywords=(
+            "ai",
+            "model",
+            "chatgpt",
+            "reasoning",
+            "multimodal",
+            "agent",
+            "coding",
+            "science",
+            "research",
+            "instruction",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        item_count=2,
+    ),
+    BriefSource(
         slug="bluetooth",
-        eyebrow="Bluetooth Innovation",
+        eyebrow="Bluetooth Standards & Uses",
         source_name="Bluetooth SIG",
         source_url="https://www.bluetooth.com/blog/",
         feed_url="https://www.bluetooth.com/blog/feed/",
-        keywords=("auracast", "industrial", "tracking", "monitoring", "predictive", "audio", "healthcare", "retail", "location", "asset"),
+        keywords=(
+            "bluetooth core",
+            "auracast",
+            "connection intervals",
+            "channel sounding",
+            "industrial",
+            "tracking",
+            "monitoring",
+            "audio",
+            "standard",
+            "innovation",
+            "application",
+        ),
         fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
         item_count=2,
     ),
@@ -330,6 +366,12 @@ def format_refresh_time(value: datetime) -> str:
     return f"{local.strftime('%B %d, %Y at %H:%M')} ({pretty_offset})"
 
 
+def is_same_local_day(value: datetime | None, target_day: date) -> bool:
+    if value is None:
+        return False
+    return value.astimezone().date() == target_day
+
+
 def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     seed = f"{source.slug}|{item.link}|{item.title}".encode("utf-8", errors="ignore")
     digest = hashlib.sha1(seed).hexdigest()
@@ -360,8 +402,15 @@ def render_column(entries: list[BriefEntry]) -> str:
 
 
 def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str:
-    left_column = entries[:5]
-    right_column = entries[5:10]
+    midpoint = (len(entries) + 1) // 2
+    left_column = entries[:midpoint]
+    right_column = entries[midpoint:]
+    empty_state = ""
+    if not entries:
+        empty_state = """
+      <div class="va-briefing-empty">
+        <p>Today's publisher-matched stories will appear here as soon as the tracked sources publish same-day updates.</p>
+      </div>"""
     return f"""
     <div class="va-briefing-head">
       <div class="va-briefing-title-wrap">
@@ -371,6 +420,7 @@ def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
     <div class="va-briefing-panel">
+{empty_state}
       <div class="va-briefing-grid">
         <div class="va-briefing-column">
 {render_column(left_column)}
@@ -453,13 +503,13 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
 
 
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
+    refreshed_at = datetime.now().astimezone()
+    target_day = refreshed_at.date()
     selected_entries: list[tuple[BriefSource, FeedItem]] = []
     for source in BRIEF_SOURCES:
         items = parse_feed_items(fetch_bytes(source.feed_url))
-        selected = select_items(items, source.keywords, source.item_count)
-        if not selected:
-            fallback = select_item(items, source.keywords)
-            selected = [fallback]
+        same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
+        selected = select_items(same_day_items, source.keywords, source.item_count)
         for item in selected:
             selected_entries.append((source, item))
 
@@ -472,7 +522,7 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
         BriefEntry(index=position, source=source, item=item)
         for position, (source, item) in enumerate(selected_entries[:10], start=1)
     ]
-    return entries[:10], datetime.now().astimezone()
+    return entries[:10], refreshed_at
 
 
 def run(args: argparse.Namespace) -> int:

@@ -631,6 +631,20 @@ ul {
   box-shadow: 0 34px 60px rgba(6, 7, 14, 0.38);
 }
 
+.va-briefing-empty {
+  margin-bottom: 18px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.va-briefing-empty p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
 .va-briefing-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
