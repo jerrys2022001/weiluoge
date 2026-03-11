@@ -72,6 +72,26 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://www.apple.com/newsroom/rss-feed.rss",
         keywords=("iphone", "ipad", "mac", "macbook", "airpods", "watch", "vision", "ios", "m5", "neo", "pro"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=2,
+    ),
+    BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
+        source_name="MacRumors",
+        source_url="https://www.macrumors.com/",
+        feed_url="https://www.macrumors.com/macrumors.xml",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "neo", "air", "pro", "studio display"),
+        fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=4,
+    ),
+    BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
+        source_name="AppleInsider",
+        source_url="https://appleinsider.com/",
+        feed_url="https://appleinsider.com/rss/news/",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "neo", "air", "pro", "vision"),
+        fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
         item_count=3,
     ),
     BriefSource(
@@ -116,6 +136,27 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "instruction",
         ),
         fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="ai",
+        eyebrow="AI Developments",
+        source_name="Tom's Hardware",
+        source_url="https://www.tomshardware.com/",
+        feed_url="https://www.tomshardware.com/feeds/all",
+        keywords=(
+            "ai",
+            "agent",
+            "llm",
+            "model",
+            "chatgpt",
+            "gemini",
+            "gpu",
+            "inference",
+            "training",
+            "reasoning",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
         item_count=2,
     ),
     BriefSource(
@@ -138,7 +179,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "application",
         ),
         fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
-        item_count=2,
+        item_count=1,
     ),
 )
 
@@ -304,7 +345,13 @@ def score_item(item: FeedItem, keywords: tuple[str, ...]) -> int:
     haystack = f"{item.title} {item.summary} {item.link}".lower()
     keyword_score = 0
     for keyword in keywords:
-        if keyword.lower() in haystack:
+        lowered = keyword.lower()
+        if re.search(r"[a-z0-9]", lowered) and " " not in lowered:
+            pattern = rf"(?<![a-z0-9]){re.escape(lowered)}(?![a-z0-9])"
+            matched = re.search(pattern, haystack) is not None
+        else:
+            matched = lowered in haystack
+        if matched:
             keyword_score += 1
 
     if ":" in item.title:
@@ -344,6 +391,8 @@ def select_items(items: list[FeedItem], keywords: tuple[str, ...], limit: int) -
     selected: list[FeedItem] = []
     seen_links: set[str] = set()
     for _, item in ranked:
+        if score_item(item, keywords) <= 0:
+            continue
         if item.link in seen_links:
             continue
         selected.append(item)
