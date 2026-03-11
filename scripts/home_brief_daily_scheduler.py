@@ -363,9 +363,11 @@ def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str
     left_column = entries[:5]
     right_column = entries[5:10]
     return f"""
-    <p class="va-briefing-section-label">Top Stories</p>
     <div class="va-briefing-head">
-      <h2 class="va-briefing-heading">Product <span class="is-accent">Pulse</span></h2>
+      <div class="va-briefing-title-wrap">
+        <p class="va-briefing-section-label">Top Stories</p>
+        <h2 class="va-briefing-heading">Product <span class="is-accent">Pulse</span></h2>
+      </div>
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
     <div class="va-briefing-panel">

@@ -564,7 +564,21 @@ ul {
 .va-briefing {
   margin-top: 58px;
   display: grid;
+  gap: 18px;
+}
+
+.va-briefing-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.va-briefing-title-wrap {
+  display: grid;
   gap: 16px;
+  max-width: 9ch;
 }
 
 .va-briefing-section-label {
@@ -574,14 +588,6 @@ ul {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #aeb5d7;
-}
-
-.va-briefing-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
-  padding-bottom: 12px;
 }
 
 .va-briefing-stamp {
@@ -603,10 +609,11 @@ ul {
 .va-briefing-heading {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(30px, 5vw, 58px);
-  line-height: 0.92;
+  font-size: clamp(44px, 7vw, 90px);
+  line-height: 0.9;
   letter-spacing: -0.04em;
   color: #ffffff;
+  text-wrap: balance;
 }
 
 .va-briefing-heading .is-accent {
@@ -915,8 +922,13 @@ ul {
   }
 
   .va-briefing-head {
+    grid-template-columns: 1fr;
     align-items: start;
-    flex-direction: column;
+    gap: 18px;
+  }
+
+  .va-briefing-title-wrap {
+    max-width: 10ch;
   }
 
   .va-briefing-panel {
@@ -968,6 +980,10 @@ ul {
   .va-brief-item {
     grid-template-columns: 34px minmax(0, 1fr) 88px;
     gap: 12px;
+  }
+
+  .va-briefing-heading {
+    font-size: clamp(38px, 11vw, 62px);
   }
 
   .va-brief-item h3 {
