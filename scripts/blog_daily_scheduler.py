@@ -512,6 +512,23 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       flex-wrap: wrap;
     }}
 
+    .brand {{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }}
+
+    .brand img {{
+      width: auto;
+      height: 36px;
+      max-width: 52px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 10px;
+      box-shadow: 0 0 16px rgba(29, 99, 199, 0.16);
+    }}
+
     nav {{
       display: flex;
       gap: 12px;
@@ -587,7 +604,10 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
 <body>
   <header>
     <div class=\"wrap top\">
-      <strong>VelocAI Blog</strong>
+      <a class=\"brand\" href=\"/\">
+        <img src=\"/2.png\" alt=\"VelocAI logo\" width=\"102\" height=\"73\">
+        <span>VelocAI Blog</span>
+      </a>
       <nav aria-label=\"Main\">
         <a href=\"/\">Home</a>
         <a href=\"/apps/\">Apps</a>
