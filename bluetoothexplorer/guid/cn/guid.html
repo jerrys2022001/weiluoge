@@ -1,10 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bluetooth Explorer 用户手册</title>
-  <meta name="description" content="Bluetooth Explorer 中文用户手册，覆盖 BLE 扫描、GATT 服务查看、数据包调试、日志分析与 AI 诊断流程。" />
+  <title>Bluetooth Explorer 鐢ㄦ埛鎵嬪唽</title>
+  <meta name="description" content="Bluetooth Explorer 涓枃鐢ㄦ埛鎵嬪唽锛岃鐩?BLE 鎵弿銆丟ATT 鏈嶅姟鏌ョ湅銆佹暟鎹寘璋冭瘯銆佹棩蹇楀垎鏋愪笌 AI 璇婃柇娴佺▼銆? />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://velocai.net/bluetoothexplorer/guid/cn/guid.html" />
   <link rel="icon" type="image/x-icon" href="/velocai.ico" />
@@ -13,13 +13,13 @@
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:site_name" content="VelocAI" />
-  <meta property="og:title" content="Bluetooth Explorer 用户手册" />
-  <meta property="og:description" content="逐步学习 Bluetooth Explorer 的 BLE 调试与 AI 诊断工作流。" />
+  <meta property="og:title" content="Bluetooth Explorer 鐢ㄦ埛鎵嬪唽" />
+  <meta property="og:description" content="閫愭瀛︿範 Bluetooth Explorer 鐨?BLE 璋冭瘯涓?AI 璇婃柇宸ヤ綔娴併€? />
   <meta property="og:url" content="https://velocai.net/bluetoothexplorer/guid/cn/guid.html" />
   <meta property="og:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bluetooth Explorer 用户手册" />
-  <meta name="twitter:description" content="BLE 扫描、GATT 查看、数据包调试、日志与 AI 诊断操作指南。" />
+  <meta name="twitter:title" content="Bluetooth Explorer 鐢ㄦ埛鎵嬪唽" />
+  <meta name="twitter:description" content="BLE 鎵弿銆丟ATT 鏌ョ湅銆佹暟鎹寘璋冭瘯銆佹棩蹇椾笌 AI 璇婃柇鎿嶄綔鎸囧崡銆? />
   <meta name="twitter:image" content="https://velocai.net/bluetoothexplorer/og-cover.jpg" />
   <style>
     :root {
@@ -372,237 +372,237 @@
   <div class="page">
     <header class="hero" id="top">
       <span class="tag">Bluetooth Explorer:AI Terminal</span>
-      <h1>用户手册</h1>
+      <h1>鐢ㄦ埛鎵嬪唽</h1>
       <p class="subtitle">
-        按截图顺序完成完整调试流程：扫描设备、查看服务、读写特征、分析日志、结合 AI 提示快速定位问题。
+        鎸夋埅鍥鹃『搴忓畬鎴愬畬鏁磋皟璇曟祦绋嬶細鎵弿璁惧銆佹煡鐪嬫湇鍔°€佽鍐欑壒寰併€佸垎鏋愭棩蹇椼€佺粨鍚?AI 鎻愮ず蹇€熷畾浣嶉棶棰樸€?
       </p>
       <div class="chips">
-        <span class="chip">9 步图文引导</span>
-        <span class="chip">开发调试 + 现场排障</span>
-        <a class="chip" href="/bluetoothexplorer/">产品落地页</a>
+        <span class="chip">9 姝ュ浘鏂囧紩瀵?/span>
+        <span class="chip">寮€鍙戣皟璇?+ 鐜板満鎺掗殰</span>
+        <a class="chip" href="/bluetoothexplorer/">浜у搧钀藉湴椤?/a>
       </div>
     </header>
 
     <div class="layout">
       <aside class="toc">
-        <h2>目录</h2>
+        <h2>鐩綍</h2>
         <nav>
-          <a href="#overview">手册说明</a>
-          <a href="#step-1">1. 扫描页</a>
-          <a href="#step-2">2. 设备信息页</a>
-          <a href="#step-3">3. 重命名与纠正类型</a>
-          <a href="#step-4">4. 特征调试页</a>
-          <a href="#step-5">5. 选择命令包</a>
-          <a href="#step-6">6. 导航查找</a>
-          <a href="#step-7">7. Packet 库</a>
-          <a href="#step-8">8. 日志页</a>
+          <a href="#overview">鎵嬪唽璇存槑</a>
+          <a href="#step-1">1. 鎵弿椤?/a>
+          <a href="#step-2">2. 璁惧淇℃伅椤?/a>
+          <a href="#step-3">3. 閲嶅懡鍚嶄笌绾犳绫诲瀷</a>
+          <a href="#step-4">4. 鐗瑰緛璋冭瘯椤?/a>
+          <a href="#step-5">5. 閫夋嫨鍛戒护鍖?/a>
+          <a href="#step-6">6. 瀵艰埅鏌ユ壘</a>
+          <a href="#step-7">7. Packet 搴?/a>
+          <a href="#step-8">8. 鏃ュ織椤?/a>
           <a href="#step-9">9. AI Insights</a>
-          <a href="#workflows">推荐使用方案</a>
+          <a href="#workflows">鎺ㄨ崘浣跨敤鏂规</a>
         </nav>
       </aside>
 
       <main class="content">
         <section class="section" id="overview">
-          <h2>如何阅读本手册</h2>
+          <h2>濡備綍闃呰鏈墜鍐?/h2>
           <p>
-            本手册与 App 操作顺序一致。你可以一边看截图、一边按步骤执行。若要最快完成调试，建议从第 1 步连续走到第 9 步。
+            鏈墜鍐屼笌 App 鎿嶄綔椤哄簭涓€鑷淬€備綘鍙互涓€杈圭湅鎴浘銆佷竴杈规寜姝ラ鎵ц銆傝嫢瑕佹渶蹇畬鎴愯皟璇曪紝寤鸿浠庣 1 姝ヨ繛缁蛋鍒扮 9 姝ャ€?
           </p>
         </section>
 
         <article class="step" id="step-1">
-          <div class="figure"><img src="../1.jpg" alt="扫描页面" /></div>
+          <div class="figure"><img src="../1.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="鎵弿椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">1</span><h3>Scanner 首页：发现目标设备</h3></div>
-            <p>从 Scanner Tab 开始，快速发现周围蓝牙设备并锁定目标。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">1</span><h3>Scanner 棣栭〉锛氬彂鐜扮洰鏍囪澶?/h3></div>
+            <p>浠?Scanner Tab 寮€濮嬶紝蹇€熷彂鐜板懆鍥磋摑鐗欒澶囧苟閿佸畾鐩爣銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>扫描控制（停止 / 普通 / 快速）、搜索框、筛选标签。</li>
-              <li>设备卡片展示名称、厂商、电量、在线状态。</li>
-              <li>每个设备卡片支持一键 Connect。</li>
+              <li>鎵弿鎺у埗锛堝仠姝?/ 鏅€?/ 蹇€燂級銆佹悳绱㈡銆佺瓫閫夋爣绛俱€?/li>
+              <li>璁惧鍗＄墖灞曠ず鍚嶇О銆佸巶鍟嗐€佺數閲忋€佸湪绾跨姸鎬併€?/li>
+              <li>姣忎釜璁惧鍗＄墖鏀寔涓€閿?Connect銆?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>先用快速扫描找设备，再切普通扫描降低噪声。</li>
-              <li>设备较多时用 Named/Favorites 快速收敛列表。</li>
-              <li>点击目标设备 Connect 进入后续信息与调试流程。</li>
+              <li>鍏堢敤蹇€熸壂鎻忔壘璁惧锛屽啀鍒囨櫘閫氭壂鎻忛檷浣庡櫔澹般€?/li>
+              <li>璁惧杈冨鏃剁敤 Named/Favorites 蹇€熸敹鏁涘垪琛ㄣ€?/li>
+              <li>鐐瑰嚮鐩爣璁惧 Connect 杩涘叆鍚庣画淇℃伅涓庤皟璇曟祦绋嬨€?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-2">
-          <div class="figure"><img src="../2.jpg" alt="信息页面" /></div>
+          <div class="figure"><img src="../2.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="淇℃伅椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">2</span><h3>Information 页：状态总览与服务树</h3></div>
-            <p>连接后进入信息页，查看连接状态、服务数量，并进入特征级调试。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">2</span><h3>Information 椤碉細鐘舵€佹€昏涓庢湇鍔℃爲</h3></div>
+            <p>杩炴帴鍚庤繘鍏ヤ俊鎭〉锛屾煡鐪嬭繛鎺ョ姸鎬併€佹湇鍔℃暟閲忥紝骞惰繘鍏ョ壒寰佺骇璋冭瘯銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>信号强度、连接状态、服务数等关键指标。</li>
-              <li>Export / Broadcast / Navigation 快捷入口。</li>
-              <li>AI Diagnostics 一键入口，快速获取诊断建议。</li>
+              <li>淇″彿寮哄害銆佽繛鎺ョ姸鎬併€佹湇鍔℃暟绛夊叧閿寚鏍囥€?/li>
+              <li>Export / Broadcast / Navigation 蹇嵎鍏ュ彛銆?/li>
+              <li>AI Diagnostics 涓€閿叆鍙ｏ紝蹇€熻幏鍙栬瘖鏂缓璁€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>先确认连接稳定，再进入特征读写。</li>
-              <li>点击服务或特征进入读写调试页面。</li>
-              <li>需要看广播原始字段时，从 Broadcast 入口查看。</li>
+              <li>鍏堢‘璁よ繛鎺ョǔ瀹氾紝鍐嶈繘鍏ョ壒寰佽鍐欍€?/li>
+              <li>鐐瑰嚮鏈嶅姟鎴栫壒寰佽繘鍏ヨ鍐欒皟璇曢〉闈€?/li>
+              <li>闇€瑕佺湅骞挎挱鍘熷瀛楁鏃讹紝浠?Broadcast 鍏ュ彛鏌ョ湅銆?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-3">
-          <div class="figure"><img src="../3.jpg" alt="编辑设备名弹窗" /></div>
+          <div class="figure"><img src="../3.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="缂栬緫璁惧鍚嶅脊绐? /></div>
           <div>
-            <div class="step-head"><span class="step-index">3</span><h3>设备重命名与类型纠正</h3></div>
-            <p>为设备设置可读别名，便于团队协作和日志复盘。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">3</span><h3>璁惧閲嶅懡鍚嶄笌绫诲瀷绾犳</h3></div>
+            <p>涓鸿澶囪缃彲璇诲埆鍚嶏紝渚夸簬鍥㈤槦鍗忎綔鍜屾棩蹇楀鐩樸€?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>设备名编辑弹窗，支持恢复原名、保存、取消。</li>
-              <li>键盘输入可快速完成现场设备标注。</li>
+              <li>璁惧鍚嶇紪杈戝脊绐楋紝鏀寔鎭㈠鍘熷悕銆佷繚瀛樸€佸彇娑堛€?/li>
+              <li>閿洏杈撳叆鍙揩閫熷畬鎴愮幇鍦鸿澶囨爣娉ㄣ€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>建议命名：产线-机位-设备号（如 LineA-Node03）。</li>
-              <li>设备识别异常时可恢复原名重新校准。</li>
-              <li>保存后再导出日志，便于多人协作定位问题。</li>
+              <li>寤鸿鍛藉悕锛氫骇绾?鏈轰綅-璁惧鍙凤紙濡?LineA-Node03锛夈€?/li>
+              <li>璁惧璇嗗埆寮傚父鏃跺彲鎭㈠鍘熷悕閲嶆柊鏍″噯銆?/li>
+              <li>淇濆瓨鍚庡啀瀵煎嚭鏃ュ織锛屼究浜庡浜哄崗浣滃畾浣嶉棶棰樸€?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-4">
-          <div class="figure"><img src="../4.jpg" alt="特征调试页面" /></div>
+          <div class="figure"><img src="../4.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="鐗瑰緛璋冭瘯椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">4</span><h3>Characteristic 调试控制台</h3></div>
-            <p>这是核心调试页面：支持多编码模式发送、接收与回写结果验证。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">4</span><h3>Characteristic 璋冭瘯鎺у埗鍙?/h3></div>
+            <p>杩欐槸鏍稿績璋冭瘯椤甸潰锛氭敮鎸佸缂栫爜妯″紡鍙戦€併€佹帴鏀朵笌鍥炲啓缁撴灉楠岃瘉銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>发送模式：Hex / Text / Bin / DEC。</li>
-              <li>发送输入框 + 输出区域（ACK、写入校验反馈）。</li>
-              <li>Select Packet 与 Send 快捷操作，提升调试效率。</li>
+              <li>鍙戦€佹ā寮忥細Hex / Text / Bin / DEC銆?/li>
+              <li>鍙戦€佽緭鍏ユ + 杈撳嚭鍖哄煙锛圓CK銆佸啓鍏ユ牎楠屽弽棣堬級銆?/li>
+              <li>Select Packet 涓?Send 蹇嵎鎿嶄綔锛屾彁鍗囪皟璇曟晥鐜囥€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>先发一条安全命令确认链路可用，再进行复杂写入。</li>
-              <li>按固件协议选择编码方式，避免解析错误。</li>
-              <li>通过输出区确认写入是否成功及设备返回内容。</li>
+              <li>鍏堝彂涓€鏉″畨鍏ㄥ懡浠ょ‘璁ら摼璺彲鐢紝鍐嶈繘琛屽鏉傚啓鍏ャ€?/li>
+              <li>鎸夊浐浠跺崗璁€夋嫨缂栫爜鏂瑰紡锛岄伩鍏嶈В鏋愰敊璇€?/li>
+              <li>閫氳繃杈撳嚭鍖虹‘璁ゅ啓鍏ユ槸鍚︽垚鍔熷強璁惧杩斿洖鍐呭銆?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-5">
-          <div class="figure"><img src="../5.jpg" alt="选择命令包" /></div>
+          <div class="figure"><img src="../5.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="閫夋嫨鍛戒护鍖? /></div>
           <div>
-            <div class="step-head"><span class="step-index">5</span><h3>Select Packet：复用调试命令</h3></div>
-            <p>通过命令包复用机制，避免重复输入，提升回归测试一致性。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">5</span><h3>Select Packet锛氬鐢ㄨ皟璇曞懡浠?/h3></div>
+            <p>閫氳繃鍛戒护鍖呭鐢ㄦ満鍒讹紝閬垮厤閲嶅杈撳叆锛屾彁鍗囧洖褰掓祴璇曚竴鑷存€с€?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>底部弹层展示已保存命令包（名称、内容、模式）。</li>
-              <li>支持新增命令包，形成团队共享的调试模板。</li>
+              <li>搴曢儴寮瑰眰灞曠ず宸蹭繚瀛樺懡浠ゅ寘锛堝悕绉般€佸唴瀹广€佹ā寮忥級銆?/li>
+              <li>鏀寔鏂板鍛戒护鍖咃紝褰㈡垚鍥㈤槦鍏变韩鐨勮皟璇曟ā鏉裤€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>按用途维护命令包：握手、版本查询、状态查询等。</li>
-              <li>命名建议简短清晰，便于现场快速选择。</li>
-              <li>结合日志导出，形成稳定回归测试证据链。</li>
+              <li>鎸夌敤閫旂淮鎶ゅ懡浠ゅ寘锛氭彙鎵嬨€佺増鏈煡璇€佺姸鎬佹煡璇㈢瓑銆?/li>
+              <li>鍛藉悕寤鸿绠€鐭竻鏅帮紝渚夸簬鐜板満蹇€熼€夋嫨銆?/li>
+              <li>缁撳悎鏃ュ織瀵煎嚭锛屽舰鎴愮ǔ瀹氬洖褰掓祴璇曡瘉鎹摼銆?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-6">
-          <div class="figure"><img src="../6.jpg" alt="导航查找页面" /></div>
+          <div class="figure"><img src="../6.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="瀵艰埅鏌ユ壘椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">6</span><h3>Navigation：设备查找与靠近</h3></div>
-            <p>当你需要在现实环境中定位设备时，可使用导航查找功能辅助靠近目标。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">6</span><h3>Navigation锛氳澶囨煡鎵句笌闈犺繎</h3></div>
+            <p>褰撲綘闇€瑕佸湪鐜板疄鐜涓畾浣嶈澶囨椂锛屽彲浣跨敤瀵艰埅鏌ユ壘鍔熻兘杈呭姪闈犺繎鐩爣銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>地图与目标点位展示，附带实时进度环。</li>
-              <li>距离、在线状态、更新时间等信息面板。</li>
+              <li>鍦板浘涓庣洰鏍囩偣浣嶅睍绀猴紝闄勫甫瀹炴椂杩涘害鐜€?/li>
+              <li>璺濈銆佸湪绾跨姸鎬併€佹洿鏂版椂闂寸瓑淇℃伅闈㈡澘銆?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>缓慢移动并观察信号变化趋势判断方向。</li>
-              <li>信号变弱时调整角度再靠近，避免金属遮挡干扰。</li>
-              <li>确认设备位置后点击 Found 完成本次查找。</li>
+              <li>缂撴參绉诲姩骞惰瀵熶俊鍙峰彉鍖栬秼鍔垮垽鏂柟鍚戙€?/li>
+              <li>淇″彿鍙樺急鏃惰皟鏁磋搴﹀啀闈犺繎锛岄伩鍏嶉噾灞為伄鎸″共鎵般€?/li>
+              <li>纭璁惧浣嶇疆鍚庣偣鍑?Found 瀹屾垚鏈鏌ユ壘銆?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-7">
-          <div class="figure"><img src="../7.jpg" alt="Packet 库页面" /></div>
+          <div class="figure"><img src="../7.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="Packet 搴撻〉闈? /></div>
           <div>
-            <div class="step-head"><span class="step-index">7</span><h3>Packet 页面：命令库管理</h3></div>
-            <p>在 Packet Tab 统一维护调试命令，提高多人协同与版本迭代效率。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">7</span><h3>Packet 椤甸潰锛氬懡浠ゅ簱绠＄悊</h3></div>
+            <p>鍦?Packet Tab 缁熶竴缁存姢璋冭瘯鍛戒护锛屾彁楂樺浜哄崗鍚屼笌鐗堟湰杩唬鏁堢巼銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>命令包列表展示名称、内容、模式。</li>
-              <li>右上角 + 支持快速新增命令包。</li>
+              <li>鍛戒护鍖呭垪琛ㄥ睍绀哄悕绉般€佸唴瀹广€佹ā寮忋€?/li>
+              <li>鍙充笂瑙?+ 鏀寔蹇€熸柊澧炲懡浠ゅ寘銆?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>每个固件版本维护对应命令包集合。</li>
-              <li>协议更新后及时清理旧命令，防止误发。</li>
-              <li>测试团队统一命令命名规范，减少沟通成本。</li>
+              <li>姣忎釜鍥轰欢鐗堟湰缁存姢瀵瑰簲鍛戒护鍖呴泦鍚堛€?/li>
+              <li>鍗忚鏇存柊鍚庡強鏃舵竻鐞嗘棫鍛戒护锛岄槻姝㈣鍙戙€?/li>
+              <li>娴嬭瘯鍥㈤槦缁熶竴鍛戒护鍛藉悕瑙勮寖锛屽噺灏戞矡閫氭垚鏈€?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-8">
-          <div class="figure"><img src="../8.jpg" alt="日志页面" /></div>
+          <div class="figure"><img src="../8.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="鏃ュ織椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">8</span><h3>Log 页面：全链路事件时间线</h3></div>
-            <p>日志页按时间记录扫描、连接、收发数据等关键行为，是排障核心依据。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">8</span><h3>Log 椤甸潰锛氬叏閾捐矾浜嬩欢鏃堕棿绾?/h3></div>
+            <p>鏃ュ織椤垫寜鏃堕棿璁板綍鎵弿銆佽繛鎺ャ€佹敹鍙戞暟鎹瓑鍏抽敭琛屼负锛屾槸鎺掗殰鏍稿績渚濇嵁銆?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>带时间戳和级别标签的日志流（INFO/CONN 等）。</li>
-              <li>Clear、Export、模式切换等实用操作。</li>
-              <li>底部 AI Insights 入口，一键生成诊断建议。</li>
+              <li>甯︽椂闂存埑鍜岀骇鍒爣绛剧殑鏃ュ織娴侊紙INFO/CONN 绛夛級銆?/li>
+              <li>Clear銆丒xport銆佹ā寮忓垏鎹㈢瓑瀹炵敤鎿嶄綔銆?/li>
+              <li>搴曢儴 AI Insights 鍏ュ彛锛屼竴閿敓鎴愯瘖鏂缓璁€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>问题复现后第一时间导出日志，保留上下文。</li>
-              <li>新测试前先 Clear，减少历史噪声干扰。</li>
-              <li>结合命令包名称快速定位关键事件片段。</li>
+              <li>闂澶嶇幇鍚庣涓€鏃堕棿瀵煎嚭鏃ュ織锛屼繚鐣欎笂涓嬫枃銆?/li>
+              <li>鏂版祴璇曞墠鍏?Clear锛屽噺灏戝巻鍙插櫔澹板共鎵般€?/li>
+              <li>缁撳悎鍛戒护鍖呭悕绉板揩閫熷畾浣嶅叧閿簨浠剁墖娈点€?/li>
             </ul>
           </div>
         </article>
 
         <article class="step" id="step-9">
-          <div class="figure"><img src="../9.jpg" alt="AI Insights 页面" /></div>
+          <div class="figure"><img src="../9.jpg" width="960" height="2086" loading="lazy" decoding="async" alt="AI Insights 椤甸潰" /></div>
           <div>
-            <div class="step-head"><span class="step-index">9</span><h3>AI Insights：智能诊断建议</h3></div>
-            <p>AI 将日志与设备上下文转换为可执行建议，帮助更快定位协议和配对问题。</p>
-            <div class="block-title">界面功能</div>
+            <div class="step-head"><span class="step-index">9</span><h3>AI Insights锛氭櫤鑳借瘖鏂缓璁?/h3></div>
+            <p>AI 灏嗘棩蹇椾笌璁惧涓婁笅鏂囪浆鎹负鍙墽琛屽缓璁紝甯姪鏇村揩瀹氫綅鍗忚鍜岄厤瀵归棶棰樸€?/p>
+            <div class="block-title">鐣岄潰鍔熻兘</div>
             <ul>
-              <li>设备信息、日志条数、协议提示卡片。</li>
-              <li>置信度分值，便于判断建议优先级。</li>
+              <li>璁惧淇℃伅銆佹棩蹇楁潯鏁般€佸崗璁彁绀哄崱鐗囥€?/li>
+              <li>缃俊搴﹀垎鍊硷紝渚夸簬鍒ゆ柇寤鸿浼樺厛绾с€?/li>
             </ul>
-            <div class="block-title">使用方案</div>
+            <div class="block-title">浣跨敤鏂规</div>
             <ul>
-              <li>至少完成一次连接+读写后再看 AI 结果更准确。</li>
-              <li>先按 AI 建议调整，再回到调试页复测验证。</li>
-              <li>AI 结论建议与原始日志交叉确认，形成闭环。</li>
+              <li>鑷冲皯瀹屾垚涓€娆¤繛鎺?璇诲啓鍚庡啀鐪?AI 缁撴灉鏇村噯纭€?/li>
+              <li>鍏堟寜 AI 寤鸿璋冩暣锛屽啀鍥炲埌璋冭瘯椤靛娴嬮獙璇併€?/li>
+              <li>AI 缁撹寤鸿涓庡師濮嬫棩蹇椾氦鍙夌‘璁わ紝褰㈡垚闂幆銆?/li>
             </ul>
           </div>
         </article>
 
         <section class="section" id="workflows">
-          <h2>推荐使用方案</h2>
-          <p>根据目标选择最短路径，提升调试效率。</p>
+          <h2>鎺ㄨ崘浣跨敤鏂规</h2>
+          <p>鏍规嵁鐩爣閫夋嫨鏈€鐭矾寰勶紝鎻愬崌璋冭瘯鏁堢巼銆?/p>
           <div class="workflow">
             <div class="flow-card">
-              <h3>快速联调流程</h3>
-              <p>1 → 2 → 4 → 8 → 9<br />扫描、连接、读写验证、日志导出、AI 诊断闭环。</p>
+              <h3>蹇€熻仈璋冩祦绋?/h3>
+              <p>1 鈫?2 鈫?4 鈫?8 鈫?9<br />鎵弿銆佽繛鎺ャ€佽鍐欓獙璇併€佹棩蹇楀鍑恒€丄I 璇婃柇闂幆銆?/p>
             </div>
             <div class="flow-card">
-              <h3>现场找设备流程</h3>
-              <p>1 → 2 → 6<br />先确认目标身份，再通过导航能力完成物理定位。</p>
+              <h3>鐜板満鎵捐澶囨祦绋?/h3>
+              <p>1 鈫?2 鈫?6<br />鍏堢‘璁ょ洰鏍囪韩浠斤紝鍐嶉€氳繃瀵艰埅鑳藉姏瀹屾垚鐗╃悊瀹氫綅銆?/p>
             </div>
             <div class="flow-card">
-              <h3>回归测试流程</h3>
-              <p>7 → 5 → 4 → 8<br />加载命令包批量测试，导出日志用于版本对比。</p>
+              <h3>鍥炲綊娴嬭瘯娴佺▼</h3>
+              <p>7 鈫?5 鈫?4 鈫?8<br />鍔犺浇鍛戒护鍖呮壒閲忔祴璇曪紝瀵煎嚭鏃ュ織鐢ㄤ簬鐗堟湰瀵规瘮銆?/p>
             </div>
           </div>
           <div class="footer-note">
-            建议：在复杂射频环境进行协议验证时，尽量只保留一个目标设备处于活跃状态，减少广播与连接干扰。
+            寤鸿锛氬湪澶嶆潅灏勯鐜杩涜鍗忚楠岃瘉鏃讹紝灏介噺鍙繚鐣欎竴涓洰鏍囪澶囧浜庢椿璺冪姸鎬侊紝鍑忓皯骞挎挱涓庤繛鎺ュ共鎵般€?
           </div>
         </section>
       </main>
@@ -610,3 +610,4 @@
   </div>
 </body>
 </html>
+
