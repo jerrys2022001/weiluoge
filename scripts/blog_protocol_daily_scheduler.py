@@ -25,25 +25,30 @@ from blog_daily_scheduler import (
 )
 
 CORE_KEYWORDS = [
-    "bluetooth protocol explained",
+    "bluetooth protocol stack explained",
     "bluetooth protocol stack",
+    "ble protocol stack explained",
     "ble protocol analysis",
-    "bluetooth feature applications",
-    "gatt services and characteristics",
-    "bluetooth seo geo content",
+    "bluetooth protocol applications",
+    "bluetooth gatt explained",
+    "bluetooth services and characteristics",
 ]
 
 LONG_TAIL_KEYWORDS = [
+    "what is bluetooth protocol stack",
+    "bluetooth protocol stack layers explained",
     "bluetooth advertising packet explained",
     "gatt vs att bluetooth explained",
+    "what is bluetooth gatt",
+    "bluetooth services and characteristics explained",
     "bluetooth pairing bonding difference",
     "bluetooth protocol debugging checklist",
-    "bluetooth mesh lighting guide",
-    "bluetooth le audio application guide",
     "connection interval mtu throughput bluetooth",
     "bluetooth service uuid characteristic meaning",
     "bluetooth low power application scenarios",
     "bluetooth data flow advertising to gatt",
+    "bluetooth mesh lighting guide",
+    "bluetooth le audio application guide",
 ]
 
 
@@ -62,9 +67,9 @@ class ProtocolAngle:
 ANGLES: list[ProtocolAngle] = [
     ProtocolAngle(
         slug_prefix="bluetooth-protocol-stack-explained-applications",
-        title="Bluetooth Protocol Stack Explained: What Each Layer Does and Where It Delivers Value",
-        description="A practical breakdown of the Bluetooth protocol stack with real product applications across audio, wearables, smart homes, and industrial devices.",
-        teaser="A field-ready explanation of the Bluetooth stack and how its layers map to real-world features.",
+        title="Bluetooth Protocol Stack Explained: BLE Layers, GATT, ATT, and Real-World Applications",
+        description="A 2026 Bluetooth protocol stack guide covering BLE layers, advertising, ATT, GATT, pairing, and real-world applications in audio, wearables, smart homes, and IoT devices.",
+        teaser="A keyword-focused BLE stack guide covering advertising, ATT, GATT, pairing, and real device behavior.",
         topic="Bluetooth Protocol Stack",
         protocol_focus="Most teams remember protocol names but not the product effect of each layer. Advertising drives discovery, ATT and GATT shape data exchange, and connection settings decide whether the device feels fast or battery-efficient.",
         application_focus="When teams understand which layer controls discovery, security, data modeling, or transport efficiency, feature planning gets faster and support teams can isolate failures without guessing.",
@@ -72,9 +77,9 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-gatt-services-characteristics-guide",
-        title="Bluetooth GATT Services and Characteristics Guide: How Data Models Power Real Features",
-        description="Learn how Bluetooth GATT services and characteristics translate protocol design into real functions for health devices, accessories, smart homes, and diagnostics.",
-        teaser="A practical guide to how GATT structures become usable product features.",
+        title="Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications",
+        description="A practical Bluetooth GATT guide covering services, characteristics, UUIDs, notifications, BLE data flow, and real-world applications across connected devices.",
+        teaser="A practical Bluetooth GATT guide covering services, characteristics, UUIDs, and BLE application design.",
         topic="GATT Services and Characteristics",
         protocol_focus="Every reliable sensor reading, battery report, or control point depends on clean GATT design. A readable data model reduces integration cost across apps, gateways, and test tools.",
         application_focus="Developers integrate faster when services are predictable, notifications are stable, and UUID usage is documented. That directly affects how quickly devices enter real workflows.",
