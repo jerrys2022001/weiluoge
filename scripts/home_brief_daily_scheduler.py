@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import re
 import sys
 import urllib.request
@@ -109,6 +110,18 @@ MEDIA_NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
 }
+FALLBACK_IMAGES = (
+    "/assets/images/stock-2026-03/stock-01.jpg",
+    "/assets/images/stock-2026-03/stock-03.jpg",
+    "/assets/images/stock-2026-03/stock-05.jpg",
+    "/assets/images/stock-2026-03/stock-07.jpg",
+    "/assets/images/stock-2026-03/stock-08.jpg",
+    "/assets/images/stock-2026-03/stock-09.jpg",
+    "/assets/images/stock-2026-03/stock-10.jpg",
+    "/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
+    "/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
+    "/assets/images/stock-2026-03-extra20/stock-extra-18.jpg",
+)
 
 
 @dataclass(frozen=True)
@@ -170,11 +183,13 @@ def extract_image_url(node: ET.Element) -> str:
     if media_content is not None and media_content.attrib.get("url"):
         return media_content.attrib["url"].strip()
 
-    for child in node.findall("link"):
+    for child in list(node):
+        if not child.tag.endswith("link"):
+            continue
         rel = (child.attrib.get("rel") or "").strip().lower()
         href = (child.attrib.get("href") or "").strip()
         media_type = (child.attrib.get("type") or "").strip().lower()
-        if href and rel == "enclosure" and media_type.startswith("image/"):
+        if href and rel == "enclosure" and (not media_type or media_type.startswith("image/")):
             return href
 
     enclosure = node.find("enclosure")
@@ -267,7 +282,14 @@ def score_item(item: FeedItem, keywords: tuple[str, ...]) -> int:
 def select_item(items: list[FeedItem], keywords: tuple[str, ...]) -> FeedItem:
     if not items:
         raise ValueError("Feed returned no usable items.")
-    ranked = max(enumerate(items), key=lambda pair: (score_item(pair[1], keywords), -pair[0]))
+    ranked = max(
+        enumerate(items),
+        key=lambda pair: (
+            pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+            score_item(pair[1], keywords),
+            -pair[0],
+        ),
+    )
     return ranked[1]
 
 
@@ -277,8 +299,8 @@ def select_items(items: list[FeedItem], keywords: tuple[str, ...], limit: int) -
     ranked = sorted(
         enumerate(items),
         key=lambda pair: (
-            score_item(pair[1], keywords),
             pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+            score_item(pair[1], keywords),
             -pair[0],
         ),
         reverse=True,
@@ -308,10 +330,17 @@ def format_refresh_time(value: datetime) -> str:
     return f"{local.strftime('%B %d, %Y at %H:%M')} ({pretty_offset})"
 
 
+def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
+    seed = f"{source.slug}|{item.link}|{item.title}".encode("utf-8", errors="ignore")
+    digest = hashlib.sha1(seed).hexdigest()
+    index = int(digest[:8], 16) % len(FALLBACK_IMAGES)
+    return FALLBACK_IMAGES[index]
+
+
 def render_entry(entry: BriefEntry) -> str:
     source = entry.source
     item = entry.item
-    image_url = item.image_url or source.fallback_image
+    image_url = item.image_url or pick_fallback_image(item, source)
     image_alt = f"{item.title} thumbnail"
     return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
         <div class="va-brief-index" aria-hidden="true">{entry.index}</div>
@@ -334,18 +363,19 @@ def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str
     left_column = entries[:5]
     right_column = entries[5:10]
     return f"""
+    <p class="va-briefing-section-label">Top Stories</p>
     <div class="va-briefing-head">
-      <div class="va-briefing-title-wrap">
-        <h2 class="va-briefing-heading"><span class="is-apple">苹果</span><span class="is-dot">·</span><span class="is-world">国际</span><span class="is-dot">·</span><span class="is-wireless">通信</span><span class="is-dot">·</span><span class="is-bluetooth">蓝牙</span></h2>
-      </div>
+      <h2 class="va-briefing-heading">Product <span class="is-accent">Pulse</span></h2>
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
-    <div class="va-briefing-grid">
-      <div class="va-briefing-column">
+    <div class="va-briefing-panel">
+      <div class="va-briefing-grid">
+        <div class="va-briefing-column">
 {render_column(left_column)}
-      </div>
-      <div class="va-briefing-column">
+        </div>
+        <div class="va-briefing-column">
 {render_column(right_column)}
+        </div>
       </div>
     </div>
 """
@@ -421,8 +451,7 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
 
 
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
-    entries: list[BriefEntry] = []
-    next_index = 1
+    selected_entries: list[tuple[BriefSource, FeedItem]] = []
     for source in BRIEF_SOURCES:
         items = parse_feed_items(fetch_bytes(source.feed_url))
         selected = select_items(items, source.keywords, source.item_count)
@@ -430,8 +459,17 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
             fallback = select_item(items, source.keywords)
             selected = [fallback]
         for item in selected:
-            entries.append(BriefEntry(index=next_index, source=source, item=item))
-            next_index += 1
+            selected_entries.append((source, item))
+
+    selected_entries.sort(
+        key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+        reverse=True,
+    )
+
+    entries = [
+        BriefEntry(index=position, source=source, item=item)
+        for position, (source, item) in enumerate(selected_entries[:10], start=1)
+    ]
     return entries[:10], datetime.now().astimezone()
 
 

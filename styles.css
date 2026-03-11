@@ -564,15 +564,16 @@ ul {
 .va-briefing {
   margin-top: 58px;
   display: grid;
-  gap: 20px;
-  padding: clamp(24px, 4vw, 36px);
-  border-radius: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background:
-    radial-gradient(540px 240px at 100% -10%, rgba(37, 144, 241, 0.16), transparent 64%),
-    radial-gradient(460px 220px at 0% 0%, rgba(248, 102, 219, 0.14), transparent 62%),
-    linear-gradient(180deg, rgba(13, 14, 26, 0.96), rgba(10, 11, 19, 0.98));
-  box-shadow: 0 34px 60px rgba(6, 7, 14, 0.38);
+  gap: 16px;
+}
+
+.va-briefing-section-label {
+  margin: 0;
+  font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #aeb5d7;
 }
 
 .va-briefing-head {
@@ -599,38 +600,28 @@ ul {
   white-space: nowrap;
 }
 
-.va-briefing-title-wrap {
-  display: grid;
-  gap: 0;
-}
-
 .va-briefing-heading {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(28px, 4.6vw, 52px);
-  line-height: 0.96;
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 0.92;
   letter-spacing: -0.04em;
   color: #ffffff;
 }
 
-.va-briefing-heading .is-dot {
-  color: rgba(235, 240, 255, 0.48);
+.va-briefing-heading .is-accent {
+  color: #4afce2;
 }
 
-.va-briefing-heading .is-apple {
-  color: var(--yellow);
-}
-
-.va-briefing-heading .is-world {
-  color: #66f0dc;
-}
-
-.va-briefing-heading .is-wireless {
-  color: #72baff;
-}
-
-.va-briefing-heading .is-bluetooth {
-  color: #ff8ae5;
+.va-briefing-panel {
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(540px 240px at 100% -10%, rgba(37, 144, 241, 0.16), transparent 64%),
+    radial-gradient(460px 220px at 0% 0%, rgba(248, 102, 219, 0.14), transparent 62%),
+    linear-gradient(180deg, rgba(13, 14, 26, 0.96), rgba(10, 11, 19, 0.98));
+  box-shadow: 0 34px 60px rgba(6, 7, 14, 0.38);
 }
 
 .va-briefing-grid {
@@ -928,6 +919,10 @@ ul {
     flex-direction: column;
   }
 
+  .va-briefing-panel {
+    padding: 22px 18px;
+  }
+
   .va-briefing-stamp {
     white-space: normal;
   }
@@ -968,10 +963,6 @@ ul {
   .va-hero-subtitle,
   .va-gallery-head p {
     font-size: 16px;
-  }
-
-  .va-briefing {
-    padding: 22px 18px;
   }
 
   .va-brief-item {
