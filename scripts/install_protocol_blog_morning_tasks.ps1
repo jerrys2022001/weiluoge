@@ -2,8 +2,8 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "09:30",
-  [string]$WindowEnd = "10:00",
+  [string]$WindowStart = "09:10",
+  [string]$WindowEnd = "09:20",
   [int]$PostsPerDay = 2,
   [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning",
   [bool]$ReplaceExisting = $true

@@ -1,5 +1,17 @@
 # weiluoge
 
+## Content Standard
+
+All future website content in this repo should be optimized for both SEO and GEO by default.
+That applies to landing pages, blog posts, metadata, FAQ sections, schema, internal links, and index/sitemap updates.
+
+Minimum content rule:
+- define a clear primary search intent for each page
+- use high-intent keywords naturally in the title, H1, meta description, and major headings
+- keep the opening section concise and directly answer the likely query
+- include scannable sections and FAQ-style answers when useful for AI retrieval
+- preserve or add internal links, canonical metadata, structured data, and sitemap/index updates when relevant
+
 ## X API Auto Posting
 
 1. Create an app in X Developer Portal and set permission to `Read and write`.
@@ -87,18 +99,37 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
-## Storage Cleanup + System Impact Blog (09:15, 1/day)
+## Storage Cleanup + System Impact Blog (09:00, 1/day)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 09:15`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 09:00`
 
-## Bluetooth Protocol Blog (09:30~10:00, 2/day)
+## Homepage Daily Briefing (08:30)
+
+This task refreshes the home page "Today's Briefing" section with four product-relevant sources:
+- Apple Newsroom
+- BBC World
+- GSMA Newsroom
+- Bluetooth SIG Blog
+
+It also updates the homepage `lastmod` entry in `sitemap.xml` for SEO/GEO freshness.
+
+Run once manually:
+`py -3 scripts/home_brief_daily_scheduler.py run`
+
+Dry run:
+`py -3 scripts/home_brief_daily_scheduler.py run --dry-run`
+
+Install the daily Windows task at `08:30`:
+`powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
+
+## Bluetooth Protocol Blog (09:10~09:20, 2/day)
 
 This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
-It installs 2 scheduled tasks (default: 09:30 and 09:45) and uses `--angle-offset` to avoid duplicates.
+It installs 2 scheduled tasks (default: 09:10 and 09:15) and uses `--angle-offset` to avoid duplicates.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 09:30 -WindowEnd 10:00 -PostsPerDay 2`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 09:10 -WindowEnd 09:20 -PostsPerDay 2`
 
 ## Google Index Request Task (10:30)
 

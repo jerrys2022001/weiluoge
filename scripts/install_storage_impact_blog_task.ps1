@@ -2,8 +2,8 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$PublishAt = "09:15",
-  [string]$TaskName = "WeiLuoGe-Storage-Impact-Blog-Daily-09-15"
+  [string]$PublishAt = "09:00",
+  [string]$TaskName = "WeiLuoGe-Storage-Impact-Blog-Daily-09-00"
 )
 
 Set-StrictMode -Version Latest
@@ -17,6 +17,12 @@ if (-not (Test-Path $ScriptPath)) {
 $PythonCommand = (Get-Command $PythonExe -ErrorAction Stop).Source
 if (-not $PythonCommand) {
   throw "Cannot resolve Python command: $PythonExe"
+}
+
+# Remove the old default task name so the machine only keeps one active storage-impact schedule.
+$legacyTaskName = "WeiLuoGe-Storage-Impact-Blog-Daily-09-15"
+if ($TaskName -ne $legacyTaskName) {
+  Unregister-ScheduledTask -TaskName $legacyTaskName -Confirm:$false -ErrorAction SilentlyContinue | Out-Null
 }
 
 $Args = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --git-commit --git-push"
