@@ -271,6 +271,86 @@
       padding: 4px 10px;
     }
 
+    .update-panel {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top right, rgba(37, 144, 241, 0.14), transparent 34%),
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .update-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .update-label {
+      color: #eef2ff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(37, 144, 241, 0.16);
+      border: 1px solid rgba(37, 144, 241, 0.28);
+      color: #edf4ff;
+      font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .update-date {
+      margin: -2px 0 0;
+      color: #b8bfdf;
+      font-size: 13px;
+    }
+
+    .update-source {
+      margin: -4px 0 2px;
+      color: #8f97ba;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    .update-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .update-list li {
+      position: relative;
+      padding-left: 18px;
+      color: #dde2ff;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .update-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--blue), var(--violet));
+      box-shadow: 0 0 0 3px rgba(37, 144, 241, 0.12);
+    }
+
     .actions {
       display: flex;
       gap: 10px;
@@ -366,7 +446,7 @@
 
   <main class="wrap">
     <h1>Choose the right VelocAI app for your workflow</h1>
-    <p class="lede">VelocAI builds practical iOS apps for storage cleanup, lost-device recovery, and professional Bluetooth troubleshooting. Start with the product that matches your immediate goal.</p>
+    <p class="lede">VelocAI builds practical iOS apps for storage cleanup, lost-device recovery, and professional Bluetooth troubleshooting. Compare the latest App Store versions, review official release-note highlights, and download the release that matches your immediate goal.</p>
 
     <section class="grid" aria-label="VelocAI products">
       <article class="card">
@@ -377,8 +457,22 @@
           <span>Duplicate Photo Cleanup</span>
           <span>Storage Optimizer</span>
         </div>
+        <section class="update-panel" aria-label="AI Cleanup PRO latest App Store update">
+          <div class="update-header">
+            <span class="update-label">Latest on App Store</span>
+            <span class="version-badge">Version 2.1</span>
+          </div>
+          <p class="update-date"><time datetime="2026-03-06">Updated Mar 6, 2026</time></p>
+          <p class="update-source">Official App Store release notes</p>
+          <ul class="update-list">
+            <li>New Super Cleaner flow speeds up grouping for duplicate photos, similar photos, duplicate videos, and similar videos.</li>
+            <li>Expanded cleanup categories improve detection for screenshots, blurry photos, and Live Photos.</li>
+            <li>Contact cleanup performance is faster for quicker bulk actions.</li>
+            <li>Performance optimizations and bug fixes make the release smoother overall.</li>
+          </ul>
+        </section>
         <div class="actions">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/id6757135968" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6757135968" target="_blank" rel="noopener noreferrer">Download on App Store</a>
           <a class="btn btn-secondary" href="/ai-cleanup-pro/">Product Page</a>
           <a class="btn btn-secondary" href="/privacy-policy.html">Privacy Policy</a>
         </div>
@@ -392,8 +486,20 @@
           <span>Find Lost AirPods</span>
           <span>Device Recovery</span>
         </div>
+        <section class="update-panel" aria-label="Find AI latest App Store update">
+          <div class="update-header">
+            <span class="update-label">Latest on App Store</span>
+            <span class="version-badge">Version 1.5</span>
+          </div>
+          <p class="update-date"><time datetime="2026-03-04">Updated Mar 4, 2026</time></p>
+          <p class="update-source">Official App Store release notes</p>
+          <ul class="update-list">
+            <li>More precise location tracking helps narrow down missing Bluetooth devices faster.</li>
+            <li>More real-time location updates improve live recovery guidance while you move.</li>
+          </ul>
+        </section>
         <div class="actions">
-          <a class="btn btn-primary" href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">Download on App Store</a>
           <a class="btn btn-secondary" href="/aifind/">Product Page</a>
           <a class="btn btn-secondary" href="/aifind/privacy-policy.html">Privacy Policy</a>
         </div>
@@ -407,8 +513,22 @@
           <span>GATT Inspector</span>
           <span>Bluetooth Debug Tool</span>
         </div>
+        <section class="update-panel" aria-label="Bluetooth Explorer latest App Store update">
+          <div class="update-header">
+            <span class="update-label">Latest on App Store</span>
+            <span class="version-badge">Version 1.5</span>
+          </div>
+          <p class="update-date"><time datetime="2026-03-09">Updated Mar 9, 2026</time></p>
+          <p class="update-source">Official App Store release notes</p>
+          <ul class="update-list">
+            <li>Premium features are free for a limited time in the current App Store release.</li>
+            <li>Real-Time Signal Display is now available for nearby and connected Bluetooth devices.</li>
+            <li>Live RSSI changes are easier to inspect when tracking movement or connection quality.</li>
+            <li>Faster device finding, stronger favorites monitoring, and clearer debugging improve the overall workflow.</li>
+          </ul>
+        </section>
         <div class="actions">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/id6757826313" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6757826313" target="_blank" rel="noopener noreferrer">Download on App Store</a>
           <a class="btn btn-secondary" href="/bluetoothexplorer/">Product Page</a>
           <a class="btn btn-secondary" href="/bluetoothexplorer/guid/en/guid.html">User Guide</a>
         </div>
