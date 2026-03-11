@@ -47,62 +47,75 @@ class FeedItem:
     link: str
     summary: str
     published_at: datetime | None
+    image_url: str
 
 
 @dataclass(frozen=True)
 class BriefSource:
     slug: str
-    label: str
     eyebrow: str
     source_name: str
     source_url: str
     feed_url: str
     keywords: tuple[str, ...]
-    relevance_note: str
+    fallback_image: str
+    item_count: int
 
 
 BRIEF_SOURCES: tuple[BriefSource, ...] = (
     BriefSource(
         slug="apple",
-        label="Apple Release Watch",
         eyebrow="Apple Releases",
         source_name="Apple Newsroom",
         source_url="https://www.apple.com/newsroom/",
         feed_url="https://www.apple.com/newsroom/rss-feed.rss",
         keywords=("iphone", "ipad", "mac", "macbook", "airpods", "watch", "vision", "ios", "m5", "neo", "pro"),
-        relevance_note="Useful for tracking hardware, silicon, and ecosystem changes that can shift user expectations across mobile apps.",
+        fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=3,
     ),
     BriefSource(
         slug="world",
-        label="Global Event Watch",
         eyebrow="Major International Event",
         source_name="BBC World",
         source_url="https://www.bbc.com/news/world",
         feed_url="https://feeds.bbci.co.uk/news/world/rss.xml",
         keywords=("attack", "war", "iran", "ukraine", "tariff", "election", "summit", "sanction", "ceasefire"),
-        relevance_note="Global shocks often affect device demand, travel behavior, logistics, and the attention environment around consumer products.",
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
+        item_count=2,
     ),
     BriefSource(
         slug="wireless",
-        label="Wireless Standards Watch",
         eyebrow="Wireless Standards Update",
         source_name="GSMA Newsroom",
         source_url="https://www.gsma.com/newsroom/",
         feed_url="https://www.gsma.com/newsroom/feed/",
         keywords=("5g", "6g", "api", "open gateway", "satellite", "network", "wireless", "spectrum", "regulatory", "connectivity"),
-        relevance_note="This is the standards-side signal to watch for network APIs, satellite connectivity, and the broader wireless roadmap.",
+        fallback_image="/assets/images/stock-2026-03/stock-07.jpg",
+        item_count=3,
     ),
     BriefSource(
         slug="bluetooth",
-        label="Bluetooth Application Watch",
         eyebrow="Bluetooth Innovation",
         source_name="Bluetooth SIG",
         source_url="https://www.bluetooth.com/blog/",
         feed_url="https://www.bluetooth.com/blog/feed/",
         keywords=("auracast", "industrial", "tracking", "monitoring", "predictive", "audio", "healthcare", "retail", "location", "asset"),
-        relevance_note="These examples show where Bluetooth is creating real product value beyond pairing, especially in tracking, audio, and automation.",
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=2,
     ),
 )
+
+MEDIA_NS = {
+    "media": "http://search.yahoo.com/mrss/",
+    "content": "http://purl.org/rss/1.0/modules/content/",
+}
+
+
+@dataclass(frozen=True)
+class BriefEntry:
+    index: int
+    source: BriefSource
+    item: FeedItem
 
 
 def fetch_bytes(url: str) -> bytes:
@@ -148,6 +161,47 @@ def parse_datetime(value: str) -> datetime | None:
     return parsed if parsed.tzinfo else parsed.replace(tzinfo=datetime.now().astimezone().tzinfo)
 
 
+def extract_image_url(node: ET.Element) -> str:
+    media_thumbnail = node.find("media:thumbnail", MEDIA_NS)
+    if media_thumbnail is not None and media_thumbnail.attrib.get("url"):
+        return media_thumbnail.attrib["url"].strip()
+
+    media_content = node.find("media:content", MEDIA_NS)
+    if media_content is not None and media_content.attrib.get("url"):
+        return media_content.attrib["url"].strip()
+
+    for child in node.findall("link"):
+        rel = (child.attrib.get("rel") or "").strip().lower()
+        href = (child.attrib.get("href") or "").strip()
+        media_type = (child.attrib.get("type") or "").strip().lower()
+        if href and rel == "enclosure" and media_type.startswith("image/"):
+            return href
+
+    enclosure = node.find("enclosure")
+    if enclosure is not None:
+        url = (enclosure.attrib.get("url") or "").strip()
+        media_type = (enclosure.attrib.get("type") or "").strip().lower()
+        if url and (not media_type or media_type.startswith("image/")):
+            return url
+
+    encoded = node.findtext("content:encoded", default="", namespaces=MEDIA_NS)
+    joined_text = " ".join(
+        filter(
+            None,
+            [
+                encoded,
+                node.findtext("description", default=""),
+                node.findtext("content", default=""),
+            ],
+        )
+    )
+    match = re.search(r"""https?://[^"' >]+?\.(?:jpg|jpeg|png|webp)(?:\?[^"' >]+)?""", joined_text, flags=re.IGNORECASE)
+    if match:
+        return match.group(0)
+
+    return ""
+
+
 def parse_feed_items(xml_bytes: bytes) -> list[FeedItem]:
     root = ET.fromstring(xml_bytes)
     items: list[FeedItem] = []
@@ -177,6 +231,7 @@ def parse_feed_items(xml_bytes: bytes) -> list[FeedItem]:
                         entry.findtext("atom:updated", default="", namespaces=ATOM_NS)
                         or entry.findtext("atom:published", default="", namespaces=ATOM_NS)
                     ),
+                    image_url=extract_image_url(entry),
                 )
             )
         return [item for item in items if item.title and item.link]
@@ -188,6 +243,7 @@ def parse_feed_items(xml_bytes: bytes) -> list[FeedItem]:
                 link=clean_text(node.findtext("link", default="")),
                 summary=clean_text(node.findtext("description", default="")),
                 published_at=parse_datetime(node.findtext("pubDate", default="")),
+                image_url=extract_image_url(node),
             )
         )
     return [item for item in items if item.title and item.link]
@@ -215,10 +271,34 @@ def select_item(items: list[FeedItem], keywords: tuple[str, ...]) -> FeedItem:
     return ranked[1]
 
 
+def select_items(items: list[FeedItem], keywords: tuple[str, ...], limit: int) -> list[FeedItem]:
+    if limit <= 0:
+        return []
+    ranked = sorted(
+        enumerate(items),
+        key=lambda pair: (
+            score_item(pair[1], keywords),
+            pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+            -pair[0],
+        ),
+        reverse=True,
+    )
+    selected: list[FeedItem] = []
+    seen_links: set[str] = set()
+    for _, item in ranked:
+        if item.link in seen_links:
+            continue
+        selected.append(item)
+        seen_links.add(item.link)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
 def format_card_date(value: datetime | None) -> str:
     if value is None:
-        return "Latest update"
-    return value.astimezone().strftime("%b %d, %Y")
+        return "LATEST"
+    return value.astimezone().strftime("%b %d").upper()
 
 
 def format_refresh_time(value: datetime) -> str:
@@ -228,37 +308,45 @@ def format_refresh_time(value: datetime) -> str:
     return f"{local.strftime('%B %d, %Y at %H:%M')} ({pretty_offset})"
 
 
-def build_section_html(pairs: list[tuple[BriefSource, FeedItem]], refreshed_at: datetime) -> str:
-    cards: list[str] = []
-    for source, item in pairs:
-        summary = clip_text(item.summary or item.title, limit=220)
-        cards.append(
-            f"""    <article class="va-brief-card va-brief-card-{escape(source.slug)}">
-      <p class="va-brief-label">{escape(source.eyebrow)}</p>
-      <h3><a href="{escape(item.link)}" target="_blank" rel="noopener noreferrer">{escape(item.title)}</a></h3>
-      <p class="va-brief-meta">{escape(source.source_name)} <span aria-hidden="true">&middot;</span> {escape(format_card_date(item.published_at))}</p>
-      <p class="va-brief-copy">{escape(summary)}</p>
-      <p class="va-brief-note"><strong>Why it matters:</strong> {escape(source.relevance_note)}</p>
-      <div class="va-brief-links">
-        <a href="{escape(item.link)}" target="_blank" rel="noopener noreferrer">Open source</a>
-        <a href="{escape(source.source_url)}" target="_blank" rel="noopener noreferrer">More from {escape(source.source_name)}</a>
-      </div>
-    </article>"""
-        )
+def render_entry(entry: BriefEntry) -> str:
+    source = entry.source
+    item = entry.item
+    image_url = item.image_url or source.fallback_image
+    image_alt = f"{item.title} thumbnail"
+    return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
+        <div class="va-brief-index" aria-hidden="true">{entry.index}</div>
+        <div class="va-brief-body">
+          <p class="va-brief-label">{escape(source.eyebrow)}</p>
+          <h3><a href="{escape(item.link)}" target="_blank" rel="noopener noreferrer">{escape(item.title)}</a></h3>
+          <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
+        </div>
+        <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async">
+        </a>
+      </article>"""
 
+
+def render_column(entries: list[BriefEntry]) -> str:
+    return "\n".join(render_entry(entry) for entry in entries)
+
+
+def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str:
+    left_column = entries[:5]
+    right_column = entries[5:10]
     return f"""
     <div class="va-briefing-head">
-      <div>
-        <p class="va-eyebrow">Today&apos;s Briefing</p>
-        <h2>Fresh signals shaping Apple launches, global risk, wireless standards, and Bluetooth use cases.</h2>
+      <div class="va-briefing-title-wrap">
+        <h2 class="va-briefing-heading"><span class="is-apple">苹果</span><span class="is-dot">·</span><span class="is-world">国际</span><span class="is-dot">·</span><span class="is-wireless">通信</span><span class="is-dot">·</span><span class="is-bluetooth">蓝牙</span></h2>
       </div>
-      <div class="va-briefing-copy">
-        <p>Updated daily at 08:30 with product-relevant headlines that help connect market movement to VelocAI&apos;s Apple, connectivity, and Bluetooth product focus.</p>
-        <p class="va-briefing-stamp">Last refresh: {escape(format_refresh_time(refreshed_at))}</p>
-      </div>
+      <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
     <div class="va-briefing-grid">
-{chr(10).join(cards)}
+      <div class="va-briefing-column">
+{render_column(left_column)}
+      </div>
+      <div class="va-briefing-column">
+{render_column(right_column)}
+      </div>
     </div>
 """
 
@@ -332,12 +420,19 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
     return "committed"
 
 
-def build_briefing() -> tuple[list[tuple[BriefSource, FeedItem]], datetime]:
-    pairs: list[tuple[BriefSource, FeedItem]] = []
+def build_briefing() -> tuple[list[BriefEntry], datetime]:
+    entries: list[BriefEntry] = []
+    next_index = 1
     for source in BRIEF_SOURCES:
         items = parse_feed_items(fetch_bytes(source.feed_url))
-        pairs.append((source, select_item(items, source.keywords)))
-    return pairs, datetime.now().astimezone()
+        selected = select_items(items, source.keywords, source.item_count)
+        if not selected:
+            fallback = select_item(items, source.keywords)
+            selected = [fallback]
+        for item in selected:
+            entries.append(BriefEntry(index=next_index, source=source, item=item))
+            next_index += 1
+    return entries[:10], datetime.now().astimezone()
 
 
 def run(args: argparse.Namespace) -> int:
@@ -352,15 +447,15 @@ def run(args: argparse.Namespace) -> int:
         print(f"Missing sitemap file: {sitemap_path}", file=sys.stderr)
         return 1
 
-    pairs, refreshed_at = build_briefing()
-    section_html = build_section_html(pairs, refreshed_at)
+    entries, refreshed_at = build_briefing()
+    section_html = build_section_html(entries, refreshed_at)
 
     if args.dry_run:
         print(
             "dry_run "
             f"index={index_path} "
             f"sitemap={sitemap_path} "
-            f"items={','.join(source.slug for source, _ in pairs)}"
+            f"items={len(entries)}"
         )
         return 0
 
@@ -381,7 +476,7 @@ def run(args: argparse.Namespace) -> int:
         f"index={'updated' if index_changed else 'unchanged'} "
         f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
         f"git={git_state} "
-        f"items={','.join(source.slug for source, _ in pairs)}"
+        f"items={len(entries)}"
     )
     return 0
 

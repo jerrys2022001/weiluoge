@@ -564,173 +564,198 @@ ul {
 .va-briefing {
   margin-top: 58px;
   display: grid;
-  gap: 22px;
+  gap: 20px;
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(540px 240px at 100% -10%, rgba(37, 144, 241, 0.16), transparent 64%),
+    radial-gradient(460px 220px at 0% 0%, rgba(248, 102, 219, 0.14), transparent 62%),
+    linear-gradient(180deg, rgba(13, 14, 26, 0.96), rgba(10, 11, 19, 0.98));
+  box-shadow: 0 34px 60px rgba(6, 7, 14, 0.38);
 }
 
 .va-briefing-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
-  gap: 24px;
-  align-items: end;
-}
-
-.va-briefing-head h2 {
-  margin: 10px 0 0;
-  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(34px, 5vw, 62px);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-  color: #ffffff;
-  max-width: 14ch;
-}
-
-.va-briefing-copy {
-  justify-self: end;
-  max-width: 42ch;
-}
-
-.va-briefing-copy p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 12px;
 }
 
 .va-briefing-stamp {
-  margin-top: 12px !important;
   display: inline-flex;
   align-items: center;
-  min-height: 38px;
+  gap: 10px;
+  min-height: 36px;
   padding: 0 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   color: #edf1ff !important;
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 12px !important;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.va-briefing-title-wrap {
+  display: grid;
+  gap: 0;
+}
+
+.va-briefing-heading {
+  margin: 0;
+  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+  font-size: clamp(28px, 4.6vw, 52px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.va-briefing-heading .is-dot {
+  color: rgba(235, 240, 255, 0.48);
+}
+
+.va-briefing-heading .is-apple {
+  color: var(--yellow);
+}
+
+.va-briefing-heading .is-world {
+  color: #66f0dc;
+}
+
+.va-briefing-heading .is-wireless {
+  color: #72baff;
+}
+
+.va-briefing-heading .is-bluetooth {
+  color: #ff8ae5;
 }
 
 .va-briefing-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 0 24px;
 }
 
-.va-brief-card {
-  position: relative;
+.va-briefing-column {
   display: grid;
-  gap: 12px;
-  min-height: 100%;
-  padding: 24px;
-  border-radius: 28px;
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(320px 220px at 100% -20%, rgba(255, 255, 255, 0.08), transparent 62%),
-    linear-gradient(180deg, rgba(31, 36, 63, 0.96), rgba(24, 28, 49, 0.96));
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
 }
 
-.va-brief-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  padding: 1px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.02));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.va-briefing-column .va-brief-item:last-child {
+  border-bottom: 0;
 }
 
-.va-brief-card-apple {
-  border-color: rgba(251, 231, 78, 0.28);
+.va-brief-item {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 116px;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
 }
 
-.va-brief-card-world {
-  border-color: rgba(248, 79, 57, 0.28);
+.va-brief-index {
+  width: 32px;
+  height: 32px;
+  margin-top: 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #42ffe0;
+  font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 15px;
+  line-height: 1;
 }
 
-.va-brief-card-wireless {
-  border-color: rgba(37, 144, 241, 0.32);
+.va-brief-body {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
 }
 
-.va-brief-card-bluetooth {
-  border-color: rgba(248, 102, 219, 0.3);
+.va-brief-item-apple .va-brief-index {
+  color: var(--yellow);
+}
+
+.va-brief-item-world .va-brief-index {
+  color: #59f7de;
+}
+
+.va-brief-item-wireless .va-brief-index {
+  color: #72baff;
+}
+
+.va-brief-item-bluetooth .va-brief-index {
+  color: #ff8ae5;
 }
 
 .va-brief-label {
   margin: 0;
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #b8c1e8;
+  color: #42ffe0;
 }
 
-.va-brief-card h3 {
+.va-brief-item h3 {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(24px, 3vw, 34px);
-  line-height: 1.02;
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 0.98;
   letter-spacing: -0.03em;
   color: #ffffff;
 }
 
-.va-brief-card h3 a {
-  transition: color 0.2s ease;
+.va-brief-item h3 a {
+  color: inherit;
+  transition: opacity 0.2s ease;
 }
 
-.va-brief-card h3 a:hover {
-  color: #ffffff;
+.va-brief-item h3 a:hover {
+  opacity: 0.84;
 }
 
 .va-brief-meta {
   margin: 0;
-  color: #d8def9;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.va-brief-copy,
-.va-brief-note {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.va-brief-note strong {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.va-brief-links {
-  margin-top: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-.va-brief-links a {
-  min-height: 38px;
-  padding: 0 14px;
-  display: inline-flex;
   align-items: center;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  color: #f2f5ff;
-  font-size: 14px;
-  font-weight: 600;
-  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  color: rgba(224, 230, 248, 0.72);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.va-brief-links a:hover {
-  transform: translateY(-1px);
-  border-color: rgba(37, 144, 241, 0.44);
-  background: rgba(37, 144, 241, 0.16);
+.va-brief-source {
+  color: #42ffe0;
+  font-weight: 700;
+}
+
+.va-brief-thumb {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
+}
+
+.va-brief-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #11131f;
+}
+
+.va-brief-thumb:hover img {
+  opacity: 0.88;
 }
 
 .va-gallery-head {
@@ -899,16 +924,17 @@ ul {
   }
 
   .va-briefing-head {
-    grid-template-columns: 1fr;
     align-items: start;
+    flex-direction: column;
   }
 
-  .va-briefing-copy {
-    justify-self: start;
+  .va-briefing-stamp {
+    white-space: normal;
   }
 
   .va-briefing-grid {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .va-gallery-grid {
@@ -940,17 +966,27 @@ ul {
   }
 
   .va-hero-subtitle,
-  .va-gallery-head p,
-  .va-briefing-copy p {
+  .va-gallery-head p {
     font-size: 16px;
   }
 
-  .va-brief-card {
-    padding: 22px 20px;
+  .va-briefing {
+    padding: 22px 18px;
   }
 
-  .va-brief-card h3 {
-    font-size: 24px;
+  .va-brief-item {
+    grid-template-columns: 34px minmax(0, 1fr) 88px;
+    gap: 12px;
+  }
+
+  .va-brief-item h3 {
+    font-size: 20px;
+  }
+
+  .va-brief-index {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
   }
 
   .va-float-card {
