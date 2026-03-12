@@ -99,10 +99,10 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
-## Storage Cleanup + System Impact Blog (09:00, 1/day)
+## Storage Cleanup + System Impact Blog (08:40, 1/day)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 09:00`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 08:40`
 
 ## Homepage Daily Briefing (08:30)
 
@@ -123,13 +123,13 @@ Dry run:
 Install the daily Windows task at `08:30`:
 `powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
 
-## Bluetooth Protocol Blog (09:10~09:20, 2/day)
+## Bluetooth Protocol Blog (08:45~08:50, 2/day)
 
 This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
-It installs 2 scheduled tasks (default: 09:10 and 09:15) and uses `--angle-offset` to avoid duplicates.
+It installs 2 scheduled tasks (default: 08:45 and 08:50) and uses `--angle-offset` to avoid duplicates.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 09:10 -WindowEnd 09:20 -PostsPerDay 2`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:45 -WindowEnd 08:50 -PostsPerDay 2`
 
 ## Google Index Request Task (10:30)
 

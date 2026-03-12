@@ -2,8 +2,8 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "09:10",
-  [string]$WindowEnd = "09:20",
+  [string]$WindowStart = "08:45",
+  [string]$WindowEnd = "08:50",
   [int]$PostsPerDay = 2,
   [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning",
   [bool]$ReplaceExisting = $true
@@ -50,9 +50,16 @@ if ($endMin -le $startMin) {
   throw "WindowEnd must be after WindowStart: $WindowStart -> $WindowEnd"
 }
 $duration = $endMin - $startMin
-$interval = [math]::Floor($duration / $PostsPerDay)
-if ($interval -lt 1) {
-  throw "Window too small for PostsPerDay. durationMinutes=$duration posts=$PostsPerDay"
+if ($PostsPerDay -eq 1) {
+  $publishMinutes = @($startMin)
+}
+else {
+  if ($duration -lt ($PostsPerDay - 1)) {
+    throw "Window too small for PostsPerDay. durationMinutes=$duration posts=$PostsPerDay"
+  }
+  $publishMinutes = for ($i = 0; $i -lt $PostsPerDay; $i++) {
+    [int][math]::Round($startMin + (($duration * $i) / ($PostsPerDay - 1)))
+  }
 }
 
 if ($ReplaceExisting) {
@@ -63,13 +70,8 @@ if ($ReplaceExisting) {
   }
 }
 
-for ($i = 0; $i -lt $PostsPerDay; $i++) {
-  $publishMin = $startMin + ($i * $interval)
-  if ($publishMin -ge $endMin) {
-    break
-  }
-
-  $publishAt = Format-HHMM $publishMin
+for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
+  $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
 
   $Args = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --angle-offset $i --git-commit --git-push"
