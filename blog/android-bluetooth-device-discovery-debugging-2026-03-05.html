@@ -1,245 +1,33 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook | VelocAI Blog</title>
+  <title>Merged: Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook | VelocAI Blog</title>
   <meta name="description" content="Debug Android Bluetooth device discovery faster with a practical 2026 playbook covering permissions, scan baselines, CompanionDeviceManager filters, and field diagnostics.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://velocai.net/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="VelocAI">
-  <meta property="og:title" content="Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook">
-  <meta property="og:description" content="Step-by-step troubleshooting for unreliable Bluetooth discovery on Android, from permission checks to companion device association tuning.">
-  <meta property="og:url" content="https://velocai.net/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html">
-  <meta property="og:image" content="https://velocai.net/2.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Android Bluetooth Device Discovery Debugging (2026)">
-  <meta name="twitter:description" content="Use this practical troubleshooting loop to fix Android BLE discovery and companion pairing misses.">
-  <meta name="twitter:image" content="https://velocai.net/2.png">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook",
-    "description": "A practical troubleshooting playbook for Android Bluetooth discovery and companion device pairing reliability.",
-    "datePublished": "2026-03-05",
-    "dateModified": "2026-03-05",
-    "author": {
-      "@type": "Organization",
-      "name": "VelocAI"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "VelocAI",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://velocai.net/2.png"
-      }
-    },
-    "mainEntityOfPage": "https://velocai.net/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html"
-  }
-  </script>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
+  <meta http-equiv="refresh" content="0; url=https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
   <style>
-    :root {
-      --bg: #f4f9ff;
-      --text: #182434;
-      --muted: #4a5f78;
-      --line: #d4e0ef;
-      --panel: #ffffff;
-      --brand: #225fbf;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Avenir Next", "Inter", "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 9% 2%, rgba(127, 168, 234, 0.17), transparent 35%),
-        var(--bg);
-      line-height: 1.7;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(860px, calc(100% - 34px));
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(244, 249, 255, 0.92);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-    }
-
-    .top {
-      padding: 14px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    nav {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    main { padding: 36px 0 54px; }
-
-    .meta {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    h1,
-    h2 {
-      margin: 0;
-      line-height: 1.22;
-    }
-
-    h1 { font-size: clamp(30px, 4.8vw, 48px); max-width: 26ch; }
-    h2 { margin-top: 28px; font-size: 28px; }
-
-    p,
-    li {
-      color: #33475d;
-      font-size: 17px;
-    }
-
-    ul,
-    ol { padding-left: 22px; }
-
-    .panel {
-      margin-top: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px;
-    }
-
-    .callout {
-      margin-top: 22px;
-      border-left: 4px solid #2f74d8;
-      background: #ecf4ff;
-      padding: 14px;
-      border-radius: 10px;
-    }
-
-    .sources {
-      margin-top: 24px;
-    }
-
-    .sources a {
-      color: var(--brand);
-      border-bottom: 1px solid #93b5ea;
-    }
-
-    .links {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .links a {
-      border: 1px solid #bfd0ee;
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--brand);
-      font-weight: 600;
-      font-size: 14px;
-      background: #fff;
-    }
+    :root { --bg:#f5f9fd; --text:#182436; --muted:#5b6c80; --line:#d6e1ec; --panel:#ffffff; --brand:#1759b8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
+    main { width:min(760px, calc(100% - 32px)); margin:48px auto; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:28px; box-shadow:0 12px 32px rgba(24,36,54,.06); }
+    h1 { margin:0 0 12px; font-size:clamp(28px, 4vw, 40px); line-height:1.2; }
+    p { margin:12px 0; color:var(--muted); font-size:17px; }
+    a { color:var(--brand); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap top">
-      <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
-        <span>VelocAI Blog</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/apps/">Apps</a>
-        <a href="/blog/">Blog</a>
-        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <article>
+  <main>
+    <section class="panel">
       <h1>Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook</h1>
-      <p class="meta">Published on March 5, 2026 · 7 min read</p>
-
-      <p>If your Android Bluetooth scan results feel random, fix the discovery pipeline before touching firmware. Most failures come from runtime permissions, filter overfitting, and companion association constraints that silently hide valid devices.</p>
-
-      <h2>Why this matters for modern Android BLE apps</h2>
-      <p>Google's companion device flow simplifies secure pairing UX, but it adds matching layers that can reduce discoverability when patterns are too strict. A stable troubleshooting loop helps you separate app logic bugs from environmental radio noise.</p>
-
-      <h2>Practical troubleshooting steps</h2>
-      <ol>
-        <li><strong>Confirm all Bluetooth runtime permissions:</strong> verify nearby-device and Bluetooth permissions at runtime for the exact Android version under test.</li>
-        <li><strong>Run an unfiltered baseline scan first:</strong> temporarily remove service/name filters and confirm raw advertisements appear in logs.</li>
-        <li><strong>Audit companion association filters:</strong> in CompanionDeviceManager requests, loosen matching constraints and retest to detect over-filtering.</li>
-        <li><strong>Measure foreground vs background behavior:</strong> compare discovery latency with screen on/off to identify scan throttling effects.</li>
-        <li><strong>Track advertiser identity signals:</strong> log service UUIDs, manufacturer data, and address rotation patterns across repeated attempts.</li>
-        <li><strong>Retest in low-interference conditions:</strong> isolate the target device and reduce nearby emitters to separate RF issues from code issues.</li>
-      </ol>
-
-      <div class="panel">
-        <h2>Field checklist for faster bug isolation</h2>
-        <ul>
-          <li>Use one known-good target peripheral during baseline runs.</li>
-          <li>Record Android version, device model, scan mode, and app state for each test.</li>
-          <li>Repeat each scenario three times before classifying a miss as reproducible.</li>
-          <li>Store log snippets by environment (office, lab, transit) to pinpoint RF hotspots.</li>
-        </ul>
-      </div>
-
-      <h2>Short FAQ</h2>
-      <p><strong>What should I check first when Android can't find a Bluetooth device?</strong><br>
-      Validate runtime permissions and run one unfiltered scan. If packets are missing there, fix access or environment first.</p>
-
-      <p><strong>Why does companion pairing show no devices even when BLE advertising is active?</strong><br>
-      The association request may be too strict. Relax name and service constraints, then tighten them again after confirming visibility.</p>
-
-      <p><strong>Should I debug GATT connection errors before discovery is stable?</strong><br>
-      No. Discovery reliability is the input to pairing and GATT workflows; unstable scanning creates misleading downstream failures.</p>
-
-      <div class="callout">
-        <strong>SEO/GEO note:</strong> Include model names, Android versions, and scan context in bug writeups. Structured operational details improve search visibility and AI answer quality for troubleshooting queries.
-      </div>
-
-      <section class="sources" aria-label="References">
-        <h2>Source attribution</h2>
-        <ul>
-          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/companion-device-pairing" target="_blank" rel="noopener noreferrer">Android Developers: Companion device pairing (updated 2026-03-03)</a></li>
-        </ul>
-      </section>
-
-      <div class="links">
-        <a href="/bluetoothexplorer/">Open Bluetooth Explorer product page</a>
-        <a href="/bluetoothexplorer/document/en/index.html">Read Bluetooth Explorer documentation</a>
-        <a href="/blog/">Back to blog index</a>
-      </div>
-    </article>
+      <p>This older page has been consolidated into the canonical article for this topic cluster.</p>
+      <p>Original edition: 2026-03-05<br>Canonical edition: 2026-03-04</p>
+      <p><a href="/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">Open the merged article: Bluetooth Device Discovery Debugging Checklist (2026)</a></p>
+    </section>
   </main>
 </body>
 </html>
-

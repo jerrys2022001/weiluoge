@@ -1,160 +1,33 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide | VelocAI Blog</title>
+  <title>Merged: Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide | VelocAI Blog</title>
   <meta name="description" content="A practical Bluetooth device discovery debugging checklist based on the Bluetooth SIG 2025 LE Audio earbuds publication, with concrete pairing and scan recovery steps.">
-  <meta name="keywords" content="bluetooth device discovery debugging, bluetooth pairing troubleshooting, le audio earbuds pairing, bluetooth scan no devices found, bluetooth directed advertising, bluetooth rsi caching, bluetooth discovery checklist">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
+  <meta http-equiv="refresh" content="0; url=https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
   <link rel="icon" type="image/x-icon" href="/velocai.ico">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="VelocAI">
-  <meta property="og:title" content="Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide">
-  <meta property="og:description" content="Use this field-tested workflow to diagnose Bluetooth discovery failures and unstable earbud pairing behavior.">
-  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html">
-  <meta property="og:image" content="https://velocai.net/2.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide">
-  <meta name="twitter:description" content="A practical discovery and pairing troubleshooting guide for Bluetooth product teams.">
-  <meta name="twitter:image" content="https://velocai.net/2.png">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide",
-  "description": "A practical Bluetooth device discovery debugging checklist based on the Bluetooth SIG 2025 LE Audio earbuds publication, with concrete pairing and scan recovery steps.",
-  "datePublished": "2026-03-09",
-  "dateModified": "2026-03-09",
-  "author": {
-    "@type": "Organization",
-    "name": "VelocAI"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "VelocAI",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://velocai.net/2.png"
-    }
-  },
-  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html",
-  "keywords": [
-    "bluetooth device discovery debugging",
-    "bluetooth pairing troubleshooting",
-    "le audio earbuds pairing",
-    "bluetooth scan no devices found",
-    "bluetooth directed advertising",
-    "bluetooth rsi caching",
-    "bluetooth discovery checklist"
-  ]
-}
-  </script>
   <style>
-    :root { --bg:#f5f9ff; --text:#14253a; --muted:#48607a; --line:#d0deee; --panel:#ffffff; --brand:#165ec8; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 10% 0%, rgba(22,94,200,.14), transparent 36%), radial-gradient(circle at 90% -8%, rgba(50,171,142,.12), transparent 34%), var(--bg); line-height:1.72; }
-    a { color:inherit; text-decoration:none; }
-    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
-    header { border-bottom:1px solid var(--line); background:rgba(245,249,255,.92); position:sticky; top:0; backdrop-filter:blur(8px); }
-    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
-    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
-    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }
-    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
-    nav a:hover { color:var(--text); }
-    main { padding:36px 0 56px; }
-    h1,h2,h3 { margin:0; line-height:1.24; }
-    h1 { font-size:clamp(30px, 4.1vw, 47px); max-width:26ch; }
-    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
-    p,li { color:#30465e; font-size:17px; }
-    ul,ol { padding-left:22px; }
-    .hero,.panel { border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }
-    .panel { margin-top:24px; }
-    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
-    .checklist li { margin-bottom:8px; }
-    .sources a { color:var(--brand); border-bottom:1px solid #b5c9ea; }
-    .links { margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; }
-    .links a { border:1px solid #bfd0ee; border-radius:999px; padding:8px 12px; color:var(--brand); font-weight:600; font-size:14px; background:#fff; }
+    :root { --bg:#f5f9fd; --text:#182436; --muted:#5b6c80; --line:#d6e1ec; --panel:#ffffff; --brand:#1759b8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
+    main { width:min(760px, calc(100% - 32px)); margin:48px auto; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:28px; box-shadow:0 12px 32px rgba(24,36,54,.06); }
+    h1 { margin:0 0 12px; font-size:clamp(28px, 4vw, 40px); line-height:1.2; }
+    p { margin:12px 0; color:var(--muted); font-size:17px; }
+    a { color:var(--brand); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap top">
-      <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
-        <span>VelocAI Blog</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/apps/">Apps</a>
-        <a href="/blog/">Blog</a>
-        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <article>
-      <div class="hero">
-        <h1>Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide</h1>
-        <p class="meta">Published on March 09, 2026 · Topic: Bluetooth Discovery Debugging</p>
-        <p>If your test team sees "no devices found" while users report random pairing behavior, discovery state is usually the root cause. This guide converts recent Bluetooth SIG guidance into practical debugging actions for engineers, QA, and support teams.</p>
-      </div>
-
-      <h2>What Changed in the Source Publication</h2>
-      <p>The Bluetooth SIG informational publication <em>Low Energy Audio - Discovery, Pairing, and Connection for Earbuds</em> (version date: April 8, 2025) highlights why multi-device earbuds should behave like one product in pairing UX, and why discoverability timing must be controlled to avoid confusing device lists.</p>
-
-      <div class="panel">
-        <h2>Practical Bluetooth Discovery Troubleshooting Steps</h2>
-        <ol class="checklist">
-          <li><strong>Verify discoverability role by role:</strong> confirm only the intended device advertises in the pairing phase. Avoid exposing both earbuds simultaneously unless your flow requires it.</li>
-          <li><strong>Capture scan timeline:</strong> log scan start, first packet seen, name resolution, and connection attempt timestamps. Discovery bugs are often timing bugs.</li>
-          <li><strong>Audit advertising mode transitions:</strong> check when the peripheral enters and exits limited discoverable mode and whether UI prompts align with that window.</li>
-          <li><strong>Check directed advertising fallback:</strong> if generic scanning is noisy, test directed advertising to stabilize reconnect behavior for known centrals.</li>
-          <li><strong>Validate identity caching behavior:</strong> test resets and re-pairing paths to ensure cached identifiers do not cause stale device matches.</li>
-          <li><strong>Separate paired-device lookup from full discovery:</strong> on Android, query bonded devices first, then run discovery only when needed to reduce false negatives and scan load.</li>
-          <li><strong>Stop discovery before connect:</strong> avoid connecting while active discovery continues, because scanning overhead can degrade connection setup reliability.</li>
-        </ol>
-      </div>
-
-      <div class="panel">
-        <h2>Debug Signals to Track in Every Test Run</h2>
-        <ul>
-          <li>Discovery duration until first expected device appears</li>
-          <li>Percentage of runs where duplicate earbud entries appear</li>
-          <li>Pairing completion rate on first try</li>
-          <li>Reconnect success after case-close and reopen</li>
-          <li>Failure differences across Android versions and device vendors</li>
-        </ul>
-      </div>
-
-      <h2>Short FAQ</h2>
-      <p><strong>Why does Bluetooth discovery work in the lab but fail in production?</strong><br>
-      Production environments add RF congestion, different phone Bluetooth stacks, and user timing variance that expose weak state transitions.</p>
-
-      <p><strong>Should I always keep both earbuds discoverable for faster pairing?</strong><br>
-      Usually no. Controlled discoverability can reduce duplicate listings and reduce user confusion during initial setup.</p>
-
-      <p><strong>What is the fastest first debugging win?</strong><br>
-      Build a timestamped discovery-to-connection log so failures can be grouped by phase rather than by generic "Bluetooth failed" reports.</p>
-
-      <section class="sources" aria-label="Source attribution">
-        <h2>Source attribution</h2>
-        <ul>
-          <li><a href="https://www.bluetooth.com/wp-content/uploads/2025/04/DiscoveryPairingAndConnectionForEarbuds_INFO_v1.pdf" target="_blank" rel="noopener noreferrer">Bluetooth SIG: Low Energy Audio - Discovery, Pairing, and Connection for Earbuds (v1, 2025-04-08)</a></li>
-          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2025-02-10 UTC)</a></li>
-        </ul>
-      </section>
-
-      <div class="links">
-        <a href="/blog/">Back to blog index</a>
-        <a href="/apps/">Browse VelocAI apps</a>
-        <a href="/bluetoothexplorer/">Open Bluetooth Explorer</a>
-      </div>
-    </article>
+  <main>
+    <section class="panel">
+      <h1>Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide</h1>
+      <p>This older page has been consolidated into the canonical article for this topic cluster.</p>
+      <p>Original edition: 2026-03-09<br>Canonical edition: 2026-03-04</p>
+      <p><a href="/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">Open the merged article: Bluetooth Device Discovery Debugging Checklist (2026)</a></p>
+    </section>
   </main>
 </body>
 </html>
-

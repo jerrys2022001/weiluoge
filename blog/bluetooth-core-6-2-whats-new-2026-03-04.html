@@ -1,247 +1,33 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bluetooth Core 6.2: What Is New and What to Update | VelocAI Blog</title>
+  <title>Merged: Bluetooth Core 6.2: What Is New and What to Update | VelocAI Blog</title>
   <meta name="description" content="A practical guide to the latest Bluetooth Core Specification 6.2 release and what product teams should update in 2026.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://velocai.net/blog/bluetooth-core-6-2-whats-new-2026-03-04.html">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html">
+  <meta http-equiv="refresh" content="0; url=https://velocai.net/blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html">
   <link rel="icon" type="image/x-icon" href="/velocai.ico">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="VelocAI">
-  <meta property="og:title" content="Bluetooth Core 6.2: What Is New and What to Update">
-  <meta property="og:description" content="The latest Bluetooth Core Specification is 6.2. This guide summarizes key updates and rollout priorities.">
-  <meta property="og:url" content="https://velocai.net/blog/bluetooth-core-6-2-whats-new-2026-03-04.html">
-  <meta property="og:image" content="https://velocai.net/2.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bluetooth Core 6.2: What Is New and What to Update">
-  <meta name="twitter:description" content="A field-ready summary of Bluetooth 6.2 updates for engineering and product teams.">
-  <meta name="twitter:image" content="https://velocai.net/2.png">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Bluetooth Core 6.2: What Is New and What to Update",
-    "description": "A practical guide to the latest Bluetooth Core Specification 6.2 release and rollout priorities.",
-    "datePublished": "2026-03-04",
-    "dateModified": "2026-03-04",
-    "author": {
-      "@type": "Organization",
-      "name": "VelocAI"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "VelocAI",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://velocai.net/2.png"
-      }
-    },
-    "mainEntityOfPage": "https://velocai.net/blog/bluetooth-core-6-2-whats-new-2026-03-04.html"
-  }
-  </script>
   <style>
-    :root {
-      --bg: #f3f8ff;
-      --text: #182b44;
-      --muted: #4b6483;
-      --line: #d2deef;
-      --panel: #ffffff;
-      --brand: #2a67c9;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Avenir Next", "Inter", "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 8% 2%, rgba(130, 171, 240, 0.2), transparent 35%),
-        var(--bg);
-      line-height: 1.7;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(860px, calc(100% - 34px));
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(243, 248, 255, 0.92);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-    }
-
-    .top {
-      padding: 14px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    nav {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    main { padding: 36px 0 54px; }
-
-    .meta {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    h1,
-    h2 {
-      margin: 0;
-      line-height: 1.22;
-    }
-
-    h1 { font-size: clamp(30px, 4.8vw, 48px); max-width: 23ch; }
-    h2 { margin-top: 28px; font-size: 28px; }
-
-    p,
-    li {
-      color: #334a67;
-      font-size: 17px;
-    }
-
-    ul,
-    ol { padding-left: 22px; }
-
-    .panel {
-      margin-top: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px;
-    }
-
-    .callout {
-      margin-top: 22px;
-      border-left: 4px solid #3d7ad8;
-      background: #ecf4ff;
-      padding: 14px;
-      border-radius: 10px;
-    }
-
-    .sources {
-      margin-top: 24px;
-    }
-
-    .sources a {
-      color: var(--brand);
-      border-bottom: 1px solid #9fbced;
-    }
-
-    .links {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .links a {
-      border: 1px solid #bfd1ee;
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--brand);
-      font-weight: 600;
-      font-size: 14px;
-      background: #fff;
-    }
+    :root { --bg:#f5f9fd; --text:#182436; --muted:#5b6c80; --line:#d6e1ec; --panel:#ffffff; --brand:#1759b8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
+    main { width:min(760px, calc(100% - 32px)); margin:48px auto; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:28px; box-shadow:0 12px 32px rgba(24,36,54,.06); }
+    h1 { margin:0 0 12px; font-size:clamp(28px, 4vw, 40px); line-height:1.2; }
+    p { margin:12px 0; color:var(--muted); font-size:17px; }
+    a { color:var(--brand); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap top">
-      <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
-        <span>VelocAI Blog</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/apps/">Apps</a>
-        <a href="/blog/">Blog</a>
-        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <article>
+  <main>
+    <section class="panel">
       <h1>Bluetooth Core 6.2: What Is New and What to Update</h1>
-      <p class="meta">Published on March 4, 2026 | 6 min read</p>
-
-      <p>As of March 4, 2026, the latest adopted Bluetooth Core Specification version is <strong>6.2</strong>. According to Bluetooth SIG release information, Core 6.2 was adopted on <strong>November 3, 2025</strong>. If you maintain Bluetooth products, this is the version to evaluate first.</p>
-
-      <h2>What changed in Core 6.2</h2>
-      <p>The official 6.2 feature overview highlights six update areas that matter for real products:</p>
-      <ul>
-        <li>Decision-based advertising filtering</li>
-        <li>Monitoring Advertisers</li>
-        <li>Frame space update</li>
-        <li>Channel Sounding enhancements</li>
-        <li>High duty cycle non-connectable advertising</li>
-        <li>LL Extended Feature Set</li>
-      </ul>
-
-      <h2>Why this matters in production</h2>
-      <p>These updates focus less on headline marketing metrics and more on robustness in noisy, large-scale deployments. Teams running dense scans, beacon-heavy environments, or high device concurrency should test 6.2 behavior early.</p>
-
-      <h2>Upgrade checklist for engineering teams</h2>
-      <ol>
-        <li>Review firmware and stack support for Core 6.2 feature flags.</li>
-        <li>Re-run advertising and scanning regression tests in crowded RF environments.</li>
-        <li>Validate pairing and reconnect behavior after stack updates.</li>
-        <li>Check power impact under your expected duty cycle and traffic profile.</li>
-        <li>Align mobile app compatibility matrix by OS version and chipset.</li>
-      </ol>
-
-      <div class="panel">
-        <h2>Practical adoption priority</h2>
-        <ul>
-          <li><strong>Highest priority:</strong> products with heavy scanner loads, beacons, or diagnostics tooling.</li>
-          <li><strong>Medium priority:</strong> consumer apps that mainly do stable reconnect and low-frequency sync.</li>
-          <li><strong>Track only:</strong> products without active BLE scanning complexity today.</li>
-        </ul>
-      </div>
-
-      <div class="callout">
-        <strong>Version clarity:</strong> Core 6.2 is the latest adopted release at this time. Do not plan implementation against draft allocations alone.
-      </div>
-
-      <section class="sources" aria-label="References">
-        <h2>Source references</h2>
-        <ul>
-          <li><a href="https://www.bluetooth.com/specifications/specs/core-specification-6-2/" target="_blank" rel="noopener noreferrer">Bluetooth SIG: Core Specification 6.2</a></li>
-          <li><a href="https://www.bluetooth.com/blog/new-core-specification-v6-2-adopted/" target="_blank" rel="noopener noreferrer">Bluetooth SIG announcement: New Core Specification v6.2 adopted</a></li>
-          <li><a href="https://www.bluetooth.com/core-specification-v6-2-feature-overview/" target="_blank" rel="noopener noreferrer">Bluetooth SIG: Core Specification v6.2 feature overview</a></li>
-        </ul>
-      </section>
-
-      <div class="links">
-        <a href="/blog/bluetooth-latest-specs-6-0-6-1-6-2-comparison-2026-03-04.html">Read 6.0/6.1/6.2 comparison</a>
-        <a href="/bluetoothexplorer/">Open Bluetooth Explorer product page</a>
-        <a href="/blog/">Back to blog index</a>
-      </div>
-    </article>
+      <p>This older page has been consolidated into the canonical article for this topic cluster.</p>
+      <p>Original edition: 2026-03-04<br>Canonical edition: 2026-03-10</p>
+      <p><a href="/blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html">Open the merged article: Bluetooth Core Specification 6.2 Explained: What Changed and How to Use It</a></p>
+    </section>
   </main>
 </body>
 </html>
-

@@ -55,18 +55,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/android-companion-device-pairing-debugging-2026-03-10.html</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html</loc>
-    <lastmod>2026-03-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/find-large-videos-storage-cleanup-playbook-2026-03-09.html</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -97,12 +85,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-scan-no-results-debugging-2026-03-06.html</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-connection-fixes-phone-storage-cleanup-2026-03-06.html</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -127,12 +109,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -145,12 +121,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-core-6-2-whats-new-2026-03-04.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-latest-specs-6-0-6-1-6-2-comparison-2026-03-04.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -158,12 +128,6 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-use-cases-summary-2026-03-04.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-explorer-ble-debugging-guide-2026-03-04.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

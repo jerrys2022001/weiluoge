@@ -28,3 +28,15 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
   - Avoid deep reference-chasing: prefer opening only files directly linked from `SKILL.md` unless you're blocked.
   - When variants exist (frameworks, providers, domains), pick only the relevant reference file(s) and note that choice.
 - Safety and fallback: If a skill can't be applied cleanly (missing files, unclear instructions), state the issue, pick the next-best approach, and continue.
+
+## Content Policy
+- All future website content in this repo must be written to improve both SEO and GEO by default.
+- Scope includes landing pages, product pages, blog posts, metadata, FAQ blocks, internal links, schema markup, sitemap-related output, and index/list pages.
+- Every new or updated content page should target a clear primary search intent and include naturally written secondary keywords that support the same topic cluster.
+- Titles, H1s, meta descriptions, and visible section headings should use high-intent phrasing that matches likely search queries.
+- Content should be structured for both search engines and AI retrieval: concise answers near the top, scannable sections, FAQ-style Q&A where appropriate, and explicit entity/topic wording.
+- Prefer evergreen, factual wording and direct problem-solution framing over vague branding language.
+- Add or preserve helpful internal links, canonical metadata, structured data, and sitemap/index updates when relevant.
+- If a change would reduce SEO/GEO value, call it out before proceeding unless the user explicitly prioritizes another goal.
+- For blog maintenance, treat posts as merge candidates when topic-bearing content similarity is above 30% after stripping shared boilerplate sections.
+- Apply that 30% rule within the same intent cluster, using title/topic overlap to avoid merging unrelated long-tail pages that only share templates.

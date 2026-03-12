@@ -1,191 +1,33 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bluetooth Scan No Results? Device Discovery Debugging Guide (2026) | VelocAI Blog</title>
+  <title>Merged: Bluetooth Scan No Results? Device Discovery Debugging Guide (2026) | VelocAI Blog</title>
   <meta name="description" content="Bluetooth scan returning no devices? Use this 2026 debugging guide to fix BLE discovery issues fast with practical scan-window, payload, and environment checks.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://velocai.net/blog/bluetooth-scan-no-results-debugging-2026-03-06.html">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="VelocAI">
-  <meta property="og:title" content="Bluetooth Scan No Results? Device Discovery Debugging Guide (2026)">
-  <meta property="og:description" content="A practical troubleshooting workflow for BLE scan misses, invisible peripherals, and unstable device discovery.">
-  <meta property="og:url" content="https://velocai.net/blog/bluetooth-scan-no-results-debugging-2026-03-06.html">
-  <meta property="og:image" content="https://velocai.net/2.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bluetooth Scan No Results? (2026 Guide)">
-  <meta name="twitter:description" content="Fix BLE discovery failures with a practical, field-tested debugging checklist.">
-  <meta name="twitter:image" content="https://velocai.net/2.png">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Bluetooth Scan No Results? Device Discovery Debugging Guide (2026)",
-    "description": "A practical troubleshooting guide for Bluetooth device discovery failures when scans return no results.",
-    "datePublished": "2026-03-06",
-    "dateModified": "2026-03-06",
-    "author": {
-      "@type": "Organization",
-      "name": "VelocAI"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "VelocAI",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://velocai.net/2.png"
-      }
-    },
-    "mainEntityOfPage": "https://velocai.net/blog/bluetooth-scan-no-results-debugging-2026-03-06.html"
-  }
-  </script>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
+  <meta http-equiv="refresh" content="0; url=https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
   <style>
-    :root {
-      --bg: #f4f9ff;
-      --text: #182434;
-      --muted: #4a5f78;
-      --line: #d4e0ef;
-      --panel: #ffffff;
-      --brand: #225fbf;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Avenir Next", "Inter", "Segoe UI", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at 9% 2%, rgba(127, 168, 234, 0.17), transparent 35%), var(--bg);
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(860px, calc(100% - 34px)); margin: 0 auto; }
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(244, 249, 255, 0.92);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-    }
-    .top {
-      padding: 14px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    nav { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
-    nav a:hover { color: var(--text); }
-    main { padding: 36px 0 54px; }
-    .meta { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    h1, h2 { margin: 0; line-height: 1.22; }
-    h1 { font-size: clamp(30px, 4.8vw, 48px); max-width: 28ch; }
-    h2 { margin-top: 28px; font-size: 28px; }
-    p, li { color: #33475d; font-size: 17px; }
-    ul, ol { padding-left: 22px; }
-    .panel {
-      margin-top: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px;
-    }
-    .callout {
-      margin-top: 22px;
-      border-left: 4px solid #2f74d8;
-      background: #ecf4ff;
-      padding: 14px;
-      border-radius: 10px;
-    }
-    .sources { margin-top: 24px; }
-    .sources a { color: var(--brand); border-bottom: 1px solid #93b5ea; }
-    .links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
-    .links a {
-      border: 1px solid #bfd0ee;
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--brand);
-      font-weight: 600;
-      font-size: 14px;
-      background: #fff;
-    }
+    :root { --bg:#f5f9fd; --text:#182436; --muted:#5b6c80; --line:#d6e1ec; --panel:#ffffff; --brand:#1759b8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
+    main { width:min(760px, calc(100% - 32px)); margin:48px auto; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:28px; box-shadow:0 12px 32px rgba(24,36,54,.06); }
+    h1 { margin:0 0 12px; font-size:clamp(28px, 4vw, 40px); line-height:1.2; }
+    p { margin:12px 0; color:var(--muted); font-size:17px; }
+    a { color:var(--brand); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap top">
-      <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
-        <span>VelocAI Blog</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/apps/">Apps</a>
-        <a href="/blog/">Blog</a>
-        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <article>
+  <main>
+    <section class="panel">
       <h1>Bluetooth Scan No Results? Device Discovery Debugging Guide (2026)</h1>
-      <p class="meta">Published on March 6, 2026 · 7 min read</p>
-
-      <p>If your Bluetooth scan returns no devices, treat it as a pipeline issue, not a random bug. In production debugging, most misses come from scan timing, payload assumptions, and app-side filtering before RF conditions are even checked.</p>
-
-      <h2>What "no scan results" usually means</h2>
-      <p>Discovery failures often happen when advertisers are valid but your scan strategy misses short bursts or filters out expected packets. Practical debugging starts by proving raw packet visibility, then reintroducing app logic step by step.</p>
-
-      <h2>Practical troubleshooting steps</h2>
-      <ol>
-        <li><strong>Start with a known-good peripheral:</strong> test against one beacon or dev board that is confirmed advertising at the moment of scanning.</li>
-        <li><strong>Use active scanning during diagnostics:</strong> temporarily use active mode to gather more metadata while isolating scanner behavior.</li>
-        <li><strong>Increase scan windows and intervals:</strong> short windows can miss bursty advertisements; widen intervals before blaming firmware.</li>
-        <li><strong>Disable strict app-side filters first:</strong> run one baseline without service UUID and name filters, then reapply filters one by one.</li>
-        <li><strong>Verify payload format assumptions:</strong> compare expected vs actual advertisement data length and fields across platforms.</li>
-        <li><strong>Control the RF environment:</strong> move to a low-interference area and retest to separate software defects from congestion.</li>
-      </ol>
-
-      <div class="panel">
-        <h2>Fast triage checklist for engineering teams</h2>
-        <ul>
-          <li>Log scan settings with every run (active/passive, interval, window, filter policy).</li>
-          <li>Capture raw advertisement counts per 30-second window before applying any matcher.</li>
-          <li>Record phone model, OS version, and physical test location in every bug ticket.</li>
-          <li>Keep one baseline script for repeatable discovery regression tests.</li>
-        </ul>
-      </div>
-
-      <h2>Short FAQ</h2>
-      <p><strong>Why does another app see the device but ours does not?</strong><br>
-      Your app likely applies tighter filters or shorter scan windows. Start from a no-filter baseline and compare settings.</p>
-
-      <p><strong>Should I tune connection parameters before discovery works?</strong><br>
-      No. Fix discovery first; connection tuning is downstream and can hide the real failure mode.</p>
-
-      <p><strong>How long should I scan before calling it a miss?</strong><br>
-      Use repeatable windows (for example 30 to 60 seconds) and multiple passes in the same environment before concluding failure.</p>
-
-      <div class="callout">
-        <strong>SEO/GEO note:</strong> Include scanner mode, interval, filter configuration, and device model in troubleshooting reports. Structured operational details improve search and AI answer relevance for Bluetooth debugging queries.
-      </div>
-
-      <section class="sources" aria-label="References">
-        <h2>Source attribution</h2>
-        <ul>
-          <li><a href="https://punchthrough.com/how-to-solve-ble-scan-no-results-on-ios/" target="_blank" rel="noopener noreferrer">Punch Through: How to Solve BLE Scan No Results on iOS (March 13, 2025)</a></li>
-        </ul>
-      </section>
-
-      <div class="links">
-        <a href="/bluetoothexplorer/">Open Bluetooth Explorer product page</a>
-        <a href="/bluetoothexplorer/document/en/index.html">Read Bluetooth Explorer documentation</a>
-        <a href="/blog/">Back to blog index</a>
-      </div>
-    </article>
+      <p>This older page has been consolidated into the canonical article for this topic cluster.</p>
+      <p>Original edition: 2026-03-06<br>Canonical edition: 2026-03-04</p>
+      <p><a href="/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">Open the merged article: Bluetooth Device Discovery Debugging Checklist (2026)</a></p>
+    </section>
   </main>
 </body>
 </html>
-
