@@ -12,6 +12,25 @@
   overflow: visible;
 }
 
+body > header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-weight: 700;
+}
+
+body > header .brand img {
+  display: block;
+  width: auto;
+  height: 36px;
+  max-width: 52px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+}
+
 .vs-header-tools-anchor {
   position: relative;
   display: inline-flex;
