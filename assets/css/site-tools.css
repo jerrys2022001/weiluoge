@@ -39,6 +39,7 @@ body > header .brand span {
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .vs-header-tools-anchor {
@@ -47,6 +48,26 @@ body > header .brand span {
   align-items: center;
   flex: 0 0 auto;
   margin-left: 8px;
+}
+
+@media (min-width: 900px) {
+  body > header .top {
+    flex-wrap: nowrap;
+    gap: 18px;
+  }
+
+  body > header nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    min-width: 0;
+  }
+
+  body > header nav a {
+    white-space: nowrap;
+  }
 }
 
 .vs-header-tool-button,
