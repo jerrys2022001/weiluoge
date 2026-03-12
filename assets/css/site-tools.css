@@ -182,6 +182,12 @@
   background: rgba(37, 144, 241, 0.08);
 }
 
+.vs-search-result.is-active {
+  border-color: rgba(37, 144, 241, 0.4);
+  background: rgba(37, 144, 241, 0.11);
+  box-shadow: inset 0 0 0 1px rgba(37, 144, 241, 0.16);
+}
+
 .vs-result-meta {
   display: flex;
   flex-wrap: wrap;

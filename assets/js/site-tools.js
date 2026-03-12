@@ -156,10 +156,13 @@
       });
   }
 
-  function renderResult(item, ui) {
+  function renderResult(item, ui, index) {
     const link = document.createElement("a");
     link.className = "vs-search-result";
     link.href = item.url;
+    link.dataset.resultIndex = String(index);
+    link.tabIndex = -1;
+    link.setAttribute("aria-selected", "false");
 
     const meta = document.createElement("div");
     meta.className = "vs-result-meta";
@@ -249,6 +252,8 @@
     const input = anchor.querySelector(".vs-search-input");
     const resultsTitle = anchor.querySelector('[data-role="results-title"]');
     const resultsNode = anchor.querySelector('[data-role="results"]');
+    let currentResults = [];
+    let activeResultIndex = -1;
 
     function getSavedPreference() {
       return window.localStorage.getItem(STORAGE_KEY) || initialPreference;
@@ -279,9 +284,43 @@
       }, 30);
     }
 
+    function getResultNodes() {
+      return Array.from(resultsNode.querySelectorAll(".vs-search-result"));
+    }
+
+    function setActiveResult(index, scrollIntoView) {
+      const resultNodes = getResultNodes();
+      activeResultIndex = -1;
+      resultNodes.forEach(function (node, nodeIndex) {
+        const isActive = nodeIndex === index;
+        node.classList.toggle("is-active", isActive);
+        node.setAttribute("aria-selected", String(isActive));
+        if (isActive) {
+          activeResultIndex = nodeIndex;
+          if (scrollIntoView) {
+            node.scrollIntoView({ block: "nearest" });
+          }
+        }
+      });
+    }
+
+    function goToActiveResult() {
+      if (!currentResults.length) {
+        return;
+      }
+      const targetIndex = activeResultIndex >= 0 ? activeResultIndex : 0;
+      const target = currentResults[targetIndex];
+      if (target && target.url) {
+        window.location.href = target.url;
+      }
+    }
+
     function renderResults(items, query) {
       const ui = getUi();
       resultsNode.innerHTML = "";
+      currentResults = items.slice();
+      activeResultIndex = -1;
+      resultsTitle.textContent = query ? ui.resultsHint : ui.searchHint;
 
       if (!items.length) {
         const empty = document.createElement("p");
@@ -291,9 +330,17 @@
         return;
       }
 
-      items.forEach(function (item) {
-        resultsNode.appendChild(renderResult(item, ui));
+      items.forEach(function (item, index) {
+        const node = renderResult(item, ui, index);
+        node.addEventListener("mouseenter", function () {
+          setActiveResult(index, false);
+        });
+        node.addEventListener("focus", function () {
+          setActiveResult(index, false);
+        });
+        resultsNode.appendChild(node);
       });
+      setActiveResult(0, false);
     }
 
     function runSearch(query) {
@@ -333,6 +380,25 @@
       if (event.key === "Escape") {
         event.preventDefault();
         closePanel();
+        return;
+      }
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+        goToActiveResult();
+        return;
+      }
+
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        if (!currentResults.length) {
+          return;
+        }
+        event.preventDefault();
+        const delta = event.key === "ArrowDown" ? 1 : -1;
+        const nextIndex = activeResultIndex < 0
+          ? 0
+          : (activeResultIndex + delta + currentResults.length) % currentResults.length;
+        setActiveResult(nextIndex, true);
       }
     });
 
