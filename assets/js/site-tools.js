@@ -36,6 +36,8 @@
 
   let searchData = null;
   let loadPromise = null;
+  const HIGHLIGHT_QUERY_KEY = "stq";
+  const HIGHLIGHT_FOCUS_KEY = "stfocus";
 
   function normalizePath(pathname) {
     if (!pathname) return "/";
@@ -207,6 +209,87 @@
     return '<svg class="vs-header-tool-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg>';
   }
 
+  function escapeRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function buildNavigationUrl(item, query) {
+    const rawUrl = item && item.url ? item.url : "";
+    if (!rawUrl) {
+      return "";
+    }
+
+    if (/^https?:\/\//i.test(rawUrl)) {
+      return rawUrl;
+    }
+
+    const nextUrl = new URL(rawUrl, window.location.origin);
+    if (query) {
+      nextUrl.searchParams.set(HIGHLIGHT_QUERY_KEY, query);
+    }
+    if (item.focus) {
+      nextUrl.searchParams.set(HIGHLIGHT_FOCUS_KEY, item.focus);
+    }
+    return nextUrl.pathname + nextUrl.search + nextUrl.hash;
+  }
+
+  function applySearchHighlight() {
+    const params = new URLSearchParams(window.location.search);
+    const focus = params.get(HIGHLIGHT_FOCUS_KEY) || "";
+    const query = params.get(HIGHLIGHT_QUERY_KEY) || "";
+    const targetText = (focus || query).trim();
+    if (!targetText) {
+      return;
+    }
+
+    const root = document.querySelector("main") || document.body;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        const parent = node.parentElement;
+        if (!parent) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (parent.closest(".vs-header-tools-anchor, script, style, noscript")) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    const matcher = new RegExp(escapeRegExp(targetText), "i");
+    let currentNode = walker.nextNode();
+    while (currentNode) {
+      const match = currentNode.nodeValue.match(matcher);
+      if (match && typeof match.index === "number") {
+        const start = match.index;
+        const end = start + match[0].length;
+        const text = currentNode.nodeValue;
+        const before = document.createTextNode(text.slice(0, start));
+        const highlight = document.createElement("mark");
+        highlight.className = "vs-search-highlight";
+        highlight.textContent = text.slice(start, end);
+        const after = document.createTextNode(text.slice(end));
+        const parent = currentNode.parentNode;
+        if (!parent) {
+          return;
+        }
+        parent.insertBefore(before, currentNode);
+        parent.insertBefore(highlight, currentNode);
+        parent.insertBefore(after, currentNode);
+        parent.removeChild(currentNode);
+        highlight.scrollIntoView({ block: "center", behavior: "smooth" });
+        window.setTimeout(function () {
+          highlight.classList.add("is-visible");
+        }, 20);
+        break;
+      }
+      currentNode = walker.nextNode();
+    }
+  }
+
   function init() {
     const nav = findNavContainer();
     if (!nav || document.querySelector(".vs-header-tools-anchor")) {
@@ -225,10 +308,12 @@
       '<div class="vs-search-panel" hidden>',
       '  <div class="vs-search-panel-inner">',
       '    <div class="vs-search-bar">',
-      '      <label class="vs-search-input-wrap">',
+      '      <div class="vs-search-input-wrap">',
+      '        <button class="vs-search-submit-icon" type="button">',
       iconSvg("search"),
+      "        </button>",
       '        <input class="vs-search-input" type="search" autocomplete="off">',
-      "      </label>",
+      "      </div>",
       '      <button class="vs-search-close" type="button">',
       iconSvg("close"),
       "      </button>",
@@ -252,6 +337,7 @@
     const trigger = anchor.querySelector(".vs-search-trigger");
     const panel = anchor.querySelector(".vs-search-panel");
     const closeButton = anchor.querySelector(".vs-search-close");
+    const submitIcon = anchor.querySelector(".vs-search-submit-icon");
     const input = anchor.querySelector(".vs-search-input");
     const resultsTitle = anchor.querySelector('[data-role="results-title"]');
     const resultsNode = anchor.querySelector('[data-role="results"]');
@@ -314,7 +400,7 @@
       const targetIndex = activeResultIndex >= 0 ? activeResultIndex : 0;
       const target = currentResults[targetIndex];
       if (target && target.url) {
-        window.location.href = target.url;
+        window.location.href = buildNavigationUrl(target, input.value.trim());
       }
     }
 
@@ -335,6 +421,7 @@
 
       items.forEach(function (item, index) {
         const node = renderResult(item, ui, index);
+        node.href = buildNavigationUrl(item, query);
         node.addEventListener("mouseenter", function () {
           setActiveResult(index, false);
         });
@@ -373,6 +460,10 @@
     });
 
     closeButton.addEventListener("click", closePanel);
+    submitIcon.addEventListener("click", function () {
+      runSearch(input.value.trim());
+      input.focus();
+    });
     backdrop.addEventListener("click", closePanel);
 
     input.addEventListener("input", function () {
@@ -443,8 +534,12 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", function () {
+      applySearchHighlight();
+      init();
+    });
   } else {
+    applySearchHighlight();
     init();
   }
 })();

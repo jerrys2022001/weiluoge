@@ -59,6 +59,8 @@ class SearchRecord:
     alternates: dict[str, str]
     terms: str
     priority: int
+    focus: str
+    external_url: str
 
 
 GENERIC_LINK_LABELS = {
@@ -235,7 +237,7 @@ def extract_link_records(
 
         records.append(
             SearchRecord(
-                url=href,
+                url=normalize_url(relative_path) if href.startswith(("http://", "https://")) else href,
                 title=title,
                 description=page_heading or page_title,
                 heading=page_heading,
@@ -254,6 +256,8 @@ def extract_link_records(
                     if piece
                 ),
                 priority=priority,
+                focus=title,
+                external_url=href if href.startswith(("http://", "https://")) else "",
             )
         )
 
@@ -320,6 +324,8 @@ def parse_search_records(repo_root: Path, path: Path, known_paths: set[Path]) ->
             if piece
         ),
         priority=0,
+        focus="",
+        external_url="",
     )
     link_records = extract_link_records(relative, text, title, heading, category, locale)
     return [page_record, *link_records]
@@ -346,6 +352,8 @@ def build_site_search_index(repo_root: Path) -> int:
                 "alternates": record.alternates,
                 "terms": record.terms,
                 "priority": record.priority,
+                "focus": record.focus,
+                "external_url": record.external_url,
             }
             for record in records
         ],

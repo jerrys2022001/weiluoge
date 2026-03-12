@@ -50,7 +50,8 @@ body > header .brand span {
 }
 
 .vs-header-tool-button,
-.vs-search-close {
+.vs-search-close,
+.vs-search-submit-icon {
   appearance: none;
   border: 1px solid transparent;
   background: transparent;
@@ -77,6 +78,7 @@ body > header .brand span {
 
 .vs-header-tool-button:focus-visible,
 .vs-search-close:focus-visible,
+.vs-search-submit-icon:focus-visible,
 .vs-search-input:focus-visible {
   outline: none;
   border-color: rgba(37, 144, 241, 0.54);
@@ -146,6 +148,21 @@ body > header .brand span {
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.038);
+}
+
+.vs-search-submit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.86;
+}
+
+.vs-search-submit-icon:hover {
+  opacity: 1;
 }
 
 .vs-search-input {
@@ -266,6 +283,20 @@ body > header .brand span {
   border: 1px dashed rgba(255, 255, 255, 0.16);
   color: var(--vs-tools-muted);
   font-size: 12px;
+}
+
+.vs-search-highlight {
+  padding: 0.08em 0.16em;
+  border-radius: 0.24em;
+  background: rgba(77, 211, 255, 0.22);
+  color: inherit;
+  box-shadow: 0 0 0 1px rgba(77, 211, 255, 0.28);
+  transition: background-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.vs-search-highlight.is-visible {
+  background: rgba(77, 211, 255, 0.34);
+  box-shadow: 0 0 0 1px rgba(77, 211, 255, 0.4), 0 0 28px rgba(77, 211, 255, 0.18);
 }
 
 body.vs-search-open {
