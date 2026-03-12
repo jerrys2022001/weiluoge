@@ -259,6 +259,43 @@
     });
   }
 
+  function scoreHighlightTarget(node, focus) {
+    if (!node) {
+      return -1;
+    }
+    let score = 0;
+    const text = (node.textContent || "").trim().toLowerCase();
+    const focusText = (focus || "").trim().toLowerCase();
+
+    if (focusText && text.includes(focusText)) {
+      score += 200;
+    }
+
+    const heading = node.closest("h1, h2, h3, h4, h5, h6, [role='heading']");
+    if (heading) {
+      const tagName = heading.tagName ? heading.tagName.toLowerCase() : "";
+      const level = tagName.startsWith("h") ? Number(tagName.slice(1)) || 6 : 6;
+      score += 140 - level * 10;
+    }
+
+    if (node.closest(".va-app-card, .card, article, .va-brief-item, .step")) {
+      score += 28;
+    }
+
+    if (node.closest("strong, b, em")) {
+      score += 10;
+    }
+
+    const ownTextLength = (node.textContent || "").trim().length;
+    if (ownTextLength <= 60) {
+      score += 12;
+    } else if (ownTextLength <= 120) {
+      score += 6;
+    }
+
+    return score;
+  }
+
   function pageContainsSearchTerm(query, focus) {
     const terms = collectHighlightTerms(query, focus);
     if (!terms.length) {
@@ -308,6 +345,8 @@
 
     const matcher = new RegExp(terms.map(escapeRegExp).join("|"), "gi");
     let firstHighlight = null;
+    let bestHighlight = null;
+    let bestScore = -1;
 
     textNodes.forEach(function (node) {
       const text = node.nodeValue;
@@ -333,6 +372,11 @@
         if (!firstHighlight) {
           firstHighlight = highlight;
         }
+        const candidateScore = scoreHighlightTarget(node.parentElement, focus);
+        if (candidateScore > bestScore) {
+          bestScore = candidateScore;
+          bestHighlight = highlight;
+        }
         fragment.appendChild(highlight);
         lastIndex = end;
         match = matcher.exec(text);
@@ -354,7 +398,8 @@
       return false;
     }
 
-    firstHighlight.scrollIntoView({ block: "center", behavior: "smooth" });
+    const scrollTarget = bestHighlight || firstHighlight;
+    scrollTarget.scrollIntoView({ block: "center", behavior: "smooth" });
     window.setTimeout(function () {
       highlights.forEach(function (highlight) {
         highlight.classList.add("is-visible");
