@@ -242,6 +242,21 @@
       return;
     }
 
+    const terms = Array.from(
+      new Set(
+        [focus.trim(), ...query.split(/\s+/).map(function (part) { return part.trim(); })]
+          .filter(function (part) {
+            return part && part.length >= 2;
+          })
+      )
+    ).sort(function (left, right) {
+      return right.length - left.length;
+    });
+
+    if (!terms.length) {
+      return;
+    }
+
     const root = document.querySelector("main") || document.body;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
@@ -252,42 +267,74 @@
         if (!parent) {
           return NodeFilter.FILTER_REJECT;
         }
-        if (parent.closest(".vs-header-tools-anchor, script, style, noscript")) {
+        if (parent.closest(".vs-header-tools-anchor, .vs-search-highlight, script, style, noscript")) {
           return NodeFilter.FILTER_REJECT;
         }
         return NodeFilter.FILTER_ACCEPT;
       },
     });
 
-    const matcher = new RegExp(escapeRegExp(targetText), "i");
+    const textNodes = [];
     let currentNode = walker.nextNode();
     while (currentNode) {
-      const match = currentNode.nodeValue.match(matcher);
-      if (match && typeof match.index === "number") {
+      textNodes.push(currentNode);
+      currentNode = walker.nextNode();
+    }
+
+    const matcher = new RegExp(terms.map(escapeRegExp).join("|"), "gi");
+    let firstHighlight = null;
+
+    textNodes.forEach(function (node) {
+      const text = node.nodeValue;
+      matcher.lastIndex = 0;
+      if (!matcher.test(text)) {
+        return;
+      }
+      matcher.lastIndex = 0;
+
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match = matcher.exec(text);
+
+      while (match) {
         const start = match.index;
         const end = start + match[0].length;
-        const text = currentNode.nodeValue;
-        const before = document.createTextNode(text.slice(0, start));
+        if (start > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex, start)));
+        }
         const highlight = document.createElement("mark");
         highlight.className = "vs-search-highlight";
         highlight.textContent = text.slice(start, end);
-        const after = document.createTextNode(text.slice(end));
-        const parent = currentNode.parentNode;
-        if (!parent) {
-          return;
+        if (!firstHighlight) {
+          firstHighlight = highlight;
         }
-        parent.insertBefore(before, currentNode);
-        parent.insertBefore(highlight, currentNode);
-        parent.insertBefore(after, currentNode);
-        parent.removeChild(currentNode);
-        highlight.scrollIntoView({ block: "center", behavior: "smooth" });
-        window.setTimeout(function () {
-          highlight.classList.add("is-visible");
-        }, 20);
-        break;
+        fragment.appendChild(highlight);
+        lastIndex = end;
+        match = matcher.exec(text);
       }
-      currentNode = walker.nextNode();
+
+      if (lastIndex < text.length) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+
+      const parent = node.parentNode;
+      if (!parent) {
+        return;
+      }
+      parent.replaceChild(fragment, node);
+    });
+
+    const highlights = root.querySelectorAll(".vs-search-highlight");
+    if (!highlights.length || !firstHighlight) {
+      return;
     }
+
+    firstHighlight.scrollIntoView({ block: "center", behavior: "smooth" });
+    window.setTimeout(function () {
+      highlights.forEach(function (highlight) {
+        highlight.classList.add("is-visible");
+      });
+    }, 20);
   }
 
   function init() {
