@@ -38,11 +38,17 @@
     {
       "@type": "WebSite",
       "name": "VelocAI",
-      "url": "https://velocai.net/"
+      "url": "https://velocai.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://velocai.net/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
   ]
 }
 </script>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
 </head>
 <body>
 <header class="va-header">
@@ -92,7 +98,7 @@
 
     <aside class="va-hero-visual" aria-label="Product preview collage">
       <figure class="va-hero-shot">
-        <img src="/assets/images/stock-2026-03-pexels-tech-40/tech-19.jpg" alt="Clean product hero visual" width="1440" height="960" decoding="async" fetchpriority="high">
+        <img src="/assets/images/curated-tech-2026-03/tech-photo-19.jpg" alt="Clean product hero visual" width="1440" height="960" decoding="async" fetchpriority="high">
       </figure>
       <a class="va-float-card va-float-card-a" href="/aifind/" aria-label="Open Find AI page">
         <img src="/aifind/find-ai.png" alt="Find AI icon" width="103" height="103">
@@ -350,5 +356,6 @@ if (toggle && navList) {
   });
 }
 </script>
+  <script src="/assets/js/site-tools.js" defer></script>
 </body>
 </html>

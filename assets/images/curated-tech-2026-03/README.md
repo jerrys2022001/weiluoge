@@ -2,7 +2,7 @@
 
 Preferred stock sources for this repo: Unsplash, Pexels, Pixabay.
 
-This batch was downloaded from Pexels direct image URLs already recorded in the repo metadata.
+This batch contains 40 technology photos downloaded from Pexels direct image URLs already recorded in repo metadata.
 
 | File | Source | URL |
 |---|---|---|
@@ -31,3 +31,18 @@ This batch was downloaded from Pexels direct image URLs already recorded in the 
 | tech-photo-23.jpg | Pexels | https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
 | tech-photo-24.jpg | Pexels | https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
 | tech-photo-25.jpg | Pexels | https://images.pexels.com/photos/257904/pexels-photo-257904.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-26.jpg | Pexels | https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-27.jpg | Pexels | https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-28.jpg | Pexels | https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-29.jpg | Pexels | https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-30.jpg | Pexels | https://images.pexels.com/photos/160107/pexels-photo-160107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-31.jpg | Pexels | https://images.pexels.com/photos/459654/pexels-photo-459654.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-32.jpg | Pexels | https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-33.jpg | Pexels | https://images.pexels.com/photos/4974920/pexels-photo-4974920.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-34.jpg | Pexels | https://images.pexels.com/photos/3861976/pexels-photo-3861976.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-35.jpg | Pexels | https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-36.jpg | Pexels | https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-37.jpg | Pexels | https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-38.jpg | Pexels | https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-39.jpg | Pexels | https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
+| tech-photo-40.jpg | Pexels | https://images.pexels.com/photos/8294606/pexels-photo-8294606.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 |
