@@ -107,6 +107,9 @@
     if (preferredLocale !== "auto" && item.locale === preferredLocale) {
       score += 5;
     }
+    if (score > 0) {
+      score += Number(item.priority || 0);
+    }
     return score;
   }
 

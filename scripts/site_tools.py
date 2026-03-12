@@ -43,6 +43,7 @@ LANG_RE = re.compile(r"<html\b[^>]*\blang=(['\"])(.*?)\1", re.IGNORECASE | re.DO
 META_RE = re.compile(r"<meta\b[^>]*>", re.IGNORECASE)
 ATTR_RE = re.compile(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(['\"])(.*?)\2", re.DOTALL)
 BODY_RE = re.compile(r"<body\b[^>]*>(.*?)</body>", re.IGNORECASE | re.DOTALL)
+ANCHOR_RE = re.compile(r"<a\b([^>]*)>(.*?)</a>", re.IGNORECASE | re.DOTALL)
 TAG_RE = re.compile(r"<[^>]+>")
 SPACE_RE = re.compile(r"\s+")
 
@@ -57,6 +58,22 @@ class SearchRecord:
     locale: str
     alternates: dict[str, str]
     terms: str
+    priority: int
+
+
+GENERIC_LINK_LABELS = {
+    "home",
+    "blog",
+    "apps",
+    "privacy",
+    "contact",
+    "who we are",
+    "product page",
+    "app store",
+    "read guides",
+    "explore apps",
+    "browse apps",
+}
 
 
 def clean_html_text(value: str) -> str:
@@ -137,11 +154,113 @@ def build_terms(relative_path: Path, title: str, description: str, heading: str,
 def extract_body_terms(text: str, max_chars: int = 4000) -> str:
     body_match = BODY_RE.search(text)
     if not body_match:
-      return ""
+        return ""
     body_text = clean_html_text(body_match.group(1))
     if len(body_text) > max_chars:
-      body_text = body_text[:max_chars]
+        body_text = body_text[:max_chars]
     return body_text.lower()
+
+
+def normalize_href(relative_path: Path, href: str) -> str:
+    href = (href or "").strip()
+    if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+        return ""
+    if href.startswith(("http://", "https://")):
+        return href
+    if href.startswith("/"):
+        return href
+    base_parts = relative_path.parts[:-1]
+    candidate = (Path(*base_parts) / href).as_posix()
+    while "/./" in candidate:
+        candidate = candidate.replace("/./", "/")
+    parts: list[str] = []
+    for part in candidate.split("/"):
+        if part == "..":
+            if parts:
+                parts.pop()
+            continue
+        if not part or part == ".":
+            continue
+        parts.append(part)
+    if not parts:
+        return "/"
+    normalized = "/" + "/".join(parts)
+    if normalized.endswith("/index.html"):
+        normalized = normalized[:-10] or "/"
+    return normalized
+
+
+def extract_link_records(
+    relative_path: Path,
+    text: str,
+    page_title: str,
+    page_heading: str,
+    category: str,
+    locale: str,
+    max_records: int = 20,
+) -> list[SearchRecord]:
+    body_match = BODY_RE.search(text)
+    if not body_match:
+        return []
+
+    records: list[SearchRecord] = []
+    seen_hrefs: set[str] = set()
+    for match in ANCHOR_RE.finditer(body_match.group(1)):
+        attrs = {name.lower(): val for name, _, val in ATTR_RE.findall(match.group(1))}
+        href = normalize_href(relative_path, attrs.get("href", ""))
+        if not href:
+            continue
+        if href in seen_hrefs:
+            continue
+
+        anchor_text = clean_html_text(match.group(2))
+        aria_label = clean_html_text(attrs.get("aria-label", "")).removeprefix("Open story: ").strip()
+        title = anchor_text if len(anchor_text) >= 12 else aria_label
+        if not title:
+            continue
+
+        lowered = title.lower()
+        if lowered in GENERIC_LINK_LABELS:
+            continue
+        if len(lowered) < 18:
+            continue
+
+        seen_hrefs.add(href)
+        context_window = clean_html_text(body_match.group(1)[max(0, match.start() - 260):match.end() + 260]).lower()
+        priority = 0
+        if relative_path == Path("index.html"):
+            priority += 6
+        if "source attribution" in context_window or "tech specs" in lowered or "technical specifications" in lowered:
+            priority -= 5
+
+        records.append(
+            SearchRecord(
+                url=href,
+                title=title,
+                description=page_heading or page_title,
+                heading=page_heading,
+                category=category,
+                locale=locale,
+                alternates={},
+                terms=" ".join(
+                    piece
+                    for piece in [
+                        title.lower(),
+                        (page_heading or "").lower(),
+                        page_title.lower(),
+                        category.lower(),
+                        href.lower(),
+                    ]
+                    if piece
+                ),
+                priority=priority,
+            )
+        )
+
+        if len(records) >= max_records:
+            break
+
+    return records
 
 
 def discover_site_html_files(repo_root: Path) -> list[Path]:
@@ -175,7 +294,7 @@ def build_alternates(relative_path: Path, known_paths: set[Path]) -> dict[str, s
     return alternates
 
 
-def parse_search_record(repo_root: Path, path: Path, known_paths: set[Path]) -> SearchRecord:
+def parse_search_records(repo_root: Path, path: Path, known_paths: set[Path]) -> list[SearchRecord]:
     relative = path.relative_to(repo_root)
     text = path.read_text(encoding="utf-8")
     title_match = TITLE_RE.search(text)
@@ -187,7 +306,7 @@ def parse_search_record(repo_root: Path, path: Path, known_paths: set[Path]) -> 
     category = infer_category(relative)
     alternates = build_alternates(relative, known_paths)
     body_terms = extract_body_terms(text)
-    return SearchRecord(
+    page_record = SearchRecord(
         url=normalize_url(relative),
         title=title,
         description=description,
@@ -200,13 +319,18 @@ def parse_search_record(repo_root: Path, path: Path, known_paths: set[Path]) -> 
             for piece in [build_terms(relative, title, description, heading, category), body_terms]
             if piece
         ),
+        priority=0,
     )
+    link_records = extract_link_records(relative, text, title, heading, category, locale)
+    return [page_record, *link_records]
 
 
 def build_site_search_index(repo_root: Path) -> int:
     html_files = discover_site_html_files(repo_root)
     known_paths = {path.relative_to(repo_root) for path in html_files}
-    records = [parse_search_record(repo_root, path, known_paths) for path in html_files]
+    records: list[SearchRecord] = []
+    for path in html_files:
+        records.extend(parse_search_records(repo_root, path, known_paths))
 
     payload = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
@@ -221,6 +345,7 @@ def build_site_search_index(repo_root: Path) -> int:
                 "locale": record.locale,
                 "alternates": record.alternates,
                 "terms": record.terms,
+                "priority": record.priority,
             }
             for record in records
         ],
