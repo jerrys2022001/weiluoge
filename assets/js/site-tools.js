@@ -213,6 +213,19 @@
     return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
+  function collectHighlightTerms(query, focus) {
+    return Array.from(
+      new Set(
+        [(focus || "").trim(), ...(query || "").split(/\s+/).map(function (part) { return part.trim(); })]
+          .filter(function (part) {
+            return part && part.length >= 2;
+          })
+      )
+    ).sort(function (left, right) {
+      return right.length - left.length;
+    });
+  }
+
   function buildNavigationUrl(item, query) {
     const rawUrl = item && item.url ? item.url : "";
     if (!rawUrl) {
@@ -233,29 +246,41 @@
     return nextUrl.pathname + nextUrl.search + nextUrl.hash;
   }
 
-  function applySearchHighlight() {
-    const params = new URLSearchParams(window.location.search);
-    const focus = params.get(HIGHLIGHT_FOCUS_KEY) || "";
-    const query = params.get(HIGHLIGHT_QUERY_KEY) || "";
-    const targetText = (focus || query).trim();
-    if (!targetText) {
-      return;
-    }
-
-    const terms = Array.from(
-      new Set(
-        [focus.trim(), ...query.split(/\s+/).map(function (part) { return part.trim(); })]
-          .filter(function (part) {
-            return part && part.length >= 2;
-          })
-      )
-    ).sort(function (left, right) {
-      return right.length - left.length;
+  function clearSearchHighlights() {
+    const root = document.querySelector("main") || document.body;
+    const highlights = root.querySelectorAll(".vs-search-highlight");
+    highlights.forEach(function (highlight) {
+      const parent = highlight.parentNode;
+      if (!parent) {
+        return;
+      }
+      parent.replaceChild(document.createTextNode(highlight.textContent || ""), highlight);
+      parent.normalize();
     });
+  }
 
+  function pageContainsSearchTerm(query, focus) {
+    const terms = collectHighlightTerms(query, focus);
     if (!terms.length) {
-      return;
+      return false;
     }
+    const root = document.querySelector("main") || document.body;
+    const text = (root.textContent || "").toLowerCase();
+    return terms.some(function (term) {
+      return text.includes(term.toLowerCase());
+    });
+  }
+
+  function applySearchHighlight(queryArg, focusArg) {
+    const params = !queryArg && !focusArg ? new URLSearchParams(window.location.search) : null;
+    const focus = focusArg || (params ? params.get(HIGHLIGHT_FOCUS_KEY) || "" : "");
+    const query = queryArg || (params ? params.get(HIGHLIGHT_QUERY_KEY) || "" : "");
+    const terms = collectHighlightTerms(query, focus);
+    if (!terms.length) {
+      return false;
+    }
+
+    clearSearchHighlights();
 
     const root = document.querySelector("main") || document.body;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -326,7 +351,7 @@
 
     const highlights = root.querySelectorAll(".vs-search-highlight");
     if (!highlights.length || !firstHighlight) {
-      return;
+      return false;
     }
 
     firstHighlight.scrollIntoView({ block: "center", behavior: "smooth" });
@@ -335,6 +360,22 @@
         highlight.classList.add("is-visible");
       });
     }, 20);
+    return true;
+  }
+
+  function updateHighlightUrl(query, focus) {
+    const nextUrl = new URL(window.location.href);
+    if (query) {
+      nextUrl.searchParams.set(HIGHLIGHT_QUERY_KEY, query);
+    } else {
+      nextUrl.searchParams.delete(HIGHLIGHT_QUERY_KEY);
+    }
+    if (focus) {
+      nextUrl.searchParams.set(HIGHLIGHT_FOCUS_KEY, focus);
+    } else {
+      nextUrl.searchParams.delete(HIGHLIGHT_FOCUS_KEY);
+    }
+    window.history.replaceState({}, "", nextUrl.pathname + nextUrl.search + nextUrl.hash);
   }
 
   function init() {
@@ -459,13 +500,20 @@
     }
 
     function goToActiveResult() {
+      const query = input.value.trim();
+      if (pageContainsSearchTerm(query, "")) {
+        closePanel();
+        updateHighlightUrl(query, "");
+        applySearchHighlight(query, "");
+        return;
+      }
       if (!currentResults.length) {
         return;
       }
       const targetIndex = activeResultIndex >= 0 ? activeResultIndex : 0;
       const target = currentResults[targetIndex];
       if (target && target.url) {
-        window.location.href = buildNavigationUrl(target, input.value.trim());
+        window.location.href = buildNavigationUrl(target, query);
       }
     }
 
