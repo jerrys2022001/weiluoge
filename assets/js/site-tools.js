@@ -299,31 +299,13 @@
     const initialPreference = detectInitialLocale();
     const anchor = document.createElement("div");
     const backdrop = document.createElement("button");
+    const panel = document.createElement("div");
 
     anchor.className = "vs-header-tools-anchor";
     anchor.innerHTML = [
       '<button class="vs-header-tool-button vs-search-trigger" type="button" aria-expanded="false">',
       iconSvg("search"),
-      "</button>",
-      '<div class="vs-search-panel" hidden>',
-      '  <div class="vs-search-panel-inner">',
-      '    <div class="vs-search-bar">',
-      '      <div class="vs-search-input-wrap">',
-      '        <button class="vs-search-submit-icon" type="button">',
-      iconSvg("search"),
-      "        </button>",
-      '        <input class="vs-search-input" type="search" autocomplete="off">',
-      "      </div>",
-      '      <button class="vs-search-close" type="button">',
-      iconSvg("close"),
-      "      </button>",
-      "    </div>",
-      '    <div class="vs-search-results-wrap">',
-      '      <p class="vs-search-section-title" data-role="results-title"></p>',
-      '      <div class="vs-search-results" data-role="results"></div>',
-      "    </div>",
-      "  </div>",
-      "</div>",
+      "</button>"
     ].join("");
 
     backdrop.className = "vs-search-backdrop";
@@ -331,16 +313,38 @@
     backdrop.type = "button";
     backdrop.setAttribute("aria-hidden", "true");
 
+    panel.className = "vs-search-panel";
+    panel.hidden = true;
+    panel.innerHTML = [
+      '<div class="vs-search-panel-inner">',
+      '  <div class="vs-search-bar">',
+      '    <div class="vs-search-input-wrap">',
+      '      <button class="vs-search-submit-icon" type="button">',
+      iconSvg("search"),
+      "      </button>",
+      '      <input class="vs-search-input" type="search" autocomplete="off">',
+      "    </div>",
+      '    <button class="vs-search-close" type="button">',
+      iconSvg("close"),
+      "    </button>",
+      "  </div>",
+      '  <div class="vs-search-results-wrap">',
+      '    <p class="vs-search-section-title" data-role="results-title"></p>',
+      '    <div class="vs-search-results" data-role="results"></div>',
+      "  </div>",
+      "</div>",
+    ].join("");
+
     nav.appendChild(anchor);
     document.body.appendChild(backdrop);
+    document.body.appendChild(panel);
 
     const trigger = anchor.querySelector(".vs-search-trigger");
-    const panel = anchor.querySelector(".vs-search-panel");
-    const closeButton = anchor.querySelector(".vs-search-close");
-    const submitIcon = anchor.querySelector(".vs-search-submit-icon");
-    const input = anchor.querySelector(".vs-search-input");
-    const resultsTitle = anchor.querySelector('[data-role="results-title"]');
-    const resultsNode = anchor.querySelector('[data-role="results"]');
+    const closeButton = panel.querySelector(".vs-search-close");
+    const submitIcon = panel.querySelector(".vs-search-submit-icon");
+    const input = panel.querySelector(".vs-search-input");
+    const resultsTitle = panel.querySelector('[data-role="results-title"]');
+    const resultsNode = panel.querySelector('[data-role="results"]');
     let currentResults = [];
     let activeResultIndex = -1;
 
@@ -356,6 +360,19 @@
       return !panel.hidden;
     }
 
+    function positionPanel() {
+      const rect = trigger.getBoundingClientRect();
+      if (window.innerWidth <= 760) {
+        panel.style.top = "72px";
+        panel.style.right = "12px";
+        panel.style.left = "auto";
+        return;
+      }
+      panel.style.top = rect.bottom + 10 + "px";
+      panel.style.right = Math.max(12, window.innerWidth - rect.right) + "px";
+      panel.style.left = "auto";
+    }
+
     function closePanel() {
       panel.hidden = true;
       backdrop.hidden = true;
@@ -364,6 +381,7 @@
     }
 
     function openPanel() {
+      positionPanel();
       panel.hidden = false;
       backdrop.hidden = false;
       document.body.classList.add("vs-search-open");
@@ -512,13 +530,15 @@
       if (!isOpen()) {
         return;
       }
-      if (!anchor.contains(event.target)) {
+      if (!anchor.contains(event.target) && !panel.contains(event.target)) {
         closePanel();
       }
     });
 
     window.addEventListener("resize", function () {
-      closePanel();
+      if (isOpen()) {
+        positionPanel();
+      }
     });
 
     updateCopy();

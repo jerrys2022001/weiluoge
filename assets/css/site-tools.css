@@ -105,14 +105,13 @@ body > header .brand span {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: rgba(7, 9, 18, 0.26);
-  backdrop-filter: blur(3px);
+  background: rgba(7, 9, 18, 0.16);
 }
 
 .vs-search-panel {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
+  position: fixed;
+  top: 72px;
+  right: 12px;
   z-index: 90;
   width: min(620px, calc(100vw - 24px));
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -306,10 +305,6 @@ body.vs-search-open {
 @media (max-width: 1040px) {
   .vs-header-tools-anchor {
     margin-left: 4px;
-  }
-
-  .vs-search-panel {
-    top: calc(100% + 10px);
   }
 }
 
