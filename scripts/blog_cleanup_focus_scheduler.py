@@ -23,6 +23,7 @@ from blog_daily_scheduler import (
     update_blog_index,
     update_sitemap,
 )
+from site_tools import build_site_search_index, inject_site_tools_into_file
 
 CORE_KEYWORDS = [
     "delete duplicate photos",
@@ -144,8 +145,8 @@ ANGLES: list[CleanupAngle] = [
 ]
 
 
-def pick_angle(day: date) -> CleanupAngle:
-    return ANGLES[day.toordinal() % len(ANGLES)]
+def pick_angle(day: date, *, offset: int = 0) -> CleanupAngle:
+    return ANGLES[(day.toordinal() + offset) % len(ANGLES)]
 
 
 def dedupe_keep_order(values: list[str]) -> list[str]:
@@ -455,7 +456,7 @@ def run(args: argparse.Namespace) -> int:
         return 1
 
     target_day = parse_iso_date(args.date)
-    angle = pick_angle(target_day)
+    angle = pick_angle(target_day, offset=args.angle_offset)
     post = build_post_meta(target_day, angle)
     article_path = blog_dir / post.filename
 
@@ -468,6 +469,7 @@ def run(args: argparse.Namespace) -> int:
             article_state = "would_overwrite" if existed_before else "would_create"
         else:
             article_path.write_text(html, encoding="utf-8")
+            inject_site_tools_into_file(article_path)
             article_state = "overwritten" if existed_before else "created"
 
     if args.dry_run:
@@ -476,6 +478,8 @@ def run(args: argparse.Namespace) -> int:
 
     index_changed = update_blog_index(index_path, post)
     sitemap_changed = update_sitemap(sitemap_path, post)
+    inject_site_tools_into_file(index_path)
+    build_site_search_index(repo_root)
     git_state = "skipped"
     if args.git_commit or args.git_push:
         git_state = publish_blog_post_to_git(
@@ -503,6 +507,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("run", nargs="?", default="run", help="Subcommand placeholder for compatibility.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
+    parser.add_argument(
+        "--angle-offset",
+        type=int,
+        default=0,
+        help="Offset into the cleanup topic rotation (use different values to publish multiple posts per day).",
+    )
     parser.add_argument("--force", action="store_true", help="Overwrite article file if it already exists.")
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
     return add_git_publish_args(parser)
