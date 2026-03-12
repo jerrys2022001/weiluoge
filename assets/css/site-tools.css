@@ -21,17 +21,17 @@ body > header .brand {
 }
 
 body > header .brand img {
+  box-sizing: border-box;
   display: block;
-  width: auto;
-  height: 40px;
-  max-width: 56px;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
   object-fit: contain;
   object-position: center;
-  padding: 8px;
+  padding: 4px;
   background: rgba(255, 255, 255, 0.28);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 8px 18px rgba(18, 27, 46, 0.08);
 }
 
