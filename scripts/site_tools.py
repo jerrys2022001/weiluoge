@@ -42,6 +42,7 @@ H1_RE = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.IGNORECASE | re.DOTALL)
 LANG_RE = re.compile(r"<html\b[^>]*\blang=(['\"])(.*?)\1", re.IGNORECASE | re.DOTALL)
 META_RE = re.compile(r"<meta\b[^>]*>", re.IGNORECASE)
 ATTR_RE = re.compile(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(['\"])(.*?)\2", re.DOTALL)
+BODY_RE = re.compile(r"<body\b[^>]*>(.*?)</body>", re.IGNORECASE | re.DOTALL)
 TAG_RE = re.compile(r"<[^>]+>")
 SPACE_RE = re.compile(r"\s+")
 
@@ -133,6 +134,16 @@ def build_terms(relative_path: Path, title: str, description: str, heading: str,
     return " ".join(piece for piece in pieces if piece).lower()
 
 
+def extract_body_terms(text: str, max_chars: int = 4000) -> str:
+    body_match = BODY_RE.search(text)
+    if not body_match:
+      return ""
+    body_text = clean_html_text(body_match.group(1))
+    if len(body_text) > max_chars:
+      body_text = body_text[:max_chars]
+    return body_text.lower()
+
+
 def discover_site_html_files(repo_root: Path) -> list[Path]:
     files: list[Path] = []
     for path in repo_root.rglob("*.html"):
@@ -175,6 +186,7 @@ def parse_search_record(repo_root: Path, path: Path, known_paths: set[Path]) -> 
     locale = infer_locale(text, relative)
     category = infer_category(relative)
     alternates = build_alternates(relative, known_paths)
+    body_terms = extract_body_terms(text)
     return SearchRecord(
         url=normalize_url(relative),
         title=title,
@@ -183,7 +195,11 @@ def parse_search_record(repo_root: Path, path: Path, known_paths: set[Path]) -> 
         category=category,
         locale=locale,
         alternates=alternates,
-        terms=build_terms(relative, title, description, heading, category),
+        terms=" ".join(
+            piece
+            for piece in [build_terms(relative, title, description, heading, category), body_terms]
+            if piece
+        ),
     )
 
 
