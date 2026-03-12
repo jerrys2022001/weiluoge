@@ -1,0 +1,283 @@
+:root {
+  --vs-tools-accent: var(--page-accent, var(--blue, #2590f1));
+  --vs-tools-accent-2: var(--page-accent-2, var(--violet, #6b66da));
+  --vs-tools-text: var(--text, #f7f7ff);
+  --vs-tools-muted: var(--muted, #a6acca);
+  --vs-tools-line: var(--line, rgba(255, 255, 255, 0.14));
+  --vs-tools-line-strong: var(--line-strong, rgba(255, 255, 255, 0.24));
+  --vs-tools-surface: rgba(20, 24, 44, 0.96);
+}
+
+:is(.va-header, .topbar, body > header) {
+  overflow: visible;
+}
+
+.vs-header-tools-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 8px;
+}
+
+.vs-header-tool-button,
+.vs-search-close {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--vs-tools-text);
+  font: inherit;
+}
+
+.vs-header-tool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.vs-header-tool-button:hover,
+.vs-header-tool-button[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.vs-header-tool-button:focus-visible,
+.vs-search-close:focus-visible,
+.vs-search-input:focus-visible {
+  outline: none;
+  border-color: rgba(37, 144, 241, 0.54);
+  box-shadow: 0 0 0 3px rgba(37, 144, 241, 0.18);
+}
+
+.vs-header-tool-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.vs-search-backdrop[hidden],
+.vs-search-panel[hidden] {
+  display: none;
+}
+
+.vs-search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(7, 9, 18, 0.26);
+  backdrop-filter: blur(3px);
+}
+
+.vs-search-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 90;
+  width: min(620px, calc(100vw - 24px));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  background:
+    radial-gradient(280px 140px at 100% 0%, rgba(107, 102, 218, 0.12), transparent 70%),
+    radial-gradient(220px 120px at 0 0, rgba(37, 144, 241, 0.11), transparent 70%),
+    linear-gradient(160deg, var(--vs-tools-surface), rgba(16, 18, 34, 0.98));
+  box-shadow: 0 18px 44px rgba(6, 8, 18, 0.34);
+  color: var(--vs-tools-text);
+}
+
+.vs-search-panel-inner {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.vs-search-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.vs-search-input-wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 12px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.038);
+}
+
+.vs-search-input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--vs-tools-text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.vs-search-input::placeholder {
+  color: rgba(214, 222, 248, 0.58);
+}
+
+.vs-search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.vs-search-section-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.vs-search-results-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.vs-search-results {
+  display: grid;
+  gap: 8px;
+  max-height: min(44vh, 340px);
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.vs-search-result {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 11px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.vs-search-result:hover {
+  transform: translateY(-1px);
+  border-color: rgba(37, 144, 241, 0.32);
+  background: rgba(37, 144, 241, 0.08);
+}
+
+.vs-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.vs-result-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 16px;
+  padding: 0;
+  border-radius: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: rgba(214, 222, 248, 0.58);
+  background: transparent;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.vs-result-badge + .vs-result-badge::before {
+  content: "/";
+  margin-right: 5px;
+  color: rgba(214, 222, 248, 0.34);
+}
+
+.vs-result-title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.vs-result-description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--vs-tools-muted);
+}
+
+.vs-search-empty {
+  margin: 0;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  color: var(--vs-tools-muted);
+  font-size: 12px;
+}
+
+body.vs-search-open {
+  overflow: hidden;
+}
+
+@media (max-width: 1040px) {
+  .vs-header-tools-anchor {
+    margin-left: 4px;
+  }
+
+  .vs-search-panel {
+    top: calc(100% + 10px);
+  }
+}
+
+@media (max-width: 760px) {
+  .vs-header-tool-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .vs-search-panel {
+    position: fixed;
+    top: 72px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 92px);
+  }
+
+  .vs-search-panel-inner {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .vs-search-bar {
+    grid-template-columns: minmax(0, 1fr) 40px;
+  }
+
+  .vs-search-results {
+    max-height: calc(100vh - 260px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vs-header-tool-button,
+  .vs-search-result {
+    transition: none;
+  }
+}

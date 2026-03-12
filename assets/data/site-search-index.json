@@ -1,0 +1,2990 @@
+{
+  "generatedAt": "2026-03-12T09:17:12.812885+00:00",
+  "count": 298,
+  "items": [
+    {
+      "url": "/ai-cleanup-pro/",
+      "title": "AI Cleanup PRO Super Cleaner for iPhone | VelocAI",
+      "description": "AI Cleanup PRO is a photo cleaner iPhone app for duplicate photo cleanup, video compression, and contact organization with privacy-first on-device processing.",
+      "heading": "AI Cleanup PRO - Super Cleaner for iPhone",
+      "category": "AI Cleanup PRO",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ai cleanup pro super cleaner for iphone | velocai ai cleanup pro is a photo cleaner iphone app for duplicate photo cleanup, video compression, and contact organization with privacy-first on-device processing. ai cleanup pro - super cleaner for iphone ai cleanup pro ai-cleanup-pro/index.html ai cleanup pro"
+    },
+    {
+      "url": "/aifind/",
+      "title": "Find AI: Bluetooth Finder App | Find Lost AirPods and Earbuds",
+      "description": "Find AI helps you find lost AirPods, earbuds, Beats, and other nearby Bluetooth devices with real-time distance radar and last seen map guidance.",
+      "heading": "Find lost AirPods and Bluetooth devices, simple and fast.",
+      "category": "Find AI",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "find ai: bluetooth finder app | find lost airpods and earbuds find ai helps you find lost airpods, earbuds, beats, and other nearby bluetooth devices with real-time distance radar and last seen map guidance. find lost airpods and bluetooth devices, simple and fast. find ai aifind/index.html aifind"
+    },
+    {
+      "url": "/aifind/privacy-policy.html",
+      "title": "Find AI Privacy Policy | Bluetooth Finder App",
+      "description": "Find AI privacy policy for Bluetooth finder features, including on-device processing for RSSI, location, and UWB device-finding data.",
+      "heading": "Find AI · AI Device Privacy Policy",
+      "category": "Find AI",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "find ai privacy policy | bluetooth finder app find ai privacy policy for bluetooth finder features, including on-device processing for rssi, location, and uwb device-finding data. find ai · ai device privacy policy find ai aifind/privacy-policy.html privacy policy"
+    },
+    {
+      "url": "/apps/",
+      "title": "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer",
+      "description": "Explore VelocAI iOS apps: AI Cleanup PRO for storage cleanup, Find AI for lost Bluetooth devices, and Bluetooth Explorer for BLE debugging.",
+      "heading": "Choose the right VelocAI app for your workflow",
+      "category": "Apps",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "velocai apps | ai cleanup pro, find ai, bluetooth explorer explore velocai ios apps: ai cleanup pro for storage cleanup, find ai for lost bluetooth devices, and bluetooth explorer for ble debugging. choose the right velocai app for your workflow apps apps/index.html apps"
+    },
+    {
+      "url": "/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html",
+      "title": "Merged: Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook | VelocAI Blog",
+      "description": "Debug Android Bluetooth device discovery faster with a practical 2026 playbook covering permissions, scan baselines, CompanionDeviceManager filters, and field diagnostics.",
+      "heading": "Android Bluetooth Device Discovery Debugging: Practical 2026 Playbook",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: android bluetooth device discovery debugging: practical 2026 playbook | velocai blog debug android bluetooth device discovery faster with a practical 2026 playbook covering permissions, scan baselines, companiondevicemanager filters, and field diagnostics. android bluetooth device discovery debugging: practical 2026 playbook blog blog/android-bluetooth-device-discovery-debugging-2026-03-05.html android bluetooth device discovery debugging 2026 03 05"
+    },
+    {
+      "url": "/blog/android-companion-device-pairing-debugging-2026-03-10.html",
+      "title": "Merged: Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes | VelocAI Blog",
+      "description": "Use this practical 2026 debugging playbook to fix Android Bluetooth device discovery and companion pairing failures, with concrete logs, callbacks, and recovery checks.",
+      "heading": "Android Companion Device Pairing Debugging: Bluetooth Discovery Failure Fixes",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: android companion device pairing debugging: bluetooth discovery failure fixes | velocai blog use this practical 2026 debugging playbook to fix android bluetooth device discovery and companion pairing failures, with concrete logs, callbacks, and recovery checks. android companion device pairing debugging: bluetooth discovery failure fixes blog blog/android-companion-device-pairing-debugging-2026-03-10.html android companion device pairing debugging 2026 03 10"
+    },
+    {
+      "url": "/blog/apple-bluetooth-products-list-supported-versions-2026-03-06.html",
+      "title": "Apple Bluetooth Product List: Major Product Types and Supported Bluetooth Versions (2026) | VelocAI Blog",
+      "description": "An English checklist of Apple product types with Bluetooth support, including iPhone, iPad, Mac, Apple Watch, AirPods, HomePod, and Apple TV, plus official Bluetooth version numbers.",
+      "heading": "Apple Bluetooth Product List: Major Product Types and Supported Bluetooth Versions (2026)",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "apple bluetooth product list: major product types and supported bluetooth versions (2026) | velocai blog an english checklist of apple product types with bluetooth support, including iphone, ipad, mac, apple watch, airpods, homepod, and apple tv, plus official bluetooth version numbers. apple bluetooth product list: major product types and supported bluetooth versions (2026) blog blog/apple-bluetooth-products-list-supported-versions-2026-03-06.html apple bluetooth products list supported versions 2026 03 06"
+    },
+    {
+      "url": "/blog/bluetooth-advertising-discovery-functional-guide-2026-03-08.html",
+      "title": "Bluetooth Advertising and Discovery Guide: How Devices Become Visible and Useful | VelocAI Blog",
+      "description": "A practical explanation of Bluetooth advertising, scanning, discovery timing, and how these behaviors affect user experience in real products.",
+      "heading": "Bluetooth Advertising and Discovery Guide: How Devices Become Visible and Useful",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth advertising and discovery guide: how devices become visible and useful | velocai blog a practical explanation of bluetooth advertising, scanning, discovery timing, and how these behaviors affect user experience in real products. bluetooth advertising and discovery guide: how devices become visible and useful blog blog/bluetooth-advertising-discovery-functional-guide-2026-03-08.html bluetooth advertising discovery functional guide 2026 03 08"
+    },
+    {
+      "url": "/blog/bluetooth-advertising-discovery-functional-guide-2026-03-12.html",
+      "title": "Bluetooth Advertising and Discovery Guide: How Devices Become Visible and Useful | VelocAI Blog",
+      "description": "A practical explanation of Bluetooth advertising, scanning, discovery timing, and how these behaviors affect user experience in real products.",
+      "heading": "Bluetooth Advertising and Discovery Guide: How Devices Become Visible and Useful",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth advertising and discovery guide: how devices become visible and useful | velocai blog a practical explanation of bluetooth advertising, scanning, discovery timing, and how these behaviors affect user experience in real products. bluetooth advertising and discovery guide: how devices become visible and useful blog blog/bluetooth-advertising-discovery-functional-guide-2026-03-12.html bluetooth advertising discovery functional guide 2026 03 12"
+    },
+    {
+      "url": "/blog/bluetooth-battery-drain-phone-cleanup-2026-03-07.html",
+      "title": "Bluetooth Battery Drain and Phone Cleanup Guide: Keep Connectivity Fast and Storage Lean | VelocAI Blog",
+      "description": "Learn how to reduce Bluetooth battery drain while cleaning phone storage in a way that improves day-to-day speed and reliability.",
+      "heading": "Bluetooth Battery Drain and Phone Cleanup Guide: Keep Connectivity Fast and Storage Lean",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth battery drain and phone cleanup guide: keep connectivity fast and storage lean | velocai blog learn how to reduce bluetooth battery drain while cleaning phone storage in a way that improves day-to-day speed and reliability. bluetooth battery drain and phone cleanup guide: keep connectivity fast and storage lean blog blog/bluetooth-battery-drain-phone-cleanup-2026-03-07.html bluetooth battery drain phone cleanup 2026 03 07"
+    },
+    {
+      "url": "/blog/bluetooth-connection-fixes-phone-storage-cleanup-2026-03-06.html",
+      "title": "Bluetooth Connection Fixes and Phone Storage Cleanup: Practical SEO-Friendly Playbook | VelocAI Blog",
+      "description": "Fix unstable Bluetooth connections and clean phone storage with a practical playbook designed for search visibility and AI-ready answer extraction.",
+      "heading": "Bluetooth Connection Fixes and Phone Storage Cleanup: Practical SEO-Friendly Playbook",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth connection fixes and phone storage cleanup: practical seo-friendly playbook | velocai blog fix unstable bluetooth connections and clean phone storage with a practical playbook designed for search visibility and ai-ready answer extraction. bluetooth connection fixes and phone storage cleanup: practical seo-friendly playbook blog blog/bluetooth-connection-fixes-phone-storage-cleanup-2026-03-06.html bluetooth connection fixes phone storage cleanup 2026 03 06"
+    },
+    {
+      "url": "/blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html",
+      "title": "Bluetooth Core Specification 6.2 Explained: What Changed and How to Use It | VelocAI Blog",
+      "description": "A practical interpretation of Bluetooth Core Specification 6.2 (latest as of March 2026): shorter connection intervals, channel sounding security updates, LE testing improvements, and application ideas for LE Audio, digital keys, and low-latency devices.",
+      "heading": "Bluetooth Core Specification 6.2 Explained: What Changed and How to Use It",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth core specification 6.2 explained: what changed and how to use it | velocai blog a practical interpretation of bluetooth core specification 6.2 (latest as of march 2026): shorter connection intervals, channel sounding security updates, le testing improvements, and application ideas for le audio, digital keys, and low-latency devices. bluetooth core specification 6.2 explained: what changed and how to use it blog blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html bluetooth core 6 2 latest protocol applications 2026 03 10"
+    },
+    {
+      "url": "/blog/bluetooth-core-6-2-whats-new-2026-03-04.html",
+      "title": "Merged: Bluetooth Core 6.2: What Is New and What to Update | VelocAI Blog",
+      "description": "A practical guide to the latest Bluetooth Core Specification 6.2 release and what product teams should update in 2026.",
+      "heading": "Bluetooth Core 6.2: What Is New and What to Update",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth core 6.2: what is new and what to update | velocai blog a practical guide to the latest bluetooth core specification 6.2 release and what product teams should update in 2026. bluetooth core 6.2: what is new and what to update blog blog/bluetooth-core-6-2-whats-new-2026-03-04.html bluetooth core 6 2 whats new 2026 03 04"
+    },
+    {
+      "url": "/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html",
+      "title": "Bluetooth Device Discovery Debugging Checklist (2026) | VelocAI Blog",
+      "description": "Use this Bluetooth device discovery debugging checklist to fix BLE scan failures, pairing misses, and unstable nearby-device detection on Android and iOS.",
+      "heading": "Bluetooth Device Discovery Debugging Checklist (2026)",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth device discovery debugging checklist (2026) | velocai blog use this bluetooth device discovery debugging checklist to fix ble scan failures, pairing misses, and unstable nearby-device detection on android and ios. bluetooth device discovery debugging checklist (2026) blog blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html bluetooth device discovery debugging checklist 2026 03 04"
+    },
+    {
+      "url": "/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html",
+      "title": "Merged: Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide | VelocAI Blog",
+      "description": "A practical Bluetooth device discovery debugging checklist based on the Bluetooth SIG 2025 LE Audio earbuds publication, with concrete pairing and scan recovery steps.",
+      "heading": "Bluetooth Device Discovery Debugging: Earbuds Pairing Fixes from the 2025 SIG Guide",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth device discovery debugging: earbuds pairing fixes from the 2025 sig guide | velocai blog a practical bluetooth device discovery debugging checklist based on the bluetooth sig 2025 le audio earbuds publication, with concrete pairing and scan recovery steps. bluetooth device discovery debugging: earbuds pairing fixes from the 2025 sig guide blog blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html bluetooth device discovery debugging earbuds guide 2026 03 09"
+    },
+    {
+      "url": "/blog/bluetooth-explorer-ble-debugging-guide-2026-03-04.html",
+      "title": "Merged: Bluetooth Explorer BLE Debugging Guide for Reliable Device Discovery | VelocAI Blog",
+      "description": "Use this bluetooth explorer workflow to debug BLE scan failures, unstable RSSI signals, and missing peripherals with a repeatable troubleshooting checklist.",
+      "heading": "Bluetooth Explorer BLE Debugging Guide for Reliable Device Discovery",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth explorer ble debugging guide for reliable device discovery | velocai blog use this bluetooth explorer workflow to debug ble scan failures, unstable rssi signals, and missing peripherals with a repeatable troubleshooting checklist. bluetooth explorer ble debugging guide for reliable device discovery blog blog/bluetooth-explorer-ble-debugging-guide-2026-03-04.html bluetooth explorer ble debugging guide 2026 03 04"
+    },
+    {
+      "url": "/blog/bluetooth-future-applications-outlook-2026-03-04.html",
+      "title": "Bluetooth Future Applications Outlook: What to Build for 2027 and Beyond | VelocAI Blog",
+      "description": "A practical outlook on future Bluetooth applications across distance-aware experiences, AI audio, connected healthcare, industrial operations, and digital access.",
+      "heading": "Bluetooth Future Applications Outlook: What to Build for 2027 and Beyond",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth future applications outlook: what to build for 2027 and beyond | velocai blog a practical outlook on future bluetooth applications across distance-aware experiences, ai audio, connected healthcare, industrial operations, and digital access. bluetooth future applications outlook: what to build for 2027 and beyond blog blog/bluetooth-future-applications-outlook-2026-03-04.html bluetooth future applications outlook 2026 03 04"
+    },
+    {
+      "url": "/blog/bluetooth-gatt-services-characteristics-guide-2026-03-11.html",
+      "title": "Merged: Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications | VelocAI Blog",
+      "description": "A practical Bluetooth GATT guide covering services, characteristics, UUIDs, notifications, BLE data flow, and real-world applications across connected devices.",
+      "heading": "Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth gatt explained: services, characteristics, uuids, and ble applications | velocai blog a practical bluetooth gatt guide covering services, characteristics, uuids, notifications, ble data flow, and real-world applications across connected devices. bluetooth gatt explained: services, characteristics, uuids, and ble applications blog blog/bluetooth-gatt-services-characteristics-guide-2026-03-11.html bluetooth gatt services characteristics guide 2026 03 11"
+    },
+    {
+      "url": "/blog/bluetooth-gatt-services-characteristics-guide-2026-03-12.html",
+      "title": "Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications | VelocAI Blog",
+      "description": "A practical Bluetooth GATT guide covering services, characteristics, UUIDs, notifications, BLE data flow, and real-world applications across connected devices.",
+      "heading": "Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth gatt explained: services, characteristics, uuids, and ble applications | velocai blog a practical bluetooth gatt guide covering services, characteristics, uuids, notifications, ble data flow, and real-world applications across connected devices. bluetooth gatt explained: services, characteristics, uuids, and ble applications blog blog/bluetooth-gatt-services-characteristics-guide-2026-03-12.html bluetooth gatt services characteristics guide 2026 03 12"
+    },
+    {
+      "url": "/blog/bluetooth-latest-specs-6-0-6-1-6-2-comparison-2026-03-04.html",
+      "title": "Bluetooth Latest Specs Compared: 6.0 vs 6.1 vs 6.2 | VelocAI Blog",
+      "description": "Compare Bluetooth Core Specification 6.0, 6.1, and 6.2 with a practical roadmap for product planning and rollout decisions.",
+      "heading": "Bluetooth Latest Specs Compared: 6.0 vs 6.1 vs 6.2",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth latest specs compared: 6.0 vs 6.1 vs 6.2 | velocai blog compare bluetooth core specification 6.0, 6.1, and 6.2 with a practical roadmap for product planning and rollout decisions. bluetooth latest specs compared: 6.0 vs 6.1 vs 6.2 blog blog/bluetooth-latest-specs-6-0-6-1-6-2-comparison-2026-03-04.html bluetooth latest specs 6 0 6 1 6 2 comparison 2026 03 04"
+    },
+    {
+      "url": "/blog/bluetooth-mesh-and-le-audio-applications-2026-03-09.html",
+      "title": "Bluetooth Mesh and LE Audio Applications: Where Newer Bluetooth Features Create Real Value | VelocAI Blog",
+      "description": "Explore how Bluetooth Mesh and LE Audio turn protocol evolution into lighting, broadcast audio, assistive listening, and multi-device control use cases.",
+      "heading": "Bluetooth Mesh and LE Audio Applications: Where Newer Bluetooth Features Create Real Value",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth mesh and le audio applications: where newer bluetooth features create real value | velocai blog explore how bluetooth mesh and le audio turn protocol evolution into lighting, broadcast audio, assistive listening, and multi-device control use cases. bluetooth mesh and le audio applications: where newer bluetooth features create real value blog blog/bluetooth-mesh-and-le-audio-applications-2026-03-09.html bluetooth mesh and le audio applications 2026 03 09"
+    },
+    {
+      "url": "/blog/bluetooth-mesh-and-le-audio-applications-2026-03-12.html",
+      "title": "Bluetooth Mesh and LE Audio Applications: Where Newer Bluetooth Features Create Real Value | VelocAI Blog",
+      "description": "Explore how Bluetooth Mesh and LE Audio turn protocol evolution into lighting, broadcast audio, assistive listening, and multi-device control use cases.",
+      "heading": "Bluetooth Mesh and LE Audio Applications: Where Newer Bluetooth Features Create Real Value",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth mesh and le audio applications: where newer bluetooth features create real value | velocai blog explore how bluetooth mesh and le audio turn protocol evolution into lighting, broadcast audio, assistive listening, and multi-device control use cases. bluetooth mesh and le audio applications: where newer bluetooth features create real value blog blog/bluetooth-mesh-and-le-audio-applications-2026-03-12.html bluetooth mesh and le audio applications 2026 03 12"
+    },
+    {
+      "url": "/blog/bluetooth-pairing-bonding-security-applications-2026-03-07.html",
+      "title": "Merged: Bluetooth Pairing, Bonding, and Security: Protocol Basics for Safer Connected Products | VelocAI Blog",
+      "description": "Understand pairing, bonding, and Bluetooth security decisions with practical examples from consumer devices, enterprise hardware, and smart environments.",
+      "heading": "Bluetooth Pairing, Bonding, and Security: Protocol Basics for Safer Connected Products",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth pairing, bonding, and security: protocol basics for safer connected products | velocai blog understand pairing, bonding, and bluetooth security decisions with practical examples from consumer devices, enterprise hardware, and smart environments. bluetooth pairing, bonding, and security: protocol basics for safer connected products blog blog/bluetooth-pairing-bonding-security-applications-2026-03-07.html bluetooth pairing bonding security applications 2026 03 07"
+    },
+    {
+      "url": "/blog/bluetooth-pairing-bonding-security-applications-2026-03-12.html",
+      "title": "Bluetooth Pairing, Bonding, and Security: Protocol Basics for Safer Connected Products | VelocAI Blog",
+      "description": "Understand pairing, bonding, and Bluetooth security decisions with practical examples from consumer devices, enterprise hardware, and smart environments.",
+      "heading": "Bluetooth Pairing, Bonding, and Security: Protocol Basics for Safer Connected Products",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth pairing, bonding, and security: protocol basics for safer connected products | velocai blog understand pairing, bonding, and bluetooth security decisions with practical examples from consumer devices, enterprise hardware, and smart environments. bluetooth pairing, bonding, and security: protocol basics for safer connected products blog blog/bluetooth-pairing-bonding-security-applications-2026-03-12.html bluetooth pairing bonding security applications 2026 03 12"
+    },
+    {
+      "url": "/blog/bluetooth-phone-cleanup-consulting-guide-2026-03-05.html",
+      "title": "Bluetooth and Phone Cleanup Consulting Guide: A Daily 20-Minute Mobile Performance Plan | VelocAI Blog",
+      "description": "A practical consulting guide to improve Bluetooth reliability and phone storage hygiene with an easy daily routine for iPhone and iPad users.",
+      "heading": "Bluetooth and Phone Cleanup Consulting Guide: A Daily 20-Minute Mobile Performance Plan",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth and phone cleanup consulting guide: a daily 20-minute mobile performance plan | velocai blog a practical consulting guide to improve bluetooth reliability and phone storage hygiene with an easy daily routine for iphone and ipad users. bluetooth and phone cleanup consulting guide: a daily 20-minute mobile performance plan blog blog/bluetooth-phone-cleanup-consulting-guide-2026-03-05.html bluetooth phone cleanup consulting guide 2026 03 05"
+    },
+    {
+      "url": "/blog/bluetooth-protocol-stack-explained-applications-2026-03-11.html",
+      "title": "Bluetooth Protocol Stack Explained: BLE Layers, GATT, ATT, and Real-World Applications | VelocAI Blog",
+      "description": "A 2026 Bluetooth protocol stack guide covering BLE layers, advertising, ATT, GATT, pairing, and real-world applications in audio, wearables, smart homes, and IoT devices.",
+      "heading": "Bluetooth Protocol Stack Explained: BLE Layers, GATT, ATT, and Real-World Applications",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth protocol stack explained: ble layers, gatt, att, and real-world applications | velocai blog a 2026 bluetooth protocol stack guide covering ble layers, advertising, att, gatt, pairing, and real-world applications in audio, wearables, smart homes, and iot devices. bluetooth protocol stack explained: ble layers, gatt, att, and real-world applications blog blog/bluetooth-protocol-stack-explained-applications-2026-03-11.html bluetooth protocol stack explained applications 2026 03 11"
+    },
+    {
+      "url": "/blog/bluetooth-scan-no-results-debugging-2026-03-06.html",
+      "title": "Merged: Bluetooth Scan No Results? Device Discovery Debugging Guide (2026) | VelocAI Blog",
+      "description": "Bluetooth scan returning no devices? Use this 2026 debugging guide to fix BLE discovery issues fast with practical scan-window, payload, and environment checks.",
+      "heading": "Bluetooth Scan No Results? Device Discovery Debugging Guide (2026)",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "merged: bluetooth scan no results? device discovery debugging guide (2026) | velocai blog bluetooth scan returning no devices? use this 2026 debugging guide to fix ble discovery issues fast with practical scan-window, payload, and environment checks. bluetooth scan no results? device discovery debugging guide (2026) blog blog/bluetooth-scan-no-results-debugging-2026-03-06.html bluetooth scan no results debugging 2026 03 06"
+    },
+    {
+      "url": "/blog/bluetooth-smart-home-applications-status-challenges-2026-03-06.html",
+      "title": "Bluetooth in Smart Homes: Current Applications and Key Challenges (2026) | VelocAI Blog",
+      "description": "An English deep-dive on the current state of Bluetooth in smart homes, including real-world applications, interoperability issues, security risks, and deployment challenges in 2026.",
+      "heading": "Bluetooth in Smart Homes: Current Applications and Key Challenges (2026)",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth in smart homes: current applications and key challenges (2026) | velocai blog an english deep-dive on the current state of bluetooth in smart homes, including real-world applications, interoperability issues, security risks, and deployment challenges in 2026. bluetooth in smart homes: current applications and key challenges (2026) blog blog/bluetooth-smart-home-applications-status-challenges-2026-03-06.html bluetooth smart home applications status challenges 2026 03 06"
+    },
+    {
+      "url": "/blog/bluetooth-throughput-latency-power-tradeoffs-2026-03-12.html",
+      "title": "Bluetooth Throughput, Latency, and Power Tradeoffs: Protocol Decisions Behind Product Experience | VelocAI Blog",
+      "description": "Learn how connection interval, MTU, packet flow, and power targets influence Bluetooth responsiveness in consumer and industrial products.",
+      "heading": "Bluetooth Throughput, Latency, and Power Tradeoffs: Protocol Decisions Behind Product Experience",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth throughput, latency, and power tradeoffs: protocol decisions behind product experience | velocai blog learn how connection interval, mtu, packet flow, and power targets influence bluetooth responsiveness in consumer and industrial products. bluetooth throughput, latency, and power tradeoffs: protocol decisions behind product experience blog blog/bluetooth-throughput-latency-power-tradeoffs-2026-03-12.html bluetooth throughput latency power tradeoffs 2026 03 12"
+    },
+    {
+      "url": "/blog/bluetooth-use-cases-summary-2026-03-04.html",
+      "title": "Bluetooth Use Cases Summary: Practical Scenarios for 2026 | VelocAI Blog",
+      "description": "A practical summary of Bluetooth use cases across lost-device recovery, BLE debugging, wearables, smart home, mobility, retail, and industrial workflows.",
+      "heading": "Bluetooth Use Cases Summary: Practical Scenarios for 2026",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth use cases summary: practical scenarios for 2026 | velocai blog a practical summary of bluetooth use cases across lost-device recovery, ble debugging, wearables, smart home, mobility, retail, and industrial workflows. bluetooth use cases summary: practical scenarios for 2026 blog blog/bluetooth-use-cases-summary-2026-03-04.html bluetooth use cases summary 2026 03 04"
+    },
+    {
+      "url": "/blog/clean-whatsapp-media-storage-guide-2026-03-11.html",
+      "title": "How to Clean WhatsApp Storage on iPhone: Free Up Space Without Losing Chats | VelocAI Blog",
+      "description": "Learn how to clean WhatsApp storage on iPhone, remove photos, videos, and downloads safely, and free up storage without losing important chats.",
+      "heading": "How to Clean WhatsApp Storage on iPhone: Free Up Space Without Losing Chats",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "how to clean whatsapp storage on iphone: free up space without losing chats | velocai blog learn how to clean whatsapp storage on iphone, remove photos, videos, and downloads safely, and free up storage without losing important chats. how to clean whatsapp storage on iphone: free up space without losing chats blog blog/clean-whatsapp-media-storage-guide-2026-03-11.html clean whatsapp media storage guide 2026 03 11"
+    },
+    {
+      "url": "/blog/clear-system-storage-iphone-guide-2026-03-12.html",
+      "title": "Clear System Storage on iPhone: What to Check First and What to Leave Alone | VelocAI Blog",
+      "description": "A plain-English guide to clearing system storage on iPhone by fixing the obvious media categories first and only then reviewing hidden storage growth.",
+      "heading": "Clear System Storage on iPhone: What to Check First and What to Leave Alone",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "clear system storage on iphone: what to check first and what to leave alone | velocai blog a plain-english guide to clearing system storage on iphone by fixing the obvious media categories first and only then reviewing hidden storage growth. clear system storage on iphone: what to check first and what to leave alone blog blog/clear-system-storage-iphone-guide-2026-03-12.html clear system storage iphone guide 2026 03 12"
+    },
+    {
+      "url": "/blog/daily-phone-cleanup-routine-duplicate-photos-videos-screenshots-whatsapp-system-storage-2026-03-12.html",
+      "title": "The 20:00 Phone Cleanup Routine: Duplicate Photos, Large Videos, Screenshots, WhatsApp Media, and System Storage | VelocAI Blog",
+      "description": "A complete daily 20:00 phone cleanup routine covering duplicate photos, large videos, screenshots, WhatsApp media, and system storage in one safe workflow.",
+      "heading": "The 20:00 Phone Cleanup Routine: Duplicate Photos, Large Videos, Screenshots, WhatsApp Media, and System Storage",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "the 20:00 phone cleanup routine: duplicate photos, large videos, screenshots, whatsapp media, and system storage | velocai blog a complete daily 20:00 phone cleanup routine covering duplicate photos, large videos, screenshots, whatsapp media, and system storage in one safe workflow. the 20:00 phone cleanup routine: duplicate photos, large videos, screenshots, whatsapp media, and system storage blog blog/daily-phone-cleanup-routine-duplicate-photos-videos-screenshots-whatsapp-system-storage-2026-03-12.html daily phone cleanup routine duplicate photos videos screenshots whatsapp system storage 2026 03 12"
+    },
+    {
+      "url": "/blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-08.html",
+      "title": "Delete Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery | VelocAI Blog",
+      "description": "A practical English guide to deleting duplicate photos first so you can reclaim space safely and make daily iPhone cleanup faster.",
+      "heading": "Delete Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "delete duplicate photos first: daily iphone cleanup guide for faster storage recovery | velocai blog a practical english guide to deleting duplicate photos first so you can reclaim space safely and make daily iphone cleanup faster. delete duplicate photos first: daily iphone cleanup guide for faster storage recovery blog blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-08.html delete duplicate photos daily cleanup guide 2026 03 08"
+    },
+    {
+      "url": "/blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-12.html",
+      "title": "Delete Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery | VelocAI Blog",
+      "description": "A practical English guide to deleting duplicate photos first so you can reclaim space safely and make daily iPhone cleanup faster.",
+      "heading": "Delete Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "delete duplicate photos first: daily iphone cleanup guide for faster storage recovery | velocai blog a practical english guide to deleting duplicate photos first so you can reclaim space safely and make daily iphone cleanup faster. delete duplicate photos first: daily iphone cleanup guide for faster storage recovery blog blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-12.html delete duplicate photos daily cleanup guide 2026 03 12"
+    },
+    {
+      "url": "/blog/find-large-videos-storage-cleanup-playbook-2026-03-09.html",
+      "title": "Find Large Videos and Reclaim Space: Practical 20-Minute Phone Cleanup Playbook | VelocAI Blog",
+      "description": "Learn how to find large videos quickly and reclaim phone storage with a simple daily cleanup workflow built for SEO and GEO visibility.",
+      "heading": "Find Large Videos and Reclaim Space: Practical 20-Minute Phone Cleanup Playbook",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "find large videos and reclaim space: practical 20-minute phone cleanup playbook | velocai blog learn how to find large videos quickly and reclaim phone storage with a simple daily cleanup workflow built for seo and geo visibility. find large videos and reclaim space: practical 20-minute phone cleanup playbook blog blog/find-large-videos-storage-cleanup-playbook-2026-03-09.html find large videos storage cleanup playbook 2026 03 09"
+    },
+    {
+      "url": "/blog/find-lost-airpods-bluetooth-finder-guide.html",
+      "title": "How to Find Lost AirPods with a Bluetooth Finder App | VelocAI Blog",
+      "description": "Learn a practical 5-step process to find lost AirPods and earbuds using Bluetooth signal distance, last seen location, and focused scanning.",
+      "heading": "How to Find Lost AirPods with a Bluetooth Finder App",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "how to find lost airpods with a bluetooth finder app | velocai blog learn a practical 5-step process to find lost airpods and earbuds using bluetooth signal distance, last seen location, and focused scanning. how to find lost airpods with a bluetooth finder app blog blog/find-lost-airpods-bluetooth-finder-guide.html find lost airpods bluetooth finder guide"
+    },
+    {
+      "url": "/blog/",
+      "title": "VelocAI Blog | Bluetooth Guides, Phone Cleanup Playbooks, and Mobile Optimization",
+      "description": "VelocAI blog articles for Bluetooth troubleshooting, phone cleanup routines, storage optimization checklists, and practical mobile performance guides.",
+      "heading": "Bluetooth troubleshooting and phone cleanup guides for daily mobile performance",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "velocai blog | bluetooth guides, phone cleanup playbooks, and mobile optimization velocai blog articles for bluetooth troubleshooting, phone cleanup routines, storage optimization checklists, and practical mobile performance guides. bluetooth troubleshooting and phone cleanup guides for daily mobile performance blog blog/index.html blog"
+    },
+    {
+      "url": "/blog/iphone-storage-cleanup-checklist.html",
+      "title": "iPhone Storage Cleanup Checklist for 2026 | VelocAI Blog",
+      "description": "Use this weekly iPhone storage cleanup checklist to remove duplicate photos, reduce large videos, and clean contacts without deleting important data.",
+      "heading": "iPhone Storage Cleanup Checklist for 2026",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "iphone storage cleanup checklist for 2026 | velocai blog use this weekly iphone storage cleanup checklist to remove duplicate photos, reduce large videos, and clean contacts without deleting important data. iphone storage cleanup checklist for 2026 blog blog/iphone-storage-cleanup-checklist.html iphone storage cleanup checklist"
+    },
+    {
+      "url": "/blog/iphone-storage-full-cleanup-five-step-order-2026-03-12.html",
+      "title": "iPhone Storage Full? Use This Five-Step Cleanup Order Before You Delete Anything Important | VelocAI Blog",
+      "description": "If your iPhone storage is full, this guide shows a five-step cleanup order based on duplicate photos, large videos, screenshots, WhatsApp media, and system storage review.",
+      "heading": "iPhone Storage Full? Use This Five-Step Cleanup Order Before You Delete Anything Important",
+      "category": "Blog",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "iphone storage full? use this five-step cleanup order before you delete anything important | velocai blog if your iphone storage is full, this guide shows a five-step cleanup order based on duplicate photos, large videos, screenshots, whatsapp media, and system storage review. iphone storage full? use this five-step cleanup order before you delete anything important blog blog/iphone-storage-full-cleanup-five-step-order-2026-03-12.html iphone storage full cleanup five step order 2026 03 12"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/attribute-gatt-include-declaration.html",
+      "title": "Include (0x2802) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Include (0x2802)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "include (0x2802) | bluetooth gatt documentation include (0x2802) bluetooth docs bluetoothexplorer/document/en/attribute-gatt-include-declaration.html attribute gatt include declaration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/attribute-gatt-primary-service-declaration.html",
+      "title": "Primary Service (0x2800) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Primary Service (0x2800)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "primary service (0x2800) | bluetooth gatt documentation primary service (0x2800) bluetooth docs bluetoothexplorer/document/en/attribute-gatt-primary-service-declaration.html attribute gatt primary service declaration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html",
+      "title": "Secondary Service (0x2801) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Secondary Service (0x2801)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "secondary service (0x2801) | bluetooth gatt documentation secondary service (0x2801) bluetooth docs bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html attribute gatt secondary service declaration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html",
+      "title": "Bluetooth GATT UUID Lookup Table (0x1800-0x2B1F) | Bluetooth Explorer",
+      "description": "Complete Bluetooth GATT UUID lookup table (0x1800-0x2B1F) with name, type, UTI, assigned number, and specification code from GATT.pdf.",
+      "heading": "Bluetooth GATT UUID Lookup Table",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth gatt uuid lookup table (0x1800-0x2b1f) | bluetooth explorer complete bluetooth gatt uuid lookup table (0x1800-0x2b1f) with name, type, uti, assigned number, and specification code from gatt.pdf. bluetooth gatt uuid lookup table bluetooth docs bluetoothexplorer/document/en/bluetooth-gatt-service-uuid-lookup-table.html bluetooth gatt service uuid lookup table"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-lower-limit.html",
+      "title": "Aerobic Heart Rate Lower Limit (0x2A7E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Aerobic Heart Rate Lower Limit (0x2A7E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "aerobic heart rate lower limit (0x2a7e) | bluetooth gatt documentation aerobic heart rate lower limit (0x2a7e) bluetooth docs bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-lower-limit.html characteristic aerobic heart rate lower limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-upper-limit.html",
+      "title": "Aerobic Heart Rate Upper Limit (0x2A84) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Aerobic Heart Rate Upper Limit (0x2A84)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "aerobic heart rate upper limit (0x2a84) | bluetooth gatt documentation aerobic heart rate upper limit (0x2a84) bluetooth docs bluetoothexplorer/document/en/characteristic-aerobic-heart-rate-upper-limit.html characteristic aerobic heart rate upper limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-aerobic-threshold.html",
+      "title": "Aerobic Threshold (0x2A7F) | Bluetooth GATT Documentation",
+      "description": "Aerobic Threshold (0x2A7F) Bluetooth GATT characteristic reference. First metabolic threshold.",
+      "heading": "Aerobic Threshold (0x2A7F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "aerobic threshold (0x2a7f) | bluetooth gatt documentation aerobic threshold (0x2a7f) bluetooth gatt characteristic reference. first metabolic threshold. aerobic threshold (0x2a7f) bluetooth docs bluetoothexplorer/document/en/characteristic-aerobic-threshold.html characteristic aerobic threshold"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-age.html",
+      "title": "Age (0x2A80) | Bluetooth GATT Documentation",
+      "description": "Age (0x2A80) Bluetooth GATT characteristic reference. Age of the User.",
+      "heading": "Age (0x2A80)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "age (0x2a80) | bluetooth gatt documentation age (0x2a80) bluetooth gatt characteristic reference. age of the user. age (0x2a80) bluetooth docs bluetoothexplorer/document/en/characteristic-age.html characteristic age"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-aggregate.html",
+      "title": "Aggregate (0x2A5A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Aggregate (0x2A5A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "aggregate (0x2a5a) | bluetooth gatt documentation aggregate (0x2a5a) bluetooth docs bluetoothexplorer/document/en/characteristic-aggregate.html characteristic aggregate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html",
+      "title": "Alert Category ID Bit Mask (0x2A42) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Alert Category ID Bit Mask (0x2A42)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert category id bit mask (0x2a42) | bluetooth gatt documentation alert category id bit mask (0x2a42) bluetooth docs bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html characteristic alert category id bit mask"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-alert-category-id.html",
+      "title": "Alert Category ID (0x2A43) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Alert Category ID (0x2A43)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert category id (0x2a43) | bluetooth gatt documentation alert category id (0x2a43) bluetooth docs bluetoothexplorer/document/en/characteristic-alert-category-id.html characteristic alert category id"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-alert-level.html",
+      "title": "Alert Level (0x2A06) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Alert Level (0x2A06)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert level (0x2a06) | bluetooth gatt documentation alert level (0x2a06) bluetooth docs bluetoothexplorer/document/en/characteristic-alert-level.html characteristic alert level"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-alert-notification-control-point.html",
+      "title": "Alert Notification Control Point (0x2A44) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Alert Notification Control Point (0x2A44)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert notification control point (0x2a44) | bluetooth gatt documentation alert notification control point (0x2a44) bluetooth docs bluetoothexplorer/document/en/characteristic-alert-notification-control-point.html characteristic alert notification control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-alert-status.html",
+      "title": "Alert Status (0x2A3F) | Bluetooth GATT Documentation",
+      "description": "Alert Status (0x2A3F) Bluetooth GATT characteristic reference. The Alert Status characteristic defines the Status of alert.",
+      "heading": "Alert Status (0x2A3F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert status (0x2a3f) | bluetooth gatt documentation alert status (0x2a3f) bluetooth gatt characteristic reference. the alert status characteristic defines the status of alert. alert status (0x2a3f) bluetooth docs bluetoothexplorer/document/en/characteristic-alert-status.html characteristic alert status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-altitude.html",
+      "title": "Altitude (0x2AB3) | Bluetooth GATT Documentation",
+      "description": "Altitude (0x2AB3) Bluetooth GATT characteristic reference. The Altitude characteristic describes the altitude of the device.",
+      "heading": "Altitude (0x2AB3)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "altitude (0x2ab3) | bluetooth gatt documentation altitude (0x2ab3) bluetooth gatt characteristic reference. the altitude characteristic describes the altitude of the device. altitude (0x2ab3) bluetooth docs bluetoothexplorer/document/en/characteristic-altitude.html characteristic altitude"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-lower-limit.html",
+      "title": "Anaerobic Heart Rate Lower Limit (0x2A81) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Anaerobic Heart Rate Lower Limit (0x2A81)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "anaerobic heart rate lower limit (0x2a81) | bluetooth gatt documentation anaerobic heart rate lower limit (0x2a81) bluetooth docs bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-lower-limit.html characteristic anaerobic heart rate lower limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-upper-limit.html",
+      "title": "Anaerobic Heart Rate Upper Limit (0x2A82) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Anaerobic Heart Rate Upper Limit (0x2A82)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "anaerobic heart rate upper limit (0x2a82) | bluetooth gatt documentation anaerobic heart rate upper limit (0x2a82) bluetooth docs bluetoothexplorer/document/en/characteristic-anaerobic-heart-rate-upper-limit.html characteristic anaerobic heart rate upper limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-anaerobic-threshold.html",
+      "title": "Anaerobic Threshold (0x2A83) | Bluetooth GATT Documentation",
+      "description": "Anaerobic Threshold (0x2A83) Bluetooth GATT characteristic reference. Second metabolic threshold",
+      "heading": "Anaerobic Threshold (0x2A83)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "anaerobic threshold (0x2a83) | bluetooth gatt documentation anaerobic threshold (0x2a83) bluetooth gatt characteristic reference. second metabolic threshold anaerobic threshold (0x2a83) bluetooth docs bluetoothexplorer/document/en/characteristic-anaerobic-threshold.html characteristic anaerobic threshold"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-analog.html",
+      "title": "Analog (0x2A58) | Bluetooth GATT Documentation",
+      "description": "Analog (0x2A58) Bluetooth GATT characteristic reference. The Analog characteristic is used to read or write the value of one of the IO Module?s analog signals.",
+      "heading": "Analog (0x2A58)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "analog (0x2a58) | bluetooth gatt documentation analog (0x2a58) bluetooth gatt characteristic reference. the analog characteristic is used to read or write the value of one of the io module?s analog signals. analog (0x2a58) bluetooth docs bluetoothexplorer/document/en/characteristic-analog.html characteristic analog"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-apparent-wind-direction.html",
+      "title": "Apparent Wind Direction (0x2A73) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Apparent Wind Direction (0x2A73)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "apparent wind direction (0x2a73) | bluetooth gatt documentation apparent wind direction (0x2a73) bluetooth docs bluetoothexplorer/document/en/characteristic-apparent-wind-direction.html characteristic apparent wind direction"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-apparent-wind-speed.html",
+      "title": "Apparent Wind Speed (0x2A72) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Apparent Wind Speed (0x2A72)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "apparent wind speed (0x2a72) | bluetooth gatt documentation apparent wind speed (0x2a72) bluetooth docs bluetoothexplorer/document/en/characteristic-apparent-wind-speed.html characteristic apparent wind speed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-barometric-pressure-trend.html",
+      "title": "Barometric Pressure Trend (0x2AA3) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Barometric Pressure Trend (0x2AA3)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "barometric pressure trend (0x2aa3) | bluetooth gatt documentation barometric pressure trend (0x2aa3) bluetooth docs bluetoothexplorer/document/en/characteristic-barometric-pressure-trend.html characteristic barometric pressure trend"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-battery-level.html",
+      "title": "Battery Level (0x2A19) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Battery Level (0x2A19)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "battery level (0x2a19) | bluetooth gatt documentation battery level (0x2a19) bluetooth docs bluetoothexplorer/document/en/characteristic-battery-level.html characteristic battery level"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-blood-pressure-feature.html",
+      "title": "Blood Pressure Feature (0x2A49) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Blood Pressure Feature (0x2A49)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "blood pressure feature (0x2a49) | bluetooth gatt documentation blood pressure feature (0x2a49) bluetooth docs bluetoothexplorer/document/en/characteristic-blood-pressure-feature.html characteristic blood pressure feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-blood-pressure-measurement.html",
+      "title": "Blood Pressure Measurement (0x2A35) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Blood Pressure Measurement (0x2A35)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "blood pressure measurement (0x2a35) | bluetooth gatt documentation blood pressure measurement (0x2a35) bluetooth docs bluetoothexplorer/document/en/characteristic-blood-pressure-measurement.html characteristic blood pressure measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-body-composition-feature.html",
+      "title": "Body Composition Feature (0x2A9B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Body Composition Feature (0x2A9B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "body composition feature (0x2a9b) | bluetooth gatt documentation body composition feature (0x2a9b) bluetooth docs bluetoothexplorer/document/en/characteristic-body-composition-feature.html characteristic body composition feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-body-composition-measurement.html",
+      "title": "Body Composition Measurement (0x2A9C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Body Composition Measurement (0x2A9C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "body composition measurement (0x2a9c) | bluetooth gatt documentation body composition measurement (0x2a9c) bluetooth docs bluetoothexplorer/document/en/characteristic-body-composition-measurement.html characteristic body composition measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-body-sensor-location.html",
+      "title": "Body Sensor Location (0x2A38) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Body Sensor Location (0x2A38)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "body sensor location (0x2a38) | bluetooth gatt documentation body sensor location (0x2a38) bluetooth docs bluetoothexplorer/document/en/characteristic-body-sensor-location.html characteristic body sensor location"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-bond-management-control-point.html",
+      "title": "Bond Management Control Point (0x2AA4) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Bond Management Control Point (0x2AA4)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bond management control point (0x2aa4) | bluetooth gatt documentation bond management control point (0x2aa4) bluetooth docs bluetoothexplorer/document/en/characteristic-bond-management-control-point.html characteristic bond management control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-bond-management-feature.html",
+      "title": "Bond Management Features (0x2AA5) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Bond Management Features (0x2AA5)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bond management features (0x2aa5) | bluetooth gatt documentation bond management features (0x2aa5) bluetooth docs bluetoothexplorer/document/en/characteristic-bond-management-feature.html characteristic bond management feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-boot-keyboard-input-report.html",
+      "title": "Boot Keyboard Input Report (0x2A22) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Boot Keyboard Input Report (0x2A22)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "boot keyboard input report (0x2a22) | bluetooth gatt documentation boot keyboard input report (0x2a22) bluetooth docs bluetoothexplorer/document/en/characteristic-boot-keyboard-input-report.html characteristic boot keyboard input report"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-boot-keyboard-output-report.html",
+      "title": "Boot Keyboard Output Report (0x2A32) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Boot Keyboard Output Report (0x2A32)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "boot keyboard output report (0x2a32) | bluetooth gatt documentation boot keyboard output report (0x2a32) bluetooth docs bluetoothexplorer/document/en/characteristic-boot-keyboard-output-report.html characteristic boot keyboard output report"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-boot-mouse-input-report.html",
+      "title": "Boot Mouse Input Report (0x2A33) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Boot Mouse Input Report (0x2A33)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "boot mouse input report (0x2a33) | bluetooth gatt documentation boot mouse input report (0x2a33) bluetooth docs bluetoothexplorer/document/en/characteristic-boot-mouse-input-report.html characteristic boot mouse input report"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-feature.html",
+      "title": "CGM Feature (0x2AA8) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Feature (0x2AA8)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm feature (0x2aa8) | bluetooth gatt documentation cgm feature (0x2aa8) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-feature.html characteristic cgm feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-measurement.html",
+      "title": "CGM Measurement (0x2AA7) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Measurement (0x2AA7)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm measurement (0x2aa7) | bluetooth gatt documentation cgm measurement (0x2aa7) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-measurement.html characteristic cgm measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-session-run-time.html",
+      "title": "CGM Session Run Time (0x2AAB) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Session Run Time (0x2AAB)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm session run time (0x2aab) | bluetooth gatt documentation cgm session run time (0x2aab) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-session-run-time.html characteristic cgm session run time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-session-start-time.html",
+      "title": "CGM Session Start Time (0x2AAA) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Session Start Time (0x2AAA)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm session start time (0x2aaa) | bluetooth gatt documentation cgm session start time (0x2aaa) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-session-start-time.html characteristic cgm session start time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-specific-ops-control-point.html",
+      "title": "CGM Specific Ops Control Point (0x2AAC) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Specific Ops Control Point (0x2AAC)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm specific ops control point (0x2aac) | bluetooth gatt documentation cgm specific ops control point (0x2aac) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-specific-ops-control-point.html characteristic cgm specific ops control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cgm-status.html",
+      "title": "CGM Status (0x2AA9) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CGM Status (0x2AA9)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cgm status (0x2aa9) | bluetooth gatt documentation cgm status (0x2aa9) bluetooth docs bluetoothexplorer/document/en/characteristic-cgm-status.html characteristic cgm status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cross-trainer-data.html",
+      "title": "Cross Trainer Data (0x2ACE) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cross Trainer Data (0x2ACE)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cross trainer data (0x2ace) | bluetooth gatt documentation cross trainer data (0x2ace) bluetooth docs bluetoothexplorer/document/en/characteristic-cross-trainer-data.html characteristic cross trainer data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-csc-feature.html",
+      "title": "CSC Feature (0x2A5C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CSC Feature (0x2A5C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "csc feature (0x2a5c) | bluetooth gatt documentation csc feature (0x2a5c) bluetooth docs bluetoothexplorer/document/en/characteristic-csc-feature.html characteristic csc feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-csc-measurement.html",
+      "title": "CSC Measurement (0x2A5B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "CSC Measurement (0x2A5B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "csc measurement (0x2a5b) | bluetooth gatt documentation csc measurement (0x2a5b) bluetooth docs bluetoothexplorer/document/en/characteristic-csc-measurement.html characteristic csc measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-current-time.html",
+      "title": "Current Time (0x2A2B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Current Time (0x2A2B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "current time (0x2a2b) | bluetooth gatt documentation current time (0x2a2b) bluetooth docs bluetoothexplorer/document/en/characteristic-current-time.html characteristic current time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cycling-power-control-point.html",
+      "title": "Cycling Power Control Point (0x2A66) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Power Control Point (0x2A66)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling power control point (0x2a66) | bluetooth gatt documentation cycling power control point (0x2a66) bluetooth docs bluetoothexplorer/document/en/characteristic-cycling-power-control-point.html characteristic cycling power control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cycling-power-feature.html",
+      "title": "Cycling Power Feature (0x2A65) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Power Feature (0x2A65)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling power feature (0x2a65) | bluetooth gatt documentation cycling power feature (0x2a65) bluetooth docs bluetoothexplorer/document/en/characteristic-cycling-power-feature.html characteristic cycling power feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cycling-power-measurement.html",
+      "title": "Cycling Power Measurement (0x2A63) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Power Measurement (0x2A63)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling power measurement (0x2a63) | bluetooth gatt documentation cycling power measurement (0x2a63) bluetooth docs bluetoothexplorer/document/en/characteristic-cycling-power-measurement.html characteristic cycling power measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-cycling-power-vector.html",
+      "title": "Cycling Power Vector (0x2A64) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Power Vector (0x2A64)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling power vector (0x2a64) | bluetooth gatt documentation cycling power vector (0x2a64) bluetooth docs bluetoothexplorer/document/en/characteristic-cycling-power-vector.html characteristic cycling power vector"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-database-change-increment.html",
+      "title": "Database Change Increment (0x2A99) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Database Change Increment (0x2A99)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "database change increment (0x2a99) | bluetooth gatt documentation database change increment (0x2a99) bluetooth docs bluetoothexplorer/document/en/characteristic-database-change-increment.html characteristic database change increment"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-date-of-birth.html",
+      "title": "Date of Birth (0x2A85) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Date of Birth (0x2A85)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "date of birth (0x2a85) | bluetooth gatt documentation date of birth (0x2a85) bluetooth docs bluetoothexplorer/document/en/characteristic-date-of-birth.html characteristic date of birth"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-date-of-threshold-assessment.html",
+      "title": "Date of Threshold Assessment (0x2A86) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Date of Threshold Assessment (0x2A86)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "date of threshold assessment (0x2a86) | bluetooth gatt documentation date of threshold assessment (0x2a86) bluetooth docs bluetoothexplorer/document/en/characteristic-date-of-threshold-assessment.html characteristic date of threshold assessment"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-date-time.html",
+      "title": "Date Time (0x2A08) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Date Time (0x2A08)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "date time (0x2a08) | bluetooth gatt documentation date time (0x2a08) bluetooth docs bluetoothexplorer/document/en/characteristic-date-time.html characteristic date time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-day-date-time.html",
+      "title": "Day Date Time (0x2A0A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Day Date Time (0x2A0A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "day date time (0x2a0a) | bluetooth gatt documentation day date time (0x2a0a) bluetooth docs bluetoothexplorer/document/en/characteristic-day-date-time.html characteristic day date time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-day-of-week.html",
+      "title": "Day of Week (0x2A09) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Day of Week (0x2A09)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "day of week (0x2a09) | bluetooth gatt documentation day of week (0x2a09) bluetooth docs bluetoothexplorer/document/en/characteristic-day-of-week.html characteristic day of week"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-descriptor-value-changed.html",
+      "title": "Descriptor Value Changed (0x2A7D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Descriptor Value Changed (0x2A7D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "descriptor value changed (0x2a7d) | bluetooth gatt documentation descriptor value changed (0x2a7d) bluetooth docs bluetoothexplorer/document/en/characteristic-descriptor-value-changed.html characteristic descriptor value changed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-dew-point.html",
+      "title": "Dew Point (0x2A7B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Dew Point (0x2A7B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "dew point (0x2a7b) | bluetooth gatt documentation dew point (0x2a7b) bluetooth docs bluetoothexplorer/document/en/characteristic-dew-point.html characteristic dew point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-digital.html",
+      "title": "Digital (0x2A56) | Bluetooth GATT Documentation",
+      "description": "Digital (0x2A56) Bluetooth GATT characteristic reference. The Digital characteristic is used to expose and change the state of an IO Module?s digital signals.",
+      "heading": "Digital (0x2A56)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "digital (0x2a56) | bluetooth gatt documentation digital (0x2a56) bluetooth gatt characteristic reference. the digital characteristic is used to expose and change the state of an io module?s digital signals. digital (0x2a56) bluetooth docs bluetoothexplorer/document/en/characteristic-digital.html characteristic digital"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-dst-offset.html",
+      "title": "DST Offset (0x2A0D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "DST Offset (0x2A0D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "dst offset (0x2a0d) | bluetooth gatt documentation dst offset (0x2a0d) bluetooth docs bluetoothexplorer/document/en/characteristic-dst-offset.html characteristic dst offset"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-elevation.html",
+      "title": "Elevation (0x2A6C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Elevation (0x2A6C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "elevation (0x2a6c) | bluetooth gatt documentation elevation (0x2a6c) bluetooth docs bluetoothexplorer/document/en/characteristic-elevation.html characteristic elevation"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-email-address.html",
+      "title": "Email Address (0x2A87) | Bluetooth GATT Documentation",
+      "description": "Email Address (0x2A87) Bluetooth GATT characteristic reference. Email address of the user. See Note below.",
+      "heading": "Email Address (0x2A87)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "email address (0x2a87) | bluetooth gatt documentation email address (0x2a87) bluetooth gatt characteristic reference. email address of the user. see note below. email address (0x2a87) bluetooth docs bluetoothexplorer/document/en/characteristic-email-address.html characteristic email address"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-exact-time-256.html",
+      "title": "Exact Time 256 (0x2A0C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Exact Time 256 (0x2A0C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "exact time 256 (0x2a0c) | bluetooth gatt documentation exact time 256 (0x2a0c) bluetooth docs bluetoothexplorer/document/en/characteristic-exact-time-256.html characteristic exact time 256"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-lower-limit.html",
+      "title": "Fat Burn Heart Rate Lower Limit (0x2A88) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fat Burn Heart Rate Lower Limit (0x2A88)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fat burn heart rate lower limit (0x2a88) | bluetooth gatt documentation fat burn heart rate lower limit (0x2a88) bluetooth docs bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-lower-limit.html characteristic fat burn heart rate lower limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-upper-limit.html",
+      "title": "Fat Burn Heart Rate Upper Limit (0x2A89) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fat Burn Heart Rate Upper Limit (0x2A89)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fat burn heart rate upper limit (0x2a89) | bluetooth gatt documentation fat burn heart rate upper limit (0x2a89) bluetooth docs bluetoothexplorer/document/en/characteristic-fat-burn-heart-rate-upper-limit.html characteristic fat burn heart rate upper limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-firmware-revision-string.html",
+      "title": "Firmware Revision String (0x2A26) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Firmware Revision String (0x2A26)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "firmware revision string (0x2a26) | bluetooth gatt documentation firmware revision string (0x2a26) bluetooth docs bluetoothexplorer/document/en/characteristic-firmware-revision-string.html characteristic firmware revision string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-first-name.html",
+      "title": "First Name (0x2A8A) | Bluetooth GATT Documentation",
+      "description": "First Name (0x2A8A) Bluetooth GATT characteristic reference. First name of the user. See Note below.",
+      "heading": "First Name (0x2A8A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "first name (0x2a8a) | bluetooth gatt documentation first name (0x2a8a) bluetooth gatt characteristic reference. first name of the user. see note below. first name (0x2a8a) bluetooth docs bluetoothexplorer/document/en/characteristic-first-name.html characteristic first name"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-fitness-machine-control-point.html",
+      "title": "Fitness Machine Control Point (0x2AD9) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fitness Machine Control Point (0x2AD9)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fitness machine control point (0x2ad9) | bluetooth gatt documentation fitness machine control point (0x2ad9) bluetooth docs bluetoothexplorer/document/en/characteristic-fitness-machine-control-point.html characteristic fitness machine control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-fitness-machine-feature.html",
+      "title": "Fitness Machine Feature (0x2ACC) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fitness Machine Feature (0x2ACC)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fitness machine feature (0x2acc) | bluetooth gatt documentation fitness machine feature (0x2acc) bluetooth docs bluetoothexplorer/document/en/characteristic-fitness-machine-feature.html characteristic fitness machine feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-fitness-machine-status.html",
+      "title": "Fitness Machine Status (0x2ADA) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fitness Machine Status (0x2ADA)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fitness machine status (0x2ada) | bluetooth gatt documentation fitness machine status (0x2ada) bluetooth docs bluetoothexplorer/document/en/characteristic-fitness-machine-status.html characteristic fitness machine status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-five-zone-heart-rate-limits.html",
+      "title": "Five Zone Heart Rate Limits (0x2A8B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Five Zone Heart Rate Limits (0x2A8B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "five zone heart rate limits (0x2a8b) | bluetooth gatt documentation five zone heart rate limits (0x2a8b) bluetooth docs bluetoothexplorer/document/en/characteristic-five-zone-heart-rate-limits.html characteristic five zone heart rate limits"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-floor-number.html",
+      "title": "Floor Number (0x2AB2) | Bluetooth GATT Documentation",
+      "description": "Floor Number (0x2AB2) Bluetooth GATT characteristic reference. The Floor Number characteristic describes in which floor the device is installed.",
+      "heading": "Floor Number (0x2AB2)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "floor number (0x2ab2) | bluetooth gatt documentation floor number (0x2ab2) bluetooth gatt characteristic reference. the floor number characteristic describes in which floor the device is installed. floor number (0x2ab2) bluetooth docs bluetoothexplorer/document/en/characteristic-floor-number.html characteristic floor number"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-appearance.html",
+      "title": "Appearance (0x2A01) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Appearance (0x2A01)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "appearance (0x2a01) | bluetooth gatt documentation appearance (0x2a01) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-appearance.html characteristic gap appearance"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-central-address-resolution.html",
+      "title": "Central Address Resolution (0x2AA6) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Central Address Resolution (0x2AA6)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "central address resolution (0x2aa6) | bluetooth gatt documentation central address resolution (0x2aa6) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-central-address-resolution.html characteristic gap central address resolution"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-device-name.html",
+      "title": "Device Name (0x2A00) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Device Name (0x2A00)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "device name (0x2a00) | bluetooth gatt documentation device name (0x2a00) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-device-name.html characteristic gap device name"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-peripheral-preferred-connection-parameters.html",
+      "title": "Peripheral Preferred Connection Parameters (0x2A04) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Peripheral Preferred Connection Parameters (0x2A04)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "peripheral preferred connection parameters (0x2a04) | bluetooth gatt documentation peripheral preferred connection parameters (0x2a04) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-peripheral-preferred-connection-parameters.html characteristic gap peripheral preferred connection parameters"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-peripheral-privacy-flag.html",
+      "title": "Peripheral Privacy Flag (0x2A02) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Peripheral Privacy Flag (0x2A02)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "peripheral privacy flag (0x2a02) | bluetooth gatt documentation peripheral privacy flag (0x2a02) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-peripheral-privacy-flag.html characteristic gap peripheral privacy flag"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gap-reconnection-address.html",
+      "title": "Reconnection Address (0x2A03) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Reconnection Address (0x2A03)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "reconnection address (0x2a03) | bluetooth gatt documentation reconnection address (0x2a03) bluetooth docs bluetoothexplorer/document/en/characteristic-gap-reconnection-address.html characteristic gap reconnection address"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gatt-service-changed.html",
+      "title": "Service Changed (0x2A05) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Service Changed (0x2A05)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "service changed (0x2a05) | bluetooth gatt documentation service changed (0x2a05) bluetooth docs bluetoothexplorer/document/en/characteristic-gatt-service-changed.html characteristic gatt service changed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gender.html",
+      "title": "Gender (0x2A8C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Gender (0x2A8C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "gender (0x2a8c) | bluetooth gatt documentation gender (0x2a8c) bluetooth docs bluetoothexplorer/document/en/characteristic-gender.html characteristic gender"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-glucose-feature.html",
+      "title": "Glucose Feature (0x2A51) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Glucose Feature (0x2A51)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "glucose feature (0x2a51) | bluetooth gatt documentation glucose feature (0x2a51) bluetooth docs bluetoothexplorer/document/en/characteristic-glucose-feature.html characteristic glucose feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html",
+      "title": "Glucose Measurement Context (0x2A34) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Glucose Measurement Context (0x2A34)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "glucose measurement context (0x2a34) | bluetooth gatt documentation glucose measurement context (0x2a34) bluetooth docs bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html characteristic glucose measurement context"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-glucose-measurement.html",
+      "title": "Glucose Measurement (0x2A18) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Glucose Measurement (0x2A18)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "glucose measurement (0x2a18) | bluetooth gatt documentation glucose measurement (0x2a18) bluetooth docs bluetoothexplorer/document/en/characteristic-glucose-measurement.html characteristic glucose measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-gust-factor.html",
+      "title": "Gust Factor (0x2A74) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Gust Factor (0x2A74)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "gust factor (0x2a74) | bluetooth gatt documentation gust factor (0x2a74) bluetooth docs bluetoothexplorer/document/en/characteristic-gust-factor.html characteristic gust factor"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-hardware-revision-string.html",
+      "title": "Hardware Revision String (0x2A27) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Hardware Revision String (0x2A27)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "hardware revision string (0x2a27) | bluetooth gatt documentation hardware revision string (0x2a27) bluetooth docs bluetoothexplorer/document/en/characteristic-hardware-revision-string.html characteristic hardware revision string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-heart-rate-control-point.html",
+      "title": "Heart Rate Control Point (0x2A39) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Heart Rate Control Point (0x2A39)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "heart rate control point (0x2a39) | bluetooth gatt documentation heart rate control point (0x2a39) bluetooth docs bluetoothexplorer/document/en/characteristic-heart-rate-control-point.html characteristic heart rate control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-heart-rate-max.html",
+      "title": "Heart Rate Max (0x2A8D) | Bluetooth GATT Documentation",
+      "description": "Heart Rate Max (0x2A8D) Bluetooth GATT characteristic reference. Maximum heart rate a user can reach.",
+      "heading": "Heart Rate Max (0x2A8D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "heart rate max (0x2a8d) | bluetooth gatt documentation heart rate max (0x2a8d) bluetooth gatt characteristic reference. maximum heart rate a user can reach. heart rate max (0x2a8d) bluetooth docs bluetoothexplorer/document/en/characteristic-heart-rate-max.html characteristic heart rate max"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html",
+      "title": "Heart Rate Measurement (0x2A37) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Heart Rate Measurement (0x2A37)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "heart rate measurement (0x2a37) | bluetooth gatt documentation heart rate measurement (0x2a37) bluetooth docs bluetoothexplorer/document/en/characteristic-heart-rate-measurement.html characteristic heart rate measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-heat-index.html",
+      "title": "Heat Index (0x2A7A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Heat Index (0x2A7A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "heat index (0x2a7a) | bluetooth gatt documentation heat index (0x2a7a) bluetooth docs bluetoothexplorer/document/en/characteristic-heat-index.html characteristic heat index"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-height.html",
+      "title": "Height (0x2A8E) | Bluetooth GATT Documentation",
+      "description": "Height (0x2A8E) Bluetooth GATT characteristic reference. Height of the User",
+      "heading": "Height (0x2A8E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "height (0x2a8e) | bluetooth gatt documentation height (0x2a8e) bluetooth gatt characteristic reference. height of the user height (0x2a8e) bluetooth docs bluetoothexplorer/document/en/characteristic-height.html characteristic height"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-hid-control-point.html",
+      "title": "HID Control Point (0x2A4C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HID Control Point (0x2A4C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "hid control point (0x2a4c) | bluetooth gatt documentation hid control point (0x2a4c) bluetooth docs bluetoothexplorer/document/en/characteristic-hid-control-point.html characteristic hid control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-hid-information.html",
+      "title": "HID Information (0x2A4A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HID Information (0x2A4A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "hid information (0x2a4a) | bluetooth gatt documentation hid information (0x2a4a) bluetooth docs bluetoothexplorer/document/en/characteristic-hid-information.html characteristic hid information"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-hip-circumference.html",
+      "title": "Hip Circumference (0x2A8F) | Bluetooth GATT Documentation",
+      "description": "Hip Circumference (0x2A8F) Bluetooth GATT characteristic reference. Used with the Waist Circumference value to calculate the Waist to Hip Ratio (WHR)",
+      "heading": "Hip Circumference (0x2A8F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "hip circumference (0x2a8f) | bluetooth gatt documentation hip circumference (0x2a8f) bluetooth gatt characteristic reference. used with the waist circumference value to calculate the waist to hip ratio (whr) hip circumference (0x2a8f) bluetooth docs bluetoothexplorer/document/en/characteristic-hip-circumference.html characteristic hip circumference"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-http-control-point.html",
+      "title": "HTTP Control Point (0x2ABA) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTP Control Point (0x2ABA)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "http control point (0x2aba) | bluetooth gatt documentation http control point (0x2aba) bluetooth docs bluetoothexplorer/document/en/characteristic-http-control-point.html characteristic http control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-http-entity-body.html",
+      "title": "HTTP Entity Body (0x2AB9) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTP Entity Body (0x2AB9)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "http entity body (0x2ab9) | bluetooth gatt documentation http entity body (0x2ab9) bluetooth docs bluetoothexplorer/document/en/characteristic-http-entity-body.html characteristic http entity body"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-http-headers.html",
+      "title": "HTTP Headers (0x2AB7) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTP Headers (0x2AB7)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "http headers (0x2ab7) | bluetooth gatt documentation http headers (0x2ab7) bluetooth docs bluetoothexplorer/document/en/characteristic-http-headers.html characteristic http headers"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-http-status-code.html",
+      "title": "HTTP Status Code (0x2AB8) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTP Status Code (0x2AB8)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "http status code (0x2ab8) | bluetooth gatt documentation http status code (0x2ab8) bluetooth docs bluetoothexplorer/document/en/characteristic-http-status-code.html characteristic http status code"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-https-security.html",
+      "title": "HTTPS Security (0x2ABB) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTPS Security (0x2ABB)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "https security (0x2abb) | bluetooth gatt documentation https security (0x2abb) bluetooth docs bluetoothexplorer/document/en/characteristic-https-security.html characteristic https security"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-humidity.html",
+      "title": "Humidity (0x2A6F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Humidity (0x2A6F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "humidity (0x2a6f) | bluetooth gatt documentation humidity (0x2a6f) bluetooth docs bluetoothexplorer/document/en/characteristic-humidity.html characteristic humidity"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-indoor-bike-data.html",
+      "title": "Indoor Bike Data (0x2AD2) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Indoor Bike Data (0x2AD2)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "indoor bike data (0x2ad2) | bluetooth gatt documentation indoor bike data (0x2ad2) bluetooth docs bluetoothexplorer/document/en/characteristic-indoor-bike-data.html characteristic indoor bike data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-indoor-positioning-configuration.html",
+      "title": "Indoor Positioning Configuration (0x2AAD) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Indoor Positioning Configuration (0x2AAD)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "indoor positioning configuration (0x2aad) | bluetooth gatt documentation indoor positioning configuration (0x2aad) bluetooth docs bluetoothexplorer/document/en/characteristic-indoor-positioning-configuration.html characteristic indoor positioning configuration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-intermediate-cuff-pressure.html",
+      "title": "Intermediate Cuff Pressure (0x2A36) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Intermediate Cuff Pressure (0x2A36)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "intermediate cuff pressure (0x2a36) | bluetooth gatt documentation intermediate cuff pressure (0x2a36) bluetooth docs bluetoothexplorer/document/en/characteristic-intermediate-cuff-pressure.html characteristic intermediate cuff pressure"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-intermediate-temperature.html",
+      "title": "Intermediate Temperature (0x2A1E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Intermediate Temperature (0x2A1E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "intermediate temperature (0x2a1e) | bluetooth gatt documentation intermediate temperature (0x2a1e) bluetooth docs bluetoothexplorer/document/en/characteristic-intermediate-temperature.html characteristic intermediate temperature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-irradiance.html",
+      "title": "Irradiance (0x2A77) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Irradiance (0x2A77)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "irradiance (0x2a77) | bluetooth gatt documentation irradiance (0x2a77) bluetooth docs bluetoothexplorer/document/en/characteristic-irradiance.html characteristic irradiance"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-language.html",
+      "title": "Language (0x2AA2) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Language (0x2AA2)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "language (0x2aa2) | bluetooth gatt documentation language (0x2aa2) bluetooth docs bluetoothexplorer/document/en/characteristic-language.html characteristic language"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-last-name.html",
+      "title": "Last Name (0x2A90) | Bluetooth GATT Documentation",
+      "description": "Last Name (0x2A90) Bluetooth GATT characteristic reference. Last name of the user. See Note below.",
+      "heading": "Last Name (0x2A90)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "last name (0x2a90) | bluetooth gatt documentation last name (0x2a90) bluetooth gatt characteristic reference. last name of the user. see note below. last name (0x2a90) bluetooth docs bluetoothexplorer/document/en/characteristic-last-name.html characteristic last name"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-latitude.html",
+      "title": "Latitude (0x2AAE) | Bluetooth GATT Documentation",
+      "description": "Latitude (0x2AAE) Bluetooth GATT characteristic reference. The Latitude characteristic describes the WGS84 North coordinate of the device.",
+      "heading": "Latitude (0x2AAE)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "latitude (0x2aae) | bluetooth gatt documentation latitude (0x2aae) bluetooth gatt characteristic reference. the latitude characteristic describes the wgs84 north coordinate of the device. latitude (0x2aae) bluetooth docs bluetoothexplorer/document/en/characteristic-latitude.html characteristic latitude"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-ln-control-point.html",
+      "title": "LN Control Point (0x2A6B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "LN Control Point (0x2A6B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ln control point (0x2a6b) | bluetooth gatt documentation ln control point (0x2a6b) bluetooth docs bluetoothexplorer/document/en/characteristic-ln-control-point.html characteristic ln control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-ln-feature.html",
+      "title": "LN Feature (0x2A6A) | Bluetooth GATT Documentation",
+      "description": "LN Feature (0x2A6A) Bluetooth GATT characteristic reference. The LN Feature characteristic is used to report a list of features supported by the device.",
+      "heading": "LN Feature (0x2A6A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ln feature (0x2a6a) | bluetooth gatt documentation ln feature (0x2a6a) bluetooth gatt characteristic reference. the ln feature characteristic is used to report a list of features supported by the device. ln feature (0x2a6a) bluetooth docs bluetoothexplorer/document/en/characteristic-ln-feature.html characteristic ln feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-local-east-coordinate.html",
+      "title": "Local East Coordinate (0x2AB1) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Local East Coordinate (0x2AB1)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "local east coordinate (0x2ab1) | bluetooth gatt documentation local east coordinate (0x2ab1) bluetooth docs bluetoothexplorer/document/en/characteristic-local-east-coordinate.html characteristic local east coordinate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-local-north-coordinate.html",
+      "title": "Local North Coordinate (0x2AB0) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Local North Coordinate (0x2AB0)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "local north coordinate (0x2ab0) | bluetooth gatt documentation local north coordinate (0x2ab0) bluetooth docs bluetoothexplorer/document/en/characteristic-local-north-coordinate.html characteristic local north coordinate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-local-time-information.html",
+      "title": "Local Time Information (0x2A0F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Local Time Information (0x2A0F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "local time information (0x2a0f) | bluetooth gatt documentation local time information (0x2a0f) bluetooth docs bluetoothexplorer/document/en/characteristic-local-time-information.html characteristic local time information"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-location-and-speed.html",
+      "title": "Location and Speed Characteristic (0x2A67) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Location and Speed Characteristic (0x2A67)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "location and speed characteristic (0x2a67) | bluetooth gatt documentation location and speed characteristic (0x2a67) bluetooth docs bluetoothexplorer/document/en/characteristic-location-and-speed.html characteristic location and speed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-location-name.html",
+      "title": "Location Name (0x2AB5) | Bluetooth GATT Documentation",
+      "description": "Location Name (0x2AB5) Bluetooth GATT characteristic reference. The Location Name characteristic describes the name of the location the device is installed in.",
+      "heading": "Location Name (0x2AB5)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "location name (0x2ab5) | bluetooth gatt documentation location name (0x2ab5) bluetooth gatt characteristic reference. the location name characteristic describes the name of the location the device is installed in. location name (0x2ab5) bluetooth docs bluetoothexplorer/document/en/characteristic-location-name.html characteristic location name"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-longitude.html",
+      "title": "Longitude (0x2AAF) | Bluetooth GATT Documentation",
+      "description": "Longitude (0x2AAF) Bluetooth GATT characteristic reference. The Longitude characteristic describes the WGS84 East coordinate of the device.",
+      "heading": "Longitude (0x2AAF)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "longitude (0x2aaf) | bluetooth gatt documentation longitude (0x2aaf) bluetooth gatt characteristic reference. the longitude characteristic describes the wgs84 east coordinate of the device. longitude (0x2aaf) bluetooth docs bluetoothexplorer/document/en/characteristic-longitude.html characteristic longitude"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-magnetic-declination.html",
+      "title": "Magnetic Declination (0x2A2C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Magnetic Declination (0x2A2C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "magnetic declination (0x2a2c) | bluetooth gatt documentation magnetic declination (0x2a2c) bluetooth docs bluetoothexplorer/document/en/characteristic-magnetic-declination.html characteristic magnetic declination"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html",
+      "title": "Magnetic Flux Density - 3D (0x2AA1) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Magnetic Flux Density - 3D (0x2AA1)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "magnetic flux density - 3d (0x2aa1) | bluetooth gatt documentation magnetic flux density - 3d (0x2aa1) bluetooth docs bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html characteristic magnetic flux density 3d"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html",
+      "title": "Manufacturer Name String (0x2A29) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Manufacturer Name String (0x2A29)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "manufacturer name string (0x2a29) | bluetooth gatt documentation manufacturer name string (0x2a29) bluetooth docs bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html characteristic manufacturer name string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-maximum-recommended-heart-rate.html",
+      "title": "Maximum Recommended Heart Rate (0x2A91) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Maximum Recommended Heart Rate (0x2A91)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "maximum recommended heart rate (0x2a91) | bluetooth gatt documentation maximum recommended heart rate (0x2a91) bluetooth docs bluetoothexplorer/document/en/characteristic-maximum-recommended-heart-rate.html characteristic maximum recommended heart rate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-measurement-interval.html",
+      "title": "Measurement Interval (0x2A21) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Measurement Interval (0x2A21)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "measurement interval (0x2a21) | bluetooth gatt documentation measurement interval (0x2a21) bluetooth docs bluetoothexplorer/document/en/characteristic-measurement-interval.html characteristic measurement interval"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-model-number-string.html",
+      "title": "Model Number String (0x2A24) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Model Number String (0x2A24)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "model number string (0x2a24) | bluetooth gatt documentation model number string (0x2a24) bluetooth docs bluetoothexplorer/document/en/characteristic-model-number-string.html characteristic model number string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-navigation.html",
+      "title": "Navigation (0x2A68) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Navigation (0x2A68)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "navigation (0x2a68) | bluetooth gatt documentation navigation (0x2a68) bluetooth docs bluetoothexplorer/document/en/characteristic-navigation.html characteristic navigation"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-new-alert.html",
+      "title": "New Alert (0x2A46) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "New Alert (0x2A46)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "new alert (0x2a46) | bluetooth gatt documentation new alert (0x2a46) bluetooth docs bluetoothexplorer/document/en/characteristic-new-alert.html characteristic new alert"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-action-control-point.html",
+      "title": "Object Action Control Point (0x2AC5) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Action Control Point (0x2AC5)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object action control point (0x2ac5) | bluetooth gatt documentation object action control point (0x2ac5) bluetooth docs bluetoothexplorer/document/en/characteristic-object-action-control-point.html characteristic object action control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-changed.html",
+      "title": "Object Changed (0x2AC8) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Changed (0x2AC8)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object changed (0x2ac8) | bluetooth gatt documentation object changed (0x2ac8) bluetooth docs bluetoothexplorer/document/en/characteristic-object-changed.html characteristic object changed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-first-created.html",
+      "title": "Object First-Created (0x2AC1) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object First-Created (0x2AC1)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object first-created (0x2ac1) | bluetooth gatt documentation object first-created (0x2ac1) bluetooth docs bluetoothexplorer/document/en/characteristic-object-first-created.html characteristic object first created"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-id.html",
+      "title": "Object ID (0x2AC3) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object ID (0x2AC3)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object id (0x2ac3) | bluetooth gatt documentation object id (0x2ac3) bluetooth docs bluetoothexplorer/document/en/characteristic-object-id.html characteristic object id"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-last-modified.html",
+      "title": "Object Last-Modified (0x2AC2) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Last-Modified (0x2AC2)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object last-modified (0x2ac2) | bluetooth gatt documentation object last-modified (0x2ac2) bluetooth docs bluetoothexplorer/document/en/characteristic-object-last-modified.html characteristic object last modified"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-list-control-point.html",
+      "title": "Object List Control Point (0x2AC6) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object List Control Point (0x2AC6)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object list control point (0x2ac6) | bluetooth gatt documentation object list control point (0x2ac6) bluetooth docs bluetoothexplorer/document/en/characteristic-object-list-control-point.html characteristic object list control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-list-filter.html",
+      "title": "Object List Filter (0x2AC7) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object List Filter (0x2AC7)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object list filter (0x2ac7) | bluetooth gatt documentation object list filter (0x2ac7) bluetooth docs bluetoothexplorer/document/en/characteristic-object-list-filter.html characteristic object list filter"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-name.html",
+      "title": "Object Name (0x2ABE) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Name (0x2ABE)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object name (0x2abe) | bluetooth gatt documentation object name (0x2abe) bluetooth docs bluetoothexplorer/document/en/characteristic-object-name.html characteristic object name"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-properties.html",
+      "title": "Object Properties (0x2AC4) | Bluetooth GATT Documentation",
+      "description": "Object Properties (0x2AC4) Bluetooth GATT characteristic reference. The Object Properties characteristic is defined in the Object Transfer Service Section 3.2.8",
+      "heading": "Object Properties (0x2AC4)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object properties (0x2ac4) | bluetooth gatt documentation object properties (0x2ac4) bluetooth gatt characteristic reference. the object properties characteristic is defined in the object transfer service section 3.2.8 object properties (0x2ac4) bluetooth docs bluetoothexplorer/document/en/characteristic-object-properties.html characteristic object properties"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-size.html",
+      "title": "Object Size (0x2AC0) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Size (0x2AC0)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object size (0x2ac0) | bluetooth gatt documentation object size (0x2ac0) bluetooth docs bluetoothexplorer/document/en/characteristic-object-size.html characteristic object size"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-object-type.html",
+      "title": "Object Type (0x2ABF) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Object Type (0x2ABF)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object type (0x2abf) | bluetooth gatt documentation object type (0x2abf) bluetooth docs bluetoothexplorer/document/en/characteristic-object-type.html characteristic object type"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-ots-feature.html",
+      "title": "OTS Feature (0x2ABD) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "OTS Feature (0x2ABD)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ots feature (0x2abd) | bluetooth gatt documentation ots feature (0x2abd) bluetooth docs bluetoothexplorer/document/en/characteristic-ots-feature.html characteristic ots feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-plx-continuous-measurement.html",
+      "title": "PLX Continuous Measurement Characteristic (0x2A5F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "PLX Continuous Measurement Characteristic (0x2A5F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "plx continuous measurement characteristic (0x2a5f) | bluetooth gatt documentation plx continuous measurement characteristic (0x2a5f) bluetooth docs bluetoothexplorer/document/en/characteristic-plx-continuous-measurement.html characteristic plx continuous measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-plx-features.html",
+      "title": "PLX Features (0x2A60) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "PLX Features (0x2A60)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "plx features (0x2a60) | bluetooth gatt documentation plx features (0x2a60) bluetooth docs bluetoothexplorer/document/en/characteristic-plx-features.html characteristic plx features"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-plx-spot-check-measurement.html",
+      "title": "PLX Spot-Check Measurement (0x2A5E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "PLX Spot-Check Measurement (0x2A5E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "plx spot-check measurement (0x2a5e) | bluetooth gatt documentation plx spot-check measurement (0x2a5e) bluetooth docs bluetoothexplorer/document/en/characteristic-plx-spot-check-measurement.html characteristic plx spot check measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-pnp-id.html",
+      "title": "PnP ID (0x2A50) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "PnP ID (0x2A50)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "pnp id (0x2a50) | bluetooth gatt documentation pnp id (0x2a50) bluetooth docs bluetoothexplorer/document/en/characteristic-pnp-id.html characteristic pnp id"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-pollen-concentration.html",
+      "title": "Pollen Concentration (0x2A75) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Pollen Concentration (0x2A75)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "pollen concentration (0x2a75) | bluetooth gatt documentation pollen concentration (0x2a75) bluetooth docs bluetoothexplorer/document/en/characteristic-pollen-concentration.html characteristic pollen concentration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-position-quality.html",
+      "title": "Position Quality (0x2A69) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Position Quality (0x2A69)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "position quality (0x2a69) | bluetooth gatt documentation position quality (0x2a69) bluetooth docs bluetoothexplorer/document/en/characteristic-position-quality.html characteristic position quality"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-pressure.html",
+      "title": "Pressure (0x2A6D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Pressure (0x2A6D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "pressure (0x2a6d) | bluetooth gatt documentation pressure (0x2a6d) bluetooth docs bluetoothexplorer/document/en/characteristic-pressure.html characteristic pressure"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-protocol-mode.html",
+      "title": "Protocol Mode (0x2A4E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Protocol Mode (0x2A4E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "protocol mode (0x2a4e) | bluetooth gatt documentation protocol mode (0x2a4e) bluetooth docs bluetoothexplorer/document/en/characteristic-protocol-mode.html characteristic protocol mode"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-rainfall.html",
+      "title": "Rainfall (0x2A78) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Rainfall (0x2A78)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "rainfall (0x2a78) | bluetooth gatt documentation rainfall (0x2a78) bluetooth docs bluetoothexplorer/document/en/characteristic-rainfall.html characteristic rainfall"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-record-access-control-point.html",
+      "title": "Record Access Control Point (0x2A52) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Record Access Control Point (0x2A52)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "record access control point (0x2a52) | bluetooth gatt documentation record access control point (0x2a52) bluetooth docs bluetoothexplorer/document/en/characteristic-record-access-control-point.html characteristic record access control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-reference-time-information.html",
+      "title": "Reference Time Information (0x2A14) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Reference Time Information (0x2A14)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "reference time information (0x2a14) | bluetooth gatt documentation reference time information (0x2a14) bluetooth docs bluetoothexplorer/document/en/characteristic-reference-time-information.html characteristic reference time information"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-report-map.html",
+      "title": "Report Map (0x2A4B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Report Map (0x2A4B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "report map (0x2a4b) | bluetooth gatt documentation report map (0x2a4b) bluetooth docs bluetoothexplorer/document/en/characteristic-report-map.html characteristic report map"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-report.html",
+      "title": "Report (0x2A4D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Report (0x2A4D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "report (0x2a4d) | bluetooth gatt documentation report (0x2a4d) bluetooth docs bluetoothexplorer/document/en/characteristic-report.html characteristic report"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-resolvable-private-address-only.html",
+      "title": "Resolvable Private Address Only (0x2AC9) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Resolvable Private Address Only (0x2AC9)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "resolvable private address only (0x2ac9) | bluetooth gatt documentation resolvable private address only (0x2ac9) bluetooth docs bluetoothexplorer/document/en/characteristic-resolvable-private-address-only.html characteristic resolvable private address only"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-resting-heart-rate.html",
+      "title": "Resting Heart Rate (0x2A92) | Bluetooth GATT Documentation",
+      "description": "Resting Heart Rate (0x2A92) Bluetooth GATT characteristic reference. Lowest Heart Rate a user can reach",
+      "heading": "Resting Heart Rate (0x2A92)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "resting heart rate (0x2a92) | bluetooth gatt documentation resting heart rate (0x2a92) bluetooth gatt characteristic reference. lowest heart rate a user can reach resting heart rate (0x2a92) bluetooth docs bluetoothexplorer/document/en/characteristic-resting-heart-rate.html characteristic resting heart rate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-ringer-control-point.html",
+      "title": "Ringer Control point (0x2A40) | Bluetooth GATT Documentation",
+      "description": "Ringer Control point (0x2A40) Bluetooth GATT characteristic reference. The Ringer Control Point characteristic defines the Control Point of Ringer.",
+      "heading": "Ringer Control point (0x2A40)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ringer control point (0x2a40) | bluetooth gatt documentation ringer control point (0x2a40) bluetooth gatt characteristic reference. the ringer control point characteristic defines the control point of ringer. ringer control point (0x2a40) bluetooth docs bluetoothexplorer/document/en/characteristic-ringer-control-point.html characteristic ringer control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-ringer-setting.html",
+      "title": "Ringer Setting (0x2A41) | Bluetooth GATT Documentation",
+      "description": "Ringer Setting (0x2A41) Bluetooth GATT characteristic reference. The Ringer Setting characteristic defines the Setting of the Ringer.",
+      "heading": "Ringer Setting (0x2A41)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ringer setting (0x2a41) | bluetooth gatt documentation ringer setting (0x2a41) bluetooth gatt characteristic reference. the ringer setting characteristic defines the setting of the ringer. ringer setting (0x2a41) bluetooth docs bluetoothexplorer/document/en/characteristic-ringer-setting.html characteristic ringer setting"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-rower-data.html",
+      "title": "Rower Data (0x2AD1) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Rower Data (0x2AD1)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "rower data (0x2ad1) | bluetooth gatt documentation rower data (0x2ad1) bluetooth docs bluetoothexplorer/document/en/characteristic-rower-data.html characteristic rower data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-rsc-feature.html",
+      "title": "RSC Feature (0x2A54) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "RSC Feature (0x2A54)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "rsc feature (0x2a54) | bluetooth gatt documentation rsc feature (0x2a54) bluetooth docs bluetoothexplorer/document/en/characteristic-rsc-feature.html characteristic rsc feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-rsc-measurement.html",
+      "title": "RSC Measurement (0x2A53) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "RSC Measurement (0x2A53)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "rsc measurement (0x2a53) | bluetooth gatt documentation rsc measurement (0x2a53) bluetooth docs bluetoothexplorer/document/en/characteristic-rsc-measurement.html characteristic rsc measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-sc-control-point.html",
+      "title": "SC Control Point (0x2A55) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "SC Control Point (0x2A55)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "sc control point (0x2a55) | bluetooth gatt documentation sc control point (0x2a55) bluetooth docs bluetoothexplorer/document/en/characteristic-sc-control-point.html characteristic sc control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-scan-interval-window.html",
+      "title": "Scan Interval Window (0x2A4F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Scan Interval Window (0x2A4F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "scan interval window (0x2a4f) | bluetooth gatt documentation scan interval window (0x2a4f) bluetooth docs bluetoothexplorer/document/en/characteristic-scan-interval-window.html characteristic scan interval window"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-scan-refresh.html",
+      "title": "Scan Refresh (0x2A31) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Scan Refresh (0x2A31)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "scan refresh (0x2a31) | bluetooth gatt documentation scan refresh (0x2a31) bluetooth docs bluetoothexplorer/document/en/characteristic-scan-refresh.html characteristic scan refresh"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-sensor-location.html",
+      "title": "Sensor Location (0x2A5D) | Bluetooth GATT Documentation",
+      "description": "Sensor Location (0x2A5D) Bluetooth GATT characteristic reference. The Sensor Location characteristic is used to expose the location of the sensor.",
+      "heading": "Sensor Location (0x2A5D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "sensor location (0x2a5d) | bluetooth gatt documentation sensor location (0x2a5d) bluetooth gatt characteristic reference. the sensor location characteristic is used to expose the location of the sensor. sensor location (0x2a5d) bluetooth docs bluetoothexplorer/document/en/characteristic-sensor-location.html characteristic sensor location"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-serial-number-string.html",
+      "title": "Serial Number String (0x2A25) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Serial Number String (0x2A25)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "serial number string (0x2a25) | bluetooth gatt documentation serial number string (0x2a25) bluetooth docs bluetoothexplorer/document/en/characteristic-serial-number-string.html characteristic serial number string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-software-revision-string.html",
+      "title": "Software Revision String (0x2A28) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Software Revision String (0x2A28)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "software revision string (0x2a28) | bluetooth gatt documentation software revision string (0x2a28) bluetooth docs bluetoothexplorer/document/en/characteristic-software-revision-string.html characteristic software revision string"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-sport-type-for-aerobic-and-anaerobic-thresholds.html",
+      "title": "Sport Type for Aerobic and Anaerobic Thresholds (0x2A93) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Sport Type for Aerobic and Anaerobic Thresholds (0x2A93)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "sport type for aerobic and anaerobic thresholds (0x2a93) | bluetooth gatt documentation sport type for aerobic and anaerobic thresholds (0x2a93) bluetooth docs bluetoothexplorer/document/en/characteristic-sport-type-for-aerobic-and-anaerobic-thresholds.html characteristic sport type for aerobic and anaerobic thresholds"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-stair-climber-data.html",
+      "title": "Stair Climber Data (0x2AD0) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Stair Climber Data (0x2AD0)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "stair climber data (0x2ad0) | bluetooth gatt documentation stair climber data (0x2ad0) bluetooth docs bluetoothexplorer/document/en/characteristic-stair-climber-data.html characteristic stair climber data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-step-climber-data.html",
+      "title": "Step Climber Data (0x2ACF) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Step Climber Data (0x2ACF)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "step climber data (0x2acf) | bluetooth gatt documentation step climber data (0x2acf) bluetooth docs bluetoothexplorer/document/en/characteristic-step-climber-data.html characteristic step climber data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-heart-rate-range.html",
+      "title": "Supported Heart Rate Range (0x2AD7) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Heart Rate Range (0x2AD7)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported heart rate range (0x2ad7) | bluetooth gatt documentation supported heart rate range (0x2ad7) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-heart-rate-range.html characteristic supported heart rate range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-inclination-range.html",
+      "title": "Supported Inclination Range (0x2AD5) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Inclination Range (0x2AD5)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported inclination range (0x2ad5) | bluetooth gatt documentation supported inclination range (0x2ad5) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-inclination-range.html characteristic supported inclination range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-new-alert-category.html",
+      "title": "Supported New Alert Category (0x2A47) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported New Alert Category (0x2A47)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported new alert category (0x2a47) | bluetooth gatt documentation supported new alert category (0x2a47) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-new-alert-category.html characteristic supported new alert category"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-power-range.html",
+      "title": "Supported Power Range (0x2AD8) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Power Range (0x2AD8)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported power range (0x2ad8) | bluetooth gatt documentation supported power range (0x2ad8) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-power-range.html characteristic supported power range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-resistance-level-range.html",
+      "title": "Supported Resistance Level Range (0x2AD6) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Resistance Level Range (0x2AD6)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported resistance level range (0x2ad6) | bluetooth gatt documentation supported resistance level range (0x2ad6) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-resistance-level-range.html characteristic supported resistance level range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-speed-range.html",
+      "title": "Supported Speed Range (0x2AD4) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Speed Range (0x2AD4)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported speed range (0x2ad4) | bluetooth gatt documentation supported speed range (0x2ad4) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-speed-range.html characteristic supported speed range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-supported-unread-alert-category.html",
+      "title": "Supported Unread Alert Category (0x2A48) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Supported Unread Alert Category (0x2A48)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "supported unread alert category (0x2a48) | bluetooth gatt documentation supported unread alert category (0x2a48) bluetooth docs bluetoothexplorer/document/en/characteristic-supported-unread-alert-category.html characteristic supported unread alert category"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-system-id.html",
+      "title": "System ID (0x2A23) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "System ID (0x2A23)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "system id (0x2a23) | bluetooth gatt documentation system id (0x2a23) bluetooth docs bluetoothexplorer/document/en/characteristic-system-id.html characteristic system id"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-tds-control-point.html",
+      "title": "TDS Control Point (0x2ABC) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "TDS Control Point (0x2ABC)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "tds control point (0x2abc) | bluetooth gatt documentation tds control point (0x2abc) bluetooth docs bluetoothexplorer/document/en/characteristic-tds-control-point.html characteristic tds control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-temperature-measurement.html",
+      "title": "Temperature Measurement (0x2A1C) | Bluetooth GATT Documentation",
+      "description": "Temperature Measurement (0x2A1C) Bluetooth GATT characteristic reference. The flags is the first field sent followed by the Temperature Measurement Value.",
+      "heading": "Temperature Measurement (0x2A1C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "temperature measurement (0x2a1c) | bluetooth gatt documentation temperature measurement (0x2a1c) bluetooth gatt characteristic reference. the flags is the first field sent followed by the temperature measurement value. temperature measurement (0x2a1c) bluetooth docs bluetoothexplorer/document/en/characteristic-temperature-measurement.html characteristic temperature measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-temperature-type.html",
+      "title": "Temperature Type (0x2A1D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Temperature Type (0x2A1D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "temperature type (0x2a1d) | bluetooth gatt documentation temperature type (0x2a1d) bluetooth docs bluetoothexplorer/document/en/characteristic-temperature-type.html characteristic temperature type"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-temperature.html",
+      "title": "Temperature (0x2A6E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Temperature (0x2A6E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "temperature (0x2a6e) | bluetooth gatt documentation temperature (0x2a6e) bluetooth docs bluetoothexplorer/document/en/characteristic-temperature.html characteristic temperature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-three-zone-heart-rate-limits.html",
+      "title": "Three Zone Heart Rate Limits (0x2A94) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Three Zone Heart Rate Limits (0x2A94)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "three zone heart rate limits (0x2a94) | bluetooth gatt documentation three zone heart rate limits (0x2a94) bluetooth docs bluetoothexplorer/document/en/characteristic-three-zone-heart-rate-limits.html characteristic three zone heart rate limits"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-accuracy.html",
+      "title": "Time Accuracy (0x2A12) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Accuracy (0x2A12)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time accuracy (0x2a12) | bluetooth gatt documentation time accuracy (0x2a12) bluetooth docs bluetoothexplorer/document/en/characteristic-time-accuracy.html characteristic time accuracy"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-source.html",
+      "title": "Time Source (0x2A13) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Source (0x2A13)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time source (0x2a13) | bluetooth gatt documentation time source (0x2a13) bluetooth docs bluetoothexplorer/document/en/characteristic-time-source.html characteristic time source"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-update-control-point.html",
+      "title": "Time Update Control Point (0x2A16) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Update Control Point (0x2A16)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time update control point (0x2a16) | bluetooth gatt documentation time update control point (0x2a16) bluetooth docs bluetoothexplorer/document/en/characteristic-time-update-control-point.html characteristic time update control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-update-state.html",
+      "title": "Time Update State (0x2A17) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Update State (0x2A17)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time update state (0x2a17) | bluetooth gatt documentation time update state (0x2a17) bluetooth docs bluetoothexplorer/document/en/characteristic-time-update-state.html characteristic time update state"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-with-dst.html",
+      "title": "Time with DST (0x2A11) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time with DST (0x2A11)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time with dst (0x2a11) | bluetooth gatt documentation time with dst (0x2a11) bluetooth docs bluetoothexplorer/document/en/characteristic-time-with-dst.html characteristic time with dst"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-time-zone.html",
+      "title": "Time Zone (0x2A0E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Zone (0x2A0E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time zone (0x2a0e) | bluetooth gatt documentation time zone (0x2a0e) bluetooth docs bluetoothexplorer/document/en/characteristic-time-zone.html characteristic time zone"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-training-status.html",
+      "title": "Training Status (0x2AD3) | Bluetooth GATT Documentation",
+      "description": "Training Status (0x2AD3) Bluetooth GATT characteristic reference. The Training Status characteristic is defined in the Fitness Machine Service Specification.",
+      "heading": "Training Status (0x2AD3)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "training status (0x2ad3) | bluetooth gatt documentation training status (0x2ad3) bluetooth gatt characteristic reference. the training status characteristic is defined in the fitness machine service specification. training status (0x2ad3) bluetooth docs bluetoothexplorer/document/en/characteristic-training-status.html characteristic training status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-treadmill-data.html",
+      "title": "Treadmill Data (0x2ACD) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Treadmill Data (0x2ACD)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "treadmill data (0x2acd) | bluetooth gatt documentation treadmill data (0x2acd) bluetooth docs bluetoothexplorer/document/en/characteristic-treadmill-data.html characteristic treadmill data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-true-wind-direction.html",
+      "title": "True Wind Direction (0x2A71) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "True Wind Direction (0x2A71)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "true wind direction (0x2a71) | bluetooth gatt documentation true wind direction (0x2a71) bluetooth docs bluetoothexplorer/document/en/characteristic-true-wind-direction.html characteristic true wind direction"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-true-wind-speed.html",
+      "title": "True Wind Speed (0x2A70) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "True Wind Speed (0x2A70)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "true wind speed (0x2a70) | bluetooth gatt documentation true wind speed (0x2a70) bluetooth docs bluetoothexplorer/document/en/characteristic-true-wind-speed.html characteristic true wind speed"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-two-zone-heart-rate-limit.html",
+      "title": "Two Zone Heart Rate Limit (0x2A95) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Two Zone Heart Rate Limit (0x2A95)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "two zone heart rate limit (0x2a95) | bluetooth gatt documentation two zone heart rate limit (0x2a95) bluetooth docs bluetoothexplorer/document/en/characteristic-two-zone-heart-rate-limit.html characteristic two zone heart rate limit"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-tx-power-level.html",
+      "title": "Tx Power Level (0x2A07) | Bluetooth GATT Documentation",
+      "description": "Tx Power Level (0x2A07) Bluetooth GATT characteristic reference. The value of the characteristic is a signed 8 bit integer that has a fixed point exponent of 0.",
+      "heading": "Tx Power Level (0x2A07)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "tx power level (0x2a07) | bluetooth gatt documentation tx power level (0x2a07) bluetooth gatt characteristic reference. the value of the characteristic is a signed 8 bit integer that has a fixed point exponent of 0. tx power level (0x2a07) bluetooth docs bluetoothexplorer/document/en/characteristic-tx-power-level.html characteristic tx power level"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-uncertainty.html",
+      "title": "Uncertainty (0x2AB4) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Uncertainty (0x2AB4)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "uncertainty (0x2ab4) | bluetooth gatt documentation uncertainty (0x2ab4) bluetooth docs bluetoothexplorer/document/en/characteristic-uncertainty.html characteristic uncertainty"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-unread-alert-status.html",
+      "title": "Unread Alert Status (0x2A45) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Unread Alert Status (0x2A45)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "unread alert status (0x2a45) | bluetooth gatt documentation unread alert status (0x2a45) bluetooth docs bluetoothexplorer/document/en/characteristic-unread-alert-status.html characteristic unread alert status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-uri.html",
+      "title": "URI (0x2AB6) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "URI (0x2AB6)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "uri (0x2ab6) | bluetooth gatt documentation uri (0x2ab6) bluetooth docs bluetoothexplorer/document/en/characteristic-uri.html characteristic uri"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-user-control-point.html",
+      "title": "User Control Point (0x2A9F) | Bluetooth GATT Documentation",
+      "description": "User Control Point (0x2A9F) Bluetooth GATT characteristic reference. This definition is shown in the User Data Service Section 3.4 and its subsections.",
+      "heading": "User Control Point (0x2A9F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "user control point (0x2a9f) | bluetooth gatt documentation user control point (0x2a9f) bluetooth gatt characteristic reference. this definition is shown in the user data service section 3.4 and its subsections. user control point (0x2a9f) bluetooth docs bluetoothexplorer/document/en/characteristic-user-control-point.html characteristic user control point"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-user-index.html",
+      "title": "User Index (0x2A9A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "User Index (0x2A9A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "user index (0x2a9a) | bluetooth gatt documentation user index (0x2a9a) bluetooth docs bluetoothexplorer/document/en/characteristic-user-index.html characteristic user index"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-uv-index.html",
+      "title": "UV Index (0x2A76) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "UV Index (0x2A76)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "uv index (0x2a76) | bluetooth gatt documentation uv index (0x2a76) bluetooth docs bluetoothexplorer/document/en/characteristic-uv-index.html characteristic uv index"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-vo2-max.html",
+      "title": "VO2 Max (0x2A96) | Bluetooth GATT Documentation",
+      "description": "VO2 Max (0x2A96) Bluetooth GATT characteristic reference. Maximal Oxygen uptake of a user",
+      "heading": "VO2 Max (0x2A96)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "vo2 max (0x2a96) | bluetooth gatt documentation vo2 max (0x2a96) bluetooth gatt characteristic reference. maximal oxygen uptake of a user vo2 max (0x2a96) bluetooth docs bluetoothexplorer/document/en/characteristic-vo2-max.html characteristic vo2 max"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-waist-circumference.html",
+      "title": "Waist Circumference (0x2A97) | Bluetooth GATT Documentation",
+      "description": "Waist Circumference (0x2A97) Bluetooth GATT characteristic reference. Used with the Hip Circumference value to calculate the Waist to Hip Ratio (WHR)",
+      "heading": "Waist Circumference (0x2A97)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "waist circumference (0x2a97) | bluetooth gatt documentation waist circumference (0x2a97) bluetooth gatt characteristic reference. used with the hip circumference value to calculate the waist to hip ratio (whr) waist circumference (0x2a97) bluetooth docs bluetoothexplorer/document/en/characteristic-waist-circumference.html characteristic waist circumference"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-weight-measurement.html",
+      "title": "Weight Measurement (0x2A9D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Weight Measurement (0x2A9D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "weight measurement (0x2a9d) | bluetooth gatt documentation weight measurement (0x2a9d) bluetooth docs bluetoothexplorer/document/en/characteristic-weight-measurement.html characteristic weight measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-weight-scale-feature.html",
+      "title": "Weight Scale Feature (0x2A9E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Weight Scale Feature (0x2A9E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "weight scale feature (0x2a9e) | bluetooth gatt documentation weight scale feature (0x2a9e) bluetooth docs bluetoothexplorer/document/en/characteristic-weight-scale-feature.html characteristic weight scale feature"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-weight.html",
+      "title": "Weight (0x2A98) | Bluetooth GATT Documentation",
+      "description": "Weight (0x2A98) Bluetooth GATT characteristic reference. Weight of the User",
+      "heading": "Weight (0x2A98)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "weight (0x2a98) | bluetooth gatt documentation weight (0x2a98) bluetooth gatt characteristic reference. weight of the user weight (0x2a98) bluetooth docs bluetoothexplorer/document/en/characteristic-weight.html characteristic weight"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/characteristic-wind-chill.html",
+      "title": "Wind Chill (0x2A79) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Wind Chill (0x2A79)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "wind chill (0x2a79) | bluetooth gatt documentation wind chill (0x2a79) bluetooth docs bluetoothexplorer/document/en/characteristic-wind-chill.html characteristic wind chill"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-es-configuration.html",
+      "title": "Environmental Sensing Configuration (0x290B) | Bluetooth GATT Documentation",
+      "description": "Environmental Sensing Configuration (0x290B) Bluetooth GATT descriptor reference. This definition is shown in the Environmental Sensing Service Section 3.1.2.3",
+      "heading": "Environmental Sensing Configuration (0x290B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "environmental sensing configuration (0x290b) | bluetooth gatt documentation environmental sensing configuration (0x290b) bluetooth gatt descriptor reference. this definition is shown in the environmental sensing service section 3.1.2.3 environmental sensing configuration (0x290b) bluetooth docs bluetoothexplorer/document/en/descriptor-es-configuration.html descriptor es configuration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-es-measurement.html",
+      "title": "Environmental Sensing Measurement (0x290C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Environmental Sensing Measurement (0x290C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "environmental sensing measurement (0x290c) | bluetooth gatt documentation environmental sensing measurement (0x290c) bluetooth docs bluetoothexplorer/document/en/descriptor-es-measurement.html descriptor es measurement"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-es-trigger-setting.html",
+      "title": "Environmental Sensing Trigger Setting (0x290D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Environmental Sensing Trigger Setting (0x290D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "environmental sensing trigger setting (0x290d) | bluetooth gatt documentation environmental sensing trigger setting (0x290d) bluetooth docs bluetoothexplorer/document/en/descriptor-es-trigger-setting.html descriptor es trigger setting"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-external-report-reference.html",
+      "title": "External Report Reference (0x2907) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "External Report Reference (0x2907)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "external report reference (0x2907) | bluetooth gatt documentation external report reference (0x2907) bluetooth docs bluetoothexplorer/document/en/descriptor-external-report-reference.html descriptor external report reference"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-characteristic-aggregate-format.html",
+      "title": "Characteristic Aggregate Format (0x2905) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Characteristic Aggregate Format (0x2905)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "characteristic aggregate format (0x2905) | bluetooth gatt documentation characteristic aggregate format (0x2905) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-characteristic-aggregate-format.html descriptor gatt characteristic aggregate format"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-characteristic-extended-properties.html",
+      "title": "Characteristic Extended Properties (0x2900) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Characteristic Extended Properties (0x2900)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "characteristic extended properties (0x2900) | bluetooth gatt documentation characteristic extended properties (0x2900) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-characteristic-extended-properties.html descriptor gatt characteristic extended properties"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-characteristic-presentation-format.html",
+      "title": "Characteristic Presentation Format (0x2904) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Characteristic Presentation Format (0x2904)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "characteristic presentation format (0x2904) | bluetooth gatt documentation characteristic presentation format (0x2904) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-characteristic-presentation-format.html descriptor gatt characteristic presentation format"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-characteristic-user-description.html",
+      "title": "Characteristic User Description (0x2901) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Characteristic User Description (0x2901)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "characteristic user description (0x2901) | bluetooth gatt documentation characteristic user description (0x2901) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-characteristic-user-description.html descriptor gatt characteristic user description"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html",
+      "title": "Client Characteristic Configuration (0x2902) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Client Characteristic Configuration (0x2902)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "client characteristic configuration (0x2902) | bluetooth gatt documentation client characteristic configuration (0x2902) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-client-characteristic-configuration.html descriptor gatt client characteristic configuration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-gatt-server-characteristic-configuration.html",
+      "title": "Server Characteristic Configuration (0x2903) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Server Characteristic Configuration (0x2903)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "server characteristic configuration (0x2903) | bluetooth gatt documentation server characteristic configuration (0x2903) bluetooth docs bluetoothexplorer/document/en/descriptor-gatt-server-characteristic-configuration.html descriptor gatt server characteristic configuration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-number-of-digitals.html",
+      "title": "Number of Digitals (0x2909) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Number of Digitals (0x2909)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "number of digitals (0x2909) | bluetooth gatt documentation number of digitals (0x2909) bluetooth docs bluetoothexplorer/document/en/descriptor-number-of-digitals.html descriptor number of digitals"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-report-reference.html",
+      "title": "Report Reference (0x2908) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Report Reference (0x2908)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "report reference (0x2908) | bluetooth gatt documentation report reference (0x2908) bluetooth docs bluetoothexplorer/document/en/descriptor-report-reference.html descriptor report reference"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-time-trigger-setting.html",
+      "title": "Time Trigger Setting (0x290E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Time Trigger Setting (0x290E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "time trigger setting (0x290e) | bluetooth gatt documentation time trigger setting (0x290e) bluetooth docs bluetoothexplorer/document/en/descriptor-time-trigger-setting.html descriptor time trigger setting"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-valid-range.html",
+      "title": "Valid Range (0x2906) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Valid Range (0x2906)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "valid range (0x2906) | bluetooth gatt documentation valid range (0x2906) bluetooth docs bluetoothexplorer/document/en/descriptor-valid-range.html descriptor valid range"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/descriptor-value-trigger-setting.html",
+      "title": "Value Trigger Setting (0x290A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Value Trigger Setting (0x290A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "value trigger setting (0x290a) | bluetooth gatt documentation value trigger setting (0x290a) bluetooth docs bluetoothexplorer/document/en/descriptor-value-trigger-setting.html descriptor value trigger setting"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/gatt-characteristic-declaration.html",
+      "title": "Characteristic Declaration (0x2803) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Characteristic Declaration (0x2803)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "characteristic declaration (0x2803) | bluetooth gatt documentation characteristic declaration (0x2803) bluetooth docs bluetoothexplorer/document/en/gatt-characteristic-declaration.html gatt characteristic declaration"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/",
+      "title": "Bluetooth GATT XML Documentation Index | Bluetooth Explorer",
+      "description": "Browse machine-readable Bluetooth GATT XML documentation pages for characteristics, services, descriptors, and attributes.",
+      "heading": "Documentation Index",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth gatt xml documentation index | bluetooth explorer browse machine-readable bluetooth gatt xml documentation pages for characteristics, services, descriptors, and attributes. documentation index bluetooth docs bluetoothexplorer/document/en/index.html en"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/magnetic-flux-density-2d.html",
+      "title": "Magnetic Flux Density - 2D (0x2AA0) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Magnetic Flux Density - 2D (0x2AA0)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "magnetic flux density - 2d (0x2aa0) | bluetooth gatt documentation magnetic flux density - 2d (0x2aa0) bluetooth docs bluetoothexplorer/document/en/magnetic-flux-density-2d.html magnetic flux density 2d"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-alert-notification.html",
+      "title": "Alert Notification Service (0x1811) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Alert Notification Service (0x1811)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "alert notification service (0x1811) | bluetooth gatt documentation alert notification service (0x1811) bluetooth docs bluetoothexplorer/document/en/service-alert-notification.html service alert notification"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-automation-io.html",
+      "title": "Automation IO (0x1815) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Automation IO (0x1815)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "automation io (0x1815) | bluetooth gatt documentation automation io (0x1815) bluetooth docs bluetoothexplorer/document/en/service-automation-io.html service automation io"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-battery-service.html",
+      "title": "Battery Service (0x180F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Battery Service (0x180F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "battery service (0x180f) | bluetooth gatt documentation battery service (0x180f) bluetooth docs bluetoothexplorer/document/en/service-battery-service.html service battery service"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-blood-pressure.html",
+      "title": "Blood Pressure (0x1810) | Bluetooth GATT Documentation",
+      "description": "Blood Pressure (0x1810) Bluetooth GATT service reference. The BLOOD PRESSURE Service exposes blood pressure and other data related to a blood pressure monitor.",
+      "heading": "Blood Pressure (0x1810)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "blood pressure (0x1810) | bluetooth gatt documentation blood pressure (0x1810) bluetooth gatt service reference. the blood pressure service exposes blood pressure and other data related to a blood pressure monitor. blood pressure (0x1810) bluetooth docs bluetoothexplorer/document/en/service-blood-pressure.html service blood pressure"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-body-composition.html",
+      "title": "Body Composition (0x181B) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Body Composition (0x181B)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "body composition (0x181b) | bluetooth gatt documentation body composition (0x181b) bluetooth docs bluetoothexplorer/document/en/service-body-composition.html service body composition"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-bond-management.html",
+      "title": "Bond Management Service (0x181E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Bond Management Service (0x181E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bond management service (0x181e) | bluetooth gatt documentation bond management service (0x181e) bluetooth docs bluetoothexplorer/document/en/service-bond-management.html service bond management"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-continuous-glucose-monitoring.html",
+      "title": "Continuous Glucose Monitoring (0x181F) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Continuous Glucose Monitoring (0x181F)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "continuous glucose monitoring (0x181f) | bluetooth gatt documentation continuous glucose monitoring (0x181f) bluetooth docs bluetoothexplorer/document/en/service-continuous-glucose-monitoring.html service continuous glucose monitoring"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-current-time.html",
+      "title": "Current Time Service (0x1805) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Current Time Service (0x1805)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "current time service (0x1805) | bluetooth gatt documentation current time service (0x1805) bluetooth docs bluetoothexplorer/document/en/service-current-time.html service current time"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-cycling-power.html",
+      "title": "Cycling Power (0x1818) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Power (0x1818)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling power (0x1818) | bluetooth gatt documentation cycling power (0x1818) bluetooth docs bluetoothexplorer/document/en/service-cycling-power.html service cycling power"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-cycling-speed-and-cadence.html",
+      "title": "Cycling Speed and Cadence (0x1816) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Cycling Speed and Cadence (0x1816)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "cycling speed and cadence (0x1816) | bluetooth gatt documentation cycling speed and cadence (0x1816) bluetooth docs bluetoothexplorer/document/en/service-cycling-speed-and-cadence.html service cycling speed and cadence"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-device-information.html",
+      "title": "Device Information (0x180A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Device Information (0x180A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "device information (0x180a) | bluetooth gatt documentation device information (0x180a) bluetooth docs bluetoothexplorer/document/en/service-device-information.html service device information"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-environmental-sensing.html",
+      "title": "Environmental Sensing (0x181A) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Environmental Sensing (0x181A)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "environmental sensing (0x181a) | bluetooth gatt documentation environmental sensing (0x181a) bluetooth docs bluetoothexplorer/document/en/service-environmental-sensing.html service environmental sensing"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-fitness-machine.html",
+      "title": "Fitness Machine (0x1826) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Fitness Machine (0x1826)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "fitness machine (0x1826) | bluetooth gatt documentation fitness machine (0x1826) bluetooth docs bluetoothexplorer/document/en/service-fitness-machine.html service fitness machine"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-generic-access.html",
+      "title": "Generic Access (0x1800) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Generic Access (0x1800)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "generic access (0x1800) | bluetooth gatt documentation generic access (0x1800) bluetooth docs bluetoothexplorer/document/en/service-generic-access.html service generic access"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-generic-attribute.html",
+      "title": "Generic Attribute (0x1801) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Generic Attribute (0x1801)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "generic attribute (0x1801) | bluetooth gatt documentation generic attribute (0x1801) bluetooth docs bluetoothexplorer/document/en/service-generic-attribute.html service generic attribute"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-glucose.html",
+      "title": "Glucose (0x1808) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Glucose (0x1808)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "glucose (0x1808) | bluetooth gatt documentation glucose (0x1808) bluetooth docs bluetoothexplorer/document/en/service-glucose.html service glucose"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-health-thermometer.html",
+      "title": "Health Thermometer (0x1809) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Health Thermometer (0x1809)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "health thermometer (0x1809) | bluetooth gatt documentation health thermometer (0x1809) bluetooth docs bluetoothexplorer/document/en/service-health-thermometer.html service health thermometer"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-heart-rate.html",
+      "title": "Heart Rate (0x180D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Heart Rate (0x180D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "heart rate (0x180d) | bluetooth gatt documentation heart rate (0x180d) bluetooth docs bluetoothexplorer/document/en/service-heart-rate.html service heart rate"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-http-proxy.html",
+      "title": "HTTP Proxy (0x1823) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "HTTP Proxy (0x1823)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "http proxy (0x1823) | bluetooth gatt documentation http proxy (0x1823) bluetooth docs bluetoothexplorer/document/en/service-http-proxy.html service http proxy"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-human-interface-device.html",
+      "title": "Human Interface Device (0x1812) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Human Interface Device (0x1812)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "human interface device (0x1812) | bluetooth gatt documentation human interface device (0x1812) bluetooth docs bluetoothexplorer/document/en/service-human-interface-device.html service human interface device"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-immediate-alert.html",
+      "title": "Immediate Alert (0x1802) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Immediate Alert (0x1802)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "immediate alert (0x1802) | bluetooth gatt documentation immediate alert (0x1802) bluetooth docs bluetoothexplorer/document/en/service-immediate-alert.html service immediate alert"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-indoor-positioning.html",
+      "title": "Indoor Positioning (0x1821) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Indoor Positioning (0x1821)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "indoor positioning (0x1821) | bluetooth gatt documentation indoor positioning (0x1821) bluetooth docs bluetoothexplorer/document/en/service-indoor-positioning.html service indoor positioning"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-internet-protocol-support.html",
+      "title": "Internet Protocol Support Service (0x1820) | Bluetooth GATT Documentation",
+      "description": "Internet Protocol Support Service (0x1820) Bluetooth GATT service reference. This service does not define any characteristics",
+      "heading": "Internet Protocol Support Service (0x1820)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "internet protocol support service (0x1820) | bluetooth gatt documentation internet protocol support service (0x1820) bluetooth gatt service reference. this service does not define any characteristics internet protocol support service (0x1820) bluetooth docs bluetoothexplorer/document/en/service-internet-protocol-support.html service internet protocol support"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-link-loss.html",
+      "title": "Link Loss (0x1803) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Link Loss (0x1803)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "link loss (0x1803) | bluetooth gatt documentation link loss (0x1803) bluetooth docs bluetoothexplorer/document/en/service-link-loss.html service link loss"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-location-and-navigation.html",
+      "title": "Location and Navigation (0x1819) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Location and Navigation (0x1819)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "location and navigation (0x1819) | bluetooth gatt documentation location and navigation (0x1819) bluetooth docs bluetoothexplorer/document/en/service-location-and-navigation.html service location and navigation"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-next-dst-change.html",
+      "title": "Next DST Change Service (0x1807) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Next DST Change Service (0x1807)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "next dst change service (0x1807) | bluetooth gatt documentation next dst change service (0x1807) bluetooth docs bluetoothexplorer/document/en/service-next-dst-change.html service next dst change"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-object-transfer.html",
+      "title": "Object Transfer Service (0x1825) | Bluetooth GATT Documentation",
+      "description": "Object Transfer Service (0x1825) Bluetooth GATT service reference. .",
+      "heading": "Object Transfer Service (0x1825)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "object transfer service (0x1825) | bluetooth gatt documentation object transfer service (0x1825) bluetooth gatt service reference. . object transfer service (0x1825) bluetooth docs bluetoothexplorer/document/en/service-object-transfer.html service object transfer"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-phone-alert-status.html",
+      "title": "Phone Alert Status Service (0x180E) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Phone Alert Status Service (0x180E)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "phone alert status service (0x180e) | bluetooth gatt documentation phone alert status service (0x180e) bluetooth docs bluetoothexplorer/document/en/service-phone-alert-status.html service phone alert status"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-pulse-oximeter.html",
+      "title": "Pulse Oximeter Service (0x1822) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Pulse Oximeter Service (0x1822)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "pulse oximeter service (0x1822) | bluetooth gatt documentation pulse oximeter service (0x1822) bluetooth docs bluetoothexplorer/document/en/service-pulse-oximeter.html service pulse oximeter"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-reference-time-update.html",
+      "title": "Reference Time Update Service (0x1806) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Reference Time Update Service (0x1806)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "reference time update service (0x1806) | bluetooth gatt documentation reference time update service (0x1806) bluetooth docs bluetoothexplorer/document/en/service-reference-time-update.html service reference time update"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-running-speed-and-cadence.html",
+      "title": "Running Speed and Cadence (0x1814) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Running Speed and Cadence (0x1814)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "running speed and cadence (0x1814) | bluetooth gatt documentation running speed and cadence (0x1814) bluetooth docs bluetoothexplorer/document/en/service-running-speed-and-cadence.html service running speed and cadence"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-scan-parameters.html",
+      "title": "Scan Parameters (0x1813) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Scan Parameters (0x1813)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "scan parameters (0x1813) | bluetooth gatt documentation scan parameters (0x1813) bluetooth docs bluetoothexplorer/document/en/service-scan-parameters.html service scan parameters"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-transport-discovery.html",
+      "title": "Transport Discovery (0x1824) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Transport Discovery (0x1824)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "transport discovery (0x1824) | bluetooth gatt documentation transport discovery (0x1824) bluetooth docs bluetoothexplorer/document/en/service-transport-discovery.html service transport discovery"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-tx-power.html",
+      "title": "Tx Power (0x1804) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Tx Power (0x1804)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "tx power (0x1804) | bluetooth gatt documentation tx power (0x1804) bluetooth docs bluetoothexplorer/document/en/service-tx-power.html service tx power"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-user-data.html",
+      "title": "User Data (0x181C) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "User Data (0x181C)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "user data (0x181c) | bluetooth gatt documentation user data (0x181c) bluetooth docs bluetoothexplorer/document/en/service-user-data.html service user data"
+    },
+    {
+      "url": "/bluetoothexplorer/document/en/service-weight-scale.html",
+      "title": "Weight Scale (0x181D) | Bluetooth GATT Documentation",
+      "description": "",
+      "heading": "Weight Scale (0x181D)",
+      "category": "Bluetooth Docs",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "weight scale (0x181d) | bluetooth gatt documentation weight scale (0x181d) bluetooth docs bluetoothexplorer/document/en/service-weight-scale.html service weight scale"
+    },
+    {
+      "url": "/bluetoothexplorer/guid/cn/guid.html",
+      "title": "Bluetooth Explorer 鐢ㄦ埛鎵嬪唽",
+      "description": "",
+      "heading": "鐢ㄦ埛鎵嬪唽",
+      "category": "Bluetooth Guides",
+      "locale": "zh-CN",
+      "alternates": {
+        "en-US": "/bluetoothexplorer/guid/en/guid.html"
+      },
+      "terms": "bluetooth explorer 鐢ㄦ埛鎵嬪唽 鐢ㄦ埛鎵嬪唽 bluetooth guides bluetoothexplorer/guid/cn/guid.html guid"
+    },
+    {
+      "url": "/bluetoothexplorer/guid/en/guid.html",
+      "title": "Bluetooth Explorer User Guide | BLE Scanner and AI Terminal Walkthrough",
+      "description": "Step-by-step Bluetooth Explorer user guide for BLE scanning, GATT inspection, packet testing, logs, and AI diagnostics on iPhone and iPad.",
+      "heading": "User Guide",
+      "category": "Bluetooth Guides",
+      "locale": "en-US",
+      "alternates": {
+        "zh-CN": "/bluetoothexplorer/guid/cn/guid.html"
+      },
+      "terms": "bluetooth explorer user guide | ble scanner and ai terminal walkthrough step-by-step bluetooth explorer user guide for ble scanning, gatt inspection, packet testing, logs, and ai diagnostics on iphone and ipad. user guide bluetooth guides bluetoothexplorer/guid/en/guid.html guid"
+    },
+    {
+      "url": "/bluetoothexplorer/",
+      "title": "Bluetooth Explorer: AI Terminal for iPhone/iPad | BLE Scanner, GATT Inspector & Hex Terminal",
+      "description": "Bluetooth Explorer: AI Terminal for iPhone and iPad lets you scan BLE devices, inspect GATT services, send hex commands, review logs, and fix issues with AI.",
+      "heading": "Bluetooth Explorer: AI Terminal for iPhone and iPad",
+      "category": "Bluetooth Explorer",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth explorer: ai terminal for iphone/ipad | ble scanner, gatt inspector & hex terminal bluetooth explorer: ai terminal for iphone and ipad lets you scan ble devices, inspect gatt services, send hex commands, review logs, and fix issues with ai. bluetooth explorer: ai terminal for iphone and ipad bluetooth explorer bluetoothexplorer/index.html bluetoothexplorer"
+    },
+    {
+      "url": "/bluetoothexplorer/privacy-policy.html",
+      "title": "Bluetooth Explorer Privacy Policy | VelocAI",
+      "description": "Read the Bluetooth Explorer privacy policy, covering BLE logs, diagnostics, location handling, and on-device AI processing practices.",
+      "heading": "Bluetooth Explorer · AI Debugger Privacy Policy",
+      "category": "Bluetooth Explorer",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "bluetooth explorer privacy policy | velocai read the bluetooth explorer privacy policy, covering ble logs, diagnostics, location handling, and on-device ai processing practices. bluetooth explorer · ai debugger privacy policy bluetooth explorer bluetoothexplorer/privacy-policy.html privacy policy"
+    },
+    {
+      "url": "/",
+      "title": "VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics",
+      "description": "VelocAI creates focused iPhone apps for finding lost devices, cleaning storage, and debugging Bluetooth workflows with a calm, modern experience.",
+      "heading": "A cleaner way to run everyday AI workflows.",
+      "category": "Site",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "velocai | ai apps for recovery, cleanup, and bluetooth diagnostics velocai creates focused iphone apps for finding lost devices, cleaning storage, and debugging bluetooth workflows with a calm, modern experience. a cleaner way to run everyday ai workflows. site index.html home"
+    },
+    {
+      "url": "/privacy-policy.html",
+      "title": "AI Cleanup PRO Privacy Policy | VelocAI",
+      "description": "Read the AI Cleanup PRO privacy policy, including details on on-device processing for photos, videos, contacts, analytics, and user rights.",
+      "heading": "AI Cleanup PRO",
+      "category": "Privacy",
+      "locale": "en-US",
+      "alternates": {},
+      "terms": "ai cleanup pro privacy policy | velocai read the ai cleanup pro privacy policy, including details on on-device processing for photos, videos, contacts, analytics, and user rights. ai cleanup pro privacy privacy-policy.html privacy policy"
+    }
+  ]
+}

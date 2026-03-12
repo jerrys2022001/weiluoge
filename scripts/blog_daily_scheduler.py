@@ -19,6 +19,8 @@ from datetime import date, datetime
 from html import escape
 from pathlib import Path
 
+from site_tools import build_site_search_index, inject_site_tools_into_file
+
 SITE_URL = "https://velocai.net"
 BLOG_INDEX_REL = Path("blog/index.html")
 SITEMAP_REL = Path("sitemap.xml")
@@ -883,6 +885,7 @@ def run(args: argparse.Namespace) -> int:
             article_state = "would_overwrite" if existed_before else "would_create"
         else:
             article_path.write_text(html, encoding="utf-8")
+            inject_site_tools_into_file(article_path)
             article_state = "overwritten" if existed_before else "created"
 
     if args.dry_run:
@@ -895,6 +898,8 @@ def run(args: argparse.Namespace) -> int:
 
     index_changed = update_blog_index(index_path, post)
     sitemap_changed = update_sitemap(sitemap_path, post)
+    inject_site_tools_into_file(index_path)
+    build_site_search_index(repo_root)
 
     if args.git_commit or args.git_push:
         git_state = publish_blog_post_to_git(
