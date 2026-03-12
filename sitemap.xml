@@ -37,12 +37,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-gatt-services-characteristics-guide-2026-03-11.html</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-protocol-stack-explained-applications-2026-03-11.html</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -98,12 +92,6 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-battery-drain-phone-cleanup-2026-03-07.html</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-pairing-bonding-security-applications-2026-03-07.html</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
