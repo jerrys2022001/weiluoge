@@ -5,6 +5,12 @@
 All future website content in this repo should be optimized for both SEO and GEO by default.
 That applies to landing pages, blog posts, metadata, FAQ sections, schema, internal links, and index/sitemap updates.
 
+Current preferred content ranges:
+- Bluetooth protocol, Bluetooth applications, and troubleshooting
+- iPhone storage cleanup and system-impact analysis
+- Apple new-product feature and performance commentary
+- AI technology outlook and forward-looking analysis
+
 Minimum content rule:
 - define a clear primary search intent for each page
 - use high-intent keywords naturally in the title, H1, meta description, and major headings
@@ -42,6 +48,8 @@ Minimum content rule:
 `python scripts/post_to_x_playwright.py --text "Hello from Playwright" --dry-run`
 - Send through logged-in Chrome:
 `python scripts/post_to_x_playwright.py --text "Hello from Playwright"`
+- Send with one image attached:
+`python scripts/post_to_x_playwright.py --text "Hello with image" --media-file aifind/find-ai.png`
 - Optional environment overrides:
 `X_PLAYWRIGHT_CHROME_PATH`, `X_PLAYWRIGHT_USER_DATA_DIR`, `X_PLAYWRIGHT_PROFILE_DIRECTORY`
 
@@ -83,6 +91,17 @@ Dry run a plan:
 Install the scheduled task with a 5-minute worker interval:
 `powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 4 -MaxPosts 4 -DayStart 20:00 -DayEnd 22:00 -ContentMode velocai-mix -PostMode playwright-first -UpdateTopicsFile "D:\GitHub\weiluoge\scripts\x_story_update_topics.example.txt" -WorkerEveryMinutes 5`
 
+### Example: 2 daily windows, 5 posts each, each post with 1 image
+
+The scheduler now supports repeatable `--window-spec` values in this format:
+`name|HH:MM|HH:MM|min_posts|max_posts`
+
+Dry run:
+`python scripts/x_story_scheduler.py run --dry-run --date 2026-03-12 --content-mode velocai-mix --post-mode playwright --window-spec "morning|08:30|09:30|5|5" --window-spec "evening|20:30|21:30|5|5"`
+
+Install with the same two windows:
+`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -ContentMode velocai-mix -PostMode playwright -WindowSpec "morning|08:30|09:30|5|5","evening|20:30|21:30|5|5" -WorkerEveryMinutes 5`
+
 ## Daily Blog Auto Publishing (20:00)
 
 This task publishes one English blog post per day about Bluetooth + phone cleanup,
@@ -99,10 +118,10 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
-## Storage Cleanup + System Impact Blog (08:40, 1/day)
+## Storage Cleanup + System Impact Blog (08:40~08:44, 3/day)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -PublishAt 08:40`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:40 -WindowEnd 08:44 -PostsPerDay 3`
 
 ## Homepage Daily Briefing (08:30)
 
@@ -123,13 +142,13 @@ Dry run:
 Install the daily Windows task at `08:30`:
 `powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
 
-## Bluetooth Protocol Blog (08:45~08:50, 2/day)
+## Bluetooth Protocol Blog (08:46~08:50, 3/day)
 
-This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
-It installs 2 scheduled tasks (default: 08:45 and 08:50) and uses `--angle-offset` to avoid duplicates.
+This publishes 3 English posts each morning focused on Bluetooth protocol interpretation and applications.
+It installs 3 scheduled tasks (default: 08:46, 08:48, and 08:50) and uses `--angle-offset` to avoid duplicates.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:45 -WindowEnd 08:50 -PostsPerDay 2`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`
 
 ## Google Index Request Task (10:30)
 
