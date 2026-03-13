@@ -43,7 +43,7 @@ NOISE_PATTERNS = (
 LANE_ALLOWED_SOURCES = {
     "cleanup": {"Apple Newsroom", "MacRumors", "AppleInsider"},
     "protocol": {"Bluetooth SIG"},
-    "updates": {"Bluetooth SIG", "Apple Newsroom", "MacRumors", "AppleInsider", "9to5Mac", "OpenAI News", "Tom's Hardware"},
+    "updates": {"Bluetooth SIG", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
 }
 
 APP_FUNCTION_KEYWORDS = {

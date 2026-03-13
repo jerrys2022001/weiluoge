@@ -98,6 +98,16 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
     BriefSource(
         slug="apple",
         eyebrow="Apple Releases",
+        source_name="MacStories",
+        source_url="https://www.macstories.net/",
+        feed_url="https://www.macstories.net/feed/",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "app", "ios", "ipados", "automation", "shortcuts"),
+        fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=2,
+    ),
+    BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
         source_name="9to5Mac",
         source_url="https://9to5mac.com/",
         feed_url="https://9to5mac.com/feed/",
