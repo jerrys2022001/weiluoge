@@ -74,7 +74,7 @@ class CleanupAngle:
 ANGLES: list[CleanupAngle] = [
     CleanupAngle(
         slug_prefix="delete-duplicate-photos-daily-cleanup-guide",
-        title="Cleanup Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery",
+        title="AI Cleanup PRO: Duplicate Photos First for Faster iPhone Storage Recovery",
         description="A practical English guide to deleting duplicate photos first so you can reclaim space safely and make daily iPhone cleanup faster.",
         teaser="A safe daily cleanup routine that starts with duplicate photos and builds toward better storage hygiene.",
         topic="Delete Duplicate Photos",
@@ -84,7 +84,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="find-large-videos-storage-cleanup-playbook",
-        title="Find Large Videos and Reclaim Space: Practical 20-Minute Phone Cleanup Playbook",
+        title="AI Cleanup PRO: Find Large Videos and Reclaim Space Fast",
         description="Learn how to find large videos quickly and reclaim phone storage with a simple daily cleanup workflow built for SEO and GEO visibility.",
         teaser="A focused cleanup playbook for finding large videos first and recovering meaningful storage fast.",
         topic="Find Large Videos",
@@ -94,7 +94,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="remove-screenshots-iphone-cleanup-checklist",
-        title="Cleanup Screenshots in Bulk: A Smart iPhone Cleanup Checklist for Better Storage Hygiene",
+        title="AI Cleanup PRO: Cleanup Screenshots in Bulk for Better Storage Hygiene",
         description="A practical guide to removing screenshots in bulk so you can keep your photo library cleaner and reclaim space without deleting valuable memories.",
         teaser="A repeatable screenshot cleanup routine that helps keep the camera roll useful and the storage graph under control.",
         topic="Remove Screenshots",
@@ -104,7 +104,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="clean-whatsapp-media-storage-guide",
-        title="Cleanup WhatsApp Storage on iPhone: Free Up Space Without Losing Chats",
+        title="AI Cleanup PRO: Cleanup WhatsApp Storage on iPhone Without Losing Chats",
         description="Learn how to clean WhatsApp storage on iPhone, remove photos, videos, and downloads safely, and free up storage without losing important chats.",
         teaser="A search-focused iPhone cleanup guide for freeing WhatsApp storage without deleting important chats.",
         topic="Clean WhatsApp Media",
@@ -114,7 +114,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="clear-system-storage-iphone-guide",
-        title="Cleanup System Storage on iPhone: What to Check First and What to Leave Alone",
+        title="AI Cleanup PRO: Cleanup System Storage on iPhone Safely",
         description="A plain-English guide to clearing system storage on iPhone by fixing the obvious media categories first and only then reviewing hidden storage growth.",
         teaser="A low-risk system storage guide that helps users understand what to clean first and what not to force delete.",
         topic="Clear System Storage",
@@ -124,7 +124,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="daily-phone-cleanup-routine-duplicate-photos-videos-screenshots-whatsapp-system-storage",
-        title="The 20:00 Phone Cleanup Routine: Duplicate Photos, Large Videos, Screenshots, WhatsApp Media, and System Storage",
+        title="AI Cleanup PRO: The 20:00 iPhone Cleanup Routine",
         description="A complete daily 20:00 phone cleanup routine covering duplicate photos, large videos, screenshots, WhatsApp media, and system storage in one safe workflow.",
         teaser="A complete 20:00 storage cleanup system built around the five highest-value cleanup categories.",
         topic="Daily 20:00 Cleanup Routine",
@@ -134,7 +134,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="iphone-storage-full-cleanup-five-step-order",
-        title="iPhone Storage Full? Use This Five-Step Cleanup Order Before You Delete Anything Important",
+        title="AI Cleanup PRO: iPhone Storage Full Cleanup Order Before You Delete Anything Important",
         description="If your iPhone storage is full, this guide shows a five-step cleanup order based on duplicate photos, large videos, screenshots, WhatsApp media, and system storage review.",
         teaser="A low-risk iPhone storage full cleanup order that starts with the easiest high-impact categories.",
         topic="iPhone Storage Full Cleanup",

@@ -124,10 +124,10 @@ def strip_suffix(title: str, suffix: str) -> str:
 def title_for_item(source_slug: str, item: FeedItem) -> str:
     raw = clean_text(item.title)
     if source_slug == "apple":
-        return f"Find Apple Feature Changes: {raw}"
+        return f"Find AI: Apple Feature Changes in {raw}"
     if source_slug == "ai":
-        return f"Find AI Changes: {raw}"
-    return f"{raw}: Bluetooth Standards and Application Commentary"
+        return f"Find AI: {raw}"
+    return f"Bluetooth Explorer: {raw}"
 
 
 def looks_garbled(value: str) -> bool:

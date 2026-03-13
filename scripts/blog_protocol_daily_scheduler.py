@@ -68,7 +68,7 @@ class ProtocolAngle:
 ANGLES: list[ProtocolAngle] = [
     ProtocolAngle(
         slug_prefix="bluetooth-protocol-stack-explained-applications",
-        title="Bluetooth Protocol Stack Explained: BLE Layers, GATT, ATT, and Real-World Applications",
+        title="Bluetooth Explorer: Bluetooth Protocol Stack Explained for Real-World Applications",
         description="A 2026 Bluetooth protocol stack guide covering BLE layers, advertising, ATT, GATT, pairing, and real-world applications in audio, wearables, smart homes, and IoT devices.",
         teaser="A keyword-focused BLE stack guide covering advertising, ATT, GATT, pairing, and real device behavior.",
         topic="Bluetooth Protocol Stack",
@@ -78,7 +78,7 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-gatt-services-characteristics-guide",
-        title="Bluetooth GATT Explained: Services, Characteristics, UUIDs, and BLE Applications",
+        title="Bluetooth Explorer: Bluetooth GATT Explained for BLE Applications",
         description="A practical Bluetooth GATT guide covering services, characteristics, UUIDs, notifications, BLE data flow, and real-world applications across connected devices.",
         teaser="A practical Bluetooth GATT guide covering services, characteristics, UUIDs, and BLE application design.",
         topic="GATT Services and Characteristics",
@@ -88,7 +88,7 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-pairing-bonding-security-applications",
-        title="Bluetooth Pairing, Bonding, and Security: Protocol Basics for Safer Connected Products",
+        title="Bluetooth Explorer: Bluetooth Pairing, Bonding, and Security Basics",
         description="Understand pairing, bonding, and Bluetooth security decisions with practical examples from consumer devices, enterprise hardware, and smart environments.",
         teaser="A clear guide to pairing, bonding, and security decisions that affect real deployments.",
         topic="Bluetooth Security Basics",
@@ -98,7 +98,7 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-advertising-discovery-functional-guide",
-        title="Bluetooth Advertising and Discovery Guide: How Devices Become Visible and Useful",
+        title="Bluetooth Explorer: Bluetooth Advertising and Discovery Guide",
         description="A practical explanation of Bluetooth advertising, scanning, discovery timing, and how these behaviors affect user experience in real products.",
         teaser="A practical guide to advertising, scanning, and why discovery success decides product perception.",
         topic="Bluetooth Advertising and Discovery",
@@ -108,7 +108,7 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-mesh-and-le-audio-applications",
-        title="Bluetooth Mesh and LE Audio Applications: Where Newer Bluetooth Features Create Real Value",
+        title="Bluetooth Explorer: Bluetooth Mesh and LE Audio Applications",
         description="Explore how Bluetooth Mesh and LE Audio turn protocol evolution into lighting, broadcast audio, assistive listening, and multi-device control use cases.",
         teaser="A practical look at how newer Bluetooth features unlock scalable product experiences.",
         topic="Bluetooth Mesh and LE Audio",
@@ -118,7 +118,7 @@ ANGLES: list[ProtocolAngle] = [
     ),
     ProtocolAngle(
         slug_prefix="bluetooth-throughput-latency-power-tradeoffs",
-        title="Bluetooth Throughput, Latency, and Power Tradeoffs: Protocol Decisions Behind Product Experience",
+        title="Bluetooth Explorer: Bluetooth Throughput, Latency, and Power Tradeoffs",
         description="Learn how connection interval, MTU, packet flow, and power targets influence Bluetooth responsiveness in consumer and industrial products.",
         teaser="A product-focused guide to the tradeoffs between speed, responsiveness, and battery life.",
         topic="Bluetooth Performance Tradeoffs",
