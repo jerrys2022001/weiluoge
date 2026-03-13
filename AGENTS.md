@@ -42,5 +42,7 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - If a change would reduce SEO/GEO value, call it out before proceeding unless the user explicitly prioritizes another goal.
 - For blog maintenance, treat posts as merge candidates when topic-bearing content similarity is above 30% after stripping shared boilerplate sections.
 - Apply that 30% rule within the same intent cluster, using title/topic overlap to avoid merging unrelated long-tail pages that only share templates.
-- For daily blog publishing, reject any new post whose topic-bearing similarity against the existing blog corpus reaches 30% or higher.
+- For daily blog publishing, reject any new cleanup post whose topic-bearing similarity against the existing blog corpus reaches 40% or higher.
+- For daily protocol and live-update publishing, reject any new post whose topic-bearing similarity against the existing blog corpus reaches 50% or higher.
+- Protocol-topic daily publishing must stay within Bluetooth protocol subject matter, not generic consumer tech or generic AI news.
 - If the fixed local topic pool cannot supply the required number of daily posts under that rule, fetch the latest live source items and rewrite them into new SEO/GEO blog posts instead of reusing near-duplicate templates.

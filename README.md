@@ -149,15 +149,17 @@ This publishes 2 English posts each morning focused on Bluetooth protocol interp
 It installs 2 scheduled tasks (default: 08:42 and 08:44) and uses `--slot-offset` to avoid duplicates.
 
 Daily uniqueness rule:
-- Any newly published blog must stay below 30% topic-bearing similarity versus the existing blog corpus.
-- If local fixed topics cannot satisfy that rule, the scheduler falls back to live Apple, AI, or Bluetooth source items and rewrites them into new blog posts.
+- Cleanup posts must stay below 40% topic-bearing similarity versus the existing blog corpus.
+- Protocol and live-update posts must stay below 50% topic-bearing similarity versus the existing blog corpus.
+- Protocol posts must stay on Bluetooth protocol topics.
+- If local fixed topics cannot satisfy that rule, the scheduler falls back to live source items and rewrites them into new blog posts.
 
 Install:
 `powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:42 -WindowEnd 08:44 -PostsPerDay 2`
 
 ## Live Update Blog (08:46~08:50, 3/day)
 
-This publishes 3 live-update blog posts each morning from current online sources, but only when the topic stays related to app functionality and remains below the 30% similarity ceiling.
+This publishes 3 live-update blog posts each morning from current online sources, but only when the topic stays related to app functionality and remains below the 50% similarity ceiling.
 
 Install:
 `powershell -ExecutionPolicy Bypass -File scripts/install_live_update_blog_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`

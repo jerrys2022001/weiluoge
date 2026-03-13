@@ -53,8 +53,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
     parser.add_argument("--force", action="store_true", help="Overwrite article file if it already exists.")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--similarity-threshold", type=float, default=0.40)
+    parser.add_argument("--similarity-threshold", type=float)
     return add_git_publish_args(parser)
+
+
+def default_similarity_threshold(lane: str) -> float:
+    if lane == "cleanup":
+        return 0.40
+    return 0.50
 
 
 def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
@@ -149,6 +155,9 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError("Missing blog directory, blog index, or sitemap.")
 
     target_day = parse_iso_date(args.date)
+    similarity_threshold = args.similarity_threshold
+    if similarity_threshold is None:
+        similarity_threshold = default_similarity_threshold(args.lane)
     if args.lane == "cleanup" and not args.force:
         existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
         if existing_cleanup is not None:
@@ -174,7 +183,7 @@ def run(args: argparse.Namespace) -> int:
         target_day=target_day,
         lane=args.lane,
         slot_offset=args.slot_offset,
-        similarity_threshold=args.similarity_threshold,
+        similarity_threshold=similarity_threshold,
         force=args.force,
     )
     article_path = blog_dir / candidate.post.filename
