@@ -42,14 +42,58 @@ NOISE_PATTERNS = (
 
 LANE_ALLOWED_SOURCES = {
     "cleanup": {"Apple Newsroom", "MacRumors", "OpenAI News", "Tom's Hardware"},
-    "protocol": {"Bluetooth SIG", "OpenAI News", "Apple Newsroom", "MacRumors"},
+    "protocol": {"Bluetooth SIG", "Apple Newsroom", "MacRumors"},
 }
 
-REQUIRED_TITLE_KEYWORDS = {
-    "apple": ("apple", "iphone", "ipad", "mac", "macbook", "airpods", "watch", "vision", "ios"),
-    "ai": ("ai", "openai", "gpt", "model", "agent", "reasoning", "anthropic", "gemini", "llm"),
-    "bluetooth": ("bluetooth", "le audio", "auracast", "mesh", "gatt", "pairing", "discovery", "wireless"),
+APP_FUNCTION_KEYWORDS = {
+    "cleanup": (
+        "cleanup",
+        "duplicate photo",
+        "duplicate photos",
+        "large video",
+        "large videos",
+        "screenshot",
+        "screenshots",
+        "system data",
+        "cache",
+        "contacts",
+        "files",
+        "storage full",
+        "free up storage",
+    ),
+    "find": (
+        "airpods",
+        "find my",
+        "nearby",
+        "lost",
+        "location",
+        "tracking",
+        "recover",
+        "bluetooth device",
+        "device finding",
+        "find nearby",
+        "lost device",
+    ),
+    "bluetooth": (
+        "bluetooth",
+        "ble",
+        "gatt",
+        "auracast",
+        "mesh",
+        "device discovery",
+        "bluetooth pairing",
+        "rssi",
+        "bluetooth signal",
+    ),
 }
+
+
+def matches_keyword(text: str, keyword: str) -> bool:
+    lowered = text.lower()
+    term = keyword.lower()
+    if " " in term:
+        return term in lowered
+    return re.search(rf"(?<![a-z0-9]){re.escape(term)}(?![a-z0-9])", lowered) is not None
 
 
 def json_string(value: str) -> str:
@@ -631,10 +675,14 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
             except Exception:
                 continue
             for item in items:
-                lowered_title = clean_text(item.title).lower()
-                if not any(keyword in lowered_title for keyword in REQUIRED_TITLE_KEYWORDS[slug]):
+                haystack = clean_text(item.title).lower()
+                if lane == "cleanup":
+                    required = APP_FUNCTION_KEYWORDS["cleanup"]
+                else:
+                    required = APP_FUNCTION_KEYWORDS["bluetooth"] + APP_FUNCTION_KEYWORDS["find"]
+                if not any(matches_keyword(haystack, keyword) for keyword in required):
                     continue
-                padded_title = f" {lowered_title} "
+                padded_title = f" {clean_text(item.title).lower()} "
                 if any(pattern in padded_title for pattern in NOISE_PATTERNS):
                     continue
                 if score_item(item, source.keywords) <= 0:
