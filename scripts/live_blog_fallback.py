@@ -229,7 +229,10 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
 <body>
   <header>
     <div class="wrap top">
-      <a href="/">VelocAI</a>
+      <a class="brand" href="/">
+        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI</span>
+      </a>
       <nav>
         <a href="/apps/">Apps Hub</a>
         <a href="/blog/">Blog</a>
