@@ -53,7 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
     parser.add_argument("--force", action="store_true", help="Overwrite article file if it already exists.")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--similarity-threshold", type=float, default=0.30)
+    parser.add_argument("--similarity-threshold", type=float, default=0.40)
     return add_git_publish_args(parser)
 
 
@@ -114,6 +114,19 @@ def choose_candidate(
     candidate_sets = [build_local_candidates(target_day, lane, slot_offset), build_fallback_candidates(target_day, lane)]
 
     for group in candidate_sets:
+        if lane == "updates":
+            ranked: list[tuple[float, Candidate]] = []
+            for candidate in group:
+                article_path = blog_dir / candidate.post.filename
+                if article_path.exists() and not force:
+                    continue
+                similarity = max_similarity_against_existing(candidate.html, existing_pages)
+                if similarity < similarity_threshold:
+                    ranked.append((similarity, candidate))
+            if ranked:
+                ranked.sort(key=lambda item: (item[0], item[1].post.filename))
+                return ranked[0][1], ranked[0][0]
+            continue
         for candidate in group:
             article_path = blog_dir / candidate.post.filename
             if article_path.exists() and not force:
