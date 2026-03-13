@@ -3,8 +3,8 @@ param(
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$WindowStart = "08:40",
-  [string]$WindowEnd = "08:44",
-  [int]$PostsPerDay = 3,
+  [string]$WindowEnd = "08:41",
+  [int]$PostsPerDay = 1,
   [string]$TaskNamePrefix = "WeiLuoGe-Storage-Impact-Blog-Daily",
   [bool]$ReplaceExisting = $true
 )

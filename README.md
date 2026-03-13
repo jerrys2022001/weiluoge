@@ -119,10 +119,10 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
-## Storage Cleanup + System Impact Blog (08:40~08:44, 3/day)
+## Storage Cleanup + System Impact Blog (08:40, 1/day)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:40 -WindowEnd 08:44 -PostsPerDay 3`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:40 -WindowEnd 08:41 -PostsPerDay 1`
 
 ## Homepage Daily Briefing (08:30)
 
@@ -143,17 +143,24 @@ Dry run:
 Install the daily Windows task at `08:30`:
 `powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
 
-## Bluetooth Protocol Blog (08:46~08:50, 3/day)
+## Bluetooth Protocol Blog (08:42~08:44, 2/day)
 
-This publishes 3 English posts each morning focused on Bluetooth protocol interpretation and applications.
-It installs 3 scheduled tasks (default: 08:46, 08:48, and 08:50) and uses `--angle-offset` to avoid duplicates.
+This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
+It installs 2 scheduled tasks (default: 08:42 and 08:44) and uses `--slot-offset` to avoid duplicates.
 
 Daily uniqueness rule:
 - Any newly published blog must stay below 30% topic-bearing similarity versus the existing blog corpus.
 - If local fixed topics cannot satisfy that rule, the scheduler falls back to live Apple, AI, or Bluetooth source items and rewrites them into new blog posts.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:42 -WindowEnd 08:44 -PostsPerDay 2`
+
+## Live Update Blog (08:46~08:50, 3/day)
+
+This publishes 3 live-update blog posts each morning from current online sources, but only when the topic stays related to app functionality and remains below the 30% similarity ceiling.
+
+Install:
+`powershell -ExecutionPolicy Bypass -File scripts/install_live_update_blog_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`
 
 ## Google Index Request Task (10:30)
 

@@ -25,6 +25,12 @@ SKIP_HEADERS = (
     "source attribution",
     "daily 20:00 execution checklist",
     "current status:",
+    "practical decision checklist",
+    "seo and geo retrieval fit",
+    "what to watch next",
+    "search intent and upgrade questions",
+    "search intent and adoption questions",
+    "search intent and deployment questions",
 )
 RESUME_MARKERS = (
     "back to blog index",
@@ -82,6 +88,26 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 
 def extract_body_counter(html: str) -> Counter[str]:
+    if "<h2>What Happened</h2>" in html:
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+        hero_match = re.search(r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if hero_match:
+            focus_parts.append(hero_match.group(1))
+        happened_match = re.search(r'<h2>What Happened</h2>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if happened_match:
+            focus_parts.append(happened_match.group(1))
+        focus_html = " ".join(focus_parts)
+        focus_text = re.sub(r"<[^>]+>", " ", focus_html)
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS
+        )
+
     trimmed = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.IGNORECASE | re.DOTALL)
     trimmed = re.sub(r'<section class="sources".*?</section>', " ", trimmed, flags=re.IGNORECASE | re.DOTALL)
     trimmed = re.sub(

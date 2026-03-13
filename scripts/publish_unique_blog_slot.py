@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Publish one unique blog article for a scheduled slot, with live-news fallback when local topics repeat."
     )
-    parser.add_argument("--lane", choices=["cleanup", "protocol"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0, help="Preferred local topic offset for this slot.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
@@ -83,9 +83,30 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
     items: list[Candidate] = []
-    for index, live in enumerate(build_live_candidates(target_day, lane)):
+    live_candidates = []
+    if lane == "updates":
+        seen_names: set[str] = set()
+        for source_lane in ("cleanup", "protocol"):
+            for live in build_live_candidates(target_day, source_lane):
+                if live.post.filename in seen_names:
+                    continue
+                seen_names.add(live.post.filename)
+                live_candidates.append(live)
+    else:
+        live_candidates = build_live_candidates(target_day, lane)
+    for index, live in enumerate(live_candidates):
         items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
     return items
+
+
+def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | None:
+    blog_dir = repo_root / "blog"
+    candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup")]
+    for candidate in candidates:
+        article_path = blog_dir / candidate.post.filename
+        if article_path.exists():
+            return candidate
+    return None
 
 
 def choose_candidate(
@@ -123,6 +144,26 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError("Missing blog directory, blog index, or sitemap.")
 
     target_day = parse_iso_date(args.date)
+    if args.lane == "cleanup" and not args.force:
+        existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
+        if existing_cleanup is not None:
+            if args.dry_run:
+                print(
+                    f"dry_run lane=cleanup origin=existing id=daily-quota-met "
+                    f"article={blog_dir / existing_cleanup.post.filename} state=already_present"
+                )
+                return 0
+            print(
+                "done "
+                "lane=cleanup "
+                "origin=existing "
+                "id=daily-quota-met "
+                "index=unchanged "
+                "sitemap=unchanged "
+                "git=skipped "
+                f"file={existing_cleanup.post.filename}"
+            )
+            return 0
     candidate, similarity = choose_candidate(
         repo_root=repo_root,
         target_day=target_day,
