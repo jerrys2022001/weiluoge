@@ -29,6 +29,13 @@ class LiveBlogCandidate:
     source_name: str
 
 
+@dataclass(frozen=True)
+class CuratedPage:
+    source_slug: str
+    source_name: str
+    url: str
+
+
 NOISE_PATTERNS = (
     " sale ",
     " cheapest ",
@@ -40,10 +47,19 @@ NOISE_PATTERNS = (
     " giveaway ",
 )
 
+CURATED_PROTOCOL_PAGES = (
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/specifications/specs/core-specification-6-2/"),
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/learn-about-bluetooth/key-attributes/gatt/"),
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/learn-about-bluetooth/feature-enhancements/le-audio/"),
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/specifications/mesh-specifications/"),
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/blog/bluetooth-shorter-connection-intervals-paving-the-way-for-bluetooth-innovation/"),
+    CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/blog/bluetooth-core-specifications-now-scheduled-for-bi-annual-release/"),
+)
+
 LANE_ALLOWED_SOURCES = {
     "cleanup": {"Apple Newsroom", "MacRumors", "AppleInsider"},
-    "protocol": {"Bluetooth SIG"},
-    "updates": {"Bluetooth SIG", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
+    "protocol": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected"},
+    "updates": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
 }
 
 APP_FUNCTION_KEYWORDS = {
@@ -266,6 +282,21 @@ def clean_summary(source_slug: str, source_name: str, item: FeedItem) -> str:
         "bluetooth": f"Latest Bluetooth commentary from {source_name} focused on standards changes, application impact, and what product teams should watch next.",
     }[source_slug]
     return fallback
+
+
+def feed_item_from_curated_page(page: CuratedPage) -> FeedItem | None:
+    try:
+        html = fetch_bytes(page.url).decode("utf-8", errors="ignore")
+    except Exception:
+        return None
+    title_match = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
+    title = clean_text(title_match.group(1)) if title_match else ""
+    title = re.sub(r"\s*\|\s*Bluetooth.*$", "", title, flags=re.IGNORECASE).strip()
+    desc_match = re.search(r'<meta\s+name="description"\s+content="(.*?)"\s*/?>', html, re.IGNORECASE | re.DOTALL)
+    description = clean_text(desc_match.group(1)) if desc_match else ""
+    if not title:
+        return None
+    return FeedItem(title=title, link=page.url, summary=description, published_at=None, image_url="")
 
 
 def current_status_heading(source_slug: str) -> str:
@@ -764,6 +795,19 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
                     continue
                 seen_links.add(item.link)
                 collected.append((slug, source.source_name, item))
+    if lane in {"protocol", "updates"}:
+        for page in CURATED_PROTOCOL_PAGES:
+            item = feed_item_from_curated_page(page)
+            if item is None:
+                continue
+            haystack = clean_text(item.title).lower()
+            required = APP_FUNCTION_KEYWORDS["bluetooth"] + APP_FUNCTION_KEYWORDS["find"]
+            if not any(matches_keyword(haystack, keyword) for keyword in required):
+                continue
+            if item.link in seen_links:
+                continue
+            seen_links.add(item.link)
+            collected.append((page.source_slug, page.source_name, item))
     collected.sort(key=lambda entry: entry[2].published_at.timestamp() if entry[2].published_at else 0.0, reverse=True)
     return collected
 
