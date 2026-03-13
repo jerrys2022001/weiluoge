@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import time
 import re
 import sys
 import urllib.request
@@ -95,6 +96,16 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         item_count=3,
     ),
     BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
+        source_name="9to5Mac",
+        source_url="https://9to5mac.com/",
+        feed_url="https://9to5mac.com/feed/",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "app store", "apple tv", "neo", "fold"),
+        fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=2,
+    ),
+    BriefSource(
         slug="semiconductor",
         eyebrow="Semiconductor Breakthroughs",
         source_name="Semiconductor Engineering",
@@ -116,6 +127,27 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         ),
         fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
         item_count=3,
+    ),
+    BriefSource(
+        slug="semiconductor",
+        eyebrow="Semiconductor Breakthroughs",
+        source_name="SemiWiki",
+        source_url="https://semiwiki.com/",
+        feed_url="https://semiwiki.com/feed/",
+        keywords=(
+            "chip",
+            "chiplet",
+            "semiconductor",
+            "foundry",
+            "verification",
+            "silicon",
+            "noc",
+            "design",
+            "synopsys",
+            "data wave",
+        ),
+        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
+        item_count=2,
     ),
     BriefSource(
         slug="ai",
@@ -209,9 +241,19 @@ class BriefEntry:
 
 
 def fetch_bytes(url: str) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+    last_error: Exception | None = None
+    for attempt in range(3):
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.read()
+        except Exception as exc:  # pragma: no cover - network variability
+            last_error = exc
+            if attempt >= 2:
+                break
+            time.sleep(1.2 * (attempt + 1))
+    assert last_error is not None
+    raise last_error
 
 
 def clean_text(value: str) -> str:
