@@ -3,11 +3,15 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import tempfile
+import time
 from dataclasses import dataclass
 from datetime import date
 from html import escape
+from pathlib import Path
 
 from blog_daily_scheduler import PostMeta, SITE_URL, format_human
 from home_brief_daily_scheduler import (
@@ -34,6 +38,10 @@ class CuratedPage:
     source_slug: str
     source_name: str
     url: str
+
+
+CACHE_ROOT = Path(tempfile.gettempdir()) / "weiluoge-live-cache"
+CACHE_TTL_SECONDS = 6 * 60 * 60
 
 
 NOISE_PATTERNS = (
@@ -125,6 +133,31 @@ def matches_keyword(text: str, keyword: str) -> bool:
 
 def json_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
+
+
+def cache_paths_for_url(url: str) -> tuple[Path, Path]:
+    key = hashlib.sha256(url.encode("utf-8")).hexdigest()
+    cache_dir = CACHE_ROOT
+    return cache_dir / f"{key}.bin", cache_dir / f"{key}.json"
+
+
+def cached_fetch_bytes(url: str) -> bytes:
+    payload_path, meta_path = cache_paths_for_url(url)
+    now = time.time()
+    if payload_path.exists() and meta_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            fetched_at = float(meta.get("fetched_at", 0.0))
+            if now - fetched_at <= CACHE_TTL_SECONDS:
+                return payload_path.read_bytes()
+        except Exception:
+            pass
+
+    CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+    payload = fetch_bytes(url)
+    payload_path.write_bytes(payload)
+    meta_path.write_text(json.dumps({"url": url, "fetched_at": now}, ensure_ascii=False), encoding="utf-8")
+    return payload
 
 
 def slugify(value: str, limit: int = 72) -> str:
@@ -286,7 +319,7 @@ def clean_summary(source_slug: str, source_name: str, item: FeedItem) -> str:
 
 def feed_item_from_curated_page(page: CuratedPage) -> FeedItem | None:
     try:
-        html = fetch_bytes(page.url).decode("utf-8", errors="ignore")
+        html = cached_fetch_bytes(page.url).decode("utf-8", errors="ignore")
     except Exception:
         return None
     title_match = re.search(r"<title>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
@@ -773,7 +806,7 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
         ]
         for source in sources:
             try:
-                items = parse_feed_items(fetch_bytes(source.feed_url))
+                items = parse_feed_items(cached_fetch_bytes(source.feed_url))
             except Exception:
                 continue
             for item in items:
