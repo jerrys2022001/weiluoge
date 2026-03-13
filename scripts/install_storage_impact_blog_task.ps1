@@ -30,7 +30,7 @@ function Format-HHMM([int]$minutes) {
   return ("{0:D2}:{1:D2}" -f $h, $m)
 }
 
-$ScriptPath = Join-Path $RepoRoot "scripts\\blog_cleanup_focus_scheduler.py"
+$ScriptPath = Join-Path $RepoRoot "scripts\\publish_unique_blog_slot.py"
 if (-not (Test-Path $ScriptPath)) {
   throw "Missing script: $ScriptPath"
 }
@@ -82,7 +82,7 @@ foreach ($legacyTaskName in $legacyTaskNames) {
 for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
-  $Args = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --angle-offset $i --git-commit --git-push"
+  $Args = "$PythonArgs `"$ScriptPath`" --lane cleanup --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
   $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
 

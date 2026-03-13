@@ -147,6 +147,10 @@ Install the daily Windows task at `08:30`:
 This publishes 3 English posts each morning focused on Bluetooth protocol interpretation and applications.
 It installs 3 scheduled tasks (default: 08:46, 08:48, and 08:50) and uses `--angle-offset` to avoid duplicates.
 
+Daily uniqueness rule:
+- Any newly published blog must stay below 30% topic-bearing similarity versus the existing blog corpus.
+- If local fixed topics cannot satisfy that rule, the scheduler falls back to live Apple, AI, or Bluetooth source items and rewrites them into new blog posts.
+
 Install:
 `powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`
 

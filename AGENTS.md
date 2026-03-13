@@ -32,6 +32,7 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 ## Content Policy
 - All future website content in this repo must be written to improve both SEO and GEO by default.
 - Scope includes landing pages, product pages, blog posts, metadata, FAQ blocks, internal links, schema markup, sitemap-related output, and index/list pages.
+- Preferred ongoing content ranges include Bluetooth protocol/application analysis, iPhone storage cleanup and system-impact analysis, Apple new-product feature/performance commentary, and AI technology outlook coverage.
 - Every new or updated content page should target a clear primary search intent and include naturally written secondary keywords that support the same topic cluster.
 - Titles, H1s, meta descriptions, and visible section headings should use high-intent phrasing that matches likely search queries.
 - Content should be structured for both search engines and AI retrieval: concise answers near the top, scannable sections, FAQ-style Q&A where appropriate, and explicit entity/topic wording.
@@ -40,3 +41,5 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - If a change would reduce SEO/GEO value, call it out before proceeding unless the user explicitly prioritizes another goal.
 - For blog maintenance, treat posts as merge candidates when topic-bearing content similarity is above 30% after stripping shared boilerplate sections.
 - Apply that 30% rule within the same intent cluster, using title/topic overlap to avoid merging unrelated long-tail pages that only share templates.
+- For daily blog publishing, reject any new post whose topic-bearing similarity against the existing blog corpus reaches 30% or higher.
+- If the fixed local topic pool cannot supply the required number of daily posts under that rule, fetch the latest live source items and rewrite them into new SEO/GEO blog posts instead of reusing near-duplicate templates.
