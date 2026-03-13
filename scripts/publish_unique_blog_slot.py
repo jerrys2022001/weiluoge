@@ -70,6 +70,8 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
             html = render_cleanup_html(target_day, angle, post)
             candidates.append(Candidate(lane=lane, origin="local", identifier=f"cleanup:{offset}", post=post, html=html))
         return candidates
+    if lane == "updates":
+        return candidates
 
     total = len(PROTOCOL_ANGLES)
     for step in range(total):
@@ -83,17 +85,7 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
     items: list[Candidate] = []
-    live_candidates = []
-    if lane == "updates":
-        seen_names: set[str] = set()
-        for source_lane in ("cleanup", "protocol"):
-            for live in build_live_candidates(target_day, source_lane):
-                if live.post.filename in seen_names:
-                    continue
-                seen_names.add(live.post.filename)
-                live_candidates.append(live)
-    else:
-        live_candidates = build_live_candidates(target_day, lane)
+    live_candidates = build_live_candidates(target_day, lane)
     for index, live in enumerate(live_candidates):
         items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
     return items
