@@ -42,7 +42,7 @@ NOISE_PATTERNS = (
 
 LANE_ALLOWED_SOURCES = {
     "cleanup": {"Apple Newsroom", "MacRumors", "AppleInsider"},
-    "protocol": {"Bluetooth SIG", "Apple Newsroom", "MacRumors"},
+    "protocol": {"Bluetooth SIG"},
     "updates": {"Bluetooth SIG", "Apple Newsroom", "MacRumors", "AppleInsider", "9to5Mac", "OpenAI News", "Tom's Hardware"},
 }
 
@@ -176,13 +176,72 @@ def strip_suffix(title: str, suffix: str) -> str:
     return title
 
 
-def title_for_item(source_slug: str, item: FeedItem) -> str:
+def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
     raw = clean_text(item.title)
+    lowered = raw.lower()
     if source_slug == "apple":
-        return f"{raw}: What Find AI Users Should Notice"
+        if any(keyword in lowered for keyword in ("storage", "1tb", "128gb", "icloud", "backup", "files", "nas", "drive")):
+            if "iphone" in lowered:
+                return (
+                    "iPhone storage planning: what AI Cleanup PRO users should notice",
+                    "A rewritten Apple storage commentary that connects the update to cleanup planning, backup pressure, and real device storage workflows.",
+                )
+            if "mac" in lowered or "macbook" in lowered:
+                return (
+                    "Mac storage and backup planning: what AI Cleanup PRO users should notice",
+                    "A rewritten Apple storage commentary that connects the update to file management, backup planning, and cleanup decisions on Mac.",
+                )
+            return (
+                "Apple storage changes: what AI Cleanup PRO users should notice",
+                "A rewritten Apple storage commentary focused on file growth, capacity planning, and cleanup implications.",
+            )
+        if any(keyword in lowered for keyword in ("airpods", "find my", "tracking", "location", "lost")):
+            return (
+                "Apple device-finding changes: what Find AI users should notice",
+                "A rewritten Apple commentary focused on nearby finding, last-seen workflows, and recovery signals relevant to Find AI users.",
+            )
+        return (
+            "Apple ecosystem changes: what Find AI users should notice",
+            "A rewritten Apple commentary that connects the update to practical device-finding, accessory, or ecosystem workflows.",
+        )
     if source_slug == "ai":
-        return f"{raw}: A Find AI Outlook"
-    return f"{raw}: A Bluetooth Explorer Outlook"
+        if any(keyword in lowered for keyword in ("storage", "files", "nas", "drive", "backup")):
+            return (
+                "AI for file and storage workflows: what AI Cleanup PRO users should notice",
+                "A rewritten AI commentary focused on how new models or tools affect cleanup, file handling, and storage-related workflows.",
+            )
+        if any(keyword in lowered for keyword in ("agent", "agents", "evals", "model", "chatgpt", "gpt", "reasoning")):
+            return (
+                "AI workflow changes: what Find AI users should notice",
+                "A rewritten AI commentary that explains capability changes in terms of real automation, assistant, and user workflow impact.",
+            )
+        return (
+            "AI workflow update: what Find AI users should notice",
+            "A rewritten AI commentary focused on practical workflow change rather than headline-only release notes.",
+        )
+    if any(keyword in lowered for keyword in ("auracast", "broadcast audio")):
+        return (
+            "Bluetooth protocol for broadcast audio: what Bluetooth Explorer users should notice",
+            "A rewritten Bluetooth protocol commentary focused on broadcast audio behavior, interoperability, and deployment value.",
+        )
+    if any(keyword in lowered for keyword in ("tracking", "monitoring", "industrial", "supply")):
+        return (
+            "Bluetooth protocol for tracking and monitoring: what Bluetooth Explorer users should notice",
+            "A rewritten Bluetooth protocol commentary focused on discovery, telemetry, and industrial deployment workflows.",
+        )
+    if any(keyword in lowered for keyword in ("connection interval", "shorter connection intervals")):
+        return (
+            "Bluetooth protocol and shorter connection intervals: what Bluetooth Explorer users should notice",
+            "A rewritten Bluetooth protocol commentary focused on latency, timing, and practical implementation impact.",
+        )
+    return (
+        "Bluetooth protocol update: what Bluetooth Explorer users should notice",
+        "A rewritten Bluetooth protocol commentary focused on practical implementation, debugging, and product impact.",
+    )
+
+
+def title_for_item(source_slug: str, item: FeedItem) -> str:
+    return rewritten_story_focus(source_slug, item)[0]
 
 
 def looks_garbled(value: str) -> bool:
@@ -652,8 +711,8 @@ def build_candidate_from_item(
     filename: str | None = None,
 ) -> LiveBlogCandidate:
     resolved_filename = filename or f"{article_prefix_for_source_slug(source_slug)}-{slugify(item.title)}-{target_day.isoformat()}.html"
-    title = title_for_item(source_slug, item)
-    summary = clean_summary(source_slug, source_name, item)
+    title, rewritten_summary = rewritten_story_focus(source_slug, item)
+    summary = rewritten_summary if rewritten_summary else clean_summary(source_slug, source_name, item)
     opening_intro = opening_intro_for(source_slug, clean_text(item.title), summary)
     post = PostMeta(
         filename=resolved_filename,
@@ -670,7 +729,7 @@ def build_candidate_from_item(
 def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
     preferred_slugs = {
         "cleanup": ("apple",),
-        "protocol": ("bluetooth", "ai", "apple"),
+        "protocol": ("bluetooth",),
         "updates": ("apple", "ai", "bluetooth"),
     }[lane]
     collected: list[tuple[str, str, FeedItem]] = []
