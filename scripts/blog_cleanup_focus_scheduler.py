@@ -74,7 +74,7 @@ class CleanupAngle:
 ANGLES: list[CleanupAngle] = [
     CleanupAngle(
         slug_prefix="delete-duplicate-photos-daily-cleanup-guide",
-        title="Delete Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery",
+        title="Cleanup Duplicate Photos First: Daily iPhone Cleanup Guide for Faster Storage Recovery",
         description="A practical English guide to deleting duplicate photos first so you can reclaim space safely and make daily iPhone cleanup faster.",
         teaser="A safe daily cleanup routine that starts with duplicate photos and builds toward better storage hygiene.",
         topic="Delete Duplicate Photos",
@@ -94,7 +94,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="remove-screenshots-iphone-cleanup-checklist",
-        title="Remove Screenshots in Bulk: A Smart iPhone Cleanup Checklist for Better Storage Hygiene",
+        title="Cleanup Screenshots in Bulk: A Smart iPhone Cleanup Checklist for Better Storage Hygiene",
         description="A practical guide to removing screenshots in bulk so you can keep your photo library cleaner and reclaim space without deleting valuable memories.",
         teaser="A repeatable screenshot cleanup routine that helps keep the camera roll useful and the storage graph under control.",
         topic="Remove Screenshots",
@@ -104,7 +104,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="clean-whatsapp-media-storage-guide",
-        title="How to Clean WhatsApp Storage on iPhone: Free Up Space Without Losing Chats",
+        title="Cleanup WhatsApp Storage on iPhone: Free Up Space Without Losing Chats",
         description="Learn how to clean WhatsApp storage on iPhone, remove photos, videos, and downloads safely, and free up storage without losing important chats.",
         teaser="A search-focused iPhone cleanup guide for freeing WhatsApp storage without deleting important chats.",
         topic="Clean WhatsApp Media",
@@ -114,7 +114,7 @@ ANGLES: list[CleanupAngle] = [
     ),
     CleanupAngle(
         slug_prefix="clear-system-storage-iphone-guide",
-        title="Clear System Storage on iPhone: What to Check First and What to Leave Alone",
+        title="Cleanup System Storage on iPhone: What to Check First and What to Leave Alone",
         description="A plain-English guide to clearing system storage on iPhone by fixing the obvious media categories first and only then reviewing hidden storage growth.",
         teaser="A low-risk system storage guide that helps users understand what to clean first and what not to force delete.",
         topic="Clear System Storage",

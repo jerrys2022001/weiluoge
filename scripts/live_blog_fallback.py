@@ -124,9 +124,9 @@ def strip_suffix(title: str, suffix: str) -> str:
 def title_for_item(source_slug: str, item: FeedItem) -> str:
     raw = clean_text(item.title)
     if source_slug == "apple":
-        return f"{raw}: Apple Feature and Performance Commentary"
+        return f"Find Apple Feature Changes: {raw}"
     if source_slug == "ai":
-        return f"{raw}: AI Technology Outlook"
+        return f"Find AI Changes: {raw}"
     return f"{raw}: Bluetooth Standards and Application Commentary"
 
 
