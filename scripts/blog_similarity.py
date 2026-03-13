@@ -84,6 +84,13 @@ def title_tokens_for(title: str) -> frozenset[str]:
 def extract_body_counter(html: str) -> Counter[str]:
     trimmed = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.IGNORECASE | re.DOTALL)
     trimmed = re.sub(r'<section class="sources".*?</section>', " ", trimmed, flags=re.IGNORECASE | re.DOTALL)
+    trimmed = re.sub(
+        r'<section class="panel">\s*<h2>(?:Why It Matters|What To Watch Next|Source Attribution)</h2>.*?</section>',
+        " ",
+        trimmed,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    trimmed = re.sub(r'<p class="meta">.*?</p>', " ", trimmed, flags=re.IGNORECASE | re.DOTALL)
     text = re.sub(r"<[^>]+>", "\n", trimmed)
     lines = [re.sub(r"\s+", " ", item).strip() for item in text.splitlines()]
 

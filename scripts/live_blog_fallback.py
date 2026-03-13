@@ -7,10 +7,17 @@ import re
 from dataclasses import dataclass
 from datetime import date
 from html import escape
-from pathlib import Path
 
 from blog_daily_scheduler import PostMeta, SITE_URL, format_human
-from home_brief_daily_scheduler import BRIEF_SOURCES, FeedItem, fetch_bytes, parse_feed_items, score_item
+from home_brief_daily_scheduler import (
+    BRIEF_SOURCES,
+    FeedItem,
+    clean_text,
+    clip_text,
+    fetch_bytes,
+    parse_feed_items,
+    score_item,
+)
 
 
 @dataclass(frozen=True)
@@ -19,6 +26,18 @@ class LiveBlogCandidate:
     html: str
     link: str
     source_name: str
+
+
+NOISE_PATTERNS = (
+    " sale ",
+    " cheapest ",
+    " coupon ",
+    " discount ",
+    " deal ",
+    " buy now ",
+    " clearance ",
+    " giveaway ",
+)
 
 
 def slugify(value: str, limit: int = 72) -> str:
@@ -59,6 +78,23 @@ def teaser_for_source_slug(source_slug: str) -> str:
     return "A latest-info Bluetooth commentary focused on standards, features, and real-world applications."
 
 
+def looks_garbled(value: str) -> bool:
+    lowered = value.lower()
+    return any(token in lowered for token in ("鈥", "鈦", "�", "\ufffd"))
+
+
+def clean_summary(source_slug: str, source_name: str, item: FeedItem) -> str:
+    cleaned = clean_text(item.summary)
+    if cleaned and not looks_garbled(cleaned):
+        return clip_text(cleaned, limit=210)
+    fallback = {
+        "apple": f"Latest Apple product commentary from {source_name} focused on feature changes, performance impact, and what the update means for buyers and developers.",
+        "ai": f"Latest AI technology commentary from {source_name} focused on capability changes, product impact, and what teams should watch next.",
+        "bluetooth": f"Latest Bluetooth commentary from {source_name} focused on standards changes, application impact, and what product teams should watch next.",
+    }[source_slug]
+    return fallback
+
+
 def keywords_for_source_slug(source_slug: str) -> list[str]:
     if source_slug == "apple":
         return [
@@ -89,7 +125,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
     source_published = item.published_at.astimezone().strftime("%B %d, %Y") if item.published_at else human_date
-    source_summary = escape(item.summary or post.description)
+    source_summary = escape(clean_summary(source_slug, source_name, item))
     keywords = ", ".join(keywords_for_source_slug(source_slug) + [post.topic.lower(), slugify(item.title).replace("-", " ")])
     what_changed_heading = "What Happened"
     why_it_matters_heading = "Why It Matters"
@@ -272,6 +308,9 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
                 lowered_title = item.title.lower()
                 if not any(keyword in lowered_title for keyword in required_title_keywords[slug]):
                     continue
+                padded_title = f" {lowered_title} "
+                if any(pattern in padded_title for pattern in NOISE_PATTERNS):
+                    continue
                 if score_item(item, source.keywords) <= 0:
                     continue
                 if not item.link or item.link in seen_links:
@@ -289,9 +328,7 @@ def build_live_candidates(target_day: date, lane: str) -> list[LiveBlogCandidate
         item_slug = slugify(item.title)
         filename = f"{prefix}-{item_slug}-{target_day.isoformat()}.html"
         title = title_for_item(source_slug, item)
-        description = (item.summary or teaser_for_source_slug(source_slug))[:220].strip()
-        if not description:
-            description = teaser_for_source_slug(source_slug)
+        description = clean_summary(source_slug, source_name, item)
         post = PostMeta(
             filename=filename,
             title=title,
