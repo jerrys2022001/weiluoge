@@ -234,6 +234,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         <span>VelocAI</span>
       </a>
       <nav>
+        <a href="/">Home</a>
         <a href="/apps/">Apps Hub</a>
         <a href="/blog/">Blog</a>
         <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
