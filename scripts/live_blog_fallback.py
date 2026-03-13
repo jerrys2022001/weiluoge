@@ -41,23 +41,19 @@ NOISE_PATTERNS = (
 )
 
 LANE_ALLOWED_SOURCES = {
-    "cleanup": {"Apple Newsroom", "MacRumors", "OpenAI News", "Tom's Hardware"},
+    "cleanup": {"Apple Newsroom", "MacRumors", "AppleInsider"},
     "protocol": {"Bluetooth SIG", "Apple Newsroom", "MacRumors"},
 }
 
 APP_FUNCTION_KEYWORDS = {
     "cleanup": (
-        "cleanup",
-        "duplicate photo",
-        "duplicate photos",
-        "large video",
-        "large videos",
-        "screenshot",
-        "screenshots",
-        "system data",
-        "cache",
-        "contacts",
         "files",
+        "storage",
+        "backup",
+        "icloud",
+        "nas",
+        "drive",
+        "system data",
         "storage full",
         "free up storage",
     ),
@@ -86,6 +82,16 @@ APP_FUNCTION_KEYWORDS = {
         "bluetooth signal",
     ),
 }
+
+CLEANUP_TITLE_REQUIRED = (
+    "storage",
+    "backup",
+    "icloud",
+    "files",
+    "nas",
+    "drive",
+    "system data",
+)
 
 
 def matches_keyword(text: str, keyword: str) -> bool:
@@ -658,7 +664,7 @@ def build_candidate_from_item(
 
 def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
     preferred_slugs = {
-        "cleanup": ("apple", "ai"),
+        "cleanup": ("apple",),
         "protocol": ("bluetooth", "ai", "apple"),
     }[lane]
     collected: list[tuple[str, str, FeedItem]] = []
@@ -677,7 +683,7 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
             for item in items:
                 haystack = clean_text(item.title).lower()
                 if lane == "cleanup":
-                    required = APP_FUNCTION_KEYWORDS["cleanup"]
+                    required = CLEANUP_TITLE_REQUIRED
                 else:
                     required = APP_FUNCTION_KEYWORDS["bluetooth"] + APP_FUNCTION_KEYWORDS["find"]
                 if not any(matches_keyword(haystack, keyword) for keyword in required):
