@@ -34,6 +34,7 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - Scope includes landing pages, product pages, blog posts, metadata, FAQ blocks, internal links, schema markup, sitemap-related output, and index/list pages.
 - Preferred ongoing content ranges include Bluetooth protocol/application analysis, iPhone storage cleanup and system-impact analysis, Apple new-product feature/performance commentary, and AI technology outlook coverage.
 - Every new or updated content page should target a clear primary search intent and include naturally written secondary keywords that support the same topic cluster.
+- Core keyword phrases for blog content must include at least one app-centered term directly tied to the current app portfolio: `bluetooth`, `find`, or `cleanup`.
 - Titles, H1s, meta descriptions, and visible section headings should use high-intent phrasing that matches likely search queries.
 - Content should be structured for both search engines and AI retrieval: concise answers near the top, scannable sections, FAQ-style Q&A where appropriate, and explicit entity/topic wording.
 - Prefer evergreen, factual wording and direct problem-solution framing over vague branding language.

@@ -13,6 +13,7 @@ Current preferred content ranges:
 
 Minimum content rule:
 - define a clear primary search intent for each page
+- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find`, or `cleanup`
 - use high-intent keywords naturally in the title, H1, meta description, and major headings
 - keep the opening section concise and directly answer the likely query
 - include scannable sections and FAQ-style answers when useful for AI retrieval

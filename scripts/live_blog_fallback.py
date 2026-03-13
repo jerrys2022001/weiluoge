@@ -89,21 +89,21 @@ def teaser_for_source_slug(source_slug: str) -> str:
 def keywords_for_source_slug(source_slug: str) -> list[str]:
     if source_slug == "apple":
         return [
-            "apple new product review",
-            "apple feature commentary",
-            "apple performance review",
-            "iphone feature analysis",
-            "mac performance analysis",
-            "apple product comparison",
+            "find apple product changes",
+            "cleanup iphone upgrade checklist",
+            "bluetooth accessory compatibility iphone",
+            "find iphone feature differences",
+            "cleanup iphone storage before upgrade",
+            "find mac performance changes",
         ]
     if source_slug == "ai":
         return [
-            "ai technology outlook",
-            "latest ai developments",
-            "ai model commentary",
-            "ai capability analysis",
-            "future of ai applications",
-            "ai workflow impact",
+            "find ai workflow changes",
+            "find ai product updates",
+            "cleanup ai automation workflow",
+            "find ai model impact",
+            "cleanup ai operations checklist",
+            "find ai capability shifts",
         ]
     return [
         "bluetooth latest update",
