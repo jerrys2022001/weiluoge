@@ -774,6 +774,16 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
 
         article_html = render_index_article(post)
         updated = updated[: insert_at + 1] + article_html + updated[insert_at + 1 :]
+    else:
+        block_matches = list(re.finditer(r"<article>.*?</article>", updated, re.DOTALL))
+        target_match = None
+        for match in block_matches:
+            if f'href="/blog/{post.filename}"' in match.group(0):
+                target_match = match
+                break
+        if target_match is None:
+            raise ValueError(f"Cannot find existing article block for {post.filename} in blog/index.html")
+        updated = updated[: target_match.start()] + render_index_article(post) + updated[target_match.end() :]
 
     updated = update_index_itemlist(updated, post)
 
