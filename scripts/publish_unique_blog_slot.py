@@ -14,6 +14,7 @@ from blog_cleanup_focus_scheduler import (
     pick_angle as pick_cleanup_angle,
     render_article_html as render_cleanup_html,
 )
+from blog_seo_audit import print_report, validate_generated_article
 from blog_daily_scheduler import (
     BLOG_INDEX_REL,
     SITEMAP_REL,
@@ -224,9 +225,19 @@ def run(args: argparse.Namespace) -> int:
     )
     article_path = blog_dir / candidate.post.filename
     existed_before = article_path.exists()
+    expected_canonical = f"https://velocai.net/blog/{candidate.post.filename}"
+    seo_report = validate_generated_article(candidate.html, expected_canonical=expected_canonical)
+
+    if seo_report.failed:
+        print_report(seo_report)
+        raise ValueError(
+            f"SEO validation failed for {candidate.post.filename}. "
+            f"{seo_report.summary()}"
+        )
 
     if args.dry_run:
         state = "would_overwrite" if existed_before else "would_create"
+        print_report(seo_report)
         print(
             f"dry_run lane={args.lane} origin={candidate.origin} id={candidate.identifier} "
             f"similarity={similarity:.3f} article={article_path} state={state}"
@@ -256,6 +267,7 @@ def run(args: argparse.Namespace) -> int:
         f"origin={candidate.origin} "
         f"id={candidate.identifier} "
         f"similarity={similarity:.3f} "
+        f"seo={seo_report.summary()} "
         f"index={'updated' if index_changed else 'unchanged'} "
         f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
         f"git={git_state} "

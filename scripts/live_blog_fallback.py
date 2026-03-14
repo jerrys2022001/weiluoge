@@ -190,6 +190,31 @@ def teaser_for_source_slug(source_slug: str) -> str:
     return "A latest-info Bluetooth commentary focused on standards, applications, and practical deployment impact."
 
 
+def source_home_url(source_slug: str) -> str:
+    if source_slug == "apple":
+        return "https://www.apple.com/newsroom/"
+    if source_slug == "ai":
+        return "https://openai.com/news/"
+    return "https://www.bluetooth.com/specifications/"
+
+
+def background_links_for(source_slug: str) -> list[tuple[str, str]]:
+    if source_slug == "apple":
+        return [
+            ("Apple Newsroom", "https://www.apple.com/newsroom/"),
+            ("Apple Support", "https://support.apple.com/"),
+        ]
+    if source_slug == "ai":
+        return [
+            ("OpenAI News", "https://openai.com/news/"),
+            ("OpenAI API", "https://openai.com/api/"),
+        ]
+    return [
+        ("Bluetooth SIG Specifications", "https://www.bluetooth.com/specifications/"),
+        ("Bluetooth SIG Features", "https://www.bluetooth.com/learn-about-bluetooth/"),
+    ]
+
+
 def keywords_for_source_slug(source_slug: str) -> list[str]:
     if source_slug == "apple":
         return [
@@ -219,6 +244,16 @@ def keywords_for_source_slug(source_slug: str) -> list[str]:
     ]
 
 
+def build_live_description(source_slug: str, source_name: str, summary: str) -> str:
+    suffix = {
+        "apple": f" Covers upgrade relevance, storage impact, and what {source_name} signals mean for cleanup planning.",
+        "ai": f" Covers workflow impact, deployment relevance, and what {source_name} signals mean for teams evaluating AI changes.",
+        "bluetooth": f" Covers application impact, rollout risk, and what {source_name} signals mean for Bluetooth product teams.",
+    }[source_slug]
+    combined = f"{summary.rstrip('.')}." + suffix
+    return clip_text(combined, limit=158)
+
+
 def strip_suffix(title: str, suffix: str) -> str:
     if title.endswith(suffix):
         return title[: -len(suffix)].rstrip(" :|-")
@@ -232,60 +267,65 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
         if any(keyword in lowered for keyword in ("storage", "1tb", "128gb", "icloud", "backup", "files", "nas", "drive")):
             if "iphone" in lowered:
                 return (
-                    "iPhone storage planning: what AI Cleanup PRO users should notice",
-                    "A rewritten Apple storage commentary that connects the update to cleanup planning, backup pressure, and real device storage workflows.",
+                    "iPhone storage planning: what cleanup users should notice",
+                    "March 2026 Apple commentary on storage planning, backup pressure, and the cleanup decisions that matter before capacity pain becomes a daily problem.",
                 )
             if "mac" in lowered or "macbook" in lowered:
                 return (
-                    "Mac storage and backup planning: what AI Cleanup PRO users should notice",
-                    "A rewritten Apple storage commentary that connects the update to file management, backup planning, and cleanup decisions on Mac.",
+                    "Mac backup planning: what cleanup users should notice",
+                    "March 2026 Apple commentary on backup planning, file growth, and the cleanup decisions Mac users should make before storage becomes a workflow bottleneck.",
                 )
             return (
-                "Apple storage changes: what AI Cleanup PRO users should notice",
-                "A rewritten Apple storage commentary focused on file growth, capacity planning, and cleanup implications.",
+                "Apple storage changes: what cleanup users should notice",
+                "March 2026 Apple commentary focused on file growth, capacity planning, and cleanup implications for users managing storage across devices.",
             )
         if any(keyword in lowered for keyword in ("airpods", "find my", "tracking", "location", "lost")):
             return (
-                "Apple device-finding changes: what Find AI users should notice",
-                "A rewritten Apple commentary focused on nearby finding, last-seen workflows, and recovery signals relevant to Find AI users.",
+                "Apple finding changes: what Find users should notice",
+                "March 2026 Apple commentary focused on nearby finding, last-seen workflows, and recovery signals that shape real device-finding experiences.",
             )
         return (
-            "Apple ecosystem changes: what Find AI users should notice",
-            "A rewritten Apple commentary that connects the update to practical device-finding, accessory, or ecosystem workflows.",
+            "Apple ecosystem changes: what Find users should notice",
+            "March 2026 Apple commentary connecting the update to practical device-finding, accessory behavior, and ecosystem workflow changes.",
         )
     if source_slug == "ai":
         if any(keyword in lowered for keyword in ("storage", "files", "nas", "drive", "backup")):
             return (
-                "AI for file and storage workflows: what AI Cleanup PRO users should notice",
-                "A rewritten AI commentary focused on how new models or tools affect cleanup, file handling, and storage-related workflows.",
+                "AI for storage workflows: what cleanup users should notice",
+                "March 2026 AI commentary focused on how new models or tools affect cleanup, file handling, and storage-heavy workflows.",
             )
         if any(keyword in lowered for keyword in ("agent", "agents", "evals", "model", "chatgpt", "gpt", "reasoning")):
             return (
-                "AI workflow changes: what Find AI users should notice",
-                "A rewritten AI commentary that explains capability changes in terms of real automation, assistant, and user workflow impact.",
+                "AI workflow changes: what users should notice",
+                "March 2026 AI commentary explaining capability changes in terms of real automation, assistant quality, and user workflow impact.",
             )
         return (
-            "AI workflow update: what Find AI users should notice",
-            "A rewritten AI commentary focused on practical workflow change rather than headline-only release notes.",
+            "AI workflow update: what users should notice",
+            "March 2026 AI commentary focused on practical workflow change rather than headline-only release notes.",
         )
     if any(keyword in lowered for keyword in ("auracast", "broadcast audio")):
         return (
-            "Bluetooth protocol for broadcast audio: what Bluetooth Explorer users should notice",
-            "A rewritten Bluetooth protocol commentary focused on broadcast audio behavior, interoperability, and deployment value.",
+            "Auracast update: why Bluetooth teams should care",
+            "March 2026 Bluetooth commentary on broadcast audio behavior, interoperability, and rollout value for teams planning real Auracast deployments.",
         )
     if any(keyword in lowered for keyword in ("tracking", "monitoring", "industrial", "supply")):
         return (
-            "Bluetooth protocol for tracking and monitoring: what Bluetooth Explorer users should notice",
-            "A rewritten Bluetooth protocol commentary focused on discovery, telemetry, and industrial deployment workflows.",
+            "Bluetooth tracking update: what teams should know",
+            "March 2026 Bluetooth commentary on discovery, telemetry, and industrial deployment workflows for tracking and monitoring products.",
         )
     if any(keyword in lowered for keyword in ("connection interval", "shorter connection intervals")):
         return (
-            "Bluetooth protocol and shorter connection intervals: what Bluetooth Explorer users should notice",
-            "A rewritten Bluetooth protocol commentary focused on latency, timing, and practical implementation impact.",
+            "Bluetooth shorter connection intervals: why they matter",
+            "March 2026 Bluetooth commentary on latency, timing, and implementation tradeoffs behind shorter connection intervals and faster product response.",
+        )
+    if any(keyword in lowered for keyword in ("indoor", "navigation", "position")):
+        return (
+            "Bluetooth indoor navigation: what changed",
+            "March 2026 Bluetooth commentary on indoor navigation, positioning potential, and the deployment questions product teams should validate next.",
         )
     return (
-        "Bluetooth protocol update: what Bluetooth Explorer users should notice",
-        "A rewritten Bluetooth protocol commentary focused on practical implementation, debugging, and product impact.",
+        "Bluetooth update guide: what changed and why",
+        "March 2026 Bluetooth commentary focused on practical implementation, debugging, and product impact for teams tracking standards and deployment changes.",
     )
 
 
@@ -583,6 +623,11 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         f"      <p><strong>{escape(question)}</strong><br>\n      {escape(answer)}</p>\n"
         for question, answer in faq_items
     )
+    source_links = [(f"{source_name}: {clean_text(item.title)}", item.link), *background_links_for(source_slug)]
+    source_links_html = "\n".join(
+        f'          <li><a href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a></li>'
+        for label, url in source_links
+    )
     keywords = ", ".join(keyword_coverage)
 
     return f"""<!doctype html>
@@ -687,7 +732,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         <p>{escape(opening_intro)}</p>
       </div>
 
-      <h2>{escape(current_status_heading(source_slug))}</h2>
+      <h2>What changed in {escape(day.strftime("%B %Y"))}?</h2>
       <p>{escape(current_status_body(source_slug, source_name, source_published))}</p>
 
       <table aria-label="{escape(post.topic)} commentary coverage">
@@ -699,20 +744,17 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         </tbody>
       </table>
 
-      <h2>{escape(interpretation_heading_for(source_slug))}</h2>
-      <p>{escape(interpretation_body_for(source_slug, item, summary))}</p>
+      <h2>Why does this update matter?</h2>
+      <p>{escape(interpretation_body_for(source_slug, item, summary))} {escape(retrieval_fit_body_for(source_slug))}</p>
 
-      <h2>{escape(application_heading_for(source_slug))}</h2>
+      <h2>Where does it affect real products?</h2>
       <p>{escape(application_body_for(source_slug))}</p>
 
-      <h2>{escape(next_heading_for(source_slug))}</h2>
-      <p>{escape(next_body_for(source_slug))}</p>
-
-      <h2>{escape(search_intent_heading_for(source_slug))}</h2>
-      <p>{escape(search_intent_body_for(source_slug))}</p>
+      <h2>What should teams watch next?</h2>
+      <p>{escape(next_body_for(source_slug))} {escape(search_intent_body_for(source_slug))}</p>
 
       <div class="panel">
-        <h2>Challenges in 2026</h2>
+        <h2>What are the key risks in 2026?</h2>
         <p>{escape(challenge_intro_for(source_slug))}</p>
         <ol>
 {challenge_html}
@@ -720,26 +762,15 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       </div>
 
       <div class="panel">
-        <h2>Practical Decision Checklist</h2>
+        <h2>Practical decision checklist</h2>
         <ul>
 {checklist_html}
         </ul>
       </div>
 
       <div class="panel">
-        <h2>SEO and GEO Retrieval Fit</h2>
-        <p>{escape(retrieval_fit_body_for(source_slug))}</p>
-      </div>
-
-      <div class="panel">
-        <h2>High-intent keyword coverage</h2>
-        <ul>
-{keyword_html}
-        </ul>
-      </div>
-
-      <div class="panel">
-        <h2>GEO answer blocks for AI retrieval</h2>
+        <h2>GEO answer blocks</h2>
+        <p>{escape(teaser_for_source_slug(source_slug))}</p>
         <ul>
 {geo_html}
         </ul>
@@ -748,9 +779,9 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       <h2>FAQ</h2>
 {faq_html}
       <section class="sources" aria-label="Source attribution">
-        <h2>Source attribution</h2>
+        <h3>Source attribution</h3>
         <ul>
-          <li><a href="{escape(item.link)}" target="_blank" rel="noopener noreferrer">{escape(source_name)}: {escape(clean_text(item.title))}</a></li>
+{source_links_html}
         </ul>
       </section>
 
@@ -778,10 +809,11 @@ def build_candidate_from_item(
     title, rewritten_summary = rewritten_story_focus(source_slug, item)
     summary = rewritten_summary if rewritten_summary else clean_summary(source_slug, source_name, item)
     opening_intro = opening_intro_for(source_slug, clean_text(item.title), summary)
+    description = build_live_description(source_slug, source_name, summary)
     post = PostMeta(
         filename=resolved_filename,
         title=title,
-        description=summary,
+        description=description,
         teaser=clip_text(opening_intro, limit=160),
         topic=topic_for_source_slug(source_slug),
         published_iso=target_day.isoformat(),
