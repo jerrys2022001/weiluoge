@@ -418,6 +418,52 @@
       gap: 16px;
     }
 
+    .pagination {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pagination[hidden] {
+      display: none;
+    }
+
+    .pagination-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-right: 4px;
+    }
+
+    .pagination a,
+    .pagination span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      color: #edf2ff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pagination a:hover {
+      background: rgba(37, 144, 241, 0.18);
+      border-color: rgba(37, 144, 241, 0.4);
+    }
+
+    .pagination .is-current {
+      background: linear-gradient(130deg, var(--blue), var(--violet));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(37, 144, 241, 0.28);
+    }
+
     article {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -853,8 +899,62 @@
           <span>Topic: Blog</span>
         </div>
         <a class="read" href="/blog/iphone-storage-cleanup-checklist.html">Read article</a>
-      </article>    </section>
+      </article>
+    </section>
+
+    <nav class="pagination" aria-label="Blog pagination" hidden>
+      <span class="pagination-label">Pages</span>
+    </nav>
   </main>
+  <script>
+    (function () {
+      var pageSize = 20;
+      var list = document.querySelector('.list');
+      var pager = document.querySelector('.pagination');
+      if (!list || !pager) return;
+
+      var articles = Array.prototype.slice.call(list.querySelectorAll(':scope > article'));
+      var totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+      var params = new URLSearchParams(window.location.search);
+      var currentPage = Number.parseInt(params.get('page') || '1', 10);
+
+      if (!Number.isFinite(currentPage) || currentPage < 1) currentPage = 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      articles.forEach(function (article, index) {
+        var page = Math.floor(index / pageSize) + 1;
+        article.hidden = page !== currentPage;
+      });
+
+      if (totalPages <= 1) return;
+
+      pager.hidden = false;
+      for (var pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+        if (pageNumber === currentPage) {
+          var current = document.createElement('span');
+          current.className = 'is-current';
+          current.setAttribute('aria-current', 'page');
+          current.textContent = String(pageNumber);
+          pager.appendChild(current);
+          continue;
+        }
+
+        var link = document.createElement('a');
+        var nextParams = new URLSearchParams(window.location.search);
+        if (pageNumber === 1) {
+          nextParams.delete('page');
+        } else {
+          nextParams.set('page', String(pageNumber));
+        }
+
+        var query = nextParams.toString();
+        link.href = query ? ('?' + query) : window.location.pathname;
+        link.textContent = String(pageNumber);
+        link.setAttribute('aria-label', 'Go to page ' + pageNumber);
+        pager.appendChild(link);
+      }
+    })();
+  </script>
   <script src="/assets/js/site-tools.js" defer></script>
 </body>
 </html>
