@@ -648,7 +648,11 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
     target_day = refreshed_at.date()
     selected_entries: list[tuple[BriefSource, FeedItem]] = []
     for source in BRIEF_SOURCES:
-        items = parse_feed_items(fetch_bytes(source.feed_url))
+        try:
+            items = parse_feed_items(fetch_bytes(source.feed_url))
+        except Exception as exc:  # pragma: no cover - network/source variability
+            print(f"skip_source source={source.source_name} error={exc}", file=sys.stderr)
+            continue
         same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
         selected = select_items(same_day_items, source.keywords, source.item_count)
         for item in selected:
