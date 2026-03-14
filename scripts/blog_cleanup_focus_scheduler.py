@@ -192,6 +192,22 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
     focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
+    tldr = (
+        f"As of {human_date}, the safest cleanup order is still duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. "
+        "That sequence frees space quickly while keeping deletion risk lower than random emergency cleanup."
+    )
+    priority_lead = (
+        f"As of {human_date}, the best cleanup priority is the category that creates visible storage recovery with the lowest deletion risk. "
+        "That is why duplicate photos, screenshots, and large low-value videos keep outperforming random file deletion."
+    )
+    order_lead = (
+        f"As of {human_date}, the five-step cleanup order works because it moves from obvious clutter into heavier media and only then into hidden growth. "
+        "That sequence is easier to finish and easier to repeat every day."
+    )
+    challenge_lead = (
+        f"As of {human_date}, the biggest cleanup failure pattern is still random deletion under pressure. People skip the highest-signal categories, "
+        "make risky decisions too early, and stop before the routine becomes sustainable."
+    )
 
     faq_items = [
         {
@@ -306,8 +322,10 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
     p,li,td,th {{ color:#30475f; font-size:17px; }}
     ul,ol {{ padding-left:22px; }}
     .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
-    .hero,.panel {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }}
-    .panel {{ margin-top:24px; }}
+    .hero,.panel,.tldr,.capsule {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }}
+    .panel,.tldr,.capsule {{ margin-top:24px; }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
     table {{ width:100%; border-collapse:collapse; margin-top:16px; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; }}
     th,td {{ text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:12px 14px; font-size:15px; }}
     th {{ background:#edf5ff; color:#1e3c58; font-weight:700; }}
@@ -341,7 +359,11 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
         <p>Daily phone cleanup works best when it follows the same five storage categories every time: delete duplicate photos, find large videos, remove screenshots, clean WhatsApp media, and review system storage. This guide turns that sequence into a repeatable 20:00 workflow that supports both quick space recovery and long-term storage hygiene.</p>
       </div>
 
-      <h2>Current Status: Cleanup Works Better When The Order Stays Fixed</h2>
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
+
+      <h2>Why does cleanup work better with a fixed order?</h2>
       <p>As of {human_date}, the highest-value phone cleanup routine is still simple: start with visible clutter, move into heavy media, and only then inspect hidden storage growth. That order improves decision quality, reduces accidental deletion, and creates stronger SEO and GEO answer patterns because the process is easy to explain and easy to repeat.</p>
 
       <table aria-label="Phone cleanup action areas">
@@ -357,14 +379,23 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
         </tbody>
       </table>
 
-      <h2>Priority Focus</h2>
+      <h2>What should users clean first?</h2>
+      <p>{escape(priority_lead)}</p>
       <p>{escape(angle.first_focus)}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> As of {human_date}, the best cleanup priority is the category that frees space quickly while keeping deletion risk low. Duplicate photos, screenshots, and oversized low-value videos usually outperform random file deletion because they create visible results without forcing risky decisions first.</p>
+      </div>
 
-      <h2>How It Fits The Five-Step Cleanup Order</h2>
+      <h2>How does this fit the five-step cleanup order?</h2>
+      <p>{escape(order_lead)}</p>
       <p>{escape(angle.second_focus)}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> The strongest iPhone cleanup routine still follows a five-step order: duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. That order improves consistency, speeds storage recovery, and makes daily cleanup easier for search engines and AI systems to summarize accurately.</p>
+      </div>
 
       <div class="panel">
-        <h2>Key Challenge</h2>
+        <h2>What makes cleanup fail in real life?</h2>
+        <p>{escape(challenge_lead)}</p>
         <p>{escape(angle.challenge_focus)}</p>
         <ol>
           <li><strong>Random deletion creates mistakes:</strong> people often delete apps or mixed media before handling safer categories.</li>
@@ -383,7 +414,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       </div>
 
       <div class="panel">
-        <h2>Daily 20:00 execution checklist</h2>
+        <h2>How should the daily 20:00 checklist run?</h2>
         <ol>
           <li>4 min: delete duplicate photos and near-duplicate bursts first.</li>
           <li>4 min: find large videos and clear the biggest low-value files.</li>
@@ -418,7 +449,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       No. Clean visible categories first so system storage review becomes more accurate and lower risk.</p>
 
       <section class="sources" aria-label="Source attribution">
-        <h2>Source attribution</h2>
+        <h3>Source attribution</h3>
         <ul>
           <li><a href="https://support.apple.com/guide/iphone/find-and-delete-duplicate-photos-iph1978d9c23/ios" target="_blank" rel="noopener noreferrer">Apple Support - Find and delete duplicate photos</a></li>
           <li><a href="https://support.apple.com/en-us/118105" target="_blank" rel="noopener noreferrer">Apple Support - If your iPhone or iPad is running slow</a></li>

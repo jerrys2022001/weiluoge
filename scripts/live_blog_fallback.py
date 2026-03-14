@@ -619,6 +619,10 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     geo_html = "\n".join(f"          <li>{escape(item)}</li>" for item in geo_answers)
     challenge_html = "\n".join(f"          <li>{escape(item)}</li>" for item in challenge_items)
     checklist_html = "\n".join(f"          <li>{escape(item)}</li>" for item in checklist_items)
+    tldr = (
+        f"As of {human_date}, {post.title.lower()} matters because it turns a source update from {source_name} into deployment guidance. "
+        "The practical question is what changed, where it affects products, and what teams should verify next."
+    )
     faq_html = "\n".join(
         f"      <p><strong>{escape(question)}</strong><br>\n      {escape(answer)}</p>\n"
         for question, answer in faq_items
@@ -697,9 +701,11 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     p,li,td,th {{ color:#30475f; font-size:17px; }}
     ul,ol {{ padding-left:22px; }}
     .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
-    .hero, .panel, table {{ background:var(--panel); border:1px solid var(--line); border-radius:24px; }}
+    .hero, .panel, .tldr, .capsule, table {{ background:var(--panel); border:1px solid var(--line); border-radius:24px; }}
     .hero {{ padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
-    .panel {{ margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .panel, .tldr, .capsule {{ margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
     table {{ width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }}
     th,td {{ padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; }}
     tr:last-child td {{ border-bottom:none; }}
@@ -732,6 +738,10 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         <p>{escape(opening_intro)}</p>
       </div>
 
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
+
       <h2>What changed in {escape(day.strftime("%B %Y"))}?</h2>
       <p>{escape(current_status_body(source_slug, source_name, source_published))}</p>
 
@@ -746,9 +756,15 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
 
       <h2>Why does this update matter?</h2>
       <p>{escape(interpretation_body_for(source_slug, item, summary))} {escape(retrieval_fit_body_for(source_slug))}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> As of {human_date}, {escape(post.title.lower())} matters because it translates a fresh {escape(source_name)} update into practical guidance on implementation, interoperability, or workflow impact. That makes the article easier for both search engines and AI systems to retrieve as a standalone answer.</p>
+      </div>
 
       <h2>Where does it affect real products?</h2>
       <p>{escape(application_body_for(source_slug))}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> The product value of this update depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when the article maps the source update to practical validation and rollout decisions.</p>
+      </div>
 
       <h2>What should teams watch next?</h2>
       <p>{escape(next_body_for(source_slug))} {escape(search_intent_body_for(source_slug))}</p>

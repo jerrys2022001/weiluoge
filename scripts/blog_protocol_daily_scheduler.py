@@ -175,6 +175,23 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
     focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
+    tldr = (
+        f"As of {human_date}, Bluetooth content works best when it explains which protocol layer controls discovery, "
+        "trust, data exchange, and performance. Teams that map protocol choices to product behavior usually debug faster "
+        "and ship fewer field issues."
+    )
+    interpretation_lead = (
+        f"As of {human_date}, the fastest way to interpret {angle.topic.lower()} is to ask which user-visible behavior it controls. "
+        "That framing turns protocol vocabulary into product decisions instead of documentation trivia."
+    )
+    application_lead = (
+        f"As of {human_date}, Bluetooth applications improve when teams match protocol choices to workflow goals such as onboarding speed, "
+        "battery life, latency, or fleet reliability. The protocol only matters when it changes product outcomes."
+    )
+    challenge_lead = (
+        f"As of {human_date}, the biggest Bluetooth challenge is still translation: specification-compliant behavior does not automatically "
+        "become consistent real-world product behavior across phones, firmware, apps, and RF environments."
+    )
 
     faq_items = [
         {
@@ -281,8 +298,10 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
     p,li,td,th {{ color:#30475f; font-size:17px; }}
     ul,ol {{ padding-left:22px; }}
     .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
-    .hero,.panel {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }}
-    .panel {{ margin-top:24px; }}
+    .hero,.panel,.tldr,.capsule {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }}
+    .panel,.tldr,.capsule {{ margin-top:24px; }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
     table {{ width:100%; border-collapse:collapse; margin-top:16px; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; }}
     th,td {{ text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:12px 14px; font-size:15px; }}
     th {{ background:#edf5ff; color:#1e3c58; font-weight:700; }}
@@ -316,7 +335,11 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
         <p>Bluetooth content performs best when it connects protocol details to real product outcomes. Teams do not ship ATT, GATT, advertising, or connection intervals in isolation. They ship onboarding flows, sensor updates, audio quality, battery life, and user trust.</p>
       </div>
 
-      <h2>Current Status: Bluetooth Protocol Knowledge Is Now a Product Requirement</h2>
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
+
+      <h2>What does Bluetooth protocol knowledge explain in 2026?</h2>
       <p>As of {human_date}, Bluetooth is a layered product system used across wearables, smart home nodes, audio accessories, industrial handhelds, medical peripherals, and location-aware tools. The companies that explain protocol behavior clearly usually deliver better support, stronger SEO capture, and more reusable engineering decisions.</p>
 
       <table aria-label="Bluetooth protocol layers and applications">
@@ -332,14 +355,23 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
         </tbody>
       </table>
 
-      <h2>Protocol Interpretation</h2>
+      <h2>How should teams interpret this protocol area?</h2>
+      <p>{escape(interpretation_lead)}</p>
       <p>{escape(angle.protocol_focus)}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> As of {human_date}, Bluetooth protocol interpretation works best when teams map each layer to one product behavior such as discovery, trust, data exchange, or power. That framing reduces debugging guesswork and makes protocol guidance easier for search engines and AI systems to retrieve safely.</p>
+      </div>
 
-      <h2>Functional Applications</h2>
+      <h2>Where does it matter in real products?</h2>
+      <p>{escape(application_lead)}</p>
       <p>{escape(angle.application_focus)}</p>
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> Bluetooth applications succeed when protocol choices match workflow goals like setup speed, telemetry stability, or battery efficiency. Teams that connect protocol details to product outcomes usually plan features faster and diagnose interoperability issues with less wasted effort.</p>
+      </div>
 
       <div class="panel">
-        <h2>Challenges in 2026</h2>
+        <h2>What makes deployment difficult in 2026?</h2>
+        <p>{escape(challenge_lead)}</p>
         <p>{escape(angle.challenge_focus)}</p>
         <ol>
           <li><strong>Spec compliance is not enough:</strong> behavior still varies across phones, firmware revisions, and app implementations.</li>
@@ -379,7 +411,7 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
       Use layered explanations, application-focused examples, clear troubleshooting stages, and short FAQ answers that AI systems can extract safely.</p>
 
       <section class="sources" aria-label="Source attribution">
-        <h2>Source attribution</h2>
+        <h3>Source attribution</h3>
         <ul>
           <li><a href="https://www.bluetooth.com/specifications/" target="_blank" rel="noopener noreferrer">Bluetooth SIG Specifications</a></li>
           <li><a href="https://www.bluetooth.com/learn-about-bluetooth/key-attributes/gatt/" target="_blank" rel="noopener noreferrer">Bluetooth GATT Overview</a></li>
