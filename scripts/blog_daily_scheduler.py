@@ -71,8 +71,8 @@ class Angle:
 ANGLES: list[Angle] = [
     Angle(
         slug_prefix="bluetooth-phone-cleanup-consulting-guide",
-        title="Bluetooth and Phone Cleanup Consulting Guide: A Daily 20-Minute Mobile Performance Plan",
-        description="A practical consulting guide to improve Bluetooth reliability and phone storage hygiene with an easy daily routine for iPhone and iPad users.",
+        title="Bluetooth and iPhone Cleanup Guide for Daily Fixes",
+        description="Use this 20-minute Bluetooth and iPhone cleanup guide to improve connection reliability, reclaim storage, and keep daily troubleshooting simpler on iOS.",
         teaser="A consulting style routine that helps you reduce Bluetooth issues and reclaim phone storage in one short daily workflow.",
         topic="Bluetooth + Phone Cleanup",
         bluetooth_heading="Build a stable Bluetooth baseline before you troubleshoot",
@@ -90,8 +90,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="bluetooth-connection-fixes-phone-storage-cleanup",
-        title="Bluetooth Connection Fixes and Phone Storage Cleanup: Practical SEO-Friendly Playbook",
-        description="Fix unstable Bluetooth connections and clean phone storage with a practical playbook designed for search visibility and AI-ready answer extraction.",
+        title="Bluetooth Connection Fixes and Cleanup Guide",
+        description="Fix unstable Bluetooth connections and clean iPhone storage with a practical guide that helps users recover speed, reduce clutter, and debug faster.",
         teaser="An execution focused playbook for Bluetooth troubleshooting and phone storage cleanup that doubles as SEO and GEO content.",
         topic="Bluetooth Troubleshooting + Storage Cleanup",
         bluetooth_heading="Map Bluetooth failures to one of three stages",
@@ -109,8 +109,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="bluetooth-battery-drain-phone-cleanup",
-        title="Bluetooth Battery Drain and Phone Cleanup Guide: Keep Connectivity Fast and Storage Lean",
-        description="Learn how to reduce Bluetooth battery drain while cleaning phone storage in a way that improves day-to-day speed and reliability.",
+        title="Bluetooth Battery Drain and Cleanup Guide",
+        description="Reduce Bluetooth battery drain and clean iPhone storage with a daily guide that improves device speed, accessory stability, and lower-risk cleanup habits.",
         teaser="A dual optimization guide for Bluetooth battery behavior and phone cleanup routines with high intent keywords.",
         topic="Bluetooth Battery + Phone Cleanup",
         bluetooth_heading="Reduce hidden Bluetooth battery costs",
@@ -128,8 +128,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="bluetooth-discovery-phone-cleanup-checklist",
-        title="Bluetooth Discovery and Phone Cleanup Checklist: GEO-Ready Mobile Optimization for 2026",
-        description="Use this checklist to improve Bluetooth device discovery and keep phone storage under control with steps optimized for modern SEO and GEO retrieval.",
+        title="Bluetooth Discovery and Cleanup Checklist",
+        description="Use this Bluetooth discovery and iPhone cleanup checklist to improve device visibility, reduce storage pressure, and keep troubleshooting steps easy to repeat.",
         teaser="A practical checklist combining Bluetooth discovery reliability and phone cleanup actions in one repeatable system.",
         topic="Bluetooth Discovery + Cleanup Checklist",
         bluetooth_heading="Improve Bluetooth discovery consistency",
@@ -147,8 +147,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="lost-airpods-bluetooth-finder-phone-cleanup-guide",
-        title="Lost AirPods Bluetooth Finder and Phone Cleanup Guide: Recover Devices and Free Storage",
-        description="A practical guide for users searching how to find lost AirPods with Bluetooth while keeping iPhone or iPad storage clean and fast.",
+        title="Lost AirPods Finder and Cleanup Guide",
+        description="Use this lost AirPods finder and iPhone cleanup guide to improve recovery steps, keep storage lighter, and reduce distractions during device searches.",
         teaser="Covers lost AirPods Bluetooth finder tactics plus a safe cleanup sequence for daily mobile performance.",
         topic="Lost AirPods + Phone Cleanup",
         bluetooth_heading="Handle lost AirPods searches with stage-based Bluetooth checks",
@@ -164,8 +164,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="ble-debugging-ios-cleanup-playbook",
-        title="BLE Debugging for iOS with Phone Cleanup: Practical Daily Playbook",
-        description="Use a daily playbook that combines BLE debugging on iOS with storage cleanup for stable mobile diagnostics.",
+        title="BLE Debugging and iOS Cleanup Playbook",
+        description="Use this BLE debugging and iOS cleanup playbook to standardize test evidence, reduce storage noise, and keep mobile diagnostics more reliable.",
         teaser="A high-intent playbook for BLE debugging checklist queries and low-storage cleanup tasks.",
         topic="BLE Debugging + iOS Cleanup",
         bluetooth_heading="Standardize BLE debugging evidence across iOS devices",
@@ -181,8 +181,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="iphone-storage-full-bluetooth-performance-fix",
-        title="iPhone Storage Full and Bluetooth Performance Fix: Cleanup Strategy That Preserves Important Data",
-        description="If iPhone storage is full and Bluetooth feels unstable, this guide shows a cleanup strategy that frees space without risky deletion.",
+        title="iPhone Storage Full and Bluetooth Fix Guide",
+        description="If iPhone storage is full and Bluetooth feels unstable, use this cleanup guide to free space safely and restore smoother day-to-day performance.",
         teaser="Targets iPhone storage full fix queries while improving Bluetooth reconnection and media performance.",
         topic="iPhone Storage Full + Bluetooth",
         bluetooth_heading="Why full storage can worsen Bluetooth experience",
@@ -198,8 +198,8 @@ ANGLES: list[Angle] = [
     ),
     Angle(
         slug_prefix="ios-cleanup-bluetooth-discovery-reliability-guide",
-        title="iOS Cleanup and Bluetooth Discovery Reliability Guide: Fix Low Storage and Missing Devices",
-        description="A practical iOS cleanup guide for low storage plus Bluetooth device not showing up troubleshooting steps.",
+        title="iOS Cleanup and Bluetooth Discovery Guide",
+        description="Use this iOS cleanup and Bluetooth discovery guide to fix low storage, improve device visibility, and keep repeat troubleshooting more consistent.",
         teaser="Built for users searching iOS cleanup for low storage and Bluetooth discovery reliability fixes.",
         topic="iOS Cleanup + Bluetooth Discovery",
         bluetooth_heading="Fix bluetooth device not showing up on iOS with a repeatable flow",
@@ -373,6 +373,17 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
     keyword_text = ", ".join(article_keywords)
     focus_keywords = keyword_window(day, size=6)
     focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in focus_keywords)
+    tldr = (
+        f"As of {human_date}, the strongest Bluetooth and cleanup routine still starts with a quick connection check, then moves into low-risk storage cleanup, "
+        "then ends with a retest. That order reduces noise and makes daily troubleshooting more reliable."
+    )
+    bluetooth_lead = (
+        f"As of {human_date}, the fastest Bluetooth fix is still stage-based evidence: discover, pair, reconnect, then compare that with storage pressure and accessory state. "
+        "That sounds almost insultingly simple, but simple is exactly what survives contact with real users."
+    )
+    cleanup_lead = (
+        f"As of {human_date}, cleanup works best when users remove the safest, highest-signal clutter first. Duplicate photos, oversized videos, stale downloads, and cache-heavy categories beat random deletion every single time."
+    )
     faq_items = [
         {
             "@type": "Question",
@@ -575,6 +586,23 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       padding: 18px;
     }}
 
+    .tldr,
+    .capsule {{
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 18px;
+    }}
+
+    .tldr {{
+      border-left: 6px solid #2fc3aa;
+    }}
+
+    .capsule {{
+      background: #f8fbff;
+    }}
+
     .geo {{
       margin-top: 22px;
       border-left: 4px solid #2f73d8;
@@ -627,21 +655,41 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <p>Teams and individuals often debug Bluetooth issues and storage problems separately, then miss the shared root cause: unstable daily phone hygiene. This guide combines both into one repeatable routine that improves user experience, support outcomes, and organic search visibility.</p>
       <p>It also targets high-intent long-tail searches such as lost AirPods Bluetooth finder, BLE debugging checklist, iPhone storage full fix, and iOS cleanup for low storage.</p>
 
-      <h2>{escape(angle.bluetooth_heading)}</h2>
-      <p>{escape(angle.bluetooth_body)}</p>
+      <div class=\"tldr\">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
 
-      <h2>{escape(angle.cleanup_heading)}</h2>
+      <h2>Why does this Bluetooth and cleanup routine matter?</h2>
+      <p>{escape(bluetooth_lead)}</p>
+      <p>{escape(angle.bluetooth_body)}</p>
+      <div class=\"capsule\">
+        <p><strong>Citation capsule:</strong> As of {human_date}, Bluetooth troubleshooting works best when teams separate failures into discover, pair, and reconnect stages, then compare those notes against battery state, permissions, and storage pressure. That structure is easier to debug and easier for AI systems to summarize safely.</p>
+      </div>
+
+      <h2>How should users check Bluetooth first?</h2>
+      <p>{escape(angle.bluetooth_heading)}. {escape(angle.bluetooth_body)}</p>
+
+      <h2>What cleanup step creates the safest storage win?</h2>
+      <p>{escape(cleanup_lead)}</p>
       <p>{escape(angle.cleanup_body)}</p>
+      <div class=\"capsule\">
+        <p><strong>Citation capsule:</strong> The safest storage win usually comes from duplicate photos, oversized videos, stale downloads, or cache-heavy clutter before users touch riskier categories. That order keeps cleanup fast and lowers the odds of deleting important content under pressure.</p>
+      </div>
 
       <div class=\"panel\">
-        <h2>High-intent keyword coverage</h2>
+        <h2>Why does the daily 20:00 checklist work?</h2>
+        <p>A fixed daily slot reduces decision fatigue, keeps cleanup from turning into a panic session, and gives Bluetooth retesting a stable before-and-after window. That tiny operational detail matters more than people admit, and yeah, it sounds boring until the boring routine starts outperforming heroics.</p>
+      </div>
+
+      <div class=\"panel\">
+        <h2>What search terms should this guide cover?</h2>
         <ul>
 {focus_keywords_html}
         </ul>
       </div>
 
       <div class=\"panel\">
-        <h2>Daily 20:00 execution checklist</h2>
+        <h2>How should the daily 20:00 checklist run?</h2>
         <ol>
           <li>3 min: verify Bluetooth state, accessory battery, and reconnect behavior.</li>
           <li>5 min: remove duplicate photos and near-duplicate bursts.</li>
@@ -683,6 +731,15 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
         Prioritize cache cleanup, large file review, and stale download removal on a fixed daily schedule.</p>
       </div>
 
+      <section class=\"panel\" aria-label=\"Source attribution\">
+        <h3>Source attribution</h3>
+        <ul>
+          <li><a href=\"https://www.bluetooth.com/learn-about-bluetooth/key-attributes/gatt/\" target=\"_blank\" rel=\"noopener noreferrer\">Bluetooth SIG - GATT overview</a></li>
+          <li><a href=\"https://support.apple.com/guide/iphone/find-and-delete-duplicate-photos-iph1978d9c23/ios\" target=\"_blank\" rel=\"noopener noreferrer\">Apple Support - Find and delete duplicate photos</a></li>
+          <li><a href=\"https://support.apple.com/en-us/118105\" target=\"_blank\" rel=\"noopener noreferrer\">Apple Support - If your iPhone or iPad is running slow</a></li>
+        </ul>
+      </section>
+
       <div class=\"links\">
         <a href=\"/ai-cleanup-pro/\">Open AI Cleanup PRO</a>
         <a href=\"/bluetoothexplorer/\">Open Bluetooth Explorer</a>
@@ -710,7 +767,51 @@ def render_index_article(post: PostMeta) -> str:
     )
 
 
-def update_index_itemlist(index_html: str, post: PostMeta) -> str:
+def post_date_from_filename(filename: str) -> date:
+    match = re.search(r"-(\d{4}-\d{2}-\d{2})\.html$", filename)
+    if not match:
+        return date.min
+    return date.fromisoformat(match.group(1))
+
+
+def post_date_from_article(article_html: str) -> date:
+    href_match = re.search(r'href="/blog/([^"]+)"', article_html)
+    if href_match:
+        return post_date_from_filename(href_match.group(1))
+
+    published_match = re.search(r"Published:\s*(\d{4}-\d{2}-\d{2})", article_html)
+    if published_match:
+        return date.fromisoformat(published_match.group(1))
+
+    return date.min
+
+
+def reorder_index_articles(index_html: str) -> str:
+    marker = '<section class="list" aria-label="Latest blog posts">'
+    marker_idx = index_html.find(marker)
+    if marker_idx < 0:
+        raise ValueError("Cannot find post list section in blog/index.html")
+
+    section_start = index_html.find("\n", marker_idx)
+    if section_start < 0:
+        raise ValueError("Cannot find post list insertion point in blog/index.html")
+
+    section_end = index_html.find("    </section>", section_start)
+    if section_end < 0:
+        raise ValueError("Cannot find end of post list section in blog/index.html")
+
+    section_body = index_html[section_start + 1 : section_end]
+    article_matches = list(re.finditer(r"      <article>.*?      </article>\n?", section_body, re.DOTALL))
+    if not article_matches:
+        return index_html
+
+    articles = [match.group(0) for match in article_matches]
+    ordered_articles = sorted(articles, key=post_date_from_article, reverse=True)
+    rebuilt_body = "".join(ordered_articles)
+    return index_html[: section_start + 1] + rebuilt_body + index_html[section_end:]
+
+
+def update_index_itemlist(index_html: str) -> str:
     pattern = re.compile(r"(<script type=\"application/ld\+json\">\s*)(\{.*?\})(\s*</script>)", re.DOTALL)
     match = pattern.search(index_html)
     if not match:
@@ -728,29 +829,24 @@ def update_index_itemlist(index_html: str, post: PostMeta) -> str:
     if item_list_obj is None:
         raise ValueError("Cannot find ItemList in blog/index.html JSON-LD")
 
-    item_list = item_list_obj.get("itemListElement", [])
-    post_url = f"{SITE_URL}/blog/{post.filename}"
-
-    cleaned: list[dict] = []
-    for item in item_list:
-        if item.get("url") == post_url:
+    article_matches = list(re.finditer(r"<article>.*?</article>", index_html, re.DOTALL))
+    rebuilt_items: list[dict] = []
+    for idx, article_match in enumerate(article_matches, start=1):
+        article_html = article_match.group(0)
+        href_match = re.search(r'href="/blog/([^"]+)"', article_html)
+        title_match = re.search(r"<h2>(.*?)</h2>", article_html, re.DOTALL)
+        if href_match is None or title_match is None:
             continue
-        cleaned.append(item)
+        rebuilt_items.append(
+            {
+                "@type": "ListItem",
+                "position": idx,
+                "url": f"{SITE_URL}/blog/{href_match.group(1)}",
+                "name": re.sub(r"\s+", " ", title_match.group(1)).strip(),
+            }
+        )
 
-    cleaned.insert(
-        0,
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "url": post_url,
-            "name": post.title,
-        },
-    )
-
-    for idx, item in enumerate(cleaned, start=1):
-        item["position"] = idx
-
-    item_list_obj["itemListElement"] = cleaned
+    item_list_obj["itemListElement"] = rebuilt_items
 
     rebuilt = json.dumps(payload, ensure_ascii=False, indent=2)
     return index_html[: match.start(2)] + rebuilt + index_html[match.end(2) :]
@@ -785,7 +881,8 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
             raise ValueError(f"Cannot find existing article block for {post.filename} in blog/index.html")
         updated = updated[: target_match.start()] + render_index_article(post) + updated[target_match.end() :]
 
-    updated = update_index_itemlist(updated, post)
+    updated = reorder_index_articles(updated)
+    updated = update_index_itemlist(updated)
 
     if updated == original:
         return False
