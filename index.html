@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; font-src 'self' https://framerusercontent.com https://fonts.gstatic.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; media-src 'self' https: data:; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics</title>
 <meta name="description" content="VelocAI creates focused iPhone apps for finding lost devices, cleaning storage, and debugging Bluetooth workflows with a calm, modern experience.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -14,11 +16,11 @@
 <meta property="og:title" content="VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics">
 <meta property="og:description" content="Explore Find AI, AI Cleanup PRO, and Bluetooth Explorer from VelocAI.">
 <meta property="og:url" content="https://velocai.net/">
-<meta property="og:image" content="https://velocai.net/assets/images/stock-2026-03/stock-09.jpg">
+<meta property="og:image" content="https://velocai.net/assets/images/hero-2026-03/velocai-hero-workspace.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics">
 <meta name="twitter:description" content="One clean workflow for recovery, cleanup, and BLE diagnostics on iPhone.">
-<meta name="twitter:image" content="https://velocai.net/assets/images/stock-2026-03/stock-09.jpg">
+<meta name="twitter:image" content="https://velocai.net/assets/images/hero-2026-03/velocai-hero-workspace.jpeg">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -98,7 +100,7 @@
 
     <aside class="va-hero-visual" aria-label="Product preview collage">
       <figure class="va-hero-shot">
-        <img src="/assets/images/curated-tech-2026-03/tech-photo-19.jpg" alt="Clean product hero visual" width="1440" height="960" decoding="async" fetchpriority="high">
+        <img src="/assets/images/hero-2026-03/velocai-hero-workspace.jpeg" alt="Minimalist dual-monitor workspace with clean desk lighting" width="4896" height="3264" decoding="async" fetchpriority="high">
       </figure>
       <a class="va-float-card va-float-card-a" href="/aifind/" aria-label="Open Find AI page">
         <img src="/aifind/find-ai.png" alt="Find AI icon" width="103" height="103">
@@ -321,41 +323,7 @@
   </section>
 </main>
 
-<script>
-const toggle = document.querySelector('.va-nav-toggle');
-const navList = document.querySelector('.va-nav-list');
-
-function setNavOpen(isOpen) {
-  if (!toggle || !navList) return;
-  navList.classList.toggle('va-nav-open', isOpen);
-  toggle.classList.toggle('va-nav-toggle-open', isOpen);
-  toggle.setAttribute('aria-expanded', String(isOpen));
-}
-
-if (toggle && navList) {
-  toggle.addEventListener('click', function () {
-    const isOpen = navList.classList.contains('va-nav-open');
-    setNavOpen(!isOpen);
-  });
-
-  navList.addEventListener('click', function (e) {
-    const target = e.target;
-    if (target && target.tagName === 'A') setNavOpen(false);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setNavOpen(false);
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!navList.classList.contains('va-nav-open')) return;
-    const target = e.target;
-    if (!target) return;
-    if (toggle.contains(target) || navList.contains(target)) return;
-    setNavOpen(false);
-  });
-}
-</script>
-  <script src="/assets/js/site-tools.js" defer></script>
+<script src="/assets/js/nav-toggle.js" defer></script>
+<script src="/assets/js/site-tools.js" defer></script>
 </body>
 </html>
