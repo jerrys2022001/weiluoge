@@ -169,16 +169,21 @@
       </div>
 
       <figure class="hero-card">
-        <div class="radar video-shell">
+        <div class="radar video-shell" data-video-fallback-mode="preview-only">
           <iframe
             class="radar-video"
-            src="https://www.youtube.com/embed/NB4NNEtIceY?rel=0&modestbranding=1&playsinline=1"
+            data-video-fallback="bluetooth-explorer-guide"
+            data-video-src="https://www.youtube.com/embed/NB4NNEtIceY?rel=0&modestbranding=1&playsinline=1"
             title="Bluetooth Explorer Shorts Preview"
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
+          <a class="video-fallback-link" href="https://www.youtube.com/watch?v=NB4NNEtIceY" target="_blank" rel="noopener noreferrer" aria-label="Watch Bluetooth Explorer preview on YouTube">
+            <img class="video-fallback-image" src="/assets/images/video-fallbacks/people-01-1704119.jpeg" alt="Bluetooth Explorer preview fallback image" loading="lazy" decoding="async" />
+            <span class="video-fallback-label">Watch preview</span>
+          </a>
         </div>
         <figcaption class="hero-card-note">
           <span>Connection overview, GATT service tree, and one-tap access to logs, navigation, and AI diagnostics.</span>

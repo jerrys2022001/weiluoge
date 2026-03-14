@@ -562,17 +562,53 @@ body.theme-explorer .hero-card .hero-card-note span {
   background: #070b18;
 }
 
+.video-shell {
+  position: relative;
+}
+
 .video-shell .video-fallback-image {
   width: 100%;
   height: 100%;
-  display: none;
+  display: block;
   border-radius: inherit;
   object-fit: cover;
   object-position: center;
   background: #070b18;
 }
 
+.video-shell .video-fallback-link {
+  position: absolute;
+  inset: 0;
+  display: none;
+  border-radius: inherit;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+}
+
+.video-shell .video-fallback-label {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: rgba(7, 11, 24, 0.72);
+  color: #f7f7ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+}
+
 .video-shell.video-fallback-active .video-fallback-image {
+  display: block;
+}
+
+.video-shell.video-fallback-active .video-fallback-link {
   display: block;
 }
 
@@ -581,6 +617,14 @@ body.theme-explorer .hero-card .hero-card-note span {
 }
 
 body.theme-explorer figure.video-shell > .video-fallback-image {
+  width: min(100%, 452px);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: var(--explorer-hero-media-ratio);
+  margin-inline: auto;
+}
+
+body.theme-explorer figure.video-shell > .video-fallback-link {
   width: min(100%, 452px);
   max-width: 100%;
   height: auto;

@@ -174,19 +174,22 @@
         </div>
 
         <aside class="hero-card" aria-label="App highlights">
-          <div class="radar video-shell">
+          <div class="radar video-shell" data-video-fallback-mode="preview-only">
             <iframe
               class="radar-video"
               data-video-fallback="tech-photo-11"
-              src="https://www.youtube.com/embed/Cgq-T90Pevk?rel=0&modestbranding=1&playsinline=1"
+              data-video-src="https://www.youtube.com/embed/Cgq-T90Pevk?rel=0&modestbranding=1&playsinline=1"
               title="AI Cleanup PRO Shorts Preview"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
-            </iframe>
-            <img class="video-fallback-image" src="/assets/images/curated-tech-2026-03/tech-photo-11.png" alt="Tech fallback preview" loading="lazy" decoding="async">
-          </div>
+          </iframe>
+          <a class="video-fallback-link" href="https://www.youtube.com/watch?v=Cgq-T90Pevk" target="_blank" rel="noopener noreferrer" aria-label="Watch AI Cleanup PRO preview on YouTube">
+            <img class="video-fallback-image" src="/assets/images/video-fallbacks/people-01-1704119.jpeg" alt="AI Cleanup PRO preview fallback image" loading="lazy" decoding="async">
+            <span class="video-fallback-label">Watch preview</span>
+          </a>
+        </div>
           <p class="hero-card-note">
             <span>Review similar photos, reduce oversized videos, and remove duplicate contacts in one clear workflow.</span>
             <span>AI Cleanup PRO keeps every step visible, so you can make confident cleanup decisions instead of deleting blindly.</span>
