@@ -13,7 +13,7 @@ import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from html import escape, unescape
 from pathlib import Path
@@ -283,6 +283,8 @@ FALLBACK_IMAGES = (
     "/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
     "/assets/images/stock-2026-03-extra20/stock-extra-18.jpg",
 )
+MIN_BRIEF_ITEMS = 10
+RECENT_BACKFILL_DAYS = 7
 
 
 @dataclass(frozen=True)
@@ -515,6 +517,14 @@ def is_same_local_day(value: datetime | None, target_day: date) -> bool:
     return value.astimezone().date() == target_day
 
 
+def is_within_recent_window(value: datetime | None, target_day: date, days: int) -> bool:
+    if value is None:
+        return False
+    local_day = value.astimezone().date()
+    oldest_day = target_day - timedelta(days=max(days - 1, 0))
+    return oldest_day <= local_day <= target_day
+
+
 def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     seed = f"{source.slug}|{item.link}|{item.title}".encode("utf-8", errors="ignore")
     digest = hashlib.sha1(seed).hexdigest()
@@ -688,16 +698,73 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
     refreshed_at = datetime.now().astimezone()
     target_day = refreshed_at.date()
     selected_entries: list[tuple[BriefSource, FeedItem]] = []
+    source_items_map: list[tuple[BriefSource, list[FeedItem]]] = []
     for source in BRIEF_SOURCES:
         try:
             items = parse_feed_items(fetch_bytes(source.feed_url))
         except Exception as exc:  # pragma: no cover - network/source variability
             print(f"skip_source source={source.source_name} error={exc}", file=sys.stderr)
             continue
+        source_items_map.append((source, items))
         same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
         selected = select_items(same_day_items, source.keywords, source.item_count)
         for item in selected:
             selected_entries.append((source, item))
+
+    seen_links = {item.link for _, item in selected_entries}
+
+    if len(selected_entries) < MIN_BRIEF_ITEMS:
+        recent_candidates: list[tuple[BriefSource, FeedItem]] = []
+        for source, items in source_items_map:
+            recent_items = [
+                item
+                for item in items
+                if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
+            ]
+            for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
+                if item.link in seen_links:
+                    continue
+                recent_candidates.append((source, item))
+
+        recent_candidates.sort(
+            key=lambda pair: (
+                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+                score_item(pair[1], pair[0].keywords),
+            ),
+            reverse=True,
+        )
+
+        for source, item in recent_candidates:
+            if item.link in seen_links:
+                continue
+            selected_entries.append((source, item))
+            seen_links.add(item.link)
+            if len(selected_entries) >= MIN_BRIEF_ITEMS:
+                break
+
+    if len(selected_entries) < MIN_BRIEF_ITEMS:
+        evergreen_candidates: list[tuple[BriefSource, FeedItem]] = []
+        for source, items in source_items_map:
+            for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
+                if item.link in seen_links:
+                    continue
+                evergreen_candidates.append((source, item))
+
+        evergreen_candidates.sort(
+            key=lambda pair: (
+                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+                score_item(pair[1], pair[0].keywords),
+            ),
+            reverse=True,
+        )
+
+        for source, item in evergreen_candidates:
+            if item.link in seen_links:
+                continue
+            selected_entries.append((source, item))
+            seen_links.add(item.link)
+            if len(selected_entries) >= MIN_BRIEF_ITEMS:
+                break
 
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
@@ -706,9 +773,9 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
 
     entries = [
         BriefEntry(index=position, source=source, item=item)
-        for position, (source, item) in enumerate(selected_entries[:10], start=1)
+        for position, (source, item) in enumerate(selected_entries[:MIN_BRIEF_ITEMS], start=1)
     ]
-    return entries[:10], refreshed_at
+    return entries[:MIN_BRIEF_ITEMS], refreshed_at
 
 
 def run(args: argparse.Namespace) -> int:
