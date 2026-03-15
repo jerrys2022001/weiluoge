@@ -7,7 +7,9 @@ import argparse
 import hashlib
 import time
 import re
+import shutil
 import sys
+import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -624,23 +626,62 @@ def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool) -> str:
     git_command = resolve_git_command()
     tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix()]
-
-    run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
-    staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
-    if not staged.stdout.strip():
-        return "unchanged"
-
     stamp = datetime.now().astimezone().strftime("%Y-%m-%d")
-    run_git_command(
-        repo_root,
-        git_command,
-        ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
-    )
 
-    if push:
-        run_git_command(repo_root, git_command, ["push", remote, branch])
-        return f"committed+pushed({remote}/{branch})"
-    return "committed"
+    if not push:
+        run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
+        staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+        if not staged.stdout.strip():
+            return "unchanged"
+        run_git_command(
+            repo_root,
+            git_command,
+            ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
+        )
+        return "committed"
+
+    temp_branch = f"codex/home-brief-publish-{datetime.now().astimezone().strftime('%Y%m%d%H%M%S')}"
+
+    with tempfile.TemporaryDirectory(prefix="home-brief-publish-") as temp_dir:
+        worktree_path = Path(temp_dir) / "repo"
+        run_git_command(repo_root, git_command, ["fetch", remote, branch])
+        run_git_command(repo_root, git_command, ["worktree", "add", "-b", temp_branch, str(worktree_path), f"{remote}/{branch}"])
+        try:
+            for rel_path in tracked_paths:
+                source_path = repo_root / rel_path
+                target_path = worktree_path / rel_path
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source_path, target_path)
+
+            run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+            staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+            if not staged.stdout.strip():
+                return "unchanged"
+
+            run_git_command(
+                worktree_path,
+                git_command,
+                ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
+            )
+
+            last_error: ValueError | None = None
+            for _ in range(3):
+                try:
+                    run_git_command(worktree_path, git_command, ["fetch", remote, branch])
+                    run_git_command(worktree_path, git_command, ["rebase", f"{remote}/{branch}"])
+                    run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
+                    return f"committed+pushed({remote}/{branch})"
+                except ValueError as exc:
+                    last_error = exc
+                    if "rebase" in str(exc).lower():
+                        run_git_command(worktree_path, git_command, ["rebase", "--abort"])
+                    time.sleep(1.2)
+
+            assert last_error is not None
+            raise last_error
+        finally:
+            run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
+            run_git_command(repo_root, git_command, ["branch", "-D", temp_branch])
 
 
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
