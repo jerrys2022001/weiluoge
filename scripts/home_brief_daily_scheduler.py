@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Refresh the homepage daily briefing section with product-relevant live news."""
 
 from __future__ import annotations
@@ -1070,3 +1070,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
