@@ -10,6 +10,7 @@ import re
 import shutil
 import sys
 import tempfile
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -441,6 +442,10 @@ class CandidateEntry:
 
 
 IMAGE_HEALTH_CACHE: dict[str, bool] = {}
+FORCED_FALLBACK_IMAGE_HOSTS = {
+    "photos5.appleinsider.com",
+    "i0.wp.com",
+}
 
 
 def fetch_bytes(url: str) -> bytes:
@@ -747,12 +752,22 @@ def normalize_image_url(value: str) -> str:
     return cleaned
 
 
+def extract_image_host(url: str) -> str:
+    cleaned = normalize_image_url(url)
+    if not cleaned.startswith("http://") and not cleaned.startswith("https://"):
+        return ""
+    return urllib.parse.urlparse(cleaned).netloc.lower()
+
+
 def is_image_url_healthy(url: str) -> bool:
     cleaned = normalize_image_url(url)
     if not cleaned:
         return False
     if cleaned.startswith("/"):
         return True
+    if extract_image_host(cleaned) in FORCED_FALLBACK_IMAGE_HOSTS:
+        IMAGE_HEALTH_CACHE[cleaned] = False
+        return False
     cached = IMAGE_HEALTH_CACHE.get(cleaned)
     if cached is not None:
         return cached
@@ -798,7 +813,7 @@ def render_entry(entry: BriefEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" data-fallback-src="{escape(fallback_image)}">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){{this.src=this.dataset.fallbackSrc;}}this.onerror=null;">
         </a>
       </article>"""
 
