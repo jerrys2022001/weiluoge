@@ -692,6 +692,18 @@ ul {
   color: var(--yellow);
 }
 
+.va-brief-item-semiconductor .va-brief-index {
+  color: #72baff;
+}
+
+.va-brief-item-ai .va-brief-index {
+  color: #78ff9d;
+}
+
+.va-brief-item-industry .va-brief-index {
+  color: #ffb86c;
+}
+
 .va-brief-item-world .va-brief-index {
   color: #59f7de;
 }
