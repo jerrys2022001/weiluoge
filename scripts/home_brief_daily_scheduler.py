@@ -165,7 +165,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "lithography",
             "breakthrough",
         ),
-        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
+        fallback_image="/assets/images/stock-2026-03/stock-07.jpg",
         item_count=2,
     ),
     BriefSource(
@@ -186,7 +186,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "synopsys",
             "data wave",
         ),
-        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
         item_count=1,
     ),
     BriefSource(
@@ -813,7 +813,7 @@ def render_entry(entry: BriefEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){{this.src=this.dataset.fallbackSrc;}}this.onerror=null;">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}">
         </a>
       </article>"""
 

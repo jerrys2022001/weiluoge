@@ -45,15 +45,25 @@
   function applyBriefFallback(image) {
     if (!image) return;
     var fallback = image.getAttribute("data-fallback-src") || "/assets/images/stock-2026-03/stock-10.jpg";
+    var thumb = image.closest(".va-brief-thumb");
+    if (thumb && fallback) {
+      thumb.style.backgroundImage = "url('" + fallback + "')";
+      thumb.style.backgroundSize = "cover";
+      thumb.style.backgroundPosition = "center";
+    }
     if (image.getAttribute("src") !== fallback) {
       image.src = fallback;
       image.removeAttribute("srcset");
       return;
     }
+    image.style.display = "none";
     image.alt = "";
   }
 
   Array.prototype.forEach.call(document.querySelectorAll(".va-brief-thumb img"), function (image) {
+    if (image.getAttribute("src") && image.getAttribute("src").indexOf("http://") === 0) {
+      image.src = "https://" + image.getAttribute("src").slice("http://".length);
+    }
     image.addEventListener("error", function () {
       applyBriefFallback(image);
     });
