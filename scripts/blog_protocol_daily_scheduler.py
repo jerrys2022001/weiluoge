@@ -306,7 +306,7 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
     th,td {{ text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:12px 14px; font-size:15px; }}
     th {{ background:#edf5ff; color:#1e3c58; font-weight:700; }}
     tr:last-child td {{ border-bottom:none; }}
-    .sources a {{ color:var(--brand); border-bottom:1px solid #a9c3ea; }}
+    .sources a {{ color:#1d63c7; border-bottom:1px solid #a9c3ea; }}
     .links {{ margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; }}
     .links a {{ border:1px solid #bfd0ee; border-radius:999px; padding:8px 12px; color:var(--brand); font-weight:600; font-size:14px; background:#fff; }}
   </style>
