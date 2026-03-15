@@ -13,6 +13,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import date, datetime
@@ -267,6 +268,47 @@ def run_git_command(repo_root: Path, git_command: str, args: list[str]) -> subpr
     return result
 
 
+def copy_publish_paths(source_root: Path, target_root: Path, tracked_paths: list[str]) -> None:
+    for rel_path in tracked_paths:
+        source = source_root / rel_path
+        target = target_root / rel_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+
+
+def publish_blog_post_via_temp_worktree(
+    repo_root: Path,
+    git_command: str,
+    post: PostMeta,
+    tracked_paths: list[str],
+    remote: str,
+    branch: str,
+) -> str:
+    temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(repo_root / ".tmp")))
+    worktree_path = temp_root / "worktree"
+    try:
+        run_git_command(repo_root, git_command, ["fetch", remote, branch])
+        run_git_command(repo_root, git_command, ["worktree", "add", "--detach", str(worktree_path), f"{remote}/{branch}"])
+        copy_publish_paths(repo_root, worktree_path, tracked_paths)
+        run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+        staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+        if not staged.stdout.strip():
+            return "unchanged"
+        run_git_command(
+            worktree_path,
+            git_command,
+            ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
+        )
+        run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
+        return f"committed+pushed({remote}/{branch})"
+    finally:
+        try:
+            run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
+        except ValueError:
+            pass
+        shutil.rmtree(temp_root, ignore_errors=True)
+
+
 def publish_blog_post_to_git(
     repo_root: Path,
     post: PostMeta,
@@ -282,6 +324,16 @@ def publish_blog_post_to_git(
         SEARCH_INDEX_REL.as_posix(),
     ]
 
+    if push:
+        return publish_blog_post_via_temp_worktree(
+            repo_root=repo_root,
+            git_command=git_command,
+            post=post,
+            tracked_paths=tracked_paths,
+            remote=remote,
+            branch=branch,
+        )
+
     run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
     staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
     if not staged.stdout.strip():
@@ -292,10 +344,6 @@ def publish_blog_post_to_git(
         git_command,
         ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
     )
-
-    if push:
-        run_git_command(repo_root, git_command, ["push", remote, branch])
-        return f"committed+pushed({remote}/{branch})"
 
     return "committed"
 
