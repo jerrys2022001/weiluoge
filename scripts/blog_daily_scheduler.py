@@ -19,7 +19,7 @@ from datetime import date, datetime
 from html import escape
 from pathlib import Path
 
-from site_tools import build_site_search_index, inject_site_tools_into_file
+from site_tools import SEARCH_INDEX_REL, build_site_search_index, inject_site_tools_into_file
 
 SITE_URL = "https://velocai.net"
 BLOG_INDEX_REL = Path("blog/index.html")
@@ -279,6 +279,7 @@ def publish_blog_post_to_git(
         (Path("blog") / post.filename).as_posix(),
         BLOG_INDEX_REL.as_posix(),
         SITEMAP_REL.as_posix(),
+        SEARCH_INDEX_REL.as_posix(),
     ]
 
     run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])

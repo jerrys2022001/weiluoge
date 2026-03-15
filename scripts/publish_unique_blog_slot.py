@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
+import time
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -39,6 +41,8 @@ LIVE_REWRITE_SOFT_THRESHOLD = {
     "protocol": 0.70,
     "updates": 0.70,
 }
+LOCK_TIMEOUT_SECONDS = 20 * 60
+LOCK_POLL_SECONDS = 5
 
 
 @dataclass(frozen=True)
@@ -48,6 +52,39 @@ class Candidate:
     identifier: str
     post: object
     html: str
+
+
+class PublishLock:
+    def __init__(self, repo_root: Path, timeout_seconds: int = LOCK_TIMEOUT_SECONDS, poll_seconds: int = LOCK_POLL_SECONDS):
+        self._lock_path = repo_root / ".tmp" / "blog-publish.lock"
+        self._timeout_seconds = timeout_seconds
+        self._poll_seconds = poll_seconds
+        self._fd: int | None = None
+
+    def __enter__(self) -> "PublishLock":
+        self._lock_path.parent.mkdir(parents=True, exist_ok=True)
+        deadline = time.time() + self._timeout_seconds
+        while True:
+            try:
+                self._fd = os.open(str(self._lock_path), os.O_CREAT | os.O_EXCL | os.O_RDWR)
+                payload = f"pid={os.getpid()} time={int(time.time())}\n".encode("utf-8")
+                os.write(self._fd, payload)
+                return self
+            except FileExistsError:
+                if time.time() >= deadline:
+                    raise ValueError(
+                        f"Timed out waiting for publish lock: {self._lock_path}"
+                    )
+                time.sleep(self._poll_seconds)
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        if self._fd is not None:
+            os.close(self._fd)
+            self._fd = None
+        try:
+            self._lock_path.unlink()
+        except FileNotFoundError:
+            pass
 
 
 def parse_args() -> argparse.Namespace:
@@ -195,85 +232,87 @@ def run(args: argparse.Namespace) -> int:
     similarity_threshold = args.similarity_threshold
     if similarity_threshold is None:
         similarity_threshold = default_similarity_threshold(args.lane)
-    if args.lane == "cleanup" and not args.force:
-        existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
-        if existing_cleanup is not None:
-            if args.dry_run:
+
+    with PublishLock(repo_root):
+        if args.lane == "cleanup" and not args.force:
+            existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
+            if existing_cleanup is not None:
+                if args.dry_run:
+                    print(
+                        f"dry_run lane=cleanup origin=existing id=daily-quota-met "
+                        f"article={blog_dir / existing_cleanup.post.filename} state=already_present"
+                    )
+                    return 0
                 print(
-                    f"dry_run lane=cleanup origin=existing id=daily-quota-met "
-                    f"article={blog_dir / existing_cleanup.post.filename} state=already_present"
+                    "done "
+                    "lane=cleanup "
+                    "origin=existing "
+                    "id=daily-quota-met "
+                    "index=unchanged "
+                    "sitemap=unchanged "
+                    "git=skipped "
+                    f"file={existing_cleanup.post.filename}"
                 )
                 return 0
+        candidate, similarity = choose_candidate(
+            repo_root=repo_root,
+            target_day=target_day,
+            lane=args.lane,
+            slot_offset=args.slot_offset,
+            similarity_threshold=similarity_threshold,
+            force=args.force,
+        )
+        article_path = blog_dir / candidate.post.filename
+        existed_before = article_path.exists()
+        expected_canonical = f"https://velocai.net/blog/{candidate.post.filename}"
+        seo_report = validate_generated_article(candidate.html, expected_canonical=expected_canonical)
+
+        if seo_report.failed:
+            print_report(seo_report)
+            raise ValueError(
+                f"SEO validation failed for {candidate.post.filename}. "
+                f"{seo_report.summary()}"
+            )
+
+        if args.dry_run:
+            state = "would_overwrite" if existed_before else "would_create"
+            print_report(seo_report)
             print(
-                "done "
-                "lane=cleanup "
-                "origin=existing "
-                "id=daily-quota-met "
-                "index=unchanged "
-                "sitemap=unchanged "
-                "git=skipped "
-                f"file={existing_cleanup.post.filename}"
+                f"dry_run lane={args.lane} origin={candidate.origin} id={candidate.identifier} "
+                f"similarity={similarity:.3f} article={article_path} state={state}"
             )
             return 0
-    candidate, similarity = choose_candidate(
-        repo_root=repo_root,
-        target_day=target_day,
-        lane=args.lane,
-        slot_offset=args.slot_offset,
-        similarity_threshold=similarity_threshold,
-        force=args.force,
-    )
-    article_path = blog_dir / candidate.post.filename
-    existed_before = article_path.exists()
-    expected_canonical = f"https://velocai.net/blog/{candidate.post.filename}"
-    seo_report = validate_generated_article(candidate.html, expected_canonical=expected_canonical)
 
-    if seo_report.failed:
-        print_report(seo_report)
-        raise ValueError(
-            f"SEO validation failed for {candidate.post.filename}. "
-            f"{seo_report.summary()}"
-        )
+        article_path.write_text(candidate.html, encoding="utf-8")
+        inject_site_tools_into_file(article_path)
+        index_changed = update_blog_index(index_path, candidate.post)
+        sitemap_changed = update_sitemap(sitemap_path, candidate.post)
+        inject_site_tools_into_file(index_path)
+        build_site_search_index(repo_root)
 
-    if args.dry_run:
-        state = "would_overwrite" if existed_before else "would_create"
-        print_report(seo_report)
+        git_state = "skipped"
+        if args.git_commit or args.git_push:
+            git_state = publish_blog_post_to_git(
+                repo_root,
+                candidate.post,
+                remote=args.git_remote,
+                branch=args.git_branch,
+                push=args.git_push,
+            )
+
         print(
-            f"dry_run lane={args.lane} origin={candidate.origin} id={candidate.identifier} "
-            f"similarity={similarity:.3f} article={article_path} state={state}"
+            "done "
+            f"lane={args.lane} "
+            f"origin={candidate.origin} "
+            f"id={candidate.identifier} "
+            f"similarity={similarity:.3f} "
+            f"seo={seo_report.summary()} "
+            f"index={'updated' if index_changed else 'unchanged'} "
+            f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
+            f"git={git_state} "
+            f"file={candidate.post.filename}"
         )
         return 0
-
-    article_path.write_text(candidate.html, encoding="utf-8")
-    inject_site_tools_into_file(article_path)
-    index_changed = update_blog_index(index_path, candidate.post)
-    sitemap_changed = update_sitemap(sitemap_path, candidate.post)
-    inject_site_tools_into_file(index_path)
-    build_site_search_index(repo_root)
-
-    git_state = "skipped"
-    if args.git_commit or args.git_push:
-        git_state = publish_blog_post_to_git(
-            repo_root,
-            candidate.post,
-            remote=args.git_remote,
-            branch=args.git_branch,
-            push=args.git_push,
-        )
-
-    print(
-        "done "
-        f"lane={args.lane} "
-        f"origin={candidate.origin} "
-        f"id={candidate.identifier} "
-        f"similarity={similarity:.3f} "
-        f"seo={seo_report.summary()} "
-        f"index={'updated' if index_changed else 'unchanged'} "
-        f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
-        f"git={git_state} "
-        f"file={candidate.post.filename}"
-    )
-    return 0
 
 
 def main() -> int:
