@@ -440,6 +440,9 @@ class CandidateEntry:
     item: FeedItem
 
 
+IMAGE_HEALTH_CACHE: dict[str, bool] = {}
+
+
 def fetch_bytes(url: str) -> bytes:
     last_error: Exception | None = None
     for attempt in range(3):
@@ -744,11 +747,48 @@ def normalize_image_url(value: str) -> str:
     return cleaned
 
 
+def is_image_url_healthy(url: str) -> bool:
+    cleaned = normalize_image_url(url)
+    if not cleaned:
+        return False
+    if cleaned.startswith("/"):
+        return True
+    cached = IMAGE_HEALTH_CACHE.get(cleaned)
+    if cached is not None:
+        return cached
+
+    request = urllib.request.Request(
+        cleaned,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+            "Range": "bytes=0-2048",
+        },
+    )
+    healthy = False
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            content_type = (response.headers.get("Content-Type") or "").lower()
+            healthy = response.status < 400 and content_type.startswith("image/")
+    except Exception:
+        healthy = False
+
+    IMAGE_HEALTH_CACHE[cleaned] = healthy
+    return healthy
+
+
+def resolve_story_image_url(item: FeedItem, source: BriefSource) -> tuple[str, str]:
+    fallback_image = source.fallback_image or pick_fallback_image(item, source)
+    primary_image = normalize_image_url(item.image_url)
+    if primary_image and is_image_url_healthy(primary_image):
+        return primary_image, fallback_image
+    return fallback_image, fallback_image
+
+
 def render_entry(entry: BriefEntry) -> str:
     source = entry.source
     item = entry.item
-    fallback_image = source.fallback_image or pick_fallback_image(item, source)
-    image_url = normalize_image_url(item.image_url) or fallback_image
+    image_url, fallback_image = resolve_story_image_url(item, source)
     image_alt = f"{item.title} thumbnail"
     return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
         <div class="va-brief-index" aria-hidden="true">{entry.index}</div>

@@ -259,6 +259,30 @@
     });
   }
 
+  function applyImageFallback(img) {
+    if (!img) return;
+    const fallbackSrc = (img.getAttribute("data-fallback-src") || "").trim();
+    if (!fallbackSrc) return;
+    const currentSrc = img.getAttribute("src") || "";
+    if (currentSrc === fallbackSrc) return;
+    img.setAttribute("src", fallbackSrc);
+  }
+
+  function bindImageFallbacks() {
+    const images = document.querySelectorAll("img[data-fallback-src]");
+    images.forEach(function (img) {
+      img.addEventListener("error", function handleError() {
+        applyImageFallback(img);
+      });
+
+      if (img.complete && img.naturalWidth === 0) {
+        applyImageFallback(img);
+      }
+    });
+  }
+
+  bindImageFallbacks();
+
   function scoreHighlightTarget(node, focus) {
     if (!node) {
       return -1;
