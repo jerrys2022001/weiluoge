@@ -415,11 +415,27 @@ FALLBACK_IMAGES = (
 )
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
+SLUG_MAX_COUNTS = {
+    "apple": 4,
+}
+SLUG_MIN_COUNTS = {
+    "semiconductor": 2,
+    "industry": 2,
+    "ai": 2,
+    "bluetooth": 1,
+}
 
 
 @dataclass(frozen=True)
 class BriefEntry:
     index: int
+    source: BriefSource
+    item: FeedItem
+
+
+@dataclass(frozen=True)
+class CandidateEntry:
+    phase: int
     source: BriefSource
     item: FeedItem
 
@@ -662,6 +678,63 @@ def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     return FALLBACK_IMAGES[index]
 
 
+def candidate_sort_key(candidate: CandidateEntry) -> tuple[int, float, int]:
+    published_ts = candidate.item.published_at.timestamp() if candidate.item.published_at else 0.0
+    relevance = score_item(candidate.item, candidate.source.keywords)
+    return (candidate.phase, -published_ts, -relevance)
+
+
+def choose_balanced_entries(candidates: list[CandidateEntry]) -> list[tuple[BriefSource, FeedItem]]:
+    ranked = sorted(candidates, key=candidate_sort_key)
+    selected: list[tuple[BriefSource, FeedItem]] = []
+    seen_links: set[str] = set()
+    slug_counts: dict[str, int] = {}
+
+    def can_take(candidate: CandidateEntry, enforce_caps: bool = True) -> bool:
+        if candidate.item.link in seen_links:
+            return False
+        if not enforce_caps:
+            return True
+        limit = SLUG_MAX_COUNTS.get(candidate.source.slug)
+        if limit is None:
+            return True
+        return slug_counts.get(candidate.source.slug, 0) < limit
+
+    def take(candidate: CandidateEntry) -> None:
+        selected.append((candidate.source, candidate.item))
+        seen_links.add(candidate.item.link)
+        slug_counts[candidate.source.slug] = slug_counts.get(candidate.source.slug, 0) + 1
+
+    for slug, minimum in SLUG_MIN_COUNTS.items():
+        if minimum <= 0:
+            continue
+        for candidate in ranked:
+            if candidate.source.slug != slug:
+                continue
+            if slug_counts.get(slug, 0) >= minimum:
+                break
+            if not can_take(candidate, enforce_caps=True):
+                continue
+            take(candidate)
+
+    for candidate in ranked:
+        if len(selected) >= MIN_BRIEF_ITEMS:
+            break
+        if not can_take(candidate, enforce_caps=True):
+            continue
+        take(candidate)
+
+    if len(selected) < MIN_BRIEF_ITEMS:
+        for candidate in ranked:
+            if len(selected) >= MIN_BRIEF_ITEMS:
+                break
+            if not can_take(candidate, enforce_caps=False):
+                continue
+            take(candidate)
+
+    return selected[:MIN_BRIEF_ITEMS]
+
+
 def normalize_image_url(value: str) -> str:
     cleaned = (value or "").strip()
     if not cleaned:
@@ -837,8 +910,8 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
     refreshed_at = datetime.now().astimezone()
     target_day = refreshed_at.date()
-    selected_entries: list[tuple[BriefSource, FeedItem]] = []
     source_items_map: list[tuple[BriefSource, list[FeedItem]]] = []
+    candidate_pool: list[CandidateEntry] = []
     for source in BRIEF_SOURCES:
         try:
             items = parse_feed_items(fetch_bytes(source.feed_url))
@@ -847,65 +920,23 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
             continue
         source_items_map.append((source, items))
         same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
-        selected = select_items(same_day_items, source.keywords, source.item_count)
-        for item in selected:
-            selected_entries.append((source, item))
+        for item in select_items(same_day_items, source.keywords, max(source.item_count * 3, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=0, source=source, item=item))
 
-    seen_links = {item.link for _, item in selected_entries}
+    for source, items in source_items_map:
+        recent_items = [
+            item
+            for item in items
+            if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
+        ]
+        for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=1, source=source, item=item))
 
-    if len(selected_entries) < MIN_BRIEF_ITEMS:
-        recent_candidates: list[tuple[BriefSource, FeedItem]] = []
-        for source, items in source_items_map:
-            recent_items = [
-                item
-                for item in items
-                if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
-            ]
-            for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
-                if item.link in seen_links:
-                    continue
-                recent_candidates.append((source, item))
+    for source, items in source_items_map:
+        for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=2, source=source, item=item))
 
-        recent_candidates.sort(
-            key=lambda pair: (
-                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
-                score_item(pair[1], pair[0].keywords),
-            ),
-            reverse=True,
-        )
-
-        for source, item in recent_candidates:
-            if item.link in seen_links:
-                continue
-            selected_entries.append((source, item))
-            seen_links.add(item.link)
-            if len(selected_entries) >= MIN_BRIEF_ITEMS:
-                break
-
-    if len(selected_entries) < MIN_BRIEF_ITEMS:
-        evergreen_candidates: list[tuple[BriefSource, FeedItem]] = []
-        for source, items in source_items_map:
-            for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
-                if item.link in seen_links:
-                    continue
-                evergreen_candidates.append((source, item))
-
-        evergreen_candidates.sort(
-            key=lambda pair: (
-                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
-                score_item(pair[1], pair[0].keywords),
-            ),
-            reverse=True,
-        )
-
-        for source, item in evergreen_candidates:
-            if item.link in seen_links:
-                continue
-            selected_entries.append((source, item))
-            seen_links.add(item.link)
-            if len(selected_entries) >= MIN_BRIEF_ITEMS:
-                break
-
+    selected_entries = choose_balanced_entries(candidate_pool)
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
         reverse=True,
