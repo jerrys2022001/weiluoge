@@ -7,11 +7,13 @@ import argparse
 import hashlib
 import time
 import re
+import shutil
 import sys
+import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from html import escape, unescape
 from pathlib import Path
@@ -73,7 +75,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://www.apple.com/newsroom/rss-feed.rss",
         keywords=("iphone", "ipad", "mac", "macbook", "airpods", "watch", "vision", "ios", "m5", "neo", "pro"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
-        item_count=2,
+        item_count=1,
     ),
     BriefSource(
         slug="apple",
@@ -83,7 +85,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://www.macrumors.com/macrumors.xml",
         keywords=("apple", "iphone", "ipad", "mac", "macbook", "neo", "air", "pro", "studio display"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
-        item_count=4,
+        item_count=2,
     ),
     BriefSource(
         slug="apple",
@@ -93,7 +95,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://appleinsider.com/rss/news/",
         keywords=("apple", "iphone", "ipad", "mac", "macbook", "neo", "air", "pro", "vision"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
-        item_count=3,
+        item_count=2,
     ),
     BriefSource(
         slug="apple",
@@ -103,7 +105,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://www.macstories.net/feed/",
         keywords=("apple", "iphone", "ipad", "mac", "macbook", "app", "ios", "ipados", "automation", "shortcuts"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
-        item_count=2,
+        item_count=1,
     ),
     BriefSource(
         slug="apple",
@@ -113,6 +115,33 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         feed_url="https://9to5mac.com/feed/",
         keywords=("apple", "iphone", "ipad", "mac", "macbook", "app store", "apple tv", "neo", "fold"),
         fallback_image="/assets/images/stock-2026-03/stock-09.jpg",
+        item_count=2,
+    ),
+    BriefSource(
+        slug="industry",
+        eyebrow="Industry Product Watch",
+        source_name="Techmeme",
+        source_url="https://www.techmeme.com/",
+        feed_url="https://www.techmeme.com/feed.xml",
+        keywords=(
+            "nvidia",
+            "jensen",
+            "musk",
+            "elon",
+            "tesla",
+            "xai",
+            "grok",
+            "robotaxi",
+            "blackwell",
+            "dgx",
+            "apple",
+            "ai",
+            "chip",
+            "gpu",
+            "cpu",
+            "robot",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
         item_count=2,
     ),
     BriefSource(
@@ -136,7 +165,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "breakthrough",
         ),
         fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
-        item_count=3,
+        item_count=2,
     ),
     BriefSource(
         slug="semiconductor",
@@ -157,6 +186,28 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "data wave",
         ),
         fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="semiconductor",
+        eyebrow="Semiconductor Breakthroughs",
+        source_name="NVIDIA Newsroom",
+        source_url="https://nvidianews.nvidia.com/",
+        feed_url="https://nvidianews.nvidia.com/releases.xml",
+        keywords=(
+            "nvidia",
+            "jensen",
+            "gpu",
+            "blackwell",
+            "nemotron",
+            "gtc",
+            "dgx",
+            "grace",
+            "omniverse",
+            "ai chip",
+            "server",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-07.jpg",
         item_count=2,
     ),
     BriefSource(
@@ -183,6 +234,27 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
     BriefSource(
         slug="ai",
         eyebrow="AI Developments",
+        source_name="MIT Technology Review",
+        source_url="https://www.technologyreview.com/",
+        feed_url="https://www.technologyreview.com/feed/",
+        keywords=(
+            "ai",
+            "model",
+            "agent",
+            "chip",
+            "semiconductor",
+            "robot",
+            "physical ai",
+            "nvidia",
+            "targeting",
+            "military",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="ai",
+        eyebrow="AI Developments",
         source_name="Tom's Hardware",
         source_url="https://www.tomshardware.com/",
         feed_url="https://www.tomshardware.com/feeds/all",
@@ -199,7 +271,71 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "reasoning",
         ),
         fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
-        item_count=2,
+        item_count=1,
+    ),
+    BriefSource(
+        slug="industry",
+        eyebrow="Industry Product Watch",
+        source_name="Electrek",
+        source_url="https://electrek.co/",
+        feed_url="https://electrek.co/feed/",
+        keywords=(
+            "tesla",
+            "musk",
+            "robot",
+            "humanoid",
+            "optimus",
+            "ev",
+            "battery",
+            "robotaxi",
+            "xai",
+            "energy",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="industry",
+        eyebrow="Industry Product Watch",
+        source_name="The Verge",
+        source_url="https://www.theverge.com/",
+        feed_url="https://www.theverge.com/rss/index.xml",
+        keywords=(
+            "apple",
+            "nvidia",
+            "jensen",
+            "musk",
+            "tesla",
+            "xai",
+            "grok",
+            "robot",
+            "ai",
+            "chip",
+            "gadget",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="industry",
+        eyebrow="Industry Product Watch",
+        source_name="Engadget",
+        source_url="https://www.engadget.com/",
+        feed_url="https://www.engadget.com/rss.xml",
+        keywords=(
+            "apple",
+            "nvidia",
+            "tesla",
+            "musk",
+            "xai",
+            "robot",
+            "ai",
+            "chip",
+            "device",
+            "laptop",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
+        item_count=1,
     ),
     BriefSource(
         slug="bluetooth",
@@ -270,17 +406,15 @@ MEDIA_NS = {
     "content": "http://purl.org/rss/1.0/modules/content/",
 }
 FALLBACK_IMAGES = (
-    "/assets/images/stock-2026-03/stock-01.jpg",
-    "/assets/images/stock-2026-03/stock-03.jpg",
-    "/assets/images/stock-2026-03/stock-05.jpg",
+    "/assets/images/stock-2026-03/stock-02.jpg",
+    "/assets/images/stock-2026-03/stock-04.jpg",
+    "/assets/images/stock-2026-03/stock-06.jpg",
     "/assets/images/stock-2026-03/stock-07.jpg",
     "/assets/images/stock-2026-03/stock-08.jpg",
-    "/assets/images/stock-2026-03/stock-09.jpg",
     "/assets/images/stock-2026-03/stock-10.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-18.jpg",
 )
+MIN_BRIEF_ITEMS = 10
+RECENT_BACKFILL_DAYS = 7
 
 
 @dataclass(frozen=True)
@@ -513,6 +647,14 @@ def is_same_local_day(value: datetime | None, target_day: date) -> bool:
     return value.astimezone().date() == target_day
 
 
+def is_within_recent_window(value: datetime | None, target_day: date, days: int) -> bool:
+    if value is None:
+        return False
+    local_day = value.astimezone().date()
+    oldest_day = target_day - timedelta(days=max(days - 1, 0))
+    return oldest_day <= local_day <= target_day
+
+
 def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     seed = f"{source.slug}|{item.link}|{item.title}".encode("utf-8", errors="ignore")
     digest = hashlib.sha1(seed).hexdigest()
@@ -520,10 +662,20 @@ def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     return FALLBACK_IMAGES[index]
 
 
+def normalize_image_url(value: str) -> str:
+    cleaned = (value or "").strip()
+    if not cleaned:
+        return ""
+    if cleaned.startswith("http://"):
+        return "https://" + cleaned[len("http://") :]
+    return cleaned
+
+
 def render_entry(entry: BriefEntry) -> str:
     source = entry.source
     item = entry.item
-    image_url = item.image_url or pick_fallback_image(item, source)
+    fallback_image = source.fallback_image or pick_fallback_image(item, source)
+    image_url = normalize_image_url(item.image_url) or fallback_image
     image_alt = f"{item.title} thumbnail"
     return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
         <div class="va-brief-index" aria-hidden="true">{entry.index}</div>
@@ -533,7 +685,7 @@ def render_entry(entry: BriefEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" data-fallback-src="{escape(fallback_image)}">
         </a>
       </article>"""
 
@@ -624,39 +776,135 @@ def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool) -> str:
     git_command = resolve_git_command()
     tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix()]
-
-    run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
-    staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
-    if not staged.stdout.strip():
-        return "unchanged"
-
     stamp = datetime.now().astimezone().strftime("%Y-%m-%d")
-    run_git_command(
-        repo_root,
-        git_command,
-        ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
-    )
 
-    if push:
-        run_git_command(repo_root, git_command, ["push", remote, branch])
-        return f"committed+pushed({remote}/{branch})"
-    return "committed"
+    if not push:
+        run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
+        staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+        if not staged.stdout.strip():
+            return "unchanged"
+        run_git_command(
+            repo_root,
+            git_command,
+            ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
+        )
+        return "committed"
+
+    temp_branch = f"codex/home-brief-publish-{datetime.now().astimezone().strftime('%Y%m%d%H%M%S')}"
+
+    with tempfile.TemporaryDirectory(prefix="home-brief-publish-") as temp_dir:
+        worktree_path = Path(temp_dir) / "repo"
+        run_git_command(repo_root, git_command, ["fetch", remote, branch])
+        run_git_command(repo_root, git_command, ["worktree", "add", "-b", temp_branch, str(worktree_path), f"{remote}/{branch}"])
+        try:
+            for rel_path in tracked_paths:
+                source_path = repo_root / rel_path
+                target_path = worktree_path / rel_path
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source_path, target_path)
+
+            run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+            staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+            if not staged.stdout.strip():
+                return "unchanged"
+
+            run_git_command(
+                worktree_path,
+                git_command,
+                ["commit", "-m", f"Refresh homepage briefing: {stamp}", "--only", "--", *tracked_paths],
+            )
+
+            last_error: ValueError | None = None
+            for _ in range(3):
+                try:
+                    run_git_command(worktree_path, git_command, ["fetch", remote, branch])
+                    run_git_command(worktree_path, git_command, ["rebase", f"{remote}/{branch}"])
+                    run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
+                    return f"committed+pushed({remote}/{branch})"
+                except ValueError as exc:
+                    last_error = exc
+                    if "rebase" in str(exc).lower():
+                        run_git_command(worktree_path, git_command, ["rebase", "--abort"])
+                    time.sleep(1.2)
+
+            assert last_error is not None
+            raise last_error
+        finally:
+            run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
+            run_git_command(repo_root, git_command, ["branch", "-D", temp_branch])
 
 
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
     refreshed_at = datetime.now().astimezone()
     target_day = refreshed_at.date()
     selected_entries: list[tuple[BriefSource, FeedItem]] = []
+    source_items_map: list[tuple[BriefSource, list[FeedItem]]] = []
     for source in BRIEF_SOURCES:
         try:
             items = parse_feed_items(fetch_bytes(source.feed_url))
         except Exception as exc:  # pragma: no cover - network/source variability
             print(f"skip_source source={source.source_name} error={exc}", file=sys.stderr)
             continue
+        source_items_map.append((source, items))
         same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
         selected = select_items(same_day_items, source.keywords, source.item_count)
         for item in selected:
             selected_entries.append((source, item))
+
+    seen_links = {item.link for _, item in selected_entries}
+
+    if len(selected_entries) < MIN_BRIEF_ITEMS:
+        recent_candidates: list[tuple[BriefSource, FeedItem]] = []
+        for source, items in source_items_map:
+            recent_items = [
+                item
+                for item in items
+                if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
+            ]
+            for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
+                if item.link in seen_links:
+                    continue
+                recent_candidates.append((source, item))
+
+        recent_candidates.sort(
+            key=lambda pair: (
+                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+                score_item(pair[1], pair[0].keywords),
+            ),
+            reverse=True,
+        )
+
+        for source, item in recent_candidates:
+            if item.link in seen_links:
+                continue
+            selected_entries.append((source, item))
+            seen_links.add(item.link)
+            if len(selected_entries) >= MIN_BRIEF_ITEMS:
+                break
+
+    if len(selected_entries) < MIN_BRIEF_ITEMS:
+        evergreen_candidates: list[tuple[BriefSource, FeedItem]] = []
+        for source, items in source_items_map:
+            for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
+                if item.link in seen_links:
+                    continue
+                evergreen_candidates.append((source, item))
+
+        evergreen_candidates.sort(
+            key=lambda pair: (
+                pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
+                score_item(pair[1], pair[0].keywords),
+            ),
+            reverse=True,
+        )
+
+        for source, item in evergreen_candidates:
+            if item.link in seen_links:
+                continue
+            selected_entries.append((source, item))
+            seen_links.add(item.link)
+            if len(selected_entries) >= MIN_BRIEF_ITEMS:
+                break
 
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
@@ -665,9 +913,9 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
 
     entries = [
         BriefEntry(index=position, source=source, item=item)
-        for position, (source, item) in enumerate(selected_entries[:10], start=1)
+        for position, (source, item) in enumerate(selected_entries[:MIN_BRIEF_ITEMS], start=1)
     ]
-    return entries[:10], refreshed_at
+    return entries[:MIN_BRIEF_ITEMS], refreshed_at
 
 
 def run(args: argparse.Namespace) -> int:

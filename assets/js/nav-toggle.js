@@ -41,4 +41,16 @@
     }
     setNavOpen(false);
   });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".va-brief-thumb img"), function (image) {
+    image.addEventListener("error", function () {
+      var fallback = image.getAttribute("data-fallback-src") || "/assets/images/stock-2026-03/stock-10.jpg";
+      if (image.getAttribute("src") !== fallback) {
+        image.src = fallback;
+        image.removeAttribute("srcset");
+        return;
+      }
+      image.alt = "";
+    });
+  });
 })();
