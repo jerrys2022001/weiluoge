@@ -406,16 +406,12 @@ MEDIA_NS = {
     "content": "http://purl.org/rss/1.0/modules/content/",
 }
 FALLBACK_IMAGES = (
-    "/assets/images/stock-2026-03/stock-01.jpg",
-    "/assets/images/stock-2026-03/stock-03.jpg",
-    "/assets/images/stock-2026-03/stock-05.jpg",
+    "/assets/images/stock-2026-03/stock-02.jpg",
+    "/assets/images/stock-2026-03/stock-04.jpg",
+    "/assets/images/stock-2026-03/stock-06.jpg",
     "/assets/images/stock-2026-03/stock-07.jpg",
     "/assets/images/stock-2026-03/stock-08.jpg",
-    "/assets/images/stock-2026-03/stock-09.jpg",
     "/assets/images/stock-2026-03/stock-10.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
-    "/assets/images/stock-2026-03-extra20/stock-extra-18.jpg",
 )
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
@@ -666,10 +662,20 @@ def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
     return FALLBACK_IMAGES[index]
 
 
+def normalize_image_url(value: str) -> str:
+    cleaned = (value or "").strip()
+    if not cleaned:
+        return ""
+    if cleaned.startswith("http://"):
+        return "https://" + cleaned[len("http://") :]
+    return cleaned
+
+
 def render_entry(entry: BriefEntry) -> str:
     source = entry.source
     item = entry.item
-    image_url = item.image_url or pick_fallback_image(item, source)
+    fallback_image = source.fallback_image or pick_fallback_image(item, source)
+    image_url = normalize_image_url(item.image_url) or fallback_image
     image_alt = f"{item.title} thumbnail"
     return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
         <div class="va-brief-index" aria-hidden="true">{entry.index}</div>
@@ -679,7 +685,7 @@ def render_entry(entry: BriefEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" data-fallback-src="{escape(fallback_image)}">
         </a>
       </article>"""
 
