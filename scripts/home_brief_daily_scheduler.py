@@ -1075,14 +1075,37 @@ def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
     return True
 
 
+def cleanup_old_brief_images(repo_root: Path, target_day: date, keep_days: int = 5) -> bool:
+    images_root = repo_root / BRIEF_IMAGES_REL
+    if not images_root.exists():
+        return False
+
+    oldest_kept_day = target_day - timedelta(days=max(keep_days - 1, 0))
+    changed = False
+
+    for child in images_root.iterdir():
+        if not child.is_dir():
+            continue
+        try:
+            child_day = date.fromisoformat(child.name)
+        except ValueError:
+            continue
+        if child_day >= oldest_kept_day:
+            continue
+        shutil.rmtree(child, ignore_errors=True)
+        changed = True
+
+    return changed
+
+
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool, extra_paths: list[str] | None = None) -> str:
     git_command = resolve_git_command()
-    tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), *(extra_paths or [])]
+    tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), BRIEF_IMAGES_REL.as_posix(), *(extra_paths or [])]
     tracked_paths = list(dict.fromkeys(tracked_paths))
     stamp = datetime.now().astimezone().strftime("%Y-%m-%d")
 
     if not push:
-        run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
+        run_git_command(repo_root, git_command, ["add", "-A", "--", *tracked_paths])
         staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
         if not staged.stdout.strip():
             return "unchanged"
@@ -1103,10 +1126,22 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
             for rel_path in tracked_paths:
                 source_path = repo_root / rel_path
                 target_path = worktree_path / rel_path
-                target_path.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(source_path, target_path)
+                if source_path.is_dir():
+                    if target_path.exists():
+                        shutil.rmtree(target_path, ignore_errors=True)
+                    shutil.copytree(source_path, target_path)
+                    continue
+                if source_path.exists():
+                    target_path.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(source_path, target_path)
+                    continue
+                if target_path.exists():
+                    if target_path.is_dir():
+                        shutil.rmtree(target_path, ignore_errors=True)
+                    else:
+                        target_path.unlink()
 
-            run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+            run_git_command(worktree_path, git_command, ["add", "-A", "--", *tracked_paths])
             staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
             if not staged.stdout.strip():
                 return "unchanged"
@@ -1197,6 +1232,7 @@ def run(args: argparse.Namespace) -> int:
 
     if not args.dry_run:
         rendered_entries, asset_paths = prepare_render_entries(repo_root, entries, refreshed_at.date())
+        cleanup_old_brief_images(repo_root, refreshed_at.date(), keep_days=5)
     else:
         rendered_entries = [
             RenderEntry(
