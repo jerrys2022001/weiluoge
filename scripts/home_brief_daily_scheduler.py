@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Refresh the homepage daily briefing section with product-relevant live news."""
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ from blog_daily_scheduler import add_git_publish_args, resolve_git_command, run_
 SITE_URL = "https://velocai.net"
 HOME_INDEX_REL = Path("index.html")
 SITEMAP_REL = Path("sitemap.xml")
+BRIEF_IMAGES_REL = Path("assets/images/home-briefing")
 SECTION_START = "<!-- va-today-brief:start -->"
 SECTION_END = "<!-- va-today-brief:end -->"
 ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
@@ -165,7 +166,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "lithography",
             "breakthrough",
         ),
-        fallback_image="/assets/images/stock-2026-03/stock-07.jpg",
+        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-14.jpg",
         item_count=2,
     ),
     BriefSource(
@@ -186,7 +187,7 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "synopsys",
             "data wave",
         ),
-        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        fallback_image="/assets/images/stock-2026-03-extra20/stock-extra-11.jpg",
         item_count=1,
     ),
     BriefSource(
@@ -417,7 +418,7 @@ FALLBACK_IMAGES = (
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
 SLUG_MAX_COUNTS = {
-    "apple": 4,
+    "apple": 5,
 }
 SLUG_MIN_COUNTS = {
     "semiconductor": 2,
@@ -441,6 +442,13 @@ class CandidateEntry:
     item: FeedItem
 
 
+@dataclass(frozen=True)
+class RenderEntry:
+    entry: BriefEntry
+    image_src: str
+    fallback_src: str
+
+
 IMAGE_HEALTH_CACHE: dict[str, bool] = {}
 FORCED_FALLBACK_IMAGE_HOSTS = {
     "photos5.appleinsider.com",
@@ -460,6 +468,29 @@ def fetch_bytes(url: str) -> bytes:
             if attempt >= 2:
                 break
             time.sleep(1.2 * (attempt + 1))
+    assert last_error is not None
+    raise last_error
+
+
+def fetch_url(url: str, headers: dict[str, str] | None = None, timeout: int = 30) -> tuple[bytes, dict[str, str], str]:
+    merged_headers = {"User-Agent": USER_AGENT}
+    if headers:
+        merged_headers.update(headers)
+
+    last_error: Exception | None = None
+    for attempt in range(3):
+        request = urllib.request.Request(url, headers=merged_headers)
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                payload = response.read()
+                response_headers = {key.lower(): value for key, value in response.headers.items()}
+                return payload, response_headers, response.geturl()
+        except Exception as exc:  # pragma: no cover - network variability
+            last_error = exc
+            if attempt >= 2:
+                break
+            time.sleep(1.2 * (attempt + 1))
+
     assert last_error is not None
     raise last_error
 
@@ -759,6 +790,114 @@ def extract_image_host(url: str) -> str:
     return urllib.parse.urlparse(cleaned).netloc.lower()
 
 
+def derive_image_extension(content_type: str, final_url: str, image_bytes: bytes) -> str:
+    lowered_type = (content_type or "").lower()
+    if "jpeg" in lowered_type or "jpg" in lowered_type:
+        return ".jpg"
+    if "png" in lowered_type:
+        return ".png"
+    if "webp" in lowered_type:
+        return ".webp"
+    if "gif" in lowered_type:
+        return ".gif"
+    if "avif" in lowered_type:
+        return ".avif"
+
+    path = urllib.parse.urlparse(final_url or "").path.lower()
+    for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"):
+        if path.endswith(ext):
+            return ".jpg" if ext == ".jpeg" else ext
+
+    header = image_bytes[:16]
+    if header.startswith(b"\xff\xd8\xff"):
+        return ".jpg"
+    if header.startswith(b"\x89PNG\r\n\x1a\n"):
+        return ".png"
+    if header.startswith((b"GIF87a", b"GIF89a")):
+        return ".gif"
+    if len(header) >= 12 and header[:4] == b"RIFF" and header[8:12] == b"WEBP":
+        return ".webp"
+    if len(header) >= 12 and header[4:8] == b"ftyp":
+        brand = header[8:12]
+        if brand in {b"avif", b"avis"}:
+            return ".avif"
+    return ".jpg"
+
+
+def extract_page_meta_image(article_url: str) -> str:
+    article = normalize_image_url(article_url)
+    if not article.startswith("https://"):
+        return ""
+    try:
+        payload, _, final_url = fetch_url(
+            article,
+            headers={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
+            timeout=20,
+        )
+    except Exception:
+        return ""
+
+    html = payload.decode("utf-8", errors="replace")
+    patterns = [
+        r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+property=["\']og:image:url["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<link[^>]+rel=["\']image_src["\'][^>]+href=["\']([^"\']+)["\']',
+        r'<img[^>]+src=["\']([^"\']+)["\']',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html, flags=re.IGNORECASE)
+        if not match:
+            continue
+        candidate = normalize_image_url(urllib.parse.urljoin(final_url, match.group(1).strip()))
+        if candidate:
+            return candidate
+    return ""
+
+
+def download_image_to_repo(
+    repo_root: Path,
+    source: BriefSource,
+    item: FeedItem,
+    image_url: str,
+    target_day: date,
+) -> tuple[str, str] | None:
+    candidate = normalize_image_url(image_url)
+    if not candidate or candidate.startswith("/"):
+        return None
+    if extract_image_host(candidate) in FORCED_FALLBACK_IMAGE_HOSTS:
+        return None
+
+    try:
+        payload, headers, final_url = fetch_url(
+            candidate,
+            headers={
+                "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+                "Referer": item.link,
+            },
+            timeout=20,
+        )
+    except Exception:
+        return None
+
+    content_type = (headers.get("content-type") or "").lower()
+    if not content_type.startswith("image/"):
+        return None
+    if len(payload) < 256:
+        return None
+
+    day_folder = BRIEF_IMAGES_REL / target_day.isoformat()
+    target_dir = repo_root / day_folder
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    digest = hashlib.sha1(f"{source.slug}|{item.link}|{candidate}".encode("utf-8", errors="ignore")).hexdigest()[:16]
+    extension = derive_image_extension(content_type, final_url, payload)
+    filename = f"{source.slug}-{digest}{extension}"
+    target_path = target_dir / filename
+    target_path.write_bytes(payload)
+    return ("/" + (day_folder / filename).as_posix(), (day_folder / filename).as_posix())
+
+
 def is_image_url_healthy(url: str) -> bool:
     cleaned = normalize_image_url(url)
     if not cleaned:
@@ -800,10 +939,45 @@ def resolve_story_image_url(item: FeedItem, source: BriefSource) -> tuple[str, s
     return fallback_image, fallback_image
 
 
-def render_entry(entry: BriefEntry) -> str:
+def prepare_render_entries(
+    repo_root: Path,
+    entries: list[BriefEntry],
+    target_day: date,
+) -> tuple[list[RenderEntry], list[str]]:
+    rendered: list[RenderEntry] = []
+    asset_paths: list[str] = []
+
+    for entry in entries:
+        source = entry.source
+        item = entry.item
+        fallback_image = source.fallback_image or pick_fallback_image(item, source)
+
+        image_src = fallback_image
+        attempted_urls = [
+            normalize_image_url(item.image_url),
+            extract_page_meta_image(item.link),
+        ]
+        for candidate in attempted_urls:
+            if not candidate:
+                continue
+            downloaded = download_image_to_repo(repo_root, source, item, candidate, target_day)
+            if downloaded:
+                image_src, relative_path = downloaded
+                asset_paths.append(relative_path)
+                break
+
+        rendered.append(RenderEntry(entry=entry, image_src=image_src, fallback_src=fallback_image))
+
+    unique_asset_paths = list(dict.fromkeys(asset_paths))
+    return rendered, unique_asset_paths
+
+
+def render_entry(render_entry_item: RenderEntry) -> str:
+    entry = render_entry_item.entry
     source = entry.source
     item = entry.item
-    image_url, fallback_image = resolve_story_image_url(item, source)
+    image_url = render_entry_item.image_src
+    fallback_image = render_entry_item.fallback_src
     image_alt = f"{item.title} thumbnail"
     return f"""      <article class="va-brief-item va-brief-item-{escape(source.slug)}">
         <div class="va-brief-index" aria-hidden="true">{entry.index}</div>
@@ -813,16 +987,16 @@ def render_entry(entry: BriefEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){{this.src=this.dataset.fallbackSrc;}}this.onerror=null;">
         </a>
       </article>"""
 
 
-def render_column(entries: list[BriefEntry]) -> str:
+def render_column(entries: list[RenderEntry]) -> str:
     return "\n".join(render_entry(entry) for entry in entries)
 
 
-def build_section_html(entries: list[BriefEntry], refreshed_at: datetime) -> str:
+def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> str:
     midpoint = (len(entries) + 1) // 2
     left_column = entries[:midpoint]
     right_column = entries[midpoint:]
@@ -901,9 +1075,10 @@ def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
     return True
 
 
-def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool) -> str:
+def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool, extra_paths: list[str] | None = None) -> str:
     git_command = resolve_git_command()
-    tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix()]
+    tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), *(extra_paths or [])]
+    tracked_paths = list(dict.fromkeys(tracked_paths))
     stamp = datetime.now().astimezone().strftime("%Y-%m-%d")
 
     if not push:
@@ -1017,7 +1192,22 @@ def run(args: argparse.Namespace) -> int:
         return 1
 
     entries, refreshed_at = build_briefing()
-    section_html = build_section_html(entries, refreshed_at)
+    rendered_entries: list[RenderEntry] = []
+    asset_paths: list[str] = []
+
+    if not args.dry_run:
+        rendered_entries, asset_paths = prepare_render_entries(repo_root, entries, refreshed_at.date())
+    else:
+        rendered_entries = [
+            RenderEntry(
+                entry=entry,
+                image_src=entry.source.fallback_image or pick_fallback_image(entry.item, entry.source),
+                fallback_src=entry.source.fallback_image or pick_fallback_image(entry.item, entry.source),
+            )
+            for entry in entries
+        ]
+
+    section_html = build_section_html(rendered_entries, refreshed_at)
 
     if args.dry_run:
         print(
@@ -1038,6 +1228,7 @@ def run(args: argparse.Namespace) -> int:
             remote=args.git_remote,
             branch=args.git_branch,
             push=args.git_push,
+            extra_paths=asset_paths,
         )
 
     print(
@@ -1070,4 +1261,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
