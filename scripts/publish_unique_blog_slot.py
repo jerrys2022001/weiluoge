@@ -137,9 +137,12 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
     return candidates
 
 
-def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
+def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
     live_candidates = build_live_candidates(target_day, lane)
+    if live_candidates:
+        rotate = slot_offset % len(live_candidates)
+        live_candidates = live_candidates[rotate:] + live_candidates[:rotate]
     for index, live in enumerate(live_candidates):
         items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
     return items
@@ -147,7 +150,7 @@ def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
 
 def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | None:
     blog_dir = repo_root / "blog"
-    candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup")]
+    candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup", 0)]
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists():
@@ -155,21 +158,20 @@ def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | No
     return None
 
 
-def rank_candidates(
+def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
     blog_dir: Path,
     force: bool,
 ) -> list[tuple[float, Candidate]]:
-    ranked: list[tuple[float, Candidate]] = []
+    evaluated: list[tuple[float, Candidate]] = []
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
             continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
-        ranked.append((similarity, candidate))
-    ranked.sort(key=lambda item: (item[0], item[1].post.filename))
-    return ranked
+        evaluated.append((similarity, candidate))
+    return evaluated
 
 
 def choose_candidate(
@@ -182,36 +184,37 @@ def choose_candidate(
 ) -> tuple[Candidate, float]:
     blog_dir = repo_root / "blog"
     existing_pages = load_blog_pages(blog_dir)
-    local_ranked = rank_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
-    live_ranked = rank_candidates(build_fallback_candidates(target_day, lane), existing_pages, blog_dir, force)
+    local_ranked = evaluate_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
 
-    strict_local = [item for item in local_ranked if item[0] < similarity_threshold]
-    if strict_local:
-        return strict_local[0][1], strict_local[0][0]
+    for similarity, candidate in local_ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
 
-    strict_live = [item for item in live_ranked if item[0] < similarity_threshold]
-    if strict_live:
-        return strict_live[0][1], strict_live[0][0]
+    for similarity, candidate in live_ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
 
     live_soft_threshold = default_live_rewrite_threshold(lane)
-    soft_live = [item for item in live_ranked if item[0] < live_soft_threshold]
-    if soft_live:
-        return Candidate(
-            lane=soft_live[0][1].lane,
-            origin="live-forced",
-            identifier=soft_live[0][1].identifier,
-            post=soft_live[0][1].post,
-            html=soft_live[0][1].html,
-        ), soft_live[0][0]
+    for similarity, candidate in live_ranked:
+        if similarity < live_soft_threshold:
+            return Candidate(
+                lane=candidate.lane,
+                origin="live-forced",
+                identifier=candidate.identifier,
+                post=candidate.post,
+                html=candidate.html,
+            ), similarity
 
     if live_ranked:
+        similarity, candidate = live_ranked[0]
         return Candidate(
-            lane=live_ranked[0][1].lane,
+            lane=candidate.lane,
             origin="live-forced",
-            identifier=live_ranked[0][1].identifier,
-            post=live_ranked[0][1].post,
-            html=live_ranked[0][1].html,
-        ), live_ranked[0][0]
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
 
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
