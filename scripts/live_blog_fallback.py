@@ -266,11 +266,26 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
     if source_slug == "apple":
         if any(keyword in lowered for keyword in ("storage", "1tb", "128gb", "icloud", "backup", "files", "nas", "drive")):
             if "iphone" in lowered:
+                if "fold" in lowered and any(keyword in lowered for keyword in ("ram", "storage", "pricing")):
+                    return (
+                        "iPhone Fold Storage Rumors for Cleanup-Minded Buyers",
+                        "March 2026 Apple commentary on iPhone Fold RAM, storage, and pricing signals that matter for cleanup-minded buyers weighing long-term capacity pressure.",
+                    )
+                if "fold" in lowered and any(keyword in lowered for keyword in ("1tb", "price", "money")):
+                    return (
+                        "iPhone Fold 1TB Price Rumor: What Cleanup Users Should Know",
+                        "March 2026 Apple commentary on the iPhone Fold 1TB price rumor, storage planning, and what cleanup-conscious users should weigh before buying.",
+                    )
                 return (
                     "iPhone storage planning: what cleanup users should notice",
                     "March 2026 Apple commentary on storage planning, backup pressure, and the cleanup decisions that matter before capacity pain becomes a daily problem.",
                 )
             if "mac" in lowered or "macbook" in lowered:
+                if "back up" in lowered or "backup" in lowered or "macos tahoe" in lowered:
+                    return (
+                        "How to Back Up Your Mac Without the Storage Headache",
+                        "March 2026 Apple commentary on backing up a Mac under macOS Tahoe while avoiding the storage mistakes that make cleanup harder later.",
+                    )
                 return (
                     "Mac backup planning: what cleanup users should notice",
                     "March 2026 Apple commentary on backup planning, file growth, and the cleanup decisions Mac users should make before storage becomes a workflow bottleneck.",
@@ -280,6 +295,21 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
                 "March 2026 Apple commentary focused on file growth, capacity planning, and cleanup implications for users managing storage across devices.",
             )
         if any(keyword in lowered for keyword in ("airpods", "find my", "tracking", "location", "lost")):
+            if "airpods max" in lowered and any(keyword in lowered for keyword in ("launch date", "reveal", "ios 26.4")):
+                return (
+                        "AirPods Max 2 Launch Date: Why Find Users Will Care",
+                    "March 2026 Apple commentary on the AirPods Max 2 launch timeline, nearby-device habits, and why Find-focused users should care about the rollout.",
+                )
+            if "wallet" in lowered and "find my" in lowered:
+                return (
+                        "FineWoven Wallet Review: Is Find My Tracking Worth It?",
+                    "March 2026 Apple commentary on FineWoven Wallet tracking, Find My usefulness, and whether the accessory improves real finder workflows enough to matter.",
+                )
+            if "airpods max" in lowered and any(keyword in lowered for keyword in ("audio", "improvements", "upgrades")):
+                return (
+                        "AirPods Max 2 Audio Upgrades for Bluetooth Users",
+                    "March 2026 Apple commentary on AirPods Max 2 audio upgrades and the Bluetooth details most likely to shape listener interest and accessory expectations.",
+                )
             return (
                 "Apple finding changes: what Find users should notice",
                 "March 2026 Apple commentary focused on nearby finding, last-seen workflows, and recovery signals that shape real device-finding experiences.",
@@ -304,14 +334,24 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
             "March 2026 AI commentary focused on practical workflow change rather than headline-only release notes.",
         )
     if any(keyword in lowered for keyword in ("auracast", "broadcast audio")):
+        if "frankfurt airport" in lowered or "airport" in lowered:
+            return (
+                "Auracast at Frankfurt Airport: Why Broadcast Audio Matters",
+                "March 2026 Bluetooth commentary on Auracast at Frankfurt Airport, broadcast audio rollout, and why Bluetooth teams should watch real public deployment closely.",
+            )
         return (
-            "Auracast update: why Bluetooth teams should care",
-            "March 2026 Bluetooth commentary on broadcast audio behavior, interoperability, and rollout value for teams planning real Auracast deployments.",
+            "Auracast Broadcast Audio: Why Bluetooth Teams Still Care",
+            "March 2026 Bluetooth commentary on Auracast broadcast audio, rollout momentum, and why Bluetooth teams keep paying attention to real deployment signals.",
         )
     if any(keyword in lowered for keyword in ("tracking", "monitoring", "industrial", "supply")):
+        if "supply" in lowered:
+            return (
+                "How Bluetooth Tracking Is Turning into Real Industrial ROI",
+                "March 2026 Bluetooth commentary on an industrial supply-chain case study that shows where Bluetooth tracking is delivering measurable operational value.",
+            )
         return (
-            "Bluetooth tracking update: what teams should know",
-            "March 2026 Bluetooth commentary on discovery, telemetry, and industrial deployment workflows for tracking and monitoring products.",
+            "Bluetooth in Industrial Monitoring: Why Tracking Matters",
+            "March 2026 Bluetooth commentary on industrial monitoring, tracking, and predictive maintenance, with a focus on why Bluetooth deployments are gaining practical momentum.",
         )
     if any(keyword in lowered for keyword in ("connection interval", "shorter connection intervals")):
         return (
