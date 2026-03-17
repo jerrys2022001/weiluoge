@@ -41,6 +41,7 @@ LIVE_REWRITE_SOFT_THRESHOLD = {
     "protocol": 0.70,
     "updates": 0.70,
 }
+MIN_DAILY_BLUETOOTH_POSTS = 4
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
 
@@ -158,6 +159,15 @@ def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | No
     return None
 
 
+def is_bluetooth_candidate(candidate: Candidate) -> bool:
+    return candidate.post.filename.startswith("bluetooth-")
+
+
+def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
+    suffix = f"-{target_day.isoformat()}.html"
+    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
+
+
 def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
@@ -186,17 +196,24 @@ def choose_candidate(
     existing_pages = load_blog_pages(blog_dir)
     local_ranked = evaluate_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
     live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    bluetooth_quota_open = lane == "updates" and count_same_day_bluetooth_posts(blog_dir, target_day) < MIN_DAILY_BLUETOOTH_POSTS
+    preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
+    fallback_live_ranked = live_ranked if preferred_live_ranked else []
 
     for similarity, candidate in local_ranked:
         if similarity < similarity_threshold:
             return candidate, similarity
 
-    for similarity, candidate in live_ranked:
+    for similarity, candidate in preferred_live_ranked:
         if similarity < similarity_threshold:
             return candidate, similarity
+    if preferred_live_ranked is not live_ranked:
+        for similarity, candidate in fallback_live_ranked:
+            if similarity < similarity_threshold:
+                return candidate, similarity
 
     live_soft_threshold = default_live_rewrite_threshold(lane)
-    for similarity, candidate in live_ranked:
+    for similarity, candidate in preferred_live_ranked:
         if similarity < live_soft_threshold:
             return Candidate(
                 lane=candidate.lane,
@@ -205,9 +222,29 @@ def choose_candidate(
                 post=candidate.post,
                 html=candidate.html,
             ), similarity
+    if preferred_live_ranked is not live_ranked:
+        for similarity, candidate in fallback_live_ranked:
+            if similarity < live_soft_threshold:
+                return Candidate(
+                    lane=candidate.lane,
+                    origin="live-forced",
+                    identifier=candidate.identifier,
+                    post=candidate.post,
+                    html=candidate.html,
+                ), similarity
 
-    if live_ranked:
-        similarity, candidate = live_ranked[0]
+    if preferred_live_ranked:
+        similarity, candidate = preferred_live_ranked[0]
+        return Candidate(
+            lane=candidate.lane,
+            origin="live-forced",
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
+
+    if fallback_live_ranked:
+        similarity, candidate = fallback_live_ranked[0]
         return Candidate(
             lane=candidate.lane,
             origin="live-forced",
