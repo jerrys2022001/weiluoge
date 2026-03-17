@@ -299,28 +299,6 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
     BriefSource(
         slug="industry",
         eyebrow="Industry Product Watch",
-        source_name="The Verge",
-        source_url="https://www.theverge.com/",
-        feed_url="https://www.theverge.com/rss/index.xml",
-        keywords=(
-            "apple",
-            "nvidia",
-            "jensen",
-            "musk",
-            "tesla",
-            "xai",
-            "grok",
-            "robot",
-            "ai",
-            "chip",
-            "gadget",
-        ),
-        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
-        item_count=1,
-    ),
-    BriefSource(
-        slug="industry",
-        eyebrow="Industry Product Watch",
         source_name="Engadget",
         source_url="https://www.engadget.com/",
         feed_url="https://www.engadget.com/rss.xml",
@@ -421,11 +399,13 @@ SLUG_MAX_COUNTS = {
     "apple": 5,
 }
 SLUG_MIN_COUNTS = {
-    "semiconductor": 2,
-    "industry": 2,
-    "ai": 2,
+    "apple": 4,
+    "semiconductor": 1,
+    "industry": 1,
+    "ai": 1,
     "bluetooth": 1,
 }
+SLUG_PRIORITY_ORDER = ("apple", "semiconductor", "industry", "ai", "bluetooth")
 
 
 @dataclass(frozen=True)
@@ -744,7 +724,8 @@ def choose_balanced_entries(candidates: list[CandidateEntry]) -> list[tuple[Brie
         seen_links.add(candidate.item.link)
         slug_counts[candidate.source.slug] = slug_counts.get(candidate.source.slug, 0) + 1
 
-    for slug, minimum in SLUG_MIN_COUNTS.items():
+    for slug in SLUG_PRIORITY_ORDER:
+        minimum = SLUG_MIN_COUNTS.get(slug, 0)
         if minimum <= 0:
             continue
         for candidate in ranked:
