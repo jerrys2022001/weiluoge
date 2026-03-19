@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth HCI Snoop Log and btsnooz Debugging Guide for Android (2026) | VelocAI Blog</title>
+  <meta name="description" content="Debug Bluetooth failures faster with Android HCI snoop logs, bugreport extraction, and btsnooz workflows. Includes practical steps for discovery, pairing, and reconnect diagnostics.">
+  <meta name="keywords" content="bluetooth hci snoop log, btsnooz bluetooth debugging, android bluetooth bugreport, bluetooth device discovery diagnostics, bluetooth find troubleshooting">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-hci-snoop-log-btsnooz-debugging-guide-2026-03-19.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth HCI Snoop Log and btsnooz Debugging Guide for Android (2026)">
+  <meta property="og:description" content="A practical Android Bluetooth debugging playbook based on AOSP guidance for logs, bugreports, and stack verification.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-hci-snoop-log-btsnooz-debugging-guide-2026-03-19.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth HCI Snoop Log and btsnooz Debugging Guide for Android (2026)">
+  <meta name="twitter:description" content="Use AOSP-recommended logs and btsnooz extraction to debug Android Bluetooth discovery and pairing issues.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth HCI Snoop Log and btsnooz Debugging Guide for Android (2026)",
+  "description": "Use Android bugreports, Bluetooth HCI snoop logs, and btsnooz extraction to diagnose Bluetooth discovery and connection failures with reproducible evidence.",
+  "datePublished": "2026-03-19",
+  "dateModified": "2026-03-19",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-hci-snoop-log-btsnooz-debugging-guide-2026-03-19.html",
+  "keywords": [
+    "bluetooth",
+    "find",
+    "bluetooth debugging",
+    "hci snoop log",
+    "btsnooz"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f4f9ff; --text:#18293f; --muted:#4a627c; --line:#cfdeee; --panel:#ffffff; --brand:#165fc4; --accent:#1fb196; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 6% 3%, rgba(64,133,235,.16), transparent 34%),
+        radial-gradient(circle at 88% -8%, rgba(31,177,150,.14), transparent 33%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.4vw, 47px); max-width:28ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#304861; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#eaf2fd; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth HCI Snoop Log and btsnooz Debugging Guide for Android</h1>
+        <p class="meta">Published on March 19, 2026 | Topic: Bluetooth Debugging | Primary Source Updated: December 2, 2025</p>
+        <p>When Bluetooth device <strong>find</strong> results are inconsistent, guessing at app logic is expensive. Android's official stack-debug guidance points to a better sequence: gather <code>dumpsys</code> state, collect a bugreport, extract Bluetooth traces with <code>btsnooz.py</code>, and then classify where failure occurs. This guide converts that into a practical workflow.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Use evidence before edits. Collect <code>adb shell dumpsys bluetooth_manager</code>, bugreport output, and HCI-level traces. Diagnose discovery, pairing, or reconnect failures from logs first, then patch.</p>
+      </div>
+
+      <h2>Fast answer block for search intent</h2>
+      <p>The quickest reliable Bluetooth debugging path on Android is: status snapshot, reproducible test run, bugreport capture, snoop extraction, and timeline review. This method works for "Bluetooth discovery not finding devices" and "pairing fails randomly" because it separates stack behavior from app assumptions.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Capture adapter and service state.</strong> Run <code>adb shell dumpsys bluetooth_manager</code> before and after reproduction.</li>
+          <li><strong>Run one controlled reproduction.</strong> Keep distance, accessory firmware, and phone model constant for the first run.</li>
+          <li><strong>Generate bugreport immediately.</strong> Avoid long delay between failure and capture so timing remains useful.</li>
+          <li><strong>Extract Bluetooth snoop timeline.</strong> Use <code>btsnooz.py BUG_REPORT.txt &gt; BTSNOOP.log</code> and inspect in Wireshark-capable tooling.</li>
+          <li><strong>Classify failure stage.</strong> Tag each run as discovery, pairing, encryption/bonding, reconnect, or background-resume failure.</li>
+          <li><strong>Compare with permissions and policy.</strong> Confirm scan permissions and background constraints match the observed stage.</li>
+          <li><strong>Clean test device state.</strong> Remove stale debug builds and outdated paired entries to keep repeated tests deterministic.</li>
+          <li><strong>Patch one variable at a time.</strong> Re-run with identical logging sequence so diffs are meaningful.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>What evidence usually ends debates fastest?</h2>
+        <ul>
+          <li><strong>Service state snapshot:</strong> proves adapter/service conditions during failure windows.</li>
+          <li><strong>Snoop timeline:</strong> reveals whether packets were exchanged and where sequence breaks.</li>
+          <li><strong>Single-change rerun:</strong> confirms if the fix altered stack behavior or only symptoms.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Packet-level reading cheat sheet for faster triage</h2>
+        <p>When reviewing <code>BTSNOOP.log</code>, keep a compact decode map next to the timeline. This avoids broad assumptions and speeds up handoff notes for firmware and app teams.</p>
+        <ul>
+          <li><strong>Discovery signal:</strong> look for LE advertising events such as <code>ADV_IND</code>, <code>ADV_EXT_IND</code>, and matching scan-response activity.</li>
+          <li><strong>Connection handoff:</strong> verify <code>LE Create Connection</code> completion and monitor subsequent supervision timeout behavior.</li>
+          <li><strong>Security stage:</strong> track pairing feature exchange, key distribution, and encryption start sequence boundaries.</li>
+          <li><strong>GATT health:</strong> inspect MTU exchange, service discovery bursts, and repeated ATT error responses.</li>
+          <li><strong>Recovery pattern:</strong> watch for rapid disconnect-reconnect loops that indicate policy, power, or interval mismatch.</li>
+        </ul>
+        <p>Tag each trace with handset model, build fingerprint, peripheral firmware, and RF context. That metadata is often the difference between a fix and another inconclusive repro.</p>
+      </div>
+
+      <div class="panel">
+        <h2>Bluetooth trace glossary for engineering handoff quality</h2>
+        <p>Use exact protocol terms in tickets so firmware, mobile, and QA teams can align quickly. Ambiguous wording increases back-and-forth and slows root-cause isolation.</p>
+        <ul>
+          <li><strong>LE Meta Event:</strong> umbrella event carrying subevents like connection complete, advertising report, and PHY update.</li>
+          <li><strong>ADV_IND / ADV_EXT_IND:</strong> advertising packet forms that change visibility behavior across scanner implementations.</li>
+          <li><strong>SCAN_REQ / SCAN_RSP:</strong> active scan exchange proving scanner-peripheral interaction beyond passive listening.</li>
+          <li><strong>CONNECT_IND:</strong> link-initiation intent; useful when \"device seen but never connected\" reports appear.</li>
+          <li><strong>LL_FEATURE_REQ / LL_FEATURE_RSP:</strong> confirms negotiated controller capabilities early in link setup.</li>
+          <li><strong>LL_LENGTH_REQ / LL_LENGTH_RSP:</strong> data-length extension negotiation often tied to throughput regressions.</li>
+          <li><strong>LL_PHY_REQ / LL_PHY_RSP:</strong> PHY negotiation sequence that can expose range or stability asymmetry.</li>
+          <li><strong>SMP Pairing Request / Response:</strong> security-manager phase where IO capability and auth method diverge.</li>
+          <li><strong>LTK distribution:</strong> long-term key exchange details relevant to post-bond reconnect failures.</li>
+          <li><strong>ATT Error Response:</strong> attribute protocol error framing that points to service/permission mismatches.</li>
+          <li><strong>GATT MTU Exchange:</strong> payload sizing step that can mask app-layer timeout assumptions.</li>
+          <li><strong>Supervision Timeout:</strong> disconnect trigger indicating missed link-layer keepalive expectations.</li>
+          <li><strong>Connection Parameter Update:</strong> interval/latency negotiation that affects power and responsiveness.</li>
+          <li><strong>RSSI trendline:</strong> signal-strength progression for movement, attenuation, and enclosure diagnostics.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Command notebook template for reproducible runs</h2>
+        <p>Store the exact command sequence with every incident. A minimal notebook makes repeated triage auditable and comparable across teams.</p>
+        <ul>
+          <li><code>adb shell dumpsys bluetooth_manager</code></li>
+          <li><code>adb shell dumpsys activity services bluetooth_manager</code></li>
+          <li><code>adb bugreport ./bugreports/session-01.zip</code></li>
+          <li><code>python btsnooz.py BUG_REPORT.txt &gt; BTSNOOP.log</code></li>
+          <li><code>adb logcat -b all -v threadtime</code></li>
+          <li><code>adb shell settings get global bluetooth_on</code></li>
+          <li><code>adb shell getprop ro.build.fingerprint</code></li>
+          <li><code>adb shell dumpsys package your.app.id</code></li>
+          <li><code>adb shell cmd bluetooth_manager enable</code></li>
+          <li><code>adb shell cmd bluetooth_manager disable</code></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>What is btsnooz used for in Bluetooth debugging?</strong><br>
+        It extracts Bluetooth snoop logs from bugreport text so packet timelines can be analyzed.</p>
+
+        <p><strong>Can this workflow help with discovery problems, not just pairing?</strong><br>
+        Yes. Stage tagging covers discovery, pairing, and reconnect paths with one consistent evidence model.</p>
+
+        <p><strong>Why mention cleanup in a debugging guide?</strong><br>
+        Cleaning old pairings and stale debug apps reduces noise and improves test reproducibility.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://source.android.com/docs/core/connect/bluetooth/verifying_debugging" target="_blank" rel="noopener noreferrer">Android Open Source Project: Verify and debug (updated 2025-12-02)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2026-02-26)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/bt-permissions" target="_blank" rel="noopener noreferrer">Android Developers: Bluetooth permissions</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
