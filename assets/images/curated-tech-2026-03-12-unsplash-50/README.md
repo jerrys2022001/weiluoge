@@ -56,3 +56,23 @@ This batch contains 50 technology photos downloaded from Unsplash public search 
 | tech-unsplash-48.jpg | Unsplash | technology | Donald Giannatti | https://unsplash.com/photos/gray-satellite-disc-on-field-Wj1D-qiOseE |
 | tech-unsplash-49.jpg | Unsplash | technology | Maximalfocus | https://unsplash.com/photos/black-and-red-light-illustration-HakTxidk36I |
 | tech-unsplash-50.jpg | Unsplash | technology | Alex Kotliarskyi | https://unsplash.com/photos/people-doing-office-works-QBpZGqEMsKg |
+| tech-unsplash-51.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/person-holding-phone-near-laptop-and-tablet-on-desk-7R3PqLcVnzQ |
+| tech-unsplash-52.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/a-woman-does-a-yoga-pose-on-a-mat-TFoO1yRRByA |
+| tech-unsplash-53.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/two-people-having-a-picnic-on-the-grass-SQVABUT4DoM |
+| tech-unsplash-54.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/woman-knitting-on-couch-with-dog-sleeping-nearby-hkKRe01teO4 |
+| tech-unsplash-55.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/person-using-a-smartphone-over-a-notebook-qUJ8fgoaLTg |
+| tech-unsplash-56.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/person-cooking-eggs-on-a-stovetop-following-a-recipe-PAG-wzE6R7s |
+| tech-unsplash-57.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/woman-meditating-on-yoga-mat-with-phone-and-drink-G94PWBjH-Yo |
+| tech-unsplash-58.jpg | Unsplash | technology | Visax | https://unsplash.com/photos/a-black-and-white-photo-of-a-circular-object-RMukvw_Gc0k |
+| tech-unsplash-59.jpg | Unsplash | technology | Anton Maksimov 5642.su | https://unsplash.com/photos/purple-and-white-light-digital-wallpaper-wrkNQmhmdvY |
+| tech-unsplash-60.jpg | Unsplash | technology | Paul Calescu | https://unsplash.com/photos/macbook-pro-on-white-table-KW3m50XRhjk |
+| tech-unsplash-61.jpg | Unsplash | technology | Andras Vas | https://unsplash.com/photos/macbook-pro-turned-on-Bd7gNnWJBkU |
+| tech-unsplash-62.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/man-working-at-desk-with-laptop-and-phone-pqMPnPo4_ZA |
+| tech-unsplash-63.jpg | Unsplash | technology | Mitchell Luo | https://unsplash.com/photos/black-and-white-striped-textile-FWoq_ldWlNQ |
+| tech-unsplash-64.jpg | Unsplash | technology | Nejc Soklič | https://unsplash.com/photos/blue-and-white-light-fixture-wO42Rmamef8 |
+| tech-unsplash-65.jpg | Unsplash | technology | Compare Fibre | https://unsplash.com/photos/blue-and-white-light-in-dark-room-INNsF0Zz_kQ |
+| tech-unsplash-66.jpg | Unsplash | technology | Markus Spiske | https://unsplash.com/photos/colorful-software-or-web-code-on-a-computer-monitor-Skf7HxARcoc |
+| tech-unsplash-67.jpg | Unsplash | technology | Microsoft Copilot | https://unsplash.com/photos/two-women-talking-in-a-kitchen-while-cooking-3c_k7h8YgHw |
+| tech-unsplash-68.jpg | Unsplash | technology | Alexander Shatov | https://unsplash.com/photos/blue-red-and-green-letters-illustration-mr4JG4SYOF8 |
+| tech-unsplash-69.jpg | Unsplash | technology | Tianyi Ma | https://unsplash.com/photos/macbook-pro-on-white-surface-WiONHd_zYI4 |
+| tech-unsplash-70.jpg | Unsplash | technology | Emile Perron | https://unsplash.com/photos/macbook-pro-showing-programming-language-xrVDYZRGdw4 |
