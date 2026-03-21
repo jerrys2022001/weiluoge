@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://velocai.net/</loc>
-    <lastmod>2026-03-20</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,120 +14,18 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/</loc>
-    <lastmod>2026-03-21</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-make-your-own-external-hard-disk-storage-for-your-mac-2026-03-21.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-10-audio-improvements-in-apple-s-new-airpods-max-2-2026-03-18.html</loc>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-on-how-wiliot-demonstrates-the-value-of-bluetooth-r-technol-2026-03-21.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-21.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-the-story-of-auracast-tm-broadcast-audio-2026-03-21.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-deals-airpods-pro-3-50-off-m4-macbook-air-300-off-macbook-neo-50-credit-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-make-your-own-external-hard-disk-storage-for-your-mac-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-on-how-wiliot-demonstrates-the-value-of-bluetooth-r-technol-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-how-bluetooth-r-technology-is-transforming-industrial-spaces-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-the-story-of-auracast-tm-broadcast-audio-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-le-audio-validator-debugging-playbook-2026-03-20.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-airpods-pro-3-available-for-199-99-low-price-on-amazon-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-make-your-own-external-hard-disk-storage-for-your-mac-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-hci-snoop-log-btsnooz-debugging-guide-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-on-how-wiliot-demonstrates-the-value-of-bluetooth-r-technol-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-how-bluetooth-r-technology-is-transforming-industrial-spaces-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-the-story-of-auracast-tm-broadcast-audio-2026-03-19.html</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-18.html</loc>
+    <loc>https://velocai.net/blog/ai-technology-outlook-nvidia-launches-bluefield-4-stx-storage-architecture-for-agentic-ai-at-g-2026-03-18.html</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -139,13 +37,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-on-how-wiliot-demonstrates-the-value-of-bluetooth-r-technol-2026-03-18.html</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-18.html</loc>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-9to5mac-daily-march-17-2026-macbook-neo-teardown-more-on-airpods-max-2-2026-03-18.html</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -157,25 +49,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-18.html</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/blog/bluetooth-industry-update-the-story-of-auracast-tm-broadcast-audio-2026-03-18.html</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-10-audio-improvements-in-apple-s-new-airpods-max-2-2026-03-17.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-on-how-wiliot-demonstrates-the-value-of-bluetooth-r-technol-2026-03-18.html</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-18.html</loc>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/apple-feature-performance-commentary-airpods-max-2-reveal-ios-26-4-launch-date-2026-03-17.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-expect-to-pay-16-inch-macbook-pro-money-for-an-iphone-fold-with-1tb-stor-2026-03-17.html</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -187,13 +85,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-android-find-checklist-2026-03-17.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-that-proves-the-value-of-bluetooth-r-technology-in-industri-2026-03-17.html</loc>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-10-audio-improvements-in-apple-s-new-airpods-max-2-2026-03-17.html</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -205,7 +97,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-16.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-a-case-study-that-proves-the-value-of-bluetooth-r-technology-in-industri-2026-03-17.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-expect-to-pay-16-inch-macbook-pro-money-for-an-iphone-fold-with-1tb-stor-2026-03-17.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-16.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -217,25 +121,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-16.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/blog/bluetooth-industry-update-auracast-tm-broadcast-audio-takes-off-at-frankfurt-airport-2026-03-16.html</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-bluetooth-r-technology-for-industrial-monitoring-tracking-and-predictive-2026-03-16.html</loc>
-    <lastmod>2026-03-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/ai-technology-outlook-how-evals-drive-the-next-chapter-in-ai-for-businesses-2026-03-15.html</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-perplexity-s-personal-computer-lets-ai-agents-access-your-mac-mini-s-fil-2026-03-15.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-innovative-bluetooth-socs-create-new-indoor-navigation-possibilities-2026-03-15.html</loc>
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -247,7 +145,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-android-nearby-devices-2026-03-15.html</loc>
+    <loc>https://velocai.net/blog/ai-technology-outlook-how-evals-drive-the-next-chapter-in-ai-for-businesses-2026-03-15.html</loc>
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -265,19 +163,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-industry-update-innovative-bluetooth-socs-create-new-indoor-navigation-possibilities-2026-03-15.html</loc>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-perplexity-s-personal-computer-lets-ai-agents-access-your-mac-mini-s-fil-2026-03-15.html</loc>
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/ai-technology-outlook-how-evals-drive-the-next-chapter-in-ai-for-businesses-2026-03-14.html</loc>
-    <lastmod>2026-03-14</lastmod>
+    <loc>https://velocai.net/blog/bluetooth-pairing-bonding-security-applications-2026-03-07.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-14.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-gatt-services-characteristics-guide-2026-03-11.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-ugreen-nasync-dh2300-review-easily-ditch-google-drive-and-icloud-storage-2026-03-14.html</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -289,13 +193,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/apple-feature-performance-commentary-ugreen-nasync-dh2300-review-easily-ditch-google-drive-and-icloud-storage-2026-03-14.html</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-channel-sounding-specs-applications-2026-03-14.html</loc>
+    <loc>https://velocai.net/blog/ai-technology-outlook-how-evals-drive-the-next-chapter-in-ai-for-businesses-2026-03-14.html</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -313,6 +211,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://velocai.net/blog/apple-feature-performance-commentary-how-to-back-up-your-mac-under-macos-tahoe-2026-03-14.html</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-channel-sounding-specs-applications-2026-03-14.html</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/blog/ai-technology-outlook-minisforum-s-new-flagship-nas-comes-with-openclaw-pre-installed-strix-ha-2026-03-13.html</loc>
     <lastmod>2026-03-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -325,13 +235,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-advertising-discovery-functional-guide-2026-03-12.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-gatt-services-characteristics-guide-2026-03-12.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-throughput-latency-power-tradeoffs-2026-03-12.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -343,25 +247,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-pairing-bonding-security-applications-2026-03-12.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-throughput-latency-power-tradeoffs-2026-03-12.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/clear-system-storage-iphone-guide-2026-03-12.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/daily-phone-cleanup-routine-duplicate-photos-videos-screenshots-whatsapp-system-storage-2026-03-12.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-advertising-discovery-functional-guide-2026-03-12.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -379,8 +265,26 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-gatt-services-characteristics-guide-2026-03-11.html</loc>
-    <lastmod>2026-03-11</lastmod>
+    <loc>https://velocai.net/blog/daily-phone-cleanup-routine-duplicate-photos-videos-screenshots-whatsapp-system-storage-2026-03-12.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-pairing-bonding-security-applications-2026-03-12.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-gatt-services-characteristics-guide-2026-03-12.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/clear-system-storage-iphone-guide-2026-03-12.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -397,19 +301,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/android-companion-device-pairing-debugging-2026-03-10.html</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-core-6-2-latest-protocol-applications-2026-03-10.html</loc>
     <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-earbuds-guide-2026-03-09.html</loc>
+    <loc>https://velocai.net/blog/find-large-videos-storage-cleanup-playbook-2026-03-09.html</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -421,19 +319,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/find-large-videos-storage-cleanup-playbook-2026-03-09.html</loc>
-    <lastmod>2026-03-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-advertising-discovery-functional-guide-2026-03-08.html</loc>
+    <loc>https://velocai.net/blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-08.html</loc>
     <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/delete-duplicate-photos-daily-cleanup-guide-2026-03-08.html</loc>
+    <loc>https://velocai.net/blog/bluetooth-advertising-discovery-functional-guide-2026-03-08.html</loc>
     <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -445,25 +337,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-pairing-bonding-security-applications-2026-03-07.html</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/apple-bluetooth-products-list-supported-versions-2026-03-06.html</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-connection-fixes-phone-storage-cleanup-2026-03-06.html</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-scan-no-results-debugging-2026-03-06.html</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -475,8 +349,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/android-bluetooth-device-discovery-debugging-2026-03-05.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://velocai.net/blog/apple-bluetooth-products-list-supported-versions-2026-03-06.html</loc>
+    <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -487,19 +361,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/bluetooth-core-6-2-whats-new-2026-03-04.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/blog/bluetooth-explorer-ble-debugging-guide-2026-03-04.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -571,13 +433,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/guid/cn/guid.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/guid/en/guid.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/guid/en/guid.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/guid/cn/guid.html</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -595,6 +457,12 @@
     <priority>0.72</priority>
   </url>
   <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/attribute-gatt-include-declaration.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -608,6 +476,18 @@
   </url>
   <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/attribute-gatt-secondary-service-declaration.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -643,13 +523,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-alert-category-id.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-alert-category-id.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-alert-category-id-bit-mask.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1057,13 +937,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-glucose-measurement.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-glucose-measurement.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-glucose-measurement-context.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1267,12 +1147,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-magnetic-flux-density-3d.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-manufacturer-name-string.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1447,13 +1321,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-report-map.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-report.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-report.html</loc>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-report-map.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1609,6 +1483,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-temperature.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-temperature-measurement.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1616,12 +1496,6 @@
   </url>
   <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-temperature-type.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-temperature.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1753,6 +1627,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-weight.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-weight-measurement.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1760,12 +1640,6 @@
   </url>
   <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-weight-scale-feature.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/characteristic-weight.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1862,18 +1736,6 @@
   </url>
   <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/descriptor-value-trigger-setting.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/gatt-characteristic-declaration.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/bluetoothexplorer/document/en/magnetic-flux-density-2d.html</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -2091,30 +1953,6 @@
   <url>
     <loc>https://velocai.net/bluetoothexplorer/document/en/service-weight-scale.html</loc>
     <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/googlec013bfb5fe336f73.html</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/superlist_home.html</loc>
-    <lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/translate/privacy-policy-c.html</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/translate/privacy-policy.html</loc>
-    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
