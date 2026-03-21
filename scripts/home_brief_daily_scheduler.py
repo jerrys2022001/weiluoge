@@ -25,6 +25,7 @@ SITE_URL = "https://velocai.net"
 HOME_INDEX_REL = Path("index.html")
 SITEMAP_REL = Path("sitemap.xml")
 BRIEF_IMAGES_REL = Path("assets/images/home-briefing")
+DEFAULT_LOG_DIR_REL = Path("output/home-brief-logs")
 SECTION_START = "<!-- va-today-brief:start -->"
 SECTION_END = "<!-- va-today-brief:end -->"
 ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
@@ -1031,6 +1032,42 @@ def cleanup_old_brief_images(repo_root: Path, target_day: date, keep_days: int =
     return changed
 
 
+def resolve_log_dir(repo_root: Path, log_dir: Path | None) -> Path | None:
+    if log_dir is None:
+        return repo_root / DEFAULT_LOG_DIR_REL
+    return log_dir if log_dir.is_absolute() else repo_root / log_dir
+
+
+def write_log(log_dir: Path | None, message: str) -> None:
+    if log_dir is None:
+        return
+    log_dir.mkdir(parents=True, exist_ok=True)
+    now = datetime.now().astimezone()
+    log_path = log_dir / f"{now.date().isoformat()}.log"
+    timestamp = now.strftime("%Y-%m-%d %H:%M:%S %z")
+    with log_path.open("a", encoding="utf-8") as handle:
+        handle.write(f"[{timestamp}] {message}\n")
+
+
+def extract_home_brief_date(index_path: Path) -> date | None:
+    html = index_path.read_text(encoding="utf-8")
+    match = re.search(
+        r'va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">\|</span> ([A-Za-z]+ \d{1,2}, \d{4}) at',
+        html,
+    )
+    if not match:
+        return None
+    try:
+        return datetime.strptime(match.group(1), "%B %d, %Y").date()
+    except ValueError:
+        return None
+
+
+def count_home_brief_items(index_path: Path) -> int:
+    html = index_path.read_text(encoding="utf-8")
+    return len(re.findall(r'<article class="va-brief-item ', html))
+
+
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool, extra_paths: list[str] | None = None) -> str:
     git_command = resolve_git_command()
     tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), BRIEF_IMAGES_REL.as_posix(), *(extra_paths or [])]
@@ -1151,13 +1188,35 @@ def run(args: argparse.Namespace) -> int:
     repo_root = args.repo_root.resolve()
     index_path = repo_root / HOME_INDEX_REL
     sitemap_path = repo_root / SITEMAP_REL
+    log_dir = resolve_log_dir(repo_root, args.log_dir)
 
     if not index_path.exists():
         print(f"Missing homepage file: {index_path}", file=sys.stderr)
+        write_log(log_dir, f"error missing_homepage path={index_path}")
         return 1
     if not sitemap_path.exists():
         print(f"Missing sitemap file: {sitemap_path}", file=sys.stderr)
+        write_log(log_dir, f"error missing_sitemap path={sitemap_path}")
         return 1
+
+    target_day = datetime.now().astimezone().date()
+    if args.mode == "check":
+        homepage_day = extract_home_brief_date(index_path)
+        homepage_items = count_home_brief_items(index_path)
+        if homepage_day == target_day and homepage_items >= MIN_BRIEF_ITEMS:
+            message = (
+                "check_ok "
+                f"date={homepage_day.isoformat()} items={homepage_items}"
+            )
+            print(message)
+            write_log(log_dir, message)
+            return 0
+        write_log(
+            log_dir,
+            "check_repair_needed "
+            f"date={(homepage_day.isoformat() if homepage_day else 'missing')} "
+            f"items={homepage_items}",
+        )
 
     entries, refreshed_at = build_briefing()
     rendered_entries: list[RenderEntry] = []
@@ -1179,12 +1238,14 @@ def run(args: argparse.Namespace) -> int:
     section_html = build_section_html(rendered_entries, refreshed_at)
 
     if args.dry_run:
-        print(
+        message = (
             "dry_run "
             f"index={index_path} "
             f"sitemap={sitemap_path} "
             f"items={len(entries)}"
         )
+        print(message)
+        write_log(log_dir, message)
         return 0
 
     index_changed = update_homepage(index_path, section_html)
@@ -1200,21 +1261,24 @@ def run(args: argparse.Namespace) -> int:
             extra_paths=asset_paths,
         )
 
-    print(
+    message = (
         "done "
         f"index={'updated' if index_changed else 'unchanged'} "
         f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
         f"git={git_state} "
         f"items={len(entries)}"
     )
+    print(message)
+    write_log(log_dir, message)
     return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Refresh the homepage briefing section with live news.")
-    parser.add_argument("run", nargs="?", default="run", help="Subcommand placeholder for compatibility.")
+    parser.add_argument("mode", nargs="?", default="run", choices=("run", "check"), help="Execution mode.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
+    parser.add_argument("--log-dir", type=Path, help="Optional log directory for task runs.")
     return add_git_publish_args(parser)
 
 
