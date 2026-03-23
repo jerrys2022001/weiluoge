@@ -13,6 +13,7 @@ import tempfile
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import Counter
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
@@ -403,6 +404,7 @@ FALLBACK_IMAGES = (
 )
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
+MIN_SAME_DAY_ITEMS = 8
 SLUG_MAX_COUNTS = {
     "apple": 5,
 }
@@ -761,6 +763,60 @@ def choose_balanced_entries(candidates: list[CandidateEntry]) -> list[tuple[Brie
             take(candidate)
 
     return selected[:MIN_BRIEF_ITEMS]
+
+
+def enforce_min_same_day_entries(
+    selected_entries: list[tuple[BriefSource, FeedItem]],
+    candidates: list[CandidateEntry],
+    target_day: date,
+) -> list[tuple[BriefSource, FeedItem]]:
+    same_day_count = sum(1 for _, item in selected_entries if is_same_local_day(item.published_at, target_day))
+    if same_day_count >= MIN_SAME_DAY_ITEMS:
+        return selected_entries
+
+    selected_links = {item.link for _, item in selected_entries}
+    slug_counts = Counter(source.slug for source, _ in selected_entries)
+
+    ranked_same_day_candidates = sorted(
+        [candidate for candidate in candidates if is_same_local_day(candidate.item.published_at, target_day)],
+        key=candidate_sort_key,
+    )
+
+    def replacement_index() -> int | None:
+        best_index: int | None = None
+        best_key: tuple[int, float] | None = None
+        for idx, (source, item) in enumerate(selected_entries):
+            if is_same_local_day(item.published_at, target_day):
+                continue
+            minimum = SLUG_MIN_COUNTS.get(source.slug, 0)
+            replace_score = 1 if slug_counts.get(source.slug, 0) > minimum else 0
+            published_ts = item.published_at.timestamp() if item.published_at else 0.0
+            key = (replace_score, -published_ts)
+            if best_key is None or key > best_key:
+                best_key = key
+                best_index = idx
+        return best_index
+
+    for candidate in ranked_same_day_candidates:
+        if same_day_count >= MIN_SAME_DAY_ITEMS:
+            break
+        if candidate.item.link in selected_links:
+            continue
+
+        idx = replacement_index()
+        if idx is None:
+            break
+
+        old_source, old_item = selected_entries[idx]
+        slug_counts[old_source.slug] = max(0, slug_counts.get(old_source.slug, 0) - 1)
+        selected_links.discard(old_item.link)
+
+        selected_entries[idx] = (candidate.source, candidate.item)
+        slug_counts[candidate.source.slug] = slug_counts.get(candidate.source.slug, 0) + 1
+        selected_links.add(candidate.item.link)
+        same_day_count += 1
+
+    return selected_entries
 
 
 def normalize_image_url(value: str) -> str:
@@ -1123,6 +1179,12 @@ def count_home_brief_items(index_path: Path) -> int:
     return len(re.findall(r'<article class="va-brief-item ', html))
 
 
+def count_same_day_home_brief_items(index_path: Path, target_day: date) -> int:
+    html = index_path.read_text(encoding="utf-8")
+    stamp = target_day.strftime("%b %d").upper()
+    return len(re.findall(rf'<span aria-hidden="true">\|</span> {re.escape(stamp)}</p>', html))
+
+
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool, extra_paths: list[str] | None = None) -> str:
     git_command = resolve_git_command()
     tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), BRIEF_IMAGES_REL.as_posix(), *(extra_paths or [])]
@@ -1227,6 +1289,7 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
             candidate_pool.append(CandidateEntry(phase=2, source=source, item=item))
 
     selected_entries = choose_balanced_entries(candidate_pool)
+    selected_entries = enforce_min_same_day_entries(selected_entries, candidate_pool, target_day)
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
         reverse=True,
@@ -1258,10 +1321,15 @@ def run(args: argparse.Namespace) -> int:
     if args.mode == "check":
         homepage_day = extract_home_brief_date(index_path)
         homepage_items = count_home_brief_items(index_path)
-        if homepage_day == target_day and homepage_items >= MIN_BRIEF_ITEMS:
+        homepage_same_day_items = count_same_day_home_brief_items(index_path, target_day)
+        if (
+            homepage_day == target_day
+            and homepage_items >= MIN_BRIEF_ITEMS
+            and homepage_same_day_items >= MIN_SAME_DAY_ITEMS
+        ):
             message = (
                 "check_ok "
-                f"date={homepage_day.isoformat()} items={homepage_items}"
+                f"date={homepage_day.isoformat()} items={homepage_items} same_day_items={homepage_same_day_items}"
             )
             print(message)
             write_log(log_dir, message)
@@ -1270,10 +1338,12 @@ def run(args: argparse.Namespace) -> int:
             log_dir,
             "check_repair_needed "
             f"date={(homepage_day.isoformat() if homepage_day else 'missing')} "
-            f"items={homepage_items}",
+            f"items={homepage_items} "
+            f"same_day_items={homepage_same_day_items}",
         )
 
     entries, refreshed_at = build_briefing()
+    same_day_item_count = sum(1 for entry in entries if is_same_local_day(entry.item.published_at, refreshed_at.date()))
     rendered_entries: list[RenderEntry] = []
     asset_paths: list[str] = []
 
@@ -1297,7 +1367,8 @@ def run(args: argparse.Namespace) -> int:
             "dry_run "
             f"index={index_path} "
             f"sitemap={sitemap_path} "
-            f"items={len(entries)}"
+            f"items={len(entries)} "
+            f"same_day_items={same_day_item_count}"
         )
         print(message)
         write_log(log_dir, message)
@@ -1321,7 +1392,8 @@ def run(args: argparse.Namespace) -> int:
         f"index={'updated' if index_changed else 'unchanged'} "
         f"sitemap={'updated' if sitemap_changed else 'unchanged'} "
         f"git={git_state} "
-        f"items={len(entries)}"
+        f"items={len(entries)} "
+        f"same_day_items={same_day_item_count}"
     )
     print(message)
     write_log(log_dir, message)
