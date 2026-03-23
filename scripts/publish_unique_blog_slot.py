@@ -42,6 +42,7 @@ LIVE_REWRITE_SOFT_THRESHOLD = {
     "protocol": 0.70,
     "updates": 0.70,
 }
+MAX_FORCED_SIMILARITY = 0.98
 MIN_DAILY_BLUETOOTH_POSTS = 3
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
@@ -251,27 +252,29 @@ def choose_candidate(
 
     if preferred_live_ranked:
         similarity, candidate = preferred_live_ranked[0]
-        return Candidate(
-            lane=candidate.lane,
-            origin="live-forced",
-            identifier=candidate.identifier,
-            post=candidate.post,
-            html=candidate.html,
-        ), similarity
+        if similarity < MAX_FORCED_SIMILARITY:
+            return Candidate(
+                lane=candidate.lane,
+                origin="live-forced",
+                identifier=candidate.identifier,
+                post=candidate.post,
+                html=candidate.html,
+            ), similarity
 
     if fallback_live_ranked:
         similarity, candidate = fallback_live_ranked[0]
-        return Candidate(
-            lane=candidate.lane,
-            origin="live-forced",
-            identifier=candidate.identifier,
-            post=candidate.post,
-            html=candidate.html,
-        ), similarity
+        if similarity < MAX_FORCED_SIMILARITY:
+            return Candidate(
+                lane=candidate.lane,
+                origin="live-forced",
+                identifier=candidate.identifier,
+                post=candidate.post,
+                html=candidate.html,
+            ), similarity
 
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
-        f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f}"
+        f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f} max_forced_similarity={MAX_FORCED_SIMILARITY:.2f}"
     )
 
 
