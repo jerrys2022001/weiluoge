@@ -46,6 +46,7 @@ MAX_FORCED_SIMILARITY = 0.98
 MIN_DAILY_BLUETOOTH_POSTS = 3
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
+SOURCE_TITLE_OVERLAP_THRESHOLD = 0.75
 
 
 @dataclass(frozen=True)
@@ -182,6 +183,48 @@ def collect_existing_external_links(blog_dir: Path) -> set[str]:
     return links
 
 
+def normalize_source_title(value: str) -> set[str]:
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", value.lower())
+        if len(token) > 2
+    }
+
+
+def collect_existing_source_titles(blog_dir: Path) -> list[set[str]]:
+    titles: list[set[str]] = []
+    for path in blog_dir.glob("*.html"):
+        if path.name == "index.html":
+            continue
+        text = path.read_text(encoding="utf-8")
+        match = re.search(r'<section class="sources".*?<li><a [^>]*>[^:]+: (.*?)</a></li>', text, re.IGNORECASE | re.DOTALL)
+        if not match:
+            continue
+        normalized = normalize_source_title(match.group(1))
+        if normalized:
+            titles.append(normalized)
+    return titles
+
+
+def source_title_overlap(candidate_title: str, existing_titles: list[set[str]]) -> float:
+    candidate_tokens = normalize_source_title(candidate_title)
+    if not candidate_tokens:
+        return 0.0
+    best = 0.0
+    for existing in existing_titles:
+        union = candidate_tokens | existing
+        if not union:
+            continue
+        overlap = len(candidate_tokens & existing) / len(union)
+        best = max(best, overlap)
+    return best
+
+
+def extract_candidate_source_title(html: str) -> str:
+    match = re.search(r'<section class="sources".*?<li><a [^>]*>[^:]+: (.*?)</a></li>', html, re.IGNORECASE | re.DOTALL)
+    return match.group(1) if match else ""
+
+
 def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
@@ -189,12 +232,16 @@ def evaluate_candidates(
     force: bool,
 ) -> list[tuple[float, Candidate]]:
     existing_links = collect_existing_external_links(blog_dir)
+    existing_titles = collect_existing_source_titles(blog_dir)
     evaluated: list[tuple[float, Candidate]] = []
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
             continue
         if candidate.source_link and candidate.source_link in existing_links and not force:
+            continue
+        title_overlap = source_title_overlap(extract_candidate_source_title(candidate.html), existing_titles)
+        if title_overlap >= SOURCE_TITLE_OVERLAP_THRESHOLD and not force:
             continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
         evaluated.append((similarity, candidate))
