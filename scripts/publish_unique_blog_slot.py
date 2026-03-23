@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass
@@ -53,6 +54,7 @@ class Candidate:
     identifier: str
     post: object
     html: str
+    source_link: str = ""
 
 
 class PublishLock:
@@ -145,7 +147,7 @@ def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> 
         rotate = slot_offset % len(live_candidates)
         live_candidates = live_candidates[rotate:] + live_candidates[:rotate]
     for index, live in enumerate(live_candidates):
-        items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
+        items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html, source_link=live.link))
     return items
 
 
@@ -168,16 +170,30 @@ def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
     return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
 
 
+def collect_existing_external_links(blog_dir: Path) -> set[str]:
+    links: set[str] = set()
+    for path in blog_dir.glob("*.html"):
+        if path.name == "index.html":
+            continue
+        text = path.read_text(encoding="utf-8")
+        for link in re.findall(r'href="(https://[^"]+)"', text):
+            links.add(link)
+    return links
+
+
 def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
     blog_dir: Path,
     force: bool,
 ) -> list[tuple[float, Candidate]]:
+    existing_links = collect_existing_external_links(blog_dir)
     evaluated: list[tuple[float, Candidate]] = []
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
+            continue
+        if candidate.source_link and candidate.source_link in existing_links and not force:
             continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
         evaluated.append((similarity, candidate))
