@@ -390,6 +390,39 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
     ),
 )
 
+EXTRA_SAME_DAY_SOURCES: tuple[BriefSource, ...] = (
+    BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
+        source_name="Ars Technica Apple",
+        source_url="https://arstechnica.com/apple/",
+        feed_url="https://feeds.arstechnica.com/arstechnica/apple",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "airpods", "ios", "vision", "apple tv"),
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        item_count=2,
+    ),
+    BriefSource(
+        slug="apple",
+        eyebrow="Apple Releases",
+        source_name="Apple World Today",
+        source_url="https://appleworld.today/",
+        feed_url="https://appleworld.today/feed/",
+        keywords=("apple", "iphone", "ipad", "mac", "macbook", "airpods", "ios", "watch", "vision"),
+        fallback_image="/assets/images/stock-2026-03/stock-08.jpg",
+        item_count=2,
+    ),
+    BriefSource(
+        slug="industry",
+        eyebrow="Industry Product Watch",
+        source_name="Samsung Global Newsroom",
+        source_url="https://news.samsung.com/global",
+        feed_url="https://news.samsung.com/global/feed",
+        keywords=("samsung", "galaxy", "display", "chip", "ai", "device", "buds", "tv", "phone", "monitor"),
+        fallback_image="/assets/images/stock-2026-03/stock-10.jpg",
+        item_count=2,
+    ),
+)
+
 MEDIA_NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -763,6 +796,42 @@ def choose_balanced_entries(candidates: list[CandidateEntry]) -> list[tuple[Brie
             take(candidate)
 
     return selected[:MIN_BRIEF_ITEMS]
+
+
+def collect_source_items(sources: tuple[BriefSource, ...]) -> list[tuple[BriefSource, list[FeedItem]]]:
+    collected: list[tuple[BriefSource, list[FeedItem]]] = []
+    for source in sources:
+        try:
+            items = parse_feed_items(fetch_bytes(source.feed_url))
+        except Exception as exc:  # pragma: no cover - network/source variability
+            print(f"skip_source source={source.source_name} error={exc}", file=sys.stderr)
+            continue
+        collected.append((source, items))
+    return collected
+
+
+def extend_candidate_pool(
+    candidate_pool: list[CandidateEntry],
+    source_items_map: list[tuple[BriefSource, list[FeedItem]]],
+    target_day: date,
+) -> None:
+    for source, items in source_items_map:
+        same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
+        for item in select_items(same_day_items, source.keywords, max(source.item_count * 3, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=0, source=source, item=item))
+
+    for source, items in source_items_map:
+        recent_items = [
+            item
+            for item in items
+            if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
+        ]
+        for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=1, source=source, item=item))
+
+    for source, items in source_items_map:
+        for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
+            candidate_pool.append(CandidateEntry(phase=2, source=source, item=item))
 
 
 def enforce_min_same_day_entries(
@@ -1262,34 +1331,21 @@ def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: boo
 def build_briefing() -> tuple[list[BriefEntry], datetime]:
     refreshed_at = datetime.now().astimezone()
     target_day = refreshed_at.date()
-    source_items_map: list[tuple[BriefSource, list[FeedItem]]] = []
+    source_items_map = collect_source_items(BRIEF_SOURCES)
     candidate_pool: list[CandidateEntry] = []
-    for source in BRIEF_SOURCES:
-        try:
-            items = parse_feed_items(fetch_bytes(source.feed_url))
-        except Exception as exc:  # pragma: no cover - network/source variability
-            print(f"skip_source source={source.source_name} error={exc}", file=sys.stderr)
-            continue
-        source_items_map.append((source, items))
-        same_day_items = [item for item in items if is_same_local_day(item.published_at, target_day)]
-        for item in select_items(same_day_items, source.keywords, max(source.item_count * 3, MIN_BRIEF_ITEMS)):
-            candidate_pool.append(CandidateEntry(phase=0, source=source, item=item))
-
-    for source, items in source_items_map:
-        recent_items = [
-            item
-            for item in items
-            if is_within_recent_window(item.published_at, target_day, RECENT_BACKFILL_DAYS)
-        ]
-        for item in select_items(recent_items, source.keywords, max(source.item_count * 4, MIN_BRIEF_ITEMS)):
-            candidate_pool.append(CandidateEntry(phase=1, source=source, item=item))
-
-    for source, items in source_items_map:
-        for item in select_items(items, source.keywords, max(source.item_count * 6, MIN_BRIEF_ITEMS)):
-            candidate_pool.append(CandidateEntry(phase=2, source=source, item=item))
+    extend_candidate_pool(candidate_pool, source_items_map, target_day)
 
     selected_entries = choose_balanced_entries(candidate_pool)
     selected_entries = enforce_min_same_day_entries(selected_entries, candidate_pool, target_day)
+    same_day_selected = sum(1 for _, item in selected_entries if is_same_local_day(item.published_at, target_day))
+
+    if same_day_selected < MIN_SAME_DAY_ITEMS:
+        extra_source_items = collect_source_items(EXTRA_SAME_DAY_SOURCES)
+        source_items_map.extend(extra_source_items)
+        extend_candidate_pool(candidate_pool, extra_source_items, target_day)
+        selected_entries = choose_balanced_entries(candidate_pool)
+        selected_entries = enforce_min_same_day_entries(selected_entries, candidate_pool, target_day)
+
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
         reverse=True,
