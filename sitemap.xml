@@ -19,12 +19,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://velocai.net/blog/android-bluetooth-find-debugging-permissions-checklist-2026-03-24.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://velocai.net/blog/apple-feature-performance-commentary-orico-hs500-metabox-pro-5-nas-review-good-hardware-badly-let-down-by-sof-2026-03-24.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -44,6 +38,12 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-industry-update-how-bluetooth-r-technology-is-being-used-to-optimize-operations-across-i-2026-03-24.html</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-bluetooth-find-accessory-debugging-checklist-2026-03-24.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
