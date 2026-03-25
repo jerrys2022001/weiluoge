@@ -854,6 +854,108 @@
   let loadPromise = null;
   const HIGHLIGHT_QUERY_KEY = "stq";
   const HIGHLIGHT_FOCUS_KEY = "stfocus";
+  const BLOG_TOPIC_TRANSLATIONS = {
+    "fr-FR": {
+      published: "Publié",
+      topic: "Sujet",
+      readArticle: "Lire l’article",
+      topics: {
+        "Apple Product Commentary": "Commentaire produit Apple",
+        "AI Technology Outlook": "Perspectives technologiques IA",
+        "Bluetooth Industry Update": "Actualité de l’industrie Bluetooth",
+      },
+    },
+    "ro-RO": {
+      published: "Publicat",
+      topic: "Subiect",
+      readArticle: "Citește articolul",
+      topics: {
+        "Apple Product Commentary": "Comentariu despre produsele Apple",
+        "AI Technology Outlook": "Perspective tehnologice AI",
+        "Bluetooth Industry Update": "Actualizare din industria Bluetooth",
+      },
+    },
+    "de-DE": {
+      published: "Veröffentlicht",
+      topic: "Thema",
+      readArticle: "Artikel lesen",
+      topics: {
+        "Apple Product Commentary": "Apple-Produktkommentar",
+        "AI Technology Outlook": "Ausblick KI-Technologie",
+        "Bluetooth Industry Update": "Bluetooth-Branchenupdate",
+      },
+    },
+    "es-ES": {
+      published: "Publicado",
+      topic: "Tema",
+      readArticle: "Leer artículo",
+      topics: {
+        "Apple Product Commentary": "Comentario de producto Apple",
+        "AI Technology Outlook": "Panorama tecnológico de IA",
+        "Bluetooth Industry Update": "Actualización de la industria Bluetooth",
+      },
+    },
+    "it-IT": {
+      published: "Pubblicato",
+      topic: "Argomento",
+      readArticle: "Leggi l’articolo",
+      topics: {
+        "Apple Product Commentary": "Commento prodotto Apple",
+        "AI Technology Outlook": "Scenario tecnologico IA",
+        "Bluetooth Industry Update": "Aggiornamento industria Bluetooth",
+      },
+    },
+    "pt-BR": {
+      published: "Publicado",
+      topic: "Tema",
+      readArticle: "Ler artigo",
+      topics: {
+        "Apple Product Commentary": "Comentário de produto Apple",
+        "AI Technology Outlook": "Panorama de tecnologia de IA",
+        "Bluetooth Industry Update": "Atualização da indústria Bluetooth",
+      },
+    },
+    "nl-NL": {
+      published: "Gepubliceerd",
+      topic: "Onderwerp",
+      readArticle: "Artikel lezen",
+      topics: {
+        "Apple Product Commentary": "Apple-productcommentaar",
+        "AI Technology Outlook": "AI-technologievooruitblik",
+        "Bluetooth Industry Update": "Bluetooth-industrie-update",
+      },
+    },
+    "sv-SE": {
+      published: "Publicerad",
+      topic: "Ämne",
+      readArticle: "Läs artikel",
+      topics: {
+        "Apple Product Commentary": "Apple-produktkommentar",
+        "AI Technology Outlook": "AI-tekniköversikt",
+        "Bluetooth Industry Update": "Bluetooth-branschuppdatering",
+      },
+    },
+    "pl-PL": {
+      published: "Opublikowano",
+      topic: "Temat",
+      readArticle: "Czytaj artykuł",
+      topics: {
+        "Apple Product Commentary": "Komentarz o produktach Apple",
+        "AI Technology Outlook": "Przegląd technologii AI",
+        "Bluetooth Industry Update": "Aktualizacja branży Bluetooth",
+      },
+    },
+    "cs-CZ": {
+      published: "Publikováno",
+      topic: "Téma",
+      readArticle: "Číst článek",
+      topics: {
+        "Apple Product Commentary": "Komentář k produktům Apple",
+        "AI Technology Outlook": "Přehled AI technologií",
+        "Bluetooth Industry Update": "Aktualizace Bluetooth průmyslu",
+      },
+    },
+  };
 
   function normalizePath(pathname) {
     if (!pathname) return "/";
@@ -972,6 +1074,128 @@
     }
   }
 
+  function localizeBlogSummary(text, uiLocale) {
+    const trimmed = (text || "").trim();
+    if (!trimmed || uiLocale === DEFAULT_UI_LOCALE) {
+      return trimmed;
+    }
+
+    const templates = {
+      "fr-FR": {
+        apple: "Ce commentaire sur les produits Apple analyse {subject} sous l’angle de {lens}",
+        ai: "Cette perspective technologique IA analyse {subject} sous l’angle de {lens}",
+        bt: "Ce commentaire sur les standards et applications Bluetooth analyse {subject} sous l’angle de {lens}",
+      },
+      "ro-RO": {
+        apple: "Acest comentariu despre produsele Apple analizează {subject} din perspectiva {lens}",
+        ai: "Această perspectivă tehnologică AI analizează {subject} din perspectiva {lens}",
+        bt: "Acest comentariu despre standardele și aplicațiile Bluetooth analizează {subject} din perspectiva {lens}",
+      },
+      "de-DE": {
+        apple: "Dieser Apple-Produktkommentar analysiert {subject} unter dem Blickwinkel von {lens}",
+        ai: "Dieser Ausblick auf KI-Technologie analysiert {subject} unter dem Blickwinkel von {lens}",
+        bt: "Dieser Kommentar zu Bluetooth-Standards und -Anwendungen analysiert {subject} unter dem Blickwinkel von {lens}",
+      },
+      "es-ES": {
+        apple: "Este comentario sobre productos Apple examina {subject} desde la perspectiva de {lens}",
+        ai: "Este panorama de tecnología de IA examina {subject} desde la perspectiva de {lens}",
+        bt: "Este comentario sobre estándares y aplicaciones Bluetooth examina {subject} desde la perspectiva de {lens}",
+      },
+      "it-IT": {
+        apple: "Questo commento sui prodotti Apple analizza {subject} dal punto di vista di {lens}",
+        ai: "Questa panoramica sulla tecnologia IA analizza {subject} dal punto di vista di {lens}",
+        bt: "Questo commento su standard e applicazioni Bluetooth analizza {subject} dal punto di vista di {lens}",
+      },
+      "pt-BR": {
+        apple: "Este comentário sobre produtos Apple analisa {subject} pela ótica de {lens}",
+        ai: "Este panorama de tecnologia de IA analisa {subject} pela ótica de {lens}",
+        bt: "Este comentário sobre padrões e aplicações Bluetooth analisa {subject} pela ótica de {lens}",
+      },
+      "nl-NL": {
+        apple: "Dit Apple-productcommentaar bekijkt {subject} vanuit het perspectief van {lens}",
+        ai: "Deze AI-technologievooruitblik bekijkt {subject} vanuit het perspectief van {lens}",
+        bt: "Dit commentaar over Bluetooth-standaarden en toepassingen bekijkt {subject} vanuit het perspectief van {lens}",
+      },
+      "sv-SE": {
+        apple: "Den här Apple-produktkommentaren granskar {subject} ur perspektivet {lens}",
+        ai: "Den här AI-tekniköversikten granskar {subject} ur perspektivet {lens}",
+        bt: "Den här kommentaren om Bluetooth-standarder och användningar granskar {subject} ur perspektivet {lens}",
+      },
+      "pl-PL": {
+        apple: "Ten komentarz o produktach Apple analizuje {subject} z perspektywy {lens}",
+        ai: "Ten przegląd technologii AI analizuje {subject} z perspektywy {lens}",
+        bt: "Ten komentarz o standardach i zastosowaniach Bluetooth analizuje {subject} z perspektywy {lens}",
+      },
+      "cs-CZ": {
+        apple: "Tento komentář k produktům Apple analyzuje {subject} z pohledu {lens}",
+        ai: "Tento přehled AI technologií analyzuje {subject} z pohledu {lens}",
+        bt: "Tento komentář ke standardům a aplikacím Bluetooth analyzuje {subject} z pohledu {lens}",
+      },
+    };
+
+    const localeTemplates = templates[uiLocale];
+    if (!localeTemplates) {
+      return trimmed;
+    }
+
+    const patterns = [
+      { key: "apple", regex: /^This Apple feature and performance commentary examines (.+?) through the lens of (.+)$/ },
+      { key: "ai", regex: /^This AI technology outlook examines (.+?) through the lens of (.+)$/ },
+      { key: "bt", regex: /^This Bluetooth standards and application commentary examines (.+?) through the lens of (.+)$/ },
+    ];
+
+    for (let index = 0; index < patterns.length; index += 1) {
+      const pattern = patterns[index];
+      const match = trimmed.match(pattern.regex);
+      if (match) {
+        return localeTemplates[pattern.key]
+          .replace("{subject}", match[1])
+          .replace("{lens}", match[2]);
+      }
+    }
+
+    return trimmed;
+  }
+
+  function applyBlogCardLocalization(uiLocale) {
+    if (normalizePath(window.location.pathname) !== "/blog/" || uiLocale === DEFAULT_UI_LOCALE) {
+      return;
+    }
+
+    const localeConfig = BLOG_TOPIC_TRANSLATIONS[uiLocale];
+    if (!localeConfig) {
+      return;
+    }
+
+    const articles = Array.from(document.querySelectorAll(".list article"));
+    articles.forEach(function (article) {
+      const summary = article.querySelector("p");
+      const metaSpans = article.querySelectorAll(".meta span");
+      const readLink = article.querySelector(".read");
+
+      if (summary) {
+        summary.textContent = localizeBlogSummary(summary.textContent, uiLocale);
+      }
+
+      if (metaSpans[0]) {
+        metaSpans[0].textContent = (metaSpans[0].textContent || "").replace(/^Published:/, localeConfig.published + ":");
+      }
+
+      if (metaSpans[1]) {
+        metaSpans[1].textContent = (metaSpans[1].textContent || "").replace(/^Topic:\s*/, localeConfig.topic + ": ");
+        Object.keys(localeConfig.topics).forEach(function (topicKey) {
+          if (metaSpans[1].textContent.includes(topicKey)) {
+            metaSpans[1].textContent = metaSpans[1].textContent.replace(topicKey, localeConfig.topics[topicKey]);
+          }
+        });
+      }
+
+      if (readLink) {
+        readLink.textContent = localeConfig.readArticle;
+      }
+    });
+  }
+
   function getPageTranslation(path, uiLocale) {
     const baseTranslations = PAGE_TRANSLATIONS[path];
     const overrideTranslations = PAGE_TRANSLATION_OVERRIDES[path];
@@ -1017,6 +1241,8 @@
       }
       applyDescriptorToNodes(nodes, translation.selectorTexts[selector]);
     });
+
+    applyBlogCardLocalization(uiLocale);
   }
 
   function findAlternateLocaleUrl(preference) {
