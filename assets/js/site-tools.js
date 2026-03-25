@@ -1,15 +1,28 @@
 (function () {
   const STORAGE_KEY = "velocai-site-locale";
   const SEARCH_ENDPOINT = "/assets/data/site-search-index.json";
-  const LOCALES = ["auto", "en-US", "zh-CN"];
+  const DEFAULT_UI_LOCALE = "en-US";
   const LOCALE_OPTIONS = [
-    { value: "auto", code: "AUTO", label: "Default" },
-    { value: "en-US", code: "EN", label: "English" },
-    { value: "zh-CN", code: "ZH", label: "Chinese" },
+    { value: "auto", code: "AUTO", label: "Auto", uiLocale: "auto" },
+    { value: "zh-CN", code: "CN", label: "\u7b80\u4f53\u4e2d\u6587", uiLocale: "zh-CN" },
+    { value: "en-US", code: "GB", label: "English", uiLocale: "en-US" },
+    { value: "ro-RO", code: "RO", label: "Romanian", uiLocale: "en-US" },
+    { value: "de-DE", code: "DE", label: "German", uiLocale: "en-US" },
+    { value: "es-ES", code: "ES", label: "Spanish", uiLocale: "en-US" },
+    { value: "it-IT", code: "IT", label: "Italian", uiLocale: "en-US" },
+    { value: "pt-BR", code: "BR", label: "Portuguese", uiLocale: "en-US" },
+    { value: "nl-NL", code: "NL", label: "Dutch", uiLocale: "en-US" },
+    { value: "sv-SE", code: "SE", label: "Swedish", uiLocale: "en-US" },
+    { value: "pl-PL", code: "PL", label: "Polish", uiLocale: "en-US" },
+    { value: "cs-CZ", code: "CZ", label: "Czech", uiLocale: "en-US" },
   ];
+  const LOCALES = LOCALE_OPTIONS.map(function (option) {
+    return option.value;
+  });
 
   const copy = {
     "en-US": {
+      languageLabel: "Language",
       searchLabel: "Search site",
       closeLabel: "Close search",
       searchPlaceholder: "Search apps, posts, Bluetooth docs, or guides",
@@ -18,24 +31,17 @@
       noResults: "No matching pages yet. Try product names, Bluetooth topics, or cleanup terms.",
       loading: "Loading search index...",
       ready: "Search is ready.",
-      localeName: {
-        "en-US": "English",
-        "zh-CN": "中文",
-      },
     },
     "zh-CN": {
-      searchLabel: "搜索站点",
-      closeLabel: "关闭搜索",
-      searchPlaceholder: "搜索应用、文章、蓝牙文档或指南",
-      searchHint: "快捷入口",
-      resultsHint: "搜索结果",
-      noResults: "暂时没有匹配页面，试试产品名、蓝牙主题或清理关键词。",
-      loading: "正在加载搜索索引...",
-      ready: "搜索已就绪。",
-      localeName: {
-        "en-US": "English",
-        "zh-CN": "中文",
-      },
+      languageLabel: "\u8bed\u8a00",
+      searchLabel: "\u641c\u7d22\u7ad9\u70b9",
+      closeLabel: "\u5173\u95ed\u641c\u7d22",
+      searchPlaceholder: "\u641c\u7d22 App\u3001Blog\u3001Bluetooth \u6587\u6863\u6216\u6307\u5357",
+      searchHint: "\u5feb\u6377\u5165\u53e3",
+      resultsHint: "\u641c\u7d22\u7ed3\u679c",
+      noResults: "\u6682\u65f6\u6ca1\u6709\u5339\u914d\u9875\u9762\uff0c\u8bd5\u8bd5\u4ea7\u54c1\u540d\u79f0\u3001Bluetooth \u4e3b\u9898\u6216\u6e05\u7406\u5173\u952e\u8bcd\u3002",
+      loading: "\u6b63\u5728\u52a0\u8f7d\u641c\u7d22\u7d22\u5f15...",
+      ready: "\u641c\u7d22\u5df2\u5c31\u7eea\u3002",
     },
   };
 
@@ -50,29 +56,42 @@
     return pathname.endsWith("/index.html") ? pathname.slice(0, -10) || "/" : pathname;
   }
 
+  function isChineseLocale(locale) {
+    return typeof locale === "string" && locale.toLowerCase().startsWith("zh");
+  }
+
+  function detectDocumentLocale() {
+    const htmlLocale = (document.documentElement.lang || "").trim();
+    if (isChineseLocale(htmlLocale)) {
+      return "zh-CN";
+    }
+
+    const browserLocales = []
+      .concat(Array.isArray(window.navigator.languages) ? window.navigator.languages : [])
+      .concat([window.navigator.language || ""]);
+    return browserLocales.some(isChineseLocale) ? "zh-CN" : DEFAULT_UI_LOCALE;
+  }
+
   function detectInitialLocale() {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     if (LOCALES.includes(saved)) {
       return saved;
-    }
-    if (document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith("zh")) {
-      return "zh-CN";
     }
     return "auto";
   }
 
   function resolveUiLocale(preference) {
     if (preference === "auto") {
-      return document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith("zh")
-        ? "zh-CN"
-        : "en-US";
+      return detectDocumentLocale();
     }
-    return preference;
+    return isChineseLocale(preference) ? "zh-CN" : DEFAULT_UI_LOCALE;
   }
 
   function localeOptionFor(preference) {
     return LOCALE_OPTIONS.find(function (option) {
       return option.value === preference;
+    }) || LOCALE_OPTIONS.find(function (option) {
+      return option.value === DEFAULT_UI_LOCALE;
     }) || LOCALE_OPTIONS[0];
   }
 
@@ -499,7 +518,7 @@
       '  <button class="vs-locale-trigger" type="button" aria-haspopup="menu" aria-expanded="false">',
       '    <span class="vs-locale-trigger-code"></span>',
       '    <span class="vs-locale-trigger-name"></span>',
-      '    <span class="vs-locale-trigger-chevron" aria-hidden="true">▾</span>',
+      '    <span class="vs-locale-trigger-chevron" aria-hidden="true">\u25be</span>',
       "  </button>",
       '  <div class="vs-locale-panel" hidden>',
       '    <div class="vs-locale-list" role="menu"></div>',
@@ -659,7 +678,7 @@
       const option = localeOptionFor(preference);
       localeCode.textContent = option.code;
       localeName.textContent = option.label;
-      localeTrigger.setAttribute("aria-label", "Language: " + option.label);
+      localeTrigger.setAttribute("aria-label", getUi().languageLabel + ": " + option.label);
       document.documentElement.lang = resolveUiLocale(preference);
     }
 
@@ -679,7 +698,7 @@
         button.innerHTML = [
           '<span class="vs-locale-option-code">', option.code, "</span>",
           '<span class="vs-locale-option-label">', option.label, "</span>",
-          '<span class="vs-locale-option-check" aria-hidden="true">✓</span>'
+          '<span class="vs-locale-option-check" aria-hidden="true">\u2713</span>'
         ].join("");
         button.addEventListener("click", function () {
           window.localStorage.setItem(STORAGE_KEY, option.value);
