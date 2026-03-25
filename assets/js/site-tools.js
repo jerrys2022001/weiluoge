@@ -736,6 +736,120 @@
     }
   });
 
+  const DEEP_PAGE_TRANSLATION_OVERRIDES = {
+    "/aifind/": {
+      "fr-FR": {
+        selectorTexts: {
+          ".proof-list li": ["Retrouvez plus vite AirPods, écouteurs et Beats.", "Radar de distance en temps réel pour les scans Bluetooth à proximité.", "Dernière position connue pour les appareils hors de portée.", "Traitement local des données pour une utilisation centrée sur la confidentialité."],
+          ".card-note": "Le retour radar en temps réel vous aide à passer d’un signal faible à une proximité réelle sans tâtonner.",
+          "#use-cases .section-head p": "Nous optimisons ici les scénarios de récupération les plus fréquents : AirPods perdus à la maison, écouteurs oubliés au bureau et casques manquants pendant les déplacements.",
+          "#use-cases .panel h3": ["AirPods à la maison", "Écouteurs dans des espaces partagés", "Récupération hors de portée"],
+          "#use-cases .panel p": ["Utilisez le scanner pour isoler le signal de vos AirPods et avancez vers la lecture de distance la plus forte.", "Filtrez le bruit des appareils voisins et épinglez vos appareils connus pour les retrouver plus vite dans les zones encombrées.", "Ouvrez l’indice de dernière position enregistré sur l’appareil, revenez à ce point et relancez le scan quand l’appareil est de nouveau proche."],
+          "#features .section-head p": "Le flux de l’app suit une séquence pratique : détecter, trier, se déplacer et confirmer. Chaque écran réduit le temps de recherche sans exposer vos données à des traceurs tiers.",
+          "#features .panel h3": ["Radar de distance en temps réel", "Regroupement intelligent des appareils", "Épingler et prioriser", "Mémoire de dernière position"],
+          "#features .panel p": ["Convertit la puissance du signal RSSI en indications pratiques proche/loin pour réduire rapidement la distance.", "Sépare les appareils connus des signaux inconnus pour rester concentré sur votre cible au lieu de faire défiler du bruit.", "Gardez vos écouteurs et casques les plus importants épinglés pour un accès immédiat lors des prochains scans.", "Enregistre localement la dernière position et l’horodatage pour soutenir les flux de récupération hors ligne."],
+          ".steps li h3": ["Scanner les appareils Bluetooth proches", "Sélectionner et verrouiller votre cible", "Utiliser les données de dernière position si nécessaire"],
+          ".steps li p": ["Ouvrez Find AI et lancez un scan en direct pour repérer les AirPods, écouteurs, Beats et autres cibles Bluetooth à proximité.", "Choisissez l’appareil visé et utilisez la force du signal et les indices de distance pour avancer dans la bonne direction.", "Si l’appareil est hors de portée, revenez au dernier emplacement détecté et reprenez le scan pour terminer la récupération."],
+          ".faq-list summary": ["Find AI peut-il m’aider à retrouver des AirPods perdus ?", "Find AI fonctionne-t-il avec des écouteurs ou casques non Apple ?", "Que se passe-t-il si mon appareil est hors de portée ?", "Find AI est-il privé et sécurisé ?"],
+          ".faq-list details p": ["Oui. Find AI scanne les signaux Bluetooth proches et affiche un radar de distance en direct pour vous guider vers vos AirPods ou écouteurs perdus.", "Oui. Find AI fonctionne avec de nombreux appareils Bluetooth comme des écouteurs, casques et accessoires compatibles Beats lorsqu’ils sont proches et détectables.", "Find AI stocke la dernière heure et le dernier emplacement vus sur l’appareil, afin que vous puissiez revenir dans cette zone et continuer le scan.", "Find AI traite les données de recherche Bluetooth sur l’appareil. Selon la politique de confidentialité, ces données ne sont pas envoyées pour de l’analytics ou l’entraînement de modèles."] ,
+          ".final-cta p": "Installez Find AI et lancez votre récupération Bluetooth en moins d’une minute.",
+          "footer .footer-links a:nth-child(1)": "Accueil VelocAI",
+          "footer .footer-links a:nth-child(2)": "Toutes les apps VelocAI",
+          "footer .footer-links a:nth-child(3)": "Blog VelocAI",
+          "footer .footer-links a:nth-child(6)": "Politique de confidentialité Find AI",
+          "footer .footer-links a:nth-child(7)": "Contact : vp@velocai.net"
+        }
+      },
+      "de-DE": {
+        selectorTexts: {
+          ".proof-list li": ["AirPods, Earbuds und Beats schneller finden.", "Live-Distanzradar für Bluetooth-Scans in der Nähe.", "Zuletzt gesehener Standort für Geräte außerhalb der Reichweite.", "Lokale Datenverarbeitung für datenschutzorientierte Nutzung."],
+          ".card-note": "Das Live-Radar hilft Ihnen dabei, ohne Rätselraten von einem schwachen Signal zur tatsächlichen Nähe zu gelangen.",
+          "#use-cases .panel h3": ["AirPods zu Hause", "Earbuds in gemeinsam genutzten Räumen", "Wiederfinden außerhalb der Reichweite"],
+          "#features .panel h3": ["Live-Distanzradar", "Intelligente Geräte-Gruppierung", "Anheften und priorisieren", "Zuletzt-gesehen-Speicher"],
+          ".steps li h3": ["Bluetooth-Geräte in der Nähe scannen", "Ziel auswählen und fixieren", "Bei Bedarf zuletzt gesehene Daten nutzen"],
+          ".faq-list summary": ["Kann Find AI mir helfen, verlorene AirPods zu finden?", "Funktioniert Find AI auch mit Nicht-Apple-Earbuds oder Kopfhörern?", "Was passiert, wenn mein Gerät außer Reichweite ist?", "Ist Find AI privat und sicher?"],
+          ".final-cta p": "Installieren Sie Find AI und starten Sie Ihren Bluetooth-Findefluss in weniger als einer Minute."
+        }
+      },
+      "es-ES": {
+        selectorTexts: {
+          ".proof-list li": ["Encuentra AirPods, auriculares y Beats más rápido.", "Radar de distancia en tiempo real para escaneos Bluetooth cercanos.", "Última ubicación vista para dispositivos fuera de alcance.", "Procesamiento local de datos para un uso centrado en la privacidad."],
+          ".card-note": "La respuesta del radar en tiempo real te ayuda a pasar de una señal débil a la proximidad sin adivinar.",
+          "#use-cases .panel h3": ["AirPods en casa", "Auriculares en espacios compartidos", "Recuperación fuera de alcance"],
+          "#features .panel h3": ["Radar de distancia en tiempo real", "Agrupación inteligente de dispositivos", "Fijar y priorizar", "Memoria de última ubicación"],
+          ".steps li h3": ["Escanea dispositivos Bluetooth cercanos", "Selecciona y fija tu objetivo", "Usa los datos de última ubicación cuando sea necesario"],
+          ".faq-list summary": ["¿Find AI puede ayudarme a encontrar AirPods perdidos?", "¿Find AI funciona con auriculares o cascos que no sean Apple?", "¿Qué ocurre cuando mi dispositivo está fuera de alcance?", "¿Find AI es privado y seguro?"],
+          ".final-cta p": "Instala Find AI y comienza tu flujo de recuperación Bluetooth en menos de un minuto."
+        }
+      }
+    },
+    "/ai-cleanup-pro/": {
+      "fr-FR": {
+        selectorTexts: {
+          ".lede": "AI Cleanup PRO est conçu pour les personnes qui ont besoin d’un flux fiable de nettoyage photo sur iPhone, sans tri manuel interminable. De l’automatisation des doublons à la gestion intelligente des vidéos et des contacts, l’app aide à récupérer de l’espace chaque semaine avant que cela ne devienne urgent.",
+          ".hero-points li": ["App de nettoyage IA pour iPhone et iPad", "Nettoyeur de photos en double avec revue rapide", "Réduire la pression de stockage vidéo sur iPhone", "Organiser les contacts et supprimer les doublons"],
+          ".hero-card-note span": ["Examinez des photos similaires, réduisez les vidéos trop lourdes et supprimez les contacts en double dans un seul flux clair.", "AI Cleanup PRO garde chaque étape visible afin que vous puissiez prendre des décisions fiables sans supprimer à l’aveugle."],
+          ".feature-card h3": ["Nettoyeur de photos en double avec regroupement intelligent", "Nettoyer les vidéos iPhone avec des parcours de compression", "Organiser les contacts et fusionner les entrées répétées", "Conception de nettoyage IA axée confidentialité"],
+          ".workflow .step h3": ["Scanner les catégories", "Examiner les suggestions", "Libérer de l’espace"],
+          ".faq details summary": ["Que peut nettoyer AI Cleanup PRO sur iPhone ?", "Est-ce un nettoyeur de doublons adapté à un usage quotidien ?", "Comment fonctionne le nettoyage vidéo sur iPhone ?", "L’app peut-elle aussi organiser les contacts ?", "Où lire la politique de données ?"],
+          ".faq details p": ["L’app aide pour les photos identiques ou similaires, les grandes vidéos et les contacts répétés afin de récupérer du stockage avec moins d’actions manuelles.", "Oui. Elle est pensée pour un nettoyage continu, afin de traiter les nouveaux doublons en sessions courtes au lieu d’attendre une urgence de stockage.", "L’app met d’abord en avant les grandes vidéos puis vous laisse décider quoi supprimer ou compresser selon vos priorités de qualité et d’espace.", "Oui. Vous pouvez examiner les fiches en double et fusionner les entrées répétées dans des profils plus propres et fiables.", "Vous pouvez consulter les détails sur la page de politique de confidentialité d’AI Cleanup PRO."],
+          ".cta-panel p": "Commencez à utiliser AI Cleanup PRO pour supprimer les doublons, alléger les vidéos lourdes et garder vos contacts organisés avec des flux respectueux de la confidentialité.",
+          ".footer-links a:nth-child(2)": "Toutes les apps VelocAI",
+          ".footer-links a:nth-child(3)": "Blog VelocAI"
+        }
+      },
+      "de-DE": {
+        selectorTexts: {
+          ".hero-points li": ["KI-Cleanup-App für iPhone und iPad", "Doppel-Foto-Bereiniger mit schneller Prüfung", "Videospeicherdruck auf dem iPhone reduzieren", "Kontakte organisieren und Duplikate entfernen"],
+          ".workflow .step h3": ["Kategorien scannen", "Vorschläge prüfen", "Speicher freigeben"],
+          ".faq details summary": ["Was kann AI Cleanup PRO auf dem iPhone bereinigen?", "Ist dies ein Duplikat-Fotobereiniger für den täglichen Einsatz?", "Wie funktioniert der iPhone-Video-Cleanup-Workflow?", "Kann die App auch Kontakte organisieren?", "Wo kann ich die Datenrichtlinie lesen?"]
+        }
+      },
+      "es-ES": {
+        selectorTexts: {
+          ".hero-points li": ["App de limpieza con IA para iPhone y iPad", "Limpieza de fotos duplicadas con revisión rápida", "Reducir la presión del almacenamiento de vídeos en iPhone", "Organizar contactos y eliminar duplicados"],
+          ".workflow .step h3": ["Escanear categorías", "Revisar sugerencias", "Liberar espacio"],
+          ".faq details summary": ["¿Qué puede limpiar AI Cleanup PRO en iPhone?", "¿Es un limpiador de fotos duplicadas para uso diario?", "¿Cómo funciona el flujo para limpiar vídeos en iPhone?", "¿La app también puede organizar contactos?", "¿Dónde puedo leer la política de datos?"]
+        }
+      }
+    },
+    "/bluetoothexplorer/": {
+      "fr-FR": {
+        selectorTexts: {
+          ".hero-points li": ["Scannez rapidement les périphériques BLE proches.", "Inspectez services et caractéristiques GATT avec état de connexion en direct.", "Envoyez des paquets hex/text/binary/decimal depuis un seul terminal Bluetooth.", "Exportez des journaux chronologiques pour le debug firmware et l’assurance qualité.", "Utilisez le diagnostic IA pour prioriser les causes probables.", "Retrouvez le matériel sur le terrain avec une navigation assistée par carte."],
+          ".hero-card-note span": ["Vue d’ensemble de connexion, arbre des services GATT et accès instantané aux logs, à la navigation et au diagnostic IA."],
+          "#features .panel h3": ["Scanner BLE", "Inspecteur GATT", "Terminal Bluetooth", "Bibliothèque de paquets", "Chronologie des logs", "Diagnostic IA"],
+          "#use-cases .panel h3": ["Initialisation firmware", "Dépannage terrain", "Runs de régression QA"],
+          "#workflow .step h3": ["Scanner et connecter", "Lancer les tests de commandes", "Analyser et exporter"],
+          "#faq .faq-item h3": ["À quoi sert Bluetooth Explorer ?", "Bluetooth Explorer prend-il en charge les commandes hex ?", "Puis-je inspecter les services et caractéristiques GATT ?", "Comment l’app aide-t-elle au dépannage BLE ?", "Bluetooth Explorer traite-t-il les données de debug dans le cloud ?", "Où trouver le guide utilisateur et la politique de confidentialité ?"],
+          ".changelog li": ["Flux de scan BLE amélioré pour une sélection plus rapide de la cible en environnement dense.", "Guidage de workflow paquet étendu pour des vérifications QA et régression plus répétables.", "Recommandations de debug IA affinées pour prioriser les actions suivantes les plus utiles."],
+          ".helper-links a:nth-child(1)": "Guide utilisateur anglais",
+          ".helper-links a:nth-child(2)": "Guide utilisateur chinois",
+          ".helper-links a:nth-child(3)": "Index de documentation",
+          ".helper-links a:nth-child(4)": "Politique de confidentialité"
+        }
+      },
+      "de-DE": {
+        selectorTexts: {
+          ".hero-points li": ["BLE-Peripheriegeräte in der Nähe schnell scannen und filtern.", "GATT-Services und -Merkmale mit Live-Verbindungsstatus prüfen.", "Hex-/Text-/Binary-/Decimal-Pakete aus einer Terminalansicht senden.", "Zeitachsen-Logs für Firmware-Debugging und QA exportieren.", "KI-Diagnostik nutzen, um wahrscheinliche Ursachen zu priorisieren.", "Hardware vor Ort mit kartenunterstützter Navigation finden."],
+          "#features .panel h3": ["BLE-Scanner", "GATT-Inspektor", "Bluetooth-Terminal", "Paketbibliothek", "Log-Zeitleiste", "KI-Diagnostik"],
+          "#use-cases .panel h3": ["Firmware-Inbetriebnahme", "Fehlersuche im Feld", "QA-Regressionsläufe"],
+          "#workflow .step h3": ["Scannen und verbinden", "Befehlstests ausführen", "Analysieren und exportieren"],
+          "#faq .faq-item h3": ["Wofür wird Bluetooth Explorer verwendet?", "Unterstützt Bluetooth Explorer Hex-Terminalbefehle?", "Kann ich GATT-Services und -Merkmale inspizieren?", "Wie hilft die App bei BLE-Fehlersuche?", "Verarbeitet Bluetooth Explorer Debug-Daten in der Cloud?", "Wo finde ich Benutzerhandbuch und Datenschutzrichtlinie?"]
+        }
+      },
+      "es-ES": {
+        selectorTexts: {
+          ".hero-points li": ["Escanea periféricos BLE cercanos y filtra resultados rápidamente.", "Inspecciona servicios y características GATT con estado de conexión en vivo.", "Envía paquetes en modo hex/text/binary/decimal desde una sola vista de terminal Bluetooth.", "Exporta registros temporales para depuración de firmware y evidencia de QA.", "Usa diagnóstico con IA para priorizar causas probables.", "Encuentra hardware en campo con navegación asistida por mapa."],
+          "#features .panel h3": ["Escáner BLE", "Inspector GATT", "Terminal Bluetooth", "Biblioteca de paquetes", "Línea temporal de registros", "Diagnóstico IA"],
+          "#use-cases .panel h3": ["Puesta en marcha de firmware", "Resolución de problemas en campo", "Ejecuciones de regresión QA"],
+          "#workflow .step h3": ["Escanear y conectar", "Ejecutar pruebas de comandos", "Analizar y exportar"],
+          "#faq .faq-item h3": ["¿Para qué se utiliza Bluetooth Explorer?", "¿Bluetooth Explorer admite comandos de terminal hex?", "¿Puedo inspeccionar servicios y características GATT?", "¿Cómo ayuda la app con la resolución de problemas BLE?", "¿Bluetooth Explorer procesa datos de depuración en la nube?", "¿Dónde puedo encontrar la guía de usuario y la política de privacidad?"]
+        }
+      }
+    }
+  };
+
   let searchData = null;
   let loadPromise = null;
   const HIGHLIGHT_QUERY_KEY = "stq";
@@ -861,15 +975,29 @@
   function getPageTranslation(path, uiLocale) {
     const baseTranslations = PAGE_TRANSLATIONS[path];
     const overrideTranslations = PAGE_TRANSLATION_OVERRIDES[path];
-    if (!baseTranslations && !overrideTranslations) {
+    const deepOverrideTranslations = DEEP_PAGE_TRANSLATION_OVERRIDES[path];
+    if (!baseTranslations && !overrideTranslations && !deepOverrideTranslations) {
       return null;
     }
 
-    return (overrideTranslations && overrideTranslations[uiLocale])
-      || (baseTranslations && baseTranslations[uiLocale])
-      || (overrideTranslations && overrideTranslations[DEFAULT_UI_LOCALE])
-      || (baseTranslations && baseTranslations[DEFAULT_UI_LOCALE])
-      || null;
+    const base = (baseTranslations && (baseTranslations[uiLocale] || baseTranslations[DEFAULT_UI_LOCALE])) || null;
+    const override = (overrideTranslations && (overrideTranslations[uiLocale] || overrideTranslations[DEFAULT_UI_LOCALE])) || null;
+    const deepOverride = (deepOverrideTranslations && (deepOverrideTranslations[uiLocale] || deepOverrideTranslations[DEFAULT_UI_LOCALE])) || null;
+
+    if (!base && !override && !deepOverride) {
+      return null;
+    }
+
+    return {
+      pageTitle: (deepOverride && deepOverride.pageTitle) || (override && override.pageTitle) || (base && base.pageTitle) || "",
+      metaDescription: (deepOverride && deepOverride.metaDescription) || (override && override.metaDescription) || (base && base.metaDescription) || "",
+      selectorTexts: Object.assign(
+        {},
+        (base && base.selectorTexts) || {},
+        (override && override.selectorTexts) || {},
+        (deepOverride && deepOverride.selectorTexts) || {}
+      ),
+    };
   }
 
   function applyPageTranslations() {
