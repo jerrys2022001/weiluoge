@@ -73,7 +73,8 @@ body > header .brand span {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .vs-locale-trigger:hover,
@@ -82,11 +83,22 @@ body > header .brand span {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
+.vs-locale-trigger[aria-expanded="true"] {
+  border-color: rgba(80, 120, 255, 0.52);
+  box-shadow:
+    0 0 0 1px rgba(80, 120, 255, 0.3),
+    0 0 0 4px rgba(80, 120, 255, 0.12),
+    0 12px 28px rgba(8, 12, 26, 0.28);
+  transform: translateY(-1px);
+}
+
 .vs-locale-trigger:focus-visible,
 .vs-locale-option:focus-visible {
   outline: none;
   border-color: rgba(37, 144, 241, 0.54);
-  box-shadow: 0 0 0 3px rgba(37, 144, 241, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(37, 144, 241, 0.32),
+    0 0 0 4px rgba(37, 144, 241, 0.14);
 }
 
 .vs-locale-trigger-code {
@@ -224,7 +236,10 @@ body > header .brand span {
   height: 40px;
   border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  background: rgba(8, 10, 20, 0.78);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .vs-header-tool-button:hover,
@@ -233,13 +248,25 @@ body > header .brand span {
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+.vs-header-tool-button[aria-expanded="true"] {
+  background: rgba(14, 18, 34, 0.94);
+  border-color: rgba(80, 120, 255, 0.52);
+  box-shadow:
+    0 0 0 1px rgba(80, 120, 255, 0.3),
+    0 0 0 4px rgba(80, 120, 255, 0.12),
+    0 12px 28px rgba(8, 12, 26, 0.28);
+  transform: translateY(-1px);
+}
+
 .vs-header-tool-button:focus-visible,
 .vs-search-close:focus-visible,
 .vs-search-submit-icon:focus-visible,
 .vs-search-input:focus-visible {
   outline: none;
   border-color: rgba(37, 144, 241, 0.54);
-  box-shadow: 0 0 0 3px rgba(37, 144, 241, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(37, 144, 241, 0.32),
+    0 0 0 4px rgba(37, 144, 241, 0.14);
 }
 
 .vs-header-tool-icon {
