@@ -2,6 +2,11 @@
   const STORAGE_KEY = "velocai-site-locale";
   const SEARCH_ENDPOINT = "/assets/data/site-search-index.json";
   const LOCALES = ["auto", "en-US", "zh-CN"];
+  const LOCALE_OPTIONS = [
+    { value: "auto", code: "AUTO", label: "Default" },
+    { value: "en-US", code: "EN", label: "English" },
+    { value: "zh-CN", code: "ZH", label: "Chinese" },
+  ];
 
   const copy = {
     "en-US": {
@@ -63,6 +68,36 @@
         : "en-US";
     }
     return preference;
+  }
+
+  function localeOptionFor(preference) {
+    return LOCALE_OPTIONS.find(function (option) {
+      return option.value === preference;
+    }) || LOCALE_OPTIONS[0];
+  }
+
+  function findAlternateLocaleUrl(preference) {
+    if (!preference || preference === "auto") {
+      return "";
+    }
+
+    const alternates = Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]'));
+    if (!alternates.length) {
+      return "";
+    }
+
+    const exact = alternates.find(function (link) {
+      return (link.getAttribute("hreflang") || "").toLowerCase() === preference.toLowerCase();
+    });
+    if (exact && exact.href) {
+      return exact.href;
+    }
+
+    const languageCode = preference.split("-")[0].toLowerCase();
+    const partial = alternates.find(function (link) {
+      return (link.getAttribute("hreflang") || "").toLowerCase().startsWith(languageCode);
+    });
+    return partial && partial.href ? partial.href : "";
   }
 
   function loadSearchIndex() {
@@ -460,6 +495,16 @@
 
     anchor.className = "vs-header-tools-anchor";
     anchor.innerHTML = [
+      '<div class="vs-locale-wrap">',
+      '  <button class="vs-locale-trigger" type="button" aria-haspopup="menu" aria-expanded="false">',
+      '    <span class="vs-locale-trigger-code"></span>',
+      '    <span class="vs-locale-trigger-name"></span>',
+      '    <span class="vs-locale-trigger-chevron" aria-hidden="true">▾</span>',
+      "  </button>",
+      '  <div class="vs-locale-panel" hidden>',
+      '    <div class="vs-locale-list" role="menu"></div>',
+      "  </div>",
+      "</div>",
       '<button class="vs-header-tool-button vs-search-trigger" type="button" aria-expanded="false">',
       iconSvg("search"),
       "</button>"
@@ -496,6 +541,11 @@
     document.body.appendChild(backdrop);
     document.body.appendChild(panel);
 
+    const localeTrigger = anchor.querySelector(".vs-locale-trigger");
+    const localeCode = anchor.querySelector(".vs-locale-trigger-code");
+    const localeName = anchor.querySelector(".vs-locale-trigger-name");
+    const localePanel = anchor.querySelector(".vs-locale-panel");
+    const localeList = anchor.querySelector(".vs-locale-list");
     const trigger = anchor.querySelector(".vs-search-trigger");
     const closeButton = panel.querySelector(".vs-search-close");
     const submitIcon = panel.querySelector(".vs-search-submit-icon");
@@ -511,6 +561,10 @@
 
     function getUi() {
       return copy[resolveUiLocale(getSavedPreference())];
+    }
+
+    function isLocaleOpen() {
+      return !!localePanel && !localePanel.hidden;
     }
 
     function isOpen() {
@@ -537,7 +591,21 @@
       trigger.setAttribute("aria-expanded", "false");
     }
 
+    function closeLocalePanel() {
+      if (!localePanel) return;
+      localePanel.hidden = true;
+      localeTrigger.setAttribute("aria-expanded", "false");
+    }
+
+    function openLocalePanel() {
+      if (!localePanel) return;
+      closePanel();
+      localePanel.hidden = false;
+      localeTrigger.setAttribute("aria-expanded", "true");
+    }
+
     function openPanel() {
+      closeLocalePanel();
       positionPanel();
       panel.hidden = false;
       backdrop.hidden = false;
@@ -586,6 +654,54 @@
       }
     }
 
+    function updateLocaleTrigger() {
+      const preference = getSavedPreference();
+      const option = localeOptionFor(preference);
+      localeCode.textContent = option.code;
+      localeName.textContent = option.label;
+      localeTrigger.setAttribute("aria-label", "Language: " + option.label);
+      document.documentElement.lang = resolveUiLocale(preference);
+    }
+
+    function renderLocaleOptions() {
+      if (!localeList) return;
+      const preference = getSavedPreference();
+      localeList.innerHTML = "";
+
+      LOCALE_OPTIONS.forEach(function (option) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "vs-locale-option";
+        if (option.value === preference) {
+          button.classList.add("is-active");
+          button.setAttribute("aria-current", "true");
+        }
+        button.innerHTML = [
+          '<span class="vs-locale-option-code">', option.code, "</span>",
+          '<span class="vs-locale-option-label">', option.label, "</span>",
+          '<span class="vs-locale-option-check" aria-hidden="true">✓</span>'
+        ].join("");
+        button.addEventListener("click", function () {
+          window.localStorage.setItem(STORAGE_KEY, option.value);
+          updateLocaleTrigger();
+          updateCopy();
+          renderLocaleOptions();
+
+          const alternateUrl = findAlternateLocaleUrl(option.value);
+          if (alternateUrl && alternateUrl !== window.location.href) {
+            window.location.href = alternateUrl;
+            return;
+          }
+
+          if (isOpen()) {
+            runSearch(input.value.trim());
+          }
+          closeLocalePanel();
+        });
+        localeList.appendChild(button);
+      });
+    }
+
     function renderResults(items, query) {
       const ui = getUi();
       resultsNode.innerHTML = "";
@@ -631,6 +747,14 @@
       input.placeholder = ui.searchPlaceholder;
       resultsTitle.textContent = ui.searchHint;
     }
+
+    localeTrigger.addEventListener("click", function () {
+      if (isLocaleOpen()) {
+        closeLocalePanel();
+      } else {
+        openLocalePanel();
+      }
+    });
 
     trigger.addEventListener("click", function () {
       if (isOpen()) {
@@ -685,17 +809,22 @@
           openPanel();
         }
         runSearch(input.value.trim());
-      } else if (event.key === "Escape" && isOpen()) {
-        closePanel();
+      } else if (event.key === "Escape") {
+        if (isOpen()) {
+          closePanel();
+        }
+        if (isLocaleOpen()) {
+          closeLocalePanel();
+        }
       }
     });
 
     document.addEventListener("click", function (event) {
-      if (!isOpen()) {
-        return;
-      }
-      if (!anchor.contains(event.target) && !panel.contains(event.target)) {
+      if (isOpen() && !anchor.contains(event.target) && !panel.contains(event.target)) {
         closePanel();
+      }
+      if (isLocaleOpen() && !anchor.contains(event.target)) {
+        closeLocalePanel();
       }
     });
 
@@ -705,8 +834,11 @@
       }
     });
 
+    updateLocaleTrigger();
     updateCopy();
+    renderLocaleOptions();
     closePanel();
+    closeLocalePanel();
     loadSearchIndex();
 
     const initialQuery = new URLSearchParams(window.location.search).get("q");
