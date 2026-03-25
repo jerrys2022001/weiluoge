@@ -3,18 +3,18 @@
   const SEARCH_ENDPOINT = "/assets/data/site-search-index.json";
   const DEFAULT_UI_LOCALE = "en-US";
   const LOCALE_OPTIONS = [
-    { value: "auto", code: "AUTO", label: "Auto", uiLocale: "auto" },
-    { value: "fr-FR", code: "FR", label: "French", uiLocale: "en-US" },
+    { value: "auto", code: "AUTO", label: "English", uiLocale: "en-US" },
+    { value: "fr-FR", code: "FR", label: "French", uiLocale: "fr-FR" },
     { value: "en-US", code: "GB", label: "English", uiLocale: "en-US" },
-    { value: "ro-RO", code: "RO", label: "Romanian", uiLocale: "en-US" },
-    { value: "de-DE", code: "DE", label: "German", uiLocale: "en-US" },
-    { value: "es-ES", code: "ES", label: "Spanish", uiLocale: "en-US" },
-    { value: "it-IT", code: "IT", label: "Italian", uiLocale: "en-US" },
-    { value: "pt-BR", code: "BR", label: "Portuguese", uiLocale: "en-US" },
-    { value: "nl-NL", code: "NL", label: "Dutch", uiLocale: "en-US" },
-    { value: "sv-SE", code: "SE", label: "Swedish", uiLocale: "en-US" },
-    { value: "pl-PL", code: "PL", label: "Polish", uiLocale: "en-US" },
-    { value: "cs-CZ", code: "CZ", label: "Czech", uiLocale: "en-US" },
+    { value: "ro-RO", code: "RO", label: "Romanian", uiLocale: "ro-RO" },
+    { value: "de-DE", code: "DE", label: "German", uiLocale: "de-DE" },
+    { value: "es-ES", code: "ES", label: "Spanish", uiLocale: "es-ES" },
+    { value: "it-IT", code: "IT", label: "Italian", uiLocale: "it-IT" },
+    { value: "pt-BR", code: "BR", label: "Portuguese", uiLocale: "pt-BR" },
+    { value: "nl-NL", code: "NL", label: "Dutch", uiLocale: "nl-NL" },
+    { value: "sv-SE", code: "SE", label: "Swedish", uiLocale: "sv-SE" },
+    { value: "pl-PL", code: "PL", label: "Polish", uiLocale: "pl-PL" },
+    { value: "cs-CZ", code: "CZ", label: "Czech", uiLocale: "cs-CZ" },
   ];
   const LOCALES = LOCALE_OPTIONS.map(function (option) {
     return option.value;
@@ -44,6 +44,119 @@
       ready: "\u641c\u7d22\u5df2\u5c31\u7eea\u3002",
     },
   };
+
+  Object.assign(copy, {
+    "fr-FR": {
+      languageLabel: "Langue",
+      searchLabel: "Rechercher sur le site",
+      closeLabel: "Fermer la recherche",
+      searchPlaceholder: "Rechercher des apps, articles, documents Bluetooth ou guides",
+      searchHint: "Accès rapides",
+      resultsHint: "Meilleurs résultats",
+      noResults: "Aucune page correspondante pour le moment. Essayez des noms d’apps, des sujets Bluetooth ou des termes de nettoyage.",
+      loading: "Chargement de l’index de recherche...",
+      ready: "La recherche est prête.",
+    },
+    "ro-RO": {
+      languageLabel: "Limbă",
+      searchLabel: "Caută pe site",
+      closeLabel: "Închide căutarea",
+      searchPlaceholder: "Caută aplicații, articole, documente Bluetooth sau ghiduri",
+      searchHint: "Acces rapid",
+      resultsHint: "Rezultate principale",
+      noResults: "Nu există încă pagini potrivite. Încearcă nume de aplicații, subiecte Bluetooth sau termeni de curățare.",
+      loading: "Se încarcă indexul de căutare...",
+      ready: "Căutarea este pregătită.",
+    },
+    "de-DE": {
+      languageLabel: "Sprache",
+      searchLabel: "Website durchsuchen",
+      closeLabel: "Suche schließen",
+      searchPlaceholder: "Apps, Beiträge, Bluetooth-Dokumente oder Anleitungen suchen",
+      searchHint: "Schnellzugriffe",
+      resultsHint: "Top-Treffer",
+      noResults: "Noch keine passenden Seiten. Versuche App-Namen, Bluetooth-Themen oder Cleanup-Begriffe.",
+      loading: "Suchindex wird geladen...",
+      ready: "Suche ist bereit.",
+    },
+    "es-ES": {
+      languageLabel: "Idioma",
+      searchLabel: "Buscar en el sitio",
+      closeLabel: "Cerrar búsqueda",
+      searchPlaceholder: "Buscar apps, artículos, documentos Bluetooth o guías",
+      searchHint: "Accesos rápidos",
+      resultsHint: "Resultados principales",
+      noResults: "Aún no hay páginas coincidentes. Prueba nombres de apps, temas Bluetooth o términos de limpieza.",
+      loading: "Cargando índice de búsqueda...",
+      ready: "La búsqueda está lista.",
+    },
+    "it-IT": {
+      languageLabel: "Lingua",
+      searchLabel: "Cerca nel sito",
+      closeLabel: "Chiudi ricerca",
+      searchPlaceholder: "Cerca app, articoli, documenti Bluetooth o guide",
+      searchHint: "Accessi rapidi",
+      resultsHint: "Risultati principali",
+      noResults: "Nessuna pagina corrispondente al momento. Prova con nomi di app, temi Bluetooth o termini di pulizia.",
+      loading: "Caricamento indice di ricerca...",
+      ready: "La ricerca è pronta.",
+    },
+    "pt-BR": {
+      languageLabel: "Idioma",
+      searchLabel: "Pesquisar no site",
+      closeLabel: "Fechar pesquisa",
+      searchPlaceholder: "Pesquise apps, posts, documentos Bluetooth ou guias",
+      searchHint: "Acessos rápidos",
+      resultsHint: "Principais resultados",
+      noResults: "Ainda não há páginas correspondentes. Tente nomes de apps, temas Bluetooth ou termos de limpeza.",
+      loading: "Carregando índice de busca...",
+      ready: "A pesquisa está pronta.",
+    },
+    "nl-NL": {
+      languageLabel: "Taal",
+      searchLabel: "Zoek op de site",
+      closeLabel: "Zoeken sluiten",
+      searchPlaceholder: "Zoek apps, berichten, Bluetooth-documenten of gidsen",
+      searchHint: "Snelle links",
+      resultsHint: "Topresultaten",
+      noResults: "Nog geen overeenkomende pagina's. Probeer appnamen, Bluetooth-onderwerpen of opschoontermen.",
+      loading: "Zoekindex wordt geladen...",
+      ready: "Zoeken is klaar.",
+    },
+    "sv-SE": {
+      languageLabel: "Språk",
+      searchLabel: "Sök på webbplatsen",
+      closeLabel: "Stäng sökningen",
+      searchPlaceholder: "Sök appar, inlägg, Bluetooth-dokument eller guider",
+      searchHint: "Snabblänkar",
+      resultsHint: "Bästa träffar",
+      noResults: "Inga matchande sidor ännu. Prova appnamn, Bluetooth-ämnen eller rensningstermer.",
+      loading: "Laddar sökindex...",
+      ready: "Sökningen är redo.",
+    },
+    "pl-PL": {
+      languageLabel: "Język",
+      searchLabel: "Szukaj w witrynie",
+      closeLabel: "Zamknij wyszukiwanie",
+      searchPlaceholder: "Szukaj aplikacji, wpisów, dokumentów Bluetooth lub poradników",
+      searchHint: "Szybkie linki",
+      resultsHint: "Najlepsze wyniki",
+      noResults: "Brak pasujących stron. Spróbuj nazw aplikacji, tematów Bluetooth lub haseł związanych z czyszczeniem.",
+      loading: "Ładowanie indeksu wyszukiwania...",
+      ready: "Wyszukiwanie jest gotowe.",
+    },
+    "cs-CZ": {
+      languageLabel: "Jazyk",
+      searchLabel: "Hledat na webu",
+      closeLabel: "Zavřít hledání",
+      searchPlaceholder: "Hledejte aplikace, články, dokumenty Bluetooth nebo průvodce",
+      searchHint: "Rychlé odkazy",
+      resultsHint: "Nejlepší výsledky",
+      noResults: "Zatím žádné odpovídající stránky. Zkuste názvy aplikací, témata Bluetooth nebo výrazy pro čištění.",
+      loading: "Načítá se index vyhledávání...",
+      ready: "Vyhledávání je připraveno.",
+    }
+  });
 
   const PAGE_TRANSLATIONS = {
     "/": {
@@ -308,6 +421,271 @@
     }
   };
 
+  const PAGE_TRANSLATION_OVERRIDES = {
+    "/": {
+      "fr-FR": {
+        pageTitle: "VelocAI | Apps IA pour récupération, nettoyage et diagnostic Bluetooth",
+        metaDescription: "VelocAI crée des apps iPhone ciblées pour retrouver des appareils, nettoyer le stockage et diagnostiquer les flux Bluetooth dans une expérience calme et moderne.",
+        selectorTexts: {
+          ".va-nav-list li:nth-child(1) a": "Apps Hub",
+          ".va-nav-list li:nth-child(2) a": "Blog",
+          ".va-nav-list li:nth-child(3) a": "Find AI",
+          ".va-nav-list li:nth-child(4) a": "AI Cleanup PRO",
+          ".va-nav-list li:nth-child(5) a": "Bluetooth Explorer",
+          ".va-eyebrow": ["VelocAI Studio", "Flux visuel", "Contact"],
+          ".va-hero-title": { html: 'Une façon <span class="is-accent">plus claire</span> d’exécuter vos workflows IA du quotidien.' },
+          ".va-hero-subtitle": "De la récupération d’appareils perdus au nettoyage photo et au diagnostic BLE, VelocAI réunit des outils mobiles ciblés dans un système visuel rapide, clair et moderne.",
+          ".va-hero-actions .va-btn-primary": "Explorer les apps",
+          ".va-hero-actions .va-btn-secondary": "Lire les guides",
+          ".va-proof-list li": ["Confidentialité d’abord", "Pensé pour l’usage quotidien sur iPhone", "Des tâches accomplies plus vite avec moins de friction"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Récupération",
+          ".va-showcase .va-app-card:nth-child(1) .va-app-body > p:nth-of-type(2)": "Retrouvez vos AirPods et accessoires Bluetooth proches grâce au radar de distance et aux indices de dernière position.",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Nettoyage",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-body > p:nth-of-type(2)": "Supprimez les photos en double, les grandes vidéos et les anciens contacts avec des flux de nettoyage sûrs et faciles à comprendre.",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostic",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-body > p:nth-of-type(2)": "Scannez des appareils, inspectez des services, testez des paquets et déboguez des sessions BLE avec des journaux structurés.",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Page produit", "Page produit", "Page produit"],
+          ".va-briefing-section-label": "À la une",
+          ".va-briefing-heading": { html: 'Pouls <span class="is-accent">produit</span>' },
+          ".va-briefing-stamp": { html: 'Mis à jour chaque jour à 08:30 <span aria-hidden="true">|</span> 25 mars 2026 à 08:30 (UTC+08:00)' },
+          ".va-brief-label": ["Sorties Apple", "Veille produit du secteur", "Sorties Apple", "Sorties Apple", "Sorties Apple", "Sorties Apple", "Évolutions IA", "Évolutions IA", "Percées semiconducteurs", "Normes et usages Bluetooth"],
+          ".va-gallery-head h2": "Chaque écran reste clair, tactile et focalisé.",
+          ".va-gallery-head > p:last-of-type": "Le langage d’interface reste cohérent entre découverte, nettoyage et dépannage avancé.",
+          ".va-contact-panel h2": "Besoin d’assistance produit ou d’un échange partenariat ?",
+          ".va-contact-panel > p:last-of-type": { html: 'Écrivez à <a href="mailto:vp@velocai.net">vp@velocai.net</a>. Nous répondons généralement sous un jour ouvré.' }
+        }
+      },
+      "ro-RO": {
+        pageTitle: "VelocAI | Aplicații AI pentru recuperare, curățare și diagnostic Bluetooth",
+        metaDescription: "VelocAI creează aplicații iPhone concentrate pentru găsirea dispozitivelor pierdute, curățarea stocării și depanarea fluxurilor Bluetooth.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Flux vizual", "Contact"],
+          ".va-hero-title": { html: 'Un mod <span class="is-accent">mai curat</span> de a rula fluxurile AI de zi cu zi.' },
+          ".va-hero-subtitle": "De la recuperarea dispozitivelor pierdute la curățarea fotografiilor și diagnostic BLE, VelocAI adună instrumente mobile clare și rapide într-un singur sistem vizual.",
+          ".va-hero-actions .va-btn-primary": "Explorează aplicațiile",
+          ".va-hero-actions .va-btn-secondary": "Citește ghidurile",
+          ".va-proof-list li": ["Confidențialitate implicită", "Conceput pentru utilizarea zilnică pe iPhone", "Finalizare rapidă a sarcinilor cu mai puțină fricțiune"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Recuperare",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Curățare",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostic",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Pagina produsului", "Pagina produsului", "Pagina produsului"],
+          ".va-briefing-section-label": "Subiecte principale",
+          ".va-briefing-heading": { html: 'Puls <span class="is-accent">produs</span>' },
+          ".va-gallery-head h2": "Fiecare ecran rămâne clar, tactil și concentrat.",
+          ".va-contact-panel h2": "Ai nevoie de suport pentru produs sau de o discuție de parteneriat?"
+        }
+      },
+      "de-DE": {
+        pageTitle: "VelocAI | KI-Apps für Wiederfinden, Bereinigung und Bluetooth-Diagnose",
+        metaDescription: "VelocAI entwickelt fokussierte iPhone-Apps zum Wiederfinden verlorener Geräte, zum Bereinigen von Speicher und zum Debuggen von Bluetooth-Workflows.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Visueller Fluss", "Kontakt"],
+          ".va-hero-title": { html: 'Ein <span class="is-accent">klarerer</span> Weg für tägliche KI-Workflows.' },
+          ".va-hero-subtitle": "Vom Wiederfinden verlorener Geräte über Fotobereinigung bis zur BLE-Diagnose bündelt VelocAI fokussierte Mobile-Tools in einem schnellen, klaren und modernen System.",
+          ".va-hero-actions .va-btn-primary": "Apps entdecken",
+          ".va-hero-actions .va-btn-secondary": "Guides lesen",
+          ".va-proof-list li": ["Datenschutz zuerst", "Für den iPhone-Alltag entwickelt", "Schnellere Aufgabenerledigung mit weniger Reibung"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Wiederfinden",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Bereinigung",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnose",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Produktseite", "Produktseite", "Produktseite"],
+          ".va-briefing-section-label": "Top-Stories",
+          ".va-briefing-heading": { html: 'Produkt-<span class="is-accent">Pulse</span>' },
+          ".va-gallery-head h2": "Jeder Screen bleibt klar, greifbar und fokussiert.",
+          ".va-contact-panel h2": "Brauchen Sie Produktsupport oder ein Partnerschaftsgespräch?"
+        }
+      },
+      "es-ES": {
+        pageTitle: "VelocAI | Apps de IA para recuperación, limpieza y diagnóstico Bluetooth",
+        metaDescription: "VelocAI crea apps de iPhone centradas en encontrar dispositivos perdidos, limpiar almacenamiento y depurar flujos Bluetooth.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Flujo visual", "Contacto"],
+          ".va-hero-title": { html: 'Una forma <span class="is-accent">más limpia</span> de ejecutar flujos de IA cotidianos.' },
+          ".va-hero-subtitle": "Desde recuperar dispositivos perdidos hasta limpiar fotos y diagnosticar BLE, VelocAI reúne herramientas móviles rápidas, claras y modernas en un solo sistema visual.",
+          ".va-hero-actions .va-btn-primary": "Explorar apps",
+          ".va-hero-actions .va-btn-secondary": "Leer guías",
+          ".va-proof-list li": ["Privacidad primero", "Diseñado para el uso diario en iPhone", "Tareas más rápidas con menos fricción"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Recuperación",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Limpieza",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnóstico",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Página del producto", "Página del producto", "Página del producto"],
+          ".va-briefing-section-label": "Historias destacadas",
+          ".va-briefing-heading": { html: 'Pulso de <span class="is-accent">producto</span>' },
+          ".va-gallery-head h2": "Cada pantalla se mantiene clara, táctil y enfocada.",
+          ".va-contact-panel h2": "¿Necesitas soporte del producto o una conversación de colaboración?"
+        }
+      },
+      "it-IT": {
+        pageTitle: "VelocAI | App IA per recupero, pulizia e diagnostica Bluetooth",
+        metaDescription: "VelocAI crea app iPhone focalizzate sul ritrovamento dei dispositivi, sulla pulizia dello spazio e sul debug dei flussi Bluetooth.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Flusso visivo", "Contatto"],
+          ".va-hero-title": { html: 'Un modo <span class="is-accent">più pulito</span> per gestire i flussi IA quotidiani.' },
+          ".va-hero-subtitle": "Dal recupero dei dispositivi persi alla pulizia delle foto e alla diagnostica BLE, VelocAI riunisce strumenti mobili chiari, veloci e moderni in un unico sistema visivo.",
+          ".va-hero-actions .va-btn-primary": "Esplora le app",
+          ".va-hero-actions .va-btn-secondary": "Leggi le guide",
+          ".va-proof-list li": ["Privacy al primo posto", "Progettato per l’uso quotidiano su iPhone", "Completamento rapido con meno attrito"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Recupero",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Pulizia",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostica",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Pagina prodotto", "Pagina prodotto", "Pagina prodotto"],
+          ".va-briefing-section-label": "In evidenza",
+          ".va-briefing-heading": { html: 'Polso del <span class="is-accent">prodotto</span>' },
+          ".va-gallery-head h2": "Ogni schermata resta chiara, tattile e focalizzata.",
+          ".va-contact-panel h2": "Hai bisogno di supporto prodotto o di parlare di una partnership?"
+        }
+      },
+      "pt-BR": {
+        pageTitle: "VelocAI | Apps de IA para recuperação, limpeza e diagnóstico Bluetooth",
+        metaDescription: "A VelocAI cria apps para iPhone focados em encontrar dispositivos perdidos, limpar armazenamento e depurar fluxos Bluetooth.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Fluxo visual", "Contato"],
+          ".va-hero-title": { html: 'Uma forma <span class="is-accent">mais limpa</span> de rodar fluxos de IA do dia a dia.' },
+          ".va-hero-subtitle": "Da recuperação de dispositivos perdidos à limpeza de fotos e ao diagnóstico BLE, a VelocAI reúne ferramentas móveis rápidas, claras e modernas em um único sistema visual.",
+          ".va-hero-actions .va-btn-primary": "Explorar apps",
+          ".va-hero-actions .va-btn-secondary": "Ler guias",
+          ".va-proof-list li": ["Privacidade em primeiro lugar", "Feito para o uso diário no iPhone", "Tarefas concluídas mais rápido com menos atrito"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Recuperação",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Limpeza",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnóstico",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Página do produto", "Página do produto", "Página do produto"],
+          ".va-briefing-section-label": "Principais notícias",
+          ".va-briefing-heading": { html: 'Pulso do <span class="is-accent">produto</span>' },
+          ".va-gallery-head h2": "Cada tela permanece clara, tátil e focada.",
+          ".va-contact-panel h2": "Precisa de suporte do produto ou de uma conversa sobre parceria?"
+        }
+      },
+      "nl-NL": {
+        pageTitle: "VelocAI | AI-apps voor terugvinden, opschonen en Bluetooth-diagnose",
+        metaDescription: "VelocAI maakt gerichte iPhone-apps voor het terugvinden van verloren apparaten, het opschonen van opslag en het debuggen van Bluetooth-workflows.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Visuele flow", "Contact"],
+          ".va-hero-title": { html: 'Een <span class="is-accent">schonere</span> manier om dagelijkse AI-workflows uit te voeren.' },
+          ".va-hero-subtitle": "Van het terugvinden van verloren apparaten tot foto-opruiming en BLE-diagnose: VelocAI brengt snelle, duidelijke en moderne mobiele tools samen in één visueel systeem.",
+          ".va-hero-actions .va-btn-primary": "Apps bekijken",
+          ".va-hero-actions .va-btn-secondary": "Gidsen lezen",
+          ".va-proof-list li": ["Privacy eerst", "Ontworpen voor dagelijks iPhone-gebruik", "Snellere taakafhandeling met minder frictie"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Herstel",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Opschonen",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnose",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Productpagina", "Productpagina", "Productpagina"],
+          ".va-briefing-section-label": "Topverhalen",
+          ".va-briefing-heading": { html: 'Product-<span class="is-accent">pulse</span>' },
+          ".va-gallery-head h2": "Elk scherm blijft helder, tastbaar en gefocust.",
+          ".va-contact-panel h2": "Hulp nodig bij een product of een gesprek over samenwerking?"
+        }
+      },
+      "sv-SE": {
+        pageTitle: "VelocAI | AI-appar för återställning, rensning och Bluetooth-diagnostik",
+        metaDescription: "VelocAI skapar fokuserade iPhone-appar för att hitta borttappade enheter, rensa lagring och felsöka Bluetooth-flöden.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Visuellt flöde", "Kontakt"],
+          ".va-hero-title": { html: 'Ett <span class="is-accent">renare</span> sätt att köra vardagliga AI-flöden.' },
+          ".va-hero-subtitle": "Från återställning av borttappade enheter till bildrensning och BLE-diagnostik samlar VelocAI tydliga och snabba mobilverktyg i ett modernt visuellt system.",
+          ".va-hero-actions .va-btn-primary": "Utforska appar",
+          ".va-hero-actions .va-btn-secondary": "Läs guider",
+          ".va-proof-list li": ["Integritet först", "Utformad för daglig iPhone-användning", "Snabbare uppgifter med mindre friktion"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Återställning",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Rensning",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostik",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Produktsida", "Produktsida", "Produktsida"],
+          ".va-briefing-section-label": "Toppnyheter",
+          ".va-briefing-heading": { html: 'Produkt-<span class="is-accent">puls</span>' },
+          ".va-gallery-head h2": "Varje skärm förblir tydlig, taktil och fokuserad.",
+          ".va-contact-panel h2": "Behöver du produktsupport eller ett partnerskapssamtal?"
+        }
+      },
+      "pl-PL": {
+        pageTitle: "VelocAI | Aplikacje AI do odzyskiwania, czyszczenia i diagnostyki Bluetooth",
+        metaDescription: "VelocAI tworzy aplikacje iPhone do odnajdywania zgubionych urządzeń, czyszczenia pamięci i debugowania przepływów Bluetooth.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Przepływ wizualny", "Kontakt"],
+          ".va-hero-title": { html: '<span class="is-accent">Czystszy</span> sposób na codzienne przepływy AI.' },
+          ".va-hero-subtitle": "Od odzyskiwania zgubionych urządzeń po czyszczenie zdjęć i diagnostykę BLE — VelocAI łączy szybkie i przejrzyste narzędzia mobilne w jeden nowoczesny system wizualny.",
+          ".va-hero-actions .va-btn-primary": "Przeglądaj aplikacje",
+          ".va-hero-actions .va-btn-secondary": "Czytaj poradniki",
+          ".va-proof-list li": ["Prywatność przede wszystkim", "Zaprojektowane do codziennego użycia na iPhonie", "Szybsze wykonanie zadań przy mniejszym tarciu"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Odzyskiwanie",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Czyszczenie",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostyka",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Strona produktu", "Strona produktu", "Strona produktu"],
+          ".va-briefing-section-label": "Najważniejsze",
+          ".va-briefing-heading": { html: '<span class="is-accent">Puls</span> produktu' },
+          ".va-gallery-head h2": "Każdy ekran pozostaje czytelny, namacalny i skupiony.",
+          ".va-contact-panel h2": "Potrzebujesz wsparcia produktu lub rozmowy o współpracy?"
+        }
+      },
+      "cs-CZ": {
+        pageTitle: "VelocAI | AI aplikace pro hledání, čištění a diagnostiku Bluetooth",
+        metaDescription: "VelocAI vytváří zaměřené aplikace pro iPhone na hledání ztracených zařízení, čištění úložiště a ladění Bluetooth pracovních postupů.",
+        selectorTexts: {
+          ".va-eyebrow": ["VelocAI Studio", "Vizuální tok", "Kontakt"],
+          ".va-hero-title": { html: '<span class="is-accent">Čistší</span> způsob, jak spouštět každodenní AI workflow.' },
+          ".va-hero-subtitle": "Od hledání ztracených zařízení přes čištění fotek až po BLE diagnostiku spojuje VelocAI rychlé a přehledné mobilní nástroje do jednoho moderního vizuálního systému.",
+          ".va-hero-actions .va-btn-primary": "Prozkoumat aplikace",
+          ".va-hero-actions .va-btn-secondary": "Číst průvodce",
+          ".va-proof-list li": ["Soukromí na prvním místě", "Navrženo pro každodenní používání iPhonu", "Rychlejší dokončení úkolů s menším třením"],
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Obnova",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Čištění",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostika",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Produktová stránka", "Produktová stránka", "Produktová stránka"],
+          ".va-briefing-section-label": "Hlavní zprávy",
+          ".va-briefing-heading": { html: 'Produktový <span class="is-accent">pulz</span>' },
+          ".va-gallery-head h2": "Každá obrazovka zůstává jasná, hmatová a soustředěná.",
+          ".va-contact-panel h2": "Potřebujete podporu produktu nebo rozhovor o partnerství?"
+        }
+      }
+    },
+    "/apps/": {
+      "fr-FR": {
+        pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer",
+        metaDescription: "Comparez les apps iOS VelocAI pour le nettoyage, la recherche d’appareils et le diagnostic Bluetooth.",
+        selectorTexts: {
+          "header .brand span": "VelocAI Apps",
+          "header nav a:nth-child(1)": "Accueil",
+          "header nav a:nth-child(2)": "Apps",
+          "header nav a:nth-child(3)": "Blog",
+          "header nav a:nth-child(4)": "Confidentialité",
+          "main > h1": "Choisissez l’app VelocAI adaptée à votre workflow",
+          ".lede": "VelocAI crée des apps iOS pratiques pour le nettoyage du stockage, la récupération d’appareils perdus et le dépannage Bluetooth professionnel.",
+          ".card:nth-child(1) > p": "Nettoyez les photos en double, supprimez les grandes vidéos et organisez les contacts avec un traitement local respectueux de la vie privée.",
+          ".card:nth-child(1) .tags span": ["Nettoyeur photo iPhone", "Nettoyage des doublons", "Optimisation du stockage"],
+          ".card:nth-child(1) .update-label": "Dernière version App Store",
+          ".card:nth-child(1) .update-source": "Notes de version officielles de l’App Store",
+          ".card:nth-child(1) .actions a:nth-child(1)": "Télécharger sur l’App Store",
+          ".card:nth-child(1) .actions a:nth-child(2)": "Page produit",
+          ".card:nth-child(1) .actions a:nth-child(3)": "Politique de confidentialité",
+          ".card:nth-child(2) > p": "Retrouvez des AirPods perdus et des appareils Bluetooth proches grâce au radar de distance et aux indications de dernière position.",
+          ".card:nth-child(2) .tags span": ["Recherche Bluetooth", "Retrouver des AirPods", "Récupération d’appareil"],
+          ".card:nth-child(2) .update-label": "Dernière version App Store",
+          ".card:nth-child(2) .update-source": "Notes de version officielles de l’App Store",
+          ".card:nth-child(2) .actions a:nth-child(1)": "Télécharger sur l’App Store",
+          ".card:nth-child(2) .actions a:nth-child(2)": "Page produit",
+          ".card:nth-child(2) .actions a:nth-child(3)": "Politique de confidentialité",
+          ".card:nth-child(3) > p": "Scannez les appareils BLE, inspectez les services GATT, envoyez des paquets et diagnostiquez les problèmes de connexion avec une aide IA.",
+          ".card:nth-child(3) .tags span": ["Scanner BLE", "Inspecteur GATT", "Outil de debug Bluetooth"],
+          ".card:nth-child(3) .update-label": "Dernière version App Store",
+          ".card:nth-child(3) .update-source": "Notes de version officielles de l’App Store",
+          ".card:nth-child(3) .actions a:nth-child(1)": "Télécharger sur l’App Store",
+          ".card:nth-child(3) .actions a:nth-child(2)": "Page produit",
+          ".card:nth-child(3) .actions a:nth-child(3)": "Guide utilisateur",
+          ".resources h2": "Ressources liées",
+          ".resources p": "Lisez les guides produits et tutoriels de dépannage du blog VelocAI.",
+          ".resource-links a:nth-child(1)": "Ouvrir le hub blog"
+        }
+      },
+      "ro-RO": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Compară aplicațiile VelocAI pentru curățare, găsirea dispozitivelor și diagnostic Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Acasă", "header nav a:nth-child(2)": "Aplicații", "header nav a:nth-child(4)": "Confidențialitate", "main > h1": "Alege aplicația VelocAI potrivită pentru fluxul tău", ".lede": "VelocAI construiește aplicații iOS practice pentru curățarea stocării, recuperarea dispozitivelor pierdute și depanarea profesională Bluetooth.", ".card:nth-child(1) .update-label": "Ultima versiune din App Store", ".card:nth-child(2) .update-label": "Ultima versiune din App Store", ".card:nth-child(3) .update-label": "Ultima versiune din App Store", ".resources h2": "Resurse asociate" } },
+      "de-DE": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Vergleichen Sie VelocAI-Apps für Bereinigung, Gerätesuche und Bluetooth-Diagnose.", selectorTexts: { "header nav a:nth-child(1)": "Start", "header nav a:nth-child(2)": "Apps", "header nav a:nth-child(4)": "Datenschutz", "main > h1": "Wählen Sie die passende VelocAI-App für Ihren Workflow", ".lede": "VelocAI entwickelt praktische iOS-Apps für Speicherbereinigung, Wiederfinden verlorener Geräte und professionelle Bluetooth-Fehleranalyse.", ".card:nth-child(1) .update-label": "Neueste App-Store-Version", ".card:nth-child(2) .update-label": "Neueste App-Store-Version", ".card:nth-child(3) .update-label": "Neueste App-Store-Version", ".resources h2": "Verwandte Ressourcen" } },
+      "es-ES": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Compara las apps de VelocAI para limpieza, búsqueda de dispositivos y diagnóstico Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Inicio", "header nav a:nth-child(2)": "Apps", "header nav a:nth-child(4)": "Privacidad", "main > h1": "Elige la app de VelocAI adecuada para tu flujo de trabajo", ".lede": "VelocAI crea apps iOS prácticas para limpieza de almacenamiento, recuperación de dispositivos perdidos y solución profesional de problemas Bluetooth.", ".card:nth-child(1) .update-label": "Última versión en App Store", ".card:nth-child(2) .update-label": "Última versión en App Store", ".card:nth-child(3) .update-label": "Última versión en App Store", ".resources h2": "Recursos relacionados" } },
+      "it-IT": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Confronta le app VelocAI per pulizia, ricerca dispositivi e diagnostica Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Home", "header nav a:nth-child(2)": "App", "header nav a:nth-child(4)": "Privacy", "main > h1": "Scegli l’app VelocAI giusta per il tuo flusso di lavoro", ".lede": "VelocAI realizza app iOS pratiche per la pulizia dello spazio, il recupero dei dispositivi smarriti e la risoluzione professionale dei problemi Bluetooth.", ".card:nth-child(1) .update-label": "Ultima versione su App Store", ".card:nth-child(2) .update-label": "Ultima versione su App Store", ".card:nth-child(3) .update-label": "Ultima versione su App Store", ".resources h2": "Risorse correlate" } },
+      "pt-BR": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Compare os apps da VelocAI para limpeza, busca de dispositivos e diagnóstico Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Início", "header nav a:nth-child(2)": "Apps", "header nav a:nth-child(4)": "Privacidade", "main > h1": "Escolha o app VelocAI certo para o seu fluxo de trabalho", ".lede": "A VelocAI cria apps iOS práticos para limpeza de armazenamento, recuperação de dispositivos perdidos e solução profissional de problemas Bluetooth.", ".card:nth-child(1) .update-label": "Última versão na App Store", ".card:nth-child(2) .update-label": "Última versão na App Store", ".card:nth-child(3) .update-label": "Última versão na App Store", ".resources h2": "Recursos relacionados" } },
+      "nl-NL": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Vergelijk VelocAI-apps voor opschonen, apparaatherstel en Bluetooth-diagnose.", selectorTexts: { "header nav a:nth-child(1)": "Home", "header nav a:nth-child(2)": "Apps", "header nav a:nth-child(4)": "Privacy", "main > h1": "Kies de juiste VelocAI-app voor jouw workflow", ".lede": "VelocAI bouwt praktische iOS-apps voor opslagopschoning, het terugvinden van verloren apparaten en professionele Bluetooth-probleemoplossing.", ".card:nth-child(1) .update-label": "Nieuwste App Store-versie", ".card:nth-child(2) .update-label": "Nieuwste App Store-versie", ".card:nth-child(3) .update-label": "Nieuwste App Store-versie", ".resources h2": "Gerelateerde bronnen" } },
+      "sv-SE": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Jämför VelocAI-appar för rensning, enhetssökning och Bluetooth-diagnostik.", selectorTexts: { "header nav a:nth-child(1)": "Hem", "header nav a:nth-child(2)": "Appar", "header nav a:nth-child(4)": "Integritet", "main > h1": "Välj rätt VelocAI-app för ditt arbetsflöde", ".lede": "VelocAI bygger praktiska iOS-appar för lagringsrensning, återställning av borttappade enheter och professionell Bluetooth-felsökning.", ".card:nth-child(1) .update-label": "Senaste App Store-versionen", ".card:nth-child(2) .update-label": "Senaste App Store-versionen", ".card:nth-child(3) .update-label": "Senaste App Store-versionen", ".resources h2": "Relaterade resurser" } },
+      "pl-PL": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Porównaj aplikacje VelocAI do czyszczenia, wyszukiwania urządzeń i diagnostyki Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Strona główna", "header nav a:nth-child(2)": "Aplikacje", "header nav a:nth-child(4)": "Prywatność", "main > h1": "Wybierz odpowiednią aplikację VelocAI do swojego workflow", ".lede": "VelocAI tworzy praktyczne aplikacje iOS do czyszczenia pamięci, odzyskiwania zgubionych urządzeń i profesjonalnego rozwiązywania problemów Bluetooth.", ".card:nth-child(1) .update-label": "Najnowsza wersja w App Store", ".card:nth-child(2) .update-label": "Najnowsza wersja w App Store", ".card:nth-child(3) .update-label": "Najnowsza wersja w App Store", ".resources h2": "Powiązane zasoby" } },
+      "cs-CZ": { pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer", metaDescription: "Porovnejte aplikace VelocAI pro čištění, hledání zařízení a diagnostiku Bluetooth.", selectorTexts: { "header nav a:nth-child(1)": "Domů", "header nav a:nth-child(2)": "Aplikace", "header nav a:nth-child(4)": "Soukromí", "main > h1": "Vyberte správnou aplikaci VelocAI pro svůj pracovní postup", ".lede": "VelocAI vytváří praktické aplikace pro iOS pro čištění úložiště, hledání ztracených zařízení a profesionální řešení problémů s Bluetooth.", ".card:nth-child(1) .update-label": "Nejnovější verze v App Store", ".card:nth-child(2) .update-label": "Nejnovější verze v App Store", ".card:nth-child(3) .update-label": "Nejnovější verze v App Store", ".resources h2": "Související zdroje" } }
+    }
+  };
+
   let searchData = null;
   let loadPromise = null;
   const HIGHLIGHT_QUERY_KEY = "stq";
@@ -324,15 +702,7 @@
   }
 
   function detectDocumentLocale() {
-    const htmlLocale = (document.documentElement.lang || "").trim();
-    if (isChineseLocale(htmlLocale)) {
-      return "zh-CN";
-    }
-
-    const browserLocales = []
-      .concat(Array.isArray(window.navigator.languages) ? window.navigator.languages : [])
-      .concat([window.navigator.language || ""]);
-    return browserLocales.some(isChineseLocale) ? "zh-CN" : DEFAULT_UI_LOCALE;
+    return DEFAULT_UI_LOCALE;
   }
 
   function detectInitialLocale() {
@@ -345,9 +715,12 @@
 
   function resolveUiLocale(preference) {
     if (preference === "auto") {
-      return detectDocumentLocale();
+      return DEFAULT_UI_LOCALE;
     }
-    return isChineseLocale(preference) ? "zh-CN" : DEFAULT_UI_LOCALE;
+    const option = LOCALE_OPTIONS.find(function (entry) {
+      return entry.value === preference;
+    });
+    return option && option.uiLocale ? option.uiLocale : DEFAULT_UI_LOCALE;
   }
 
   function localeOptionFor(preference) {
@@ -432,15 +805,24 @@
     }
   }
 
-  function applyPageTranslations() {
-    const path = normalizePath(window.location.pathname);
-    const pageTranslation = PAGE_TRANSLATIONS[path];
-    if (!pageTranslation) {
-      return;
+  function getPageTranslation(path, uiLocale) {
+    const baseTranslations = PAGE_TRANSLATIONS[path];
+    const overrideTranslations = PAGE_TRANSLATION_OVERRIDES[path];
+    if (!baseTranslations && !overrideTranslations) {
+      return null;
     }
 
+    return (overrideTranslations && overrideTranslations[uiLocale])
+      || (baseTranslations && baseTranslations[uiLocale])
+      || (overrideTranslations && overrideTranslations[DEFAULT_UI_LOCALE])
+      || (baseTranslations && baseTranslations[DEFAULT_UI_LOCALE])
+      || null;
+  }
+
+  function applyPageTranslations() {
+    const path = normalizePath(window.location.pathname);
     const uiLocale = resolveUiLocale(window.localStorage.getItem(STORAGE_KEY) || detectInitialLocale());
-    const translation = pageTranslation[uiLocale] || pageTranslation[DEFAULT_UI_LOCALE];
+    const translation = getPageTranslation(path, uiLocale);
     if (!translation || !translation.selectorTexts) {
       return;
     }
