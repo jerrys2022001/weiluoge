@@ -45,6 +45,273 @@
     },
   };
 
+  const PAGE_TRANSLATIONS = {
+    "/": {
+      "en-US": {
+        pageTitle: "VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics",
+        metaDescription: "VelocAI creates focused iPhone apps for finding lost devices, cleaning storage, and debugging Bluetooth workflows with a calm, modern experience.",
+        selectorTexts: {
+          ".va-brand": { ariaLabel: "VelocAI Home" },
+          ".va-nav": { ariaLabel: "Primary" },
+          ".va-nav-toggle": { ariaLabel: "Toggle navigation" },
+          ".va-nav-list li:nth-child(1) a": "Who We Are",
+          ".va-nav-list li:nth-child(2) a": "Apps Hub",
+          ".va-nav-list li:nth-child(3) a": "Blog",
+          ".va-nav-list li:nth-child(4) a": "Find AI",
+          ".va-nav-list li:nth-child(5) a": "AI Cleanup PRO",
+          ".va-nav-list li:nth-child(6) a": "Bluetooth Explorer",
+          ".va-nav-list li:nth-child(7) a": "Contact",
+          ".va-hero": { ariaLabel: "Hero" },
+          ".va-eyebrow": ["VelocAI Studio", "Visual Flow", "Contact"],
+          ".va-hero-title": { html: 'A <span class="is-accent">cleaner</span> way to run everyday AI workflows.' },
+          ".va-hero-subtitle": "From lost-device recovery to photo cleanup and BLE diagnostics, VelocAI brings focused mobile tools into one visual system that feels fast, clear, and modern.",
+          ".va-hero-actions .va-btn-primary": "Explore Apps",
+          ".va-hero-actions .va-btn-secondary": "Read Guides",
+          ".va-proof-list": { ariaLabel: "Key strengths" },
+          ".va-proof-list li": [
+            "Privacy-first by default",
+            "Designed for iPhone daily use",
+            "Fast task completion with less friction"
+          ],
+          ".va-hero-visual": { ariaLabel: "Product preview collage" },
+          ".va-float-card-a": { ariaLabel: "Open Find AI page" },
+          ".va-float-card-b": { ariaLabel: "Open AI Cleanup PRO page" },
+          ".va-float-card-c": { ariaLabel: "Open Bluetooth Explorer page" },
+          ".va-showcase": { ariaLabel: "Product cards" },
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "Recovery",
+          ".va-showcase .va-app-card:nth-child(1) h2": "Find AI: Bluetooth Finder App",
+          ".va-showcase .va-app-card:nth-child(1) .va-app-body > p:nth-of-type(2)": "Recover nearby AirPods and Bluetooth accessories with distance radar and last-seen location hints.",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "Cleanup",
+          ".va-showcase .va-app-card:nth-child(2) h2": "AI Cleanup PRO",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-body > p:nth-of-type(2)": "Clear duplicate photos, large videos, and outdated contacts with safe and understandable cleanup flows.",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "Diagnostics",
+          ".va-showcase .va-app-card:nth-child(3) h2": "Bluetooth Explorer",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-body > p:nth-of-type(2)": "Scan devices, inspect services, test packets, and debug BLE sessions with structured logs and guides.",
+          ".va-showcase .va-app-links a:nth-child(1)": ["Product Page", "Product Page", "Product Page"],
+          ".va-showcase .va-app-links a:nth-child(2)": ["App Store", "App Store", "App Store"],
+          ".va-briefing": { ariaLabel: "Today's briefing" },
+          ".va-briefing-section-label": "Top Stories",
+          ".va-briefing-heading": { html: 'Product <span class="is-accent">Pulse</span>' },
+          ".va-briefing-stamp": { html: 'Updated daily 08:30 <span aria-hidden="true">|</span> March 25, 2026 at 08:30 (UTC+08:00)' },
+          ".va-brief-label": [
+            "Apple Releases",
+            "Industry Product Watch",
+            "Apple Releases",
+            "Apple Releases",
+            "Apple Releases",
+            "Apple Releases",
+            "AI Developments",
+            "AI Developments",
+            "Semiconductor Breakthroughs",
+            "Bluetooth Standards & Uses"
+          ],
+          ".va-gallery": { ariaLabel: "Visual highlights" },
+          ".va-gallery-head h2": "Every screen stays clear, tactile, and focused.",
+          ".va-gallery-head > p:last-of-type": "The interface language is consistent across discovery, cleanup, and terminal-level troubleshooting.",
+          ".va-contact": { ariaLabel: "Contact" },
+          ".va-contact-panel h2": "Need product support or a partnership conversation?",
+          ".va-contact-panel > p:last-of-type": { html: 'Write to <a href="mailto:vp@velocai.net">vp@velocai.net</a>. We usually respond within one business day.' }
+        }
+      },
+      "zh-CN": {
+        pageTitle: "VelocAI | 恢复、清理与蓝牙诊断 AI 应用",
+        metaDescription: "VelocAI 提供专注的 iPhone 应用，用于查找丢失设备、清理存储空间以及调试 Bluetooth 工作流，体验简洁而现代。",
+        selectorTexts: {
+          ".va-brand": { ariaLabel: "VelocAI 首页" },
+          ".va-nav": { ariaLabel: "主导航" },
+          ".va-nav-toggle": { ariaLabel: "切换导航" },
+          ".va-nav-list li:nth-child(1) a": "我们是谁",
+          ".va-nav-list li:nth-child(2) a": "应用中心",
+          ".va-nav-list li:nth-child(3) a": "博客",
+          ".va-nav-list li:nth-child(4) a": "Find AI",
+          ".va-nav-list li:nth-child(5) a": "AI Cleanup PRO",
+          ".va-nav-list li:nth-child(6) a": "Bluetooth Explorer",
+          ".va-nav-list li:nth-child(7) a": "联系我们",
+          ".va-hero": { ariaLabel: "首页主视觉" },
+          ".va-eyebrow": ["VelocAI Studio", "视觉体验", "联系"],
+          ".va-hero-title": { html: '让日常 AI 工作流更<span class="is-accent">清爽高效</span>。' },
+          ".va-hero-subtitle": "从丢失设备找回、照片清理到 BLE 诊断，VelocAI 将专注型移动工具整合进一套快速、清晰、现代的视觉系统。",
+          ".va-hero-actions .va-btn-primary": "浏览应用",
+          ".va-hero-actions .va-btn-secondary": "阅读指南",
+          ".va-proof-list": { ariaLabel: "核心优势" },
+          ".va-proof-list li": [
+            "默认隐私优先",
+            "为 iPhone 日常使用而设计",
+            "更少阻力，更快完成任务"
+          ],
+          ".va-hero-visual": { ariaLabel: "产品预览拼贴" },
+          ".va-float-card-a": { ariaLabel: "打开 Find AI 页面" },
+          ".va-float-card-b": { ariaLabel: "打开 AI Cleanup PRO 页面" },
+          ".va-float-card-c": { ariaLabel: "打开 Bluetooth Explorer 页面" },
+          ".va-showcase": { ariaLabel: "产品卡片" },
+          ".va-showcase .va-app-card:nth-child(1) .va-app-kicker": "找回",
+          ".va-showcase .va-app-card:nth-child(1) h2": "Find AI：蓝牙查找应用",
+          ".va-showcase .va-app-card:nth-child(1) .va-app-body > p:nth-of-type(2)": "通过距离雷达和最后出现位置提示，帮助你找回附近的 AirPods 和其他蓝牙配件。",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-kicker": "清理",
+          ".va-showcase .va-app-card:nth-child(2) h2": "AI Cleanup PRO",
+          ".va-showcase .va-app-card:nth-child(2) .va-app-body > p:nth-of-type(2)": "安全、易懂地清理重复照片、大体积视频和过期联系人。",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-kicker": "诊断",
+          ".va-showcase .va-app-card:nth-child(3) h2": "Bluetooth Explorer",
+          ".va-showcase .va-app-card:nth-child(3) .va-app-body > p:nth-of-type(2)": "扫描设备、检查服务、测试数据包，并通过结构化日志与指南调试 BLE 会话。",
+          ".va-showcase .va-app-links a:nth-child(1)": ["产品页面", "产品页面", "产品页面"],
+          ".va-showcase .va-app-links a:nth-child(2)": ["App Store", "App Store", "App Store"],
+          ".va-briefing": { ariaLabel: "今日简报" },
+          ".va-briefing-section-label": "今日焦点",
+          ".va-briefing-heading": { html: '产品<span class="is-accent">脉搏</span>' },
+          ".va-briefing-stamp": { html: '每日 08:30 更新 <span aria-hidden="true">|</span> 2026年3月25日 08:30 (UTC+08:00)' },
+          ".va-brief-label": [
+            "Apple 动态",
+            "行业产品观察",
+            "Apple 动态",
+            "Apple 动态",
+            "Apple 动态",
+            "Apple 动态",
+            "AI 进展",
+            "AI 进展",
+            "半导体突破",
+            "Bluetooth 标准与应用"
+          ],
+          ".va-gallery": { ariaLabel: "视觉亮点" },
+          ".va-gallery-head h2": "每个页面都保持清晰、顺手、聚焦。",
+          ".va-gallery-head > p:last-of-type": "从发现、清理到终端级排障，整套界面语言始终一致。",
+          ".va-contact": { ariaLabel: "联系" },
+          ".va-contact-panel h2": "需要产品支持或合作沟通？",
+          ".va-contact-panel > p:last-of-type": { html: '欢迎发送邮件至 <a href="mailto:vp@velocai.net">vp@velocai.net</a>，我们通常会在 1 个工作日内回复。' }
+        }
+      }
+    },
+    "/apps/": {
+      "en-US": {
+        pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer",
+        metaDescription: "Explore VelocAI iOS apps: AI Cleanup PRO for storage cleanup, Find AI for lost Bluetooth devices, and Bluetooth Explorer for BLE debugging.",
+        selectorTexts: {
+          "header .brand span": "VelocAI Apps",
+          "header nav": { ariaLabel: "Main" },
+          "header nav a:nth-child(1)": "Home",
+          "header nav a:nth-child(2)": "Apps",
+          "header nav a:nth-child(3)": "Blog",
+          "header nav a:nth-child(4)": "Privacy",
+          "main > h1": "Choose the right VelocAI app for your workflow",
+          ".lede": "VelocAI builds practical iOS apps for storage cleanup, lost-device recovery, and professional Bluetooth troubleshooting. Compare the latest App Store versions, review official release-note highlights, and download the release that matches your immediate goal.",
+          ".grid": { ariaLabel: "VelocAI products" },
+          ".card:nth-child(1) > p": "Clean duplicate photos, remove large videos, and organize contacts with privacy-first on-device processing.",
+          ".card:nth-child(1) .tags span": ["Photo Cleaner iPhone", "Duplicate Photo Cleanup", "Storage Optimizer"],
+          ".card:nth-child(1) .update-panel": { ariaLabel: "AI Cleanup PRO latest App Store update" },
+          ".card:nth-child(1) .update-label": "Latest on App Store",
+          ".card:nth-child(1) .update-date": { html: '<time datetime="2026-03-06">Updated Mar 6, 2026</time>' },
+          ".card:nth-child(1) .update-source": "Official App Store release notes",
+          ".card:nth-child(1) .update-list li": [
+            "New Super Cleaner flow speeds up grouping for duplicate photos, similar photos, duplicate videos, and similar videos.",
+            "Expanded cleanup categories improve detection for screenshots, blurry photos, and Live Photos.",
+            "Contact cleanup performance is faster for quicker bulk actions.",
+            "Performance optimizations and bug fixes make the release smoother overall."
+          ],
+          ".card:nth-child(1) .actions a:nth-child(1)": "Download on App Store",
+          ".card:nth-child(1) .actions a:nth-child(2)": "Product Page",
+          ".card:nth-child(1) .actions a:nth-child(3)": "Privacy Policy",
+          ".card:nth-child(2) > p": "Find lost AirPods and nearby Bluetooth devices with live signal distance radar and last-seen location guidance.",
+          ".card:nth-child(2) .tags span": ["Bluetooth Finder", "Find Lost AirPods", "Device Recovery"],
+          ".card:nth-child(2) .update-panel": { ariaLabel: "Find AI latest App Store update" },
+          ".card:nth-child(2) .update-label": "Latest on App Store",
+          ".card:nth-child(2) .update-date": { html: '<time datetime="2026-03-04">Updated Mar 4, 2026</time>' },
+          ".card:nth-child(2) .update-source": "Official App Store release notes",
+          ".card:nth-child(2) .update-list li": [
+            "More precise location tracking helps narrow down missing Bluetooth devices faster.",
+            "More real-time location updates improve live recovery guidance while you move."
+          ],
+          ".card:nth-child(2) .actions a:nth-child(1)": "Download on App Store",
+          ".card:nth-child(2) .actions a:nth-child(2)": "Product Page",
+          ".card:nth-child(2) .actions a:nth-child(3)": "Privacy Policy",
+          ".card:nth-child(3) > p": "Scan BLE devices, inspect GATT services, send packets, and diagnose connection issues with AI-assisted insights.",
+          ".card:nth-child(3) .tags span": ["BLE Scanner", "GATT Inspector", "Bluetooth Debug Tool"],
+          ".card:nth-child(3) .update-panel": { ariaLabel: "Bluetooth Explorer latest App Store update" },
+          ".card:nth-child(3) .update-label": "Latest on App Store",
+          ".card:nth-child(3) .update-date": { html: '<time datetime="2026-03-09">Updated Mar 9, 2026</time>' },
+          ".card:nth-child(3) .update-source": "Official App Store release notes",
+          ".card:nth-child(3) .update-list li": [
+            "Premium features are free for a limited time in the current App Store release.",
+            "Real-Time Signal Display is now available for nearby and connected Bluetooth devices.",
+            "Live RSSI changes are easier to inspect when tracking movement or connection quality.",
+            "Faster device finding, stronger favorites monitoring, and clearer debugging improve the overall workflow."
+          ],
+          ".card:nth-child(3) .actions a:nth-child(1)": "Download on App Store",
+          ".card:nth-child(3) .actions a:nth-child(2)": "Product Page",
+          ".card:nth-child(3) .actions a:nth-child(3)": "User Guide",
+          ".resources": { ariaLabel: "Resources" },
+          ".resources h2": "Related resources",
+          ".resources p": "Read SEO-focused product guides and troubleshooting walkthroughs from the VelocAI blog.",
+          ".resource-links a:nth-child(1)": "Open Blog Hub",
+          ".resource-links a:nth-child(2)": "Find lost AirPods guide",
+          ".resource-links a:nth-child(3)": "iPhone storage cleanup checklist"
+        }
+      },
+      "zh-CN": {
+        pageTitle: "VelocAI Apps | AI Cleanup PRO、Find AI、Bluetooth Explorer",
+        metaDescription: "浏览 VelocAI iOS 应用：AI Cleanup PRO 用于存储清理，Find AI 用于查找蓝牙设备，Bluetooth Explorer 用于 BLE 调试。",
+        selectorTexts: {
+          "header .brand span": "VelocAI 应用",
+          "header nav": { ariaLabel: "主导航" },
+          "header nav a:nth-child(1)": "首页",
+          "header nav a:nth-child(2)": "应用",
+          "header nav a:nth-child(3)": "博客",
+          "header nav a:nth-child(4)": "隐私",
+          "main > h1": "为你的工作流选择合适的 VelocAI 应用",
+          ".lede": "VelocAI 打造实用型 iOS 应用，覆盖存储清理、丢失设备找回和专业 Bluetooth 排障。你可以对比最新 App Store 版本、查看官方更新要点，并下载最适合当前需求的版本。",
+          ".grid": { ariaLabel: "VelocAI 产品" },
+          ".card:nth-child(1) > p": "通过隐私优先的本地处理，清理重复照片、删除大视频并整理联系人。",
+          ".card:nth-child(1) .tags span": ["iPhone 照片清理", "重复照片清理", "存储优化"],
+          ".card:nth-child(1) .update-panel": { ariaLabel: "AI Cleanup PRO 最新 App Store 更新" },
+          ".card:nth-child(1) .update-label": "App Store 最新版本",
+          ".card:nth-child(1) .update-date": { html: '<time datetime="2026-03-06">更新于 2026年3月6日</time>' },
+          ".card:nth-child(1) .update-source": "官方 App Store 发布说明",
+          ".card:nth-child(1) .update-list li": [
+            "新的 Super Cleaner 流程加快了重复照片、相似照片、重复视频和相似视频的分组速度。",
+            "扩展后的清理分类提升了对截图、模糊照片和 Live Photos 的识别能力。",
+            "联系人清理性能更快，批量操作更高效。",
+            "整体性能优化与问题修复，让本次版本更顺滑。"
+          ],
+          ".card:nth-child(1) .actions a:nth-child(1)": "前往 App Store 下载",
+          ".card:nth-child(1) .actions a:nth-child(2)": "产品页面",
+          ".card:nth-child(1) .actions a:nth-child(3)": "隐私政策",
+          ".card:nth-child(2) > p": "通过实时信号距离雷达和最后出现位置提示，帮助找回丢失的 AirPods 和附近蓝牙设备。",
+          ".card:nth-child(2) .tags span": ["蓝牙查找", "查找丢失 AirPods", "设备找回"],
+          ".card:nth-child(2) .update-panel": { ariaLabel: "Find AI 最新 App Store 更新" },
+          ".card:nth-child(2) .update-label": "App Store 最新版本",
+          ".card:nth-child(2) .update-date": { html: '<time datetime="2026-03-04">更新于 2026年3月4日</time>' },
+          ".card:nth-child(2) .update-source": "官方 App Store 发布说明",
+          ".card:nth-child(2) .update-list li": [
+            "更精准的位置跟踪可更快缩小丢失蓝牙设备的范围。",
+            "更多实时位置更新让你在移动过程中获得更好的找回引导。"
+          ],
+          ".card:nth-child(2) .actions a:nth-child(1)": "前往 App Store 下载",
+          ".card:nth-child(2) .actions a:nth-child(2)": "产品页面",
+          ".card:nth-child(2) .actions a:nth-child(3)": "隐私政策",
+          ".card:nth-child(3) > p": "扫描 BLE 设备、检查 GATT 服务、发送数据包，并借助 AI 辅助洞察诊断连接问题。",
+          ".card:nth-child(3) .tags span": ["BLE 扫描器", "GATT 检查器", "蓝牙调试工具"],
+          ".card:nth-child(3) .update-panel": { ariaLabel: "Bluetooth Explorer 最新 App Store 更新" },
+          ".card:nth-child(3) .update-label": "App Store 最新版本",
+          ".card:nth-child(3) .update-date": { html: '<time datetime="2026-03-09">更新于 2026年3月9日</time>' },
+          ".card:nth-child(3) .update-source": "官方 App Store 发布说明",
+          ".card:nth-child(3) .update-list li": [
+            "当前 App Store 版本中，Premium 功能限时免费开放。",
+            "附近和已连接的蓝牙设备现已支持实时信号显示。",
+            "在追踪移动或连接质量时，Live RSSI 变化更容易观察。",
+            "更快的设备查找、更强的收藏监控和更清晰的调试流程提升了整体体验。"
+          ],
+          ".card:nth-child(3) .actions a:nth-child(1)": "前往 App Store 下载",
+          ".card:nth-child(3) .actions a:nth-child(2)": "产品页面",
+          ".card:nth-child(3) .actions a:nth-child(3)": "用户指南",
+          ".resources": { ariaLabel: "资源" },
+          ".resources h2": "相关资源",
+          ".resources p": "阅读 VelocAI 博客中的 SEO 导向产品指南与排障文章。",
+          ".resource-links a:nth-child(1)": "打开博客中心",
+          ".resource-links a:nth-child(2)": "查找丢失 AirPods 指南",
+          ".resource-links a:nth-child(3)": "iPhone 存储清理清单"
+        }
+      }
+    }
+  };
+
   let searchData = null;
   let loadPromise = null;
   const HIGHLIGHT_QUERY_KEY = "stq";
@@ -93,6 +360,104 @@
     }) || LOCALE_OPTIONS.find(function (option) {
       return option.value === DEFAULT_UI_LOCALE;
     }) || LOCALE_OPTIONS[0];
+  }
+
+  function applyValueToNodes(nodes, value) {
+    if (!nodes || !nodes.length || value == null) {
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      nodes.forEach(function (node, index) {
+        const entry = value[index];
+        if (entry == null) {
+          return;
+        }
+        node.textContent = entry;
+      });
+      return;
+    }
+
+    nodes.forEach(function (node) {
+      node.textContent = value;
+    });
+  }
+
+  function applyDescriptorToNodes(nodes, descriptor) {
+    if (!nodes || !nodes.length || descriptor == null) {
+      return;
+    }
+
+    if (typeof descriptor === "string" || Array.isArray(descriptor)) {
+      applyValueToNodes(nodes, descriptor);
+      return;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(descriptor, "html")) {
+      nodes.forEach(function (node) {
+        node.innerHTML = descriptor.html;
+      });
+    }
+
+    if (Object.prototype.hasOwnProperty.call(descriptor, "text")) {
+      applyValueToNodes(nodes, descriptor.text);
+    }
+
+    Object.keys(descriptor).forEach(function (key) {
+      if (key === "html" || key === "text") {
+        return;
+      }
+      nodes.forEach(function (node) {
+        node.setAttribute(key, descriptor[key]);
+      });
+    });
+  }
+
+  function applyMetaTranslation(translation) {
+    if (!translation) {
+      return;
+    }
+
+    if (translation.pageTitle) {
+      document.title = translation.pageTitle;
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", translation.pageTitle);
+      if (twitterTitle) twitterTitle.setAttribute("content", translation.pageTitle);
+    }
+
+    if (translation.metaDescription) {
+      const description = document.querySelector('meta[name="description"]');
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+      if (description) description.setAttribute("content", translation.metaDescription);
+      if (ogDescription) ogDescription.setAttribute("content", translation.metaDescription);
+      if (twitterDescription) twitterDescription.setAttribute("content", translation.metaDescription);
+    }
+  }
+
+  function applyPageTranslations() {
+    const path = normalizePath(window.location.pathname);
+    const pageTranslation = PAGE_TRANSLATIONS[path];
+    if (!pageTranslation) {
+      return;
+    }
+
+    const uiLocale = resolveUiLocale(window.localStorage.getItem(STORAGE_KEY) || detectInitialLocale());
+    const translation = pageTranslation[uiLocale] || pageTranslation[DEFAULT_UI_LOCALE];
+    if (!translation || !translation.selectorTexts) {
+      return;
+    }
+
+    applyMetaTranslation(translation);
+
+    Object.keys(translation.selectorTexts).forEach(function (selector) {
+      const nodes = Array.from(document.querySelectorAll(selector));
+      if (!nodes.length) {
+        return;
+      }
+      applyDescriptorToNodes(nodes, translation.selectorTexts[selector]);
+    });
   }
 
   function findAlternateLocaleUrl(preference) {
@@ -704,6 +1069,7 @@
           window.localStorage.setItem(STORAGE_KEY, option.value);
           updateLocaleTrigger();
           updateCopy();
+          applyPageTranslations();
           renderLocaleOptions();
 
           const alternateUrl = findAlternateLocaleUrl(option.value);
@@ -855,6 +1221,7 @@
 
     updateLocaleTrigger();
     updateCopy();
+    applyPageTranslations();
     renderLocaleOptions();
     closePanel();
     closeLocalePanel();
