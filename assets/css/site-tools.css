@@ -122,7 +122,7 @@ body > header .brand span {
   top: calc(100% + 12px);
   right: 0;
   z-index: 95;
-  min-width: 248px;
+  min-width: 236px;
   max-height: min(72vh, 540px);
   padding: 8px;
   border-radius: 18px;
@@ -140,10 +140,17 @@ body > header .brand span {
 
 .vs-locale-list {
   display: grid;
-  gap: 4px;
+  gap: 2px;
   max-height: min(72vh, 524px);
   overflow-y: auto;
-  padding-right: 2px;
+  padding-right: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vs-locale-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .vs-locale-option {
@@ -151,16 +158,16 @@ body > header .brand span {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
-  min-height: 44px;
-  padding: 0 12px;
+  min-height: 36px;
+  padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 12px;
   background: transparent;
   color: #f7f7ff;
   font: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-align: left;
   cursor: pointer;

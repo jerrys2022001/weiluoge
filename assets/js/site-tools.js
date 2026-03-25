@@ -4,7 +4,7 @@
   const DEFAULT_UI_LOCALE = "en-US";
   const LOCALE_OPTIONS = [
     { value: "auto", code: "AUTO", label: "Auto", uiLocale: "auto" },
-    { value: "zh-CN", code: "CN", label: "\u7b80\u4f53\u4e2d\u6587", uiLocale: "zh-CN" },
+    { value: "fr-FR", code: "FR", label: "French", uiLocale: "en-US" },
     { value: "en-US", code: "GB", label: "English", uiLocale: "en-US" },
     { value: "ro-RO", code: "RO", label: "Romanian", uiLocale: "en-US" },
     { value: "de-DE", code: "DE", label: "German", uiLocale: "en-US" },
