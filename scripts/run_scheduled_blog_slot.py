@@ -27,6 +27,23 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def resolve_git_command() -> str:
+    resolved = shutil.which("git")
+    if resolved:
+        return resolved
+
+    candidates = [
+        Path(r"C:\Program Files\Git\cmd\git.exe"),
+        Path(r"C:\Program Files\Git\bin\git.exe"),
+        Path.home() / "AppData" / "Local" / "Programs" / "Git" / "cmd" / "git.exe",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return str(candidate)
+
+    raise SystemExit("Unable to resolve git executable for scheduled blog publishing.")
+
+
 def run_command(cwd: Path, args: list[str]) -> None:
     result = subprocess.run(
         args,
@@ -48,11 +65,13 @@ def run_command(cwd: Path, args: list[str]) -> None:
 def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
+    git_command = resolve_git_command()
+    (repo_root / ".tmp").mkdir(parents=True, exist_ok=True)
     temp_root = Path(tempfile.mkdtemp(prefix="scheduled-blog-", dir=str(repo_root / ".tmp")))
     worktree_path = temp_root / "worktree"
     try:
-        run_command(repo_root, ["git", "fetch", args.git_remote, args.git_branch])
-        run_command(repo_root, ["git", "worktree", "add", "--detach", str(worktree_path), f"{args.git_remote}/{args.git_branch}"])
+        run_command(repo_root, [git_command, "fetch", args.git_remote, args.git_branch])
+        run_command(repo_root, [git_command, "worktree", "add", "--detach", str(worktree_path), f"{args.git_remote}/{args.git_branch}"])
 
         command = [
             sys.executable,
@@ -85,7 +104,7 @@ def main() -> int:
         return 0
     finally:
         subprocess.run(
-            ["git", "worktree", "remove", str(worktree_path), "--force"],
+            [git_command, "worktree", "remove", str(worktree_path), "--force"],
             cwd=repo_root,
             capture_output=True,
             text=True,
