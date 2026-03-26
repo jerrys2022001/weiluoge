@@ -19,10 +19,13 @@ STOP_WORDS = {
     "update", "2026",
 }
 SKIP_HEADERS = (
+    "tl;dr",
     "high-intent keyword coverage",
     "geo answer blocks for ai retrieval",
     "faq",
+    "common questions",
     "source attribution",
+    "source links",
     "daily 20:00 execution checklist",
     "current status:",
     "practical decision checklist",
@@ -89,17 +92,30 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 def extract_body_counter(html: str) -> Counter[str]:
     if "Translate AI SEO / GEO Guide" in html:
+        translate_common_tokens = {
+            "translate",
+            "translation",
+            "translator",
+            "iphone",
+            "ipad",
+            "ios",
+            "app",
+            "apps",
+            "user",
+            "users",
+        }
         focus_parts: list[str] = []
-        for pattern in (
-            r"<h1>(.*?)</h1>",
-            r'<section class="tldr">.*?<p>(.*?)</p>',
-            r'<section class="panel">\s*<h2>Why.*?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>',
-            r'<section class="panel">\s*<h2>How.*?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>',
-        ):
-            match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
-            if not match:
-                continue
-            focus_parts.extend(group for group in match.groups() if group)
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        why_match = re.search(r'<section class="panel">\s*<h2>Why.*?</h2>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if why_match:
+            focus_parts.append(why_match.group(1))
+
+        how_match = re.search(r'<section class="panel">\s*<h2>How.*?</h2>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if how_match:
+            focus_parts.append(how_match.group(1))
 
         table_match = re.search(
             r"<tbody>\s*<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>",
@@ -109,16 +125,12 @@ def extract_body_counter(html: str) -> Counter[str]:
         if table_match:
             focus_parts.extend(table_match.groups())
 
-        faq_match = re.search(r'<section class="panel">\s*<h2>What Questions.*?</h2>(.*?)</section>', html, re.IGNORECASE | re.DOTALL)
-        if faq_match:
-            focus_parts.append(faq_match.group(1))
-
         focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
         focus_text = re.sub(r"\s+", " ", focus_text).lower()
         return Counter(
             token
             for token in re.findall(r"[a-z0-9]{3,}", focus_text)
-            if token not in STOP_WORDS
+            if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
     if "<h2>What Happened</h2>" in html:
