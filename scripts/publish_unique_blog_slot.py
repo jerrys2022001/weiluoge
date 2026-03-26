@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import os
-import re
 import sys
 import time
 from dataclasses import dataclass
@@ -42,11 +41,9 @@ LIVE_REWRITE_SOFT_THRESHOLD = {
     "protocol": 0.70,
     "updates": 0.70,
 }
-MAX_FORCED_SIMILARITY = 0.98
 MIN_DAILY_BLUETOOTH_POSTS = 3
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
-SOURCE_TITLE_OVERLAP_THRESHOLD = 0.75
 
 
 @dataclass(frozen=True)
@@ -56,7 +53,6 @@ class Candidate:
     identifier: str
     post: object
     html: str
-    source_link: str = ""
 
 
 class PublishLock:
@@ -149,7 +145,7 @@ def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> 
         rotate = slot_offset % len(live_candidates)
         live_candidates = live_candidates[rotate:] + live_candidates[:rotate]
     for index, live in enumerate(live_candidates):
-        items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html, source_link=live.link))
+        items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
     return items
 
 
@@ -172,76 +168,16 @@ def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
     return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
 
 
-def collect_existing_external_links(blog_dir: Path) -> set[str]:
-    links: set[str] = set()
-    for path in blog_dir.glob("*.html"):
-        if path.name == "index.html":
-            continue
-        text = path.read_text(encoding="utf-8")
-        for link in re.findall(r'href="(https://[^"]+)"', text):
-            links.add(link)
-    return links
-
-
-def normalize_source_title(value: str) -> set[str]:
-    return {
-        token
-        for token in re.findall(r"[a-z0-9]+", value.lower())
-        if len(token) > 2
-    }
-
-
-def collect_existing_source_titles(blog_dir: Path) -> list[set[str]]:
-    titles: list[set[str]] = []
-    for path in blog_dir.glob("*.html"):
-        if path.name == "index.html":
-            continue
-        text = path.read_text(encoding="utf-8")
-        match = re.search(r'<section class="sources".*?<li><a [^>]*>[^:]+: (.*?)</a></li>', text, re.IGNORECASE | re.DOTALL)
-        if not match:
-            continue
-        normalized = normalize_source_title(match.group(1))
-        if normalized:
-            titles.append(normalized)
-    return titles
-
-
-def source_title_overlap(candidate_title: str, existing_titles: list[set[str]]) -> float:
-    candidate_tokens = normalize_source_title(candidate_title)
-    if not candidate_tokens:
-        return 0.0
-    best = 0.0
-    for existing in existing_titles:
-        union = candidate_tokens | existing
-        if not union:
-            continue
-        overlap = len(candidate_tokens & existing) / len(union)
-        best = max(best, overlap)
-    return best
-
-
-def extract_candidate_source_title(html: str) -> str:
-    match = re.search(r'<section class="sources".*?<li><a [^>]*>[^:]+: (.*?)</a></li>', html, re.IGNORECASE | re.DOTALL)
-    return match.group(1) if match else ""
-
-
 def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
     blog_dir: Path,
     force: bool,
 ) -> list[tuple[float, Candidate]]:
-    existing_links = collect_existing_external_links(blog_dir)
-    existing_titles = collect_existing_source_titles(blog_dir)
     evaluated: list[tuple[float, Candidate]] = []
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
-            continue
-        if candidate.source_link and candidate.source_link in existing_links and not force:
-            continue
-        title_overlap = source_title_overlap(extract_candidate_source_title(candidate.html), existing_titles)
-        if title_overlap >= SOURCE_TITLE_OVERLAP_THRESHOLD and not force:
             continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
         evaluated.append((similarity, candidate))
@@ -297,31 +233,27 @@ def choose_candidate(
                     html=candidate.html,
                 ), similarity
 
-    if preferred_live_ranked:
-        similarity, candidate = preferred_live_ranked[0]
-        if similarity < MAX_FORCED_SIMILARITY:
-            return Candidate(
-                lane=candidate.lane,
-                origin="live-forced",
-                identifier=candidate.identifier,
-                post=candidate.post,
-                html=candidate.html,
-            ), similarity
+    for similarity, candidate in preferred_live_ranked:
+        return Candidate(
+            lane=candidate.lane,
+            origin="live-forced",
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
 
-    if fallback_live_ranked:
-        similarity, candidate = fallback_live_ranked[0]
-        if similarity < MAX_FORCED_SIMILARITY:
-            return Candidate(
-                lane=candidate.lane,
-                origin="live-forced",
-                identifier=candidate.identifier,
-                post=candidate.post,
-                html=candidate.html,
-            ), similarity
+    for similarity, candidate in fallback_live_ranked:
+        return Candidate(
+            lane=candidate.lane,
+            origin="live-forced",
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
 
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
-        f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f} max_forced_similarity={MAX_FORCED_SIMILARITY:.2f}"
+        f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f}"
     )
 
 
