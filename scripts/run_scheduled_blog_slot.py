@@ -14,7 +14,7 @@ from pathlib import Path
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run scheduled blog publishing from a clean origin/main worktree.")
     parser.add_argument("--repo-root", type=Path, required=True)
-    parser.add_argument("--lane", choices=["cleanup", "protocol", "updates"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "translate", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0)
     parser.add_argument("--date")
     parser.add_argument("--git-commit", action="store_true")

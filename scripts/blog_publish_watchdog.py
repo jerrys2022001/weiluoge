@@ -24,9 +24,12 @@ BLOG_TASKS: tuple[BlogTask, ...] = (
     BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1", "protocol", 0),
     BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-2", "protocol", 1),
     BlogTask("WeiLuoGe-Live-Update-Blog-Morning-1", "updates", 0),
+    BlogTask("WeiLuoGe-Translate-AI-Blog-Morning-1", "translate", 0),
+    BlogTask("WeiLuoGe-Translate-AI-Blog-Morning-2", "translate", 1),
 )
-TARGET_DAILY_TOTAL = 4
+TARGET_DAILY_TOTAL = 6
 TARGET_DAILY_BLUETOOTH = 3
+TARGET_DAILY_TRANSLATE = 2
 
 
 def parse_args() -> argparse.Namespace:
@@ -108,6 +111,10 @@ def count_bluetooth_posts(paths: list[Path]) -> int:
     return sum(1 for path in paths if path.name.startswith("bluetooth-"))
 
 
+def count_translate_posts(paths: list[Path]) -> int:
+    return sum(1 for path in paths if path.name.startswith("translate-ai-"))
+
+
 def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
@@ -135,15 +142,25 @@ def main() -> int:
     posts = list_same_day_posts(blog_dir, target_day)
     total_count = len(posts)
     bluetooth_count = count_bluetooth_posts(posts)
+    translate_count = count_translate_posts(posts)
     print(
-        f"post_count total={total_count} bluetooth={bluetooth_count} "
-        f"target_total={TARGET_DAILY_TOTAL} target_bluetooth={TARGET_DAILY_BLUETOOTH}"
+        f"post_count total={total_count} bluetooth={bluetooth_count} translate={translate_count} "
+        f"target_total={TARGET_DAILY_TOTAL} target_bluetooth={TARGET_DAILY_BLUETOOTH} target_translate={TARGET_DAILY_TRANSLATE}"
     )
 
     if not args.dry_run:
         backfill_round = 0
-        while total_count < TARGET_DAILY_TOTAL or bluetooth_count < TARGET_DAILY_BLUETOOTH:
-            lane = "updates" if bluetooth_count < TARGET_DAILY_BLUETOOTH else "cleanup"
+        while (
+            total_count < TARGET_DAILY_TOTAL
+            or bluetooth_count < TARGET_DAILY_BLUETOOTH
+            or translate_count < TARGET_DAILY_TRANSLATE
+        ):
+            if bluetooth_count < TARGET_DAILY_BLUETOOTH:
+                lane = "updates"
+            elif translate_count < TARGET_DAILY_TRANSLATE:
+                lane = "translate"
+            else:
+                lane = "cleanup"
             synthetic = BlogTask(
                 task_name=f"watchdog-backfill-{lane}-{backfill_round}",
                 lane=lane,
@@ -153,7 +170,7 @@ def main() -> int:
             backfill_round += 1
             print(
                 f"backfill task={synthetic.task_name} lane={lane} offset={synthetic.slot_offset} "
-                f"total={total_count} bluetooth={bluetooth_count}"
+                f"total={total_count} bluetooth={bluetooth_count} translate={translate_count}"
             )
             code = run_slot(repo_root, synthetic, target_day, False)
             if code != 0:
@@ -162,6 +179,7 @@ def main() -> int:
             posts = list_same_day_posts(blog_dir, target_day)
             total_count = len(posts)
             bluetooth_count = count_bluetooth_posts(posts)
+            translate_count = count_translate_posts(posts)
 
     print(f"watchdog rerun_count={rerun_count} failed={len(failed)} dry_run={str(args.dry_run).lower()}")
     if failed:

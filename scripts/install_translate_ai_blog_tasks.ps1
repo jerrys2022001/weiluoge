@@ -2,10 +2,10 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "08:22",
-  [string]$WindowEnd = "08:24",
+  [string]$WindowStart = "08:28",
+  [string]$WindowEnd = "08:30",
   [int]$PostsPerDay = 2,
-  [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning",
+  [string]$TaskNamePrefix = "WeiLuoGe-Translate-AI-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )
 
@@ -73,14 +73,13 @@ if ($ReplaceExisting) {
 for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
-
-  $Args = "$PythonArgs `"$ScriptPath`" --lane protocol --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
+  $Args = "$PythonArgs `"$ScriptPath`" --lane translate --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
   $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
 
   Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Force | Out-Null
 
   Write-Output "Installed task: $taskName"
-  Write-Output "Schedule: daily at $publishAt (angle-offset=$i)"
+  Write-Output "Schedule: daily at $publishAt (slot-offset=$i)"
   Write-Output "Command: $PythonCommand $Args"
 }

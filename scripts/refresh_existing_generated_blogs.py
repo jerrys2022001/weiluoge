@@ -19,6 +19,9 @@ from blog_daily_scheduler import render_article_html as render_daily_html
 from blog_protocol_daily_scheduler import ANGLES as PROTOCOL_ANGLES
 from blog_protocol_daily_scheduler import build_post_meta as build_protocol_post_meta
 from blog_protocol_daily_scheduler import render_article_html as render_protocol_html
+from blog_translate_ai_daily_scheduler import ANGLES as TRANSLATE_ANGLES
+from blog_translate_ai_daily_scheduler import build_post_meta as build_translate_post_meta
+from blog_translate_ai_daily_scheduler import render_article_html as render_translate_html
 from blog_seo_audit import validate_generated_article
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
@@ -66,6 +69,12 @@ def build_renderers() -> dict[str, TemplateRenderer]:
             build_post_meta=build_protocol_post_meta,
             render_html=render_protocol_html,
         )
+    for angle in TRANSLATE_ANGLES:
+        renderers[angle.slug_prefix] = TemplateRenderer(
+            lane="translate",
+            build_post_meta=build_translate_post_meta,
+            render_html=render_translate_html,
+        )
     for angle in DAILY_ANGLES:
         renderers[angle.slug_prefix] = TemplateRenderer(
             lane="daily",
@@ -100,11 +109,13 @@ def refresh(repo_root: Path, dry_run: bool) -> int:
         post = renderer.build_post_meta(publish_day, next(angle for angle in (
             CLEANUP_ANGLES if renderer.lane == "cleanup" else
             PROTOCOL_ANGLES if renderer.lane == "protocol" else
+            TRANSLATE_ANGLES if renderer.lane == "translate" else
             DAILY_ANGLES
         ) if angle.slug_prefix == slug))
         html = renderer.render_html(publish_day, next(angle for angle in (
             CLEANUP_ANGLES if renderer.lane == "cleanup" else
             PROTOCOL_ANGLES if renderer.lane == "protocol" else
+            TRANSLATE_ANGLES if renderer.lane == "translate" else
             DAILY_ANGLES
         ) if angle.slug_prefix == slug), post)
 
@@ -139,6 +150,7 @@ def refresh(repo_root: Path, dry_run: bool) -> int:
         f"audited={audited} "
         f"cleanup={lane_counter['cleanup']} "
         f"protocol={lane_counter['protocol']} "
+        f"translate={lane_counter['translate']} "
         f"daily={lane_counter['daily']} "
         f"dry_run={str(dry_run).lower()}"
     )

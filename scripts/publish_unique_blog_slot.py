@@ -32,6 +32,12 @@ from blog_protocol_daily_scheduler import (
     pick_angle as pick_protocol_angle,
     render_article_html as render_protocol_html,
 )
+from blog_translate_ai_daily_scheduler import (
+    ANGLES as TRANSLATE_ANGLES,
+    build_post_meta as build_translate_post_meta,
+    pick_angle as pick_translate_angle,
+    render_article_html as render_translate_html,
+)
 from blog_similarity import load_blog_pages, max_similarity_against_existing
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
@@ -39,9 +45,11 @@ from site_tools import build_site_search_index, inject_site_tools_into_file
 LIVE_REWRITE_SOFT_THRESHOLD = {
     "cleanup": 0.70,
     "protocol": 0.70,
+    "translate": 0.70,
     "updates": 0.70,
 }
 MIN_DAILY_BLUETOOTH_POSTS = 3
+MIN_DAILY_TRANSLATE_POSTS = 2
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
 
@@ -92,7 +100,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Publish one unique blog article for a scheduled slot, with live-news fallback when local topics repeat."
     )
-    parser.add_argument("--lane", choices=["cleanup", "protocol", "updates"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "translate", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0, help="Preferred local topic offset for this slot.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
@@ -125,6 +133,15 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
             html = render_cleanup_html(target_day, angle, post)
             candidates.append(Candidate(lane=lane, origin="local", identifier=f"cleanup:{offset}", post=post, html=html))
         return candidates
+    if lane == "translate":
+        total = len(TRANSLATE_ANGLES)
+        for step in range(total):
+            offset = (slot_offset + step) % total
+            angle = pick_translate_angle(target_day, offset=offset)
+            post = build_translate_post_meta(target_day, angle)
+            html = render_translate_html(target_day, angle, post)
+            candidates.append(Candidate(lane=lane, origin="local", identifier=f"translate:{offset}", post=post, html=html))
+        return candidates
     if lane == "updates":
         return candidates
 
@@ -140,6 +157,8 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
+    if lane == "translate":
+        return items
     live_candidates = build_live_candidates(target_day, lane)
     if live_candidates:
         rotate = slot_offset % len(live_candidates)
@@ -163,9 +182,18 @@ def is_bluetooth_candidate(candidate: Candidate) -> bool:
     return candidate.post.filename.startswith("bluetooth-")
 
 
+def is_translate_candidate(candidate: Candidate) -> bool:
+    return candidate.post.filename.startswith("translate-ai-")
+
+
 def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
     suffix = f"-{target_day.isoformat()}.html"
     return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
+
+
+def count_same_day_translate_posts(blog_dir: Path, target_day: date) -> int:
+    suffix = f"-{target_day.isoformat()}.html"
+    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("translate-ai-"))
 
 
 def evaluate_candidates(
@@ -199,6 +227,14 @@ def choose_candidate(
     bluetooth_quota_open = lane == "updates" and count_same_day_bluetooth_posts(blog_dir, target_day) < MIN_DAILY_BLUETOOTH_POSTS
     preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
     fallback_live_ranked = live_ranked if preferred_live_ranked else []
+
+    if lane == "translate":
+        for similarity, candidate in local_ranked:
+            if similarity < similarity_threshold:
+                return candidate, similarity
+        for similarity, candidate in local_ranked:
+            return candidate, similarity
+        raise ValueError(f"Could not find a publishable {lane} blog candidate. strict_threshold={similarity_threshold:.2f}")
 
     for similarity, candidate in local_ranked:
         if similarity < similarity_threshold:
