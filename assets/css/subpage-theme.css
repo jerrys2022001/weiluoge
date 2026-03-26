@@ -585,6 +585,17 @@ body.theme-translate .hero-card .radar {
     linear-gradient(180deg, rgba(28, 36, 69, 0.96), rgba(20, 27, 53, 0.98));
 }
 
+body.theme-translate .hero-card .card-note {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 2px 0 0;
+  color: #b8c8f2;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.002em;
+}
+
 .radar-gif {
   width: 100%;
   height: 100%;
