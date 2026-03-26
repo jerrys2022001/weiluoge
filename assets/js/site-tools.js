@@ -1080,7 +1080,14 @@
       node.setAttribute(attribute.name, attribute.value);
     });
 
-    node.innerHTML = state.innerHTML;
+    const containsInjectedTools = (
+      (node.classList && node.classList.contains("vs-header-tools-anchor"))
+      || (typeof node.querySelector === "function" && !!node.querySelector(".vs-header-tools-anchor"))
+    );
+
+    if (!containsInjectedTools) {
+      node.innerHTML = state.innerHTML;
+    }
   }
 
   function normalizeTranslatedAttributeName(name) {
