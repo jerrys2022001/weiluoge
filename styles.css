@@ -421,22 +421,22 @@ ul {
 }
 
 .va-float-card-b {
-  right: 20px;
-  top: 398px;
+  right: 28px;
+  top: 500px;
   border-color: rgba(37, 144, 241, 0.45);
   animation-delay: -1.8s;
 }
 
 .va-float-card-c {
-  left: 86px;
-  top: 470px;
+  left: 108px;
+  top: 520px;
   border-color: rgba(248, 102, 219, 0.46);
   animation-delay: -3.2s;
 }
 
 .va-float-card-d {
-  left: 238px;
-  top: 402px;
+  left: 272px;
+  top: 404px;
   border-color: rgba(107, 102, 218, 0.42);
   animation-delay: -2.4s;
 }

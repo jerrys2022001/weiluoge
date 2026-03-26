@@ -144,6 +144,7 @@ body.theme-translate {
   --summary-accent: #c0b8ff;
   --note-line: #7f78ff;
   --cta-glow: rgba(107, 102, 218, 0.22);
+  --translate-hero-media-ratio: 9 / 14;
 }
 
 a {
@@ -559,6 +560,29 @@ body.theme-explorer .hero-card .hero-card-note {
 
 body.theme-explorer .hero-card .hero-card-note span {
   display: block;
+}
+
+body.theme-translate .hero-card {
+  align-self: stretch;
+  min-height: 100%;
+  padding: 14px 16px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-translate .hero-card .radar {
+  width: 100%;
+  max-width: 360px;
+  min-height: clamp(360px, 32vw, 500px);
+  height: 100%;
+  flex: 1 1 auto;
+  aspect-ratio: var(--translate-hero-media-ratio);
+  border-radius: 24px;
+  background:
+    radial-gradient(420px 220px at 50% 0%, rgba(107, 102, 218, 0.24), transparent 70%),
+    radial-gradient(320px 180px at 0% 100%, rgba(37, 144, 241, 0.18), transparent 72%),
+    linear-gradient(180deg, rgba(28, 36, 69, 0.96), rgba(20, 27, 53, 0.98));
 }
 
 .radar-gif {
