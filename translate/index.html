@@ -30,6 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/assets/css/subpage-theme.css" />
+  <script src="/assets/js/video-fallback.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -160,10 +161,23 @@
       </div>
 
       <figure class="hero-card">
-        <img src="/translate/translate-ai-icon.jpg" alt="Translate AI translator app icon" width="512" height="512" style="width:min(100%,280px);margin:6px auto 0;border-radius:28px;box-shadow:0 28px 56px rgba(18,22,44,0.38);" />
+        <div class="radar video-shell" data-video-fallback-mode="preview-only">
+          <iframe
+            class="radar-video"
+            data-video-fallback="translate-ai-icon"
+            data-video-src="https://www.youtube.com/embed/5CNDHGiT3Po?rel=0&modestbranding=1&playsinline=1"
+            title="Translate AI Shorts Preview"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+          <a class="video-fallback-link" href="https://youtube.com/shorts/5CNDHGiT3Po" target="_blank" rel="noopener noreferrer" aria-label="Watch Translate AI preview on YouTube">
+            <img class="video-fallback-image" src="/translate/translate-ai-icon.jpg" alt="Translate AI preview fallback image" loading="lazy" decoding="async" />
+            <span class="video-fallback-label">Watch preview</span>
+          </a>
+        </div>
         <figcaption class="hero-card-note">
-          <span>Translate AI - AI Translator</span>
-          <span>Version 1.0 · Released March 25, 2026 · Requires iOS 18.6 or later</span>
           <span>Official App Store launch highlights: text, voice, OCR, offline translation, AI Mode, and translation history.</span>
         </figcaption>
       </figure>

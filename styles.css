@@ -435,8 +435,8 @@ ul {
 }
 
 .va-float-card-d {
-  right: 92px;
-  top: 494px;
+  left: 238px;
+  top: 402px;
   border-color: rgba(107, 102, 218, 0.42);
   animation-delay: -2.4s;
 }
@@ -484,7 +484,11 @@ ul {
 }
 
 .va-app-card:nth-child(4) {
-  border-color: rgba(107, 102, 218, 0.34);
+  border-color: rgba(248, 79, 57, 0.62);
+}
+
+.va-app-card:nth-child(4):hover {
+  border-color: rgba(248, 79, 57, 0.78);
 }
 
 .va-app-card:hover {
