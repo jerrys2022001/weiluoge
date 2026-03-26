@@ -476,6 +476,10 @@ ul {
   border-color: rgba(37, 144, 241, 0.36);
 }
 
+.va-app-card:nth-child(4) {
+  border-color: rgba(107, 102, 218, 0.34);
+}
+
 .va-app-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 34px 58px rgba(8, 9, 18, 0.5);

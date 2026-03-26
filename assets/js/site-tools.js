@@ -290,8 +290,8 @@
     },
     "/apps/": {
       "en-US": {
-        pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer",
-        metaDescription: "Explore VelocAI iOS apps: AI Cleanup PRO for storage cleanup, Find AI for lost Bluetooth devices, and Bluetooth Explorer for BLE debugging.",
+        pageTitle: "VelocAI Apps | AI Cleanup PRO, Find AI, Bluetooth Explorer, Translate AI",
+        metaDescription: "Explore VelocAI iOS apps: AI Cleanup PRO for storage cleanup, Find AI for lost Bluetooth devices, Bluetooth Explorer for BLE debugging, and Translate AI for text, voice, OCR, and offline translation.",
         selectorTexts: {
           "header .brand span": "VelocAI Apps",
           "header nav": { ariaLabel: "Main" },
@@ -300,7 +300,7 @@
           "header nav a:nth-child(3)": "Blog",
           "header nav a:nth-child(4)": "Privacy",
           "main > h1": "Choose the right VelocAI app for your workflow",
-          ".lede": "VelocAI builds practical iOS apps for storage cleanup, lost-device recovery, and professional Bluetooth troubleshooting. Compare the latest App Store versions, review official release-note highlights, and download the release that matches your immediate goal.",
+          ".lede": "VelocAI builds practical iOS apps for storage cleanup, lost-device recovery, professional Bluetooth troubleshooting, and AI translation. Compare the latest App Store versions, review official listing highlights, and download the release that matches your immediate goal.",
           ".grid": { ariaLabel: "VelocAI products" },
           ".card:nth-child(1) > p": "Clean duplicate photos, remove large videos, and organize contacts with privacy-first on-device processing.",
           ".card:nth-child(1) .tags span": ["Photo Cleaner iPhone", "Duplicate Photo Cleanup", "Storage Optimizer"],
