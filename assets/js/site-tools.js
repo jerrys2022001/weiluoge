@@ -859,6 +859,7 @@
   let loadPromise = null;
   const HIGHLIGHT_QUERY_KEY = "stq";
   const HIGHLIGHT_FOCUS_KEY = "stfocus";
+  const ORIGINAL_NODE_STATE = new WeakMap();
   const BLOG_TOPIC_TRANSLATIONS = {
     "fr-FR": {
       published: "Publié",
@@ -1047,10 +1048,54 @@
     });
   }
 
+  function snapshotNodeState(node) {
+    if (!node || ORIGINAL_NODE_STATE.has(node)) {
+      return;
+    }
+
+    ORIGINAL_NODE_STATE.set(node, {
+      innerHTML: node.innerHTML,
+      attributes: Array.from(node.attributes || []).map(function (attribute) {
+        return {
+          name: attribute.name,
+          value: attribute.value,
+        };
+      }),
+    });
+  }
+
+  function restoreNodeState(node) {
+    const state = ORIGINAL_NODE_STATE.get(node);
+    if (!node || !state) {
+      return;
+    }
+
+    Array.from(node.attributes || []).forEach(function (attribute) {
+      if (!state.attributes.some(function (original) { return original.name === attribute.name; })) {
+        node.removeAttribute(attribute.name);
+      }
+    });
+
+    state.attributes.forEach(function (attribute) {
+      node.setAttribute(attribute.name, attribute.value);
+    });
+
+    node.innerHTML = state.innerHTML;
+  }
+
+  function normalizeTranslatedAttributeName(name) {
+    if (name === "ariaLabel") {
+      return "aria-label";
+    }
+    return name;
+  }
+
   function applyDescriptorToNodes(nodes, descriptor) {
     if (!nodes || !nodes.length || descriptor == null) {
       return;
     }
+
+    nodes.forEach(snapshotNodeState);
 
     if (typeof descriptor === "string" || Array.isArray(descriptor)) {
       applyValueToNodes(nodes, descriptor);
@@ -1072,7 +1117,7 @@
         return;
       }
       nodes.forEach(function (node) {
-        node.setAttribute(key, descriptor[key]);
+        node.setAttribute(normalizeTranslatedAttributeName(key), descriptor[key]);
       });
     });
   }
@@ -1184,7 +1229,25 @@
   }
 
   function applyBlogCardLocalization(uiLocale) {
-    if (normalizePath(window.location.pathname) !== "/blog/" || uiLocale === DEFAULT_UI_LOCALE) {
+    if (normalizePath(window.location.pathname) !== "/blog/") {
+      return;
+    }
+
+    const articles = Array.from(document.querySelectorAll(".list article"));
+    articles.forEach(function (article) {
+      const summary = article.querySelector("p");
+      const metaSpans = article.querySelectorAll(".meta span");
+      const readLink = article.querySelector(".read");
+
+      [summary, readLink].concat(Array.from(metaSpans)).forEach(function (node) {
+        if (node) {
+          snapshotNodeState(node);
+          restoreNodeState(node);
+        }
+      });
+    });
+
+    if (uiLocale === DEFAULT_UI_LOCALE) {
       return;
     }
 
@@ -1193,7 +1256,6 @@
       return;
     }
 
-    const articles = Array.from(document.querySelectorAll(".list article"));
     articles.forEach(function (article) {
       const summary = article.querySelector("p");
       const metaSpans = article.querySelectorAll(".meta span");
@@ -1220,6 +1282,27 @@
         readLink.textContent = localeConfig.readArticle;
       }
     });
+  }
+
+  function collectPageTranslationSelectors(path) {
+    const selectorSet = new Set();
+
+    [PAGE_TRANSLATIONS[path], PAGE_TRANSLATION_OVERRIDES[path], DEEP_PAGE_TRANSLATION_OVERRIDES[path]].forEach(function (group) {
+      if (!group) {
+        return;
+      }
+      Object.keys(group).forEach(function (localeKey) {
+        const selectors = group[localeKey] && group[localeKey].selectorTexts;
+        if (!selectors) {
+          return;
+        }
+        Object.keys(selectors).forEach(function (selector) {
+          selectorSet.add(selector);
+        });
+      });
+    });
+
+    return Array.from(selectorSet);
   }
 
   function getPageTranslation(path, uiLocale) {
@@ -1259,6 +1342,13 @@
     }
 
     applyMetaTranslation(translation);
+
+    collectPageTranslationSelectors(path).forEach(function (selector) {
+      Array.from(document.querySelectorAll(selector)).forEach(function (node) {
+        snapshotNodeState(node);
+        restoreNodeState(node);
+      });
+    });
 
     Object.keys(translation.selectorTexts).forEach(function (selector) {
       const nodes = Array.from(document.querySelectorAll(selector));
