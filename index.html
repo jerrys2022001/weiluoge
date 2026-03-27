@@ -253,19 +253,19 @@
       <div>
         <p class="va-briefing-history-label">History Browser</p>
       </div>
-      <label class="va-briefing-history-picker">
-        <span>View date</span>
-        <select
-          id="va-product-pulse-date"
-          name="product-pulse-date"
-          data-product-pulse-select
-          data-history-manifest="/assets/data/product-pulse/history.json"
-          data-default-date="2026-03-27"
-          aria-label="Choose a Product Pulse date"
-        >
-          <option value="2026-03-27">March 27, 2026</option>
-        </select>
-      </label>
+      <select
+        id="va-product-pulse-date"
+        name="product-pulse-date"
+        data-product-pulse-select
+        data-history-manifest="/assets/data/product-pulse/history.json"
+        data-default-date="2026-03-27"
+        aria-label="Choose a Product Pulse date"
+        hidden
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <option value="2026-03-27">March 27, 2026</option>
+      </select>
     </div>
     <div class="va-briefing-history-status" data-product-pulse-status>
       Viewing March 27, 2026's stored briefing.
