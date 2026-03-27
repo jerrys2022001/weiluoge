@@ -593,6 +593,10 @@ ul {
   text-wrap: balance;
 }
 
+.va-news-archive-head h2 .is-accent {
+  color: #4afce2;
+}
+
 .va-news-archive-head p:last-child {
   margin: 14px 0 0;
   color: var(--muted);
