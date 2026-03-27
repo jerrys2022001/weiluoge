@@ -27,11 +27,21 @@ function readConfig(configPath) {
   if (!config.text || !String(config.text).trim()) {
     throw new Error("Tweet text is empty.");
   }
+  const mediaFiles = Array.isArray(config.mediaFiles) ? config.mediaFiles : [];
+  for (const mediaFile of mediaFiles) {
+    if (!fs.existsSync(mediaFile)) {
+      throw new Error(`Media file not found: ${mediaFile}`);
+    }
+  }
   return config;
 }
 
 function ensureDirectory(targetPath) {
   fs.mkdirSync(targetPath, { recursive: true });
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function extractScreenName(accountText) {
@@ -52,6 +62,13 @@ function extractTweetId(payload) {
     }
   }
   return null;
+}
+
+function normalizeSnippet(value) {
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
 }
 
 async function screenshotIfPossible(page, filePath) {
@@ -76,6 +93,50 @@ async function pageShowsLogin(page) {
   return loginInputCount > 0;
 }
 
+async function waitForLoginIfNeeded(page, waitSeconds) {
+  if (!waitSeconds || waitSeconds <= 0) {
+    return false;
+  }
+  const deadline = Date.now() + waitSeconds * 1000;
+  while (Date.now() < deadline) {
+    if (!(await pageShowsLogin(page))) {
+      return true;
+    }
+    await page.waitForTimeout(1500);
+  }
+  return !(await pageShowsLogin(page));
+}
+
+async function findTweetIdInCurrentView(page, excerpt) {
+  const normalizedExcerpt = normalizeSnippet(excerpt);
+  if (!normalizedExcerpt) {
+    return null;
+  }
+
+  const articles = page.locator("article");
+  const count = await articles.count().catch(() => 0);
+  for (let index = 0; index < Math.min(count, 8); index += 1) {
+    const article = articles.nth(index);
+    const text = await article.textContent().catch(() => "");
+    if (!normalizeSnippet(text).includes(normalizedExcerpt)) {
+      continue;
+    }
+    const href = await article
+      .locator('a[href*="/status/"]')
+      .first()
+      .getAttribute("href")
+      .catch(() => null);
+    if (!href) {
+      continue;
+    }
+    const match = href.match(/status\/(\d+)/);
+    if (match) {
+      return match[1];
+    }
+  }
+  return null;
+}
+
 async function findTweetIdOnProfile(page, screenName, excerpt) {
   if (!screenName || !excerpt) {
     return null;
@@ -85,20 +146,38 @@ async function findTweetIdOnProfile(page, screenName, excerpt) {
     timeout: 60000,
   });
   await page.waitForTimeout(3000);
-  const article = page.locator("article").filter({ hasText: excerpt }).first();
-  if ((await article.count()) === 0) {
-    return null;
+  return findTweetIdInCurrentView(page, excerpt);
+}
+
+async function confirmTweetIdAfterPosting(page, screenName, excerpt) {
+  const attempts = [
+    async () => findTweetIdInCurrentView(page, excerpt),
+    async () => {
+      if (!screenName) {
+        return null;
+      }
+      return findTweetIdOnProfile(page, screenName, excerpt);
+    },
+    async () => {
+      await page.goto("https://x.com/home", {
+        waitUntil: "domcontentloaded",
+        timeout: 60000,
+      });
+      await page.waitForTimeout(2500);
+      return findTweetIdInCurrentView(page, excerpt);
+    },
+  ];
+
+  for (let round = 0; round < 3; round += 1) {
+    for (const attempt of attempts) {
+      const tweetId = await attempt().catch(() => null);
+      if (tweetId) {
+        return tweetId;
+      }
+    }
+    await page.waitForTimeout(3000);
   }
-  const href = await article
-    .locator('a[href*="/status/"]')
-    .first()
-    .getAttribute("href")
-    .catch(() => null);
-  if (!href) {
-    return null;
-  }
-  const match = href.match(/status\/(\d+)/);
-  return match ? match[1] : null;
+  return null;
 }
 
 async function submitTweet(page, postButton) {
@@ -126,6 +205,38 @@ async function submitTweet(page, postButton) {
   await page.keyboard.press(process.platform === "darwin" ? "Meta+Enter" : "Control+Enter");
 }
 
+async function attachMediaIfNeeded(page, mediaFiles) {
+  if (!Array.isArray(mediaFiles) || mediaFiles.length === 0) {
+    return;
+  }
+
+  const fileInput = page
+    .locator('input[data-testid="fileInput"], input[type="file"][accept*="image"], input[type="file"]')
+    .first();
+  await fileInput.waitFor({ state: "attached", timeout: 30000 });
+  await fileInput.setInputFiles(mediaFiles);
+
+  const preview = page
+    .locator(
+      '[data-testid="attachments"], [data-testid="mediaPreview"], [data-testid="previewInterstitial"], img[src^="blob:"]'
+    )
+    .first();
+  await preview.waitFor({ state: "visible", timeout: 60000 }).catch(async () => {
+    await page.waitForTimeout(5000);
+  });
+}
+
+async function waitForPostButtonEnabled(page, postButton, timeoutMs) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (!(await postButton.isDisabled().catch(() => true))) {
+      return;
+    }
+    await page.waitForTimeout(500);
+  }
+  throw new Error("X post button stayed disabled after preparing the composer.");
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const config = readConfig(args.config);
@@ -140,6 +251,8 @@ async function main() {
           method: "playwright",
           chromePath: config.chromePath,
           userDataDir: config.userDataDir,
+          proxyServer: config.proxyServer || null,
+          mediaFiles: Array.isArray(config.mediaFiles) ? config.mediaFiles : [],
           profileDirectory: config.profileDirectory || "Default",
           outputDir: config.outputDir,
         },
@@ -154,14 +267,57 @@ async function main() {
   let page;
   const successShot = path.join(config.outputDir, "x-post-success.png");
   const failureShot = path.join(config.outputDir, "x-post-failure.png");
+  const lockFile = path.join(config.outputDir, "x-playwright-driver.lock");
+  let lockFd = null;
 
   try {
-    context = await chromium.launchPersistentContext(config.userDataDir, {
-      headless: false,
-      executablePath: config.chromePath,
-      args: [`--profile-directory=${config.profileDirectory || "Default"}`],
-      viewport: { width: 1440, height: 960 },
-    });
+    try {
+      if (fs.existsSync(lockFile)) {
+        const stat = fs.statSync(lockFile);
+        const ageMs = Date.now() - stat.mtimeMs;
+        let removeStaleLock = ageMs > 90 * 1000;
+        try {
+          const existingPid = Number(fs.readFileSync(lockFile, "utf8").trim());
+          if (existingPid) {
+            try {
+              process.kill(existingPid, 0);
+            } catch {
+              removeStaleLock = true;
+            }
+          }
+        } catch {
+          removeStaleLock = true;
+        }
+        if (removeStaleLock) {
+          fs.unlinkSync(lockFile);
+        }
+      }
+      lockFd = fs.openSync(lockFile, "wx");
+      fs.writeFileSync(lockFd, `${process.pid}`);
+    } catch {
+      throw new Error("Another Playwright X posting session is already running.");
+    }
+
+    let lastLaunchError = null;
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      try {
+        context = await chromium.launchPersistentContext(config.userDataDir, {
+          headless: false,
+          executablePath: config.chromePath,
+          proxy: config.proxyServer ? { server: config.proxyServer } : undefined,
+          args: [`--profile-directory=${config.profileDirectory || "Default"}`],
+          viewport: { width: 1440, height: 960 },
+        });
+        lastLaunchError = null;
+        break;
+      } catch (error) {
+        lastLaunchError = error;
+        await sleep(2500 * (attempt + 1));
+      }
+    }
+    if (!context) {
+      throw lastLaunchError || new Error("Unable to launch persistent Chrome context.");
+    }
 
     page = context.pages()[0] || (await context.newPage());
     const composeUrl = config.replyTo
@@ -173,7 +329,10 @@ async function main() {
     });
 
     if (await pageShowsLogin(page)) {
-      throw new Error("X login is required in the selected Chrome profile.");
+      const loggedIn = await waitForLoginIfNeeded(page, Number(config.loginWaitSeconds || 0));
+      if (!loggedIn) {
+        throw new Error("X login is required in the selected Chrome profile.");
+      }
     }
 
     const editor = page.locator('[data-testid="tweetTextarea_0"]').first();
@@ -181,21 +340,24 @@ async function main() {
       await editor.waitFor({ state: "visible", timeout: 60000 });
     } catch (error) {
       if (await pageShowsLogin(page)) {
-        throw new Error("X login is required in the selected Chrome profile.");
+        const loggedIn = await waitForLoginIfNeeded(page, Number(config.loginWaitSeconds || 0));
+        if (!loggedIn) {
+          throw new Error("X login is required in the selected Chrome profile.");
+        }
+        await editor.waitFor({ state: "visible", timeout: 60000 });
+      } else {
+        throw error;
       }
-      throw error;
     }
     await editor.click();
     await page.keyboard.insertText(config.text);
+    await attachMediaIfNeeded(page, config.mediaFiles);
 
     const postButton = page
       .locator('[data-testid="tweetButtonInline"], [data-testid="tweetButton"]')
       .first();
     await postButton.waitFor({ state: "visible", timeout: 30000 });
-    await page.waitForTimeout(500);
-    if (await postButton.isDisabled()) {
-      throw new Error("X post button is disabled after filling the composer.");
-    }
+    await waitForPostButtonEnabled(page, postButton, 60000);
 
     const responsePromise = page
       .waitForResponse(
@@ -220,7 +382,7 @@ async function main() {
     const payload = response ? await response.json().catch(() => null) : null;
     let tweetId = extractTweetId(payload);
     if (!tweetId) {
-      tweetId = await findTweetIdOnProfile(page, screenName, excerpt);
+      tweetId = await confirmTweetIdAfterPosting(page, screenName, excerpt);
     }
     if (!tweetId) {
       throw new Error("Playwright posted but could not confirm the resulting tweet id.");
@@ -258,6 +420,17 @@ async function main() {
     const suffix = fs.existsSync(failureShot) ? `\nScreenshot: ${failureShot}` : "";
     process.stderr.write(`${message}${suffix}\n`);
     process.exit(1);
+  } finally {
+    try {
+      if (lockFd !== null) {
+        fs.closeSync(lockFd);
+      }
+      if (fs.existsSync(lockFile)) {
+        fs.unlinkSync(lockFile);
+      }
+    } catch {
+      // ignore cleanup failures
+    }
   }
 }
 

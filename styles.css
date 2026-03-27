@@ -1200,16 +1200,17 @@ ul {
 
 .va-briefing-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 420px);
+  align-items: start;
   justify-content: space-between;
   gap: 28px;
+  margin-bottom: 22px;
 }
 
 .va-briefing-title-wrap {
   display: grid;
-  gap: 16px;
-  max-width: 9ch;
+  gap: 12px;
+  max-width: 12ch;
 }
 
 .va-briefing-section-label {
@@ -1218,37 +1219,28 @@ ul {
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #aeb5d7;
+  color: #8ff6ea;
 }
 
-.va-briefing-stamp {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.03);
-  color: #edf1ff !important;
-  font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 12px !important;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+.va-briefing-intro {
+  margin: 0;
+  align-self: start;
+  color: rgba(224, 230, 248, 0.82);
+  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+  font-size: clamp(24px, 2.5vw, 38px);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .va-briefing-heading {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(44px, 7vw, 90px);
-  line-height: 0.9;
+  font-size: clamp(46px, 6vw, 76px);
+  line-height: 0.92;
   letter-spacing: -0.04em;
   color: #ffffff;
   text-wrap: balance;
-}
-
-.va-briefing-heading .is-accent {
-  color: #4afce2;
 }
 
 .va-briefing-panel {
@@ -1700,10 +1692,6 @@ ul {
     width: 100%;
   }
 
-  .va-briefing-stamp {
-    white-space: normal;
-  }
-
   .va-briefing-grid {
     grid-template-columns: 1fr;
     gap: 0;
@@ -1812,6 +1800,12 @@ ul {
 
   .va-briefing-heading {
     font-size: clamp(38px, 11vw, 62px);
+  }
+
+  .va-briefing-intro {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0;
   }
 
   .va-brief-item h3 {

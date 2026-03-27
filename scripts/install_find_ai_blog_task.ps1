@@ -2,10 +2,10 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "08:20",
-  [string]$WindowEnd = "08:21",
+  [string]$WindowStart = "08:26",
+  [string]$WindowEnd = "08:27",
   [int]$PostsPerDay = 1,
-  [string]$TaskNamePrefix = "WeiLuoGe-Storage-Impact-Blog-Daily",
+  [string]$TaskNamePrefix = "WeiLuoGe-Find-AI-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )
 
@@ -70,25 +70,16 @@ if ($ReplaceExisting) {
   }
 }
 
-$legacyTaskNames = @(
-  "WeiLuoGe-Storage-Impact-Blog-Daily-09-15",
-  "WeiLuoGe-Storage-Impact-Blog-Daily-09-00",
-  "WeiLuoGe-Storage-Impact-Blog-Daily-08-40"
-)
-foreach ($legacyTaskName in $legacyTaskNames) {
-  Unregister-ScheduledTask -TaskName $legacyTaskName -Confirm:$false -ErrorAction SilentlyContinue | Out-Null
-}
-
 for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
-  $Args = "$PythonArgs `"$ScriptPath`" --lane cleanup --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
+  $Args = "$PythonArgs `"$ScriptPath`" --lane find --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
   $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
 
   Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Force | Out-Null
 
   Write-Output "Installed task: $taskName"
-  Write-Output "Schedule: daily at $publishAt (angle-offset=$i)"
+  Write-Output "Schedule: daily at $publishAt (slot-offset=$i)"
   Write-Output "Command: $PythonCommand $Args"
 }

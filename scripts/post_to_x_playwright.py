@@ -43,9 +43,27 @@ def parse_args() -> argparse.Namespace:
     source.add_argument("--text", help="Tweet content.")
     source.add_argument("--file", type=Path, help="Read tweet content from a UTF-8 text file.")
     parser.add_argument("--reply-to", help="Reply target tweet id.")
+    parser.add_argument(
+        "--media-file",
+        dest="media_files",
+        type=Path,
+        action="append",
+        help="Optional media file to attach. Repeat to attach multiple files.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate config without sending.")
+    parser.add_argument(
+        "--login-wait-seconds",
+        type=int,
+        default=int(os.getenv("X_PLAYWRIGHT_LOGIN_WAIT_SECONDS", "0")),
+        help="Optional seconds to wait for manual X login if the selected profile is not logged in.",
+    )
     parser.add_argument("--chrome-path", type=Path, help="Override Chrome executable path.")
     parser.add_argument("--user-data-dir", type=Path, help="Override Chrome user data directory.")
+    parser.add_argument(
+        "--proxy-server",
+        default=os.getenv("X_PLAYWRIGHT_PROXY_SERVER"),
+        help="Optional proxy server such as http://127.0.0.1:7897.",
+    )
     parser.add_argument(
         "--profile-directory",
         default=os.getenv("X_PLAYWRIGHT_PROFILE_DIRECTORY", DEFAULT_PROFILE_DIRECTORY),
@@ -68,6 +86,20 @@ def get_text(args: argparse.Namespace) -> str:
     if not content:
         raise ValueError("Tweet text is empty.")
     return content
+
+
+def resolve_media_files(media_files: list[Path] | None) -> list[Path]:
+    resolved: list[Path] = []
+    for media_file in media_files or []:
+        candidate = media_file.expanduser()
+        if not candidate.is_absolute():
+            candidate = (Path.cwd() / candidate).resolve()
+        if not candidate.exists():
+            raise FileNotFoundError(f"Media file not found: {candidate}")
+        if not candidate.is_file():
+            raise ValueError(f"Media path is not a file: {candidate}")
+        resolved.append(candidate)
+    return resolved
 
 
 def resolve_node_command() -> str:
@@ -208,9 +240,12 @@ def send_tweet_playwright(
     *,
     text: str,
     reply_to: str | None = None,
+    media_files: list[Path] | None = None,
     dry_run: bool = False,
     chrome_path: Path | None = None,
     user_data_dir: Path | None = None,
+    proxy_server: str | None = None,
+    login_wait_seconds: int = 0,
     profile_directory: str | None = None,
     output_dir: Path | None = None,
 ) -> dict[str, Any]:
@@ -227,6 +262,7 @@ def send_tweet_playwright(
         "X_PLAYWRIGHT_PROFILE_DIRECTORY",
         DEFAULT_PROFILE_DIRECTORY,
     )
+    resolved_media_files = resolve_media_files(media_files)
 
     resolved_output_dir = output_dir or (root / DEFAULT_OUTPUT_DIR)
     resolved_output_dir.mkdir(parents=True, exist_ok=True)
@@ -244,9 +280,12 @@ def send_tweet_playwright(
     config = {
         "text": text,
         "replyTo": reply_to,
+        "mediaFiles": [str(path) for path in resolved_media_files],
         "dryRun": dry_run,
+        "loginWaitSeconds": login_wait_seconds,
         "chromePath": str(resolved_chrome_path),
         "userDataDir": str(resolved_user_data_dir),
+        "proxyServer": proxy_server,
         "profileDirectory": resolved_profile_directory,
         "outputDir": str(resolved_output_dir),
     }
@@ -298,9 +337,12 @@ def main() -> int:
         result = send_tweet_playwright(
             text=text,
             reply_to=args.reply_to,
+            media_files=args.media_files,
             dry_run=args.dry_run,
             chrome_path=args.chrome_path,
             user_data_dir=args.user_data_dir,
+            proxy_server=args.proxy_server,
+            login_wait_seconds=args.login_wait_seconds,
             profile_directory=args.profile_directory,
             output_dir=args.output_dir,
         )

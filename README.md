@@ -54,13 +54,13 @@ Minimum content rule:
 - Optional environment overrides:
 `X_PLAYWRIGHT_CHROME_PATH`, `X_PLAYWRIGHT_USER_DATA_DIR`, `X_PLAYWRIGHT_PROFILE_DIRECTORY`
 
-## Daily Random Product Stories (>=10/day)
+## Daily Random Product Stories (12/day)
 
 1. Ensure Chrome is already logged into X. API credentials stay optional if you use `playwright`-only mode.
 2. Dry run once:
-`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 5 --max-posts 10 --post-mode playwright-first`
+`python scripts/x_story_scheduler.py run --dry-run --log-root "D:\Operation Log" --min-posts 6 --max-posts 12 --post-mode playwright-first`
 3. Install Windows scheduled tasks:
-`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 5 -MaxPosts 10 -PostMode playwright-first`
+`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 6 -MaxPosts 12 -PostMode playwright-first`
 
 Installed task:
 - `WeiLuoGe-XStory-Plan`: runs every 1 hour, auto-creates daily plan if missing, and posts due items.
@@ -82,6 +82,7 @@ Each scheduled post now appends exactly one most-relevant App Store link from:
 - `Cleanup Pro`
 - `Find AI`
 - `Bluetooth Explorer`
+- `Translate AI`
 
 Optional: add your own update-note ideas with:
 `--update-topics-file "D:\GitHub\weiluoge\scripts\x_story_update_topics.example.txt"`
@@ -92,16 +93,16 @@ Dry run a plan:
 Install the scheduled task with a 5-minute worker interval:
 `powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -LogRoot "D:\Operation Log" -MinPosts 4 -MaxPosts 4 -DayStart 20:00 -DayEnd 22:00 -ContentMode velocai-mix -PostMode playwright-first -UpdateTopicsFile "D:\GitHub\weiluoge\scripts\x_story_update_topics.example.txt" -WorkerEveryMinutes 5`
 
-### Example: 2 daily windows, 5 posts each, each post with 1 image
+### Example: 2 daily windows, 6 posts each, each post with 1 image
 
 The scheduler now supports repeatable `--window-spec` values in this format:
 `name|HH:MM|HH:MM|min_posts|max_posts`
 
 Dry run:
-`python scripts/x_story_scheduler.py run --dry-run --date 2026-03-12 --content-mode velocai-mix --post-mode playwright --window-spec "morning|08:30|09:30|5|5" --window-spec "evening|20:30|21:30|5|5"`
+`python scripts/x_story_scheduler.py run --dry-run --date 2026-03-12 --content-mode velocai-mix --post-mode playwright --window-spec "morning|08:30|09:30|6|6" --window-spec "evening|20:30|21:30|6|6"`
 
 Install with the same two windows:
-`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -ContentMode velocai-mix -PostMode playwright -WindowSpec "morning|08:30|09:30|5|5","evening|20:30|21:30|5|5" -WorkerEveryMinutes 5`
+`powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -ContentMode velocai-mix -PostMode playwright -WindowSpec "morning|08:30|09:30|6|6","evening|20:30|21:30|6|6" -WorkerEveryMinutes 5`
 
 ## Daily Blog Auto Publishing (20:00)
 

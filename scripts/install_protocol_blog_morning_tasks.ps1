@@ -2,8 +2,8 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "08:42",
-  [string]$WindowEnd = "08:44",
+  [string]$WindowStart = "08:22",
+  [string]$WindowEnd = "08:24",
   [int]$PostsPerDay = 2,
   [string]$TaskNamePrefix = "WeiLuoGe-Bluetooth-Protocol-Blog-Morning",
   [bool]$ReplaceExisting = $true
@@ -30,7 +30,7 @@ function Format-HHMM([int]$minutes) {
   return ("{0:D2}:{1:D2}" -f $h, $m)
 }
 
-$ScriptPath = Join-Path $RepoRoot "scripts\\publish_unique_blog_slot.py"
+$ScriptPath = Join-Path $RepoRoot "scripts\\run_scheduled_blog_slot.py"
 if (-not (Test-Path $ScriptPath)) {
   throw "Missing script: $ScriptPath"
 }

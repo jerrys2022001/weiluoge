@@ -32,6 +32,18 @@ from blog_protocol_daily_scheduler import (
     pick_angle as pick_protocol_angle,
     render_article_html as render_protocol_html,
 )
+from blog_find_ai_daily_scheduler import (
+    ANGLES as FIND_ANGLES,
+    build_post_meta as build_find_post_meta,
+    pick_angle as pick_find_angle,
+    render_article_html as render_find_html,
+)
+from blog_translate_ai_daily_scheduler import (
+    ANGLES as TRANSLATE_ANGLES,
+    build_post_meta as build_translate_post_meta,
+    pick_angle as pick_translate_angle,
+    render_article_html as render_translate_html,
+)
 from blog_similarity import load_blog_pages, max_similarity_against_existing
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
@@ -39,10 +51,15 @@ from site_tools import build_site_search_index, inject_site_tools_into_file
 LIVE_REWRITE_SOFT_THRESHOLD = {
     "cleanup": 0.70,
     "protocol": 0.70,
+    "find": 0.70,
+    "translate": 0.70,
     "updates": 0.70,
 }
+MIN_DAILY_BLUETOOTH_POSTS = 2
+MIN_DAILY_TRANSLATE_POSTS = 2
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
+ENABLE_UPDATES_LANE_ENV = "WEILUOGE_ENABLE_UPDATES_LANE"
 
 
 @dataclass(frozen=True)
@@ -91,7 +108,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Publish one unique blog article for a scheduled slot, with live-news fallback when local topics repeat."
     )
-    parser.add_argument("--lane", choices=["cleanup", "protocol", "updates"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "find", "translate", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0, help="Preferred local topic offset for this slot.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
@@ -124,6 +141,24 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
             html = render_cleanup_html(target_day, angle, post)
             candidates.append(Candidate(lane=lane, origin="local", identifier=f"cleanup:{offset}", post=post, html=html))
         return candidates
+    if lane == "translate":
+        total = len(TRANSLATE_ANGLES)
+        for step in range(total):
+            offset = (slot_offset + step) % total
+            angle = pick_translate_angle(target_day, offset=offset)
+            post = build_translate_post_meta(target_day, angle)
+            html = render_translate_html(target_day, angle, post)
+            candidates.append(Candidate(lane=lane, origin="local", identifier=f"translate:{offset}", post=post, html=html))
+        return candidates
+    if lane == "find":
+        total = len(FIND_ANGLES)
+        for step in range(total):
+            offset = (slot_offset + step) % total
+            angle = pick_find_angle(target_day, offset=offset)
+            post = build_find_post_meta(target_day, angle)
+            html = render_find_html(target_day, angle, post)
+            candidates.append(Candidate(lane=lane, origin="local", identifier=f"find:{offset}", post=post, html=html))
+        return candidates
     if lane == "updates":
         return candidates
 
@@ -137,9 +172,14 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
     return candidates
 
 
-def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
+def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
+    if lane in {"translate", "find"}:
+        return items
     live_candidates = build_live_candidates(target_day, lane)
+    if live_candidates:
+        rotate = slot_offset % len(live_candidates)
+        live_candidates = live_candidates[rotate:] + live_candidates[:rotate]
     for index, live in enumerate(live_candidates):
         items.append(Candidate(lane=lane, origin="live", identifier=f"{live.source_name}:{index}", post=live.post, html=live.html))
     return items
@@ -147,7 +187,7 @@ def build_fallback_candidates(target_day: date, lane: str) -> list[Candidate]:
 
 def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | None:
     blog_dir = repo_root / "blog"
-    candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup")]
+    candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup", 0)]
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists():
@@ -155,21 +195,47 @@ def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | No
     return None
 
 
-def rank_candidates(
+def is_bluetooth_candidate(candidate: Candidate) -> bool:
+    return candidate.post.filename.startswith("bluetooth-")
+
+
+def is_translate_candidate(candidate: Candidate) -> bool:
+    return candidate.post.filename.startswith("translate-ai-")
+
+
+def is_find_candidate(candidate: Candidate) -> bool:
+    return candidate.post.filename.startswith("find-ai-")
+
+
+def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
+    suffix = f"-{target_day.isoformat()}.html"
+    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
+
+
+def count_same_day_translate_posts(blog_dir: Path, target_day: date) -> int:
+    suffix = f"-{target_day.isoformat()}.html"
+    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("translate-ai-"))
+
+
+def count_same_day_find_posts(blog_dir: Path, target_day: date) -> int:
+    suffix = f"-{target_day.isoformat()}.html"
+    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("find-ai-"))
+
+
+def evaluate_candidates(
     candidates: list[Candidate],
     existing_pages: list[object],
     blog_dir: Path,
     force: bool,
 ) -> list[tuple[float, Candidate]]:
-    ranked: list[tuple[float, Candidate]] = []
+    evaluated: list[tuple[float, Candidate]] = []
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
             continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
-        ranked.append((similarity, candidate))
-    ranked.sort(key=lambda item: (item[0], item[1].post.filename))
-    return ranked
+        evaluated.append((similarity, candidate))
+    return evaluated
 
 
 def choose_candidate(
@@ -182,36 +248,70 @@ def choose_candidate(
 ) -> tuple[Candidate, float]:
     blog_dir = repo_root / "blog"
     existing_pages = load_blog_pages(blog_dir)
-    local_ranked = rank_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
-    live_ranked = rank_candidates(build_fallback_candidates(target_day, lane), existing_pages, blog_dir, force)
+    local_ranked = evaluate_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    bluetooth_quota_open = lane == "updates" and count_same_day_bluetooth_posts(blog_dir, target_day) < MIN_DAILY_BLUETOOTH_POSTS
+    preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
+    fallback_live_ranked = live_ranked if preferred_live_ranked else []
 
-    strict_local = [item for item in local_ranked if item[0] < similarity_threshold]
-    if strict_local:
-        return strict_local[0][1], strict_local[0][0]
+    if lane in {"translate", "find"}:
+        for similarity, candidate in local_ranked:
+            if similarity < similarity_threshold:
+                return candidate, similarity
+        for similarity, candidate in local_ranked:
+            return candidate, similarity
+        raise ValueError(f"Could not find a publishable {lane} blog candidate. strict_threshold={similarity_threshold:.2f}")
 
-    strict_live = [item for item in live_ranked if item[0] < similarity_threshold]
-    if strict_live:
-        return strict_live[0][1], strict_live[0][0]
+    for similarity, candidate in local_ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
+
+    for similarity, candidate in preferred_live_ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
+    if preferred_live_ranked is not live_ranked:
+        for similarity, candidate in fallback_live_ranked:
+            if similarity < similarity_threshold:
+                return candidate, similarity
 
     live_soft_threshold = default_live_rewrite_threshold(lane)
-    soft_live = [item for item in live_ranked if item[0] < live_soft_threshold]
-    if soft_live:
-        return Candidate(
-            lane=soft_live[0][1].lane,
-            origin="live-forced",
-            identifier=soft_live[0][1].identifier,
-            post=soft_live[0][1].post,
-            html=soft_live[0][1].html,
-        ), soft_live[0][0]
+    for similarity, candidate in preferred_live_ranked:
+        if similarity < live_soft_threshold:
+            return Candidate(
+                lane=candidate.lane,
+                origin="live-forced",
+                identifier=candidate.identifier,
+                post=candidate.post,
+                html=candidate.html,
+            ), similarity
+    if preferred_live_ranked is not live_ranked:
+        for similarity, candidate in fallback_live_ranked:
+            if similarity < live_soft_threshold:
+                return Candidate(
+                    lane=candidate.lane,
+                    origin="live-forced",
+                    identifier=candidate.identifier,
+                    post=candidate.post,
+                    html=candidate.html,
+                ), similarity
 
-    if live_ranked:
+    for similarity, candidate in preferred_live_ranked:
         return Candidate(
-            lane=live_ranked[0][1].lane,
+            lane=candidate.lane,
             origin="live-forced",
-            identifier=live_ranked[0][1].identifier,
-            post=live_ranked[0][1].post,
-            html=live_ranked[0][1].html,
-        ), live_ranked[0][0]
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
+
+    for similarity, candidate in fallback_live_ranked:
+        return Candidate(
+            lane=candidate.lane,
+            origin="live-forced",
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
 
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
@@ -234,6 +334,18 @@ def run(args: argparse.Namespace) -> int:
         similarity_threshold = default_similarity_threshold(args.lane)
 
     with PublishLock(repo_root):
+        if args.lane == "updates" and os.environ.get(ENABLE_UPDATES_LANE_ENV) != "1":
+            print(
+                "done "
+                "lane=updates "
+                "origin=disabled "
+                "id=legacy-scheduled-updates-disabled "
+                "index=unchanged "
+                "sitemap=unchanged "
+                "git=skipped "
+                f"env={ENABLE_UPDATES_LANE_ENV}"
+            )
+            return 0
         if args.lane == "cleanup" and not args.force:
             existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
             if existing_cleanup is not None:
