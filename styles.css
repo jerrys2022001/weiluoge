@@ -624,7 +624,9 @@ ul {
   justify-self: end;
   align-self: end;
   width: fit-content;
+  max-width: 100%;
   margin-top: 0;
+  text-align: right;
 }
 
 .va-news-archive-hero {
