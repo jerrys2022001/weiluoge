@@ -607,7 +607,7 @@ ul {
 }
 
 .va-news-archive-calendar {
-  padding: 18px 18px 20px;
+  padding: 12px 18px 18px;
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
@@ -635,9 +635,9 @@ ul {
 }
 
 .va-news-archive-calendar-head {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
 
 .va-news-archive-calendar-head h3 {
