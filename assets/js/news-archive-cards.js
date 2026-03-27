@@ -73,6 +73,24 @@
     return String(count) + " " + (count === 1 ? singular : plural);
   }
 
+  function formatMonthLabel(year, monthIndex) {
+    return new Date(year, monthIndex, 1).toLocaleDateString("en-US", {
+      month: "long"
+    });
+  }
+
+  function toDateParts(value) {
+    var parsed = new Date(value + "T12:00:00");
+    if (Number.isNaN(parsed.getTime())) {
+      return null;
+    }
+    return {
+      year: parsed.getFullYear(),
+      month: parsed.getMonth(),
+      day: parsed.getDate()
+    };
+  }
+
   function groupItems(items) {
     var map = Object.create(null);
     items.forEach(function (item) {
@@ -236,6 +254,114 @@
     return article;
   }
 
+  function createPlaceholderHistoryCard(dateValue) {
+    var article = createElement("article", "va-archive-card va-archive-card-history is-placeholder");
+    article.dataset.date = dateValue || "";
+
+    var button = createElement("div", "va-archive-card-button");
+    button.setAttribute("aria-hidden", "true");
+
+    var media = createElement("div", "va-archive-card-media va-archive-card-media-badge");
+    var parsed = new Date(dateValue + "T12:00:00");
+    var month = Number.isNaN(parsed.getTime())
+      ? "---"
+      : parsed.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+    var day = Number.isNaN(parsed.getTime()) ? "--" : String(parsed.getDate());
+    var badge = createElement("div", "va-archive-date-badge");
+    badge.appendChild(createElement("span", "va-archive-date-month", month));
+    badge.appendChild(createElement("strong", "va-archive-date-day", day));
+    media.appendChild(badge);
+
+    var body = createElement("div", "va-archive-card-body");
+    body.appendChild(createElement("h4", "va-archive-card-title", String(day)));
+
+    var footer = createElement("div", "va-archive-card-footer");
+    footer.appendChild(createElement("span", "va-archive-card-count", ""));
+
+    button.appendChild(media);
+    button.appendChild(body);
+    button.appendChild(footer);
+    article.appendChild(button);
+    return article;
+  }
+
+  function populateMonthYearControls(entries, monthSelect, yearSelect) {
+    var yearMap = Object.create(null);
+    entries.forEach(function (entry) {
+      var parts = toDateParts(entry.date || "");
+      if (!parts) {
+        return;
+      }
+      if (!yearMap[parts.year]) {
+        yearMap[parts.year] = Object.create(null);
+      }
+      yearMap[parts.year][parts.month] = true;
+    });
+
+    var years = Object.keys(yearMap).map(Number).sort(function (a, b) { return b - a; });
+    yearSelect.innerHTML = "";
+    years.forEach(function (year) {
+      var option = document.createElement("option");
+      option.value = String(year);
+      option.textContent = String(year);
+      yearSelect.appendChild(option);
+    });
+
+    function refreshMonths(selectedYear) {
+      var months = Object.keys(yearMap[selectedYear] || {})
+        .map(Number)
+        .sort(function (a, b) { return b - a; });
+      monthSelect.innerHTML = "";
+      months.forEach(function (monthIndex) {
+        var option = document.createElement("option");
+        option.value = String(monthIndex);
+        option.textContent = formatMonthLabel(Number(selectedYear), monthIndex);
+        monthSelect.appendChild(option);
+      });
+    }
+
+    return {
+      years: years,
+      refreshMonths: refreshMonths
+    };
+  }
+
+  function renderHistoryMonth(container, entries, monthIndex, yearValue, select) {
+    var entryMap = Object.create(null);
+    entries.forEach(function (entry) {
+      if (entry && entry.date) {
+        entryMap[entry.date] = entry;
+      }
+    });
+
+    container.innerHTML = "";
+
+    var firstDay = new Date(yearValue, monthIndex, 1);
+    var startOffset = firstDay.getDay();
+    var daysInMonth = new Date(yearValue, monthIndex + 1, 0).getDate();
+    var totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+
+    for (var cellIndex = 0; cellIndex < totalCells; cellIndex += 1) {
+      var dayNumber = cellIndex - startOffset + 1;
+      if (dayNumber < 1 || dayNumber > daysInMonth) {
+        var pad = createElement("article", "va-archive-card va-archive-card-history is-placeholder");
+        pad.setAttribute("aria-hidden", "true");
+        container.appendChild(pad);
+        continue;
+      }
+
+      var dateValue = [
+        String(yearValue),
+        String(monthIndex + 1).padStart(2, "0"),
+        String(dayNumber).padStart(2, "0")
+      ].join("-");
+      var entry = entryMap[dateValue];
+      container.appendChild(entry ? createHistoryCard(entry, select) : createPlaceholderHistoryCard(dateValue));
+    }
+
+    syncActiveHistoryCard(container, select);
+  }
+
   function syncActiveHistoryCard(container, select) {
     if (!container || !select) {
       return;
@@ -250,6 +376,8 @@
   function init() {
     var todayRoot = $("[data-news-archive-today]");
     var historyRoot = $("[data-news-archive-history]");
+    var monthSelect = $("[data-news-archive-month]");
+    var yearSelect = $("[data-news-archive-year]");
     if (!todayRoot || !historyRoot) {
       return;
     }
@@ -272,15 +400,57 @@
         }
 
         var latestEntry = entries[0];
-        historyRoot.innerHTML = "";
-        entries.slice(0, 8).forEach(function (entry) {
-          historyRoot.appendChild(createHistoryCard(entry, historySelect));
-        });
-        syncActiveHistoryCard(historyRoot, historySelect);
+        var controls = monthSelect && yearSelect
+          ? populateMonthYearControls(entries, monthSelect, yearSelect)
+          : null;
+        var latestParts = toDateParts(latestEntry.date || "");
+
+        function redrawCalendar() {
+          if (!monthSelect || !yearSelect) {
+            return;
+          }
+          renderHistoryMonth(
+            historyRoot,
+            entries,
+            Number(monthSelect.value),
+            Number(yearSelect.value),
+            historySelect
+          );
+        }
+
+        if (controls && latestParts) {
+          yearSelect.value = String(latestParts.year);
+          controls.refreshMonths(latestParts.year);
+          monthSelect.value = String(latestParts.month);
+          redrawCalendar();
+
+          yearSelect.addEventListener("change", function () {
+            controls.refreshMonths(yearSelect.value);
+            redrawCalendar();
+          });
+
+          monthSelect.addEventListener("change", redrawCalendar);
+        } else {
+          renderEmpty(historyRoot, "Archived briefings could not be grouped into a month view.");
+        }
 
         if (historySelect) {
           historySelect.addEventListener("change", function () {
             syncActiveHistoryCard(historyRoot, historySelect);
+            var selectedParts = toDateParts(historySelect.value || "");
+            if (!selectedParts || !monthSelect || !yearSelect || !controls) {
+              return;
+            }
+            if (yearSelect.value !== String(selectedParts.year)) {
+              yearSelect.value = String(selectedParts.year);
+              controls.refreshMonths(selectedParts.year);
+            }
+            if (monthSelect.value !== String(selectedParts.month)) {
+              monthSelect.value = String(selectedParts.month);
+              redrawCalendar();
+            } else {
+              syncActiveHistoryCard(historyRoot, historySelect);
+            }
           });
         }
 
