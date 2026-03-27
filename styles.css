@@ -617,7 +617,7 @@ ul {
   display: flex;
   flex-direction: column;
   height: auto;
-  min-height: 438px;
+  min-height: 414px;
 }
 
 .va-news-archive-stamp {
