@@ -573,40 +573,39 @@ ul {
 }
 
 .va-briefing {
-  margin-top: 58px;
+  margin-top: 30px;
   display: grid;
-  gap: 18px;
+  gap: 12px;
 }
 
 .va-news-archive {
-  margin-top: 58px;
+  margin-top: 54px;
   display: grid;
-  gap: 24px;
+  gap: 18px;
 }
 
 .va-news-archive-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+  gap: 36px;
+  align-items: start;
 }
 
 .va-news-archive-rail {
   display: grid;
-  height: 100%;
   align-content: start;
-  gap: 18px;
+  gap: 14px;
 }
 
 .va-news-archive-calendar-rail {
   display: grid;
   align-content: start;
   gap: 0;
-  padding-top: 16px;
+  padding-top: 30px;
 }
 
 .va-news-archive-calendar {
-  padding: 22px;
+  padding: 18px 18px 20px;
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
@@ -615,8 +614,7 @@ ul {
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  min-height: 560px;
+  min-height: 516px;
 }
 
 .va-news-archive-stamp {
@@ -634,9 +632,9 @@ ul {
 }
 
 .va-news-archive-calendar-head {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .va-news-archive-calendar-head h3 {
@@ -658,15 +656,15 @@ ul {
 
 .va-news-archive-block-heading {
   display: grid;
-  gap: 8px;
+  gap: 6px;
   max-width: 26rem;
 }
 
 .va-news-archive-display {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(44px, 7vw, 90px);
-  line-height: 0.9;
+  font-size: clamp(42px, 6.4vw, 84px);
+  line-height: 0.88;
   letter-spacing: -0.04em;
   max-width: 4.8ch;
   text-wrap: balance;
@@ -738,11 +736,11 @@ ul {
 }
 
 .va-news-archive-block-compact {
-  padding: 22px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 560px;
+  justify-content: flex-start;
+  min-height: 478px;
 }
 
 .va-news-archive-label {
@@ -763,8 +761,8 @@ ul {
 .va-news-archive-block-compact .va-archive-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: auto;
-  align-content: end;
+  margin-top: 0;
+  align-content: start;
 }
 
 .va-archive-grid-history {
@@ -1266,9 +1264,9 @@ ul {
 }
 
 .va-briefing-controls {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   display: flex;
-  gap: 18px;
+  gap: 12px;
   align-items: end;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -1314,7 +1312,7 @@ ul {
 }
 
 .va-briefing-history-status {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   color: rgba(224, 230, 248, 0.76);
   font-size: 14px;
 }
