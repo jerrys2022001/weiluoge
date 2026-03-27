@@ -9,12 +9,12 @@
 <meta name="description" content="VelocAI creates focused iPhone apps for finding lost devices, cleaning storage, and debugging Bluetooth workflows with a calm, modern experience.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://velocai.net/">
-<link rel="icon" type="image/x-icon" href="/velocai.ico">
+<link rel="icon" type="image/png" href="/velocai.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="VelocAI">
 <meta property="og:title" content="VelocAI | AI Apps for Recovery, Cleanup, and Bluetooth Diagnostics">
-<meta property="og:description" content="Explore Find AI, AI Cleanup PRO, and Bluetooth Explorer from VelocAI.">
+<meta property="og:description" content="Explore Find AI, AI Cleanup PRO, Bluetooth Explorer, and Translate AI from VelocAI.">
 <meta property="og:url" content="https://velocai.net/">
 <meta property="og:image" content="https://velocai.net/assets/images/hero-2026-03/velocai-hero-workspace.jpeg">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,7 +73,7 @@
         <li><a href="/aifind/">Find AI</a></li>
         <li><a href="/ai-cleanup-pro/">AI Cleanup PRO</a></li>
         <li><a href="/bluetoothexplorer/">Bluetooth Explorer</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/translate/">Translate AI</a></li>
       </ul>
     </nav>
   </div>
@@ -182,8 +182,27 @@
           </div>
           <p>Open a stored day to reload the briefing below.</p>
         </div>
+        <div class="va-calendar-toolbar" data-news-archive-calendar-toolbar>
+          <label class="va-calendar-picker">
+            <span>Month</span>
+            <select data-news-archive-month aria-label="Choose archive month"></select>
+          </label>
+          <label class="va-calendar-picker">
+            <span>Year</span>
+            <select data-news-archive-year aria-label="Choose archive year"></select>
+          </label>
+        </div>
+        <div class="va-calendar-weekdays" aria-hidden="true">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
         <div
-          class="va-archive-grid va-archive-grid-history va-archive-grid-compact"
+          class="va-archive-grid va-archive-grid-history va-archive-grid-month"
           data-news-archive-history
           data-history-manifest="/assets/data/product-pulse/history.json"
         >
