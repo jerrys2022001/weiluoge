@@ -588,20 +588,22 @@ ul {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
   gap: 36px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .va-news-archive-rail {
   display: grid;
+  height: 100%;
   align-content: start;
   gap: 14px;
 }
 
 .va-news-archive-calendar-rail {
   display: grid;
-  align-content: start;
+  height: 100%;
+  align-content: stretch;
   gap: 0;
-  padding-top: 78px;
+  padding-top: 0;
 }
 
 .va-news-archive-calendar {
@@ -614,7 +616,8 @@ ul {
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  min-height: 516px;
+  height: 100%;
+  min-height: 100%;
 }
 
 .va-news-archive-stamp {
@@ -740,7 +743,8 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 478px;
+  height: 100%;
+  min-height: 100%;
 }
 
 .va-news-archive-label {
