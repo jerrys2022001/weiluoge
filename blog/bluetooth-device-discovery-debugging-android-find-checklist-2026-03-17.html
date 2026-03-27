@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Device Discovery Debugging: Android Find Checklist for 2026 | VelocAI Blog</title>
+  <meta name="description" content="Use this Bluetooth device discovery debugging checklist to fix Android scan failures fast. Learn permission checks, scan configuration, and log capture steps for reliable find results.">
+  <meta name="keywords" content="bluetooth device discovery debugging, android bluetooth find checklist, bluetooth scan no results fix, nearby devices permission, bluetooth troubleshooting">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-find-checklist-2026-03-17.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Device Discovery Debugging: Android Find Checklist for 2026">
+  <meta property="og:description" content="A practical Bluetooth debugging workflow for Android discovery failures, based on current platform guidance.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-find-checklist-2026-03-17.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging: Android Find Checklist for 2026">
+  <meta name="twitter:description" content="Fix Bluetooth find failures on Android with a step-by-step discovery debugging checklist.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth Device Discovery Debugging: Android Find Checklist for 2026",
+  "description": "Use this Bluetooth device discovery debugging checklist to fix Android scan failures with permission checks, scan settings, and log-driven diagnosis.",
+  "datePublished": "2026-03-17",
+  "dateModified": "2026-03-17",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-android-find-checklist-2026-03-17.html",
+  "keywords": [
+    "bluetooth",
+    "find",
+    "bluetooth device discovery debugging",
+    "android nearby devices permission",
+    "bluetooth scan troubleshooting"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f5f9ff; --text:#1c2d40; --muted:#4c647d; --line:#d3e1ef; --panel:#ffffff; --brand:#1a66cc; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(64,133,235,.16), transparent 34%), radial-gradient(circle at 86% -8%, rgba(37,189,166,.15), transparent 32%), var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(245,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:26ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid #25bda6; }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#ecf3fb; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Device Discovery Debugging: Android Find Checklist for 2026</h1>
+        <p class="meta">Published on March 17, 2026 | Topic: Bluetooth Debugging &amp; Device Discovery | Primary Source Updated: February 26, 2026</p>
+        <p>When Bluetooth <strong>find</strong> flows return empty results, teams often guess and reset devices too early. A faster path is to run a fixed sequence: validate permissions, verify scan settings, and capture logs before touching firmware. This guide translates current Android platform guidance into a practical troubleshooting checklist you can use in QA, support, and production triage.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Start with Nearby Devices runtime permission checks, run one broad scan to confirm visibility, remove battery restrictions for test sessions, and collect stack logs before code changes. This catches most Bluetooth discovery failures without blind retries.</p>
+      </div>
+
+      <h2>Why Bluetooth discovery bugs are harder in modern Android</h2>
+      <p>Bluetooth discovery now depends on permission state, app lifecycle, and scan strategy together. You can have Bluetooth turned on and still find zero devices if one prerequisite fails. That is why high-intent queries like "Bluetooth scan no results" and "Android cannot find Bluetooth device" map best to a step-based diagnosis workflow, not one-off tips.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Confirm runtime permissions first.</strong> On Android 12+, verify <code>BLUETOOTH_SCAN</code> and Nearby Devices grant state before running discovery tests.</li>
+          <li><strong>Validate manifest declarations.</strong> Double-check Bluetooth permission declarations by target SDK and whether location-related behavior applies to your use case.</li>
+          <li><strong>Run a temporary broad scan.</strong> Remove strict filters briefly to prove whether devices are visible at all, then re-apply service UUID filters.</li>
+          <li><strong>Check device advertising state.</strong> Ensure the peripheral is discoverable, not already locked to another host, and running expected advertising intervals.</li>
+          <li><strong>Disable power optimizations during tests.</strong> Background throttling can hide scan events and create false negatives in QA.</li>
+          <li><strong>Capture logs before changing code.</strong> Save Bluetooth stack logs or HCI traces to separate app-logic bugs from radio/firmware behavior.</li>
+          <li><strong>Reproduce on two OS/device combinations.</strong> A quick cross-device check reveals platform-specific behavior early.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Quick failure pattern matrix</h2>
+        <ul>
+          <li><strong>Always empty scan:</strong> permission state, manifest mismatch, or over-filtered scan request.</li>
+          <li><strong>Intermittent discovery:</strong> power policy, RF congestion, or unstable peripheral advertising.</li>
+          <li><strong>Only one model fails:</strong> chipset firmware or vendor stack difference.</li>
+          <li><strong>Foreground works, background fails:</strong> lifecycle/background restriction issue.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>What is the fastest first check for discovery failures?</strong><br>
+        Re-validate Nearby Devices permission at runtime, then run a broad scan once before narrowing filters.</p>
+
+        <p><strong>Should we factory-reset accessories first?</strong><br>
+        Usually no. Permission and scan configuration checks are faster and preserve diagnostic signals.</p>
+
+        <p><strong>Why capture logs before fixing code?</strong><br>
+        Logs show whether failures happen at app logic, OS stack, or radio level, which avoids wrong fixes.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2026-02-26)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/bt-permissions" target="_blank" rel="noopener noreferrer">Android Developers: Bluetooth permissions</a></li>
+          <li><a href="https://source.android.com/docs/core/connect/bluetooth/verifying_debugging" target="_blank" rel="noopener noreferrer">Android Open Source Project: Verify and debug Bluetooth</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

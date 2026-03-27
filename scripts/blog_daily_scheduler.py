@@ -13,7 +13,7 @@ import re
 import shutil
 import subprocess
 import sys
-import xml.etree.ElementTree as ET
+import tempfile
 from dataclasses import dataclass
 from datetime import date, datetime
 from html import escape
@@ -21,10 +21,8 @@ from pathlib import Path
 
 from site_tools import SEARCH_INDEX_REL, build_site_search_index, inject_site_tools_into_file
 
-SITE_URL = "https://velocai.net"
 BLOG_INDEX_REL = Path("blog/index.html")
 SITEMAP_REL = Path("sitemap.xml")
-NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 CORE_KEYWORDS = [
     "bluetooth troubleshooting",
@@ -267,6 +265,47 @@ def run_git_command(repo_root: Path, git_command: str, args: list[str]) -> subpr
     return result
 
 
+def copy_publish_paths(source_root: Path, target_root: Path, tracked_paths: list[str]) -> None:
+    for rel_path in tracked_paths:
+        source = source_root / rel_path
+        target = target_root / rel_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+
+
+def publish_blog_post_via_temp_worktree(
+    repo_root: Path,
+    git_command: str,
+    post: PostMeta,
+    tracked_paths: list[str],
+    remote: str,
+    branch: str,
+) -> str:
+    temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(repo_root / ".tmp")))
+    worktree_path = temp_root / "worktree"
+    try:
+        run_git_command(repo_root, git_command, ["fetch", remote, branch])
+        run_git_command(repo_root, git_command, ["worktree", "add", "--detach", str(worktree_path), f"{remote}/{branch}"])
+        copy_publish_paths(repo_root, worktree_path, tracked_paths)
+        run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+        staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+        if not staged.stdout.strip():
+            return "unchanged"
+        run_git_command(
+            worktree_path,
+            git_command,
+            ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
+        )
+        run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
+        return f"committed+pushed({remote}/{branch})"
+    finally:
+        try:
+            run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
+        except ValueError:
+            pass
+        shutil.rmtree(temp_root, ignore_errors=True)
+
+
 def publish_blog_post_to_git(
     repo_root: Path,
     post: PostMeta,
@@ -282,6 +321,16 @@ def publish_blog_post_to_git(
         SEARCH_INDEX_REL.as_posix(),
     ]
 
+    if push:
+        return publish_blog_post_via_temp_worktree(
+            repo_root=repo_root,
+            git_command=git_command,
+            post=post,
+            tracked_paths=tracked_paths,
+            remote=remote,
+            branch=branch,
+        )
+
     run_git_command(repo_root, git_command, ["add", "--", *tracked_paths])
     staged = run_git_command(repo_root, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
     if not staged.stdout.strip():
@@ -292,10 +341,6 @@ def publish_blog_post_to_git(
         git_command,
         ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
     )
-
-    if push:
-        run_git_command(repo_root, git_command, ["push", remote, branch])
-        return f"committed+pushed({remote}/{branch})"
 
     return "committed"
 
@@ -892,70 +937,22 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
     return True
 
 
-def find_or_create_xml_child(parent: ET.Element, tag: str) -> ET.Element:
-    child = parent.find(tag, NS)
-    if child is None:
-        child = ET.SubElement(parent, tag)
-    return child
-
-
-def make_url_entry(loc: str, lastmod: str, changefreq: str, priority: str) -> ET.Element:
-    url = ET.Element(f"{{{NS['sm']}}}url")
-    ET.SubElement(url, f"{{{NS['sm']}}}loc").text = loc
-    ET.SubElement(url, f"{{{NS['sm']}}}lastmod").text = lastmod
-    ET.SubElement(url, f"{{{NS['sm']}}}changefreq").text = changefreq
-    ET.SubElement(url, f"{{{NS['sm']}}}priority").text = priority
-    return url
-
-
 def update_sitemap(sitemap_path: Path, post: PostMeta) -> bool:
-    ET.register_namespace("", NS["sm"])
-    tree = ET.parse(sitemap_path)
-    root = tree.getroot()
-
     blog_root_url = f"{SITE_URL}/blog/"
     post_url = f"{SITE_URL}/blog/{post.filename}"
-    changed = False
-
-    all_urls = root.findall("sm:url", NS)
-    blog_root_node = None
-    post_node = None
-
-    for node in all_urls:
-        loc = node.find("sm:loc", NS)
-        if loc is None or not loc.text:
-            continue
-        if loc.text == blog_root_url:
-            blog_root_node = node
-        if loc.text == post_url:
-            post_node = node
-
-    if blog_root_node is not None:
-        lastmod = find_or_create_xml_child(blog_root_node, "sm:lastmod")
-        if lastmod.text != post.published_iso:
-            lastmod.text = post.published_iso
-            changed = True
-
-    if post_node is None:
-        entry = make_url_entry(post_url, post.published_iso, "monthly", "0.8")
-        if blog_root_node is not None:
-            idx = list(root).index(blog_root_node)
-            root.insert(idx + 1, entry)
-        else:
-            root.append(entry)
-        changed = True
-    else:
-        lastmod = find_or_create_xml_child(post_node, "sm:lastmod")
-        if lastmod.text != post.published_iso:
-            lastmod.text = post.published_iso
-            changed = True
-
-    if not changed:
-        return False
-
-    ET.indent(tree, space="  ")
-    tree.write(sitemap_path, encoding="utf-8", xml_declaration=True)
-    return True
+    result = sync_sitemap(
+        sitemap_path.parent,
+        sitemap_path,
+        overrides={
+            blog_root_url: {"lastmod": post.published_iso},
+            post_url: {
+                "lastmod": post.published_iso,
+                "changefreq": "monthly",
+                "priority": "0.8",
+            },
+        },
+    )
+    return result.changed
 
 
 def run(args: argparse.Namespace) -> int:
