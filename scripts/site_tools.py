@@ -135,6 +135,8 @@ def infer_category(relative_path: Path) -> str:
         if len(parts) > 1 and parts[1] == "guid":
             return "Bluetooth Guides"
         return "Bluetooth Explorer"
+    if parts[0] == "translate":
+        return "Translate AI"
     if "privacy-policy" in relative_path.name:
         return "Privacy"
     return "Site"
