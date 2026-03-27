@@ -182,8 +182,27 @@
           </div>
           <p>Open a stored day to reload the briefing below.</p>
         </div>
+        <div class="va-calendar-toolbar" data-news-archive-calendar-toolbar>
+          <label class="va-calendar-picker">
+            <span>Month</span>
+            <select data-news-archive-month aria-label="Choose archive month"></select>
+          </label>
+          <label class="va-calendar-picker">
+            <span>Year</span>
+            <select data-news-archive-year aria-label="Choose archive year"></select>
+          </label>
+        </div>
+        <div class="va-calendar-weekdays" aria-hidden="true">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
         <div
-          class="va-archive-grid va-archive-grid-history va-archive-grid-compact"
+          class="va-archive-grid va-archive-grid-history va-archive-grid-month"
           data-news-archive-history
           data-history-manifest="/assets/data/product-pulse/history.json"
         >
