@@ -434,6 +434,13 @@ ul {
   animation-delay: -3.2s;
 }
 
+.va-float-card-d {
+  right: 34px;
+  top: 124px;
+  border-color: rgba(74, 252, 226, 0.42);
+  animation-delay: -4.4s;
+}
+
 @keyframes va-float {
   0%,
   100% {
@@ -474,6 +481,10 @@ ul {
 
 .va-app-card:nth-child(3) {
   border-color: rgba(37, 144, 241, 0.36);
+}
+
+.va-app-card:nth-child(4) {
+  border-color: rgba(74, 252, 226, 0.36);
 }
 
 .va-app-card:hover {
