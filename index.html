@@ -164,6 +164,56 @@
     </article>
   </section>
 
+  <section class="va-container va-news-archive" id="news-archive" aria-label="Today news archive">
+    <div class="va-news-archive-head">
+      <p class="va-eyebrow">News Archive</p>
+      <h2>Today&rsquo;s stories, sorted like an archive collection.</h2>
+      <p>
+        Browse the latest product and platform headlines as reusable archive cards, then reopen recent snapshots from the in-repo history vault. The collection keeps Bluetooth, Find AI, Cleanup Pro, and broader Apple workflow news easy to scan.
+      </p>
+    </div>
+
+    <div class="va-news-archive-layout">
+      <section class="va-news-archive-block" aria-label="Today headline collections">
+        <div class="va-news-archive-block-head">
+          <div>
+            <p class="va-news-archive-label">Top Collections</p>
+            <h3>Today&rsquo;s headline clusters</h3>
+          </div>
+          <p>Grouped automatically from the latest Product Pulse snapshot.</p>
+        </div>
+        <div
+          class="va-archive-grid"
+          data-news-archive-today
+          data-history-manifest="/assets/data/product-pulse/history.json"
+        >
+          <div class="va-archive-empty">
+            <p>Loading today&rsquo;s collections...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="va-news-archive-block" aria-label="Historical news archive">
+        <div class="va-news-archive-block-head">
+          <div>
+            <p class="va-news-archive-label">History Vault</p>
+            <h3>Recent archived briefings</h3>
+          </div>
+          <p>Open a stored day to reload the detailed briefing below.</p>
+        </div>
+        <div
+          class="va-archive-grid va-archive-grid-history"
+          data-news-archive-history
+          data-history-manifest="/assets/data/product-pulse/history.json"
+        >
+          <div class="va-archive-empty">
+            <p>Loading archived briefings...</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
   <section class="va-container va-briefing" aria-label="Today's briefing">
     <!-- va-today-brief:start -->
     <div class="va-briefing-head">
@@ -357,6 +407,7 @@
 
 <script src="/assets/js/nav-toggle.js" defer></script>
 <script src="/assets/js/site-tools.js" defer></script>
+<script src="/assets/js/news-archive-cards.js" defer></script>
 <script src="/assets/js/product-pulse-history.js" defer></script>
 </body>
 </html>
