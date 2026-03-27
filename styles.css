@@ -602,7 +602,7 @@ ul {
   display: grid;
   align-content: start;
   gap: 0;
-  padding-top: 84px;
+  padding-top: 16px;
 }
 
 .va-news-archive-calendar {
@@ -634,7 +634,7 @@ ul {
 }
 
 .va-news-archive-calendar-head {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   display: grid;
   gap: 10px;
 }
