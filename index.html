@@ -166,12 +166,30 @@
 
   <section class="va-container va-news-archive va-news-desk" id="news-archive" aria-label="Today news archive">
     <div class="va-news-archive-head">
-      <div class="va-news-archive-head-copy">
-        <p class="va-eyebrow">Top Stories</p>
-        <h2>Product <span class="is-accent">Pulse</span></h2>
-        <p>
-          Browse the latest product and platform headlines as reusable archive cards, then reopen recent snapshots from the in-repo history vault. The collection keeps Bluetooth, Find AI, Cleanup Pro, and broader Apple workflow news easy to scan.
-        </p>
+      <div class="va-news-archive-rail">
+        <div class="va-news-archive-head-copy">
+          <p class="va-eyebrow">Top Stories</p>
+          <h2>Product <span class="is-accent">Pulse</span></h2>
+        </div>
+
+        <section class="va-news-archive-block va-news-archive-block-compact" aria-label="Today headline collections">
+          <div class="va-news-archive-block-head">
+            <div>
+              <p class="va-news-archive-label">Top Collections</p>
+              <h3>Today&rsquo;s headline clusters</h3>
+            </div>
+            <p>Select a cluster to spotlight matching stories inside Product Pulse.</p>
+          </div>
+          <div
+            class="va-archive-grid"
+            data-news-archive-today
+            data-history-manifest="/assets/data/product-pulse/history.json"
+          >
+            <div class="va-archive-empty">
+              <p>Loading today&rsquo;s collections...</p>
+            </div>
+          </div>
+        </section>
       </div>
 
       <aside class="va-news-archive-calendar" aria-label="Archived Product Pulse calendar">
@@ -212,25 +230,6 @@
         </div>
       </aside>
     </div>
-
-    <section class="va-news-archive-block" aria-label="Today headline collections">
-      <div class="va-news-archive-block-head">
-        <div>
-          <p class="va-news-archive-label">Top Collections</p>
-          <h3>Today&rsquo;s headline clusters</h3>
-        </div>
-        <p>Select a cluster to spotlight matching stories inside Product Pulse.</p>
-      </div>
-      <div
-        class="va-archive-grid"
-        data-news-archive-today
-        data-history-manifest="/assets/data/product-pulse/history.json"
-      >
-        <div class="va-archive-empty">
-          <p>Loading today&rsquo;s collections...</p>
-        </div>
-      </div>
-    </section>
 
     <section class="va-briefing" aria-label="Today's briefing">
     <!-- va-today-brief:start -->
