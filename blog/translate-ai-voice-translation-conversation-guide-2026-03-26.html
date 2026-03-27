@@ -148,10 +148,8 @@
     .panel,.tldr,.capsule { margin-top:24px; }
     .tldr { border-left:6px solid #3ac1a2; }
     .capsule { background:linear-gradient(180deg, rgba(223,247,242,.74), rgba(255,255,255,.98)); }
-    .hero-grid { display:grid; grid-template-columns:minmax(0, 1.4fr) minmax(280px, .9fr); gap:22px; align-items:stretch; }
+    .hero-grid { display:block; }
     .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
-    .thumb { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:14px; background:linear-gradient(180deg, #f8fffd, #eef7f8); }
-    .thumb img { width:min(100%, 220px); border-radius:24px; box-shadow:0 22px 40px rgba(14,106,124,.18); }
     .cta-row,.links { margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; }
     .cta-row a,.links a { border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; }
     .cta-row .primary { background:var(--brand); color:#fff; border-color:var(--brand); }
@@ -161,7 +159,6 @@
     tr:last-child td { border-bottom:none; }
     .sources a { color:var(--brand); border-bottom:1px solid #9fcad0; }
     @media (max-width: 760px) {
-      .hero-grid { grid-template-columns:1fr; }
       main { padding-top:28px; }
     }
   </style>
@@ -195,10 +192,6 @@
               <a href="https://apps.apple.com/us/app/translate-ai-ai-translator/id6757105258" target="_blank" rel="noopener noreferrer">App Store</a>
             </div>
           </div>
-          <aside class="thumb">
-            <img src="/translate/translate-ai-icon.webp" alt="Translate AI icon" width="103" height="103">
-            <p>Voice translation only feels impressive for a second; what matters is whether it keeps the conversation moving.</p>
-          </aside>
         </div>
       </section>
 
