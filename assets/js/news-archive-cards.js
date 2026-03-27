@@ -14,6 +14,17 @@
     return element;
   }
 
+  function emitHighlightRequest(slug, title) {
+    window.dispatchEvent(
+      new CustomEvent("va:product-pulse-highlight-request", {
+        detail: {
+          slug: slug || "",
+          title: title || ""
+        }
+      })
+    );
+  }
+
   function fetchJson(path) {
     return fetch(path, { credentials: "same-origin" }).then(function (response) {
       if (!response.ok) {
@@ -98,13 +109,29 @@
       });
   }
 
-  function createTodayCard(group) {
+  function setSelectedTodayCard(container, slug) {
+    if (!container) {
+      return;
+    }
+    var cards = container.querySelectorAll(".va-archive-card-today");
+    cards.forEach(function (card) {
+      var isSelected = card.dataset.slug === slug;
+      card.classList.toggle("is-selected", isSelected);
+      var button = card.querySelector(".va-archive-card-button");
+      if (button) {
+        button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+      }
+    });
+  }
+
+  function createTodayCard(group, todayRoot) {
     var article = createElement("article", "va-archive-card");
-    var link = createElement("a", "va-archive-card-link");
-    link.href = group.leadLink || "#";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.setAttribute("aria-label", "Open headline collection " + group.title);
+    article.classList.add("va-archive-card-today");
+    article.dataset.slug = group.slug || "";
+    var button = createElement("button", "va-archive-card-button");
+    button.type = "button";
+    button.setAttribute("aria-label", "Highlight " + group.title + " stories in Product Pulse");
+    button.setAttribute("aria-pressed", "false");
 
     var media = createElement("div", "va-archive-card-media");
     if (group.image) {
@@ -134,12 +161,20 @@
 
     var footer = createElement("div", "va-archive-card-footer");
     footer.appendChild(createElement("span", "va-archive-card-count", pluralize(group.count, "story", "stories")));
-    footer.appendChild(createElement("span", "va-archive-card-meta", "Open lead story"));
+    footer.appendChild(createElement("span", "va-archive-card-meta", "Highlight in Product Pulse"));
 
-    link.appendChild(media);
-    link.appendChild(body);
-    link.appendChild(footer);
-    article.appendChild(link);
+    button.appendChild(media);
+    button.appendChild(body);
+    button.appendChild(footer);
+    button.addEventListener("click", function () {
+      setSelectedTodayCard(todayRoot, group.slug || "");
+      emitHighlightRequest(group.slug || "", group.title || "");
+      var briefingPanel = $(".va-briefing-panel");
+      if (briefingPanel) {
+        briefingPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+    article.appendChild(button);
     return article;
   }
 
@@ -258,7 +293,7 @@
           }
           todayRoot.innerHTML = "";
           groups.forEach(function (group) {
-            todayRoot.appendChild(createTodayCard(group));
+            todayRoot.appendChild(createTodayCard(group, todayRoot));
           });
         });
       })

@@ -37,6 +37,7 @@
 
   function renderItem(item) {
     const article = createElement("article", "va-brief-item va-brief-item-" + (item.slug || "industry"));
+    article.dataset.briefSlug = item.slug || "industry";
 
     const index = createElement("div", "va-brief-index", String(item.index || ""));
     index.setAttribute("aria-hidden", "true");
@@ -128,9 +129,35 @@
     }
 
     let historyMap = Object.create(null);
+    let activeHighlightSlug = "";
 
     function setStatus(message) {
       status.textContent = message;
+    }
+
+    function applyHighlight(slug) {
+      activeHighlightSlug = slug || "";
+      const items = panel.querySelectorAll(".va-brief-item");
+      items.forEach(function (item) {
+        const isMatch = !!activeHighlightSlug && item.dataset.briefSlug === activeHighlightSlug;
+        item.classList.toggle("is-highlighted", isMatch);
+        item.classList.toggle("is-dimmed", !!activeHighlightSlug && !isMatch);
+      });
+    }
+
+    function annotateExistingItems() {
+      const items = panel.querySelectorAll(".va-brief-item");
+      items.forEach(function (item) {
+        if (item.dataset.briefSlug) {
+          return;
+        }
+        const className = Array.from(item.classList).find(function (name) {
+          return name.indexOf("va-brief-item-") === 0 && name !== "va-brief-item";
+        });
+        if (className) {
+          item.dataset.briefSlug = className.replace("va-brief-item-", "");
+        }
+      });
     }
 
     function populateSelect(entries) {
@@ -159,6 +186,7 @@
             panel.innerHTML = '<div class="va-briefing-empty"><p>No stored stories are available for this date yet.</p></div>';
           } else {
             renderGrid(items, panel);
+            applyHighlight(activeHighlightSlug);
           }
           setStatus("Viewing " + formatHistoryDate(dateValue) + "'s stored briefing.");
         })
@@ -191,6 +219,24 @@
       .catch(function () {
         controls.hidden = true;
       });
+
+    annotateExistingItems();
+    applyHighlight(activeHighlightSlug);
+
+    window.addEventListener("va:product-pulse-highlight-request", function (event) {
+      const detail = event && event.detail ? event.detail : {};
+      const slug = detail.slug || "";
+      applyHighlight(slug);
+
+      if (!slug) {
+        return;
+      }
+
+      const firstMatch = panel.querySelector('.va-brief-item[data-brief-slug="' + slug + '"]');
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
 
     select.addEventListener("change", function () {
       loadSnapshot(select.value);
