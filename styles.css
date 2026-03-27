@@ -583,6 +583,8 @@ ul {
 .va-news-archive-rail {
   display: grid;
   height: 100%;
+  align-content: start;
+  gap: 18px;
 }
 
 .va-news-archive-calendar-rail {
@@ -607,32 +609,40 @@ ul {
 }
 
 .va-news-archive-stamp {
-  justify-self: start;
+  justify-self: end;
+  align-self: end;
   width: fit-content;
-  margin-top: -2px;
+  margin-top: 0;
+}
+
+.va-news-archive-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: end;
 }
 
 .va-news-archive-calendar-head {
   margin-bottom: 12px;
   display: grid;
-  gap: 6px;
+  gap: 10px;
 }
 
 .va-news-archive-calendar-head h3 {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(34px, 4.8vw, 60px);
-  line-height: 0.92;
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.02;
   letter-spacing: -0.03em;
-  max-width: 9ch;
-  text-wrap: balance;
+  max-width: none;
 }
 
 .va-news-archive-calendar-head p:last-child {
   margin: 0;
   color: rgba(224, 230, 248, 0.74);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.45;
+  max-width: 34ch;
 }
 
 .va-news-archive-block-heading {
@@ -722,52 +732,6 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   min-height: 560px;
-}
-
-.va-news-archive-block-compact {
-  padding: 22px;
-}
-
-.va-news-archive-block-head {
-  margin-bottom: 18px;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: nowrap;
-}
-
-.va-news-archive-block-head h3 {
-  margin: 8px 0 0;
-  font-size: clamp(26px, 4vw, 38px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.va-news-archive-block-head p:last-child {
-  margin: 0;
-  max-width: 18ch;
-  color: rgba(224, 230, 248, 0.78);
-  font-size: 15px;
-  line-height: 1.45;
-  align-self: flex-start;
-}
-
-.va-news-archive-block-compact .va-news-archive-block-head {
-  margin-bottom: 12px;
-}
-
-.va-news-archive-block-compact .va-news-archive-block-head {
-  margin-bottom: 14px;
-}
-
-.va-news-archive-block-compact .va-news-archive-block-head h3 {
-  font-size: clamp(20px, 2.3vw, 30px);
-}
-
-.va-news-archive-block-compact .va-news-archive-block-head p:last-child {
-  max-width: 26ch;
-  font-size: 13px;
 }
 
 .va-news-archive-label {
@@ -1707,16 +1671,17 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .va-news-archive-calendar-rail {
-    padding-top: 0;
-  }
-  .va-news-archive-block-compact .va-archive-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .va-news-archive-hero {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
-  .va-news-archive-block-head {
-    align-items: start;
-    flex-wrap: wrap;
+  .va-news-archive-stamp {
+    justify-self: start;
+  }
+
+  .va-news-archive-calendar-rail {
+    padding-top: 0;
   }
 
   .va-briefing-title-wrap {
