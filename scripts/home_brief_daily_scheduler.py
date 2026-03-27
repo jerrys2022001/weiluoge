@@ -1133,14 +1133,14 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
         <p>Today's publisher-matched stories will appear here as soon as the tracked sources publish same-day updates.</p>
       </div>"""
     return f"""
-    <div class="va-briefing-head">
+    <div class="va-briefing-head" hidden>
       <div class="va-briefing-title-wrap">
         <p class="va-briefing-section-label">Top Stories</p>
         <h2 class="va-briefing-heading">Product <span class="is-accent">Pulse</span></h2>
       </div>
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
-    <div class="va-briefing-controls" data-product-pulse-controls>
+    <div class="va-briefing-controls" data-product-pulse-controls hidden>
       <div>
         <p class="va-briefing-history-label">History Browser</p>
         <p class="va-briefing-history-help">Stored in-repo daily so Product Pulse can reopen previous news snapshots.</p>
