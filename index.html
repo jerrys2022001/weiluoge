@@ -164,45 +164,26 @@
     </article>
   </section>
 
-  <section class="va-container va-news-archive" id="news-archive" aria-label="Today news archive">
+  <section class="va-container va-news-archive va-news-desk" id="news-archive" aria-label="Today news archive">
     <div class="va-news-archive-head">
-      <p class="va-eyebrow">News Archive</p>
-      <h2>Today&rsquo;s stories, sorted like an archive collection.</h2>
-      <p>
-        Browse the latest product and platform headlines as reusable archive cards, then reopen recent snapshots from the in-repo history vault. The collection keeps Bluetooth, Find AI, Cleanup Pro, and broader Apple workflow news easy to scan.
-      </p>
-    </div>
+      <div class="va-news-archive-head-copy">
+        <p class="va-eyebrow">News Archive</p>
+        <h2>Today&rsquo;s stories, sorted like an archive collection.</h2>
+        <p>
+          Browse the latest product and platform headlines as reusable archive cards, then reopen recent snapshots from the in-repo history vault. The collection keeps Bluetooth, Find AI, Cleanup Pro, and broader Apple workflow news easy to scan.
+        </p>
+      </div>
 
-    <div class="va-news-archive-layout">
-      <section class="va-news-archive-block" aria-label="Today headline collections">
-        <div class="va-news-archive-block-head">
-          <div>
-            <p class="va-news-archive-label">Top Collections</p>
-            <h3>Today&rsquo;s headline clusters</h3>
-          </div>
-          <p>Grouped automatically from the latest Product Pulse snapshot.</p>
-        </div>
-        <div
-          class="va-archive-grid"
-          data-news-archive-today
-          data-history-manifest="/assets/data/product-pulse/history.json"
-        >
-          <div class="va-archive-empty">
-            <p>Loading today&rsquo;s collections...</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="va-news-archive-block" aria-label="Historical news archive">
-        <div class="va-news-archive-block-head">
+      <aside class="va-news-archive-calendar" aria-label="Archived Product Pulse calendar">
+        <div class="va-news-archive-calendar-head">
           <div>
             <p class="va-news-archive-label">History Vault</p>
-            <h3>Recent archived briefings</h3>
+            <h3>Archived Product Pulse calendar</h3>
           </div>
-          <p>Open a stored day to reload the detailed briefing below.</p>
+          <p>Open a stored day to reload the briefing below.</p>
         </div>
         <div
-          class="va-archive-grid va-archive-grid-history"
+          class="va-archive-grid va-archive-grid-history va-archive-grid-compact"
           data-news-archive-history
           data-history-manifest="/assets/data/product-pulse/history.json"
         >
@@ -210,11 +191,29 @@
             <p>Loading archived briefings...</p>
           </div>
         </div>
-      </section>
+      </aside>
     </div>
-  </section>
 
-  <section class="va-container va-briefing" aria-label="Today's briefing">
+    <section class="va-news-archive-block" aria-label="Today headline collections">
+      <div class="va-news-archive-block-head">
+        <div>
+          <p class="va-news-archive-label">Top Collections</p>
+          <h3>Today&rsquo;s headline clusters</h3>
+        </div>
+        <p>Select a cluster to spotlight matching stories inside Product Pulse.</p>
+      </div>
+      <div
+        class="va-archive-grid"
+        data-news-archive-today
+        data-history-manifest="/assets/data/product-pulse/history.json"
+      >
+        <div class="va-archive-empty">
+          <p>Loading today&rsquo;s collections...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="va-briefing" aria-label="Today's briefing">
     <!-- va-today-brief:start -->
     <div class="va-briefing-head">
       <div class="va-briefing-title-wrap">
@@ -375,6 +374,7 @@
       </div>
     </div>
   <!-- va-today-brief:end -->
+    </section>
   </section>
 
   <section class="va-container va-gallery" aria-label="Visual highlights">
