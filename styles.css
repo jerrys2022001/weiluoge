@@ -421,24 +421,17 @@ ul {
 }
 
 .va-float-card-b {
-  right: 28px;
-  top: 462px;
+  right: 20px;
+  top: 398px;
   border-color: rgba(37, 144, 241, 0.45);
   animation-delay: -1.8s;
 }
 
 .va-float-card-c {
-  left: 108px;
-  top: 486px;
+  left: 86px;
+  top: 470px;
   border-color: rgba(248, 102, 219, 0.46);
   animation-delay: -3.2s;
-}
-
-.va-float-card-d {
-  left: 272px;
-  top: 372px;
-  border-color: rgba(107, 102, 218, 0.42);
-  animation-delay: -2.4s;
 }
 
 @keyframes va-float {
@@ -481,14 +474,6 @@ ul {
 
 .va-app-card:nth-child(3) {
   border-color: rgba(37, 144, 241, 0.36);
-}
-
-.va-app-card:nth-child(4) {
-  border-color: rgba(248, 79, 57, 0.62);
-}
-
-.va-app-card:nth-child(4):hover {
-  border-color: rgba(248, 79, 57, 0.78);
 }
 
 .va-app-card:hover {
@@ -646,6 +631,60 @@ ul {
   box-shadow: 0 34px 60px rgba(6, 7, 14, 0.38);
 }
 
+.va-briefing-controls {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.va-briefing-history-label {
+  margin: 0;
+  font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #42ffe0;
+}
+
+.va-briefing-history-help {
+  margin: 8px 0 0;
+  color: rgba(224, 230, 248, 0.76);
+  font-size: 14px;
+  max-width: 58ch;
+}
+
+.va-briefing-history-picker {
+  display: grid;
+  gap: 8px;
+  min-width: min(100%, 240px);
+}
+
+.va-briefing-history-picker span {
+  color: rgba(224, 230, 248, 0.82);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.va-briefing-history-picker select {
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(12, 14, 25, 0.88);
+  color: #ffffff;
+  font: inherit;
+}
+
+.va-briefing-history-status {
+  margin-bottom: 16px;
+  color: rgba(224, 230, 248, 0.76);
+  font-size: 14px;
+}
+
 .va-briefing-empty {
   margin-bottom: 18px;
   padding: 18px 20px;
@@ -756,6 +795,13 @@ ul {
 
 .va-brief-item h3 a:hover {
   opacity: 0.84;
+}
+
+.va-brief-summary {
+  margin: 0;
+  color: rgba(224, 230, 248, 0.76);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .va-brief-meta {
@@ -983,6 +1029,14 @@ ul {
     padding: 22px 18px;
   }
 
+  .va-briefing-controls {
+    align-items: stretch;
+  }
+
+  .va-briefing-history-picker {
+    width: 100%;
+  }
+
   .va-briefing-stamp {
     white-space: normal;
   }
@@ -1036,6 +1090,10 @@ ul {
 
   .va-brief-item h3 {
     font-size: 20px;
+  }
+
+  .va-brief-summary {
+    font-size: 13px;
   }
 
   .va-brief-index {

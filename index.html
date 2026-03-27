@@ -171,9 +171,31 @@
         <p class="va-briefing-section-label">Top Stories</p>
         <h2 class="va-briefing-heading">Product <span class="is-accent">Pulse</span></h2>
       </div>
-      <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> March 27, 2026 at 08:30 (UTC+08:00)</p>
+      <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> March 27, 2026 at 08:49 (UTC+08:00)</p>
     </div>
-    <div class="va-briefing-panel">
+    <div class="va-briefing-controls" data-product-pulse-controls>
+      <div>
+        <p class="va-briefing-history-label">History Browser</p>
+        <p class="va-briefing-history-help">Stored in-repo daily so Product Pulse can reopen previous news snapshots.</p>
+      </div>
+      <label class="va-briefing-history-picker">
+        <span>View date</span>
+        <select
+          id="va-product-pulse-date"
+          name="product-pulse-date"
+          data-product-pulse-select
+          data-history-manifest="/assets/data/product-pulse/history.json"
+          data-default-date="2026-03-27"
+          aria-label="Choose a Product Pulse date"
+        >
+          <option value="2026-03-27">March 27, 2026</option>
+        </select>
+      </label>
+    </div>
+    <div class="va-briefing-history-status" data-product-pulse-status>
+      Viewing March 27, 2026's stored briefing.
+    </div>
+    <div class="va-briefing-panel" data-product-pulse-panel>
 
       <div class="va-briefing-grid">
         <div class="va-briefing-column">
@@ -181,7 +203,20 @@
         <div class="va-brief-index" aria-hidden="true">1</div>
         <div class="va-brief-body">
           <p class="va-brief-label">Apple Releases</p>
+          <h3><a href="https://9to5mac.com/2026/03/26/apple-tv-announces-sci-fi-thriller-starring-vanessa-kirby-and-yahya-abdul-mateen-ii/" target="_blank" rel="noopener noreferrer">Apple TV announces sci-fi thriller starring Vanessa Kirby and Yahya Abdul-Mateen II</a></h3>
+          <p class="va-brief-summary">Apple Original Films&#x27; newest project is based on the award-winning graphic novel Telepaths. Here are the details.</p>
+          <p class="va-brief-meta"><span class="va-brief-source">9to5Mac</span> <span aria-hidden="true">|</span> MAR 27</p>
+        </div>
+        <a class="va-brief-thumb" href="https://9to5mac.com/2026/03/26/apple-tv-announces-sci-fi-thriller-starring-vanessa-kirby-and-yahya-abdul-mateen-ii/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Apple TV announces sci-fi thriller starring Vanessa Kirby and Yahya Abdul-Mateen II">
+          <img src="/assets/images/home-briefing/2026-03-27/apple-9228faf03550c863.webp" alt="Apple TV announces sci-fi thriller starring Vanessa Kirby and Yahya Abdul-Mateen II thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="/assets/images/stock-2026-03/stock-08.jpg" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){this.src=this.dataset.fallbackSrc;}this.onerror=null;">
+        </a>
+      </article>
+      <article class="va-brief-item va-brief-item-apple">
+        <div class="va-brief-index" aria-hidden="true">2</div>
+        <div class="va-brief-body">
+          <p class="va-brief-label">Apple Releases</p>
           <h3><a href="https://www.macrumors.com/2026/03/26/apple-iphone-designer-bonuses/" target="_blank" rel="noopener noreferrer">Apple Gives iPhone Designers Bonuses Up to $400K to Counter OpenAI Poaching</a></h3>
+          <p class="va-brief-summary">Apple gave its iPhone Product Design team bonuses worth &quot;several hundred thousand dollars&quot; in an effort to keep them from being poached by other companies, reports...</p>
           <p class="va-brief-meta"><span class="va-brief-source">MacRumors</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://www.macrumors.com/2026/03/26/apple-iphone-designer-bonuses/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Apple Gives iPhone Designers Bonuses Up to $400K to Counter OpenAI Poaching">
@@ -189,10 +224,11 @@
         </a>
       </article>
       <article class="va-brief-item va-brief-item-apple">
-        <div class="va-brief-index" aria-hidden="true">2</div>
+        <div class="va-brief-index" aria-hidden="true">3</div>
         <div class="va-brief-body">
           <p class="va-brief-label">Apple Releases</p>
           <h3><a href="https://9to5mac.com/2026/03/26/new-app-store-policy-requires-medical-device-disclosures-for-some-health-apps/" target="_blank" rel="noopener noreferrer">New App Store policy requires medical device disclosures for some health apps</a></h3>
+          <p class="va-brief-summary">Starting today, some App Store apps must declare whether they are regulated medical devices in the US, UK, and Europe. Here are the details.</p>
           <p class="va-brief-meta"><span class="va-brief-source">9to5Mac</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://9to5mac.com/2026/03/26/new-app-store-policy-requires-medical-device-disclosures-for-some-health-apps/" target="_blank" rel="noopener noreferrer" aria-label="Open story: New App Store policy requires medical device disclosures for some health apps">
@@ -200,10 +236,11 @@
         </a>
       </article>
       <article class="va-brief-item va-brief-item-apple">
-        <div class="va-brief-index" aria-hidden="true">3</div>
+        <div class="va-brief-index" aria-hidden="true">4</div>
         <div class="va-brief-body">
           <p class="va-brief-label">Apple Releases</p>
           <h3><a href="https://www.macrumors.com/2026/03/26/apple-releases-safari-technology-preview-240/" target="_blank" rel="noopener noreferrer">Apple Releases Safari Technology Preview 240 With Bug Fixes and Performance Improvements</a></h3>
+          <p class="va-brief-summary">Apple today released a new update for Safari Technology Preview , the experimental browser that was first introduced in March 2016. Apple designed ‌Safari Technology...</p>
           <p class="va-brief-meta"><span class="va-brief-source">MacRumors</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://www.macrumors.com/2026/03/26/apple-releases-safari-technology-preview-240/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Apple Releases Safari Technology Preview 240 With Bug Fixes and Performance Improvements">
@@ -211,25 +248,15 @@
         </a>
       </article>
       <article class="va-brief-item va-brief-item-apple">
-        <div class="va-brief-index" aria-hidden="true">4</div>
+        <div class="va-brief-index" aria-hidden="true">5</div>
         <div class="va-brief-body">
           <p class="va-brief-label">Apple Releases</p>
           <h3><a href="https://appleinsider.com/articles/26/03/26/stop-holding-out-hope-liquid-glass-will-be-mandatory-in-ios-27?utm_source=rss" target="_blank" rel="noopener noreferrer">Stop holding out hope, Liquid Glass will be mandatory in iOS 27</a></h3>
+          <p class="va-brief-summary">The Liquid Glass design that rolled out with iOS 26 isn&#x27;t going anywhere, according to a recount of an Apple Developer workshop. Developers will be required to use...</p>
           <p class="va-brief-meta"><span class="va-brief-source">AppleInsider</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://appleinsider.com/articles/26/03/26/stop-holding-out-hope-liquid-glass-will-be-mandatory-in-ios-27?utm_source=rss" target="_blank" rel="noopener noreferrer" aria-label="Open story: Stop holding out hope, Liquid Glass will be mandatory in iOS 27">
           <img src="/assets/images/stock-2026-03/stock-08.jpg" alt="Stop holding out hope, Liquid Glass will be mandatory in iOS 27 thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="/assets/images/stock-2026-03/stock-08.jpg" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){this.src=this.dataset.fallbackSrc;}this.onerror=null;">
-        </a>
-      </article>
-      <article class="va-brief-item va-brief-item-apple">
-        <div class="va-brief-index" aria-hidden="true">5</div>
-        <div class="va-brief-body">
-          <p class="va-brief-label">Apple Releases</p>
-          <h3><a href="https://www.macrumors.com/2026/03/26/app-store-medical-device-status/" target="_blank" rel="noopener noreferrer">Apple Requires App Developers to Declare Regulated Medical Device Status in EEA, UK, and U.S.</a></h3>
-          <p class="va-brief-meta"><span class="va-brief-source">MacRumors</span> <span aria-hidden="true">|</span> MAR 27</p>
-        </div>
-        <a class="va-brief-thumb" href="https://www.macrumors.com/2026/03/26/app-store-medical-device-status/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Apple Requires App Developers to Declare Regulated Medical Device Status in EEA, UK, and U.S.">
-          <img src="/assets/images/home-briefing/2026-03-27/apple-e9432fdc27ffcae6.jpg" alt="Apple Requires App Developers to Declare Regulated Medical Device Status in EEA, UK, and U.S. thumbnail" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="/assets/images/stock-2026-03/stock-08.jpg" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){this.src=this.dataset.fallbackSrc;}this.onerror=null;">
         </a>
       </article>
         </div>
@@ -239,6 +266,7 @@
         <div class="va-brief-body">
           <p class="va-brief-label">Industry Product Watch</p>
           <h3><a href="https://techcrunch.com/2026/03/26/wikipedia-cracks-down-on-the-use-of-ai-in-article-writing/" target="_blank" rel="noopener noreferrer">Wikipedia cracks down on the use of AI in article writing</a></h3>
+          <p class="va-brief-summary">The site, whose policies are subject to change, has struggled with the issue of AI-generated writing.</p>
           <p class="va-brief-meta"><span class="va-brief-source">TechCrunch</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://techcrunch.com/2026/03/26/wikipedia-cracks-down-on-the-use-of-ai-in-article-writing/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Wikipedia cracks down on the use of AI in article writing">
@@ -250,6 +278,7 @@
         <div class="va-brief-body">
           <p class="va-brief-label">Industry Product Watch</p>
           <h3><a href="https://electrek.co/2026/03/26/byd-launches-song-ultra-ev-orders-top-21500-in-20-days/" target="_blank" rel="noopener noreferrer">BYD launches the Song Ultra EV as orders reach over 21,500 in 20 days</a></h3>
+          <p class="va-brief-summary">BYD launched the Song Ultra EV in China, starting at just under $22,000. The new EV is one of the first to be equipped with its Blade Battery and Flash Charging,...</p>
           <p class="va-brief-meta"><span class="va-brief-source">Electrek</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://electrek.co/2026/03/26/byd-launches-song-ultra-ev-orders-top-21500-in-20-days/" target="_blank" rel="noopener noreferrer" aria-label="Open story: BYD launches the Song Ultra EV as orders reach over 21,500 in 20 days">
@@ -261,6 +290,7 @@
         <div class="va-brief-body">
           <p class="va-brief-label">Semiconductor Breakthroughs</p>
           <h3><a href="https://semiwiki.com/efpga/367629-silicon-insurance-why-efpga-is-cheaper-than-a-respin-and-why-it-matters-in-the-intel-18a-era/" target="_blank" rel="noopener noreferrer">Silicon Insurance: Why eFPGA is Cheaper Than a Respin - and Why It Matters in the Intel 18A Era</a></h3>
+          <p class="va-brief-summary">As semiconductor technology advances into increasingly complex and expensive process nodes, the economic and technical risks associated with ASIC design have grown...</p>
           <p class="va-brief-meta"><span class="va-brief-source">SemiWiki</span> <span aria-hidden="true">|</span> MAR 27</p>
         </div>
         <a class="va-brief-thumb" href="https://semiwiki.com/efpga/367629-silicon-insurance-why-efpga-is-cheaper-than-a-respin-and-why-it-matters-in-the-intel-18a-era/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Silicon Insurance: Why eFPGA is Cheaper Than a Respin - and Why It Matters in the Intel 18A Era">
@@ -272,6 +302,7 @@
         <div class="va-brief-body">
           <p class="va-brief-label">AI Developments</p>
           <h3><a href="https://www.tomshardware.com/tech-industry/us-senators-call-for-a-halt-to-nvidia-gpu-exports-in-the-wake-of-the-super-micro-scandal-looming-chip-security-act-may-put-a-wrench-into-huangs-china-ambitions" target="_blank" rel="noopener noreferrer">US Senators call for a halt to Nvidia GPU exports in the wake of the Super Micro scandal - looming Chip Security Act may put a wrench into Huang&#x27;s China ambitions</a></h3>
+          <p class="va-brief-summary">As the Super Micro smuggling scandal unfolds, U.S. senators have urged the government to halt Nvidia GPU exports to China, as the Foreign Affairs Committee prepares...</p>
           <p class="va-brief-meta"><span class="va-brief-source">Tom&#x27;s Hardware</span> <span aria-hidden="true">|</span> MAR 26</p>
         </div>
         <a class="va-brief-thumb" href="https://www.tomshardware.com/tech-industry/us-senators-call-for-a-halt-to-nvidia-gpu-exports-in-the-wake-of-the-super-micro-scandal-looming-chip-security-act-may-put-a-wrench-into-huangs-china-ambitions" target="_blank" rel="noopener noreferrer" aria-label="Open story: US Senators call for a halt to Nvidia GPU exports in the wake of the Super Micro scandal - looming Chip Security Act may put a wrench into Huang&#x27;s China ambitions">
@@ -283,6 +314,7 @@
         <div class="va-brief-body">
           <p class="va-brief-label">Bluetooth Standards &amp; Uses</p>
           <h3><a href="https://www.bluetooth.com/blog/industry-experts-explain-why-bluetooth-technology-is-being-deployed-to-solve-challenges-in-industrial-spaces/" target="_blank" rel="noopener noreferrer">Industry experts explain why Bluetooth(R) technology is being deployed to solve challenges in industrial spaces</a></h3>
+          <p class="va-brief-summary">Bluetooth(R) technology is helping industrial environments around the world adopt smarter maintenance strategies that minimize downtime and drive greater operational...</p>
           <p class="va-brief-meta"><span class="va-brief-source">Bluetooth SIG</span> <span aria-hidden="true">|</span> MAR 26</p>
         </div>
         <a class="va-brief-thumb" href="https://www.bluetooth.com/blog/industry-experts-explain-why-bluetooth-technology-is-being-deployed-to-solve-challenges-in-industrial-spaces/" target="_blank" rel="noopener noreferrer" aria-label="Open story: Industry experts explain why Bluetooth(R) technology is being deployed to solve challenges in industrial spaces">
@@ -325,5 +357,6 @@
 
 <script src="/assets/js/nav-toggle.js" defer></script>
 <script src="/assets/js/site-tools.js" defer></script>
+<script src="/assets/js/product-pulse-history.js" defer></script>
 </body>
 </html>

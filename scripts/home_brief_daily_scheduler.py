@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import time
 import re
 import shutil
@@ -19,6 +20,7 @@ from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from html import escape, unescape
 from pathlib import Path
+import subprocess
 
 from blog_daily_scheduler import add_git_publish_args, resolve_git_command, run_git_command
 
@@ -26,6 +28,8 @@ SITE_URL = "https://velocai.net"
 HOME_INDEX_REL = Path("index.html")
 SITEMAP_REL = Path("sitemap.xml")
 BRIEF_IMAGES_REL = Path("assets/images/home-briefing")
+BRIEF_HISTORY_REL = Path("assets/data/product-pulse")
+BRIEF_HISTORY_MANIFEST_REL = BRIEF_HISTORY_REL / "history.json"
 DEFAULT_LOG_DIR_REL = Path("output/home-brief-logs")
 SECTION_START = "<!-- va-today-brief:start -->"
 SECTION_END = "<!-- va-today-brief:end -->"
@@ -40,12 +44,17 @@ ASCII_REPLACEMENTS = (
     ("\u00ae", "(R)"),
     ("\u2122", "(TM)"),
     ("\u20ac", "EUR"),
+    ("\u2026", "..."),
     ("\u2018", "'"),
     ("\u2019", "'"),
     ("\u201c", '"'),
     ("\u201d", '"'),
     ("\u2013", "-"),
     ("\u2014", "-"),
+)
+BRIEF_STAMP_RE = re.compile(
+    r'va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">\|</span> ([A-Za-z]+ \d{1,2}, \d{4}) at',
+    re.IGNORECASE,
 )
 
 
@@ -438,6 +447,7 @@ FALLBACK_IMAGES = (
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
 MIN_SAME_DAY_ITEMS = 8
+BRIEF_HISTORY_KEEP_DAYS = 90
 SLUG_MAX_COUNTS = {
     "apple": 5,
 }
@@ -524,6 +534,7 @@ def clean_text(value: str) -> str:
         text = text.replace(old, new)
     text = re.sub(r"<[^>]+>", " ", text)
     text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"\s+more[^a-z0-9]*$", "", text, flags=re.IGNORECASE)
     return text.strip()
 
 
@@ -1098,6 +1109,7 @@ def render_entry(render_entry_item: RenderEntry) -> str:
         <div class="va-brief-body">
           <p class="va-brief-label">{escape(source.eyebrow)}</p>
           <h3><a href="{escape(item.link)}" target="_blank" rel="noopener noreferrer">{escape(item.title)}</a></h3>
+          <p class="va-brief-summary">{escape(clip_text(item.summary or item.title, limit=168))}</p>
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
@@ -1128,7 +1140,29 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
       </div>
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
-    <div class="va-briefing-panel">
+    <div class="va-briefing-controls" data-product-pulse-controls>
+      <div>
+        <p class="va-briefing-history-label">History Browser</p>
+        <p class="va-briefing-history-help">Stored in-repo daily so Product Pulse can reopen previous news snapshots.</p>
+      </div>
+      <label class="va-briefing-history-picker">
+        <span>View date</span>
+        <select
+          id="va-product-pulse-date"
+          name="product-pulse-date"
+          data-product-pulse-select
+          data-history-manifest="/{BRIEF_HISTORY_MANIFEST_REL.as_posix()}"
+          data-default-date="{refreshed_at.date().isoformat()}"
+          aria-label="Choose a Product Pulse date"
+        >
+          <option value="{refreshed_at.date().isoformat()}">{escape(refreshed_at.strftime('%B %d, %Y'))}</option>
+        </select>
+      </label>
+    </div>
+    <div class="va-briefing-history-status" data-product-pulse-status>
+      Viewing {escape(refreshed_at.strftime('%B %d, %Y'))}'s stored briefing.
+    </div>
+    <div class="va-briefing-panel" data-product-pulse-panel>
 {empty_state}
       <div class="va-briefing-grid">
         <div class="va-briefing-column">
@@ -1162,6 +1196,283 @@ def update_homepage(index_path: Path, section_html: str) -> bool:
     return True
 
 
+def serialize_render_entry(render_entry_item: RenderEntry) -> dict[str, object]:
+    entry = render_entry_item.entry
+    source = entry.source
+    item = entry.item
+    return {
+        "index": entry.index,
+        "slug": source.slug,
+        "eyebrow": source.eyebrow,
+        "source_name": source.source_name,
+        "source_url": source.source_url,
+        "title": item.title,
+        "link": item.link,
+        "summary": clip_text(item.summary or item.title, limit=240),
+        "published_at": item.published_at.isoformat() if item.published_at else None,
+        "display_date": format_card_date(item.published_at),
+        "image_src": render_entry_item.image_src,
+        "fallback_src": render_entry_item.fallback_src,
+    }
+
+
+def collect_history_entries(history_dir: Path) -> list[dict[str, object]]:
+    entries: list[dict[str, object]] = []
+    if not history_dir.exists():
+        return entries
+
+    for child in history_dir.glob("*.json"):
+        if child.name == BRIEF_HISTORY_MANIFEST_REL.name:
+            continue
+        try:
+            payload = json.loads(child.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        date_value = payload.get("date")
+        if not isinstance(date_value, str):
+            continue
+        entries.append(
+            {
+                "date": date_value,
+                "path": f"/{BRIEF_HISTORY_REL.as_posix()}/{child.name}",
+                "item_count": int(payload.get("item_count", 0) or 0),
+                "refreshed_at": payload.get("refreshed_at"),
+            }
+        )
+
+    entries.sort(key=lambda entry: str(entry.get("date", "")), reverse=True)
+    return entries
+
+
+def update_history_manifest(repo_root: Path) -> str:
+    history_dir = repo_root / BRIEF_HISTORY_REL
+    history_dir.mkdir(parents=True, exist_ok=True)
+    entries = collect_history_entries(history_dir)[:BRIEF_HISTORY_KEEP_DAYS]
+    latest_date = entries[0]["date"] if entries else None
+    latest_updated_at = entries[0].get("refreshed_at") if entries else None
+    manifest_payload = {
+        "latest_date": latest_date,
+        "updated_at": latest_updated_at,
+        "entries": entries,
+    }
+    manifest_path = repo_root / BRIEF_HISTORY_MANIFEST_REL
+    manifest_path.write_text(json.dumps(manifest_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return BRIEF_HISTORY_MANIFEST_REL.as_posix()
+
+
+def write_brief_history_snapshot(
+    repo_root: Path,
+    entries: list[RenderEntry],
+    refreshed_at: datetime,
+) -> list[str]:
+    history_dir = repo_root / BRIEF_HISTORY_REL
+    history_dir.mkdir(parents=True, exist_ok=True)
+
+    snapshot_rel = BRIEF_HISTORY_REL / f"{refreshed_at.date().isoformat()}.json"
+    snapshot_path = repo_root / snapshot_rel
+    snapshot_payload = {
+        "date": refreshed_at.date().isoformat(),
+        "refreshed_at": refreshed_at.isoformat(),
+        "item_count": len(entries),
+        "items": [serialize_render_entry(entry) for entry in entries],
+    }
+    snapshot_path.write_text(json.dumps(snapshot_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    manifest_rel = update_history_manifest(repo_root)
+    return [snapshot_rel.as_posix(), manifest_rel]
+
+
+def extract_brief_section(index_html: str) -> str:
+    pattern = re.compile(
+        rf"{re.escape(SECTION_START)}(.*?){re.escape(SECTION_END)}",
+        flags=re.DOTALL,
+    )
+    match = pattern.search(index_html)
+    if match is None:
+        raise ValueError("Cannot find homepage briefing markers in supplied index.html content.")
+    return match.group(1)
+
+
+def parse_archived_brief_snapshot(index_html: str) -> tuple[str, str | None, list[dict[str, object]]]:
+    section_html = extract_brief_section(index_html)
+    stamp_match = BRIEF_STAMP_RE.search(section_html)
+    if stamp_match is None:
+        raise ValueError("Cannot find briefing date stamp in archived homepage.")
+
+    snapshot_date = datetime.strptime(stamp_match.group(1), "%B %d, %Y").date().isoformat()
+    refreshed_match = re.search(
+        r'va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">\|</span> ([A-Za-z]+ \d{1,2}, \d{4} at \d{2}:\d{2} \(UTC[+\-]\d{2}:\d{2}\))',
+        section_html,
+    )
+    refreshed_label = refreshed_match.group(1) if refreshed_match else None
+
+    items: list[dict[str, object]] = []
+    article_blocks = re.findall(
+        r'(<article class="va-brief-item va-brief-item-[^"]+">.*?</article>)',
+        section_html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    for article_html in article_blocks:
+        slug_match = re.search(r'va-brief-item-([^"\s]+)', article_html)
+        index_match = re.search(r'<div class="va-brief-index" aria-hidden="true">(\d+)</div>', article_html)
+        eyebrow_match = re.search(r'<p class="va-brief-label">(.*?)</p>', article_html, flags=re.DOTALL)
+        title_match = re.search(r'<h3><a href="(.*?)"[^>]*>(.*?)</a></h3>', article_html, flags=re.DOTALL)
+        summary_match = re.search(r'<p class="va-brief-summary">(.*?)</p>', article_html, flags=re.DOTALL)
+        meta_match = re.search(
+            r'<p class="va-brief-meta"><span class="va-brief-source">(.*?)</span> <span aria-hidden="true">\|</span> (.*?)</p>',
+            article_html,
+            flags=re.DOTALL,
+        )
+        image_match = re.search(
+            r'<img src="(.*?)"[^>]*?(?:data-fallback-src="(.*?)")?[^>]*>',
+            article_html,
+            flags=re.DOTALL,
+        )
+
+        if not (slug_match and index_match and eyebrow_match and title_match and meta_match and image_match):
+            continue
+
+        image_src = image_match.group(1) or ""
+        fallback_value = image_match.group(2) or image_src or ""
+        clean_summary = clean_text(summary_match.group(1) if summary_match else "")
+        items.append(
+            {
+                "index": int(index_match.group(1)),
+                "slug": clean_text(slug_match.group(1)),
+                "eyebrow": clean_text(eyebrow_match.group(1)),
+                "source_name": clean_text(meta_match.group(1)),
+                "source_url": "",
+                "title": clean_text(title_match.group(2)),
+                "link": unescape(title_match.group(1)),
+                "summary": clean_summary,
+                "published_at": None,
+                "display_date": clean_text(meta_match.group(2)),
+                "image_src": unescape(image_src),
+                "fallback_src": unescape(fallback_value),
+            }
+        )
+
+    if not items:
+        raise ValueError("No briefing items found in archived homepage.")
+
+    return snapshot_date, refreshed_label, items
+
+
+def resolve_archived_refreshed_at(snapshot_date: str, refreshed_label: str | None) -> str:
+    if not refreshed_label:
+        return f"{snapshot_date}T08:30:00+08:00"
+    match = re.match(
+        r"([A-Za-z]+ \d{1,2}, \d{4}) at (\d{2}:\d{2}) \(UTC([+\-]\d{2}:\d{2})\)",
+        refreshed_label,
+    )
+    if not match:
+        return f"{snapshot_date}T08:30:00+08:00"
+    day_label, time_label, offset = match.groups()
+    parsed_day = datetime.strptime(day_label, "%B %d, %Y").date().isoformat()
+    return f"{parsed_day}T{time_label}:00{offset}"
+
+
+def git_show_file(repo_root: Path, git_command: str, ref: str, path: str) -> str:
+    result = subprocess.run(
+        [git_command, "show", f"{ref}:{path}"],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+    if result.returncode != 0:
+        raise ValueError(result.stderr.strip() or f"git show failed for {ref}:{path}")
+    return result.stdout
+
+
+def git_show_file_bytes(repo_root: Path, git_command: str, ref: str, path: str) -> bytes:
+    result = subprocess.run(
+        [git_command, "show", f"{ref}:{path}"],
+        cwd=repo_root,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise ValueError(result.stderr.decode("utf-8", errors="replace").strip() or f"git show failed for {ref}:{path}")
+    return result.stdout
+
+
+def restore_history_assets_from_commit(
+    repo_root: Path,
+    git_command: str,
+    commit_ref: str,
+    items: list[dict[str, object]],
+    force: bool = False,
+) -> list[str]:
+    restored_paths: list[str] = []
+    for item in items:
+        image_src = item.get("image_src")
+        if not isinstance(image_src, str) or not image_src.startswith("/assets/images/home-briefing/"):
+            continue
+        relative_path = image_src.lstrip("/")
+        target_path = repo_root / relative_path
+        if target_path.exists() and not force:
+            continue
+        try:
+            payload = git_show_file_bytes(repo_root, git_command, commit_ref, relative_path)
+        except ValueError:
+            continue
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        target_path.write_bytes(payload)
+        restored_paths.append(relative_path)
+    return restored_paths
+
+
+def backfill_history_from_git(repo_root: Path, force: bool = False) -> tuple[int, list[str]]:
+    git_command = resolve_git_command()
+    history_dir = repo_root / BRIEF_HISTORY_REL
+    history_dir.mkdir(parents=True, exist_ok=True)
+
+    log_result = run_git_command(
+        repo_root,
+        git_command,
+        ["log", "--all", "--format=%H", "--", HOME_INDEX_REL.as_posix()],
+    )
+    commit_refs = [line.strip() for line in log_result.stdout.splitlines() if line.strip()]
+
+    created = 0
+    touched_paths: list[str] = []
+    seen_dates: set[str] = set()
+
+    for commit_ref in commit_refs:
+        try:
+            index_html = git_show_file(repo_root, git_command, commit_ref, HOME_INDEX_REL.as_posix())
+            snapshot_date, refreshed_at, items = parse_archived_brief_snapshot(index_html)
+        except ValueError:
+            continue
+
+        if snapshot_date in seen_dates:
+            continue
+        seen_dates.add(snapshot_date)
+
+        snapshot_rel = BRIEF_HISTORY_REL / f"{snapshot_date}.json"
+        snapshot_path = repo_root / snapshot_rel
+        if snapshot_path.exists() and not force:
+            continue
+
+        payload = {
+            "date": snapshot_date,
+            "refreshed_at": resolve_archived_refreshed_at(snapshot_date, refreshed_at),
+            "item_count": len(items),
+            "items": items,
+        }
+        snapshot_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        touched_paths.append(snapshot_rel.as_posix())
+        touched_paths.extend(restore_history_assets_from_commit(repo_root, git_command, commit_ref, items, force=force))
+        created += 1
+
+    manifest_rel = update_history_manifest(repo_root)
+    touched_paths.append(manifest_rel)
+    return created, list(dict.fromkeys(touched_paths))
+
+
 def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
     ET.register_namespace("", SITEMAP_NS["sm"])
     tree = ET.parse(sitemap_path)
@@ -1189,7 +1500,7 @@ def update_homepage_lastmod(sitemap_path: Path, target_day: date) -> bool:
     return True
 
 
-def cleanup_old_brief_images(repo_root: Path, target_day: date, keep_days: int = 5) -> bool:
+def cleanup_old_brief_images(repo_root: Path, target_day: date, keep_days: int = BRIEF_HISTORY_KEEP_DAYS) -> bool:
     images_root = repo_root / BRIEF_IMAGES_REL
     if not images_root.exists():
         return False
@@ -1364,6 +1675,18 @@ def run(args: argparse.Namespace) -> int:
     sitemap_path = repo_root / SITEMAP_REL
     log_dir = resolve_log_dir(repo_root, args.log_dir)
 
+    if args.mode == "backfill-history":
+        created_count, touched_paths = backfill_history_from_git(repo_root, force=args.force_history)
+        message = (
+            "backfill_done "
+            f"created={created_count} "
+            f"manifest={BRIEF_HISTORY_MANIFEST_REL.as_posix()} "
+            f"paths={len(touched_paths)}"
+        )
+        print(message)
+        write_log(log_dir, message)
+        return 0
+
     if not index_path.exists():
         print(f"Missing homepage file: {index_path}", file=sys.stderr)
         write_log(log_dir, f"error missing_homepage path={index_path}")
@@ -1405,7 +1728,7 @@ def run(args: argparse.Namespace) -> int:
 
     if not args.dry_run:
         rendered_entries, asset_paths = prepare_render_entries(repo_root, entries, refreshed_at.date())
-        cleanup_old_brief_images(repo_root, refreshed_at.date(), keep_days=5)
+        cleanup_old_brief_images(repo_root, refreshed_at.date(), keep_days=BRIEF_HISTORY_KEEP_DAYS)
     else:
         rendered_entries = [
             RenderEntry(
@@ -1432,6 +1755,7 @@ def run(args: argparse.Namespace) -> int:
 
     index_changed = update_homepage(index_path, section_html)
     sitemap_changed = update_homepage_lastmod(sitemap_path, refreshed_at.date())
+    history_paths = write_brief_history_snapshot(repo_root, rendered_entries, refreshed_at)
     git_state = "skipped"
 
     if args.git_commit or args.git_push:
@@ -1440,7 +1764,7 @@ def run(args: argparse.Namespace) -> int:
             remote=args.git_remote,
             branch=args.git_branch,
             push=args.git_push,
-            extra_paths=asset_paths,
+            extra_paths=[*asset_paths, *history_paths],
         )
 
     message = (
@@ -1458,10 +1782,11 @@ def run(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Refresh the homepage briefing section with live news.")
-    parser.add_argument("mode", nargs="?", default="run", choices=("run", "check"), help="Execution mode.")
+    parser.add_argument("mode", nargs="?", default="run", choices=("run", "check", "backfill-history"), help="Execution mode.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
     parser.add_argument("--log-dir", type=Path, help="Optional log directory for task runs.")
+    parser.add_argument("--force-history", action="store_true", help="Overwrite existing Product Pulse history snapshots during backfill.")
     return add_git_publish_args(parser)
 
 
