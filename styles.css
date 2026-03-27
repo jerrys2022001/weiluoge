@@ -603,7 +603,7 @@ ul {
   height: 100%;
   align-content: start;
   gap: 0;
-  padding-top: 136px;
+  padding-top: 152px;
 }
 
 .va-news-archive-calendar {
@@ -617,7 +617,7 @@ ul {
   display: flex;
   flex-direction: column;
   height: auto;
-  min-height: 470px;
+  min-height: 438px;
 }
 
 .va-news-archive-stamp {
@@ -635,7 +635,7 @@ ul {
 }
 
 .va-news-archive-calendar-head {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   display: grid;
   gap: 4px;
 }
@@ -678,7 +678,7 @@ ul {
 }
 
 .va-calendar-toolbar {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
@@ -707,7 +707,7 @@ ul {
 }
 
 .va-calendar-weekdays {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
@@ -1123,8 +1123,8 @@ ul {
 }
 
 .va-news-archive-calendar .va-archive-card-history .va-archive-card-button {
-  min-height: 88px;
-  padding: 10px 8px 8px;
+  min-height: 76px;
+  padding: 8px 7px 7px;
   border-radius: 14px;
   align-content: start;
 }
@@ -1166,7 +1166,7 @@ ul {
 }
 
 .va-news-archive-calendar .va-archive-card-history .va-archive-date-day {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
   color: #f6f8ff;
 }
@@ -1182,18 +1182,18 @@ ul {
 }
 
 .va-news-archive-calendar .va-archive-card-history .va-archive-card-footer {
-  margin-top: 4px;
+  margin-top: 2px;
   justify-items: center;
 }
 
 .va-news-archive-calendar .va-archive-card-history .va-archive-card-count {
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(232, 237, 255, 0.62);
 }
 
 .va-news-archive-calendar .va-archive-card-history.is-placeholder .va-archive-card-button {
-  min-height: 88px;
-  padding: 10px 8px 8px;
+  min-height: 76px;
+  padding: 8px 7px 7px;
   border-radius: 14px;
   border-style: dashed;
   border-color: rgba(255, 255, 255, 0.08);
