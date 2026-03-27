@@ -166,12 +166,13 @@
           ".va-brand": { ariaLabel: "VelocAI Home" },
           ".va-nav": { ariaLabel: "Primary" },
           ".va-nav-toggle": { ariaLabel: "Toggle navigation" },
-          ".va-nav-list li:nth-child(1) a": "Apps Hub",
-          ".va-nav-list li:nth-child(2) a": "Blog",
-          ".va-nav-list li:nth-child(3) a": "Find AI",
-          ".va-nav-list li:nth-child(4) a": "AI Cleanup PRO",
-          ".va-nav-list li:nth-child(5) a": "Bluetooth Explorer",
-          ".va-nav-list li:nth-child(6) a": "Translate AI",
+          '.va-nav-list a[href="#who"]': "Who We Are",
+          '.va-nav-list a[href="/apps/"]': "Apps Hub",
+          '.va-nav-list a[href="/blog/"]': "Blog",
+          '.va-nav-list a[href="/aifind/"]': "Find AI",
+          '.va-nav-list a[href="/ai-cleanup-pro/"]': "AI Cleanup PRO",
+          '.va-nav-list a[href="/bluetoothexplorer/"]': "Bluetooth Explorer",
+          '.va-nav-list a[href="/translate/"]': "Translate AI",
           ".va-hero": { ariaLabel: "Hero" },
           ".va-eyebrow": ["VelocAI Studio", "Visual Flow", "Contact"],
           ".va-hero-title": { html: 'A <span class="is-accent">cleaner</span> way to run everyday AI workflows.' },
@@ -232,12 +233,13 @@
           ".va-brand": { ariaLabel: "VelocAI 首页" },
           ".va-nav": { ariaLabel: "主导航" },
           ".va-nav-toggle": { ariaLabel: "切换导航" },
-          ".va-nav-list li:nth-child(1) a": "应用中心",
-          ".va-nav-list li:nth-child(2) a": "博客",
-          ".va-nav-list li:nth-child(3) a": "Find AI",
-          ".va-nav-list li:nth-child(4) a": "AI Cleanup PRO",
-          ".va-nav-list li:nth-child(5) a": "Bluetooth Explorer",
-          ".va-nav-list li:nth-child(6) a": "Translate AI",
+          '.va-nav-list a[href="#who"]': "我们是谁",
+          '.va-nav-list a[href="/apps/"]': "应用中心",
+          '.va-nav-list a[href="/blog/"]': "博客",
+          '.va-nav-list a[href="/aifind/"]': "Find AI",
+          '.va-nav-list a[href="/ai-cleanup-pro/"]': "AI Cleanup PRO",
+          '.va-nav-list a[href="/bluetoothexplorer/"]': "Bluetooth Explorer",
+          '.va-nav-list a[href="/translate/"]': "Translate AI",
           ".va-hero": { ariaLabel: "首页主视觉" },
           ".va-eyebrow": ["VelocAI Studio", "视觉体验", "联系"],
           ".va-hero-title": { html: '让日常 AI 工作流更<span class="is-accent">清爽高效</span>。' },
@@ -430,12 +432,13 @@
         pageTitle: "VelocAI | Apps IA pour récupération, nettoyage et diagnostic Bluetooth",
         metaDescription: "VelocAI crée des apps iPhone ciblées pour retrouver des appareils, nettoyer le stockage et diagnostiquer les flux Bluetooth dans une expérience calme et moderne.",
         selectorTexts: {
-          ".va-nav-list li:nth-child(1) a": "Apps Hub",
-          ".va-nav-list li:nth-child(2) a": "Blog",
-          ".va-nav-list li:nth-child(3) a": "Find AI",
-          ".va-nav-list li:nth-child(4) a": "AI Cleanup PRO",
-          ".va-nav-list li:nth-child(5) a": "Bluetooth Explorer",
-          ".va-nav-list li:nth-child(6) a": "Translate AI",
+          '.va-nav-list a[href="#who"]': "Who We Are",
+          '.va-nav-list a[href="/apps/"]': "Apps Hub",
+          '.va-nav-list a[href="/blog/"]': "Blog",
+          '.va-nav-list a[href="/aifind/"]': "Find AI",
+          '.va-nav-list a[href="/ai-cleanup-pro/"]': "AI Cleanup PRO",
+          '.va-nav-list a[href="/bluetoothexplorer/"]': "Bluetooth Explorer",
+          '.va-nav-list a[href="/translate/"]': "Translate AI",
           ".va-eyebrow": ["VelocAI Studio", "Flux visuel", "Contact"],
           ".va-hero-title": { html: 'Une façon <span class="is-accent">plus claire</span> d’exécuter vos workflows IA du quotidien.' },
           ".va-hero-subtitle": "De la récupération d’appareils perdus au nettoyage photo et au diagnostic BLE, VelocAI réunit des outils mobiles ciblés dans un système visuel rapide, clair et moderne.",
@@ -1787,16 +1790,6 @@
 
     anchor.className = "vs-header-tools-anchor";
     anchor.innerHTML = [
-      '<div class="vs-locale-wrap">',
-      '  <button class="vs-locale-trigger" type="button" aria-haspopup="menu" aria-expanded="false">',
-      '    <span class="vs-locale-trigger-code"></span>',
-      '    <span class="vs-locale-trigger-name"></span>',
-      '    <span class="vs-locale-trigger-chevron" aria-hidden="true">\u25be</span>',
-      "  </button>",
-      '  <div class="vs-locale-panel" hidden>',
-      '    <div class="vs-locale-list" role="menu"></div>',
-      "  </div>",
-      "</div>",
       '<button class="vs-header-tool-button vs-search-trigger" type="button" aria-expanded="false">',
       iconSvg("search"),
       "</button>"
@@ -1834,11 +1827,6 @@
     document.body.appendChild(panel);
     applyHeaderSurfaceMode();
 
-    const localeTrigger = anchor.querySelector(".vs-locale-trigger");
-    const localeCode = anchor.querySelector(".vs-locale-trigger-code");
-    const localeName = anchor.querySelector(".vs-locale-trigger-name");
-    const localePanel = anchor.querySelector(".vs-locale-panel");
-    const localeList = anchor.querySelector(".vs-locale-list");
     const trigger = anchor.querySelector(".vs-search-trigger");
     const closeButton = panel.querySelector(".vs-search-close");
     const submitIcon = panel.querySelector(".vs-search-submit-icon");
@@ -1855,10 +1843,6 @@
 
     function getUi() {
       return copy[resolveUiLocale(getSavedPreference())];
-    }
-
-    function isLocaleOpen() {
-      return !!localePanel && !localePanel.hidden;
     }
 
     function isOpen() {
@@ -1885,21 +1869,7 @@
       trigger.setAttribute("aria-expanded", "false");
     }
 
-    function closeLocalePanel() {
-      if (!localePanel) return;
-      localePanel.hidden = true;
-      localeTrigger.setAttribute("aria-expanded", "false");
-    }
-
-    function openLocalePanel() {
-      if (!localePanel) return;
-      closePanel();
-      localePanel.hidden = false;
-      localeTrigger.setAttribute("aria-expanded", "true");
-    }
-
     function openPanel() {
-      closeLocalePanel();
       positionPanel();
       panel.hidden = false;
       backdrop.hidden = false;
@@ -1948,55 +1918,6 @@
       }
     }
 
-    function updateLocaleTrigger() {
-      const preference = getSavedPreference();
-      const option = localeOptionFor(preference);
-      localeCode.textContent = option.code;
-      localeName.textContent = option.label;
-      localeTrigger.setAttribute("aria-label", getUi().languageLabel + ": " + option.label);
-      document.documentElement.lang = resolveUiLocale(preference);
-    }
-
-    function renderLocaleOptions() {
-      if (!localeList) return;
-      const preference = getSavedPreference();
-      localeList.innerHTML = "";
-
-      LOCALE_OPTIONS.forEach(function (option) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "vs-locale-option";
-        if (option.value === preference) {
-          button.classList.add("is-active");
-          button.setAttribute("aria-current", "true");
-        }
-        button.innerHTML = [
-          '<span class="vs-locale-option-code">', option.code, "</span>",
-          '<span class="vs-locale-option-label">', option.label, "</span>",
-          '<span class="vs-locale-option-check" aria-hidden="true">\u2713</span>'
-        ].join("");
-        button.addEventListener("click", function () {
-          window.localStorage.setItem(STORAGE_KEY, option.value);
-          updateLocaleTrigger();
-          updateCopy();
-          applyPageTranslations();
-          renderLocaleOptions();
-
-          const alternateUrl = findAlternateLocaleUrl(option.value);
-          if (alternateUrl && alternateUrl !== window.location.href) {
-            window.location.href = alternateUrl;
-            return;
-          }
-
-          if (isOpen()) {
-            runSearch(input.value.trim());
-          }
-          closeLocalePanel();
-        });
-        localeList.appendChild(button);
-      });
-    }
-
     function renderResults(items, query) {
       const ui = getUi();
       resultsNode.innerHTML = "";
@@ -2042,14 +1963,6 @@
       input.placeholder = ui.searchPlaceholder;
       resultsTitle.textContent = ui.searchHint;
     }
-
-    localeTrigger.addEventListener("click", function () {
-      if (isLocaleOpen()) {
-        closeLocalePanel();
-      } else {
-        openLocalePanel();
-      }
-    });
 
     trigger.addEventListener("click", function () {
       if (isOpen()) {
@@ -2108,18 +2021,12 @@
         if (isOpen()) {
           closePanel();
         }
-        if (isLocaleOpen()) {
-          closeLocalePanel();
-        }
       }
     });
 
     document.addEventListener("click", function (event) {
       if (isOpen() && !anchor.contains(event.target) && !panel.contains(event.target)) {
         closePanel();
-      }
-      if (isLocaleOpen() && !anchor.contains(event.target)) {
-        closeLocalePanel();
       }
     });
 
@@ -2130,12 +2037,10 @@
       }
     });
 
-    updateLocaleTrigger();
     updateCopy();
     applyPageTranslations();
-    renderLocaleOptions();
     closePanel();
-    closeLocalePanel();
+    document.documentElement.lang = resolveUiLocale(getSavedPreference());
     loadSearchIndex();
 
     const initialQuery = new URLSearchParams(window.location.search).get("q");
