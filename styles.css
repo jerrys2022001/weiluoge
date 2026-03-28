@@ -843,6 +843,46 @@ ul {
 .va-news-archive-block-compact .va-archive-card-link,
 .va-news-archive-block-compact .va-archive-card-button {
   grid-template-rows: 156px minmax(0, 1fr) auto;
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease,
+    background 0.24s ease;
+}
+
+.va-news-archive-block-compact .va-archive-card-today {
+  --va-card-accent: rgba(148, 198, 255, 0.24);
+  --va-card-glow: rgba(88, 132, 220, 0.14);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:has(.va-archive-card-title.is-apple) {
+  --va-card-accent: rgba(242, 185, 123, 0.24);
+  --va-card-glow: rgba(232, 154, 78, 0.14);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:has(.va-archive-card-title.is-ai) {
+  --va-card-accent: rgba(142, 216, 234, 0.24);
+  --va-card-glow: rgba(86, 186, 206, 0.14);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:has(.va-archive-card-title.is-bluetooth) {
+  --va-card-accent: rgba(136, 174, 240, 0.24);
+  --va-card-glow: rgba(90, 126, 214, 0.14);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:has(.va-archive-card-title.is-chip) {
+  --va-card-accent: rgba(186, 174, 234, 0.24);
+  --va-card-glow: rgba(133, 118, 204, 0.14);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-button,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-button,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-button {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 32px rgba(6, 9, 20, 0.28), 0 0 0 1px var(--va-card-accent), 0 0 20px var(--va-card-glow);
+  border-color: var(--va-card-accent);
+  background:
+    linear-gradient(180deg, rgba(104, 112, 128, 0.18), rgba(80, 87, 101, 0.14));
 }
 
 .va-news-archive-block-compact .va-archive-card-body {
@@ -854,39 +894,40 @@ ul {
   font-size: 22px;
   line-height: 1.08;
   letter-spacing: -0.03em;
+  text-shadow: 0 5px 14px rgba(6, 10, 24, 0.22);
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-apple {
-  color: #ffffff;
+  color: #f2b97b;
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-bluetooth {
-  color: #eef7ff;
+  color: #88aef0;
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-ai {
-  color: #f7fbff;
+  color: #8ed8ea;
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-chip {
-  color: #f9fbff;
+  color: #baaeea;
 }
 
 .va-archive-card-today.is-selected .va-archive-card-title.is-apple {
-  color: #ffffff;
-  text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+  color: #f7cf9e;
+  text-shadow: 0 6px 18px rgba(58, 28, 2, 0.16);
 }
 
 .va-archive-card-today.is-selected .va-archive-card-title.is-bluetooth {
-  color: #c8ebff;
+  color: #b7c8ef;
 }
 
 .va-archive-card-today.is-selected .va-archive-card-title.is-ai {
-  color: #dff8ff;
+  color: #b7e8f1;
 }
 
 .va-archive-card-today.is-selected .va-archive-card-title.is-chip {
-  color: #dbe8ff;
+  color: #d4ccf0;
 }
 
 .va-news-archive-block-compact .va-archive-card-text {
@@ -896,26 +937,113 @@ ul {
   color: rgba(241, 245, 255, 0.88);
 }
 
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-apple + .va-archive-card-text {
+  color: rgba(239, 213, 182, 0.84);
+}
+
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-ai + .va-archive-card-text {
+  color: rgba(193, 226, 232, 0.84);
+}
+
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-bluetooth + .va-archive-card-text {
+  color: rgba(196, 210, 235, 0.84);
+}
+
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-chip + .va-archive-card-text {
+  color: rgba(216, 211, 233, 0.84);
+}
+
 .va-news-archive-block-compact .va-archive-card-footer {
   min-height: 62px;
   padding: 12px 18px 14px;
   background:
     linear-gradient(180deg, rgba(63, 67, 78, 0.96), rgba(56, 60, 72, 0.98));
+  transition: background 0.24s ease;
 }
 
 .va-news-archive-block-compact .va-archive-card-count {
   font-size: 16px;
   letter-spacing: -0.02em;
+  color: #e8cf84;
 }
 
 .va-news-archive-block-compact .va-archive-card-meta {
   font-size: 11px;
-  color: rgba(233, 239, 255, 0.88);
+  color: #b8cde7;
+  text-shadow: 0 3px 10px rgba(37, 144, 241, 0.12);
+  transition: color 0.22s ease, letter-spacing 0.22s ease, text-shadow 0.22s ease;
 }
 
 .va-news-archive-block-compact .va-archive-card-kicker {
-  color: rgba(244, 247, 255, 0.78);
+  color: rgba(244, 247, 255, 0.82);
   letter-spacing: 0.2em;
+  text-shadow: 0 2px 8px rgba(8, 10, 22, 0.16);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-title,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-title {
+  text-shadow: 0 6px 18px rgba(9, 15, 36, 0.26);
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-footer,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-footer,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-footer {
+  background:
+    linear-gradient(180deg, rgba(73, 81, 100, 0.98), rgba(60, 68, 84, 0.98));
+}
+
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-apple ~ .va-archive-card-kicker,
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-ai ~ .va-archive-card-kicker,
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-bluetooth ~ .va-archive-card-kicker,
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-title.is-chip ~ .va-archive-card-kicker {
+  color: rgba(244, 247, 255, 0.82);
+}
+
+.va-news-archive-block-compact .va-archive-card-today .va-archive-card-kicker {
+  background: linear-gradient(90deg, #d5deef 0%, #f2f5fb 50%, #d2dcef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-text,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-text,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-text {
+  opacity: 1;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-title.is-apple,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-title.is-apple {
+  color: #f7cf9e;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-title.is-ai,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-title.is-ai {
+  color: #b7e8f1;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-title.is-bluetooth,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-title.is-bluetooth {
+  color: #b7c8ef;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-title.is-chip,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-title.is-chip {
+  color: #d4ccf0;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-count,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-count,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-count {
+  color: #efe2a4;
+}
+
+.va-news-archive-block-compact .va-archive-card-today:hover .va-archive-card-meta,
+.va-news-archive-block-compact .va-archive-card-today:focus-within .va-archive-card-meta,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-meta {
+  color: #d4e1f0;
+  letter-spacing: 0.1em;
+  text-shadow: 0 4px 12px rgba(37, 144, 241, 0.16);
 }
 
 .va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-kicker,
@@ -938,6 +1066,7 @@ ul {
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #ffffff;
+  text-shadow: 0 6px 18px rgba(6, 10, 24, 0.28);
 }
 
 .va-archive-card-text {
@@ -959,7 +1088,8 @@ ul {
 .va-archive-card-count {
   font-size: 17px;
   font-weight: 700;
-  color: #ffffff;
+  color: #ffe48a;
+  text-shadow: 0 4px 14px rgba(251, 231, 78, 0.18);
 }
 
 .va-archive-card-meta {
