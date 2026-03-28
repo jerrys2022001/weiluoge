@@ -20,7 +20,9 @@ from html import escape
 from pathlib import Path
 
 from site_tools import SEARCH_INDEX_REL, build_site_search_index, inject_site_tools_into_file
+from sitemap_sync import sync_sitemap
 
+SITE_URL = "https://velocai.net"
 BLOG_INDEX_REL = Path("blog/index.html")
 SITEMAP_REL = Path("sitemap.xml")
 

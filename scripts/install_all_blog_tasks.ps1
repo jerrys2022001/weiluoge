@@ -10,6 +10,7 @@ param(
   [string]$FindWindowEnd = "08:27",
   [string]$TranslateWindowStart = "08:28",
   [string]$TranslateWindowEnd = "08:30",
+  [string]$PreflightAt = "08:15",
   [string]$WatchdogAt = "08:35",
   [bool]$ReplaceExisting = $true
 )
@@ -49,12 +50,14 @@ $cleanupInstaller = Ensure-Script "install_storage_impact_blog_task.ps1"
 $bluetoothInstaller = Ensure-Script "install_protocol_blog_morning_tasks.ps1"
 $findInstaller = Ensure-Script "install_find_ai_blog_task.ps1"
 $translateInstaller = Ensure-Script "install_translate_ai_blog_tasks.ps1"
+$preflightInstaller = Ensure-Script "install_blog_preflight_task.ps1"
 $watchdogInstaller = Ensure-Script "install_blog_watchdog_task.ps1"
 
 if ($ReplaceExisting) {
   Remove-TasksByPattern "WeiLuoGe-Live-Update-Blog-Morning-*"
   $legacyTaskNames = @(
     "WeiLuoGe-Blog-Daily-09-30",
+    "WeiLuoGe-Blog-Preflight-08-15",
     "WeiLuoGe-Live-Update-Blog-Morning-1",
     "WeiLuoGe-Live-Update-Blog-Morning-2",
     "WeiLuoGe-Live-Update-Blog-Morning-3",
@@ -109,6 +112,15 @@ Invoke-Installer $translateInstaller {
     -ReplaceExisting:$ReplaceExisting
 }
 
+Invoke-Installer $preflightInstaller {
+  & $preflightInstaller `
+    -PythonExe $PythonExe `
+    -PythonArgs $PythonArgs `
+    -RepoRoot $RepoRoot `
+    -CheckAt $PreflightAt `
+    -TaskName "WeiLuoGe-Blog-Preflight-08-15"
+}
+
 Invoke-Installer $watchdogInstaller {
   & $watchdogInstaller `
     -PythonExe $PythonExe `
@@ -124,4 +136,5 @@ Write-Output "  Cleanup PRO: 1 slot between $CleanupWindowStart and $CleanupWind
 Write-Output "  Bluetooth: 2 slots between $BluetoothWindowStart and $BluetoothWindowEnd"
 Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd"
 Write-Output "  Translate: 2 slots between $TranslateWindowStart and $TranslateWindowEnd"
+Write-Output "  Preflight: daily at $PreflightAt"
 Write-Output "  Watchdog: daily at $WatchdogAt"
