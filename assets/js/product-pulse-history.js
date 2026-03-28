@@ -1,5 +1,6 @@
 (function () {
   const APPLE_ARCHIVE_FALLBACK = "/assets/images/hero-2026-03/Apple-Park-Rainbow-Arches.jpg";
+  const BROKEN_BRIEFING_PLACEHOLDER = "/assets/images/stock-2026-03/stock-08.jpg";
 
   function $(selector, root) {
     return (root || document).querySelector(selector);
@@ -49,6 +50,48 @@
     };
   }
 
+  function normalizeBriefingImage(candidate) {
+    if (!candidate) {
+      return "";
+    }
+    return String(candidate).trim().replace(/\\/g, "/");
+  }
+
+  function resolveBriefingImage(item) {
+    const primary = normalizeBriefingImage(item.image_src);
+    const fallback = normalizeBriefingImage(item.fallback_src);
+    const isAppleItem =
+      item.slug === "apple" || /apple/i.test(item.eyebrow || "") || /apple/i.test(item.title || "");
+    const hasBrokenPlaceholder =
+      primary === BROKEN_BRIEFING_PLACEHOLDER || fallback === BROKEN_BRIEFING_PLACEHOLDER;
+
+    if (hasBrokenPlaceholder) {
+      return {
+        src: APPLE_ARCHIVE_FALLBACK,
+        fallback: APPLE_ARCHIVE_FALLBACK,
+      };
+    }
+
+    if (primary) {
+      return {
+        src: primary,
+        fallback: fallback || (isAppleItem ? APPLE_ARCHIVE_FALLBACK : ""),
+      };
+    }
+
+    if (fallback) {
+      return {
+        src: fallback,
+        fallback: isAppleItem ? APPLE_ARCHIVE_FALLBACK : fallback,
+      };
+    }
+
+    return {
+      src: isAppleItem ? APPLE_ARCHIVE_FALLBACK : "",
+      fallback: isAppleItem ? APPLE_ARCHIVE_FALLBACK : "",
+    };
+  }
+
   function renderItem(item) {
     const article = createElement("article", "va-brief-item va-brief-item-" + (item.slug || "industry"));
     article.dataset.briefSlug = item.slug || "industry";
@@ -87,17 +130,14 @@
     thumbLink.setAttribute("aria-label", "Open story: " + (item.title || "story"));
 
     const image = document.createElement("img");
-    const appleFallback =
-      (item.slug === "apple" || /apple/i.test(item.eyebrow || "") || /apple/i.test(item.title || ""))
-        ? APPLE_ARCHIVE_FALLBACK
-        : "";
-    image.src = item.image_src || item.fallback_src || appleFallback || "";
+    const resolvedImage = resolveBriefingImage(item);
+    image.src = resolvedImage.src;
     image.alt = (item.title || "Story") + " thumbnail";
     image.loading = "lazy";
     image.decoding = "async";
     image.referrerPolicy = "no-referrer";
-    if (item.fallback_src || appleFallback) {
-      image.dataset.fallbackSrc = item.fallback_src || appleFallback;
+    if (resolvedImage.fallback) {
+      image.dataset.fallbackSrc = resolvedImage.fallback;
       image.addEventListener("error", function () {
         if (image.dataset.fallbackSrc && image.src !== image.dataset.fallbackSrc) {
           image.src = image.dataset.fallbackSrc;
