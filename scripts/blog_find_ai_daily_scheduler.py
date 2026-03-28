@@ -281,6 +281,8 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
     main {{ padding:36px 0 56px; }}
     .hero,.panel,.tldr {{ border:1px solid var(--line); border-radius:20px; background:var(--panel); padding:22px; box-shadow:0 18px 36px rgba(12,33,64,.08); }}
     .panel,.tldr {{ margin-top:24px; }}
+    .hero > .hero-grid > div { max-width: 100%; }
+    .hero > .hero-grid > div > p:not(.meta) { margin:14px 0 0; max-width:none; }
     .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
     .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
     h1,h2,h3 {{ line-height:1.2; margin:0; }}
