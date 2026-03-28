@@ -618,9 +618,13 @@ ul {
 .va-news-archive-stamp {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
+  flex-wrap: wrap;
   min-height: 36px;
-  padding: 0 14px;
+  width: fit-content;
+  max-width: min(100%, 44ch);
+  padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.04);
@@ -628,7 +632,9 @@ ul {
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 12px;
   letter-spacing: 0.04em;
-  white-space: nowrap;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .va-news-archive-head {
@@ -652,16 +658,20 @@ ul {
 
 .va-news-archive-block {
   padding: clamp(18px, 2.6vw, 26px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(180deg, rgba(31, 35, 58, 0.92), rgba(20, 23, 39, 0.96));
-  box-shadow: 0 20px 34px rgba(8, 9, 18, 0.28);
+    radial-gradient(420px 220px at 100% -10%, rgba(98, 188, 255, 0.1), transparent 62%),
+    linear-gradient(180deg, rgba(31, 36, 59, 0.88), rgba(18, 22, 38, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 24px 44px rgba(8, 9, 18, 0.24);
+  backdrop-filter: blur(18px);
   min-height: 100%;
 }
 
 .va-news-archive-block-compact {
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -686,7 +696,7 @@ ul {
 
 .va-news-archive-block-compact .va-archive-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
   margin-top: 0;
   align-content: start;
 }
@@ -710,12 +720,15 @@ ul {
   padding: 0;
   display: grid;
   grid-template-rows: 144px minmax(0, 1fr) auto;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   overflow: hidden;
-  background: rgba(98, 100, 109, 0.88);
-  box-shadow: 0 14px 24px rgba(8, 9, 18, 0.24);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background:
+    linear-gradient(180deg, rgba(94, 98, 113, 0.9), rgba(78, 82, 95, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 32px rgba(8, 9, 18, 0.24);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .va-archive-card-button {
@@ -730,8 +743,11 @@ ul {
 .va-archive-card-button:hover,
 .va-archive-card-button:focus-visible,
 .va-archive-card-history.is-active .va-archive-card-button {
-  border-color: rgba(152, 215, 255, 0.54);
-  box-shadow: 0 14px 24px rgba(8, 9, 18, 0.24);
+  transform: translateY(-2px);
+  border-color: rgba(178, 223, 255, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 40px rgba(8, 9, 18, 0.28);
 }
 
 .va-archive-card-history.is-active .va-archive-card-button {
@@ -740,15 +756,19 @@ ul {
 
 .va-archive-card-today.is-selected .va-archive-card-button {
   border-color: rgba(122, 220, 255, 0.58);
-  background: linear-gradient(180deg, rgba(73, 109, 180, 0.94), rgba(48, 74, 128, 0.96));
-  box-shadow: 0 14px 24px rgba(8, 9, 18, 0.24);
+  background:
+    radial-gradient(220px 120px at 50% 0%, rgba(104, 180, 255, 0.18), transparent 70%),
+    linear-gradient(180deg, rgba(64, 95, 156, 0.94), rgba(44, 68, 118, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 42px rgba(8, 9, 18, 0.28);
 }
 
 .va-archive-card-media {
   position: relative;
   display: grid;
   place-items: center;
-  background: #707070;
+  background: #5f6473;
   overflow: hidden;
 }
 
@@ -757,14 +777,17 @@ ul {
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: saturate(0.88) contrast(1.04);
+  filter: saturate(0.88) contrast(1.02) brightness(0.96);
+  transform: scale(1.01);
 }
 
 .va-archive-card-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(18, 20, 34, 0.1));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(18, 20, 34, 0.08)),
+    linear-gradient(180deg, transparent 58%, rgba(9, 11, 20, 0.18));
 }
 
 .va-archive-emblem,
@@ -810,36 +833,64 @@ ul {
 
 .va-news-archive-block-compact .va-archive-card-link,
 .va-news-archive-block-compact .va-archive-card-button {
-  grid-template-rows: 136px minmax(0, 1fr) auto;
+  grid-template-rows: 156px minmax(0, 1fr) auto;
 }
 
 .va-news-archive-block-compact .va-archive-card-body {
-  padding: 16px 16px 18px;
+  padding: 18px 18px 20px;
 }
 
 .va-news-archive-block-compact .va-archive-card-title {
   margin-top: 8px;
-  font-size: 18px;
-  line-height: 1.12;
+  font-size: 20px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.va-news-archive-block-compact .va-archive-card-title.is-apple {
+  color: #ffffff;
+}
+
+.va-news-archive-block-compact .va-archive-card-title.is-bluetooth {
+  color: #f7fbff;
+}
+
+.va-news-archive-block-compact .va-archive-card-title.is-ai {
+  color: #ffffff;
 }
 
 .va-news-archive-block-compact .va-archive-card-text {
   margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.46;
+  color: rgba(241, 245, 255, 0.9);
 }
 
 .va-news-archive-block-compact .va-archive-card-footer {
-  min-height: 58px;
-  padding: 12px 16px;
+  min-height: 62px;
+  padding: 12px 18px 14px;
+  background:
+    linear-gradient(180deg, rgba(63, 67, 78, 0.96), rgba(56, 60, 72, 0.98));
 }
 
 .va-news-archive-block-compact .va-archive-card-count {
   font-size: 16px;
+  letter-spacing: -0.02em;
 }
 
 .va-news-archive-block-compact .va-archive-card-meta {
   font-size: 11px;
+  color: rgba(233, 239, 255, 0.88);
+}
+
+.va-news-archive-block-compact .va-archive-card-kicker {
+  color: rgba(236, 241, 255, 0.84);
+  letter-spacing: 0.18em;
+}
+
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-kicker,
+.va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-meta {
+  color: rgba(236, 248, 255, 0.92);
 }
 
 .va-archive-card-kicker {
@@ -1044,7 +1095,7 @@ ul {
   align-items: start;
   justify-content: space-between;
   gap: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .va-briefing-title-wrap {
@@ -1095,12 +1146,19 @@ ul {
 }
 
 .va-briefing-controls {
-  margin-bottom: 2px;
-  display: flex;
-  gap: 10px;
-  align-items: start;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  margin-bottom: 6px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 328px);
+  gap: 6px 16px;
+  align-items: center;
+}
+
+.va-briefing-history-copy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 14px;
+  align-items: baseline;
+  align-content: center;
 }
 
 .va-briefing-history-label {
@@ -1122,19 +1180,22 @@ ul {
 .va-briefing-history-picker {
   position: relative;
   display: grid;
-  gap: 8px;
-  min-width: min(100%, 240px);
+  gap: 3px;
+  min-width: 0;
+  justify-self: end;
+  width: min(100%, 312px);
 }
 
 .va-briefing-history-picker span {
   color: rgba(224, 230, 248, 0.82);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: right;
 }
 
 .va-briefing-history-trigger {
-  min-height: 48px;
+  min-height: 46px;
   padding: 0 16px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1256,9 +1317,10 @@ ul {
 }
 
 .va-briefing-history-status {
-  margin-bottom: 2px;
+  margin: 0;
   color: rgba(224, 230, 248, 0.76);
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 .va-briefing-empty {
@@ -1606,7 +1668,7 @@ ul {
   .va-briefing-head {
     grid-template-columns: 1fr;
     align-items: start;
-    gap: 18px;
+    gap: 12px;
   }
 
   .va-news-archive-head {
@@ -1622,11 +1684,24 @@ ul {
   }
 
   .va-briefing-controls {
+    grid-template-columns: 1fr;
+    gap: 10px;
     align-items: stretch;
+  }
+
+  .va-briefing-history-copy {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    align-items: start;
   }
 
   .va-briefing-history-picker {
     width: 100%;
+    justify-self: stretch;
+  }
+
+  .va-briefing-history-picker span {
+    text-align: left;
   }
 
   .va-briefing-grid {
