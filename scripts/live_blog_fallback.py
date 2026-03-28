@@ -778,7 +778,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
   <header>
     <div class="wrap top">
       <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
         <span>VelocAI Blog</span>
       </a>
       <nav aria-label="Main">

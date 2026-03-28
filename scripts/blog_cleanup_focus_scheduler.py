@@ -339,7 +339,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
   <header>
     <div class="wrap top">
       <a class="brand" href="/">
-        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
         <span>VelocAI Blog</span>
       </a>
       <nav aria-label="Main">
