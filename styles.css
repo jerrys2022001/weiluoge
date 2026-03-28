@@ -668,10 +668,11 @@ ul {
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    radial-gradient(420px 220px at 100% -10%, rgba(98, 188, 255, 0.1), transparent 62%),
-    linear-gradient(180deg, rgba(31, 36, 59, 0.88), rgba(18, 22, 38, 0.94));
+    radial-gradient(420px 220px at 100% -10%, rgba(98, 188, 255, 0.12), transparent 62%),
+    radial-gradient(320px 180px at 0% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+    linear-gradient(180deg, rgba(30, 35, 58, 0.9), rgba(17, 21, 38, 0.96));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 24px 44px rgba(8, 9, 18, 0.24);
   backdrop-filter: blur(18px);
   min-height: 100%;
@@ -689,8 +690,9 @@ ul {
 .va-news-archive-label {
   margin: 0;
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #89f5df;
 }
@@ -731,10 +733,10 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.14);
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(94, 98, 113, 0.9), rgba(78, 82, 95, 0.92));
+    linear-gradient(180deg, rgba(101, 105, 121, 0.86), rgba(81, 85, 98, 0.92));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 32px rgba(8, 9, 18, 0.24);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 32px rgba(8, 9, 18, 0.22);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
@@ -751,9 +753,9 @@ ul {
 .va-archive-card-button:focus-visible,
 .va-archive-card-history.is-active .va-archive-card-button {
   transform: translateY(-2px);
-  border-color: rgba(178, 223, 255, 0.5);
+  border-color: rgba(204, 229, 255, 0.56);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
     0 24px 40px rgba(8, 9, 18, 0.28);
 }
 
@@ -762,12 +764,12 @@ ul {
 }
 
 .va-archive-card-today.is-selected .va-archive-card-button {
-  border-color: rgba(122, 220, 255, 0.58);
+  border-color: rgba(154, 216, 255, 0.68);
   background:
-    radial-gradient(220px 120px at 50% 0%, rgba(104, 180, 255, 0.18), transparent 70%),
-    linear-gradient(180deg, rgba(64, 95, 156, 0.94), rgba(44, 68, 118, 0.98));
+    radial-gradient(220px 120px at 50% 0%, rgba(151, 205, 255, 0.18), transparent 70%),
+    linear-gradient(180deg, rgba(84, 114, 171, 0.94), rgba(59, 80, 124, 0.98));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 24px 42px rgba(8, 9, 18, 0.28);
 }
 
@@ -775,7 +777,7 @@ ul {
   position: relative;
   display: grid;
   place-items: center;
-  background: #5f6473;
+  background: #686d7d;
   overflow: hidden;
 }
 
@@ -793,8 +795,8 @@ ul {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(18, 20, 34, 0.08)),
-    linear-gradient(180deg, transparent 58%, rgba(9, 11, 20, 0.18));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(18, 20, 34, 0.06)),
+    linear-gradient(180deg, transparent 56%, rgba(9, 11, 20, 0.24));
 }
 
 .va-archive-emblem,
@@ -849,7 +851,7 @@ ul {
 
 .va-news-archive-block-compact .va-archive-card-title {
   margin-top: 8px;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -859,18 +861,39 @@ ul {
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-bluetooth {
-  color: #f7fbff;
+  color: #eef7ff;
 }
 
 .va-news-archive-block-compact .va-archive-card-title.is-ai {
+  color: #f7fbff;
+}
+
+.va-news-archive-block-compact .va-archive-card-title.is-chip {
+  color: #f9fbff;
+}
+
+.va-archive-card-today.is-selected .va-archive-card-title.is-apple {
   color: #ffffff;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+}
+
+.va-archive-card-today.is-selected .va-archive-card-title.is-bluetooth {
+  color: #c8ebff;
+}
+
+.va-archive-card-today.is-selected .va-archive-card-title.is-ai {
+  color: #dff8ff;
+}
+
+.va-archive-card-today.is-selected .va-archive-card-title.is-chip {
+  color: #dbe8ff;
 }
 
 .va-news-archive-block-compact .va-archive-card-text {
   margin-top: 10px;
   font-size: 13px;
   line-height: 1.46;
-  color: rgba(241, 245, 255, 0.9);
+  color: rgba(241, 245, 255, 0.88);
 }
 
 .va-news-archive-block-compact .va-archive-card-footer {
@@ -891,8 +914,8 @@ ul {
 }
 
 .va-news-archive-block-compact .va-archive-card-kicker {
-  color: rgba(236, 241, 255, 0.84);
-  letter-spacing: 0.18em;
+  color: rgba(244, 247, 255, 0.78);
+  letter-spacing: 0.2em;
 }
 
 .va-news-archive-block-compact .va-archive-card-today.is-selected .va-archive-card-kicker,

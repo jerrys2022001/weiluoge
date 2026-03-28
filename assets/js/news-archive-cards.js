@@ -166,7 +166,20 @@
 
     var body = createElement("div", "va-archive-card-body");
     body.appendChild(createElement("p", "va-archive-card-kicker", "Featured File"));
-    body.appendChild(createElement("h4", "va-archive-card-title", group.title));
+    var title = createElement("h4", "va-archive-card-title", group.title);
+    if ((group.slug || "") === "apple" || /apple/i.test(group.title || "")) {
+      title.classList.add("is-apple");
+    }
+    if ((group.slug || "") === "bluetooth" || /bluetooth/i.test(group.title || "")) {
+      title.classList.add("is-bluetooth");
+    }
+    if ((group.slug || "") === "ai" || /\bai\b/i.test(group.title || "")) {
+      title.classList.add("is-ai");
+    }
+    if ((group.slug || "") === "semiconductor" || /semiconductor|chip/i.test(group.title || "")) {
+      title.classList.add("is-chip");
+    }
+    body.appendChild(title);
     body.appendChild(
       createElement(
         "p",
