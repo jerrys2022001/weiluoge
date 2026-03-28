@@ -142,7 +142,7 @@
     });
   }
 
-  function createTodayCard(group, todayRoot) {
+  function createTodayCard(group, todayRoot, historySelect, latestDate) {
     var article = createElement("article", "va-archive-card");
     article.classList.add("va-archive-card-today");
     article.dataset.slug = group.slug || "";
@@ -186,6 +186,10 @@
     button.appendChild(footer);
     button.addEventListener("click", function () {
       setSelectedTodayCard(todayRoot, group.slug || "");
+      if (historySelect && latestDate) {
+        historySelect.value = latestDate;
+        historySelect.dispatchEvent(new Event("change", { bubbles: true }));
+      }
       emitHighlightRequest(group.slug || "", group.title || "");
       var briefingPanel = $(".va-briefing-panel");
       if (briefingPanel) {
@@ -404,6 +408,7 @@
         }
 
         var latestEntry = entries[0];
+        var latestDate = latestEntry && latestEntry.date ? latestEntry.date : "";
         var controls = historyRoot && monthSelect && yearSelect
           ? populateMonthYearControls(entries, monthSelect, yearSelect)
           : null;
@@ -467,7 +472,7 @@
           }
           todayRoot.innerHTML = "";
           groups.forEach(function (group) {
-            todayRoot.appendChild(createTodayCard(group, todayRoot));
+            todayRoot.appendChild(createTodayCard(group, todayRoot, historySelect, latestDate));
           });
         });
       })
