@@ -265,6 +265,10 @@
       });
     }
 
+    function clearHighlight() {
+      applyHighlight("");
+    }
+
     function annotateExistingItems() {
       const items = panel.querySelectorAll(".va-brief-item");
       items.forEach(function (item) {
@@ -370,6 +374,20 @@
       if (firstMatch) {
         firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!activeHighlightSlug) {
+        return;
+      }
+
+      const insideTodayArchive = !!event.target.closest("[data-news-archive-today]");
+      const insideBriefingPanel = !!event.target.closest("[data-product-pulse-panel]");
+      if (insideTodayArchive || insideBriefingPanel) {
+        return;
+      }
+
+      clearHighlight();
     });
 
     select.addEventListener("change", function () {
