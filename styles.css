@@ -637,6 +637,13 @@ ul {
   overflow-wrap: anywhere;
 }
 
+.va-briefing-stamp {
+  justify-self: end;
+  width: min(100%, 312px);
+  max-width: 312px;
+  text-align: center;
+}
+
 .va-news-archive-head {
   display: grid;
   grid-template-columns: 1fr;
