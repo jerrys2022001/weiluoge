@@ -579,15 +579,41 @@ ul {
 }
 
 .va-news-archive {
-  margin-top: 54px;
+  margin-top: 48px;
   display: grid;
-  gap: 18px;
+  gap: 14px;
+}
+
+.va-news-archive-shell {
+  display: grid;
+  gap: 14px;
+}
+
+.va-news-archive-intro {
+  display: grid;
+  gap: 6px;
+}
+
+.va-news-archive-intro-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.va-news-archive-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  max-width: 8ch;
+  text-wrap: balance;
 }
 
 .va-news-archive-head {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
-  gap: 36px;
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -595,7 +621,7 @@ ul {
   display: grid;
   height: 100%;
   align-content: start;
-  gap: 14px;
+  gap: 12px;
 }
 
 .va-news-archive-calendar-rail {
@@ -603,17 +629,16 @@ ul {
   height: 100%;
   align-content: start;
   gap: 0;
-  padding-top: 152px;
+  padding-top: 58px;
 }
 
 .va-news-archive-calendar {
-  padding: 12px 18px 18px;
-  border-radius: 28px;
+  padding: 12px 16px 16px;
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
-    radial-gradient(240px 160px at 100% 0%, rgba(74, 252, 226, 0.12), transparent 68%),
     linear-gradient(180deg, rgba(26, 29, 49, 0.94), rgba(18, 21, 36, 0.98));
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 28px rgba(8, 9, 18, 0.24);
   display: flex;
   flex-direction: column;
   height: auto;
@@ -637,26 +662,18 @@ ul {
 }
 
 .va-news-archive-calendar-head {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   display: grid;
-  gap: 4px;
+  gap: 2px;
 }
 
 .va-news-archive-calendar-head h3 {
   margin: 0;
   font-family: "Haffer XH SemiBold", "Inter", sans-serif;
-  font-size: clamp(22px, 2.8vw, 34px);
-  line-height: 1.02;
+  font-size: clamp(20px, 2.3vw, 28px);
+  line-height: 1.06;
   letter-spacing: -0.03em;
   max-width: none;
-}
-
-.va-news-archive-calendar-head p:last-child {
-  margin: 0;
-  color: rgba(224, 230, 248, 0.74);
-  font-size: 14px;
-  line-height: 1.45;
-  max-width: 34ch;
 }
 
 .va-news-archive-block-heading {
@@ -680,15 +697,15 @@ ul {
 }
 
 .va-calendar-toolbar {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .va-calendar-picker {
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
 
 .va-calendar-picker span {
@@ -699,8 +716,8 @@ ul {
 }
 
 .va-calendar-picker select {
-  min-height: 40px;
-  padding: 0 12px;
+  min-height: 38px;
+  padding: 0 10px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(13, 16, 30, 0.88);
@@ -709,10 +726,10 @@ ul {
 }
 
 .va-calendar-weekdays {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
 }
 
 .va-calendar-weekdays span {
@@ -730,18 +747,17 @@ ul {
 }
 
 .va-news-archive-block {
-  padding: clamp(22px, 3vw, 30px);
-  border-radius: 30px;
+  padding: clamp(16px, 2.2vw, 22px);
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background:
-    radial-gradient(420px 220px at 100% 0%, rgba(37, 144, 241, 0.15), transparent 62%),
     linear-gradient(180deg, rgba(31, 35, 58, 0.92), rgba(20, 23, 39, 0.96));
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 28px rgba(8, 9, 18, 0.24);
   min-height: 100%;
 }
 
 .va-news-archive-block-compact {
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -752,8 +768,8 @@ ul {
 .va-news-archive-label {
   margin: 0;
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #89f5df;
 }
@@ -766,7 +782,7 @@ ul {
 
 .va-news-archive-block-compact .va-archive-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
   margin-top: 0;
   align-content: start;
 }
@@ -794,13 +810,13 @@ ul {
   min-height: 100%;
   padding: 0;
   display: grid;
-  grid-template-rows: 122px minmax(0, 1fr) auto;
-  border-radius: 18px;
+  grid-template-rows: 118px minmax(0, 1fr) auto;
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
   background: rgba(98, 100, 109, 0.88);
-  box-shadow: 0 18px 28px rgba(8, 9, 18, 0.26);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 10px 18px rgba(8, 9, 18, 0.2);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .va-archive-card-button {
@@ -815,9 +831,8 @@ ul {
 .va-archive-card-button:hover,
 .va-archive-card-button:focus-visible,
 .va-archive-card-history.is-active .va-archive-card-button {
-  transform: translateY(-3px);
   border-color: rgba(152, 215, 255, 0.54);
-  box-shadow: 0 24px 38px rgba(8, 9, 18, 0.34);
+  box-shadow: 0 14px 24px rgba(8, 9, 18, 0.24);
 }
 
 .va-archive-card-history.is-active .va-archive-card-button {
@@ -825,10 +840,9 @@ ul {
 }
 
 .va-archive-card-today.is-selected .va-archive-card-button {
-  transform: translateY(-3px);
   border-color: rgba(122, 220, 255, 0.58);
   background: linear-gradient(180deg, rgba(73, 109, 180, 0.94), rgba(48, 74, 128, 0.96));
-  box-shadow: 0 24px 38px rgba(8, 9, 18, 0.34);
+  box-shadow: 0 14px 24px rgba(8, 9, 18, 0.24);
 }
 
 .va-archive-card-media {
@@ -901,23 +915,23 @@ ul {
 }
 
 .va-news-archive-block-compact .va-archive-card-body {
-  padding: 12px 14px 14px;
+  padding: 10px 12px 12px;
 }
 
 .va-news-archive-block-compact .va-archive-card-title {
-  margin-top: 8px;
-  font-size: 16px;
+  margin-top: 6px;
+  font-size: 15px;
 }
 
 .va-news-archive-block-compact .va-archive-card-text {
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .va-news-archive-block-compact .va-archive-card-footer {
-  min-height: 50px;
-  padding: 10px 14px;
+  min-height: 44px;
+  padding: 8px 12px;
 }
 
 .va-news-archive-block-compact .va-archive-card-count {
@@ -1757,17 +1771,21 @@ ul {
     font-size: 30px;
   }
 
+  .va-news-archive-shell {
+    gap: 16px;
+  }
+
+  .va-news-archive-title {
+    max-width: none;
+    font-size: clamp(28px, 9vw, 42px);
+  }
+
   .va-hero-title {
     font-size: clamp(38px, 12vw, 62px);
   }
 
   .va-hero-subtitle,
   .va-gallery-head p {
-    font-size: 16px;
-  }
-
-  .va-news-archive-head p:last-child,
-  .va-news-archive-block-head p:last-child {
     font-size: 16px;
   }
 

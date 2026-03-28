@@ -165,21 +165,21 @@
     }
 
     var body = createElement("div", "va-archive-card-body");
-    body.appendChild(createElement("p", "va-archive-card-kicker", "Today"));
+    body.appendChild(createElement("p", "va-archive-card-kicker", "Featured File"));
     body.appendChild(createElement("h4", "va-archive-card-title", group.title));
     body.appendChild(
       createElement(
         "p",
         "va-archive-card-text",
         group.sources.length
-          ? group.sources.slice(0, 3).join(", ") + " coverage from today'" + "s stored briefing."
+          ? group.sources.slice(0, 3).join(", ") + " indexed in today'" + "s stored briefing."
           : "Open the lead story from today'" + "s stored briefing."
       )
     );
 
     var footer = createElement("div", "va-archive-card-footer");
     footer.appendChild(createElement("span", "va-archive-card-count", pluralize(group.count, "story", "stories")));
-    footer.appendChild(createElement("span", "va-archive-card-meta", "Highlight in Product Pulse"));
+    footer.appendChild(createElement("span", "va-archive-card-meta", "Open collection"));
 
     button.appendChild(media);
     button.appendChild(body);
@@ -216,13 +216,13 @@
     media.appendChild(badge);
 
     var body = createElement("div", "va-archive-card-body");
-    body.appendChild(createElement("p", "va-archive-card-kicker", "Snapshot"));
+    body.appendChild(createElement("p", "va-archive-card-kicker", "Archived Issue"));
     body.appendChild(createElement("h4", "va-archive-card-title", formatDate(entry.date || "")));
     body.appendChild(
       createElement(
         "p",
         "va-archive-card-text",
-        "Reload the stored Product Pulse lineup for this day and compare headline shifts."
+        "Reload the stored Product Pulse lineup for this date and compare headline movement."
       )
     );
 
