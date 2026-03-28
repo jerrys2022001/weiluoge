@@ -178,7 +178,7 @@
       if (!snapshot || !snapshot.path) {
         return Promise.resolve();
       }
-      setStatus("Loading stored briefing for " + formatHistoryDate(dateValue) + "...");
+      setStatus("Loading archived briefing for " + formatHistoryDate(dateValue) + "...");
       return fetchJson(snapshot.path)
         .then(function (payload) {
           const items = Array.isArray(payload.items) ? payload.items : [];
@@ -188,10 +188,10 @@
             renderGrid(items, panel);
             applyHighlight(activeHighlightSlug);
           }
-          setStatus("Viewing " + formatHistoryDate(dateValue) + "'s stored briefing.");
+          setStatus("Viewing " + formatHistoryDate(dateValue) + "'s archived briefing.");
         })
         .catch(function () {
-          setStatus("The stored briefing for " + formatHistoryDate(dateValue) + " could not be loaded.");
+          setStatus("The archived briefing for " + formatHistoryDate(dateValue) + " could not be loaded.");
         });
     }
 

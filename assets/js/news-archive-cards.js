@@ -148,7 +148,7 @@
     article.dataset.slug = group.slug || "";
     var button = createElement("button", "va-archive-card-button");
     button.type = "button";
-    button.setAttribute("aria-label", "Highlight " + group.title + " stories in Product Pulse");
+    button.setAttribute("aria-label", "Highlight " + group.title + " stories in the headline archive");
     button.setAttribute("aria-pressed", "false");
 
     var media = createElement("div", "va-archive-card-media");
@@ -172,14 +172,14 @@
         "p",
         "va-archive-card-text",
         group.sources.length
-          ? group.sources.slice(0, 3).join(", ") + " indexed in today'" + "s stored briefing."
-          : "Open the lead story from today'" + "s stored briefing."
+          ? group.sources.slice(0, 3).join(", ") + " indexed in today'" + "s archive."
+          : "Open the lead story from today'" + "s archive."
       )
     );
 
     var footer = createElement("div", "va-archive-card-footer");
     footer.appendChild(createElement("span", "va-archive-card-count", pluralize(group.count, "story", "stories")));
-    footer.appendChild(createElement("span", "va-archive-card-meta", "Open collection"));
+    footer.appendChild(createElement("span", "va-archive-card-meta", "Open archive"));
 
     button.appendChild(media);
     button.appendChild(body);
@@ -222,7 +222,7 @@
       createElement(
         "p",
         "va-archive-card-text",
-        "Reload the stored Product Pulse lineup for this date and compare headline movement."
+        "Reload the archived lineup for this date and compare headline movement."
       )
     );
 
@@ -458,7 +458,7 @@
           var items = Array.isArray(payload.items) ? payload.items : [];
           var groups = groupItems(items);
           if (!groups.length) {
-            renderEmpty(todayRoot, "Today's stored briefing does not have collection data yet.");
+            renderEmpty(todayRoot, "Today's archive does not have collection data yet.");
             return;
           }
           todayRoot.innerHTML = "";
