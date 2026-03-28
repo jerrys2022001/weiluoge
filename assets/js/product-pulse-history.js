@@ -35,6 +35,18 @@
     });
   }
 
+  function toDateParts(value) {
+    const parsed = new Date(value + "T12:00:00");
+    if (Number.isNaN(parsed.getTime())) {
+      return null;
+    }
+    return {
+      year: parsed.getFullYear(),
+      month: parsed.getMonth(),
+      day: parsed.getDate(),
+    };
+  }
+
   function renderItem(item) {
     const article = createElement("article", "va-brief-item va-brief-item-" + (item.slug || "industry"));
     article.dataset.briefSlug = item.slug || "industry";
@@ -118,6 +130,14 @@
     const panel = $("[data-product-pulse-panel]");
     const status = $("[data-product-pulse-status]");
     const controls = $("[data-product-pulse-controls]");
+    const calendarRoot = $("[data-briefing-calendar]");
+    const calendarTrigger = $("[data-briefing-calendar-trigger]");
+    const calendarTriggerLabel = $("[data-briefing-calendar-trigger-label]");
+    const calendarPanel = $("[data-briefing-calendar-panel]");
+    const calendarTitle = $("[data-briefing-calendar-title]");
+    const calendarGrid = $("[data-briefing-calendar-grid]");
+    const calendarPrev = $("[data-briefing-calendar-prev]");
+    const calendarNext = $("[data-briefing-calendar-next]");
     if (!select || !panel || !status || !controls) {
       return;
     }
@@ -130,6 +150,106 @@
 
     let historyMap = Object.create(null);
     let activeHighlightSlug = "";
+    let monthKeys = [];
+    let activeMonthKey = "";
+
+    function getMonthKey(parts) {
+      return String(parts.year) + "-" + String(parts.month).padStart(2, "0");
+    }
+
+    function parseMonthKey(monthKey) {
+      const chunks = String(monthKey || "").split("-");
+      if (chunks.length !== 2) {
+        return null;
+      }
+      return {
+        year: Number(chunks[0]),
+        month: Number(chunks[1]),
+      };
+    }
+
+    function closeCalendar() {
+      if (!calendarPanel || !calendarTrigger) {
+        return;
+      }
+      calendarPanel.hidden = true;
+      calendarTrigger.setAttribute("aria-expanded", "false");
+    }
+
+    function openCalendar() {
+      if (!calendarPanel || !calendarTrigger) {
+        return;
+      }
+      calendarPanel.hidden = false;
+      calendarTrigger.setAttribute("aria-expanded", "true");
+    }
+
+    function updateTriggerLabel(dateValue) {
+      if (!calendarTriggerLabel) {
+        return;
+      }
+      calendarTriggerLabel.textContent = formatHistoryDate(dateValue || "");
+    }
+
+    function renderCalendarMonth() {
+      if (!calendarGrid || !calendarTitle || !monthKeys.length) {
+        return;
+      }
+
+      const monthParts = parseMonthKey(activeMonthKey);
+      if (!monthParts) {
+        return;
+      }
+
+      calendarGrid.innerHTML = "";
+      calendarTitle.textContent = new Date(monthParts.year, monthParts.month, 1).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+      });
+
+      const firstWeekday = new Date(monthParts.year, monthParts.month, 1).getDay();
+      const daysInMonth = new Date(monthParts.year, monthParts.month + 1, 0).getDate();
+
+      for (let offset = 0; offset < firstWeekday; offset += 1) {
+        calendarGrid.appendChild(createElement("div", "va-briefing-calendar-day-empty"));
+      }
+
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const dateValue = [
+          String(monthParts.year),
+          String(monthParts.month + 1).padStart(2, "0"),
+          String(day).padStart(2, "0"),
+        ].join("-");
+        const button = createElement("button", "va-briefing-calendar-day", String(day));
+        button.type = "button";
+        button.dataset.date = dateValue;
+
+        if (select.value === dateValue) {
+          button.classList.add("is-active");
+        }
+
+        if (!historyMap[dateValue]) {
+          button.classList.add("is-disabled");
+          button.disabled = true;
+        } else {
+          button.addEventListener("click", function () {
+            select.value = dateValue;
+            updateTriggerLabel(dateValue);
+            closeCalendar();
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+          });
+        }
+
+        calendarGrid.appendChild(button);
+      }
+
+      if (calendarPrev) {
+        calendarPrev.disabled = monthKeys.indexOf(activeMonthKey) <= 0;
+      }
+      if (calendarNext) {
+        calendarNext.disabled = monthKeys.indexOf(activeMonthKey) >= monthKeys.length - 1;
+      }
+    }
 
     function setStatus(message) {
       status.textContent = message;
@@ -162,6 +282,7 @@
 
     function populateSelect(entries) {
       select.innerHTML = "";
+      const monthSet = new Set();
       entries.forEach(function (entry) {
         const option = document.createElement("option");
         option.value = entry.date || "";
@@ -170,7 +291,14 @@
           option.selected = true;
         }
         select.appendChild(option);
+
+        const parts = toDateParts(entry.date || "");
+        if (parts) {
+          monthSet.add(getMonthKey(parts));
+        }
       });
+
+      monthKeys = Array.from(monthSet).sort();
     }
 
     function loadSnapshot(dateValue) {
@@ -212,7 +340,13 @@
         populateSelect(entries);
         const initialDate = historyMap[defaultDate] ? defaultDate : (entries[0] && entries[0].date) || defaultDate;
         if (initialDate) {
+          const initialParts = toDateParts(initialDate);
+          if (initialParts) {
+            activeMonthKey = getMonthKey(initialParts);
+          }
           select.value = initialDate;
+          updateTriggerLabel(initialDate);
+          renderCalendarMonth();
           loadSnapshot(initialDate);
         }
       })
@@ -239,7 +373,60 @@
     });
 
     select.addEventListener("change", function () {
+      const parts = toDateParts(select.value);
+      if (parts) {
+        activeMonthKey = getMonthKey(parts);
+      }
+      updateTriggerLabel(select.value);
+      renderCalendarMonth();
       loadSnapshot(select.value);
+    });
+
+    if (calendarTrigger && calendarPanel) {
+      calendarTrigger.addEventListener("click", function () {
+        if (calendarPanel.hidden) {
+          openCalendar();
+          renderCalendarMonth();
+        } else {
+          closeCalendar();
+        }
+      });
+    }
+
+    if (calendarPrev) {
+      calendarPrev.addEventListener("click", function () {
+        const index = monthKeys.indexOf(activeMonthKey);
+        if (index > 0) {
+          activeMonthKey = monthKeys[index - 1];
+          renderCalendarMonth();
+        }
+      });
+    }
+
+    if (calendarNext) {
+      calendarNext.addEventListener("click", function () {
+        const index = monthKeys.indexOf(activeMonthKey);
+        if (index > -1 && index < monthKeys.length - 1) {
+          activeMonthKey = monthKeys[index + 1];
+          renderCalendarMonth();
+        }
+      });
+    }
+
+    document.addEventListener("click", function (event) {
+      if (!calendarRoot || !calendarPanel || calendarPanel.hidden) {
+        return;
+      }
+      if (calendarRoot.contains(event.target)) {
+        return;
+      }
+      closeCalendar();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeCalendar();
+      }
     });
   }
 

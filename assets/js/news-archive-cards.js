@@ -378,15 +378,17 @@
     var historyRoot = $("[data-news-archive-history]");
     var monthSelect = $("[data-news-archive-month]");
     var yearSelect = $("[data-news-archive-year]");
-    if (!todayRoot || !historyRoot) {
+    if (!todayRoot) {
       return;
     }
 
-    var manifestPath = todayRoot.dataset.historyManifest || historyRoot.dataset.historyManifest;
+    var manifestPath = todayRoot.dataset.historyManifest || (historyRoot && historyRoot.dataset.historyManifest);
     var historySelect = $("[data-product-pulse-select]");
     if (!manifestPath) {
       renderEmpty(todayRoot, "The news archive manifest is missing.");
-      renderEmpty(historyRoot, "The history vault is unavailable right now.");
+      if (historyRoot) {
+        renderEmpty(historyRoot, "The history vault is unavailable right now.");
+      }
       return;
     }
 
@@ -395,12 +397,14 @@
         var entries = Array.isArray(manifest.entries) ? manifest.entries : [];
         if (!entries.length) {
           renderEmpty(todayRoot, "Today's collections will appear after the first stored snapshot is published.");
-          renderEmpty(historyRoot, "Archive cards will appear after the first stored snapshot is published.");
+          if (historyRoot) {
+            renderEmpty(historyRoot, "Archive cards will appear after the first stored snapshot is published.");
+          }
           return;
         }
 
         var latestEntry = entries[0];
-        var controls = monthSelect && yearSelect
+        var controls = historyRoot && monthSelect && yearSelect
           ? populateMonthYearControls(entries, monthSelect, yearSelect)
           : null;
         var latestParts = toDateParts(latestEntry.date || "");
@@ -430,11 +434,11 @@
           });
 
           monthSelect.addEventListener("change", redrawCalendar);
-        } else {
+        } else if (historyRoot) {
           renderEmpty(historyRoot, "Archived briefings could not be grouped into a month view.");
         }
 
-        if (historySelect) {
+        if (historyRoot && historySelect) {
           historySelect.addEventListener("change", function () {
             syncActiveHistoryCard(historyRoot, historySelect);
             var selectedParts = toDateParts(historySelect.value || "");
@@ -469,7 +473,9 @@
       })
       .catch(function () {
         renderEmpty(todayRoot, "Today's collections could not be loaded.");
-        renderEmpty(historyRoot, "Archived briefings could not be loaded.");
+        if (historyRoot) {
+          renderEmpty(historyRoot, "Archived briefings could not be loaded.");
+        }
       });
   }
 
