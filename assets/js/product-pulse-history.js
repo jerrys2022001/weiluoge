@@ -1,4 +1,6 @@
 (function () {
+  const APPLE_ARCHIVE_FALLBACK = "/assets/images/hero-2026-03/Apple-Park-Rainbow-Arches.jpg";
+
   function $(selector, root) {
     return (root || document).querySelector(selector);
   }
@@ -85,13 +87,17 @@
     thumbLink.setAttribute("aria-label", "Open story: " + (item.title || "story"));
 
     const image = document.createElement("img");
-    image.src = item.image_src || item.fallback_src || "";
+    const appleFallback =
+      (item.slug === "apple" || /apple/i.test(item.eyebrow || "") || /apple/i.test(item.title || ""))
+        ? APPLE_ARCHIVE_FALLBACK
+        : "";
+    image.src = item.image_src || item.fallback_src || appleFallback || "";
     image.alt = (item.title || "Story") + " thumbnail";
     image.loading = "lazy";
     image.decoding = "async";
     image.referrerPolicy = "no-referrer";
-    if (item.fallback_src) {
-      image.dataset.fallbackSrc = item.fallback_src;
+    if (item.fallback_src || appleFallback) {
+      image.dataset.fallbackSrc = item.fallback_src || appleFallback;
       image.addEventListener("error", function () {
         if (image.dataset.fallbackSrc && image.src !== image.dataset.fallbackSrc) {
           image.src = image.dataset.fallbackSrc;
