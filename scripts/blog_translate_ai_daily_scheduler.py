@@ -385,7 +385,7 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
     nav a:hover {{ color:var(--text); }}
     main {{ padding:36px 0 56px; }}
     h1,h2,h3 {{ margin:0; line-height:1.12; }}
-    h1 {{ font-size:clamp(28px, 4vw, 44px); max-width:18ch; letter-spacing:-.03em; }}
+    h1 {{ font-size:clamp(28px, 4vw, 44px); max-width:none; letter-spacing:-.03em; }}
     h2 {{ margin-top:24px; font-size:clamp(22px, 2.8vw, 30px); }}
     p,li,td,th {{ color:#304154; font-size:17px; }}
     ul,ol {{ padding-left:22px; }}
@@ -394,9 +394,8 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
     .panel,.tldr,.capsule {{ margin-top:18px; }}
     .tldr {{ border-left:6px solid #3ac1a2; }}
     .capsule {{ background:linear-gradient(180deg, rgba(223,247,242,.74), rgba(255,255,255,.98)); }}
-    .hero-grid {{ display:block; }}
     .eyebrow {{ display:inline-flex; margin-bottom:10px; border-radius:999px; padding:7px 11px; background:var(--brand-soft); color:var(--brand); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
-    .hero > .hero-grid > div > p:not(.meta) {{ margin:14px 0 0; max-width:58ch; }}
+    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:58ch; }}
     .cta-row,.links {{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; }}
     .cta-row a,.links a {{ border:1px solid #bdd7de; border-radius:999px; padding:9px 13px; font-weight:600; font-size:14px; }}
     .cta-row .primary {{ background:var(--brand); color:#fff; border-color:var(--brand); }}
@@ -427,17 +426,13 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
   <main>
     <div class="wrap">
       <section class="hero">
-        <div class="hero-grid">
-          <div>
-            <span class="eyebrow">Translate AI SEO / GEO Guide</span>
-            <h1>{escape(post.title)}</h1>
-            <p class="meta">Published {escape(human_date)} · Topic: {escape(post.topic)} · App focus: Translate AI</p>
-            <p>{escape(answer_first)}</p>
-            <div class="cta-row">
-              <a class="primary" href="/translate/">Open Translate AI</a>
-              <a href="https://apps.apple.com/us/app/translate-ai-ai-translator/id6757105258" target="_blank" rel="noopener noreferrer">App Store</a>
-            </div>
-          </div>
+        <span class="eyebrow">Translate AI SEO / GEO Guide</span>
+        <h1>{escape(post.title)}</h1>
+        <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | App focus: Translate AI</p>
+        <p>{escape(answer_first)}</p>
+        <div class="cta-row">
+          <a class="primary" href="/translate/">Open Translate AI</a>
+          <a href="https://apps.apple.com/us/app/translate-ai-ai-translator/id6757105258" target="_blank" rel="noopener noreferrer">App Store</a>
         </div>
       </section>
 
