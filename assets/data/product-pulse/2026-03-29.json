@@ -1,6 +1,6 @@
 {
   "date": "2026-03-29",
-  "refreshed_at": "2026-03-29T09:26:26.032469+08:00",
+  "refreshed_at": "2026-03-29T09:54:40.029558+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-03-29T00:51:33+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/apple-d86f97736ef97613.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-08.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-24/apple-9b1e736246cac838.jpg"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-03-29T00:01:48+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/apple-e472d4df53bedc29.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-08.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-27/apple-8c9c618d524a1cc4.jpg"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-03-28T23:00:00+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/industry-1339a9f0a9506ff6.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-10.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/industry-21d80fcff19d3db2.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "While the relationship was once thorny enough that Musk challenged Zuckerberg to a cagefight, things seem to have warmed up by the early days of the second Trump administration.",
       "published_at": "2026-03-28T21:23:58+00:00",
       "display_date": "MAR 29",
-      "image_src": "/assets/images/home-briefing/2026-03-29/industry-f2f724f114d8a2d8.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-10.jpg"
+      "image_src": "/assets/images/home-briefing/2026-03-17/industry-fe16d4c78044656e.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/industry-fe16d4c78044656e.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-03-28T20:45:54+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/industry-4c438d7a5c53f2e0.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-10.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-24/industry-f156cb23d1515401.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "This week on the Cult of Mac podcast: New details emerge about a major upgrade that would transform Siri from a laughingstock to a legitimate AI assistant. Unfortunately, these plans sound mighty familiar. Still, we're guardedly optimistic...",
       "published_at": "2026-03-28T17:56:14+00:00",
       "display_date": "MAR 29",
-      "image_src": "/assets/images/stock-2026-03/stock-08.jpg",
-      "fallback_src": "/assets/images/stock-2026-03/stock-08.jpg"
+      "image_src": "/assets/images/home-briefing/2026-03-26/apple-aa9d04976ddb92f2.jpg",
+      "fallback_src": "/assets/images/home-briefing/2026-03-26/apple-aa9d04976ddb92f2.jpg"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-03-28T17:43:15+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/apple-45ba297ab40369d9.webp",
-      "fallback_src": "/assets/images/stock-2026-03/stock-08.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/apple-747adaeeb3ea634a.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-03-28T16:27:27+00:00",
       "display_date": "MAR 29",
       "image_src": "/assets/images/home-briefing/2026-03-29/ai-6fb2cd0d9074972d.jpg",
-      "fallback_src": "/assets/images/stock-2026-03/stock-08.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-18/ai-4f34d4b145d89127.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "Arm's game-changer; QC breaks in 2029; lawsuits on 11 GF patents; new fabs; helium atom beam litho; AI tool funding; 90% less GenAI cost; 2D materials roadmap; Intel's security report. The post Chip Industry Week In Review appeared first...",
       "published_at": "2026-03-27T07:01:51+00:00",
       "display_date": "MAR 27",
-      "image_src": "/assets/images/home-briefing/2026-03-29/semiconductor-444c9626542089b1.png",
-      "fallback_src": "/assets/images/stock-2026-03-extra20/stock-extra-14.jpg"
+      "image_src": "/assets/images/home-briefing/2026-03-17/semiconductor-7f35905e7b19730b.jpg",
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/semiconductor-7f35905e7b19730b.jpg"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-03-25T21:26:00+00:00",
       "display_date": "MAR 26",
       "image_src": "/assets/images/home-briefing/2026-03-29/bluetooth-b21c9c054056fdc6.jpg",
-      "fallback_src": "/assets/images/stock-2026-03/stock-06.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/bluetooth-38664e01aa81161b.jpg"
     }
   ]
 }

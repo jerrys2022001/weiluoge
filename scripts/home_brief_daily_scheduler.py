@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import time
 import re
@@ -21,6 +22,7 @@ from email.utils import parsedate_to_datetime
 from html import escape, unescape
 from pathlib import Path
 import subprocess
+from PIL import Image, ImageStat
 
 from blog_daily_scheduler import add_git_publish_args, resolve_git_command, run_git_command
 
@@ -28,6 +30,7 @@ SITE_URL = "https://velocai.net"
 HOME_INDEX_REL = Path("index.html")
 SITEMAP_REL = Path("sitemap.xml")
 BRIEF_IMAGES_REL = Path("assets/images/home-briefing")
+APPLE_PARK_FALLBACK_REL = Path("assets/images/hero-2026-03/Apple-Park-Rainbow-Arches.jpg")
 BRIEF_HISTORY_REL = Path("assets/data/product-pulse")
 BRIEF_HISTORY_MANIFEST_REL = BRIEF_HISTORY_REL / "history.json"
 DEFAULT_LOG_DIR_REL = Path("output/home-brief-logs")
@@ -436,14 +439,23 @@ MEDIA_NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
 }
-FALLBACK_IMAGES = (
-    "/assets/images/stock-2026-03/stock-02.jpg",
-    "/assets/images/stock-2026-03/stock-04.jpg",
-    "/assets/images/stock-2026-03/stock-06.jpg",
-    "/assets/images/stock-2026-03/stock-07.jpg",
-    "/assets/images/stock-2026-03/stock-08.jpg",
-    "/assets/images/stock-2026-03/stock-10.jpg",
+APPLE_PARK_FALLBACK = "/" + APPLE_PARK_FALLBACK_REL.as_posix()
+FALLBACK_THEME_MAP: dict[str, tuple[str, ...]] = {
+    "apple": ("apple",),
+    "ai": ("ai",),
+    "industry": ("industry",),
+    "bluetooth": ("bluetooth",),
+    "semiconductor": ("semiconductor",),
+}
+SCREENSHOT_NAME_PARTS = (
+    "screenshot",
+    "screen-shot",
+    "screen_shot",
+    "screen capture",
+    "screen-capture",
+    "screen_capture",
 )
+DARK_IMAGE_BRIGHTNESS_THRESHOLD = 56.0
 MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
 MIN_SAME_DAY_ITEMS = 8
@@ -483,6 +495,7 @@ class RenderEntry:
 
 
 IMAGE_HEALTH_CACHE: dict[str, bool] = {}
+HOME_BRIEFING_IMAGE_POOL_CACHE: dict[str, dict[str, list[str]]] = {}
 FORCED_FALLBACK_IMAGE_HOSTS = {
     "photos5.appleinsider.com",
     "i0.wp.com",
@@ -744,11 +757,75 @@ def is_within_recent_window(value: datetime | None, target_day: date, days: int)
     return oldest_day <= local_day <= target_day
 
 
-def pick_fallback_image(item: FeedItem, source: BriefSource) -> str:
+def is_screenshot_like_path(path: Path) -> bool:
+    lowered = path.name.lower()
+    return any(part in lowered for part in SCREENSHOT_NAME_PARTS)
+
+
+def is_dark_image(path: Path) -> bool:
+    try:
+        with Image.open(path) as image:
+            grayscale = image.convert("L")
+            stat = ImageStat.Stat(grayscale)
+            brightness = float(stat.mean[0]) if stat.mean else 0.0
+            return brightness < DARK_IMAGE_BRIGHTNESS_THRESHOLD
+    except Exception:
+        return True
+
+
+def is_dark_image_bytes(payload: bytes) -> bool:
+    try:
+        with Image.open(io.BytesIO(payload)) as image:
+            grayscale = image.convert("L")
+            stat = ImageStat.Stat(grayscale)
+            brightness = float(stat.mean[0]) if stat.mean else 0.0
+            return brightness < DARK_IMAGE_BRIGHTNESS_THRESHOLD
+    except Exception:
+        return True
+
+
+def collect_home_briefing_fallbacks(repo_root: Path) -> dict[str, list[str]]:
+    cache_key = str(repo_root.resolve())
+    cached = HOME_BRIEFING_IMAGE_POOL_CACHE.get(cache_key)
+    if cached is not None:
+        return {key: list(value) for key, value in cached.items()}
+
+    pools: dict[str, list[str]] = {}
+    root = repo_root / BRIEF_IMAGES_REL
+    if root.exists():
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            if path.suffix.lower() not in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}:
+                continue
+            if is_screenshot_like_path(path) or is_dark_image(path):
+                continue
+            theme_key = path.name.split("-", 1)[0].lower()
+            pools.setdefault(theme_key, []).append("/" + path.relative_to(repo_root).as_posix())
+
+    HOME_BRIEFING_IMAGE_POOL_CACHE[cache_key] = {key: list(value) for key, value in pools.items()}
+    return {key: list(value) for key, value in pools.items()}
+
+
+def pick_fallback_image(repo_root: Path, item: FeedItem, source: BriefSource) -> str:
+    pools = collect_home_briefing_fallbacks(repo_root)
+    theme_keys = FALLBACK_THEME_MAP.get(source.slug, (source.slug,))
+    candidates: list[str] = []
+
+    for theme_key in theme_keys:
+        candidates.extend(pools.get(theme_key, []))
+
+    if not candidates:
+        for values in pools.values():
+            candidates.extend(values)
+
+    if not candidates:
+        return APPLE_PARK_FALLBACK
+
     seed = f"{source.slug}|{item.link}|{item.title}".encode("utf-8", errors="ignore")
     digest = hashlib.sha1(seed).hexdigest()
-    index = int(digest[:8], 16) % len(FALLBACK_IMAGES)
-    return FALLBACK_IMAGES[index]
+    index = int(digest[:8], 16) % len(candidates)
+    return candidates[index]
 
 
 def candidate_sort_key(candidate: CandidateEntry) -> tuple[int, float, int]:
@@ -992,6 +1069,9 @@ def download_image_to_repo(
         return None
     if extract_image_host(candidate) in FORCED_FALLBACK_IMAGE_HOSTS:
         return None
+    parsed_path_name = Path(urllib.parse.urlparse(candidate).path).name
+    if parsed_path_name and is_screenshot_like_path(Path(parsed_path_name)):
+        return None
 
     try:
         payload, headers, final_url = fetch_url(
@@ -1009,6 +1089,11 @@ def download_image_to_repo(
     if not content_type.startswith("image/"):
         return None
     if len(payload) < 256:
+        return None
+    final_name = Path(urllib.parse.urlparse(final_url or candidate).path).name
+    if final_name and is_screenshot_like_path(Path(final_name)):
+        return None
+    if is_dark_image_bytes(payload):
         return None
 
     day_folder = BRIEF_IMAGES_REL / target_day.isoformat()
@@ -1056,8 +1141,8 @@ def is_image_url_healthy(url: str) -> bool:
     return healthy
 
 
-def resolve_story_image_url(item: FeedItem, source: BriefSource) -> tuple[str, str]:
-    fallback_image = source.fallback_image or pick_fallback_image(item, source)
+def resolve_story_image_url(repo_root: Path, item: FeedItem, source: BriefSource) -> tuple[str, str]:
+    fallback_image = pick_fallback_image(repo_root, item, source)
     primary_image = normalize_image_url(item.image_url)
     if primary_image and is_image_url_healthy(primary_image):
         return primary_image, fallback_image
@@ -1075,7 +1160,7 @@ def prepare_render_entries(
     for entry in entries:
         source = entry.source
         item = entry.item
-        fallback_image = source.fallback_image or pick_fallback_image(item, source)
+        fallback_image = pick_fallback_image(repo_root, item, source)
 
         image_src = fallback_image
         attempted_urls = [
@@ -1733,8 +1818,8 @@ def run(args: argparse.Namespace) -> int:
         rendered_entries = [
             RenderEntry(
                 entry=entry,
-                image_src=entry.source.fallback_image or pick_fallback_image(entry.item, entry.source),
-                fallback_src=entry.source.fallback_image or pick_fallback_image(entry.item, entry.source),
+                image_src=pick_fallback_image(repo_root, entry.item, entry.source),
+                fallback_src=pick_fallback_image(repo_root, entry.item, entry.source),
             )
             for entry in entries
         ]
