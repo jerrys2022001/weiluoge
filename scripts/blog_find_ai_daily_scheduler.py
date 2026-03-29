@@ -280,6 +280,7 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
     nav {{ display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }}
     main {{ padding:36px 0 56px; }}
     .hero,.panel,.tldr {{ border:1px solid var(--line); border-radius:20px; background:var(--panel); padding:22px; box-shadow:0 18px 36px rgba(12,33,64,.08); }}
+    .hero {{ width:min(100%, 760px); }}
     .panel,.tldr {{ margin-top:24px; }}
     .hero > p:not(.meta) { margin:12px 0 0; max-width:none; }
     .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
