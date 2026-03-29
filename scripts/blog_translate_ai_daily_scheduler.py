@@ -391,12 +391,11 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
     ul,ol {{ padding-left:22px; }}
     .meta {{ margin-top:8px; color:var(--muted); font-size:14px; }}
     .hero,.panel,.tldr,.capsule {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:18px; box-shadow:0 14px 28px rgba(12,33,64,.06); }}
-    .hero {{ width:min(100%, 760px); }}
-    .panel,.tldr,.capsule {{ margin-top:18px; }}
+        .panel,.tldr,.capsule {{ margin-top:18px; }}
     .tldr {{ border-left:6px solid #3ac1a2; }}
     .capsule {{ background:linear-gradient(180deg, rgba(223,247,242,.74), rgba(255,255,255,.98)); }}
     .eyebrow {{ display:inline-flex; margin-bottom:10px; border-radius:999px; padding:7px 11px; background:var(--brand-soft); color:var(--brand); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
-    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:58ch; }}
+    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:none; }}
     .cta-row,.links {{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; }}
     .cta-row a,.links a {{ border:1px solid #bdd7de; border-radius:999px; padding:9px 13px; font-weight:600; font-size:14px; }}
     .cta-row .primary {{ background:var(--brand); color:#fff; border-color:var(--brand); }}
