@@ -2233,7 +2233,7 @@
 </div>
 <a class="read" href="/blog/iphone-storage-cleanup-checklist.html">Read article</a>
 </article> </section>
-<nav aria-label="Blog pagination" class="pagination" hidden="">
+<nav aria-label="Blog pagination" class="pagination">
 </nav>
 </main>
 <script>
@@ -2256,9 +2256,13 @@
         article.hidden = page !== currentPage;
       });
 
-      if (totalPages <= 1) return;
+      if (totalPages <= 1) {
+        pager.innerHTML = '';
+        return;
+      }
 
       pager.hidden = false;
+      pager.innerHTML = '';
       var prevLink = document.createElement(currentPage > 1 ? 'a' : 'span');
       prevLink.className = 'pagination-prev' + (currentPage > 1 ? '' : ' pagination-disabled');
       if (currentPage > 1) {
