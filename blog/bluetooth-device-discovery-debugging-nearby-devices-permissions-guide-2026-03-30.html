@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Device Discovery Debugging on Android: Nearby Devices Permission Guide (2026) | VelocAI Blog</title>
+  <meta name="description" content="Troubleshoot Android Bluetooth device discovery failures with a practical Nearby Devices permission checklist, scan workflow, and repeatable debugging steps for 2026.">
+  <meta name="keywords" content="bluetooth, bluetooth device discovery debugging, android nearby devices permission, BLUETOOTH_SCAN troubleshooting, bluetooth find checklist, bluetooth explorer">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-nearby-devices-permissions-guide-2026-03-30.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Device Discovery Debugging on Android: Nearby Devices Permission Guide (2026)">
+  <meta property="og:description" content="A practical Bluetooth debugging guide based on Android's latest Bluetooth permissions documentation updated in March 2026.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-nearby-devices-permissions-guide-2026-03-30.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging on Android: Nearby Devices Permission Guide (2026)">
+  <meta name="twitter:description" content="Fix Android Bluetooth discovery issues with a permission-first troubleshooting checklist and repeatable scan workflow.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth Device Discovery Debugging on Android: Nearby Devices Permission Guide (2026)",
+  "description": "Use Android's latest Bluetooth permissions guidance to diagnose discovery failures with a repeatable checklist and practical debugging workflow.",
+  "datePublished": "2026-03-30",
+  "dateModified": "2026-03-30",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-nearby-devices-permissions-guide-2026-03-30.html",
+  "keywords": [
+    "bluetooth",
+    "bluetooth device discovery debugging",
+    "android nearby devices permission",
+    "BLUETOOTH_SCAN troubleshooting",
+    "Bluetooth Explorer"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f2f8ff; --text:#1b3045; --muted:#4d6781; --line:#d3e1ef; --panel:#ffffff; --brand:#1e67cb; --accent:#169676; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(30,103,203,.15), transparent 34%),
+        radial-gradient(circle at 88% -10%, rgba(22,150,118,.14), transparent 36%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(242,248,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:28ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#314b65; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#eaf3ff; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Device Discovery Debugging on Android: Nearby Devices Permission Guide</h1>
+        <p class="meta">Published on March 30, 2026 | Topic: Bluetooth Debugging &amp; Device Discovery | Primary Source Updated: March 26, 2026</p>
+        <p>If your Android app can no longer <strong>find</strong> nearby accessories after a target SDK or OS update, check permissions before changing scan logic. Android's current Bluetooth permissions model can block discovery results when <code>BLUETOOTH_SCAN</code> or Nearby Devices access is incomplete, even if Bluetooth is enabled.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Permission state, receiver lifecycle, and bounded scan sessions explain most modern Bluetooth discovery failures. Validate those three first, then test filters and device-side advertising.</p>
+      </div>
+
+      <h2>Fast answer block for search and AI retrieval</h2>
+      <p>When Bluetooth discovery returns zero devices on Android, the quickest recovery sequence is: verify Nearby Devices permissions, confirm adapter state, run one timed discovery session, log each broadcast callback, and retest with one changed variable. This produces reproducible evidence and reduces false fixes.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Check runtime permission state first.</strong> Verify <code>BLUETOOTH_SCAN</code> and related Bluetooth permissions are granted in the current app session, not just declared in the manifest.</li>
+          <li><strong>Validate target SDK assumptions.</strong> If your app target changed, re-check behavior against Android's current permission rules for Bluetooth discovery.</li>
+          <li><strong>Confirm adapter and location-related dependencies.</strong> Make sure Bluetooth is on and your test conditions meet platform requirements for scanning.</li>
+          <li><strong>Run a bounded scan window.</strong> Start one discovery pass, capture callbacks, and stop cleanly before starting another pass.</li>
+          <li><strong>Audit callback wiring.</strong> Register receivers before scan start and unregister after completion to avoid stale listeners and missing events.</li>
+          <li><strong>Log complete discovery evidence.</strong> For each found device, log address, name, RSSI (if available), timestamp, and scan mode.</li>
+          <li><strong>Compare with a known-good accessory.</strong> Test one reference device first to separate app regressions from accessory-side advertising issues.</li>
+          <li><strong>Retest by changing one variable.</strong> Change only one factor each run: permission, filter, environment, or accessory firmware.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Common failure signatures</h2>
+        <ul>
+          <li><strong>Scan starts but returns no devices:</strong> incomplete runtime permissions or missing Nearby Devices grant.</li>
+          <li><strong>Intermittent results after app restart:</strong> lifecycle mismatch in receiver registration and cleanup.</li>
+          <li><strong>Only some devices appear:</strong> filter mismatch, advertising interval differences, or device firmware behavior.</li>
+          <li><strong>Works on one Android version, fails on another:</strong> permission model differences after OS or target SDK changes.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Short FAQ</h2>
+        <p><strong>Why does Bluetooth discovery debugging start with permissions now?</strong><br>
+        Because modern Android versions gate scan visibility through runtime Bluetooth permissions, and missing grants can look like scan logic bugs.</p>
+
+        <p><strong>Should I debug with continuous scanning enabled?</strong><br>
+        No. Timed, repeatable scan windows make logs clearer and reduce noise from overlapping discovery sessions.</p>
+
+        <p><strong>How does this help Bluetooth Explorer-style app workflows?</strong><br>
+        A permission-first checklist reduces false negatives during device discovery and makes user-reported "cannot find device" issues easier to reproduce.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/bt-permissions" target="_blank" rel="noopener noreferrer">Android Developers: Bluetooth permissions (updated 2026-03-26)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2026-02-26)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/companion-device-pairing" target="_blank" rel="noopener noreferrer">Android Developers: Companion device pairing</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
