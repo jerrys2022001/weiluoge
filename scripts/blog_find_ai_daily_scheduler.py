@@ -268,28 +268,32 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
 {ld_json}
   </script>
   <style>
-    :root {{ --bg:#f6fbfd; --text:#1c2635; --muted:#57687d; --line:#d4e3ec; --panel:#ffffff; --brand:#1b6d96; --soft:#e7f5fb; }}
+    :root {{ --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }}
     * {{ box-sizing:border-box; }}
-    body {{ margin:0; font-family:"Outfit","Plus Jakarta Sans","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 10% 0%, rgba(27,109,150,.12), transparent 34%), radial-gradient(circle at 90% -5%, rgba(42,180,156,.12), transparent 30%), var(--bg); line-height:1.72; }}
+    body {{ margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }}
     a {{ color:inherit; text-decoration:none; }}
-    .wrap {{ width:min(920px, calc(100% - 34px)); margin:0 auto; }}
-    header {{ border-bottom:1px solid var(--line); background:rgba(246,251,253,.94); }}
+    .wrap {{ width:min(960px, calc(100% - 34px)); margin:0 auto; }}
+    header {{ border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); position:sticky; top:0; backdrop-filter:blur(8px); }}
     .top {{ padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }}
     .brand {{ display:inline-flex; align-items:center; gap:10px; font-weight:700; }}
-    .brand img {{ width:40px; height:40px; border-radius:12px; object-fit:cover; }}
+    .brand img {{ width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }}
     nav {{ display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }}
-    main {{ padding:36px 0 56px; }}
-    .hero,.panel,.tldr {{ border:1px solid var(--line); border-radius:20px; background:var(--panel); padding:22px; box-shadow:0 18px 36px rgba(12,33,64,.08); }}
-        .panel,.tldr {{ margin-top:24px; }}
-    .hero > p:not(.meta) { margin:12px 0 0; max-width:none; }
-    .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
-    .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
-    h1,h2,h3 {{ line-height:1.2; margin:0; }}
-    h1 {{ font-size:clamp(30px, 4.2vw, 48px); max-width:none; letter-spacing:-.03em; }}
+    nav a:hover {{ color:var(--text); }}
+    main {{ padding:30px 0 48px; }}
+    h1,h2,h3 {{ margin:0; line-height:1.22; }}
+    h1 {{ font-size:clamp(30px, 4vw, 46px); max-width:none; letter-spacing:-.03em; }}
     h2 {{ margin-top:30px; font-size:clamp(24px, 3vw, 34px); }}
-    p,li {{ color:#304154; font-size:17px; }}
-    ul {{ padding-left:22px; }}
-    .links {{ margin-top:20px; display:flex; flex-wrap:wrap; gap:10px; }}
+    p,li,td,th {{ color:#30475f; font-size:17px; }}
+    ul,ol {{ padding-left:22px; }}
+    .meta {{ margin-top:6px; color:var(--muted); font-size:14px; }}
+    .hero,.panel,.tldr,.capsule,table {{ background:var(--panel); border:1px solid var(--line); border-radius:24px; }}
+    .hero {{ padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .panel,.tldr,.capsule {{ margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
+    .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
+    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:none; }}
+    .links {{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }}
     .links a {{ border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; }}
   </style>
 </head>
@@ -300,41 +304,39 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
       <nav aria-label="Blog navigation"><a href="/blog/">Blog</a><a href="/aifind/">Find AI</a><a href="/apps/">Apps</a></nav>
     </div>
   </header>
-  <main>
-    <div class="wrap">
-      <section class="hero">
+  <main class="wrap">
+    <article>
+      <div class="hero">
         <span class="eyebrow">Find AI SEO / GEO Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)}</p>
         <p>{escape(angle.teaser)}</p>
         <div class="links"><a href="/aifind/">Open Find AI</a><a href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">App Store</a></div>
-      </section>
-      <section class="tldr">
-        <h2>TL;DR</h2>
+      </div>
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
+      <h2>What Search Intent Is Growing Around Find AI?</h2>
         <p>{escape(tldr)}</p>
-      </section>
-      <section class="panel">
-        <h2>What Search Intent Is Growing Around Find AI?</h2>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
-      </section>
-      <section class="panel">
+      <div class="panel">
         <h2>Why Does This Workflow Fit Find AI?</h2>
         <p>{escape(workflow_lead)}</p>
         <p>{escape(angle.workflow_focus)}</p>
-      </section>
-      <section class="panel">
+      </div>
+      <div class="panel">
         <h2>How Should Users Read the Recovery Signal?</h2>
         <p>{escape(angle.edge_focus)}</p>
         <p>{escape(geo_lead)}</p>
-      </section>
-      <section class="panel">
+      </div>
+      <div class="panel">
         <h2>Which Keywords Support This Topic Cluster?</h2>
         <ul>
 {focus_keywords_html}
         </ul>
-      </section>
-      <section class="panel">
+      </div>
+      <div class="panel">
         <h2>Common Questions</h2>
         <h3>Can Find AI help me find lost AirPods nearby?</h3>
         <p>Yes. Find AI can scan nearby bluetooth devices, show a live distance radar, and help guide you toward lost AirPods or earbuds that are still discoverable.</p>
@@ -342,14 +344,14 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         <p>Use the last seen clue to return to the most recent detected area, then restart a nearby scan and walk the signal again once the device is back in range.</p>
         <h3>Does Find AI only work for AirPods?</h3>
         <p>No. Find AI is designed for AirPods, Beats, earbuds, and other nearby discoverable bluetooth accessories when they are still within a recoverable range.</p>
-      </section>
-      <section class="panel">
+      </div>
+      <div class="panel">
         <h2>Related Product Paths</h2>
         <p><a href="/aifind/">Find AI product page</a> explains real-time distance radar, smart device grouping, and last seen location in more detail.</p>
         <p><a href="/blog/find-lost-airpods-bluetooth-finder-guide.html">Find lost AirPods bluetooth finder guide</a> covers recovery basics for nearby scans and restart logic.</p>
         <p><a href="/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">Bluetooth device discovery debugging checklist</a> helps when the target is not discoverable during a scan.</p>
-      </section>
-    </div>
+      </div>
+    </article>
   </main>
 </body>
 </html>

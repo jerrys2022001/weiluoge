@@ -372,41 +372,40 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
 {ld_json}
   </script>
   <style>
-    :root {{ --bg:#f7fafc; --text:#1a2330; --muted:#556476; --line:#d5e0eb; --panel:#ffffff; --brand:#0e6a7c; --brand-soft:#dff7f2; }}
+    :root {{ --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }}
     * {{ box-sizing:border-box; }}
-    body {{ margin:0; font-family:"Public Sans","Avenir Next","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 12% 4%, rgba(14,106,124,.12), transparent 34%), radial-gradient(circle at 88% -8%, rgba(58,193,162,.15), transparent 30%), var(--bg); line-height:1.72; }}
+    body {{ margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }}
     a {{ color:inherit; text-decoration:none; }}
-    .wrap {{ width:min(920px, calc(100% - 34px)); margin:0 auto; }}
-    header {{ border-bottom:1px solid var(--line); background:rgba(247,250,252,.94); position:sticky; top:0; backdrop-filter:blur(8px); }}
+    .wrap {{ width:min(960px, calc(100% - 34px)); margin:0 auto; }}
+    header {{ border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); position:sticky; top:0; backdrop-filter:blur(8px); }}
     .top {{ padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }}
     .brand {{ display:inline-flex; align-items:center; gap:10px; font-weight:700; }}
-    .brand img {{ width:40px; height:40px; border-radius:12px; object-fit:cover; box-shadow:0 12px 22px rgba(16,88,103,.16); }}
+    .brand img {{ width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }}
     nav {{ display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }}
     nav a:hover {{ color:var(--text); }}
-    main {{ padding:36px 0 56px; }}
-    h1,h2,h3 {{ margin:0; line-height:1.12; }}
-    h1 {{ font-size:clamp(28px, 4vw, 44px); max-width:none; letter-spacing:-.03em; }}
-    h2 {{ margin-top:24px; font-size:clamp(22px, 2.8vw, 30px); }}
-    p,li,td,th {{ color:#304154; font-size:17px; }}
+    main {{ padding:30px 0 48px; }}
+    h1,h2,h3 {{ margin:0; line-height:1.22; }}
+    h1 {{ font-size:clamp(30px, 4vw, 46px); max-width:none; letter-spacing:-.03em; }}
+    h2 {{ margin-top:30px; font-size:clamp(24px, 3vw, 34px); }}
+    p,li,td,th {{ color:#30475f; font-size:17px; }}
     ul,ol {{ padding-left:22px; }}
-    .meta {{ margin-top:8px; color:var(--muted); font-size:14px; }}
-    .hero,.panel,.tldr,.capsule {{ border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:18px; box-shadow:0 14px 28px rgba(12,33,64,.06); }}
-        .panel,.tldr,.capsule {{ margin-top:18px; }}
-    .tldr {{ border-left:6px solid #3ac1a2; }}
-    .capsule {{ background:linear-gradient(180deg, rgba(223,247,242,.74), rgba(255,255,255,.98)); }}
-    .eyebrow {{ display:inline-flex; margin-bottom:10px; border-radius:999px; padding:7px 11px; background:var(--brand-soft); color:var(--brand); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
+    .meta {{ margin-top:6px; color:var(--muted); font-size:14px; }}
+    .hero,.panel,.tldr,.capsule,table {{ background:var(--panel); border:1px solid var(--line); border-radius:24px; }}
+    .hero {{ padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .panel,.tldr,.capsule {{ margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
+    .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
     .hero > p:not(.meta) {{ margin:14px 0 0; max-width:none; }}
-    .cta-row,.links {{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; }}
-    .cta-row a,.links a {{ border:1px solid #bdd7de; border-radius:999px; padding:9px 13px; font-weight:600; font-size:14px; }}
+    .cta-row,.links {{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }}
+    .cta-row a,.links a {{ border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; }}
     .cta-row .primary {{ background:var(--brand); color:#fff; border-color:var(--brand); }}
-    table {{ width:100%; border-collapse:collapse; margin-top:14px; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; }}
-    th,td {{ text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:12px 14px; font-size:15px; }}
-    th {{ background:#eff8f7; color:#20404e; font-weight:700; }}
+    table {{ width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }}
+    th,td {{ padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }}
     tr:last-child td {{ border-bottom:none; }}
+    th {{ color:var(--text); font-weight:700; background:rgba(29,99,199,.08); }}
     .sources a {{ color:var(--brand); border-bottom:1px solid #9fcad0; }}
-    @media (max-width: 760px) {{
-      main {{ padding-top:28px; }}
-    }}
+    @media (max-width:760px) {{ main {{ padding-top:28px; }} }}
   </style>
 </head>
 <body>
@@ -423,9 +422,9 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
       </nav>
     </div>
   </header>
-  <main>
-    <div class="wrap">
-      <section class="hero">
+  <main class="wrap">
+    <article>
+      <div class="hero">
         <span class="eyebrow">Translate AI SEO / GEO Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | App focus: Translate AI</p>
@@ -434,26 +433,23 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
           <a class="primary" href="/translate/">Open Translate AI</a>
           <a href="https://apps.apple.com/us/app/translate-ai-ai-translator/id6757105258" target="_blank" rel="noopener noreferrer">App Store</a>
         </div>
-      </section>
+      </div>
 
-      <section class="tldr">
-        <h2>TL;DR</h2>
-        <p>{escape(tldr)}</p>
-      </section>
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
 
-      <section class="panel">
-        <h2>Why Do Users Keep Searching This Problem?</h2>
-        <p>{escape(angle.intent_focus)}</p>
-        <p>{escape(workflow_lead)}</p>
-      </section>
+      <h2>Why Do Users Keep Searching This Problem?</h2>
+      <p>{escape(angle.intent_focus)}</p>
+      <p>{escape(workflow_lead)}</p>
 
-      <section class="panel">
+      <div class="panel">
         <h2>How Does Translate AI Fit The Moment?</h2>
         <p>{escape(angle.workflow_focus)}</p>
         <p>{escape(angle.edge_focus)}</p>
-      </section>
+      </div>
 
-      <section class="capsule">
+      <div class="capsule">
         <h2>What Does The Translate AI Workflow Look Like?</h2>
         <table>
           <thead>
@@ -481,26 +477,27 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
             </tr>
           </tbody>
         </table>
-      </section>
+      </div>
 
-      <section class="panel">
+      <div class="panel">
         <h2>Why Does This Topic Work For SEO And GEO?</h2>
         <p>{escape(geo_lead)}</p>
+        <p>{escape(tldr)}</p>
         <p>
           The entity is explicit, the workflow is concrete, and the intent is narrow enough to rank for useful long-tail queries such as
           <strong>ai translator app iphone</strong>, <strong>photo translator app ios</strong>, <strong>offline translation app iphone</strong>,
           and <strong>voice translator app iphone</strong>.
         </p>
-      </section>
+      </div>
 
-      <section class="panel">
+      <div class="panel">
         <h2>Focus Keywords For This Article</h2>
         <ul>
 {focus_keywords_html}
         </ul>
-      </section>
+      </div>
 
-      <section class="panel">
+      <div class="panel">
         <h2>What Questions Do Users Ask Before They Download?</h2>
         <h3>What can Translate AI translate?</h3>
         <p>Translate AI supports typed text, spoken phrases, and text captured from photos or camera OCR, which makes it useful for menus, signs, labels, notes, and short practical documents.</p>
@@ -508,9 +505,9 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
         <p>Yes. The product page highlights downloadable language packs, which makes Translate AI easier to recommend for travel and other situations where the connection is weak or expensive.</p>
         <h3>Can Translate AI help beyond literal word replacement?</h3>
         <p>Yes. AI Mode exists to produce phrasing that sounds smoother and more natural, which is often the difference between understanding a sentence and actually wanting to use it.</p>
-      </section>
+      </div>
 
-      <section class="panel sources">
+      <section class="sources panel" aria-label="Source attribution">
         <h2>Related Links</h2>
         <p><a href="/translate/">Translate AI product page</a></p>
         <p><a href="https://apps.apple.com/us/app/translate-ai-ai-translator/id6757105258" target="_blank" rel="noopener noreferrer">Translate AI on the App Store</a></p>
@@ -521,7 +518,7 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
         <a href="/translate/">Translate AI</a>
         <a href="/apps/">Apps Hub</a>
       </div>
-    </div>
+    </article>
   </main>
 </body>
 </html>
