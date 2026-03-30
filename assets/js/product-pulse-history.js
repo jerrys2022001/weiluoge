@@ -38,6 +38,33 @@
     });
   }
 
+  function formatStampDateTime(value) {
+    if (!value) {
+      return "";
+    }
+
+    const match = String(value).match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?([+-]\d{2}:\d{2}|Z)?$/
+    );
+    if (!match) {
+      return "";
+    }
+
+    const year = Number(match[1]);
+    const monthIndex = Number(match[2]) - 1;
+    const day = Number(match[3]);
+    const hour = match[4];
+    const minute = match[5];
+    const offset = match[6] === "Z" ? "+00:00" : (match[6] || "+00:00");
+    const displayDate = new Date(Date.UTC(year, monthIndex, day));
+    const monthLabel = displayDate.toLocaleDateString("en-US", {
+      month: "long",
+      timeZone: "UTC",
+    });
+
+    return monthLabel + " " + day + ", " + year + " at " + hour + ":" + minute + " (UTC" + offset + ")";
+  }
+
   function toDateParts(value) {
     const parsed = new Date(value + "T12:00:00");
     if (Number.isNaN(parsed.getTime())) {
@@ -171,10 +198,32 @@
     panel.appendChild(grid);
   }
 
+  function resolveSnapshotUpdatedAt(snapshot, payloadItems, payloadRefreshedAt) {
+    if (payloadRefreshedAt) {
+      return payloadRefreshedAt;
+    }
+    if (snapshot && snapshot.refreshed_at) {
+      return snapshot.refreshed_at;
+    }
+    if (!Array.isArray(payloadItems) || !payloadItems.length) {
+      return "";
+    }
+
+    const timestamps = payloadItems
+      .map(function (item) {
+        return item && item.published_at ? item.published_at : "";
+      })
+      .filter(Boolean)
+      .sort();
+
+    return timestamps.length ? timestamps[timestamps.length - 1] : "";
+  }
+
   function init() {
     const select = $("[data-product-pulse-select]");
     const panel = $("[data-product-pulse-panel]");
     const status = $("[data-product-pulse-status]");
+    const stamp = $(".va-briefing-stamp");
     const controls = $("[data-product-pulse-controls]");
     const calendarRoot = $("[data-briefing-calendar]");
     const calendarTrigger = $("[data-briefing-calendar-trigger]");
@@ -354,6 +403,25 @@
       status.textContent = message;
     }
 
+    function setStamp(updatedAt) {
+      if (!stamp || !updatedAt) {
+        return;
+      }
+
+      const formatted = formatStampDateTime(updatedAt);
+      if (!formatted) {
+        return;
+      }
+
+      const separatorHtml = '<span aria-hidden="true">|</span>';
+      const currentHtml = stamp.innerHTML || "";
+      const separatorIndex = currentHtml.indexOf(separatorHtml);
+      const prefixHtml = separatorIndex === -1
+        ? "Updated daily 08:30"
+        : currentHtml.slice(0, separatorIndex).trim();
+      stamp.innerHTML = prefixHtml + " " + separatorHtml + " " + formatted;
+    }
+
     function applyHighlight(slug) {
       activeHighlightSlug = slug || "";
       const items = panel.querySelectorAll(".va-brief-item");
@@ -413,6 +481,8 @@
       return fetchJson(snapshot.path)
         .then(function (payload) {
           const items = Array.isArray(payload.items) ? payload.items : [];
+          const updatedAt = resolveSnapshotUpdatedAt(snapshot, items, payload.refreshed_at);
+          setStamp(updatedAt);
           if (!items.length) {
             panel.innerHTML = '<div class="va-briefing-empty"><p>No stored stories are available for this date yet.</p></div>';
           } else {
