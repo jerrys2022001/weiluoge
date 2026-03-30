@@ -952,11 +952,17 @@
     }
 
     .pagination {
-      margin-top: 24px;
+      width: max-content;
+      max-width: 100%;
+      margin: 28px auto 0;
+      padding: 4px 10px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: 10px;
+      border-radius: 14px;
+      background: rgba(19, 24, 47, 0.24);
     }
 
     .pagination[hidden] {
@@ -995,16 +1001,19 @@
 
     .pagination .is-current {
       color: #f7f9ff;
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      min-width: 26px;
+      height: 30px;
     }
 
     .pagination .pagination-prev,
     .pagination .pagination-next {
       min-width: auto;
-      padding: 0 10px;
-      color: #8ec0ff;
-      font-size: 15px;
+      padding: 0 4px;
+      color: #78abff;
+      font-size: 12px;
     }
 
     .pagination .pagination-disabled {
@@ -2258,7 +2267,9 @@
       var pager = document.querySelector('.pagination');
       if (!list || !pager) return;
 
-      var articles = Array.prototype.slice.call(list.querySelectorAll(':scope > article'));
+      var articles = Array.prototype.filter.call(list.children, function (node) {
+        return node && node.tagName === 'ARTICLE';
+      });
       var totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
       var params = new URLSearchParams(window.location.search);
       var currentPage = Number.parseInt(params.get('page') || '1', 10);
@@ -2290,7 +2301,7 @@
         var prevQuery = prevParams.toString();
         prevLink.href = prevQuery ? ('?' + prevQuery) : window.location.pathname;
       }
-      prevLink.textContent = '涓婁竴椤?;
+      prevLink.textContent = '< Prev';
       pager.appendChild(prevLink);
 
       var pageGroup = document.createElement('div');
@@ -2330,7 +2341,7 @@
         var forwardQuery = forwardParams.toString();
         nextLink.href = '?' + forwardQuery;
       }
-      nextLink.textContent = '涓嬩竴椤?;
+      nextLink.textContent = 'Next >';
       pager.appendChild(nextLink);
     })();
   </script>
