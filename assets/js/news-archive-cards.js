@@ -92,13 +92,68 @@
   }
 
   function groupItems(items) {
+    var preferredOrder = [
+      "apple-deals",
+      "apple-ai",
+      "industry",
+      "ai",
+      "semiconductor",
+      "bluetooth",
+      "apple-watch",
+      "apple"
+    ];
+
+    function resolveGroupMeta(item) {
+      var slug = item.slug || "news";
+      var title = item.eyebrow || "Latest News";
+      var highlightSlug = slug;
+      var headline = (item.title || "") + " " + (item.summary || "");
+
+      if (slug === "apple") {
+        if (/amazon|deal|price|discount|low|sale|slashes/i.test(headline)) {
+          return {
+            key: "apple-deals",
+            slug: "apple-deals",
+            title: "Apple Deals & Drops",
+            highlightSlug: "apple"
+          };
+        }
+        if (/openai|ai|sora|siri/i.test(headline)) {
+          return {
+            key: "apple-ai",
+            slug: "apple-ai",
+            title: "Apple + AI Watch",
+            highlightSlug: "apple"
+          };
+        }
+        if (/iphone|macbook|vision|vr|air|reboot|app store|vibe coding/i.test(headline)) {
+          return {
+            key: "apple-watch",
+            slug: "apple-watch",
+            title: "Apple Trend Watch",
+            highlightSlug: "apple"
+          };
+        }
+      }
+
+      return {
+        key: slug,
+        slug: slug,
+        title: title,
+        highlightSlug: highlightSlug
+      };
+    }
+
     var map = Object.create(null);
     items.forEach(function (item) {
-      var slug = item.slug || "news";
-      if (!map[slug]) {
-        map[slug] = {
-          slug: slug,
-          title: item.eyebrow || "Latest News",
+      var meta = resolveGroupMeta(item);
+      var key = meta.key;
+      if (!map[key]) {
+        map[key] = {
+          key: key,
+          slug: meta.slug,
+          highlightSlug: meta.highlightSlug,
+          title: meta.title,
           image: item.image_src || item.fallback_src || "",
           leadLink: item.link || "#",
           leadTitle: item.title || "Open latest story",
@@ -106,34 +161,70 @@
           count: 0
         };
       }
-      map[slug].count += 1;
-      if (item.source_name && map[slug].sources.indexOf(item.source_name) === -1) {
-        map[slug].sources.push(item.source_name);
+      map[key].count += 1;
+      if (item.source_name && map[key].sources.indexOf(item.source_name) === -1) {
+        map[key].sources.push(item.source_name);
       }
-      if (!map[slug].image && (item.image_src || item.fallback_src)) {
-        map[slug].image = item.image_src || item.fallback_src;
+      if (!map[key].image && (item.image_src || item.fallback_src)) {
+        map[key].image = item.image_src || item.fallback_src;
       }
     });
 
-    return Object.keys(map)
+    var groups = Object.keys(map)
       .map(function (key) {
         return map[key];
       })
       .sort(function (left, right) {
+        var leftOrder = preferredOrder.indexOf(left.slug);
+        var rightOrder = preferredOrder.indexOf(right.slug);
+        if (leftOrder !== -1 || rightOrder !== -1) {
+          if (leftOrder === -1) {
+            return 1;
+          }
+          if (rightOrder === -1) {
+            return -1;
+          }
+          if (leftOrder !== rightOrder) {
+            return leftOrder - rightOrder;
+          }
+        }
         if (right.count !== left.count) {
           return right.count - left.count;
         }
         return left.title.localeCompare(right.title);
       });
+
+    if (groups.length < 5 && items.length) {
+      groups.push({
+        key: "top-picks",
+        slug: "top-picks",
+        highlightSlug: items[0].slug || "news",
+        title: "Trending Picks",
+        image: items[0].image_src || items[0].fallback_src || "",
+        leadLink: items[0].link || "#",
+        leadTitle: items[0].title || "Open latest story",
+        sources: groups.reduce(function (acc, group) {
+          group.sources.forEach(function (source) {
+            if (acc.indexOf(source) === -1) {
+              acc.push(source);
+            }
+          });
+          return acc;
+        }, []),
+        count: items.length
+      });
+    }
+
+    return groups.slice(0, 5);
   }
 
-  function setSelectedTodayCard(container, slug) {
+  function setSelectedTodayCard(container, cardKey) {
     if (!container) {
       return;
     }
     var cards = container.querySelectorAll(".va-archive-card-today");
     cards.forEach(function (card) {
-      var isSelected = card.dataset.slug === slug;
+      var isSelected = card.dataset.cardKey === cardKey;
       card.classList.toggle("is-selected", isSelected);
       var button = card.querySelector(".va-archive-card-button");
       if (button) {
@@ -145,7 +236,7 @@
   function createTodayCard(group, todayRoot, historySelect, latestDate) {
     var article = createElement("article", "va-archive-card");
     article.classList.add("va-archive-card-today");
-    article.dataset.slug = group.slug || "";
+    article.dataset.cardKey = group.key || group.slug || "";
     var button = createElement("button", "va-archive-card-button");
     button.type = "button";
     button.setAttribute("aria-label", "Highlight " + group.title + " stories in the headline archive");
@@ -198,12 +289,12 @@
     button.appendChild(body);
     button.appendChild(footer);
     button.addEventListener("click", function () {
-      setSelectedTodayCard(todayRoot, group.slug || "");
+      setSelectedTodayCard(todayRoot, group.key || group.slug || "");
       if (historySelect && latestDate) {
         historySelect.value = latestDate;
         historySelect.dispatchEvent(new Event("change", { bubbles: true }));
       }
-      emitHighlightRequest(group.slug || "", group.title || "");
+      emitHighlightRequest(group.highlightSlug || group.slug || "", group.title || "");
       var briefingPanel = $(".va-briefing-panel");
       if (briefingPanel) {
         briefingPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
