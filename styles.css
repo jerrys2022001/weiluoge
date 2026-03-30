@@ -1306,35 +1306,41 @@ ul {
 }
 
 .va-briefing-controls {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 328px);
-  gap: 6px 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 286px);
+  gap: 8px 14px;
   align-items: center;
 }
 
 .va-briefing-history-copy {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 8px 14px;
-  align-items: baseline;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex-wrap: nowrap;
 }
 
 .va-briefing-history-label {
   margin: 0;
   font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #42ffe0;
+  flex: 0 0 auto;
 }
 
-.va-briefing-history-help {
-  margin: 8px 0 0;
-  color: rgba(224, 230, 248, 0.76);
-  font-size: 14px;
-  max-width: 58ch;
+.va-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .va-briefing-history-picker {
@@ -1343,23 +1349,24 @@ ul {
   gap: 3px;
   min-width: 0;
   justify-self: end;
-  width: min(100%, 312px);
+  width: min(100%, 286px);
 }
 
-.va-briefing-history-picker span {
+.va-briefing-history-picker > span {
   color: rgba(224, 230, 248, 0.82);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: right;
 }
 
 .va-briefing-history-trigger {
-  min-height: 46px;
-  padding: 0 16px;
+  min-height: 40px;
+  padding: 0 14px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(12, 14, 25, 0.88);
+  background: linear-gradient(180deg, rgba(12, 14, 25, 0.96), rgba(15, 18, 31, 0.94));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   color: #ffffff;
   font: inherit;
   display: flex;
@@ -1374,47 +1381,101 @@ ul {
   border-color: rgba(122, 220, 255, 0.4);
 }
 
+.va-briefing-history-trigger [data-briefing-calendar-trigger-label] {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-align: left;
+}
+
+.va-briefing-history-trigger [aria-hidden="true"] {
+  font-size: 13px;
+  color: rgba(224, 230, 248, 0.72);
+}
+
 .va-briefing-calendar {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 7px);
   right: 0;
   z-index: 20;
-  width: min(360px, calc(100vw - 40px));
-  padding: 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: linear-gradient(180deg, rgba(24, 26, 43, 0.98), rgba(15, 18, 32, 0.99));
-  box-shadow: 0 24px 44px rgba(4, 6, 14, 0.42);
+  width: min(332px, calc(100vw - 36px));
+  padding: 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(180px 120px at 18% 0%, rgba(248, 102, 219, 0.1), transparent 72%),
+    radial-gradient(200px 140px at 100% 8%, rgba(37, 144, 241, 0.14), transparent 74%),
+    linear-gradient(180deg, rgba(20, 23, 39, 0.98), rgba(11, 14, 26, 0.99));
+  box-shadow: 0 24px 42px rgba(4, 6, 14, 0.42);
+  color: #f7f7ff;
+  backdrop-filter: blur(18px);
 }
 
 .va-briefing-calendar-head {
   display: grid;
-  grid-template-columns: 36px 1fr 36px;
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
-.va-briefing-calendar-head strong {
-  text-align: center;
-  font-size: 16px;
-  letter-spacing: -0.02em;
+.va-briefing-calendar-head-selectors {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px;
+  gap: 8px;
+}
+
+.va-briefing-calendar-select-wrap {
+  position: relative;
+}
+
+.va-briefing-calendar-select-wrap::after {
+  content: "▾";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: rgba(224, 230, 248, 0.58);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.va-briefing-calendar-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 30px 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f7f7ff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  appearance: none;
+  outline: none;
+}
+
+.va-briefing-calendar-select:hover,
+.va-briefing-calendar-select:focus-visible {
+  border-color: rgba(66, 255, 224, 0.32);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .va-briefing-calendar-nav {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(224, 230, 248, 0.62);
   font: inherit;
   cursor: pointer;
 }
 
 .va-briefing-calendar-nav:hover,
 .va-briefing-calendar-nav:focus-visible {
-  border-color: rgba(122, 220, 255, 0.38);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .va-briefing-calendar-nav:disabled {
@@ -1429,57 +1490,64 @@ ul {
 }
 
 .va-briefing-calendar-weekdays {
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 4px;
+  margin-bottom: 6px;
 }
 
 .va-briefing-calendar-weekdays span {
   text-align: center;
-  color: rgba(224, 230, 248, 0.56);
-  font-family: "Fragment Mono", "SFMono-Regular", Consolas, monospace;
+  color: rgba(224, 230, 248, 0.52);
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .va-briefing-calendar-grid {
-  gap: 8px;
+  gap: 4px;
 }
 
 .va-briefing-calendar-day,
 .va-briefing-calendar-day-empty {
-  min-height: 42px;
-  border-radius: 12px;
+  min-height: 38px;
+  border-radius: 999px;
 }
 
 .va-briefing-calendar-day {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: #ffffff;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #f3f6ff;
   font: inherit;
+  font-size: 14px;
+  line-height: 1;
   cursor: pointer;
 }
 
 .va-briefing-calendar-day:hover,
 .va-briefing-calendar-day:focus-visible {
-  border-color: rgba(122, 220, 255, 0.36);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(66, 255, 224, 0.18);
 }
 
 .va-briefing-calendar-day.is-active {
-  border-color: rgba(122, 220, 255, 0.54);
-  background: linear-gradient(180deg, rgba(52, 107, 186, 0.92), rgba(37, 80, 145, 0.96));
+  background: linear-gradient(180deg, rgba(66, 255, 224, 0.22), rgba(37, 144, 241, 0.34));
+  border-color: rgba(66, 255, 224, 0.28);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(13, 103, 199, 0.22);
 }
 
 .va-briefing-calendar-day.is-disabled {
-  opacity: 0.28;
+  color: rgba(224, 230, 248, 0.22);
   cursor: default;
-}
 }
 
 .va-briefing-history-status {
   margin: 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: rgba(224, 230, 248, 0.76);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3;
 }
 
@@ -1845,14 +1913,14 @@ ul {
 
   .va-briefing-controls {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
     align-items: stretch;
   }
 
   .va-briefing-history-copy {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    align-items: start;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
   }
 
   .va-briefing-history-picker {
@@ -1862,6 +1930,12 @@ ul {
 
   .va-briefing-history-picker span {
     text-align: left;
+  }
+
+  .va-briefing-history-status {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .va-briefing-grid {
@@ -1918,7 +1992,7 @@ ul {
   .va-briefing-calendar {
     left: 0;
     right: auto;
-    width: min(100%, 340px);
+    width: min(100%, 332px);
   }
 
   .va-news-archive-block-compact .va-archive-grid {

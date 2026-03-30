@@ -180,10 +180,11 @@
     const calendarTrigger = $("[data-briefing-calendar-trigger]");
     const calendarTriggerLabel = $("[data-briefing-calendar-trigger-label]");
     const calendarPanel = $("[data-briefing-calendar-panel]");
-    const calendarTitle = $("[data-briefing-calendar-title]");
     const calendarGrid = $("[data-briefing-calendar-grid]");
     const calendarPrev = $("[data-briefing-calendar-prev]");
     const calendarNext = $("[data-briefing-calendar-next]");
+    const calendarMonthSelect = $("[data-briefing-calendar-month]");
+    const calendarYearSelect = $("[data-briefing-calendar-year]");
     if (!select || !panel || !status || !controls) {
       return;
     }
@@ -214,6 +215,61 @@
       };
     }
 
+    function buildMonthLabel(monthIndex) {
+      return new Date(2026, monthIndex, 1).toLocaleDateString("en-US", {
+        month: "long",
+      });
+    }
+
+    function renderMonthYearControls(monthParts) {
+      if (!calendarMonthSelect || !calendarYearSelect) {
+        return;
+      }
+
+      const years = Array.from(
+        new Set(
+          monthKeys
+            .map(function (monthKey) {
+              const parsed = parseMonthKey(monthKey);
+              return parsed ? parsed.year : null;
+            })
+            .filter(function (year) {
+              return year !== null;
+            })
+        )
+      ).sort();
+
+      const activeYear = monthParts.year;
+      const availableMonths = monthKeys
+        .map(function (monthKey) {
+          return parseMonthKey(monthKey);
+        })
+        .filter(function (parsed) {
+          return parsed && parsed.year === activeYear;
+        })
+        .map(function (parsed) {
+          return parsed.month;
+        });
+
+      calendarYearSelect.innerHTML = "";
+      years.forEach(function (year) {
+        const option = document.createElement("option");
+        option.value = String(year);
+        option.textContent = String(year);
+        option.selected = year === activeYear;
+        calendarYearSelect.appendChild(option);
+      });
+
+      calendarMonthSelect.innerHTML = "";
+      availableMonths.forEach(function (monthIndex) {
+        const option = document.createElement("option");
+        option.value = String(monthIndex);
+        option.textContent = buildMonthLabel(monthIndex);
+        option.selected = monthIndex === monthParts.month;
+        calendarMonthSelect.appendChild(option);
+      });
+    }
+
     function closeCalendar() {
       if (!calendarPanel || !calendarTrigger) {
         return;
@@ -238,7 +294,7 @@
     }
 
     function renderCalendarMonth() {
-      if (!calendarGrid || !calendarTitle || !monthKeys.length) {
+      if (!calendarGrid || !monthKeys.length) {
         return;
       }
 
@@ -248,10 +304,7 @@
       }
 
       calendarGrid.innerHTML = "";
-      calendarTitle.textContent = new Date(monthParts.year, monthParts.month, 1).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-      });
+      renderMonthYearControls(monthParts);
 
       const firstWeekday = new Date(monthParts.year, monthParts.month, 1).getDay();
       const daysInMonth = new Date(monthParts.year, monthParts.month + 1, 0).getDate();
@@ -474,6 +527,43 @@
           activeMonthKey = monthKeys[index + 1];
           renderCalendarMonth();
         }
+      });
+    }
+
+    if (calendarMonthSelect) {
+      calendarMonthSelect.addEventListener("change", function () {
+        const yearValue = calendarYearSelect ? calendarYearSelect.value : "";
+        const nextKey = String(yearValue) + "-" + String(Number(calendarMonthSelect.value)).padStart(2, "0");
+        if (monthKeys.indexOf(nextKey) > -1) {
+          activeMonthKey = nextKey;
+          renderCalendarMonth();
+        }
+      });
+    }
+
+    if (calendarYearSelect) {
+      calendarYearSelect.addEventListener("change", function () {
+        const selectedYear = Number(calendarYearSelect.value);
+        const parsedActive = parseMonthKey(activeMonthKey);
+        const preferredMonth = parsedActive ? parsedActive.month : 0;
+        const matchingMonths = monthKeys
+          .map(function (monthKey) {
+            return parseMonthKey(monthKey);
+          })
+          .filter(function (parsed) {
+            return parsed && parsed.year === selectedYear;
+          })
+          .map(function (parsed) {
+            return parsed.month;
+          });
+
+        if (!matchingMonths.length) {
+          return;
+        }
+
+        const nextMonth = matchingMonths.indexOf(preferredMonth) > -1 ? preferredMonth : matchingMonths[0];
+        activeMonthKey = String(selectedYear) + "-" + String(nextMonth).padStart(2, "0");
+        renderCalendarMonth();
       });
     }
 
