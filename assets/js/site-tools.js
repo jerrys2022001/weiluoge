@@ -205,7 +205,7 @@
           ".va-briefing": { ariaLabel: "Today's briefing" },
           ".va-briefing-section-label": "Top Stories",
           ".va-briefing-heading": { html: 'Product <span class="is-accent">Pulse</span>' },
-          ".va-briefing-stamp": { html: 'Updated daily 08:30 <span aria-hidden="true">|</span> March 25, 2026 at 08:30 (UTC+08:00)' },
+          ".va-briefing-stamp": { briefingStampPrefixHtml: 'Updated daily 08:30 <span aria-hidden="true">|</span>' },
           ".va-brief-label": [
             "Apple Releases",
             "Industry Product Watch",
@@ -272,7 +272,7 @@
           ".va-briefing": { ariaLabel: "今日简报" },
           ".va-briefing-section-label": "今日焦点",
           ".va-briefing-heading": { html: '产品<span class="is-accent">脉搏</span>' },
-          ".va-briefing-stamp": { html: '每日 08:30 更新 <span aria-hidden="true">|</span> 2026年3月25日 08:30 (UTC+08:00)' },
+          ".va-briefing-stamp": { briefingStampPrefixHtml: '每日 08:30 更新 <span aria-hidden="true">|</span>' },
           ".va-brief-label": [
             "Apple 动态",
             "行业产品观察",
@@ -454,7 +454,7 @@
           ".va-showcase .va-app-links a:nth-child(1)": ["Page produit", "Page produit", "Page produit"],
           ".va-briefing-section-label": "À la une",
           ".va-briefing-heading": { html: 'Pouls <span class="is-accent">produit</span>' },
-          ".va-briefing-stamp": { html: 'Mis à jour chaque jour à 08:30 <span aria-hidden="true">|</span> 25 mars 2026 à 08:30 (UTC+08:00)' },
+          ".va-briefing-stamp": { briefingStampPrefixHtml: 'Mis à jour chaque jour à 08:30 <span aria-hidden="true">|</span>' },
           ".va-brief-label": ["Sorties Apple", "Veille produit du secteur", "Sorties Apple", "Sorties Apple", "Sorties Apple", "Sorties Apple", "Évolutions IA", "Évolutions IA", "Percées semiconducteurs", "Normes et usages Bluetooth"],
           ".va-gallery-head h2": "Chaque écran reste clair, tactile et focalisé.",
           ".va-gallery-head > p:last-of-type": "Le langage d’interface reste cohérent entre découverte, nettoyage et dépannage avancé.",
@@ -1051,6 +1051,22 @@
     });
   }
 
+  function applyBriefingStampPrefix(nodes, prefixHtml) {
+    if (!nodes || !nodes.length || !prefixHtml) {
+      return;
+    }
+
+    const separatorHtml = '<span aria-hidden="true">|</span>';
+    nodes.forEach(function (node) {
+      const currentHtml = node.innerHTML || "";
+      const separatorIndex = currentHtml.indexOf(separatorHtml);
+      const suffix = separatorIndex === -1
+        ? ""
+        : currentHtml.slice(separatorIndex + separatorHtml.length).trim();
+      node.innerHTML = prefixHtml + (suffix ? " " + suffix : "");
+    });
+  }
+
   function snapshotNodeState(node) {
     if (!node || ORIGINAL_NODE_STATE.has(node)) {
       return;
@@ -1112,6 +1128,10 @@
       return;
     }
 
+    if (Object.prototype.hasOwnProperty.call(descriptor, "briefingStampPrefixHtml")) {
+      applyBriefingStampPrefix(nodes, descriptor.briefingStampPrefixHtml);
+    }
+
     if (Object.prototype.hasOwnProperty.call(descriptor, "html")) {
       nodes.forEach(function (node) {
         node.innerHTML = descriptor.html;
@@ -1123,7 +1143,7 @@
     }
 
     Object.keys(descriptor).forEach(function (key) {
-      if (key === "html" || key === "text") {
+      if (key === "html" || key === "text" || key === "briefingStampPrefixHtml") {
         return;
       }
       nodes.forEach(function (node) {
