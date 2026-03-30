@@ -957,10 +957,12 @@
       display: none;
     }
 
-    .pagination-label {
-      color: var(--muted);
-      font-size: 14px;
-      margin-right: 4px;
+    .pagination-group {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .pagination a,
@@ -968,27 +970,40 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 40px;
-      height: 40px;
-      padding: 0 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.04);
-      color: #edf2ff;
-      font-weight: 700;
-      font-size: 14px;
+      min-width: 28px;
+      height: 32px;
+      padding: 0 6px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #7fb0ff;
+      font-weight: 600;
+      font-size: 16px;
     }
 
     .pagination a:hover {
-      background: rgba(37, 144, 241, 0.18);
-      border-color: rgba(37, 144, 241, 0.4);
+      color: #ffffff;
+      background: rgba(37, 144, 241, 0.14);
+      border-color: rgba(37, 144, 241, 0.28);
     }
 
     .pagination .is-current {
-      background: linear-gradient(130deg, var(--blue), var(--violet));
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 10px 20px rgba(37, 144, 241, 0.28);
+      color: #f7f9ff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .pagination .pagination-prev,
+    .pagination .pagination-next {
+      min-width: auto;
+      padding: 0 10px;
+      color: #8ec0ff;
+      font-size: 15px;
+    }
+
+    .pagination .pagination-disabled {
+      opacity: 0.34;
+      pointer-events: none;
     }
 
     article {
@@ -2219,7 +2234,6 @@
 <a class="read" href="/blog/iphone-storage-cleanup-checklist.html">Read article</a>
 </article> </section>
 <nav aria-label="Blog pagination" class="pagination" hidden="">
-<span class="pagination-label">Pages</span>
 </nav>
 </main>
 <script>
@@ -2245,13 +2259,30 @@
       if (totalPages <= 1) return;
 
       pager.hidden = false;
+      var prevLink = document.createElement(currentPage > 1 ? 'a' : 'span');
+      prevLink.className = 'pagination-prev' + (currentPage > 1 ? '' : ' pagination-disabled');
+      if (currentPage > 1) {
+        var prevParams = new URLSearchParams(window.location.search);
+        if (currentPage - 1 === 1) {
+          prevParams.delete('page');
+        } else {
+          prevParams.set('page', String(currentPage - 1));
+        }
+        var prevQuery = prevParams.toString();
+        prevLink.href = prevQuery ? ('?' + prevQuery) : window.location.pathname;
+      }
+      prevLink.textContent = '上一页';
+      pager.appendChild(prevLink);
+
+      var pageGroup = document.createElement('div');
+      pageGroup.className = 'pagination-group';
       for (var pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
         if (pageNumber === currentPage) {
           var current = document.createElement('span');
           current.className = 'is-current';
           current.setAttribute('aria-current', 'page');
           current.textContent = String(pageNumber);
-          pager.appendChild(current);
+          pageGroup.appendChild(current);
           continue;
         }
 
@@ -2267,8 +2298,21 @@
         link.href = query ? ('?' + query) : window.location.pathname;
         link.textContent = String(pageNumber);
         link.setAttribute('aria-label', 'Go to page ' + pageNumber);
-        pager.appendChild(link);
+        pageGroup.appendChild(link);
       }
+
+      pager.appendChild(pageGroup);
+
+      var nextLink = document.createElement(currentPage < totalPages ? 'a' : 'span');
+      nextLink.className = 'pagination-next' + (currentPage < totalPages ? '' : ' pagination-disabled');
+      if (currentPage < totalPages) {
+        var forwardParams = new URLSearchParams(window.location.search);
+        forwardParams.set('page', String(currentPage + 1));
+        var forwardQuery = forwardParams.toString();
+        nextLink.href = '?' + forwardQuery;
+      }
+      nextLink.textContent = '下一页';
+      pager.appendChild(nextLink);
     })();
   </script>
 <script defer="" src="/assets/js/site-tools.js"></script>
