@@ -1217,6 +1217,8 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
       <div class="va-briefing-empty">
         <p>Today's publisher-matched stories will appear here as soon as the tracked sources publish same-day updates.</p>
       </div>"""
+    display_date = escape(refreshed_at.strftime("%B %d, %Y"))
+    default_date = refreshed_at.date().isoformat()
     return f"""
     <div class="va-briefing-head" hidden>
       <div class="va-briefing-title-wrap">
@@ -1226,26 +1228,76 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
       <p class="va-briefing-stamp">Updated daily 08:30 <span aria-hidden="true">|</span> {escape(format_refresh_time(refreshed_at))}</p>
     </div>
     <div class="va-briefing-controls" data-product-pulse-controls hidden>
-      <div>
+      <div class="va-briefing-history-copy">
         <p class="va-briefing-history-label">History Browser</p>
-        <p class="va-briefing-history-help">Stored in-repo daily so Product Pulse can reopen previous news snapshots.</p>
+        <div class="va-briefing-history-status" data-product-pulse-status>
+          Viewing {display_date}'s stored briefing.
+        </div>
       </div>
-      <label class="va-briefing-history-picker">
+      <div class="va-briefing-history-picker" data-briefing-calendar>
         <span>View date</span>
+        <button
+          class="va-briefing-history-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-haspopup="dialog"
+          data-briefing-calendar-trigger
+        >
+          <span data-briefing-calendar-trigger-label>{display_date}</span>
+          <span aria-hidden="true">▾</span>
+        </button>
+        <div class="va-briefing-calendar" data-briefing-calendar-panel hidden>
+          <div class="va-briefing-calendar-head">
+            <button
+              class="va-briefing-calendar-nav"
+              type="button"
+              aria-label="Show previous month"
+              data-briefing-calendar-prev
+            >
+              ‹
+            </button>
+            <div class="va-briefing-calendar-head-selectors">
+              <label class="va-briefing-calendar-select-wrap">
+                <span class="va-visually-hidden">Choose month</span>
+                <select class="va-briefing-calendar-select" data-briefing-calendar-month aria-label="Choose month"></select>
+              </label>
+              <label class="va-briefing-calendar-select-wrap">
+                <span class="va-visually-hidden">Choose year</span>
+                <select class="va-briefing-calendar-select" data-briefing-calendar-year aria-label="Choose year"></select>
+              </label>
+            </div>
+            <button
+              class="va-briefing-calendar-nav"
+              type="button"
+              aria-label="Show next month"
+              data-briefing-calendar-next
+            >
+              ›
+            </button>
+          </div>
+          <div class="va-briefing-calendar-weekdays" aria-hidden="true">
+            <span>Su</span>
+            <span>Mo</span>
+            <span>Tu</span>
+            <span>We</span>
+            <span>Th</span>
+            <span>Fr</span>
+            <span>Sa</span>
+          </div>
+          <div class="va-briefing-calendar-grid" data-briefing-calendar-grid></div>
+        </div>
         <select
           id="va-product-pulse-date"
           name="product-pulse-date"
           data-product-pulse-select
           data-history-manifest="/{BRIEF_HISTORY_MANIFEST_REL.as_posix()}"
-          data-default-date="{refreshed_at.date().isoformat()}"
+          data-default-date="{default_date}"
           aria-label="Choose a Product Pulse date"
+          hidden
         >
-          <option value="{refreshed_at.date().isoformat()}">{escape(refreshed_at.strftime('%B %d, %Y'))}</option>
+          <option value="{default_date}">{display_date}</option>
         </select>
-      </label>
-    </div>
-    <div class="va-briefing-history-status" data-product-pulse-status>
-      Viewing {escape(refreshed_at.strftime('%B %d, %Y'))}'s stored briefing.
+      </div>
     </div>
     <div class="va-briefing-panel" data-product-pulse-panel>
 {empty_state}
