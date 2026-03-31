@@ -8,6 +8,7 @@ import json
 import re
 import subprocess
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -32,6 +33,8 @@ TARGET_DAILY_TOTAL = 6
 TARGET_DAILY_BLUETOOTH = 2
 TARGET_DAILY_TRANSLATE = 2
 TARGET_DAILY_FIND = 1
+INDEX_ARTICLE_RE = re.compile(r"<article>.*?</article>", re.IGNORECASE | re.DOTALL)
+TITLE_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 
 
 def parse_args() -> argparse.Namespace:
@@ -122,6 +125,49 @@ def list_same_day_posts(blog_dir: Path, target_day: date) -> list[Path]:
     return sorted(blog_dir.glob(f"*{suffix}"))
 
 
+def normalize_title(value: str) -> str:
+    return " ".join(value.lower().replace("| velocai blog", "").split())
+
+
+def read_post_title(path: Path) -> str:
+    text = path.read_text(encoding="utf-8")
+    match = TITLE_RE.search(text)
+    if match is None:
+        return path.stem
+    return match.group(1).strip()
+
+
+def duplicate_titles_for_day(paths: list[Path]) -> list[str]:
+    title_counts = Counter(normalize_title(read_post_title(path)) for path in paths)
+    return sorted(title for title, count in title_counts.items() if count > 1)
+
+
+def blog_index_article_count(index_path: Path) -> int:
+    text = index_path.read_text(encoding="utf-8")
+    return len(INDEX_ARTICLE_RE.findall(text))
+
+
+def assert_publish_integrity(repo_root: Path, target_day: date, previous_index_count: int | None) -> tuple[int, list[str]]:
+    blog_dir = repo_root / "blog"
+    index_path = blog_dir / "index.html"
+    current_index_count = blog_index_article_count(index_path)
+    if previous_index_count is not None and current_index_count < previous_index_count:
+        raise ValueError(
+            "Blog index article count decreased unexpectedly after publish. "
+            f"before={previous_index_count} after={current_index_count}"
+        )
+
+    duplicate_titles = duplicate_titles_for_day(list_same_day_posts(blog_dir, target_day))
+    if duplicate_titles:
+        preview = ", ".join(duplicate_titles[:3])
+        raise ValueError(
+            "Duplicate same-day blog titles detected after publish. "
+            f"titles={preview}"
+        )
+
+    return current_index_count, duplicate_titles
+
+
 def count_bluetooth_posts(paths: list[Path]) -> int:
     return sum(1 for path in paths if path.name.startswith("bluetooth-"))
 
@@ -139,6 +185,7 @@ def main() -> int:
     repo_root = args.repo_root.resolve()
     target_day = parse_iso_date(args.date)
     blog_dir = repo_root / "blog"
+    previous_index_count = blog_index_article_count(blog_dir / "index.html")
 
     posts = list_same_day_posts(blog_dir, target_day)
     total_count = len(posts)
@@ -172,6 +219,13 @@ def main() -> int:
         if code != 0:
             failed.append(task.task_name)
             continue
+        if not args.dry_run:
+            try:
+                previous_index_count, _ = assert_publish_integrity(repo_root, target_day, previous_index_count)
+            except ValueError as exc:
+                failed.append(task.task_name)
+                print(str(exc), file=sys.stderr)
+                break
 
         posts = list_same_day_posts(blog_dir, target_day)
         total_count = len(posts)
@@ -226,6 +280,12 @@ def main() -> int:
             code = run_slot(repo_root, synthetic, target_day, False)
             if code != 0:
                 failed.append(synthetic.task_name)
+                break
+            try:
+                previous_index_count, _ = assert_publish_integrity(repo_root, target_day, previous_index_count)
+            except ValueError as exc:
+                failed.append(synthetic.task_name)
+                print(str(exc), file=sys.stderr)
                 break
             posts = list_same_day_posts(blog_dir, target_day)
             total_count = len(posts)
