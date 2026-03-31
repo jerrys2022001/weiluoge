@@ -847,9 +847,10 @@ def find_latest_posts_section(index_html: str) -> tuple[int, int, int]:
     if section_start < 0:
         raise ValueError("Cannot find post list insertion point in blog/index.html")
 
-    section_end = index_html.find("    </section>", section_start)
-    if section_end < 0:
+    section_end_match = re.search(r"</section>", index_html[section_start:])
+    if section_end_match is None:
         raise ValueError("Cannot find end of post list section in blog/index.html")
+    section_end = section_start + section_end_match.start()
 
     return marker_idx, section_start, section_end
 
