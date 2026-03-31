@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Device Discovery Debugging on Android: BluetoothAdapter Guide (2026) | VelocAI Blog</title>
+  <meta name="description" content="Fix Android Bluetooth discovery failures with a practical BluetoothAdapter debugging workflow based on current Android Developers guidance, including scan windows, receivers, and permission checks.">
+  <meta name="keywords" content="bluetooth, bluetooth device discovery debugging, Android BluetoothAdapter, Bluetooth discovery troubleshooting, BLUETOOTH_SCAN, bluetooth find">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-bluetoothadapter-guide-2026-03-31.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Device Discovery Debugging on Android: BluetoothAdapter Guide (2026)">
+  <meta property="og:description" content="A practical Android Bluetooth discovery debugging guide with repeatable troubleshooting steps and FAQ for real-world app incidents.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-bluetoothadapter-guide-2026-03-31.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging on Android: BluetoothAdapter Guide (2026)">
+  <meta name="twitter:description" content="Troubleshoot Android Bluetooth discovery with a clear BluetoothAdapter checklist: permissions, receiver lifecycle, scan timing, and result validation.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth Device Discovery Debugging on Android: BluetoothAdapter Guide (2026)",
+  "description": "Use Android's latest Bluetooth discovery documentation to debug empty scans, unstable results, and receiver lifecycle mistakes with a repeatable workflow.",
+  "datePublished": "2026-03-31",
+  "dateModified": "2026-03-31",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-android-bluetoothadapter-guide-2026-03-31.html",
+  "keywords": [
+    "bluetooth",
+    "bluetooth device discovery debugging",
+    "Android BluetoothAdapter",
+    "BLUETOOTH_SCAN",
+    "Bluetooth Explorer"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f3fbf8; --text:#18362d; --muted:#4d6f65; --line:#cfe8df; --panel:#ffffff; --brand:#157a57; --accent:#2a65c9; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 15% 2%, rgba(21,122,87,.13), transparent 35%),
+        radial-gradient(circle at 84% -8%, rgba(42,101,201,.12), transparent 36%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(243,251,248,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:28ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#2a4e44; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(20,40,32,.06); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(20,40,32,.06); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#e8f4ef; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Device Discovery Debugging on Android: BluetoothAdapter Guide</h1>
+        <p class="meta">Published on March 31, 2026 | Topic: Bluetooth Debugging &amp; Device Discovery | Primary Source Updated: February 26, 2026</p>
+        <p>When Android apps fail to <strong>find</strong> nearby devices, the root cause is often not radio hardware. It is usually a broken discovery workflow: permissions incomplete, receiver lifecycle mistakes, overlapping scans, or mismatched filtering assumptions.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Run one bounded discovery session at a time, validate permission state before starting, register receivers before scan start, and log device results consistently. This sequence solves most Bluetooth device discovery debugging incidents faster.</p>
+      </div>
+
+      <h2>Fast answer block for search and AI retrieval</h2>
+      <p>For Android Bluetooth device discovery debugging, use this order: verify runtime permissions and Nearby Devices grant, confirm adapter state, start a single discovery session, observe <code>ACTION_FOUND</code> and completion broadcasts, and stop before re-running. Repeat with one variable changed each run to isolate the failure source.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Validate discovery permissions at runtime.</strong> Check that your current app session has required Bluetooth scan permissions, not only manifest declarations.</li>
+          <li><strong>Confirm adapter readiness.</strong> Ensure Bluetooth is enabled and not transitioning state when discovery starts.</li>
+          <li><strong>Register receivers before scanning.</strong> Attach listeners for found-device and discovery-finished broadcasts first, then call discovery.</li>
+          <li><strong>Use one timed scan window.</strong> Do not stack scan calls. Let one pass finish, collect results, then re-run.</li>
+          <li><strong>Log every discovery event.</strong> Capture timestamp, device address, optional name, and scan session ID for each callback.</li>
+          <li><strong>Test with one known-good peripheral.</strong> A reference device helps separate app regressions from accessory-side advertising behavior.</li>
+          <li><strong>Audit filter and matching logic.</strong> Start broad, then narrow by service UUID or device class after you confirm baseline visibility.</li>
+          <li><strong>Retest with controlled changes.</strong> Change only one variable each run: environment, permission state, filter, or accessory firmware.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Common failure signatures and what they usually mean</h2>
+        <ul>
+          <li><strong>Discovery starts but no devices appear:</strong> runtime permission gap or receiver not registered in time.</li>
+          <li><strong>Results only appear after app restart:</strong> stale lifecycle state and listener cleanup issues.</li>
+          <li><strong>Only one accessory is ever found:</strong> over-restrictive filtering or peripheral advertising profile mismatch.</li>
+          <li><strong>Different behavior across Android versions:</strong> permission and platform behavior changes tied to SDK level.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Short FAQ</h2>
+        <p><strong>Why does Bluetooth discovery debugging fail after target SDK upgrades?</strong><br>
+        Android permission and discovery behavior can change with newer target SDK requirements, so previously working scan logic may require updated runtime checks.</p>
+
+        <p><strong>Should I keep discovery running continuously while debugging?</strong><br>
+        No. Bounded sessions create cleaner evidence and prevent overlapping scan state from masking the true issue.</p>
+
+        <p><strong>How does this help Bluetooth Explorer-style app workflows?</strong><br>
+        It gives a repeatable checklist for user reports like “device not found,” making support and regression testing much faster.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2026-02-26)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/bt-permissions" target="_blank" rel="noopener noreferrer">Android Developers: Bluetooth permissions (updated 2026-03-26)</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
