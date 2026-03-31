@@ -834,6 +834,21 @@ def post_date_from_article(article_html: str) -> date:
     return date.min
 
 
+def extract_index_article_blocks(index_html: str) -> list[str]:
+    _, section_start, section_end = find_latest_posts_section(index_html)
+    section_body = index_html[section_start + 1 : section_end]
+    return re.findall(r"      <article>.*?      </article>\n?", section_body, re.DOTALL)
+
+
+def extract_index_article_hrefs(index_html: str) -> list[str]:
+    hrefs: list[str] = []
+    for article_html in extract_index_article_blocks(index_html):
+        href_match = re.search(r'href="/blog/([^"]+)"', article_html)
+        if href_match is not None:
+            hrefs.append(href_match.group(1))
+    return hrefs
+
+
 def find_latest_posts_section(index_html: str) -> tuple[int, int, int]:
     section_match = re.search(
         r"<section\b(?=[^>]*\bclass=\"list\")(?=[^>]*\baria-label=\"Latest blog posts\")[^>]*>",
@@ -911,6 +926,7 @@ def update_index_itemlist(index_html: str) -> str:
 
 def update_blog_index(index_path: Path, post: PostMeta) -> bool:
     original = index_path.read_text(encoding="utf-8")
+    original_hrefs = extract_index_article_hrefs(original)
 
     post_href = f"href=\"/blog/{post.filename}\""
     updated = original
@@ -932,6 +948,22 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
 
     updated = reorder_index_articles(updated)
     updated = update_index_itemlist(updated)
+    updated_hrefs = extract_index_article_hrefs(updated)
+
+    expected_count = len(original_hrefs) if post.filename in original_hrefs else len(original_hrefs) + 1
+    if len(updated_hrefs) != expected_count:
+        raise ValueError(
+            "Refusing to write blog/index.html because article count changed unexpectedly. "
+            f"before={len(original_hrefs)} after={len(updated_hrefs)} expected={expected_count}"
+        )
+
+    missing_hrefs = sorted(set(original_hrefs) - set(updated_hrefs) - {post.filename})
+    if missing_hrefs:
+        preview = ", ".join(missing_hrefs[:3])
+        raise ValueError(
+            "Refusing to write blog/index.html because existing article links would be removed. "
+            f"missing={preview}"
+        )
 
     if updated == original:
         return False
