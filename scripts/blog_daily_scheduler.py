@@ -834,12 +834,15 @@ def post_date_from_article(article_html: str) -> date:
     return date.min
 
 
-def reorder_index_articles(index_html: str) -> str:
-    marker = '<section class="list" aria-label="Latest blog posts">'
-    marker_idx = index_html.find(marker)
-    if marker_idx < 0:
+def find_latest_posts_section(index_html: str) -> tuple[int, int, int]:
+    section_match = re.search(
+        r"<section\b(?=[^>]*\bclass=\"list\")(?=[^>]*\baria-label=\"Latest blog posts\")[^>]*>",
+        index_html,
+    )
+    if section_match is None:
         raise ValueError("Cannot find post list section in blog/index.html")
 
+    marker_idx = section_match.start()
     section_start = index_html.find("\n", marker_idx)
     if section_start < 0:
         raise ValueError("Cannot find post list insertion point in blog/index.html")
@@ -848,6 +851,11 @@ def reorder_index_articles(index_html: str) -> str:
     if section_end < 0:
         raise ValueError("Cannot find end of post list section in blog/index.html")
 
+    return marker_idx, section_start, section_end
+
+
+def reorder_index_articles(index_html: str) -> str:
+    _, section_start, section_end = find_latest_posts_section(index_html)
     section_body = index_html[section_start + 1 : section_end]
     article_matches = list(re.finditer(r"      <article>.*?      </article>\n?", section_body, re.DOTALL))
     if not article_matches:
@@ -907,15 +915,7 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
     updated = original
 
     if post_href not in updated:
-        marker = "<section class=\"list\" aria-label=\"Latest blog posts\">"
-        marker_idx = updated.find(marker)
-        if marker_idx < 0:
-            raise ValueError("Cannot find post list section in blog/index.html")
-
-        insert_at = updated.find("\n", marker_idx)
-        if insert_at < 0:
-            raise ValueError("Cannot find insertion point in blog/index.html")
-
+        _, insert_at, _ = find_latest_posts_section(updated)
         article_html = render_index_article(post)
         updated = updated[: insert_at + 1] + article_html + updated[insert_at + 1 :]
     else:
