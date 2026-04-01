@@ -1244,7 +1244,7 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
           data-briefing-calendar-trigger
         >
           <span data-briefing-calendar-trigger-label>{display_date}</span>
-          <span aria-hidden="true">▾</span>
+          <span aria-hidden="true">&#x25BE;</span>
         </button>
         <div class="va-briefing-calendar" data-briefing-calendar-panel hidden>
           <div class="va-briefing-calendar-head">
@@ -1254,7 +1254,7 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
               aria-label="Show previous month"
               data-briefing-calendar-prev
             >
-              ‹
+              &#x2039;
             </button>
             <div class="va-briefing-calendar-head-selectors">
               <label class="va-briefing-calendar-select-wrap">
@@ -1272,7 +1272,7 @@ def build_section_html(entries: list[RenderEntry], refreshed_at: datetime) -> st
               aria-label="Show next month"
               data-briefing-calendar-next
             >
-              ›
+              &#x203A;
             </button>
           </div>
           <div class="va-briefing-calendar-weekdays" aria-hidden="true">

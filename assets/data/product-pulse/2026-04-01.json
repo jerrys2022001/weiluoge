@@ -1,10 +1,66 @@
 {
   "date": "2026-04-01",
-  "refreshed_at": "2026-04-01T08:30:02.103697+08:00",
+  "refreshed_at": "2026-04-01T12:51:52.430562+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Apple confirms iOS 18 update to patch DarkSword exploit for users who haven't upgraded to iOS 26",
+      "link": "https://9to5mac.com/2026/03/31/apple-confirms-ios-18-update-to-patch-darksword-exploit-for-users-who-havent-upgraded-to-ios-26/",
+      "summary": "According to Wired , Apple will release an iOS 18 update on Wednesday morning to patch vulnerabilities exploited by the DarkSword hack. Here's what that means.",
+      "published_at": "2026-04-01T03:55:43+00:00",
+      "display_date": "APR 01",
+      "image_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee.webp"
+    },
+    {
+      "index": 2,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "Computing would be totally different had Apple not been formed 50 years ago, today",
+      "link": "https://appleinsider.com/articles/26/04/01/apple-was-founded-44-years-ago-on-april-1-1976?utm_source=rss",
+      "summary": "The Apple of 1976 is unrecognizable compared to today's gigantic corporation, and yet key early decisions by Steve Jobs , Steve Wozniak, and more, are still having their effect today, half a century later. Steve Jobs with the original...",
+      "published_at": "2026-04-01T03:07:17+00:00",
+      "display_date": "APR 01",
+      "image_src": "/assets/images/home-briefing/2026-03-21/apple-9842cf9309f3af43.jpg",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-9842cf9309f3af43.jpg"
+    },
+    {
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Apple TV: Brandon Sanderson reveals Mistborn pre-production details",
+      "link": "https://9to5mac.com/2026/03/31/apple-tv-brandon-sanderson-reveals-mistborn-pre-production-details/",
+      "summary": "In a video released today to his YouTube channel, Brandon Sanderson shared an exciting update on the progress of the Mistborn adaptation for Apple TV . Here are the details.",
+      "published_at": "2026-04-01T03:05:37+00:00",
+      "display_date": "APR 01",
+      "image_src": "/assets/images/home-briefing/2026-03-30/apple-3dd9eff52e50f910.jpg",
+      "fallback_src": "/assets/images/home-briefing/2026-03-30/apple-3dd9eff52e50f910.jpg"
+    },
+    {
+      "index": 4,
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "TechCrunch",
+      "source_url": "https://techcrunch.com/",
+      "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project",
+      "link": "https://techcrunch.com/2026/03/31/mercor-says-it-was-hit-by-cyberattack-tied-to-compromise-of-open-source-litellm-project/",
+      "summary": "The AI recruiting startup confirmed a security incident after an extortion hacking crew took credit for stealing data from the company's systems.",
+      "published_at": "2026-04-01T01:42:59+00:00",
+      "display_date": "APR 01",
+      "image_src": "/assets/images/home-briefing/2026-04-01/industry-d72a12c0d4d9f9ff.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-20/industry-8bf2e4864028542e.webp"
+    },
+    {
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -18,7 +74,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-03-26/apple-04d77e632f8f1dad.webp"
     },
     {
-      "index": 2,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -29,10 +85,10 @@
       "published_at": "2026-03-31T23:18:24+00:00",
       "display_date": "APR 01",
       "image_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-28/apple-23f7ccfde7119d55.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-20/apple-473e9a6bc8606319.webp"
     },
     {
-      "index": 3,
+      "index": 7,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -43,63 +99,7 @@
       "published_at": "2026-03-31T22:46:25+00:00",
       "display_date": "APR 01",
       "image_src": "/assets/images/home-briefing/2026-04-01/industry-862e52200f70b95b.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-26/industry-5f6cc0c0dc5e531f.webp"
-    },
-    {
-      "index": 4,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "Apple among US firms Iran labels 'terrorist companies' as it threatens attacks",
-      "link": "https://9to5mac.com/2026/03/31/apple-among-us-firms-iran-labels-terrorist-companies-as-it-threatens-attacks/",
-      "summary": "As reported by CBS News , Iran's Islamic Revolutionary Guard Corps (IRGC) vowed to start attacking US-based tech and finance companies in the Mideast starting tomorrow. Here are the details.",
-      "published_at": "2026-03-31T22:35:29+00:00",
-      "display_date": "APR 01",
-      "image_src": "/assets/images/home-briefing/2026-04-01/apple-5fc49674876feb61.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-eb2e8ca783027bd0.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Apple CEO Tim Cook delivered speech & rung Nasdaq Opening Bell Tuesday",
-      "link": "https://appleinsider.com/articles/26/03/31/apple-ceo-tim-cook-delivered-speech-rung-nasdaq-opening-bell-tuesday?utm_source=rss",
-      "summary": "As a part of the ongoing 50th anniversary celebration, Apple was invited to remotely ring in the Nasdaq Opening Bell. CEO Tim Cook did the honors and gave a speech from Apple Park. Apple's executive team gathered for the opening bell....",
-      "published_at": "2026-03-31T22:14:33+00:00",
-      "display_date": "APR 01",
-      "image_src": "/assets/images/home-briefing/2026-03-17/apple-5d63a382dfa93bf7.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-17/apple-5d63a382dfa93bf7.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "Apple Releases First Firmware Update for AirTag 2",
-      "link": "https://www.macrumors.com/2026/03/31/airtag-2-first-firmware-update/",
-      "summary": "Apple today released new firmware for its second-generation AirTag item trackers. The firmware has a 3.0.45 version number, up from 3.0.41, and it is the first firmware update that Apple has provided for the ‌AirTag‌ 2 that launched in...",
-      "published_at": "2026-03-31T15:08:59-07:00",
-      "display_date": "APR 01",
-      "image_src": "/assets/images/home-briefing/2026-04-01/apple-1013753ee11cfcdf.jpg",
-      "fallback_src": "/assets/images/home-briefing/2026-03-19/apple-7529aeeea7bf7e42.webp"
-    },
-    {
-      "index": 7,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Robotaxi companies refuse to say how often their AVs need remote help",
-      "link": "https://techcrunch.com/2026/03/31/robotaxi-companies-refuse-to-say-how-often-their-avs-need-remote-help/",
-      "summary": "Aurora, May Mobility, Motional, Nuro, Tesla, Waymo, and Zoox all refused to cough up a number during Senator Ed Markey's recent investigation.",
-      "published_at": "2026-03-31T21:35:51+00:00",
-      "display_date": "APR 01",
-      "image_src": "/assets/images/home-briefing/2026-04-01/industry-d01aa35b675ce01a.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-0924579c7bc10971.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-19/industry-0a14aadc55b94c0b.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-03-31T21:00:21+00:00",
       "display_date": "APR 01",
       "image_src": "/assets/images/home-briefing/2026-04-01/semiconductor-c2589ab54f080fe0.jpg",
-      "fallback_src": "/assets/images/home-briefing/2026-03-22/semiconductor-e33776c4aa184d1b.jpg"
+      "fallback_src": "/assets/images/home-briefing/2026-03-20/semiconductor-93395c4b8ccabe41.png"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-03-25T21:26:00+00:00",
       "display_date": "MAR 26",
       "image_src": "/assets/images/home-briefing/2026-04-01/bluetooth-e5a6a75c9b6ce366.jpg",
-      "fallback_src": "/assets/images/home-briefing/2026-03-16/bluetooth-a91093790090f50b.png"
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/bluetooth-38664e01aa81161b.jpg"
     }
   ]
 }
