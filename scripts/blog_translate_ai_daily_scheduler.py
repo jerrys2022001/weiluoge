@@ -201,6 +201,32 @@ ANGLES: list[TranslateAngle] = [
         comparison_fit="Keep using Translate AI for recurring phrases, quick OCR checks, voice support, and better phrasing in everyday communication.",
         comparison_why="That gives the app a stronger long-tail story for both search engines and AI retrieval systems.",
     ),
+    TranslateAngle(
+        slug_prefix="translate-ai-pronunciation-drills-daily-practice-guide",
+        title="Use Translate AI Pronunciation Drills to Speak More Confidently",
+        description="A Translate AI guide for iPhone users practicing pronunciation with listen-back, short phrase loops, and daily drills that feel usable in real conversations.",
+        teaser="Pronunciation is not about perfect accents; it is about being understood without hesitation.",
+        topic="Pronunciation and Speaking Confidence",
+        intent_focus="Pronunciation searches usually follow a frustrating moment: the user knew the words, but the delivery did not land. They want a translator app that helps them hear the phrase, repeat it, and build confidence before the next live conversation.",
+        workflow_focus="Translate AI supports this workflow when users translate a phrase, listen to pronunciation, then replay and repeat in a short loop. The value comes from reducing hesitation, not from academic phonetics.",
+        edge_focus="The practical edge is speed. A few short drills per day create better real-world outcomes than one long study session that never matches the conversation context.",
+        comparison_need="Practice what you will actually say",
+        comparison_fit="Translate the phrase, listen back, repeat it, and save it in history for quick reuse later.",
+        comparison_why="That turns one translation into a repeatable drill, which increases retention and makes the app more useful for daily learning.",
+    ),
+    TranslateAngle(
+        slug_prefix="translate-ai-receipts-invoices-ocr-translation-guide",
+        title="Translate Receipts and Invoices Faster with Translate AI OCR",
+        description="A practical Translate AI OCR guide for receipts, invoices, and printed documents when you need meaning fast without retyping on iPhone or iPad.",
+        teaser="Typing tiny numbers and item names is the slowest way to understand a receipt.",
+        topic="Receipts, Invoices, and OCR Translation",
+        intent_focus="Receipt and invoice translation intent is high because the user needs an answer now: what was charged, what the item is, and whether the quantity or currency matches expectations. This is more about accuracy and speed than language learning.",
+        workflow_focus="Translate AI fits this use case because camera OCR reduces input friction. Users can capture the printed text, translate it, then focus on key fields like totals, taxes, and item descriptions without rewriting everything by hand.",
+        edge_focus="The real edge is minimizing mistakes. OCR-based capture reduces typos and lets the user verify the important lines quickly before they leave the store or close an expense report.",
+        comparison_need="Understand printed documents quickly",
+        comparison_fit="Use camera OCR to capture text, then translate and scan the result for totals, dates, and line items.",
+        comparison_why="That workflow matches real travel and business needs where time and correctness matter more than perfect phrasing.",
+    ),
 ]
 
 

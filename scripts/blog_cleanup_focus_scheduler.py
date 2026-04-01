@@ -142,6 +142,16 @@ ANGLES: list[CleanupAngle] = [
         second_focus="Start with duplicate photos, then large videos, then screenshots, then WhatsApp media, and only then inspect system storage. This sequence clears space while protecting high-value content.",
         challenge_focus="The challenge is hidden risk. People usually delete apps or mixed media too early, when a more structured review could recover space with far less regret.",
     ),
+    CleanupAngle(
+        slug_prefix="hidden-downloads-iphone-storage-audit-guide",
+        title="Audit Hidden Downloads Before iPhone Storage Fills Up with AI Cleanup PRO",
+        description="Use AI Cleanup PRO to audit hidden downloads, stale files, and saved attachments before iPhone storage pressure turns into an emergency cleanup session.",
+        teaser="Downloads are small until they are not, and they often become the category users forget to review until storage warnings arrive.",
+        topic="Hidden Downloads Audit",
+        first_focus="Hidden downloads, exported files, and saved attachments often sit outside the photo-first cleanup habit. Auditing them early creates a safer buffer before users start deleting more emotional categories like photos and videos.",
+        second_focus="A strong cleanup order can still include downloads as a targeted review after duplicate photos and large videos. That puts forgotten files into the routine without replacing the highest-impact categories.",
+        challenge_focus="The hard part is visibility. Users remember camera roll clutter, but not the PDFs, ZIP files, exported media, and duplicated attachments scattered across messaging apps and Files.",
+    ),
 ]
 
 

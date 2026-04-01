@@ -133,6 +133,82 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
+    if "AI Cleanup PRO" in html and "Phone cleanup action areas" in html:
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        first_match = re.search(
+            r"<h2>What should users clean first\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if first_match:
+            focus_parts.append(first_match.group(2))
+
+        order_match = re.search(
+            r"<h2>How does this fit the five-step cleanup order\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if order_match:
+            focus_parts.append(order_match.group(2))
+
+        challenge_match = re.search(
+            r"<h2>What makes cleanup fail in real life\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if challenge_match:
+            focus_parts.append(challenge_match.group(2))
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS
+        )
+
+    if "Bluetooth Explorer" in html and "Bluetooth protocol layers and applications" in html:
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        interpret_match = re.search(
+            r"<h2>How should teams interpret this protocol area\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if interpret_match:
+            focus_parts.append(interpret_match.group(2))
+
+        products_match = re.search(
+            r"<h2>Where does it matter in real products\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if products_match:
+            focus_parts.append(products_match.group(2))
+
+        deployment_match = re.search(
+            r"<h2>What makes deployment difficult in 2026\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if deployment_match:
+            focus_parts.append(deployment_match.group(2))
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS
+        )
+
     if "<h2>What Happened</h2>" in html:
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)

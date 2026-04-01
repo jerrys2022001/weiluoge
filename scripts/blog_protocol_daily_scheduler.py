@@ -126,6 +126,26 @@ ANGLES: list[ProtocolAngle] = [
         application_focus="Wearables, controllers, test instruments, and tracking devices all need different performance profiles. The best products optimize for the workflow, not for one benchmark.",
         challenge_focus="Users expect instant response and long battery life at the same time. Protocol tuning needs to reflect the highest-value task, then document the compromise clearly.",
     ),
+    ProtocolAngle(
+        slug_prefix="ble-mtu-negotiation-debugging-guide",
+        title="BLE MTU Negotiation Explained with Bluetooth Explorer",
+        description="A practical BLE MTU negotiation guide covering what MTU is, why negotiation fails, and how MTU choices affect throughput, latency, and reliability in real apps.",
+        teaser="MTU is a small number that quietly decides whether BLE data feels smooth or fragile.",
+        topic="BLE MTU Negotiation",
+        protocol_focus="MTU sets the effective payload size for many ATT operations. Negotiation behavior varies across platforms, and incorrect assumptions can lead to truncated data, unexpected fragmentation, or brittle write patterns.",
+        application_focus="Teams benefit when they treat MTU as a product lever: larger payloads can reduce overhead for sensor batches, while smaller and predictable payloads can improve reliability for constrained devices.",
+        challenge_focus="The hard part is that MTU problems look like random bugs. They show up as timeouts, partial values, or intermittent failures that only appear on certain phones or OS versions.",
+    ),
+    ProtocolAngle(
+        slug_prefix="bluetooth-att-gatt-l2cap-data-flow-guide",
+        title="ATT vs GATT vs L2CAP: Bluetooth Data Flow Explained with Bluetooth Explorer",
+        description="A 2026 Bluetooth protocol guide explaining the roles of ATT, GATT, and L2CAP, common misconceptions, and how the layers map to real device behavior.",
+        teaser="When teams confuse GATT with transport, debugging becomes guesswork.",
+        topic="ATT vs GATT vs L2CAP",
+        protocol_focus="ATT defines the attribute protocol operations, while GATT is the profile conventions layered on top. L2CAP provides the channel transport underneath. Keeping those roles distinct is the difference between a clean mental model and cargo-cult troubleshooting.",
+        application_focus="A clearer model helps teams design characteristics, notifications, and batching strategies that behave consistently across phones and test tools. It also reduces support confusion when users report 'GATT problems' that are actually transport timing issues.",
+        challenge_focus="This topic is tricky because many documents oversimplify the stack. Good product guidance needs to explain the layers without turning the post into a spec rewrite, and then connect the layers back to what teams should test next.",
+    ),
 ]
 
 
