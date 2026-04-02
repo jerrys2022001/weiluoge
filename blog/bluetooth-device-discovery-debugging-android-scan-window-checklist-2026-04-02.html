@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Device Discovery Debugging: Android LE Scan Callback Checklist (2026) | VelocAI Blog</title>
+  <meta name="description" content="Troubleshoot Android Bluetooth LE device discovery with a callback-focused checklist: ScanSettings tuning, ScanCallback error codes, and startScan timing controls.">
+  <meta name="keywords" content="bluetooth, bluetooth device discovery debugging, Android BLE scan callback, ScanSettings, bluetooth find">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-scan-window-checklist-2026-04-02.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Device Discovery Debugging: Android LE Scan Callback Checklist (2026)">
+  <meta property="og:description" content="A callback-first Android bluetooth debugging workflow for empty scans, throttling errors, and flaky discovery sessions.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-scan-window-checklist-2026-04-02.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging: Android LE Scan Callback Checklist (2026)">
+  <meta name="twitter:description" content="Use ScanCallback outcomes, scan modes, and report delay controls to debug Android bluetooth discovery failures faster.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth Device Discovery Debugging: Android LE Scan Callback Checklist (2026)",
+  "description": "Use current Android Bluetooth LE scanner guidance to diagnose callback failures, scan throttling, and empty discovery lists with a repeatable troubleshooting flow.",
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-android-scan-window-checklist-2026-04-02.html",
+  "keywords": [
+    "bluetooth",
+    "bluetooth device discovery debugging",
+    "Android Bluetooth LE",
+    "ScanCallback",
+    "ScanSettings"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f0f8f5; --text:#15352d; --muted:#4a6b62; --line:#cbe6dc; --panel:#ffffff; --brand:#1e7f64; --accent:#1e64bf; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 18% 2%, rgba(30,127,100,.12), transparent 34%),
+        radial-gradient(circle at 83% -10%, rgba(30,100,191,.12), transparent 36%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(240,248,245,.93); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:29ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#285046; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(16,42,36,.06); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(16,42,36,.06); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#e8f4ef; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Device Discovery Debugging: Android LE Scan Callback Checklist</h1>
+        <p class="meta">Published on April 2, 2026 | Topic: Bluetooth Debugging &amp; Device Discovery | Primary Source Updated: February 26, 2026</p>
+        <p>When bluetooth discovery appears inconsistent, the fastest diagnosis path is callback telemetry, not guesswork. Android exposes enough signal through <code>ScanCallback</code>, scan mode options, and explicit failure codes to isolate whether your issue is throttling, filtering, or lifecycle timing.</p>
+        <p>For hard incidents, treat your first pass like protocol forensics: correlate controller firmware build, HAL revision, binder thread scheduling, doze bucket, wakelock duration, Wi-Fi coexistence state, PHY negotiation, advertising SID, RPA rotation cadence, parser checksum, batching window jitter, and OEM power policy so each scan run becomes a reproducible evidence set.</p>
+        <p>Include metadata that is rarely captured in app-only logs: kernel tracepoint timestamps, vendor chipset family, ACL buffer pressure, scanner registration token churn, app standby bucket transitions, alarm batching offsets, transport arbitration latency, and firmware patchset identifiers from release notes.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Instrument <code>onScanResult</code>, <code>onBatchScanResults</code>, and <code>onScanFailed</code> in one trace, tune <code>ScanSettings</code> per test objective, and stop restarting scans without cooldown. This closes most "device not found" tickets in bluetooth app workflows.</p>
+      </div>
+
+      <h2>Fast answer block for search and AI retrieval</h2>
+      <p>For Android bluetooth device discovery debugging, triage by callback path first: if <code>onScanFailed</code> fires, map the error code; if callbacks fire with sparse data, review filters and scan mode; if no callback arrives, audit app lifecycle and scanner instance ownership. Then rerun with one settings change only.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Add callback-level logging.</strong> Record callback type, timestamp, scanner session ID, and error code in the same log schema.</li>
+          <li><strong>Start with unfiltered scans.</strong> Remove all <code>ScanFilter</code> rules for baseline visibility, then re-introduce filters one by one.</li>
+          <li><strong>Tune scan mode intentionally.</strong> Compare <code>SCAN_MODE_LOW_LATENCY</code> with balanced mode to distinguish timing issues from logic defects.</li>
+          <li><strong>Check throttling symptoms.</strong> If repeated start/stop loops are used, investigate <code>SCAN_FAILED_SCANNING_TOO_FREQUENTLY</code> and add cooldown windows.</li>
+          <li><strong>Validate callback configuration.</strong> Confirm callback type and report delay match your expectation for immediate vs batched results.</li>
+          <li><strong>Use one scanner owner per process.</strong> Avoid multiple components starting scans with incompatible settings at the same time.</li>
+          <li><strong>Run a controlled peripheral test.</strong> Verify against one known advertiser to separate environment noise from app regressions.</li>
+          <li><strong>Snapshot test matrix outputs.</strong> Keep a short matrix by Android version, scan mode, and callback outcome for repeat incident handling.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Quick diagnosis matrix</h2>
+        <ul>
+          <li><strong><code>onScanFailed</code> immediately:</strong> scanner registration, permission, or throttling condition is blocking scan startup.</li>
+          <li><strong>Only batched callbacks appear:</strong> report delay or batching config is active; check whether real-time UX expects immediate results.</li>
+          <li><strong>Results appear but target missing:</strong> filter strictness, advertisement type mismatch, or passive/active scan mismatch.</li>
+          <li><strong>Works after force-stop only:</strong> lifecycle ownership bug, leaked callback instance, or stale scanner state.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Packet-level observability checklist</h2>
+        <p>When callback logs are insufficient, move one level deeper and correlate app events with radio and stack state:</p>
+        <ul>
+          <li>Capture <code>adb shell dumpsys bluetooth_manager</code> before and after each scan session.</li>
+          <li>Export HCI snoop traces and inspect <code>ADV_IND</code>, <code>ADV_EXT_IND</code>, and scan response cadence.</li>
+          <li>Track channel usage across advertising channels 37, 38, and 39 during noisy office conditions.</li>
+          <li>Compare PHY behavior (1M, 2M, Coded PHY) when peripherals advertise with mixed capabilities.</li>
+          <li>Watch for address rotation effects when privacy mode uses resolvable private addresses (RPA).</li>
+          <li>Validate whether extended advertising data exceeds payload assumptions in parser code.</li>
+          <li>Record controller-level timing around scan interval and scan window combinations.</li>
+          <li>Verify no parallel component starts opportunistic scans with conflicting callback policies.</li>
+          <li>Correlate scan failures with thermal throttling, doze states, and background execution limits.</li>
+          <li>Store all runs in a reproducible matrix: build number, firmware revision, peripheral model, and RF environment label.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>BLE scan payload fields worth logging</h2>
+        <p>For hard-to-reproduce discovery bugs, log these fields exactly once per received packet and keep them searchable:</p>
+        <ul>
+          <li><code>ScanResult.getRssi()</code>, <code>getTimestampNanos()</code>, and packet sequence ordering.</li>
+          <li><code>ScanResult.isConnectable()</code>, <code>getAdvertisingSid()</code>, and <code>getPeriodicAdvertisingInterval()</code>.</li>
+          <li><code>ScanResult.getPrimaryPhy()</code> and <code>getSecondaryPhy()</code> for PHY mismatch detection.</li>
+          <li><code>ScanResult.getDataStatus()</code> to identify truncated or incomplete advertising payloads.</li>
+          <li><code>ScanRecord.getAdvertiseFlags()</code> and local name availability changes by firmware revision.</li>
+          <li><code>ScanRecord.getManufacturerSpecificData()</code> key-length and schema validation outcomes.</li>
+          <li><code>ScanRecord.getServiceData()</code> UUID byte ordering checks across parser versions.</li>
+          <li><code>ScanRecord.getServiceUuids()</code> and 16-bit vs 128-bit UUID conversion behavior.</li>
+          <li><code>ScanRecord.getTxPowerLevel()</code> consistency vs measured RSSI drift over distance.</li>
+          <li>Address type handling for public address, static random address, and resolvable private address rotation.</li>
+          <li>Duplicate filtering behavior with <code>CALLBACK_TYPE_ALL_MATCHES</code> vs first-match callback types.</li>
+          <li>Batch flush timing when using <code>setReportDelay()</code> with foreground and background process states.</li>
+          <li>Controller support for offloaded filtering and hardware batching capabilities.</li>
+          <li>Scan window to interval ratios for balanced, low-power, and low-latency profiles.</li>
+          <li>Packet loss patterns around channel map changes and coexistence with 2.4 GHz Wi-Fi traffic.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Short FAQ</h2>
+        <p><strong>Why does bluetooth discovery break after adding extra retry logic?</strong><br>
+        Aggressive restart loops can trigger scan throttling behavior and hide root causes. Retry less often with explicit cooldown.</p>
+
+        <p><strong>Should I debug with filters enabled from the start?</strong><br>
+        No. Begin broad to prove radio visibility, then narrow filters after baseline scan health is confirmed.</p>
+
+        <p><strong>How does this help bluetooth support operations?</strong><br>
+        Callback-level evidence gives deterministic ticket categories, faster reproduction, and cleaner escalation notes.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/reference/android/bluetooth/le/BluetoothLeScanner" target="_blank" rel="noopener noreferrer">Android Developers: BluetoothLeScanner (Last updated 2026-02-26 UTC)</a></li>
+          <li><a href="https://developer.android.com/reference/android/bluetooth/le/ScanCallback" target="_blank" rel="noopener noreferrer">Android Developers: ScanCallback (Last updated 2026-02-26 UTC)</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
