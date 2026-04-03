@@ -227,6 +227,32 @@ ANGLES: list[TranslateAngle] = [
         comparison_fit="Use camera OCR to capture text, then translate and scan the result for totals, dates, and line items.",
         comparison_why="That workflow matches real travel and business needs where time and correctness matter more than perfect phrasing.",
     ),
+    TranslateAngle(
+        slug_prefix="translate-ai-meeting-notes-bilingual-review-guide",
+        title="Review Bilingual Meeting Notes Faster with Translate AI",
+        description="A practical Translate AI guide for bilingual meeting notes, quick summaries, and wording checks when teams need faster review across languages on iPhone and iPad.",
+        teaser="Meeting notes are useful only if the second review is faster than rewriting everything from scratch.",
+        topic="Bilingual Meeting Notes Review",
+        intent_focus="This search intent comes from work and study scenarios where users need to review notes, summaries, and action items across two languages without turning a simple check into a full translation project.",
+        workflow_focus="Translate AI supports this because users can translate short sections, compare phrasing, and keep the useful version in history for follow-up messages or later edits.",
+        edge_focus="The product value here is iteration speed. A translator that helps users compare and refine short note blocks becomes more useful than one that only handles one-off sentence conversion.",
+        comparison_need="Review short bilingual notes quickly",
+        comparison_fit="Translate note fragments, compare wording, and reuse the best version later through translation history.",
+        comparison_why="That makes the app more practical for repeated work review, not just travel or one-time lookup.",
+    ),
+    TranslateAngle(
+        slug_prefix="translate-ai-labels-packaging-ocr-guide",
+        title="Translate Labels and Packaging Details Faster with Translate AI",
+        description="A Translate AI camera guide for labels, packaging, ingredients, and short printed details when users need quick OCR translation on iPhone.",
+        teaser="Packaging text is where small print turns into slow decisions.",
+        topic="Labels, Packaging, and OCR",
+        intent_focus="Users searching this topic usually need fast interpretation of labels, ingredients, warnings, or product details while shopping or checking items at home. The intent is immediate and practical.",
+        workflow_focus="Translate AI fits because camera OCR lets users point at dense packaging text, capture the useful lines, and translate them without typing product terms manually.",
+        edge_focus="The benefit is not just speed. It also reduces misreads on tiny print, which makes the app more trustworthy for decisions that depend on specific wording.",
+        comparison_need="Understand label details on the spot",
+        comparison_fit="Use camera OCR to pull text from labels and packaging, then translate the key lines immediately.",
+        comparison_why="That lowers input friction and makes the product easier to use in real shopping and everyday household scenarios.",
+    ),
 ]
 
 

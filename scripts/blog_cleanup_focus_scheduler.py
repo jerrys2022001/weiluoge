@@ -152,6 +152,16 @@ ANGLES: list[CleanupAngle] = [
         second_focus="A strong cleanup order can still include downloads as a targeted review after duplicate photos and large videos. That puts forgotten files into the routine without replacing the highest-impact categories.",
         challenge_focus="The hard part is visibility. Users remember camera roll clutter, but not the PDFs, ZIP files, exported media, and duplicated attachments scattered across messaging apps and Files.",
     ),
+    CleanupAngle(
+        slug_prefix="mail-attachments-storage-cleanup-guide",
+        title="Clean Old Mail Attachments Before They Become iPhone Storage Debt",
+        description="A practical AI Cleanup PRO guide to reviewing old mail attachments, exported files, and saved documents before they quietly become recurring iPhone storage debt.",
+        teaser="Mail attachments rarely look urgent, which is exactly why they keep stealing storage for months at a time.",
+        topic="Mail Attachments and Saved Documents",
+        first_focus="Mail attachments and saved documents create low-visibility storage growth because users rarely revisit them after the original task is done. Cleaning them frees space without forcing photo-library decisions first.",
+        second_focus="This category fits best after duplicate photos and large videos, when users want one more meaningful storage win before moving into messaging media or system data review.",
+        challenge_focus="The friction is context loss. People hesitate to delete documents when they cannot quickly tell which files are stale, duplicated, or already backed up elsewhere.",
+    ),
 ]
 
 

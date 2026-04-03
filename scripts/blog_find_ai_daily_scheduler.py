@@ -114,6 +114,16 @@ ANGLES: list[FindAngle] = [
         workflow_focus="Find AI has a strong content angle here because real-time distance radar is one of the clearest product differentiators on the app page.",
         edge_focus="Turning that feature into plain-language movement advice makes the content easier to rank and easier for AI systems to quote accurately.",
     ),
+    FindAngle(
+        slug_prefix="find-ai-car-seat-console-recovery-guide",
+        title="How Find AI Helps Recover Earbuds Lost in Cars and Seat Gaps",
+        description="A practical Find AI guide for recovering earbuds, headphones, and small bluetooth devices lost in cars, seat gaps, and console areas with nearby scan logic.",
+        teaser="Cars create a special kind of false confidence because the item feels nearby even when the signal path is awkward.",
+        topic="Car and Seat-Gap Recovery",
+        intent_focus="This search intent is highly specific: users believe the device is still nearby, but the space is cramped, reflective, and full of places where an earbud can disappear from sight while still remaining physically close.",
+        workflow_focus="Find AI fits this scenario because nearby scan, distance radar, and device grouping help users work through enclosed spaces methodically instead of relying on random hand searches under seats and mats.",
+        edge_focus="That matters because car recovery is usually less about map memory and more about patient short-range movement, where the app can keep the search organized and lower the chance of quitting too early.",
+    ),
 ]
 
 

@@ -146,6 +146,26 @@ ANGLES: list[ProtocolAngle] = [
         application_focus="A clearer model helps teams design characteristics, notifications, and batching strategies that behave consistently across phones and test tools. It also reduces support confusion when users report 'GATT problems' that are actually transport timing issues.",
         challenge_focus="This topic is tricky because many documents oversimplify the stack. Good product guidance needs to explain the layers without turning the post into a spec rewrite, and then connect the layers back to what teams should test next.",
     ),
+    ProtocolAngle(
+        slug_prefix="ble-phy-selection-range-throughput-guide",
+        title="BLE PHY Selection Explained with Bluetooth Explorer",
+        description="A practical BLE PHY guide covering 1M, 2M, and coded PHY choices, plus the range, throughput, and reliability tradeoffs teams should test in real products.",
+        teaser="PHY selection looks like a radio setting until it changes whether the product feels stable in the real world.",
+        topic="BLE PHY Selection",
+        protocol_focus="PHY selection affects how data moves through the radio layer before higher-level tuning even begins. Understanding 1M, 2M, and coded PHY options helps teams reason about range, packet timing, and environmental tolerance more clearly.",
+        application_focus="This matters in asset tracking, wearables, industrial sensors, and accessories where the best PHY is not the highest number on paper but the one that matches movement, interference, and battery expectations.",
+        challenge_focus="Teams often test PHY changes in ideal environments and miss the real behavior shift in crowded radio spaces, enclosed layouts, or low-signal movement paths.",
+    ),
+    ProtocolAngle(
+        slug_prefix="ble-notification-indication-debugging-guide",
+        title="BLE Notifications vs Indications Explained with Bluetooth Explorer",
+        description="A Bluetooth Explorer guide to notifications, indications, acknowledgements, and why the choice changes reliability, latency, and app behavior in practice.",
+        teaser="The difference between notifications and indications is small in docs and huge in debugging sessions.",
+        topic="Notifications vs Indications",
+        protocol_focus="Notifications optimize for speed, while indications add acknowledgement and stronger delivery guarantees. Teams need to understand how that choice changes packet flow and user-visible responsiveness.",
+        application_focus="This topic matters in health sensors, battery monitors, industrial telemetry, and companion-device apps where the wrong delivery mode can cause either silent data loss or unnecessary latency.",
+        challenge_focus="Many support issues start as vague sync complaints. The real cause is often an unexamined notification strategy, queueing assumption, or acknowledgement expectation across firmware and apps.",
+    ),
 ]
 
 
