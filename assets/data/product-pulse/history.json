@@ -1,7 +1,13 @@
 {
-  "latest_date": "2026-04-09",
-  "updated_at": "2026-04-09T08:30:03.030153+08:00",
+  "latest_date": "2026-04-10",
+  "updated_at": "2026-04-10T08:40:02.704421+08:00",
   "entries": [
+    {
+      "date": "2026-04-10",
+      "path": "/assets/data/product-pulse/2026-04-10.json",
+      "item_count": 10,
+      "refreshed_at": "2026-04-10T08:40:02.704421+08:00"
+    },
     {
       "date": "2026-04-09",
       "path": "/assets/data/product-pulse/2026-04-09.json",
