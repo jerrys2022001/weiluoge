@@ -16,7 +16,7 @@ import sys
 import tempfile
 from dataclasses import dataclass
 from datetime import date, datetime
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 
 from site_tools import SEARCH_INDEX_REL, build_site_search_index, inject_site_tools_into_file
@@ -815,6 +815,40 @@ def render_index_article(post: PostMeta) -> str:
     )
 
 
+def normalize_index_text(value: str) -> str:
+    return re.sub(r"\s+", " ", unescape(value)).strip()
+
+
+def trim_index_teaser(value: str, limit: int = 180) -> str:
+    normalized = normalize_index_text(value)
+    if len(normalized) <= limit:
+        return normalized
+    clipped = normalized[: limit - 3].rsplit(" ", 1)[0].strip()
+    return (clipped or normalized[: limit - 3].strip()) + "..."
+
+
+def extract_meta_content(html: str, *, name: str | None = None, property_name: str | None = None) -> str | None:
+    if name is not None:
+        pattern = rf'<meta[^>]+name="{re.escape(name)}"[^>]+content="([^"]*)"'
+        match = re.search(pattern, html, re.IGNORECASE)
+        if match:
+            return normalize_index_text(match.group(1))
+    if property_name is not None:
+        pattern = rf'<meta[^>]+property="{re.escape(property_name)}"[^>]+content="([^"]*)"'
+        match = re.search(pattern, html, re.IGNORECASE)
+        if match:
+            return normalize_index_text(match.group(1))
+    return None
+
+
+def extract_tag_text(html: str, tag: str) -> str | None:
+    match = re.search(rf"<{tag}[^>]*>(.*?)</{tag}>", html, re.IGNORECASE | re.DOTALL)
+    if not match:
+        return None
+    cleaned = re.sub(r"<[^>]+>", " ", match.group(1))
+    return normalize_index_text(cleaned)
+
+
 def post_date_from_filename(filename: str) -> date:
     match = re.search(r"-(\d{4}-\d{2}-\d{2})\.html$", filename)
     if not match:
@@ -822,31 +856,64 @@ def post_date_from_filename(filename: str) -> date:
     return date.fromisoformat(match.group(1))
 
 
-def post_date_from_article(article_html: str) -> date:
-    href_match = re.search(r'href="/blog/([^"]+)"', article_html)
-    if href_match:
-        return post_date_from_filename(href_match.group(1))
-
-    published_match = re.search(r"Published:\s*(\d{4}-\d{2}-\d{2})", article_html)
+def published_iso_from_article(path: Path, article_html: str) -> str:
+    published_match = re.search(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"', article_html)
     if published_match:
-        return date.fromisoformat(published_match.group(1))
+        return published_match.group(1)
 
-    return date.min
+    meta_match = re.search(r"Published:\s*(\d{4}-\d{2}-\d{2})", article_html)
+    if meta_match:
+        return meta_match.group(1)
+
+    fallback = post_date_from_filename(path.name)
+    if fallback != date.min:
+        return fallback.isoformat()
+
+    raise ValueError(f"Cannot determine publish date for {path.name}")
 
 
-def extract_index_article_blocks(index_html: str) -> list[str]:
-    _, section_start, section_end = find_latest_posts_section(index_html)
-    section_body = index_html[section_start + 1 : section_end]
-    return re.findall(r"      <article>.*?      </article>\n?", section_body, re.DOTALL)
+def topic_from_article(article_html: str) -> str:
+    topic_match = re.search(r"Topic:\s*([^<\r\n|?]+)", article_html)
+    if topic_match:
+        return normalize_index_text(topic_match.group(1))
+    return "Blog"
 
 
-def extract_index_article_hrefs(index_html: str) -> list[str]:
-    hrefs: list[str] = []
-    for article_html in extract_index_article_blocks(index_html):
-        href_match = re.search(r'href="/blog/([^"]+)"', article_html)
-        if href_match is not None:
-            hrefs.append(href_match.group(1))
-    return hrefs
+def post_meta_from_article_file(path: Path) -> PostMeta:
+    article_html = path.read_text(encoding="utf-8")
+    title = (
+        extract_meta_content(article_html, property_name="og:title")
+        or extract_tag_text(article_html, "h1")
+        or extract_tag_text(article_html, "title")
+        or path.stem
+    )
+    if title.endswith("| VelocAI Blog"):
+        title = title[: -len("| VelocAI Blog")].strip()
+
+    teaser_source = (
+        extract_meta_content(article_html, name="description")
+        or extract_meta_content(article_html, property_name="og:description")
+        or extract_tag_text(article_html, "p")
+        or title
+    )
+
+    return PostMeta(
+        filename=path.name,
+        title=title,
+        description=teaser_source,
+        teaser=trim_index_teaser(teaser_source),
+        topic=topic_from_article(article_html),
+        published_iso=published_iso_from_article(path, article_html),
+    )
+
+
+def collect_blog_index_posts(blog_dir: Path) -> list[PostMeta]:
+    posts = [
+        post_meta_from_article_file(path)
+        for path in blog_dir.glob("*.html")
+        if path.name != "index.html"
+    ]
+    return sorted(posts, key=lambda post: (post.published_iso, post.filename), reverse=True)
 
 
 def find_latest_posts_section(index_html: str) -> tuple[int, int, int]:
@@ -870,20 +937,13 @@ def find_latest_posts_section(index_html: str) -> tuple[int, int, int]:
     return marker_idx, section_start, section_end
 
 
-def reorder_index_articles(index_html: str) -> str:
+def rebuild_index_articles(index_html: str, posts: list[PostMeta]) -> str:
     _, section_start, section_end = find_latest_posts_section(index_html)
-    section_body = index_html[section_start + 1 : section_end]
-    article_matches = list(re.finditer(r"      <article>.*?      </article>\n?", section_body, re.DOTALL))
-    if not article_matches:
-        return index_html
-
-    articles = [match.group(0) for match in article_matches]
-    ordered_articles = sorted(articles, key=post_date_from_article, reverse=True)
-    rebuilt_body = "".join(ordered_articles)
+    rebuilt_body = "".join(render_index_article(post) for post in posts)
     return index_html[: section_start + 1] + rebuilt_body + index_html[section_end:]
 
 
-def update_index_itemlist(index_html: str) -> str:
+def update_index_itemlist(index_html: str, posts: list[PostMeta]) -> str:
     pattern = re.compile(r"(<script type=\"application/ld\+json\">\s*)(\{.*?\})(\s*</script>)", re.DOTALL)
     match = pattern.search(index_html)
     if not match:
@@ -901,69 +961,25 @@ def update_index_itemlist(index_html: str) -> str:
     if item_list_obj is None:
         raise ValueError("Cannot find ItemList in blog/index.html JSON-LD")
 
-    article_matches = list(re.finditer(r"<article>.*?</article>", index_html, re.DOTALL))
-    rebuilt_items: list[dict] = []
-    for idx, article_match in enumerate(article_matches, start=1):
-        article_html = article_match.group(0)
-        href_match = re.search(r'href="/blog/([^"]+)"', article_html)
-        title_match = re.search(r"<h2>(.*?)</h2>", article_html, re.DOTALL)
-        if href_match is None or title_match is None:
-            continue
-        rebuilt_items.append(
-            {
-                "@type": "ListItem",
-                "position": idx,
-                "url": f"{SITE_URL}/blog/{href_match.group(1)}",
-                "name": re.sub(r"\s+", " ", title_match.group(1)).strip(),
-            }
-        )
-
-    item_list_obj["itemListElement"] = rebuilt_items
+    item_list_obj["itemListElement"] = [
+        {
+            "@type": "ListItem",
+            "position": idx,
+            "url": f"{SITE_URL}/blog/{post.filename}",
+            "name": post.title,
+        }
+        for idx, post in enumerate(posts, start=1)
+    ]
 
     rebuilt = json.dumps(payload, ensure_ascii=False, indent=2)
     return index_html[: match.start(2)] + rebuilt + index_html[match.end(2) :]
 
 
-def update_blog_index(index_path: Path, post: PostMeta) -> bool:
+def rebuild_blog_index(index_path: Path) -> bool:
     original = index_path.read_text(encoding="utf-8")
-    original_hrefs = extract_index_article_hrefs(original)
-
-    post_href = f"href=\"/blog/{post.filename}\""
-    updated = original
-
-    if post_href not in updated:
-        _, insert_at, _ = find_latest_posts_section(updated)
-        article_html = render_index_article(post)
-        updated = updated[: insert_at + 1] + article_html + updated[insert_at + 1 :]
-    else:
-        block_matches = list(re.finditer(r"<article>.*?</article>", updated, re.DOTALL))
-        target_match = None
-        for match in block_matches:
-            if f'href="/blog/{post.filename}"' in match.group(0):
-                target_match = match
-                break
-        if target_match is None:
-            raise ValueError(f"Cannot find existing article block for {post.filename} in blog/index.html")
-        updated = updated[: target_match.start()] + render_index_article(post) + updated[target_match.end() :]
-
-    updated = reorder_index_articles(updated)
-    updated = update_index_itemlist(updated)
-    updated_hrefs = extract_index_article_hrefs(updated)
-
-    expected_count = len(original_hrefs) if post.filename in original_hrefs else len(original_hrefs) + 1
-    if len(updated_hrefs) != expected_count:
-        raise ValueError(
-            "Refusing to write blog/index.html because article count changed unexpectedly. "
-            f"before={len(original_hrefs)} after={len(updated_hrefs)} expected={expected_count}"
-        )
-
-    missing_hrefs = sorted(set(original_hrefs) - set(updated_hrefs) - {post.filename})
-    if missing_hrefs:
-        preview = ", ".join(missing_hrefs[:3])
-        raise ValueError(
-            "Refusing to write blog/index.html because existing article links would be removed. "
-            f"missing={preview}"
-        )
+    posts = collect_blog_index_posts(index_path.parent)
+    updated = rebuild_index_articles(original, posts)
+    updated = update_index_itemlist(updated, posts)
 
     if updated == original:
         return False
@@ -971,6 +987,12 @@ def update_blog_index(index_path: Path, post: PostMeta) -> bool:
     index_path.write_text(updated, encoding="utf-8")
     return True
 
+
+def update_blog_index(index_path: Path, post: PostMeta) -> bool:
+    post_path = index_path.parent / post.filename
+    if not post_path.exists():
+        raise ValueError(f"Cannot rebuild blog/index.html because {post.filename} does not exist in {index_path.parent}")
+    return rebuild_blog_index(index_path)
 
 def update_sitemap(sitemap_path: Path, post: PostMeta) -> bool:
     blog_root_url = f"{SITE_URL}/blog/"
