@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
@@ -22,18 +22,19 @@ if (-not $PythonCommand) {
 }
 
 $LogDir = Join-Path $RepoRoot "output\home-brief-logs"
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
 $RunArgs = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --git-commit --git-push --log-dir `"$LogDir`""
-$RunAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $RunArgs
+$RunAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $RunArgs -WorkingDirectory $RepoRoot
 $RunTrigger = New-ScheduledTaskTrigger -Daily -At $PublishAt
 
-Register-ScheduledTask -TaskName $TaskName -Action $RunAction -Trigger $RunTrigger -Force | Out-Null
+Register-ScheduledTask -TaskName $TaskName -Action $RunAction -Trigger $RunTrigger -Settings $Settings -Force | Out-Null
 
 $CheckArgs = "$PythonArgs `"$ScriptPath`" check --repo-root `"$RepoRoot`" --git-commit --git-push --log-dir `"$LogDir`""
-$CheckAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $CheckArgs
+$CheckAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $CheckArgs -WorkingDirectory $RepoRoot
 $CheckTrigger = New-ScheduledTaskTrigger -Daily -At $CheckAt
 
-Register-ScheduledTask -TaskName $CheckTaskName -Action $CheckAction -Trigger $CheckTrigger -Force | Out-Null
+Register-ScheduledTask -TaskName $CheckTaskName -Action $CheckAction -Trigger $CheckTrigger -Settings $Settings -Force | Out-Null
 
 Write-Output "Installed task: $TaskName"
 Write-Output "Schedule: daily at $PublishAt"

@@ -65,7 +65,6 @@ CURATED_PROTOCOL_PAGES = (
 )
 
 LANE_ALLOWED_SOURCES = {
-    "cleanup": {"Apple Newsroom", "MacRumors", "AppleInsider"},
     "protocol": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected"},
     "updates": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
 }
@@ -900,10 +899,11 @@ def build_candidate_from_item(
 
 def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
     preferred_slugs = {
-        "cleanup": ("apple",),
         "protocol": ("bluetooth",),
         "updates": ("apple", "ai", "bluetooth"),
-    }[lane]
+    }.get(lane)
+    if preferred_slugs is None:
+        return []
     collected: list[tuple[str, str, FeedItem]] = []
     seen_links: set[str] = set()
     for slug in preferred_slugs:

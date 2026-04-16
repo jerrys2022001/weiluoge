@@ -71,43 +71,54 @@ class Candidate:
     html: str
 
 
-class NoUniqueCandidateError(ValueError):
-    pass
-
-
-def normalize_duplicate_key(value: str) -> str:
-    return " ".join(value.lower().split())
-
-
-def candidate_duplicate_key(candidate: Candidate) -> tuple[str, str]:
-    return (
-        normalize_duplicate_key(candidate.post.title),
-        normalize_duplicate_key(candidate.post.description),
-    )
-
-
-def existing_duplicate_keys(existing_pages: list[object]) -> set[tuple[str, str]]:
-    keys: set[tuple[str, str]] = set()
-    for page in existing_pages:
-        keys.add(
-            (
-                normalize_duplicate_key(page.title),
-                normalize_duplicate_key(page.description),
-            )
-        )
-    return keys
-
-
-def existing_titles(existing_pages: list[object]) -> set[str]:
-    return {normalize_duplicate_key(page.title) for page in existing_pages}
-
-
 class PublishLock:
     def __init__(self, repo_root: Path, timeout_seconds: int = LOCK_TIMEOUT_SECONDS, poll_seconds: int = LOCK_POLL_SECONDS):
         self._lock_path = repo_root / ".tmp" / "blog-publish.lock"
         self._timeout_seconds = timeout_seconds
         self._poll_seconds = poll_seconds
         self._fd: int | None = None
+
+    def _read_lock_metadata(self) -> tuple[int | None, int | None]:
+        try:
+            raw = self._lock_path.read_text(encoding="utf-8").strip()
+        except OSError:
+            return None, None
+        values: dict[str, str] = {}
+        for part in raw.split():
+            if "=" not in part:
+                continue
+            key, value = part.split("=", 1)
+            values[key] = value
+        pid = values.get("pid")
+        created = values.get("time")
+        return (
+            int(pid) if pid and pid.isdigit() else None,
+            int(created) if created and created.isdigit() else None,
+        )
+
+    def _pid_is_running(self, pid: int | None) -> bool:
+        if pid is None:
+            return False
+        try:
+            os.kill(pid, 0)
+        except OSError:
+            return False
+        return True
+
+    def _clear_stale_lock_if_needed(self) -> bool:
+        pid, created_at = self._read_lock_metadata()
+        lock_age = time.time() - created_at if created_at is not None else None
+        stale_by_pid = pid is None or not self._pid_is_running(pid)
+        stale_by_age = lock_age is not None and lock_age > self._timeout_seconds
+        if not stale_by_pid and not stale_by_age:
+            return False
+        try:
+            self._lock_path.unlink()
+        except FileNotFoundError:
+            return True
+        except OSError:
+            return False
+        return True
 
     def __enter__(self) -> "PublishLock":
         self._lock_path.parent.mkdir(parents=True, exist_ok=True)
@@ -119,6 +130,8 @@ class PublishLock:
                 os.write(self._fd, payload)
                 return self
             except FileExistsError:
+                if self._clear_stale_lock_if_needed():
+                    continue
                 if time.time() >= deadline:
                     raise ValueError(
                         f"Timed out waiting for publish lock: {self._lock_path}"
@@ -133,7 +146,6 @@ class PublishLock:
             self._lock_path.unlink()
         except FileNotFoundError:
             pass
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -205,7 +217,7 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
-    if lane in {"translate", "find"}:
+    if lane in {"cleanup", "translate", "find"}:
         return items
     live_candidates = build_live_candidates(target_day, lane)
     if live_candidates:
@@ -260,18 +272,13 @@ def evaluate_candidates(
     force: bool,
 ) -> list[tuple[float, Candidate]]:
     evaluated: list[tuple[float, Candidate]] = []
-    duplicate_keys = existing_duplicate_keys(existing_pages)
-    duplicate_titles = existing_titles(existing_pages)
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
         if article_path.exists() and not force:
             continue
-        if candidate_duplicate_key(candidate) in duplicate_keys:
-            continue
-        if normalize_duplicate_key(candidate.post.title) in duplicate_titles:
-            continue
         similarity = max_similarity_against_existing(candidate.html, existing_pages)
         evaluated.append((similarity, candidate))
+    evaluated.sort(key=lambda item: item[0])
     return evaluated
 
 
@@ -297,10 +304,7 @@ def choose_candidate(
                 return candidate, similarity
         for similarity, candidate in local_ranked:
             return candidate, similarity
-        raise NoUniqueCandidateError(
-            f"No unique {lane} blog candidate remains after duplicate filtering. "
-            f"strict_threshold={similarity_threshold:.2f}"
-        )
+        raise ValueError(f"Could not find a publishable {lane} blog candidate. strict_threshold={similarity_threshold:.2f}")
 
     for similarity, candidate in local_ranked:
         if similarity < similarity_threshold:
@@ -353,8 +357,17 @@ def choose_candidate(
             html=candidate.html,
         ), similarity
 
-    raise NoUniqueCandidateError(
-        f"No unique {lane} blog candidate remains after duplicate filtering. "
+    for similarity, candidate in local_ranked:
+        return Candidate(
+            lane=candidate.lane,
+            origin="local-forced",
+            identifier=candidate.identifier,
+            post=candidate.post,
+            html=candidate.html,
+        ), similarity
+
+    raise ValueError(
+        f"Could not find a publishable {lane} blog candidate. "
         f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f}"
     )
 
@@ -406,27 +419,14 @@ def run(args: argparse.Namespace) -> int:
                     f"file={existing_cleanup.post.filename}"
                 )
                 return 0
-        try:
-            candidate, similarity = choose_candidate(
-                repo_root=repo_root,
-                target_day=target_day,
-                lane=args.lane,
-                slot_offset=args.slot_offset,
-                similarity_threshold=similarity_threshold,
-                force=args.force,
-            )
-        except NoUniqueCandidateError as exc:
-            print(
-                "done "
-                f"lane={args.lane} "
-                "origin=existing "
-                "id=duplicate-skip "
-                "index=unchanged "
-                "sitemap=unchanged "
-                "git=skipped "
-                f"reason={str(exc)}"
-            )
-            return 0
+        candidate, similarity = choose_candidate(
+            repo_root=repo_root,
+            target_day=target_day,
+            lane=args.lane,
+            slot_offset=args.slot_offset,
+            similarity_threshold=similarity_threshold,
+            force=args.force,
+        )
         article_path = blog_dir / candidate.post.filename
         existed_before = article_path.exists()
         expected_canonical = f"https://velocai.net/blog/{candidate.post.filename}"

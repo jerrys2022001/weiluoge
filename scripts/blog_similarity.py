@@ -109,13 +109,42 @@ def extract_body_counter(html: str) -> Counter[str]:
         if title_match:
             focus_parts.append(title_match.group(1))
 
-        why_match = re.search(r'<section class="panel">\s*<h2>Why.*?</h2>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
-        if why_match:
-            focus_parts.append(why_match.group(1))
+        # Translate AI pages share a lot of template structure. Focus similarity on intent-bearing blocks.
+        hero_teaser_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_teaser_match:
+            focus_parts.append(hero_teaser_match.group(1))
 
-        how_match = re.search(r'<section class="panel">\s*<h2>How.*?</h2>\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
-        if how_match:
-            focus_parts.append(how_match.group(1))
+        tldr_match = re.search(r'<div class="tldr">.*?<p>.*?TL;DR:\s*(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if tldr_match:
+            focus_parts.append(tldr_match.group(1))
+
+        intent_match = re.search(
+            r"<h2>\s*What Search Intent Is Growing Around Translate AI\?\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if intent_match:
+            focus_parts.append(intent_match.group(1))
+
+        workflow_match = re.search(
+            r"<h2>\s*Why Does This Workflow Fit Translate AI\?\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if workflow_match:
+            focus_parts.append(workflow_match.group(1))
+
+        edge_match = re.search(
+            r"<h2>\s*How Should Users Trust The Output\?\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if edge_match:
+            focus_parts.append(edge_match.group(1))
 
         table_match = re.search(
             r"<tbody>\s*<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>",
@@ -133,80 +162,71 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
-    if "AI Cleanup PRO" in html and "Phone cleanup action areas" in html:
+    if "Find AI SEO / GEO Guide" in html:
+        find_common_tokens = {
+            "find",
+            "finder",
+            "nearby",
+            "lost",
+            "airpods",
+            "beats",
+            "headphones",
+            "earbuds",
+            "bluetooth",
+            "iphone",
+            "ios",
+            "app",
+            "apps",
+            "user",
+            "users",
+        }
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
         if title_match:
             focus_parts.append(title_match.group(1))
 
-        first_match = re.search(
-            r"<h2>What should users clean first\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+        hero_teaser_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
             html,
             re.IGNORECASE | re.DOTALL,
         )
-        if first_match:
-            focus_parts.append(first_match.group(2))
+        if hero_teaser_match:
+            focus_parts.append(hero_teaser_match.group(1))
 
-        order_match = re.search(
-            r"<h2>How does this fit the five-step cleanup order\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
-            html,
-            re.IGNORECASE | re.DOTALL,
-        )
-        if order_match:
-            focus_parts.append(order_match.group(2))
+        tldr_match = re.search(r'<div class="tldr">.*?<p>.*?TL;DR:\s*(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if tldr_match:
+            focus_parts.append(tldr_match.group(1))
 
-        challenge_match = re.search(
-            r"<h2>What makes cleanup fail in real life\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
+        intent_match = re.search(
+            r"<h2>\s*What Search Intent Is Growing Around Find AI\?\s*</h2>\s*<p>(.*?)</p>",
             html,
             re.IGNORECASE | re.DOTALL,
         )
-        if challenge_match:
-            focus_parts.append(challenge_match.group(2))
+        if intent_match:
+            focus_parts.append(intent_match.group(1))
+
+        workflow_match = re.search(
+            r"<h2>\s*Why Does This Workflow Fit Find AI\?\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if workflow_match:
+            focus_parts.append(workflow_match.group(1))
+
+        signal_match = re.search(
+            r"<h2>\s*How Should Users Read the Recovery Signal\?\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if signal_match:
+            focus_parts.append(signal_match.group(1))
 
         focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
         focus_text = re.sub(r"\s+", " ", focus_text).lower()
         return Counter(
             token
             for token in re.findall(r"[a-z0-9]{3,}", focus_text)
-            if token not in STOP_WORDS
-        )
-
-    if "Bluetooth Explorer" in html and "Bluetooth protocol layers and applications" in html:
-        focus_parts: list[str] = []
-        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
-        if title_match:
-            focus_parts.append(title_match.group(1))
-
-        interpret_match = re.search(
-            r"<h2>How should teams interpret this protocol area\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
-            html,
-            re.IGNORECASE | re.DOTALL,
-        )
-        if interpret_match:
-            focus_parts.append(interpret_match.group(2))
-
-        products_match = re.search(
-            r"<h2>Where does it matter in real products\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
-            html,
-            re.IGNORECASE | re.DOTALL,
-        )
-        if products_match:
-            focus_parts.append(products_match.group(2))
-
-        deployment_match = re.search(
-            r"<h2>What makes deployment difficult in 2026\?</h2>\s*<p>(.*?)</p>\s*<p>(.*?)</p>",
-            html,
-            re.IGNORECASE | re.DOTALL,
-        )
-        if deployment_match:
-            focus_parts.append(deployment_match.group(2))
-
-        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
-        focus_text = re.sub(r"\s+", " ", focus_text).lower()
-        return Counter(
-            token
-            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
-            if token not in STOP_WORDS
+            if token not in STOP_WORDS and token not in find_common_tokens
         )
 
     if "<h2>What Happened</h2>" in html:
