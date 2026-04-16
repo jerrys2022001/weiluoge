@@ -16,7 +16,7 @@ SITE_URL = "https://velocai.net"
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 LASTMOD_FIELDS = ("lastmod", "changefreq", "priority")
 DATE_SUFFIX_RE = re.compile(r"-(\d{4}-\d{2}-\d{2})\.html$")
-EXCLUDED_ROOTS = {".git", ".github", "assets", "docs", "scripts", "skills"}
+EXCLUDED_ROOTS = {".git", ".github", ".tmp", ".playwright-npm-cache", "assets", "docs", "scripts", "skills"}
 
 
 @dataclass(frozen=True)
@@ -57,7 +57,7 @@ def default_metadata_for_url(loc: str) -> tuple[str, str]:
     path = loc.removeprefix(SITE_URL)
     if path == "/":
         return "weekly", "1.0"
-    if path in {"/apps/", "/blog/", "/ai-cleanup-pro/", "/aifind/", "/bluetoothexplorer/"}:
+    if path in {"/apps/", "/blog/", "/ai-cleanup-pro/", "/aifind/", "/bluetoothexplorer/", "/dualshot/"}:
         return "weekly", "0.9"
     if path.startswith("/blog/"):
         return "monthly", "0.8"
@@ -137,6 +137,8 @@ def sort_key(site_root: Path, file_path: Path) -> tuple[object, ...]:
         return (12, rel)
     if rel.startswith("bluetoothexplorer/document/en/"):
         return (13, rel)
+    if rel == "dualshot/index.html":
+        return (14, rel)
     return (20, rel)
 
 

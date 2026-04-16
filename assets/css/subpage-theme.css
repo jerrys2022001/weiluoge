@@ -146,6 +146,24 @@ body.theme-translate {
   --cta-glow: rgba(107, 102, 218, 0.22);
   --translate-hero-media-ratio: 9 / 14;
 }
+body.theme-dualshot {
+  --page-accent: #18b8ff;
+  --page-accent-2: #ff367f;
+  --page-glow-a: rgba(24, 184, 255, 0.22);
+  --page-glow-b: rgba(255, 54, 127, 0.18);
+  --page-glow-c: rgba(255, 190, 69, 0.13);
+  --accent-hover-bg: rgba(24, 184, 255, 0.16);
+  --accent-hover-line: rgba(24, 184, 255, 0.42);
+  --eyebrow-line: rgba(255, 190, 69, 0.48);
+  --hero-glow-a: rgba(255, 54, 127, 0.2);
+  --hero-glow-b: rgba(24, 184, 255, 0.24);
+  --radar-glow: rgba(24, 184, 255, 0.3);
+  --radar-core: rgba(255, 255, 255, 0.9);
+  --summary-accent: #9ee7ff;
+  --note-line: #ff7aa8;
+  --cta-glow: rgba(255, 54, 127, 0.2);
+}
+
 
 a {
   color: inherit;
@@ -594,6 +612,97 @@ body.theme-translate .hero-card .card-note {
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: 0.002em;
+}
+
+body.theme-dualshot .hero,
+body.theme-dualshot .hero > :first-child {
+  align-items: stretch;
+}
+
+body.theme-dualshot .hero-card {
+  align-self: stretch;
+  min-height: 100%;
+  padding: 16px 18px;
+  gap: 12px;
+}
+
+.dualshot-preview {
+  position: relative;
+  width: 100%;
+  min-height: clamp(360px, 34vw, 500px);
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(90deg, rgba(24, 184, 255, 0.2) 49.5%, rgba(255, 255, 255, 0.18) 49.5% 50.5%, rgba(255, 54, 127, 0.2) 50.5%),
+    radial-gradient(360px 240px at 14% 14%, rgba(255, 210, 94, 0.26), transparent 64%),
+    radial-gradient(420px 260px at 88% 22%, rgba(255, 54, 127, 0.28), transparent 62%),
+    radial-gradient(420px 260px at 10% 92%, rgba(24, 184, 255, 0.3), transparent 62%),
+    linear-gradient(160deg, rgba(24, 30, 52, 0.98), rgba(16, 21, 39, 0.98));
+}
+
+.dualshot-preview::before,
+.dualshot-preview::after {
+  content: "";
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-radius: 22px;
+}
+
+.dualshot-preview::before {
+  width: min(82%, 340px);
+  aspect-ratio: 16 / 9;
+  left: 8%;
+  top: 16%;
+}
+
+.dualshot-preview::after {
+  width: min(44%, 156px);
+  aspect-ratio: 9 / 16;
+  right: 10%;
+  bottom: 13%;
+}
+
+.dualshot-preview img {
+  position: relative;
+  z-index: 1;
+  width: min(42%, 174px);
+  border-radius: 38px;
+  box-shadow: 0 24px 48px rgba(5, 8, 18, 0.42);
+}
+
+.dualshot-badges {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dualshot-badges span {
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(12, 17, 33, 0.58);
+  color: #f6f8ff;
+  padding: 9px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  backdrop-filter: blur(12px);
+}
+
+body.theme-dualshot .hero-card .hero-card-note {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 2px 0 0;
+  color: #b8c8f2;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .radar-gif {
