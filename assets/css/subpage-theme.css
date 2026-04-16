@@ -1009,7 +1009,8 @@ body.theme-cleanup .feature-grid {
 }
 
 .step-index,
-.step .num {
+.step .num,
+.step-number {
   display: inline-grid;
   place-items: center;
   width: 32px;
@@ -1027,8 +1028,17 @@ body.theme-cleanup .feature-grid {
   gap: 10px;
 }
 
-.step .num {
+.step .num,
+.step-number {
   margin-bottom: 2px;
+}
+
+body.theme-dualshot .step-number {
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 220, 125, 0.86), transparent 34%),
+    linear-gradient(135deg, #18b8ff 0%, #7a69ff 48%, #ff367f 100%);
+  box-shadow: 0 10px 22px rgba(24, 184, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .step-media {
