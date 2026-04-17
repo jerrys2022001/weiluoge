@@ -2,9 +2,9 @@ param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-  [string]$WindowStart = "08:28",
+  [string]$WindowStart = "08:29",
   [string]$WindowEnd = "08:30",
-  [int]$PostsPerDay = 2,
+  [int]$PostsPerDay = 1,
   [string]$TaskNamePrefix = "WeiLuoGe-Translate-AI-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )

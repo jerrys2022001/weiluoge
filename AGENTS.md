@@ -1,4 +1,4 @@
-﻿## Skills
+## Skills
 A skill is a set of local instructions to follow that is stored in a `SKILL.md` file. Below is the list of skills that can be used. Each entry includes a name, description, and file path so you can open the source for full instructions when using a specific skill.
 
 ### Available skills
@@ -32,15 +32,15 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 ## Content Policy
 - All future website content in this repo must be written to improve both SEO and GEO by default.
 - Scope includes landing pages, product pages, blog posts, metadata, FAQ blocks, internal links, schema markup, sitemap-related output, and index/list pages.
-- Preferred ongoing content ranges include Bluetooth protocol/application analysis, iPhone storage cleanup and system-impact analysis, Apple new-product feature/performance commentary, and AI technology outlook coverage.
+- Preferred ongoing content ranges include creator video capture and repurposing workflows, Bluetooth protocol/application analysis, iPhone storage cleanup and system-impact analysis, AI translation workflows, Apple new-product feature/performance commentary, and AI technology outlook coverage.
 - Every new or updated content page should target a clear primary search intent and include naturally written secondary keywords that support the same topic cluster.
-- Core keyword phrases for blog content must include at least one app-centered term directly tied to the current app portfolio: `bluetooth`, `find AI`, `cleanup pro`, or `Translate`.
+- Core keyword phrases for blog content must include at least one app-centered term directly tied to the current app portfolio: `bluetooth`, `find AI`, `cleanup pro`, `Translate`, or `DualShot Camera`.
 - Titles, H1s, meta descriptions, and visible section headings should use high-intent phrasing that matches likely search queries.
 - Content should be structured for both search engines and AI retrieval: concise answers near the top, scannable sections, FAQ-style Q&A where appropriate, and explicit entity/topic wording.
 - Prefer evergreen, factual wording and direct problem-solution framing over vague branding language.
 - Add or preserve helpful internal links, canonical metadata, structured data, and sitemap/index updates when relevant.
 - If a change would reduce SEO/GEO value, call it out before proceeding unless the user explicitly prioritizes another goal.
-- Daily blog publishing target is 6 posts: 2 posts around `Translate`, 2 posts around `bluetooth`, 1 post around `find AI`, and 1 post around `cleanup pro`.
+- Daily blog publishing target is 6 posts: 1 post around `Translate AI`, 1 post around `DualShot Camera`, 2 posts around `Bluetooth Explorer`, 1 post around `find AI`, and 1 post around `cleanup pro`.
 - For blog maintenance, treat posts as merge candidates when topic-bearing content similarity is above 30% after stripping shared boilerplate sections.
 - Apply that 30% rule within the same intent cluster, using title/topic overlap to avoid merging unrelated long-tail pages that only share templates.
 - For daily blog publishing, reject any new cleanup post whose topic-bearing similarity against the existing blog corpus reaches 40% or higher.

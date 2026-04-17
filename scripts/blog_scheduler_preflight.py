@@ -14,6 +14,7 @@ REQUIRED_MODULES = (
     "blog_cleanup_focus_scheduler",
     "blog_protocol_daily_scheduler",
     "blog_find_ai_daily_scheduler",
+    "blog_dualshot_daily_scheduler",
     "blog_translate_ai_daily_scheduler",
     "publish_unique_blog_slot",
     "run_scheduled_blog_slot",

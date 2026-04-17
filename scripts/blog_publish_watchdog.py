@@ -13,6 +13,9 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
+from blog_cleanup_focus_scheduler import ANGLES as CLEANUP_ANGLES
+from blog_dualshot_daily_scheduler import ANGLES as DUALSHOT_ANGLES
+
 
 @dataclass(frozen=True)
 class BlogTask:
@@ -26,15 +29,19 @@ BLOG_TASKS: tuple[BlogTask, ...] = (
     BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1", "protocol", 0),
     BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-2", "protocol", 1),
     BlogTask("WeiLuoGe-Find-AI-Blog-Morning-1", "find", 0),
+    BlogTask("WeiLuoGe-DualShot-Camera-Blog-Morning-1", "dualshot", 0),
     BlogTask("WeiLuoGe-Translate-AI-Blog-Morning-1", "translate", 0),
-    BlogTask("WeiLuoGe-Translate-AI-Blog-Morning-2", "translate", 1),
 )
 TARGET_DAILY_TOTAL = 6
+TARGET_DAILY_CLEANUP = 1
 TARGET_DAILY_BLUETOOTH = 2
-TARGET_DAILY_TRANSLATE = 2
 TARGET_DAILY_FIND = 1
+TARGET_DAILY_DUALSHOT = 1
+TARGET_DAILY_TRANSLATE = 1
 INDEX_ARTICLE_RE = re.compile(r"<article>.*?</article>", re.IGNORECASE | re.DOTALL)
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
+CLEANUP_SLUG_PREFIXES = tuple(angle.slug_prefix for angle in CLEANUP_ANGLES)
+DUALSHOT_SLUG_PREFIXES = tuple(angle.slug_prefix for angle in DUALSHOT_ANGLES)
 
 
 def parse_args() -> argparse.Namespace:
@@ -168,16 +175,46 @@ def assert_publish_integrity(repo_root: Path, target_day: date, previous_index_c
     return current_index_count, duplicate_titles
 
 
+def count_matching_posts(paths: list[Path], prefixes: tuple[str, ...]) -> int:
+    return sum(1 for path in paths if path.name.startswith(prefixes))
+
+
+def count_cleanup_posts(paths: list[Path]) -> int:
+    return count_matching_posts(paths, CLEANUP_SLUG_PREFIXES)
+
+
 def count_bluetooth_posts(paths: list[Path]) -> int:
-    return sum(1 for path in paths if path.name.startswith("bluetooth-"))
-
-
-def count_translate_posts(paths: list[Path]) -> int:
-    return sum(1 for path in paths if path.name.startswith("translate-ai-"))
+    return count_matching_posts(paths, ("bluetooth-",))
 
 
 def count_find_posts(paths: list[Path]) -> int:
-    return sum(1 for path in paths if path.name.startswith("find-ai-"))
+    return count_matching_posts(paths, ("find-ai-",))
+
+
+def count_dualshot_posts(paths: list[Path]) -> int:
+    return count_matching_posts(paths, DUALSHOT_SLUG_PREFIXES)
+
+
+def count_translate_posts(paths: list[Path]) -> int:
+    return count_matching_posts(paths, ("translate-ai-",))
+
+
+def quota_met(
+    total_count: int,
+    cleanup_count: int,
+    bluetooth_count: int,
+    find_count: int,
+    dualshot_count: int,
+    translate_count: int,
+) -> bool:
+    return (
+        total_count >= TARGET_DAILY_TOTAL
+        and cleanup_count >= TARGET_DAILY_CLEANUP
+        and bluetooth_count >= TARGET_DAILY_BLUETOOTH
+        and find_count >= TARGET_DAILY_FIND
+        and dualshot_count >= TARGET_DAILY_DUALSHOT
+        and translate_count >= TARGET_DAILY_TRANSLATE
+    )
 
 
 def main() -> int:
@@ -189,14 +226,16 @@ def main() -> int:
 
     posts = list_same_day_posts(blog_dir, target_day)
     total_count = len(posts)
+    cleanup_count = count_cleanup_posts(posts)
     bluetooth_count = count_bluetooth_posts(posts)
-    translate_count = count_translate_posts(posts)
     find_count = count_find_posts(posts)
+    dualshot_count = count_dualshot_posts(posts)
+    translate_count = count_translate_posts(posts)
 
-    if total_count >= TARGET_DAILY_TOTAL:
+    if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
         print(
-            f"quota_already_met total={total_count} bluetooth={bluetooth_count} "
-            f"translate={translate_count} find={find_count} target_total={TARGET_DAILY_TOTAL}"
+            f"quota_already_met total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
+            f"find={find_count} dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
         )
         print("watchdog rerun_count=0 failed=0 dry_run=" + str(args.dry_run).lower())
         return 0
@@ -229,43 +268,46 @@ def main() -> int:
 
         posts = list_same_day_posts(blog_dir, target_day)
         total_count = len(posts)
+        cleanup_count = count_cleanup_posts(posts)
         bluetooth_count = count_bluetooth_posts(posts)
-        translate_count = count_translate_posts(posts)
         find_count = count_find_posts(posts)
-        if total_count >= TARGET_DAILY_TOTAL:
+        dualshot_count = count_dualshot_posts(posts)
+        translate_count = count_translate_posts(posts)
+        if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
             print(
-                f"quota_reached_after_rerun total={total_count} bluetooth={bluetooth_count} "
-                f"translate={translate_count} find={find_count} target_total={TARGET_DAILY_TOTAL}"
+                f"quota_reached_after_rerun total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
+                f"find={find_count} dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
             )
             break
 
     posts = list_same_day_posts(blog_dir, target_day)
     total_count = len(posts)
+    cleanup_count = count_cleanup_posts(posts)
     bluetooth_count = count_bluetooth_posts(posts)
-    translate_count = count_translate_posts(posts)
     find_count = count_find_posts(posts)
+    dualshot_count = count_dualshot_posts(posts)
+    translate_count = count_translate_posts(posts)
     print(
-        f"post_count total={total_count} bluetooth={bluetooth_count} translate={translate_count} find={find_count} "
-        f"target_total={TARGET_DAILY_TOTAL} target_bluetooth={TARGET_DAILY_BLUETOOTH} "
-        f"target_translate={TARGET_DAILY_TRANSLATE} target_find={TARGET_DAILY_FIND}"
+        f"post_count total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} find={find_count} "
+        f"dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL} "
+        f"target_cleanup={TARGET_DAILY_CLEANUP} target_bluetooth={TARGET_DAILY_BLUETOOTH} "
+        f"target_find={TARGET_DAILY_FIND} target_dualshot={TARGET_DAILY_DUALSHOT} "
+        f"target_translate={TARGET_DAILY_TRANSLATE}"
     )
 
     if not args.dry_run:
         backfill_round = 0
-        while (
-            total_count < TARGET_DAILY_TOTAL
-            or bluetooth_count < TARGET_DAILY_BLUETOOTH
-            or translate_count < TARGET_DAILY_TRANSLATE
-            or find_count < TARGET_DAILY_FIND
-        ):
-            if bluetooth_count < TARGET_DAILY_BLUETOOTH:
+        while not quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+            if cleanup_count < TARGET_DAILY_CLEANUP:
+                lane = "cleanup"
+            elif bluetooth_count < TARGET_DAILY_BLUETOOTH:
                 lane = "protocol"
-            elif translate_count < TARGET_DAILY_TRANSLATE:
-                lane = "translate"
             elif find_count < TARGET_DAILY_FIND:
                 lane = "find"
+            elif dualshot_count < TARGET_DAILY_DUALSHOT:
+                lane = "dualshot"
             else:
-                lane = "cleanup"
+                lane = "translate"
             synthetic = BlogTask(
                 task_name=f"watchdog-backfill-{lane}-{backfill_round}",
                 lane=lane,
@@ -275,7 +317,8 @@ def main() -> int:
             backfill_round += 1
             print(
                 f"backfill task={synthetic.task_name} lane={lane} offset={synthetic.slot_offset} "
-                f"total={total_count} bluetooth={bluetooth_count} translate={translate_count} find={find_count}"
+                f"total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} find={find_count} "
+                f"dualshot={dualshot_count} translate={translate_count}"
             )
             code = run_slot(repo_root, synthetic, target_day, False)
             if code != 0:
@@ -289,9 +332,11 @@ def main() -> int:
                 break
             posts = list_same_day_posts(blog_dir, target_day)
             total_count = len(posts)
+            cleanup_count = count_cleanup_posts(posts)
             bluetooth_count = count_bluetooth_posts(posts)
-            translate_count = count_translate_posts(posts)
             find_count = count_find_posts(posts)
+            dualshot_count = count_dualshot_posts(posts)
+            translate_count = count_translate_posts(posts)
 
     print(f"watchdog rerun_count={rerun_count} failed={len(failed)} dry_run={str(args.dry_run).lower()}")
     if failed:

@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$PythonExe = "py",
   [string]$PythonArgs = "-3 -B",
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
@@ -8,7 +8,9 @@
   [string]$BluetoothWindowEnd = "08:24",
   [string]$FindWindowStart = "08:26",
   [string]$FindWindowEnd = "08:27",
-  [string]$TranslateWindowStart = "08:28",
+  [string]$DualShotWindowStart = "08:28",
+  [string]$DualShotWindowEnd = "08:29",
+  [string]$TranslateWindowStart = "08:29",
   [string]$TranslateWindowEnd = "08:30",
   [string]$HomeBriefAt = "08:30",
   [string]$HomeBriefCheckAt = "08:40",
@@ -65,6 +67,7 @@ function Apply-TaskRuntimeDefaults([string]$taskName) {
 $cleanupInstaller = Ensure-Script "install_storage_impact_blog_task.ps1"
 $bluetoothInstaller = Ensure-Script "install_protocol_blog_morning_tasks.ps1"
 $findInstaller = Ensure-Script "install_find_ai_blog_task.ps1"
+$dualshotInstaller = Ensure-Script "install_dualshot_blog_task.ps1"
 $translateInstaller = Ensure-Script "install_translate_ai_blog_tasks.ps1"
 $homeBriefInstaller = Ensure-Script "install_home_brief_daily_task.ps1"
 $preflightInstaller = Ensure-Script "install_blog_preflight_task.ps1"
@@ -119,6 +122,17 @@ Invoke-Installer $findInstaller {
     -ReplaceExisting:$ReplaceExisting
 }
 
+Invoke-Installer $dualshotInstaller {
+  & $dualshotInstaller `
+    -PythonExe $PythonExe `
+    -PythonArgs $PythonArgs `
+    -RepoRoot $RepoRoot `
+    -WindowStart $DualShotWindowStart `
+    -WindowEnd $DualShotWindowEnd `
+    -PostsPerDay 1 `
+    -ReplaceExisting:$ReplaceExisting
+}
+
 Invoke-Installer $translateInstaller {
   & $translateInstaller `
     -PythonExe $PythonExe `
@@ -126,7 +140,7 @@ Invoke-Installer $translateInstaller {
     -RepoRoot $RepoRoot `
     -WindowStart $TranslateWindowStart `
     -WindowEnd $TranslateWindowEnd `
-    -PostsPerDay 2 `
+    -PostsPerDay 1 `
     -ReplaceExisting:$ReplaceExisting
 }
 
@@ -164,8 +178,8 @@ $expectedTaskNames = @(
   "WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1",
   "WeiLuoGe-Bluetooth-Protocol-Blog-Morning-2",
   "WeiLuoGe-Find-AI-Blog-Morning-1",
+  "WeiLuoGe-DualShot-Camera-Blog-Morning-1",
   "WeiLuoGe-Translate-AI-Blog-Morning-1",
-  "WeiLuoGe-Translate-AI-Blog-Morning-2",
   "WeiLuoGe-Home-Brief-Daily-08-30",
   "WeiLuoGe-Home-Brief-Check-08-40",
   "WeiLuoGe-Blog-Preflight-08-15",
@@ -182,9 +196,10 @@ foreach ($taskName in $expectedTaskNames) {
 Write-Output ""
 Write-Output "Installed full daily site schedule:"
 Write-Output "  Cleanup PRO: 1 slot between $CleanupWindowStart and $CleanupWindowEnd"
-Write-Output "  Bluetooth: 2 slots between $BluetoothWindowStart and $BluetoothWindowEnd"
+Write-Output "  Bluetooth Explorer: 2 slots between $BluetoothWindowStart and $BluetoothWindowEnd"
 Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd"
-Write-Output "  Translate: 2 slots between $TranslateWindowStart and $TranslateWindowEnd"
+Write-Output "  DualShot Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd"
+Write-Output "  Translate AI: 1 slot between $TranslateWindowStart and $TranslateWindowEnd"
 Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
 Write-Output "  Blog preflight: daily at $PreflightAt"

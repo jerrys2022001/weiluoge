@@ -6,14 +6,16 @@ All future website content in this repo should be optimized for both SEO and GEO
 That applies to landing pages, blog posts, metadata, FAQ sections, schema, internal links, and index/sitemap updates.
 
 Current preferred content ranges:
-- Bluetooth protocol, Bluetooth applications, and troubleshooting
-- iPhone storage cleanup and system-impact analysis
+- Creator video capture, dual-format recording, and repurposing workflows for DualShot Camera
+- Bluetooth protocol, Bluetooth applications, and troubleshooting for Bluetooth Explorer
+- iPhone storage cleanup and system-impact analysis for AI Cleanup PRO
+- AI translation, OCR, offline packs, and pronunciation workflows for Translate AI
 - Apple new-product feature and performance commentary
 - AI technology outlook and forward-looking analysis
 
 Minimum content rule:
 - define a clear primary search intent for each page
-- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find`, or `cleanup`
+- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find AI`, `cleanup pro`, `translate`, or `DualShot Camera`
 - use high-intent keywords naturally in the title, H1, meta description, and major headings
 - keep the opening section concise and directly answer the likely query
 - include scannable sections and FAQ-style answers when useful for AI retrieval
@@ -120,10 +122,29 @@ Optional:
 - Change schedule time: `-PublishAt "20:00"`
 - Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
 
-## Storage Cleanup + System Impact Blog (08:40, 1/day)
+## Full Morning App Blog Mix (08:20~08:30, 6/day)
+
+The default morning publishing mix now creates 6 app-focused blog posts:
+- 1 AI Cleanup PRO post
+- 2 Bluetooth Explorer posts
+- 1 Find AI post
+- 1 DualShot Camera post
+- 1 Translate AI post
+
+Install the full schedule:
+`powershell -ExecutionPolicy Bypass -File scripts/install_all_blog_tasks.ps1`
+
+Default windows:
+- Cleanup PRO: `08:20~08:21`
+- Bluetooth Explorer: `08:22~08:24`
+- Find AI: `08:26~08:27`
+- DualShot Camera: `08:28~08:29`
+- Translate AI: `08:29~08:30`
+
+## Storage Cleanup + System Impact Blog (08:20, 1/day)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:40 -WindowEnd 08:41 -PostsPerDay 1`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:20 -WindowEnd 08:21 -PostsPerDay 1`
 
 ## Homepage Daily Briefing (08:30)
 
@@ -144,10 +165,10 @@ Dry run:
 Install the daily Windows task at `08:30`:
 `powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
 
-## Bluetooth Protocol Blog (08:42~08:44, 2/day)
+## Bluetooth Explorer Blog (08:22~08:24, 2/day)
 
-This publishes 2 English posts each morning focused on Bluetooth protocol interpretation and applications.
-It installs 2 scheduled tasks (default: 08:42 and 08:44) and uses `--slot-offset` to avoid duplicates.
+This publishes 2 English posts each morning focused on Bluetooth Explorer use cases, protocol interpretation, and practical applications.
+It installs 2 scheduled tasks (default: 08:22 and 08:24) and uses `--slot-offset` to avoid duplicates.
 
 Daily uniqueness rule:
 - Cleanup posts must stay below 40% topic-bearing similarity versus the existing blog corpus.
@@ -156,7 +177,7 @@ Daily uniqueness rule:
 - If local fixed topics cannot satisfy that rule, the scheduler falls back to live source items and rewrites them into new blog posts.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:42 -WindowEnd 08:44 -PostsPerDay 2`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:22 -WindowEnd 08:24 -PostsPerDay 2`
 
 ## Live Update Blog (08:46~08:50, 3/day)
 

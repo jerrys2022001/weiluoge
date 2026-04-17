@@ -44,6 +44,12 @@ from blog_translate_ai_daily_scheduler import (
     pick_angle as pick_translate_angle,
     render_article_html as render_translate_html,
 )
+from blog_dualshot_daily_scheduler import (
+    ANGLES as DUALSHOT_ANGLES,
+    build_post_meta as build_dualshot_post_meta,
+    pick_angle as pick_dualshot_angle,
+    render_article_html as render_dualshot_html,
+)
 from blog_similarity import load_blog_pages, max_similarity_against_existing
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
@@ -52,11 +58,14 @@ LIVE_REWRITE_SOFT_THRESHOLD = {
     "cleanup": 0.70,
     "protocol": 0.70,
     "find": 0.70,
+    "dualshot": 0.70,
     "translate": 0.70,
     "updates": 0.70,
 }
 MIN_DAILY_BLUETOOTH_POSTS = 2
-MIN_DAILY_TRANSLATE_POSTS = 2
+MIN_DAILY_TRANSLATE_POSTS = 1
+MIN_DAILY_FIND_POSTS = 1
+MIN_DAILY_DUALSHOT_POSTS = 1
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
 ENABLE_UPDATES_LANE_ENV = "WEILUOGE_ENABLE_UPDATES_LANE"
@@ -151,7 +160,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Publish one unique blog article for a scheduled slot, with live-news fallback when local topics repeat."
     )
-    parser.add_argument("--lane", choices=["cleanup", "protocol", "find", "translate", "updates"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "find", "dualshot", "translate", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0, help="Preferred local topic offset for this slot.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Target publish date in YYYY-MM-DD (default: today).")
@@ -193,6 +202,15 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
             html = render_translate_html(target_day, angle, post)
             candidates.append(Candidate(lane=lane, origin="local", identifier=f"translate:{offset}", post=post, html=html))
         return candidates
+    if lane == "dualshot":
+        total = len(DUALSHOT_ANGLES)
+        for step in range(total):
+            offset = (slot_offset + step) % total
+            angle = pick_dualshot_angle(target_day, offset=offset)
+            post = build_dualshot_post_meta(target_day, angle)
+            html = render_dualshot_html(target_day, angle, post)
+            candidates.append(Candidate(lane=lane, origin="local", identifier=f"dualshot:{offset}", post=post, html=html))
+        return candidates
     if lane == "find":
         total = len(FIND_ANGLES)
         for step in range(total):
@@ -217,7 +235,7 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
-    if lane in {"cleanup", "translate", "find"}:
+    if lane in {"cleanup", "translate", "find", "dualshot"}:
         return items
     live_candidates = build_live_candidates(target_day, lane)
     if live_candidates:
@@ -250,19 +268,49 @@ def is_find_candidate(candidate: Candidate) -> bool:
     return candidate.post.filename.startswith("find-ai-")
 
 
-def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
+def list_same_day_prefixed_posts(blog_dir: Path, target_day: date, prefix: str) -> list[Path]:
     suffix = f"-{target_day.isoformat()}.html"
-    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("bluetooth-"))
+    return sorted(path for path in blog_dir.glob(f"*{suffix}") if path.name.startswith(prefix))
+
+
+def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
+    return len(list_same_day_prefixed_posts(blog_dir, target_day, "bluetooth-"))
 
 
 def count_same_day_translate_posts(blog_dir: Path, target_day: date) -> int:
-    suffix = f"-{target_day.isoformat()}.html"
-    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("translate-ai-"))
+    return len(list_same_day_prefixed_posts(blog_dir, target_day, "translate-ai-"))
 
 
 def count_same_day_find_posts(blog_dir: Path, target_day: date) -> int:
-    suffix = f"-{target_day.isoformat()}.html"
-    return sum(1 for path in blog_dir.glob(f"*{suffix}") if path.name.startswith("find-ai-"))
+    return len(list_same_day_prefixed_posts(blog_dir, target_day, "find-ai-"))
+
+
+def count_same_day_dualshot_posts(blog_dir: Path, target_day: date) -> int:
+    return len(list_same_day_prefixed_posts(blog_dir, target_day, "dualshot-camera-"))
+
+
+def existing_daily_quota_file(repo_root: Path, target_day: date, lane: str) -> str | None:
+    blog_dir = repo_root / "blog"
+    if lane == "cleanup":
+        existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
+        if existing_cleanup is not None:
+            return existing_cleanup.post.filename
+        return None
+
+    prefix_targets = {
+        "protocol": ("bluetooth-", MIN_DAILY_BLUETOOTH_POSTS),
+        "translate": ("translate-ai-", MIN_DAILY_TRANSLATE_POSTS),
+        "find": ("find-ai-", MIN_DAILY_FIND_POSTS),
+        "dualshot": ("dualshot-camera-", MIN_DAILY_DUALSHOT_POSTS),
+    }
+    config = prefix_targets.get(lane)
+    if config is None:
+        return None
+    prefix, target_count = config
+    matches = list_same_day_prefixed_posts(blog_dir, target_day, prefix)
+    if len(matches) >= target_count:
+        return matches[0].name
+    return None
 
 
 def evaluate_candidates(
@@ -298,7 +346,7 @@ def choose_candidate(
     preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
     fallback_live_ranked = live_ranked if preferred_live_ranked else []
 
-    if lane in {"translate", "find"}:
+    if lane in {"translate", "find", "dualshot"}:
         for similarity, candidate in local_ranked:
             if similarity < similarity_threshold:
                 return candidate, similarity
@@ -399,24 +447,24 @@ def run(args: argparse.Namespace) -> int:
                 f"env={ENABLE_UPDATES_LANE_ENV}"
             )
             return 0
-        if args.lane == "cleanup" and not args.force:
-            existing_cleanup = cleanup_quota_satisfied(repo_root, target_day)
-            if existing_cleanup is not None:
+        if not args.force:
+            existing_file = existing_daily_quota_file(repo_root, target_day, args.lane)
+            if existing_file is not None:
                 if args.dry_run:
                     print(
-                        f"dry_run lane=cleanup origin=existing id=daily-quota-met "
-                        f"article={blog_dir / existing_cleanup.post.filename} state=already_present"
+                        f"dry_run lane={args.lane} origin=existing id=daily-quota-met "
+                        f"article={blog_dir / existing_file} state=already_present"
                     )
                     return 0
                 print(
                     "done "
-                    "lane=cleanup "
+                    f"lane={args.lane} "
                     "origin=existing "
                     "id=daily-quota-met "
                     "index=unchanged "
                     "sitemap=unchanged "
                     "git=skipped "
-                    f"file={existing_cleanup.post.filename}"
+                    f"file={existing_file}"
                 )
                 return 0
         candidate, similarity = choose_candidate(
