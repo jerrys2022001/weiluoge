@@ -1875,11 +1875,14 @@ ul {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
   .va-nav-list a {
     width: 100%;
+    min-height: 44px;
     justify-content: flex-start;
     padding: 11px 12px;
   }
@@ -1985,12 +1988,38 @@ ul {
     width: min(1220px, calc(100% - 30px));
   }
 
+  .va-header-inner {
+    min-height: 72px;
+    gap: 14px;
+  }
+
+  .va-brand {
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .va-brand-logo {
+    height: 36px;
+    max-width: 52px;
+  }
+
   .va-brand-name {
     font-size: 30px;
   }
 
+  .va-nav-list {
+    top: 58px;
+    right: 15px;
+    width: calc(100vw - 30px);
+    max-height: calc(100vh - 82px);
+  }
+
   .va-news-archive-shell {
     gap: 16px;
+  }
+
+  .va-hero {
+    gap: 24px;
   }
 
   .va-news-archive-title {
@@ -2005,6 +2034,38 @@ ul {
   .va-hero-subtitle,
   .va-gallery-head p {
     font-size: 16px;
+  }
+
+  .va-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .va-btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 18px;
+  }
+
+  .va-app-card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .va-app-links a {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .va-news-archive-block {
+    border-radius: 24px;
+  }
+
+  .va-archive-grid,
+  .va-archive-grid-history,
+  .va-archive-grid-compact {
+    grid-template-columns: 1fr;
   }
 
   .va-briefing-calendar {
@@ -2078,6 +2139,78 @@ ul {
 
   .va-contact-panel h2 {
     max-width: 12.5ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .va-container {
+    width: min(1220px, calc(100% - 24px));
+  }
+
+  .va-header-inner {
+    min-height: 68px;
+  }
+
+  .va-brand-name {
+    font-size: clamp(24px, 8vw, 28px);
+  }
+
+  .va-nav-toggle {
+    width: 34px;
+    height: 24px;
+  }
+
+  .va-nav-list {
+    top: 54px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .va-nav-list a {
+    padding: 12px;
+  }
+
+  .va-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .va-hero-title {
+    max-width: none;
+    font-size: clamp(34px, 13vw, 48px);
+  }
+
+  .va-hero-subtitle,
+  .va-gallery-head p {
+    font-size: 15px;
+  }
+
+  .va-proof-list li {
+    font-size: 14px;
+  }
+
+  .va-app-body h2 {
+    font-size: clamp(24px, 8vw, 32px);
+  }
+
+  .va-news-archive-title,
+  .va-briefing-heading {
+    font-size: clamp(30px, 12vw, 42px);
+  }
+
+  .va-float-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .va-float-card p {
+    font-size: 12px;
+  }
+
+  .va-hero-shot img {
+    height: 220px;
   }
 }
 

@@ -526,157 +526,39 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
 {json_block(ld_json)}
   </script>
   <style>
-    :root {{
-      --bg: #f7fbff;
-      --text: #182436;
-      --muted: #49607b;
-      --line: #cfdeee;
-      --panel: #ffffff;
-      --brand: #1759b8;
-      --good: #eaf3ff;
-    }}
-
-    * {{ box-sizing: border-box; }}
-
-    body {{
-      margin: 0;
-      font-family: \"Avenir Next\", \"Inter\", \"Segoe UI\", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 8% 1%, rgba(66, 139, 233, 0.18), transparent 34%),
-        radial-gradient(circle at 92% -5%, rgba(64, 183, 150, 0.15), transparent 32%),
-        var(--bg);
-      line-height: 1.72;
-    }}
-
-    a {{ color: inherit; text-decoration: none; }}
-
-    .wrap {{
-      width: min(880px, calc(100% - 34px));
-      margin: 0 auto;
-    }}
-
-    header {{
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 251, 255, 0.92);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-    }}
-
-    .top {{
-      padding: 14px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }}
-
-    .brand {{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-    }}
-
-    .brand img {{
-      width: auto;
-      height: 36px;
-      max-width: 52px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 10px;
-      box-shadow: 0 0 16px rgba(29, 99, 199, 0.16);
-    }}
-
-    nav {{
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
-    }}
-
-    nav a:hover {{ color: var(--text); }}
-
-    main {{ padding: 36px 0 54px; }}
-
-    h1,
-    h2 {{
-      margin: 0;
-      line-height: 1.22;
-    }}
-
-    h1 {{ font-size: clamp(30px, 4.6vw, 46px); max-width: 24ch; }}
-    h2 {{ margin-top: 28px; font-size: 28px; }}
-
-    p,
-    li {{
-      color: #30465f;
-      font-size: 17px;
-    }}
-
-    ul,
-    ol {{ padding-left: 22px; }}
-
-    .meta {{
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }}
-
-    .panel {{
-      margin-top: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px;
-    }}
-
-    .tldr,
-    .capsule {{
-      margin-top: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px;
-    }}
-
-    .tldr {{
-      border-left: 6px solid #2fc3aa;
-    }}
-
-    .capsule {{
-      background: #f8fbff;
-    }}
-
-    .geo {{
-      margin-top: 22px;
-      border-left: 4px solid #2f73d8;
-      background: var(--good);
-      border-radius: 10px;
-      padding: 14px;
-    }}
-
-    .faq-item {{ margin-top: 18px; }}
-
-    .links {{
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }}
-
-    .links a {{
-      border: 1px solid #bad0ef;
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--brand);
-      font-weight: 600;
-      font-size: 14px;
-      background: #fff;
-    }}
+    :root {{ --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }}
+    * {{ box-sizing:border-box; }}
+    body {{ margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }}
+    a {{ color:inherit; text-decoration:none; }}
+    .wrap {{ width:min(920px, calc(100% - 34px)); margin:0 auto; }}
+    header {{ border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }}
+    .top {{ padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }}
+    .brand {{ display:inline-flex; align-items:center; gap:10px; font-weight:700; }}
+    .brand img {{ width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }}
+    nav {{ display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }}
+    nav a:hover {{ color:var(--text); }}
+    main {{ padding:36px 0 56px; }}
+    h1,h2,h3 {{ margin:0; line-height:1.22; }}
+    h1 {{ font-size:clamp(30px, 4.2vw, 48px); max-width:24ch; }}
+    h2 {{ margin-top:30px; font-size:clamp(24px, 3vw, 34px); }}
+    p,li,td,th {{ color:#30475f; font-size:17px; }}
+    ul,ol {{ padding-left:22px; }}
+    .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
+    .hero, .panel, .tldr, .capsule, table {{ background:var(--panel); border:1px solid var(--line); border-radius:24px; }}
+    .hero {{ padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .panel, .tldr, .capsule {{ margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }}
+    .tldr {{ border-left:6px solid #2fc3aa; }}
+    .capsule {{ background:#f8fbff; }}
+    .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }}
+    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:none; }}
+    .cta-row,.links {{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }}
+    .cta-row a,.links a {{ border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }}
+    .cta-row .primary {{ background:var(--brand); color:#fff; border-color:var(--brand); }}
+    table {{ width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }}
+    th,td {{ padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }}
+    tr:last-child td {{ border-bottom:none; }}
+    th {{ color:var(--text); font-weight:700; background:rgba(29,99,199,.08); }}
+    .sources a {{ color:var(--brand); border-bottom:1px solid #9fcad0; }}
   </style>
 </head>
 <body>
@@ -686,11 +568,11 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
         <img src=\"/2.png\" alt=\"VelocAI logo\" width=\"102\" height=\"73\">
         <span>VelocAI Blog</span>
       </a>
-      <nav aria-label=\"Main\">
-        <a href=\"/\">Home</a>
-        <a href=\"/apps/\">Apps</a>
-        <a href=\"/blog/\">Blog</a>
-        <a href=\"/ai-cleanup-pro/\">AI Cleanup PRO</a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
       </nav>
     </div>
   </header>

@@ -83,6 +83,46 @@ body > header .brand span {
   }
 }
 
+@media (max-width: 899px) {
+  body > header .top {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  body > header .brand {
+    min-width: 0;
+  }
+
+  body > header .brand span {
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  body > header nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  body > header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  body > header nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .vs-header-tools-anchor {
+    margin-left: 0;
+  }
+}
+
 .vs-header-tool-button,
 .vs-search-close,
 .vs-search-submit-icon {
@@ -455,6 +495,19 @@ body.vs-search-open {
 }
 
 @media (max-width: 760px) {
+  body > header .top {
+    gap: 10px;
+  }
+
+  body > header .brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  body > header .brand span {
+    font-size: 17px;
+  }
+
   .vs-header-tools-anchor {
     gap: 8px;
   }
@@ -496,6 +549,103 @@ body.vs-search-open {
 
   .vs-search-results {
     max-height: calc(100vh - 260px);
+  }
+
+  body > main.wrap {
+    width: min(920px, calc(100% - 24px));
+  }
+
+  body > main.wrap article .hero,
+  body > main.wrap article .panel,
+  body > main.wrap article .tldr,
+  body > main.wrap article .capsule {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  body > main.wrap article h1 {
+    max-width: none;
+  }
+
+  body > main.wrap article p,
+  body > main.wrap article li,
+  body > main.wrap article td,
+  body > main.wrap article th {
+    font-size: 16px;
+  }
+
+  body > main.wrap article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    min-width: 620px;
+    border-radius: 20px;
+  }
+
+  body > main.wrap article .cta-row,
+  body > main.wrap article .links {
+    gap: 10px;
+  }
+
+  body > main.wrap article .cta-row a,
+  body > main.wrap article .links a {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  body > header .brand img {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  body > header .brand span {
+    font-size: 16px;
+  }
+
+  .vs-header-tools-anchor {
+    gap: 6px;
+  }
+
+  .vs-header-tool-button,
+  .vs-search-close {
+    width: 36px;
+    height: 36px;
+  }
+
+  .vs-search-panel {
+    top: 64px;
+    right: 8px;
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 80px);
+    border-radius: 18px;
+  }
+
+  .vs-search-panel-inner {
+    padding: 10px;
+  }
+
+  body > main.wrap {
+    width: min(920px, calc(100% - 20px));
+  }
+
+  body > main.wrap article .hero,
+  body > main.wrap article .panel,
+  body > main.wrap article .tldr,
+  body > main.wrap article .capsule {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  body > main.wrap article h1 {
+    font-size: clamp(28px, 10vw, 36px);
+  }
+
+  body > main.wrap article h2 {
+    font-size: clamp(22px, 8vw, 28px);
   }
 }
 

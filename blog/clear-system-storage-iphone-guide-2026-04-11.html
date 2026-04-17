@@ -113,12 +113,12 @@
 }
   </script>
   <style>
-    :root { --bg:#f7fbff; --text:#182436; --muted:#49607b; --line:#cfdeee; --panel:#ffffff; --brand:#1759b8; }
+    :root { --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }
     * { box-sizing:border-box; }
-    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 1%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 92% -5%, rgba(64,183,150,.15), transparent 32%), var(--bg); line-height:1.72; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }
     a { color:inherit; text-decoration:none; }
     .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
-    header { border-bottom:1px solid var(--line); background:rgba(247,251,255,.92); position:sticky; top:0; backdrop-filter:blur(8px); }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
     .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
     .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
     .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }
@@ -131,17 +131,21 @@
     p,li,td,th { color:#30475f; font-size:17px; }
     ul,ol { padding-left:22px; }
     .meta { margin-top:10px; color:var(--muted); font-size:14px; }
-    .hero,.panel,.tldr,.capsule { border:1px solid var(--line); border-radius:18px; background:var(--panel); padding:22px; box-shadow:0 16px 34px rgba(12,33,64,.08); }
-    .panel,.tldr,.capsule { margin-top:24px; }
+    .hero, .panel, .tldr, .capsule, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr, .capsule { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
     .tldr { border-left:6px solid #2fc3aa; }
     .capsule { background:#f8fbff; }
-    table { width:100%; border-collapse:collapse; margin-top:16px; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
-    th,td { text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:12px 14px; font-size:15px; }
-    th { background:#edf5ff; color:#1e3c58; font-weight:700; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .hero > p:not(.meta) { margin:14px 0 0; max-width:none; }
+    .cta-row,.links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+    .cta-row a,.links a { border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }
+    .cta-row .primary { background:var(--brand); color:#fff; border-color:var(--brand); }
+    table { width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    th,td { padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
     tr:last-child td { border-bottom:none; }
-    .sources a { color:var(--brand); border-bottom:1px solid #a9c3ea; }
-    .links { margin-top:28px; display:flex; flex-wrap:wrap; gap:10px; }
-    .links a { border:1px solid #bfd0ee; border-radius:999px; padding:8px 12px; color:var(--brand); font-weight:600; font-size:14px; background:#fff; }
+    th { color:var(--text); font-weight:700; background:rgba(29,99,199,.08); }
+    .sources a { color:var(--brand); border-bottom:1px solid #9fcad0; }
   </style>
   <link rel="stylesheet" href="/assets/css/site-tools.css">
 </head>
