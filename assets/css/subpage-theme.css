@@ -504,6 +504,21 @@ body.theme-findai .hero-card .card-note {
   text-wrap: pretty;
 }
 
+body.theme-findai .hero > :first-child {
+  position: relative;
+  z-index: 2;
+}
+
+body.theme-findai .cta-row {
+  position: relative;
+  z-index: 3;
+}
+
+body.theme-findai .hero-card {
+  position: relative;
+  z-index: 1;
+}
+
 body.theme-explorer .hero,
 body.theme-findai .hero,
 body.theme-cleanup .hero {
