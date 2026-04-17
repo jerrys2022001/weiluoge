@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Publish one daily English blog post about Bluetooth and phone cleanup.
 
 This script generates a new article page, prepends it to blog/index.html,
@@ -907,11 +907,16 @@ def post_meta_from_article_file(path: Path) -> PostMeta:
     )
 
 
+def article_is_noindex(path: Path) -> bool:
+    article_html = path.read_text(encoding="utf-8", errors="ignore")
+    return '<meta name="robots" content="noindex' in article_html.lower()
+
+
 def collect_blog_index_posts(blog_dir: Path) -> list[PostMeta]:
     posts = [
         post_meta_from_article_file(path)
         for path in blog_dir.glob("*.html")
-        if path.name != "index.html"
+        if path.name != "index.html" and not article_is_noindex(path)
     ]
     return sorted(posts, key=lambda post: (post.published_iso, post.filename), reverse=True)
 

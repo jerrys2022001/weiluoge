@@ -35,10 +35,17 @@ class SitemapSyncResult:
     removed: tuple[str, ...]
 
 
+def page_is_noindex(path: Path) -> bool:
+    html = path.read_text(encoding="utf-8", errors="ignore")
+    return '<meta name="robots" content="noindex' in html.lower()
+
+
 def iter_public_html_files(site_root: Path) -> list[Path]:
     html_files: list[Path] = []
     for path in site_root.rglob("*.html"):
         if any(part in EXCLUDED_ROOTS for part in path.relative_to(site_root).parts):
+            continue
+        if page_is_noindex(path):
             continue
         html_files.append(path)
     return html_files
