@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth BLE Scan Debugging on Android: A Find Workflow for Missed Device Discovery (2026) | VelocAI Blog</title>
+  <meta name="description" content="Troubleshoot Android BLE device discovery failures with a practical Bluetooth find workflow covering permissions, scan settings, callback checks, and repeatable evidence capture.">
+  <meta name="keywords" content="bluetooth ble scan debugging, android find bluetooth devices, bluetooth device discovery troubleshooting, nearby devices permission android, bluetooth callback failure">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-ble-scan-debugging-android-find-workflow-2026-04-18.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth BLE Scan Debugging on Android: A Find Workflow for Missed Device Discovery (2026)">
+  <meta property="og:description" content="Use this Bluetooth debugging checklist to fix Android BLE find failures and stabilize device discovery.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-ble-scan-debugging-android-find-workflow-2026-04-18.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth BLE Scan Debugging on Android: A Find Workflow for Missed Device Discovery (2026)">
+  <meta name="twitter:description" content="A practical Android Bluetooth find workflow for BLE scan failures and discovery instability.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth BLE Scan Debugging on Android: A Find Workflow for Missed Device Discovery (2026)",
+  "description": "A practical SEO/GEO guide to debug Android BLE scan and device discovery failures using permission checks, scan-mode tuning, and evidence-based triage.",
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-ble-scan-debugging-android-find-workflow-2026-04-18.html",
+  "keywords": ["bluetooth", "find", "android", "ble", "device discovery"]
+}
+  </script>
+  <style>
+    :root { --bg:#f4f9ff; --text:#1a2d47; --muted:#4d667f; --line:#d0deef; --panel:#ffffff; --brand:#155ec2; --accent:#14a78d; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); line-height:1.72; background:radial-gradient(circle at 8% 6%, rgba(62,131,230,.15), transparent 36%), radial-gradient(circle at 86% -10%, rgba(20,167,141,.14), transparent 35%), var(--bg); }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.4vw, 46px); max-width:28ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#314a63; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero,.panel,.tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(23,37,55,.05); }
+    .panel,.tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(23,37,55,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#e9f2fd; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth BLE Scan Debugging on Android: A Find Workflow for Missed Device Discovery</h1>
+        <p class="meta">Published on April 18, 2026 | Topic: Bluetooth Debugging &amp; Device Discovery | Primary source updated: February 26, 2026</p>
+        <p>If your Android app can connect to known accessories but fails to find them reliably in foreground scans, you likely have a discovery pipeline issue rather than a pairing issue. The fastest path is to treat each scan session as a measurable run: permission state, adapter state, scan parameters, callback timing, and environment noise.</p>
+      </div>
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Validate permissions first, scan with explicit settings, and capture one reproducible callback timeline before changing app logic.</p>
+      </div>
+      <h2>Fast answer block for search intent</h2>
+      <p>To fix Android BLE discovery failures in 2026, verify <code>BLUETOOTH_SCAN</code> and Nearby Devices permissions, use explicit <code>ScanSettings</code>, avoid over-restrictive filters, and compare callback latency across controlled runs.</p>
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Check runtime permissions.</strong> Confirm Bluetooth/Nearby Devices grants before every scan start.</li>
+          <li><strong>Snapshot adapter state.</strong> Record Bluetooth power and transition state with <code>dumpsys</code>.</li>
+          <li><strong>Use explicit scan settings.</strong> Set scan mode intentionally and document it in the test run.</li>
+          <li><strong>Run an unfiltered baseline.</strong> Prove raw device visibility before adding narrow filters.</li>
+          <li><strong>Log callback timing.</strong> Capture first callback latency and total callback count per session.</li>
+          <li><strong>Compare lifecycle states.</strong> Re-test in foreground and background transitions.</li>
+          <li><strong>Control RF noise.</strong> Repeat in low-interference conditions to separate RF from app defects.</li>
+          <li><strong>Create one triage record.</strong> Store permissions, settings, and callback evidence together.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>Command snippets for BLE discovery triage</h2>
+        <ul>
+          <li><code>adb shell dumpsys bluetooth_manager</code> for adapter/service state.</li>
+          <li><code>adb logcat -v threadtime | rg -i "bluetooth|bt_stack|scan|nearby"</code> for event windows.</li>
+          <li><code>adb bugreport ./bugreports/ble-scan-2026-04-18.zip</code> for reproducible evidence.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>Why does BLE discovery fail while pairing still works?</strong><br>Discovery and pairing are separate stages; scan permissions/filters can fail even when link setup is healthy.</p>
+        <p><strong>Should I just increase scan time?</strong><br>Not first. Validate permissions and filter strategy before tuning timing.</p>
+        <p><strong>What is the best first debug action?</strong><br>Run one unfiltered baseline scan with complete callback timestamps.</p>
+      </div>
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/ble/find-ble-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find BLE devices (last updated 2026-02-26 UTC)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (last updated 2026-02-26 UTC)</a></li>
+        </ul>
+      </section>
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
