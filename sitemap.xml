@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://velocai.net/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -25,7 +25,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-industry-experts-explain-why-bluetooth-r-technology-is-being-deployed-to-2026-04-18.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://velocai.net/blog/dualshot-camera-short-form-long-form-guide-2026-04-18.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-crowded-space-earbuds-guide-2026-04-18.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/hidden-downloads-iphone-storage-audit-guide-2026-04-18.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -3075,24 +3093,6 @@
   <url>
     <loc>https://velocai.net/googlec013bfb5fe336f73.html</loc>
     <lastmod>2026-03-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/output/live-home-after-fix.html</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/output/live-home.html</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://velocai.net/output/live-translate.html</loc>
-    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
