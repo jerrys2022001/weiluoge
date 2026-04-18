@@ -22,7 +22,7 @@ from email.utils import parsedate_to_datetime
 from html import escape, unescape
 from pathlib import Path
 import subprocess
-from PIL import Image, ImageStat
+from PIL import Image, ImageOps, ImageStat
 
 from blog_daily_scheduler import add_git_publish_args, resolve_git_command, run_git_command
 
@@ -33,6 +33,9 @@ BRIEF_IMAGES_REL = Path("assets/images/home-briefing")
 APPLE_PARK_FALLBACK_REL = Path("assets/images/hero-2026-03/Apple-Park-Rainbow-Arches.jpg")
 BRIEF_HISTORY_REL = Path("assets/data/product-pulse")
 BRIEF_HISTORY_MANIFEST_REL = BRIEF_HISTORY_REL / "history.json"
+BRIEF_THUMB_SIZE = 320
+BRIEF_THUMB_QUALITY = 72
+BRIEF_THUMB_SUFFIX = "-thumb.webp"
 DEFAULT_LOG_DIR_REL = Path("output/home-brief-logs")
 SECTION_START = "<!-- va-today-brief:start -->"
 SECTION_END = "<!-- va-today-brief:end -->"
@@ -784,6 +787,50 @@ def is_dark_image_bytes(payload: bytes) -> bool:
         return True
 
 
+def derive_thumb_path(path: Path) -> Path:
+    if path.suffix.lower() == ".webp" and path.stem.endswith("-thumb"):
+        return path
+    return path.with_name(f"{path.stem}{BRIEF_THUMB_SUFFIX}")
+
+
+def build_brief_thumbnail_bytes(payload: bytes) -> bytes | None:
+    try:
+        with Image.open(io.BytesIO(payload)) as image:
+            if getattr(image, "is_animated", False):
+                image.seek(0)
+            thumb = ImageOps.fit(
+                image.convert("RGB"),
+                (BRIEF_THUMB_SIZE, BRIEF_THUMB_SIZE),
+                method=Image.Resampling.LANCZOS,
+                centering=(0.5, 0.5),
+            )
+            buffer = io.BytesIO()
+            thumb.save(buffer, format="WEBP", quality=BRIEF_THUMB_QUALITY, method=6)
+            return buffer.getvalue()
+    except Exception:
+        return None
+
+
+def ensure_local_thumb(repo_root: Path, image_url: str) -> str:
+    cleaned = (image_url or "").strip()
+    if not cleaned.startswith("/"):
+        return cleaned
+    relative = Path(cleaned.lstrip("/"))
+    source_path = repo_root / relative
+    if not source_path.exists():
+        return cleaned
+    thumb_relative = derive_thumb_path(relative)
+    thumb_path = repo_root / thumb_relative
+    if thumb_path.exists():
+        return "/" + thumb_relative.as_posix()
+    thumb_payload = build_brief_thumbnail_bytes(source_path.read_bytes())
+    if not thumb_payload:
+        return cleaned
+    thumb_path.parent.mkdir(parents=True, exist_ok=True)
+    thumb_path.write_bytes(thumb_payload)
+    return "/" + thumb_relative.as_posix()
+
+
 def collect_home_briefing_fallbacks(repo_root: Path) -> dict[str, list[str]]:
     cache_key = str(repo_root.resolve())
     cached = HOME_BRIEFING_IMAGE_POOL_CACHE.get(cache_key)
@@ -797,6 +844,8 @@ def collect_home_briefing_fallbacks(repo_root: Path) -> dict[str, list[str]]:
             if not path.is_file():
                 continue
             if path.suffix.lower() not in {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}:
+                continue
+            if path != derive_thumb_path(path) and derive_thumb_path(path).exists():
                 continue
             if is_screenshot_like_path(path) or is_dark_image(path):
                 continue
@@ -1101,10 +1150,16 @@ def download_image_to_repo(
     target_dir.mkdir(parents=True, exist_ok=True)
 
     digest = hashlib.sha1(f"{source.slug}|{item.link}|{candidate}".encode("utf-8", errors="ignore")).hexdigest()[:16]
-    extension = derive_image_extension(content_type, final_url, payload)
-    filename = f"{source.slug}-{digest}{extension}"
+    thumb_payload = build_brief_thumbnail_bytes(payload)
+    if thumb_payload:
+        filename = f"{source.slug}-{digest}{BRIEF_THUMB_SUFFIX}"
+        output_bytes = thumb_payload
+    else:
+        extension = derive_image_extension(content_type, final_url, payload)
+        filename = f"{source.slug}-{digest}{extension}"
+        output_bytes = payload
     target_path = target_dir / filename
-    target_path.write_bytes(payload)
+    target_path.write_bytes(output_bytes)
     return ("/" + (day_folder / filename).as_posix(), (day_folder / filename).as_posix())
 
 
@@ -1142,7 +1197,7 @@ def is_image_url_healthy(url: str) -> bool:
 
 
 def resolve_story_image_url(repo_root: Path, item: FeedItem, source: BriefSource) -> tuple[str, str]:
-    fallback_image = pick_fallback_image(repo_root, item, source)
+    fallback_image = ensure_local_thumb(repo_root, pick_fallback_image(repo_root, item, source))
     primary_image = normalize_image_url(item.image_url)
     if primary_image and is_image_url_healthy(primary_image):
         return primary_image, fallback_image
@@ -1160,7 +1215,7 @@ def prepare_render_entries(
     for entry in entries:
         source = entry.source
         item = entry.item
-        fallback_image = pick_fallback_image(repo_root, item, source)
+        fallback_image = ensure_local_thumb(repo_root, pick_fallback_image(repo_root, item, source))
 
         image_src = fallback_image
         attempted_urls = [
@@ -1198,7 +1253,7 @@ def render_entry(render_entry_item: RenderEntry) -> str:
           <p class="va-brief-meta"><span class="va-brief-source">{escape(source.source_name)}</span> <span aria-hidden="true">|</span> {escape(format_card_date(item.published_at))}</p>
         </div>
         <a class="va-brief-thumb" href="{escape(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="Open story: {escape(item.title)}">
-          <img src="{escape(image_url)}" alt="{escape(image_alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){{this.src=this.dataset.fallbackSrc;}}this.onerror=null;">
+          <img src="{escape(image_url)}" alt="{escape(image_alt)}" width="{BRIEF_THUMB_SIZE}" height="{BRIEF_THUMB_SIZE}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-fallback-src="{escape(fallback_image)}" onerror="if(this.dataset.fallbackSrc && this.src !== this.dataset.fallbackSrc){{this.src=this.dataset.fallbackSrc;}}this.onerror=null;">
         </a>
       </article>"""
 

@@ -1419,7 +1419,7 @@
     if (searchData) return Promise.resolve(searchData);
     if (loadPromise) return loadPromise;
 
-    loadPromise = fetch(SEARCH_ENDPOINT, { credentials: "same-origin" })
+    loadPromise = fetch(SEARCH_ENDPOINT, { credentials: "same-origin", cache: "force-cache" })
       .then(function (response) {
         if (!response.ok) {
           throw new Error("Search index request failed");
@@ -1967,8 +1967,30 @@
       setActiveResult(0, false);
     }
 
+    function renderLoadingState() {
+      const ui = getUi();
+      resultsNode.innerHTML = "";
+      currentResults = [];
+      activeResultIndex = -1;
+      resultsTitle.textContent = ui.resultsHint;
+      const loading = document.createElement("p");
+      loading.className = "vs-search-empty";
+      loading.textContent = ui.loading;
+      resultsNode.appendChild(loading);
+    }
+
+    function warmSearchIndex() {
+      if (searchData || loadPromise) {
+        return;
+      }
+      loadSearchIndex();
+    }
+
     function runSearch(query) {
       const preference = getSavedPreference();
+      if (!searchData && !loadPromise) {
+        renderLoadingState();
+      }
 
       return loadSearchIndex().then(function (items) {
         renderResults(queryResults(items, query, preference), query);
@@ -1992,6 +2014,8 @@
         runSearch(input.value.trim());
       }
     });
+    trigger.addEventListener("pointerenter", warmSearchIndex, { once: true });
+    trigger.addEventListener("focus", warmSearchIndex, { once: true });
 
     closeButton.addEventListener("click", closePanel);
     submitIcon.addEventListener("click", function () {
@@ -2003,6 +2027,7 @@
     input.addEventListener("input", function () {
       runSearch(input.value.trim());
     });
+    input.addEventListener("focus", warmSearchIndex, { once: true });
 
     input.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
@@ -2061,7 +2086,6 @@
     applyPageTranslations();
     closePanel();
     document.documentElement.lang = resolveUiLocale(getSavedPreference());
-    loadSearchIndex();
 
     const initialQuery = new URLSearchParams(window.location.search).get("q");
     if (initialQuery) {

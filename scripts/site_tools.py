@@ -14,6 +14,10 @@ from pathlib import Path
 HEAD_INJECTION = '  <link rel="stylesheet" href="/assets/css/site-tools.css">\n'
 SCRIPT_INJECTION = '  <script src="/assets/js/site-tools.js" defer></script>\n'
 SEARCH_INDEX_REL = Path("assets/data/site-search-index.json")
+MAX_SEARCH_DESCRIPTION_CHARS = 180
+MAX_BODY_TERMS_CHARS = 480
+MAX_SEARCH_TERMS_CHARS = 720
+MAX_LINK_RECORDS_PER_PAGE = 8
 EXCLUDED_DIRS = {
     ".git",
     ".github",
@@ -81,6 +85,14 @@ GENERIC_LINK_LABELS = {
 def clean_html_text(value: str) -> str:
     collapsed = TAG_RE.sub(" ", value or "")
     return SPACE_RE.sub(" ", unescape(collapsed)).strip()
+
+
+def trim_text(value: str, max_chars: int) -> str:
+    normalized = SPACE_RE.sub(" ", (value or "")).strip()
+    if len(normalized) <= max_chars:
+        return normalized
+    trimmed = normalized[:max_chars].rsplit(" ", 1)[0].strip()
+    return trimmed or normalized[:max_chars].strip()
 
 
 def extract_meta_content(text: str, key: str, attr_name: str = "name") -> str:
@@ -162,9 +174,12 @@ def extract_body_terms(text: str, max_chars: int = 4000) -> str:
     if not body_match:
         return ""
     body_text = clean_html_text(body_match.group(1))
-    if len(body_text) > max_chars:
-        body_text = body_text[:max_chars]
-    return body_text.lower()
+    return trim_text(body_text, max_chars).lower()
+
+
+def combine_terms(*pieces: str, max_chars: int = MAX_SEARCH_TERMS_CHARS) -> str:
+    merged = " ".join(piece.strip() for piece in pieces if piece and piece.strip())
+    return trim_text(merged, max_chars).lower()
 
 
 def normalize_href(relative_path: Path, href: str) -> str:
@@ -203,7 +218,7 @@ def extract_link_records(
     page_heading: str,
     category: str,
     locale: str,
-    max_records: int = 20,
+    max_records: int = MAX_LINK_RECORDS_PER_PAGE,
 ) -> list[SearchRecord]:
     body_match = BODY_RE.search(text)
     if not body_match:
@@ -248,16 +263,12 @@ def extract_link_records(
                 category=category,
                 locale=locale,
                 alternates={},
-                terms=" ".join(
-                    piece
-                    for piece in [
-                        title.lower(),
-                        (page_heading or "").lower(),
-                        page_title.lower(),
-                        category.lower(),
-                        href.lower(),
-                    ]
-                    if piece
+                terms=combine_terms(
+                    title,
+                    page_heading or "",
+                    page_title,
+                    category,
+                    href,
                 ),
                 priority=priority,
                 focus=title,
@@ -309,11 +320,11 @@ def parse_search_records(repo_root: Path, path: Path, known_paths: set[Path]) ->
     heading_match = H1_RE.search(text)
     title = clean_html_text(title_match.group(1)) if title_match else clean_html_text(relative.stem.replace("-", " "))
     heading = clean_html_text(heading_match.group(1)) if heading_match else ""
-    description = extract_meta_content(text, "description")
+    description = trim_text(extract_meta_content(text, "description"), MAX_SEARCH_DESCRIPTION_CHARS)
     locale = infer_locale(text, relative)
     category = infer_category(relative)
     alternates = build_alternates(relative, known_paths)
-    body_terms = extract_body_terms(text)
+    body_terms = extract_body_terms(text, MAX_BODY_TERMS_CHARS)
     page_record = SearchRecord(
         url=normalize_url(relative),
         title=title,
@@ -322,11 +333,7 @@ def parse_search_records(repo_root: Path, path: Path, known_paths: set[Path]) ->
         category=category,
         locale=locale,
         alternates=alternates,
-        terms=" ".join(
-            piece
-            for piece in [build_terms(relative, title, description, heading, category), body_terms]
-            if piece
-        ),
+        terms=combine_terms(build_terms(relative, title, description, heading, category), body_terms),
         priority=0,
         focus="",
         external_url="",
@@ -345,27 +352,33 @@ def build_site_search_index(repo_root: Path) -> int:
     payload = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "count": len(records),
-        "items": [
-            {
-                "url": record.url,
-                "title": record.title,
-                "description": record.description,
-                "heading": record.heading,
-                "category": record.category,
-                "locale": record.locale,
-                "alternates": record.alternates,
-                "terms": record.terms,
-                "priority": record.priority,
-                "focus": record.focus,
-                "external_url": record.external_url,
-            }
-            for record in records
-        ],
+        "items": [],
     }
+
+    for record in records:
+        item = {
+            "url": record.url,
+            "title": record.title,
+            "description": record.description,
+            "category": record.category,
+            "locale": record.locale,
+            "terms": record.terms,
+        }
+        if record.heading:
+            item["heading"] = record.heading
+        if record.alternates:
+            item["alternates"] = record.alternates
+        if record.priority:
+            item["priority"] = record.priority
+        if record.focus:
+            item["focus"] = record.focus
+        if record.external_url:
+            item["external_url"] = record.external_url
+        payload["items"].append(item)
 
     output_path = repo_root / SEARCH_INDEX_REL
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return len(records)
 
 
