@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android Bluetooth Device Discovery Debugging: ACTION_FOUND and SCAN_MODE Checklist (2026) | VelocAI Blog</title>
+  <meta name="description" content="Troubleshoot Android Bluetooth device discovery with a practical ACTION_FOUND and SCAN_MODE checklist. Includes debugging steps for find failures, pairing handoff, and scan performance.">
+  <meta name="keywords" content="android bluetooth device discovery debugging, ACTION_FOUND troubleshooting, SCAN_MODE_CHANGED bluetooth, bluetooth find failures, bluetooth cleanup test checklist">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/android-bluetooth-device-discovery-debugging-scan-mode-checklist-2026-04-19.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Android Bluetooth Device Discovery Debugging: ACTION_FOUND and SCAN_MODE Checklist (2026)">
+  <meta property="og:description" content="A practical Android Bluetooth discovery debugging workflow based on official discovery behavior and scan mode signals.">
+  <meta property="og:url" content="https://velocai.net/blog/android-bluetooth-device-discovery-debugging-scan-mode-checklist-2026-04-19.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Android Bluetooth Device Discovery Debugging: ACTION_FOUND and SCAN_MODE Checklist (2026)">
+  <meta name="twitter:description" content="Use ACTION_FOUND, scan timing, and scan mode transitions to debug Android Bluetooth discovery reliably.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Android Bluetooth Device Discovery Debugging: ACTION_FOUND and SCAN_MODE Checklist (2026)",
+  "description": "An SEO/GEO troubleshooting guide for Android Bluetooth discovery issues using ACTION_FOUND broadcasts, scan mode transitions, and reproducible evidence.",
+  "datePublished": "2026-04-19",
+  "dateModified": "2026-04-19",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/android-bluetooth-device-discovery-debugging-scan-mode-checklist-2026-04-19.html",
+  "keywords": [
+    "bluetooth",
+    "find",
+    "android bluetooth discovery",
+    "ACTION_FOUND",
+    "SCAN_MODE_CHANGED"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f4f9ff; --text:#18293f; --muted:#4a627c; --line:#cfdeee; --panel:#ffffff; --brand:#165fc4; --accent:#1fb196; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 7% 5%, rgba(64,133,235,.16), transparent 35%),
+        radial-gradient(circle at 87% -10%, rgba(31,177,150,.14), transparent 34%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.4vw, 46px); max-width:30ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#304861; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#eaf2fd; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/2.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Android Bluetooth Device Discovery Debugging: ACTION_FOUND and SCAN_MODE Checklist</h1>
+        <p class="meta">Published on April 19, 2026 | Topic: Bluetooth Device Discovery Debugging | Primary Source Updated: February 26, 2026</p>
+        <p>When Android Bluetooth <strong>find</strong> flows miss nearby devices, most teams only look at app logs and miss system scan behavior. A better sequence is to verify paired-state assumptions, observe <code>ACTION_FOUND</code> timing, track <code>ACTION_SCAN_MODE_CHANGED</code> transitions, and then retest with a clean pairing and cleanup baseline. This approach gives repeatable answers for discovery and pairing handoff issues.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Debug discovery with evidence, not guesses. Check paired devices first, run one controlled discovery pass, confirm broadcasts are received, cancel discovery before connect, and compare results after a cleanup reset.</p>
+      </div>
+
+      <h2>Fast answer block for search intent</h2>
+      <p>The fastest way to troubleshoot Android Bluetooth device discovery in 2026 is to treat discovery as a timed pipeline: pre-check paired inventory, start discovery, log each <code>ACTION_FOUND</code> callback, confirm scan mode changes, and stop discovery before connection attempts. This isolates whether failures occur in scanning, visibility policy, or connection handoff.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Check bonded inventory before scanning.</strong> Query <code>getBondedDevices()</code> to avoid unnecessary rediscovery loops.</li>
+          <li><strong>Register receiver early.</strong> Ensure your <code>BroadcastReceiver</code> for <code>ACTION_FOUND</code> is active before calling <code>startDiscovery()</code>.</li>
+          <li><strong>Run one controlled scan window.</strong> Keep location, device distance, and accessory power state constant for the first run.</li>
+          <li><strong>Log scan duration and callback cadence.</strong> Discovery commonly includes ~12 seconds inquiry plus per-device name resolution time.</li>
+          <li><strong>Track discoverability state transitions.</strong> Capture <code>ACTION_SCAN_MODE_CHANGED</code> and confirm expected mode windows.</li>
+          <li><strong>Cancel discovery before connect.</strong> Always call <code>cancelDiscovery()</code> before RFCOMM/GATT connection setup to avoid bandwidth contention.</li>
+          <li><strong>Perform cleanup reset between retries.</strong> Remove stale pairings and clear outdated test builds to reduce false negatives.</li>
+          <li><strong>Change one variable per rerun.</strong> Re-test permissions, scan mode, or connection timing independently so diffs stay meaningful.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Common discovery failure patterns and fixes</h2>
+        <ul>
+          <li><strong>No callbacks at all:</strong> receiver registration or permission scope is likely incorrect.</li>
+          <li><strong>Callbacks arrive but target missing:</strong> accessory discoverability window may be too short or intermittent.</li>
+          <li><strong>Device appears but connect fails:</strong> discovery may still be running; cancel it before opening the link.</li>
+          <li><strong>Flaky after app background/foreground:</strong> verify receiver lifecycle and re-register strategy.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Minimal command notebook for repeatable triage</h2>
+        <ul>
+          <li><code>adb shell dumpsys bluetooth_manager</code></li>
+          <li><code>adb logcat -b all -v threadtime | grep -i bluetooth</code></li>
+          <li><code>adb shell settings get global bluetooth_on</code></li>
+          <li><code>adb shell getprop ro.build.fingerprint</code></li>
+          <li><code>adb shell cmd bluetooth_manager disable && adb shell cmd bluetooth_manager enable</code></li>
+        </ul>
+        <p>Attach these outputs to each ticket with phone model, Android version, and accessory firmware so cross-team debugging stays deterministic.</p>
+      </div>
+
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>Why should I query paired devices before discovery?</strong><br>
+        It avoids unnecessary scans and quickly tells you whether the issue is discovery or post-pair connection logic.</p>
+
+        <p><strong>Why does discovery hurt connection quality?</strong><br>
+        Active discovery uses adapter resources and can reduce bandwidth for existing or new connections.</p>
+
+        <p><strong>Where does cleanup help Bluetooth debugging?</strong><br>
+        Cleaning stale pairings and old test artifacts reduces environment noise and improves reproducibility.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (Last updated 2026-02-26 UTC)</a></li>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/bt-permissions" target="_blank" rel="noopener noreferrer">Android Developers: Bluetooth permissions</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
