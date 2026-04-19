@@ -239,7 +239,14 @@ def main() -> int:
                 f"worktree_publish_failed lane={args.lane} code={completed.returncode} fallback=local_repo",
             )
             fallback_command = build_publish_command(script_root, repo_root, args)
-            fallback_completed = run_command(repo_root, fallback_command)
+            try:
+                fallback_completed = run_command(repo_root, fallback_command)
+            except SystemExit as exc:
+                append_run_log(
+                    repo_root,
+                    f"local_repo_publish_failed lane={args.lane} code={exc.code}",
+                )
+                raise
             publish_output = (fallback_completed.stdout or "") + "\n" + (fallback_completed.stderr or "")
             published_file = extract_published_file(publish_output)
         if should_trigger_post_publish_index(args) and published_file is not None:

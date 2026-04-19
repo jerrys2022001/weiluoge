@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from dataclasses import dataclass
 from datetime import date, datetime
 from html import escape, unescape
@@ -267,6 +268,19 @@ def run_git_command(repo_root: Path, git_command: str, args: list[str]) -> subpr
     return result
 
 
+def is_retryable_push_error(error: ValueError) -> bool:
+    message = str(error).lower()
+    if "git command failed: push " not in message:
+        return False
+    retry_markers = (
+        "failed to push some refs",
+        "non-fast-forward",
+        "fetch first",
+        "[rejected]",
+    )
+    return any(marker in message for marker in retry_markers)
+
+
 def copy_publish_paths(source_root: Path, target_root: Path, tracked_paths: list[str]) -> None:
     for rel_path in tracked_paths:
         source = source_root / rel_path
@@ -283,29 +297,47 @@ def publish_blog_post_via_temp_worktree(
     remote: str,
     branch: str,
 ) -> str:
-    temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(repo_root / ".tmp")))
-    worktree_path = temp_root / "worktree"
-    try:
-        run_git_command(repo_root, git_command, ["fetch", remote, branch])
-        run_git_command(repo_root, git_command, ["worktree", "add", "--detach", str(worktree_path), f"{remote}/{branch}"])
-        copy_publish_paths(repo_root, worktree_path, tracked_paths)
-        run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
-        staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
-        if not staged.stdout.strip():
-            return "unchanged"
-        run_git_command(
-            worktree_path,
-            git_command,
-            ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
-        )
-        run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
-        return f"committed+pushed({remote}/{branch})"
-    finally:
+    max_attempts = 3
+    retry_delay_seconds = 2
+    last_error: ValueError | None = None
+
+    for attempt in range(1, max_attempts + 1):
+        temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(repo_root / ".tmp")))
+        worktree_path = temp_root / "worktree"
         try:
-            run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
-        except ValueError:
-            pass
-        shutil.rmtree(temp_root, ignore_errors=True)
+            run_git_command(repo_root, git_command, ["fetch", remote, branch])
+            run_git_command(repo_root, git_command, ["worktree", "add", "--detach", str(worktree_path), f"{remote}/{branch}"])
+            copy_publish_paths(repo_root, worktree_path, tracked_paths)
+            run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
+            staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
+            if not staged.stdout.strip():
+                return "unchanged"
+            run_git_command(
+                worktree_path,
+                git_command,
+                ["commit", "-m", f"Publish blog post: {post.filename}", "--only", "--", *tracked_paths],
+            )
+            run_git_command(worktree_path, git_command, ["push", remote, f"HEAD:{branch}"])
+            return f"committed+pushed({remote}/{branch})"
+        except ValueError as exc:
+            last_error = exc
+            if attempt >= max_attempts or not is_retryable_push_error(exc):
+                raise
+            print(
+                f"git push race detected for {post.filename}; retrying publish attempt={attempt + 1}/{max_attempts}",
+                file=sys.stderr,
+            )
+            time.sleep(retry_delay_seconds)
+        finally:
+            try:
+                run_git_command(repo_root, git_command, ["worktree", "remove", str(worktree_path), "--force"])
+            except ValueError:
+                pass
+            shutil.rmtree(temp_root, ignore_errors=True)
+
+    if last_error is not None:
+        raise last_error
+    raise ValueError(f"Failed to publish blog post after {max_attempts} attempts: {post.filename}")
 
 
 def publish_blog_post_to_git(

@@ -5,10 +5,11 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 from blog_cleanup_focus_scheduler import (
@@ -22,6 +23,7 @@ from blog_daily_scheduler import (
     SITEMAP_REL,
     add_git_publish_args,
     parse_iso_date,
+    post_meta_from_article_file,
     publish_blog_post_to_git,
     update_blog_index,
     update_sitemap,
@@ -69,6 +71,8 @@ MIN_DAILY_DUALSHOT_POSTS = 1
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
 ENABLE_UPDATES_LANE_ENV = "WEILUOGE_ENABLE_UPDATES_LANE"
+RECENT_REPEAT_LOOKBACK_DAYS = 1
+DATE_SUFFIX_RE = re.compile(r"-\d{4}-\d{2}-\d{2}\.html$")
 
 
 @dataclass(frozen=True)
@@ -330,18 +334,77 @@ def evaluate_candidates(
     return evaluated
 
 
-def choose_candidate(
-    repo_root: Path,
+def topic_stem_from_filename(filename: str) -> str:
+    return DATE_SUFFIX_RE.sub("", filename)
+
+
+def normalize_title(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip().lower()
+
+
+def collect_recent_repeat_keys(
+    blog_dir: Path,
     target_day: date,
-    lane: str,
-    slot_offset: int,
+    lookback_days: int = RECENT_REPEAT_LOOKBACK_DAYS,
+) -> set[str]:
+    keys: set[str] = set()
+    for days_back in range(1, lookback_days + 1):
+        day = target_day - timedelta(days=days_back)
+        suffix = f"-{day.isoformat()}.html"
+        for path in blog_dir.glob(f"*{suffix}"):
+            keys.add(f"stem:{topic_stem_from_filename(path.name)}")
+            try:
+                meta = post_meta_from_article_file(path)
+            except ValueError:
+                continue
+            if meta.title:
+                keys.add(f"title:{normalize_title(meta.title)}")
+    return keys
+
+
+def candidate_repeats_recent_topic(candidate: Candidate, recent_keys: set[str]) -> bool:
+    stem_key = f"stem:{topic_stem_from_filename(candidate.post.filename)}"
+    if stem_key in recent_keys:
+        return True
+    title = getattr(candidate.post, "title", "")
+    if title and f"title:{normalize_title(title)}" in recent_keys:
+        return True
+    return False
+
+
+def split_recent_repeats(
+    ranked: list[tuple[float, Candidate]],
+    recent_keys: set[str],
+) -> tuple[list[tuple[float, Candidate]], list[tuple[float, Candidate]]]:
+    fresh: list[tuple[float, Candidate]] = []
+    repeated: list[tuple[float, Candidate]] = []
+    for item in ranked:
+        if candidate_repeats_recent_topic(item[1], recent_keys):
+            repeated.append(item)
+        else:
+            fresh.append(item)
+    return fresh, repeated
+
+
+def first_local_candidate_below_threshold(
+    ranked: list[tuple[float, Candidate]],
     similarity_threshold: float,
-    force: bool,
-) -> tuple[Candidate, float]:
-    blog_dir = repo_root / "blog"
-    existing_pages = load_blog_pages(blog_dir)
-    local_ranked = evaluate_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
-    live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+) -> tuple[Candidate, float] | None:
+    for similarity, candidate in ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
+    return None
+
+
+def choose_from_ranked_candidates(
+    *,
+    lane: str,
+    blog_dir: Path,
+    target_day: date,
+    similarity_threshold: float,
+    local_ranked: list[tuple[float, Candidate]],
+    live_ranked: list[tuple[float, Candidate]],
+) -> tuple[Candidate, float] | None:
     bluetooth_quota_open = lane == "updates" and count_same_day_bluetooth_posts(blog_dir, target_day) < MIN_DAILY_BLUETOOTH_POSTS
     preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
     fallback_live_ranked = live_ranked if preferred_live_ranked else []
@@ -352,7 +415,7 @@ def choose_candidate(
                 return candidate, similarity
         for similarity, candidate in local_ranked:
             return candidate, similarity
-        raise ValueError(f"Could not find a publishable {lane} blog candidate. strict_threshold={similarity_threshold:.2f}")
+        return None
 
     for similarity, candidate in local_ranked:
         if similarity < similarity_threshold:
@@ -414,6 +477,53 @@ def choose_candidate(
             html=candidate.html,
         ), similarity
 
+    return None
+
+
+def choose_candidate(
+    repo_root: Path,
+    target_day: date,
+    lane: str,
+    slot_offset: int,
+    similarity_threshold: float,
+    force: bool,
+) -> tuple[Candidate, float]:
+    blog_dir = repo_root / "blog"
+    existing_pages = load_blog_pages(blog_dir)
+    recent_repeat_keys = collect_recent_repeat_keys(blog_dir, target_day)
+    local_ranked = evaluate_candidates(build_local_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    fresh_local_ranked, repeated_local_ranked = split_recent_repeats(local_ranked, recent_repeat_keys)
+
+    early_local_choice = first_local_candidate_below_threshold(fresh_local_ranked, similarity_threshold)
+    if early_local_choice is not None:
+        return early_local_choice
+
+    live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    fresh_live_ranked, repeated_live_ranked = split_recent_repeats(live_ranked, recent_repeat_keys)
+
+    chosen = choose_from_ranked_candidates(
+        lane=lane,
+        blog_dir=blog_dir,
+        target_day=target_day,
+        similarity_threshold=similarity_threshold,
+        local_ranked=fresh_local_ranked,
+        live_ranked=fresh_live_ranked,
+    )
+    if chosen is not None:
+        return chosen
+
+    chosen = choose_from_ranked_candidates(
+        lane=lane,
+        blog_dir=blog_dir,
+        target_day=target_day,
+        similarity_threshold=similarity_threshold,
+        local_ranked=repeated_local_ranked,
+        live_ranked=repeated_live_ranked,
+    )
+    if chosen is not None:
+        return chosen
+
+    live_soft_threshold = default_live_rewrite_threshold(lane)
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
         f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f}"
