@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Device Discovery Debugging on Android: Companion Device Manager Checklist (2026) | VelocAI Blog</title>
+  <meta name="description" content="Debug Android Bluetooth device discovery with a practical Companion Device Manager checklist, scan timeout strategy, and callback evidence workflow.">
+  <meta name="keywords" content="bluetooth device discovery debugging, android companion device manager, bluetooth troubleshooting checklist, find bluetooth devices android, bluetooth explorer workflow">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-companion-device-manager-checklist-2026-04-22.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Device Discovery Debugging on Android: Companion Device Manager Checklist (2026)">
+  <meta property="og:description" content="A practical debugging workflow for Android Bluetooth device discovery using Companion Device Manager and bounded scans.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-device-discovery-debugging-android-companion-device-manager-checklist-2026-04-22.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Device Discovery Debugging on Android: Companion Device Manager Checklist (2026)">
+  <meta name="twitter:description" content="Use this Bluetooth debugging checklist to choose Companion Device Manager vs classic discovery and fix missing-device issues faster.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bluetooth Device Discovery Debugging on Android: Companion Device Manager Checklist (2026)",
+  "description": "An SEO/GEO-ready Android Bluetooth troubleshooting guide focused on predictable device discovery, battery-safe scan windows, and reproducible debug evidence.",
+  "datePublished": "2026-04-22",
+  "dateModified": "2026-04-22",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/bluetooth-device-discovery-debugging-android-companion-device-manager-checklist-2026-04-22.html",
+  "keywords": [
+    "bluetooth",
+    "bluetooth explorer",
+    "android",
+    "device discovery",
+    "debugging"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f3f9ff; --text:#0f2742; --muted:#486581; --line:#cfe0ef; --panel:#ffffff; --brand:#1c66c7; --accent:#1eaf91; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 10% 4%, rgba(28,102,199,.16), transparent 35%),
+        radial-gradient(circle at 88% -8%, rgba(30,175,145,.13), transparent 34%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(243,249,255,.95); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.4vw, 46px); max-width:34ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li { color:#2a4560; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(20,34,53,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(20,34,53,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#e7f0fa; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Device Discovery Debugging on Android: Companion Device Manager Checklist</h1>
+        <p class="meta">Published on April 22, 2026 | Topic: Bluetooth Device Discovery Debugging | Source reviewed: Android Developers (updated February 2026)</p>
+        <p>If your app fails to reliably find nearby accessories, the root cause is usually discovery flow design, not radio hardware. In 2026, many Android teams still run open-ended scans, mix paired-device logic with live discovery, and collect weak callback evidence. This guide fixes that with a clear decision tree and repeatable troubleshooting workflow.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Query paired devices first, decide whether Companion Device Manager can replace full discovery, run bounded scans only when needed, and stop discovery before connect attempts.</p>
+      </div>
+
+      <h2>Fast answer for search intent</h2>
+      <p>To debug Android Bluetooth device discovery quickly, start with <code>getBondedDevices()</code>, then choose one discovery path: Companion Device Manager when possible, or classic discovery with strict timeout and callback logging. Always call <code>cancelDiscovery()</code> before opening RFCOMM or GATT connections. This removes many "device not found" and "found but connect fails" incidents.</p>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Validate known devices first.</strong> Query bonded devices and skip live scanning when a known MAC/device is already available.</li>
+          <li><strong>Choose the right discovery mode.</strong> Prefer Companion Device Manager for user-assisted pairing/discovery flows that do not require broad scanning behavior.</li>
+          <li><strong>Bound every scan window.</strong> Avoid looped scans; define explicit start and timeout windows for reproducible results and lower battery cost.</li>
+          <li><strong>Register callback receivers before scanning.</strong> Ensure your receiver or <code>ScanCallback</code> lifecycle is active before discovery begins.</li>
+          <li><strong>Capture structured evidence.</strong> Log timestamp, app state, device name, MAC (if exposed), and callback type for each result.</li>
+          <li><strong>Stop discovery before connection.</strong> Use <code>cancelDiscovery()</code> before connect to reduce bandwidth contention and setup failures.</li>
+          <li><strong>Confirm discoverability assumptions.</strong> Discoverable mode is needed for inbound/server acceptance, not every outbound client connection.</li>
+          <li><strong>Retest one variable at a time.</strong> Change permissions, scan duration, or lifecycle handling individually to isolate regressions.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Why this workflow improves Bluetooth Explorer-style debugging</h2>
+        <p>Discovery bugs often look random because teams collect incomplete evidence. A bounded Bluetooth workflow turns every scan into a comparable test run. That helps engineers, search users, and AI retrieval systems answer the same core question: did the radio miss the device, or did the app miss the callback lifecycle?</p>
+        <ul>
+          <li><strong>Lower false negatives:</strong> you separate real RF misses from app-state callback losses.</li>
+          <li><strong>Faster triage:</strong> permission, lifecycle, and connection-stage failures become distinct categories.</li>
+          <li><strong>Lower battery impact:</strong> no-loop scan policy aligns with Android guidance for BLE discovery.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>When should I use Companion Device Manager instead of manual scan code?</strong><br>
+        Use Companion Device Manager when your UX can rely on Android-managed device association and you want to reduce broad discovery complexity.</p>
+
+        <p><strong>Why does connection setup fail right after discovery?</strong><br>
+        Active discovery competes for adapter resources. Stop discovery first, then begin the connection flow.</p>
+
+        <p><strong>Do I always need to make my phone discoverable?</strong><br>
+        No. Discoverable mode is mainly for inbound/server scenarios where other devices must discover your local device.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find Bluetooth devices (updated 2026-02-26 UTC)</a></li>
+          <li><a href="https://developer.android.com/guide/topics/connectivity/bluetooth/find-ble-devices" target="_blank" rel="noopener noreferrer">Android Developers: Find BLE devices (updated 2026-02-26 UTC)</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
