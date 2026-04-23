@@ -72,6 +72,7 @@ $translateInstaller = Ensure-Script "install_translate_ai_blog_tasks.ps1"
 $homeBriefInstaller = Ensure-Script "install_home_brief_daily_task.ps1"
 $preflightInstaller = Ensure-Script "install_blog_preflight_task.ps1"
 $watchdogInstaller = Ensure-Script "install_blog_watchdog_task.ps1"
+$morningCatchupInstaller = Ensure-Script "install_morning_catchup_task.ps1"
 
 if ($ReplaceExisting) {
   Remove-TasksByPattern "WeiLuoGe-Live-Update-Blog-Morning-*"
@@ -82,7 +83,8 @@ if ($ReplaceExisting) {
     "WeiLuoGe-Live-Update-Blog-Morning-2",
     "WeiLuoGe-Live-Update-Blog-Morning-3",
     "WeiLuoGe-Blog-Watchdog-08-35",
-    "WeiLuoGe-Home-Brief-Check-08-40"
+    "WeiLuoGe-Home-Brief-Check-08-40",
+    "WeiLuoGe-Morning-Catchup-AtLogOn"
   )
   foreach ($taskName in $legacyTaskNames) {
     Remove-TaskIfExists $taskName
@@ -173,6 +175,14 @@ Invoke-Installer $watchdogInstaller {
     -TaskName "WeiLuoGe-Blog-Watchdog-08-35"
 }
 
+Invoke-Installer $morningCatchupInstaller {
+  & $morningCatchupInstaller `
+    -PythonExe $PythonExe `
+    -PythonArgs $PythonArgs `
+    -RepoRoot $RepoRoot `
+    -TaskName "WeiLuoGe-Morning-Catchup-AtLogOn"
+}
+
 $expectedTaskNames = @(
   "WeiLuoGe-Storage-Impact-Blog-Daily-1",
   "WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1",
@@ -183,7 +193,8 @@ $expectedTaskNames = @(
   "WeiLuoGe-Home-Brief-Daily-08-30",
   "WeiLuoGe-Home-Brief-Check-08-40",
   "WeiLuoGe-Blog-Preflight-08-15",
-  "WeiLuoGe-Blog-Watchdog-08-35"
+  "WeiLuoGe-Blog-Watchdog-08-35",
+  "WeiLuoGe-Morning-Catchup-AtLogOn"
 )
 
 Write-Output ""
@@ -204,3 +215,4 @@ Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
 Write-Output "  Blog preflight: daily at $PreflightAt"
 Write-Output "  Blog watchdog: daily at $WatchdogAt"
+Write-Output "  Morning catch-up: at logon with a short delay"

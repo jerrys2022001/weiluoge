@@ -6,12 +6,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
 from collections import Counter
 from dataclasses import dataclass
 from datetime import date
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from blog_cleanup_focus_scheduler import ANGLES as CLEANUP_ANGLES
 from blog_dualshot_daily_scheduler import ANGLES as DUALSHOT_ANGLES
@@ -48,6 +49,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill missing scheduled blog slots after the morning run window.")
     parser.add_argument("--repo-root", type=Path, required=True)
     parser.add_argument("--date", help="Target date in YYYY-MM-DD. Defaults to today.")
+    parser.add_argument("--git-remote", default="origin")
+    parser.add_argument("--git-branch", default="main")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
@@ -127,44 +130,135 @@ def run_slot(repo_root: Path, task: BlogTask, target_day: date, dry_run: bool) -
     return completed.returncode
 
 
-def list_same_day_posts(blog_dir: Path, target_day: date) -> list[Path]:
+def resolve_git_command() -> str:
+    resolved = shutil.which("git")
+    if resolved:
+        return resolved
+
+    candidates = [
+        Path(r"C:\Program Files\Git\cmd\git.exe"),
+        Path(r"C:\Program Files\Git\bin\git.exe"),
+        Path.home() / "AppData" / "Local" / "Programs" / "Git" / "cmd" / "git.exe",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return str(candidate)
+
+    raise SystemExit("Unable to resolve git executable for blog watchdog.")
+
+
+def run_git_command(repo_root: Path, git_command: str, args: list[str], check: bool = True) -> subprocess.CompletedProcess[str]:
+    completed = subprocess.run(
+        [git_command, *args],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+    if check and completed.returncode != 0:
+        command_preview = " ".join(args)
+        raise ValueError(f"git command failed ({command_preview}): {completed.stderr.strip()}")
+    return completed
+
+
+def ref_exists(repo_root: Path, git_command: str, ref_name: str) -> bool:
+    completed = run_git_command(repo_root, git_command, ["rev-parse", "--verify", ref_name], check=False)
+    return completed.returncode == 0
+
+
+def resolve_content_ref(repo_root: Path, git_command: str, remote: str, branch: str) -> str:
+    remote_ref = f"{remote}/{branch}"
+    fetch_completed = run_git_command(repo_root, git_command, ["fetch", remote, branch], check=False)
+    if fetch_completed.returncode == 0 and ref_exists(repo_root, git_command, remote_ref):
+        return remote_ref
+
+    if ref_exists(repo_root, git_command, remote_ref):
+        print(
+            f"fetch failed for {remote_ref}; using cached tracking ref instead",
+            file=sys.stderr,
+        )
+        return remote_ref
+
+    if ref_exists(repo_root, git_command, branch):
+        print(
+            f"fetch failed and remote ref missing; using local branch {branch} instead",
+            file=sys.stderr,
+        )
+        return branch
+
+    print("fetch failed and local branch missing; using HEAD instead", file=sys.stderr)
+    return "HEAD"
+
+
+def list_same_day_posts(repo_root: Path, git_command: str, content_ref: str, target_day: date) -> list[str]:
     suffix = f"-{target_day.isoformat()}.html"
-    return sorted(blog_dir.glob(f"*{suffix}"))
+    completed = run_git_command(
+        repo_root,
+        git_command,
+        ["ls-tree", "-r", "--name-only", content_ref, "--", "blog"],
+    )
+    return sorted(
+        line.strip()
+        for line in completed.stdout.splitlines()
+        if line.strip().endswith(suffix)
+    )
 
 
 def normalize_title(value: str) -> str:
     return " ".join(value.lower().replace("| velocai blog", "").split())
 
 
-def read_post_title(path: Path) -> str:
-    text = path.read_text(encoding="utf-8")
+def read_post_title(repo_root: Path, git_command: str, content_ref: str, relative_path: str) -> str:
+    text = run_git_command(
+        repo_root,
+        git_command,
+        ["show", f"{content_ref}:{relative_path}"],
+    ).stdout
     match = TITLE_RE.search(text)
     if match is None:
-        return path.stem
+        return PurePosixPath(relative_path).stem
     return match.group(1).strip()
 
 
-def duplicate_titles_for_day(paths: list[Path]) -> list[str]:
-    title_counts = Counter(normalize_title(read_post_title(path)) for path in paths)
+def duplicate_titles_for_day(repo_root: Path, git_command: str, content_ref: str, paths: list[str]) -> list[str]:
+    title_counts = Counter(
+        normalize_title(read_post_title(repo_root, git_command, content_ref, path))
+        for path in paths
+    )
     return sorted(title for title, count in title_counts.items() if count > 1)
 
 
-def blog_index_article_count(index_path: Path) -> int:
-    text = index_path.read_text(encoding="utf-8")
+def blog_index_article_count(repo_root: Path, git_command: str, content_ref: str) -> int:
+    text = run_git_command(
+        repo_root,
+        git_command,
+        ["show", f"{content_ref}:blog/index.html"],
+    ).stdout
     return len(INDEX_ARTICLE_RE.findall(text))
 
 
-def assert_publish_integrity(repo_root: Path, target_day: date, previous_index_count: int | None) -> tuple[int, list[str]]:
-    blog_dir = repo_root / "blog"
-    index_path = blog_dir / "index.html"
-    current_index_count = blog_index_article_count(index_path)
+def assert_publish_integrity(
+    repo_root: Path,
+    git_command: str,
+    content_ref: str,
+    target_day: date,
+    previous_index_count: int | None,
+) -> tuple[int, list[str]]:
+    current_index_count = blog_index_article_count(repo_root, git_command, content_ref)
     if previous_index_count is not None and current_index_count < previous_index_count:
         raise ValueError(
             "Blog index article count decreased unexpectedly after publish. "
             f"before={previous_index_count} after={current_index_count}"
         )
 
-    duplicate_titles = duplicate_titles_for_day(list_same_day_posts(blog_dir, target_day))
+    duplicate_titles = duplicate_titles_for_day(
+        repo_root,
+        git_command,
+        content_ref,
+        list_same_day_posts(repo_root, git_command, content_ref, target_day),
+    )
     if duplicate_titles:
         preview = ", ".join(duplicate_titles[:3])
         raise ValueError(
@@ -175,27 +269,27 @@ def assert_publish_integrity(repo_root: Path, target_day: date, previous_index_c
     return current_index_count, duplicate_titles
 
 
-def count_matching_posts(paths: list[Path], prefixes: tuple[str, ...]) -> int:
-    return sum(1 for path in paths if path.name.startswith(prefixes))
+def count_matching_posts(paths: list[str], prefixes: tuple[str, ...]) -> int:
+    return sum(1 for path in paths if PurePosixPath(path).name.startswith(prefixes))
 
 
-def count_cleanup_posts(paths: list[Path]) -> int:
+def count_cleanup_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, CLEANUP_SLUG_PREFIXES)
 
 
-def count_bluetooth_posts(paths: list[Path]) -> int:
+def count_bluetooth_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, ("bluetooth-",))
 
 
-def count_find_posts(paths: list[Path]) -> int:
+def count_find_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, ("find-ai-",))
 
 
-def count_dualshot_posts(paths: list[Path]) -> int:
+def count_dualshot_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, DUALSHOT_SLUG_PREFIXES)
 
 
-def count_translate_posts(paths: list[Path]) -> int:
+def count_translate_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, ("translate-ai-",))
 
 
@@ -221,10 +315,11 @@ def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
     target_day = parse_iso_date(args.date)
-    blog_dir = repo_root / "blog"
-    previous_index_count = blog_index_article_count(blog_dir / "index.html")
+    git_command = resolve_git_command()
+    content_ref = resolve_content_ref(repo_root, git_command, args.git_remote, args.git_branch)
+    previous_index_count = blog_index_article_count(repo_root, git_command, content_ref)
 
-    posts = list_same_day_posts(blog_dir, target_day)
+    posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
     total_count = len(posts)
     cleanup_count = count_cleanup_posts(posts)
     bluetooth_count = count_bluetooth_posts(posts)
@@ -259,14 +354,21 @@ def main() -> int:
             failed.append(task.task_name)
             continue
         if not args.dry_run:
+            content_ref = resolve_content_ref(repo_root, git_command, args.git_remote, args.git_branch)
             try:
-                previous_index_count, _ = assert_publish_integrity(repo_root, target_day, previous_index_count)
+                previous_index_count, _ = assert_publish_integrity(
+                    repo_root,
+                    git_command,
+                    content_ref,
+                    target_day,
+                    previous_index_count,
+                )
             except ValueError as exc:
                 failed.append(task.task_name)
                 print(str(exc), file=sys.stderr)
                 break
 
-        posts = list_same_day_posts(blog_dir, target_day)
+        posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
         total_count = len(posts)
         cleanup_count = count_cleanup_posts(posts)
         bluetooth_count = count_bluetooth_posts(posts)
@@ -280,7 +382,7 @@ def main() -> int:
             )
             break
 
-    posts = list_same_day_posts(blog_dir, target_day)
+    posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
     total_count = len(posts)
     cleanup_count = count_cleanup_posts(posts)
     bluetooth_count = count_bluetooth_posts(posts)
@@ -324,13 +426,20 @@ def main() -> int:
             if code != 0:
                 failed.append(synthetic.task_name)
                 break
+            content_ref = resolve_content_ref(repo_root, git_command, args.git_remote, args.git_branch)
             try:
-                previous_index_count, _ = assert_publish_integrity(repo_root, target_day, previous_index_count)
+                previous_index_count, _ = assert_publish_integrity(
+                    repo_root,
+                    git_command,
+                    content_ref,
+                    target_day,
+                    previous_index_count,
+                )
             except ValueError as exc:
                 failed.append(synthetic.task_name)
                 print(str(exc), file=sys.stderr)
                 break
-            posts = list_same_day_posts(blog_dir, target_day)
+            posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
             total_count = len(posts)
             cleanup_count = count_cleanup_posts(posts)
             bluetooth_count = count_bluetooth_posts(posts)
