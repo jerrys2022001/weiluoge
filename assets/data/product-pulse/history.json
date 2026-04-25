@@ -1,12 +1,24 @@
 {
-  "latest_date": "2026-04-24",
-  "updated_at": "2026-04-24T08:30:02.964993+08:00",
+  "latest_date": "2026-04-25",
+  "updated_at": "2026-04-25T10:23:26.764047+08:00",
   "entries": [
+    {
+      "date": "2026-04-25",
+      "path": "/assets/data/product-pulse/2026-04-25.json",
+      "item_count": 10,
+      "refreshed_at": "2026-04-25T10:23:26.764047+08:00"
+    },
     {
       "date": "2026-04-24",
       "path": "/assets/data/product-pulse/2026-04-24.json",
       "item_count": 10,
       "refreshed_at": "2026-04-24T08:30:02.964993+08:00"
+    },
+    {
+      "date": "2026-04-23",
+      "path": "/assets/data/product-pulse/2026-04-23.json",
+      "item_count": 10,
+      "refreshed_at": "2026-04-23T09:31:32.552730+08:00"
     },
     {
       "date": "2026-04-22",
@@ -36,7 +48,7 @@
       "date": "2026-04-18",
       "path": "/assets/data/product-pulse/2026-04-18.json",
       "item_count": 10,
-      "refreshed_at": "2026-04-18T10:07:08.026320+08:00"
+      "refreshed_at": "2026-04-18T10:07:07.971387+08:00"
     },
     {
       "date": "2026-04-17",
