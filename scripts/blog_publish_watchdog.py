@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from collections import Counter
 from dataclasses import dataclass
 from datetime import date
@@ -51,6 +52,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", help="Target date in YYYY-MM-DD. Defaults to today.")
     parser.add_argument("--git-remote", default="origin")
     parser.add_argument("--git-branch", default="main")
+    parser.add_argument("--settle-seconds", type=int, default=420)
+    parser.add_argument("--settle-poll-seconds", type=int, default=20)
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
@@ -334,6 +337,35 @@ def main() -> int:
         )
         print("watchdog rerun_count=0 failed=0 dry_run=" + str(args.dry_run).lower())
         return 0
+
+    settle_seconds = 0 if args.dry_run else max(0, args.settle_seconds)
+    settle_poll_seconds = max(1, args.settle_poll_seconds)
+    if settle_seconds:
+        print(
+            f"quota_missing_wait total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
+            f"find={find_count} dualshot={dualshot_count} translate={translate_count} "
+            f"settle_seconds={settle_seconds}"
+        )
+        deadline = time.monotonic() + settle_seconds
+        while time.monotonic() < deadline:
+            remaining = deadline - time.monotonic()
+            time.sleep(min(settle_poll_seconds, max(0.0, remaining)))
+            content_ref = resolve_content_ref(repo_root, git_command, args.git_remote, args.git_branch)
+            posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
+            total_count = len(posts)
+            cleanup_count = count_cleanup_posts(posts)
+            bluetooth_count = count_bluetooth_posts(posts)
+            find_count = count_find_posts(posts)
+            dualshot_count = count_dualshot_posts(posts)
+            translate_count = count_translate_posts(posts)
+            if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+                print(
+                    f"quota_reached_after_wait total={total_count} cleanup={cleanup_count} "
+                    f"bluetooth={bluetooth_count} find={find_count} dualshot={dualshot_count} "
+                    f"translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
+                )
+                print("watchdog rerun_count=0 failed=0 dry_run=false")
+                return 0
 
     failed: list[str] = []
     rerun_count = 0

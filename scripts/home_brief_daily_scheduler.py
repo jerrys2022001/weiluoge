@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import time
 import re
 import shutil
@@ -37,6 +38,7 @@ BRIEF_THUMB_SIZE = 320
 BRIEF_THUMB_QUALITY = 72
 BRIEF_THUMB_SUFFIX = "-thumb.webp"
 DEFAULT_LOG_DIR_REL = Path("output/home-brief-logs")
+HOME_BRIEF_LOCK_REL = Path(".tmp/home-brief.lock")
 SECTION_START = "<!-- va-today-brief:start -->"
 SECTION_END = "<!-- va-today-brief:end -->"
 ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
@@ -1732,6 +1734,79 @@ def write_log(log_dir: Path | None, message: str) -> None:
         handle.write(f"[{timestamp}] {message}\n")
 
 
+class FileLock:
+    def __init__(self, path: Path, timeout_seconds: int = 1800, poll_seconds: float = 2.0):
+        self.path = path
+        self.timeout_seconds = timeout_seconds
+        self.poll_seconds = poll_seconds
+        self.handle: io.TextIOWrapper | None = None
+
+    def __enter__(self) -> "FileLock":
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.handle = self.path.open("a+", encoding="utf-8")
+        if sys.platform == "win32":
+            self._ensure_lock_byte()
+        deadline = time.monotonic() + self.timeout_seconds
+        while True:
+            try:
+                self._try_lock()
+                self._write_owner()
+                return self
+            except OSError:
+                if time.monotonic() >= deadline:
+                    raise TimeoutError(f"Timed out waiting for lock: {self.path}") from None
+                time.sleep(self.poll_seconds)
+
+    def __exit__(self, exc_type: object, exc: object, traceback: object) -> None:
+        if self.handle is None:
+            return
+        try:
+            self._unlock()
+        finally:
+            self.handle.close()
+            self.handle = None
+
+    def _ensure_lock_byte(self) -> None:
+        assert self.handle is not None
+        self.handle.seek(0, os.SEEK_END)
+        if self.handle.tell() == 0:
+            self.handle.write("0")
+            self.handle.flush()
+
+    def _try_lock(self) -> None:
+        assert self.handle is not None
+        if sys.platform == "win32":
+            import msvcrt
+
+            self.handle.seek(0)
+            msvcrt.locking(self.handle.fileno(), msvcrt.LK_NBLCK, 1)
+            return
+
+        import fcntl
+
+        fcntl.flock(self.handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+    def _unlock(self) -> None:
+        assert self.handle is not None
+        if sys.platform == "win32":
+            import msvcrt
+
+            self.handle.seek(0)
+            msvcrt.locking(self.handle.fileno(), msvcrt.LK_UNLCK, 1)
+            return
+
+        import fcntl
+
+        fcntl.flock(self.handle.fileno(), fcntl.LOCK_UN)
+
+    def _write_owner(self) -> None:
+        assert self.handle is not None
+        self.handle.seek(0)
+        self.handle.truncate()
+        self.handle.write(f"pid={os.getpid()} acquired_at={datetime.now().astimezone().isoformat()}\n")
+        self.handle.flush()
+
+
 def extract_home_brief_date(index_path: Path) -> date | None:
     html = index_path.read_text(encoding="utf-8")
     match = re.search(
@@ -1861,7 +1936,7 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
     return entries[:MIN_BRIEF_ITEMS], refreshed_at
 
 
-def run(args: argparse.Namespace) -> int:
+def run_unlocked(args: argparse.Namespace) -> int:
     repo_root = args.repo_root.resolve()
     index_path = repo_root / HOME_INDEX_REL
     sitemap_path = repo_root / SITEMAP_REL
@@ -1972,6 +2047,20 @@ def run(args: argparse.Namespace) -> int:
     return 0
 
 
+def run(args: argparse.Namespace) -> int:
+    repo_root = args.repo_root.resolve()
+    log_dir = resolve_log_dir(repo_root, args.log_dir)
+    lock_path = repo_root / HOME_BRIEF_LOCK_REL
+    try:
+        with FileLock(lock_path, timeout_seconds=args.lock_timeout_seconds):
+            return run_unlocked(args)
+    except TimeoutError as exc:
+        message = f"error lock_timeout path={lock_path}"
+        print(str(exc), file=sys.stderr)
+        write_log(log_dir, message)
+        return 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Refresh the homepage briefing section with live news.")
     parser.add_argument("mode", nargs="?", default="run", choices=("run", "check", "backfill-history"), help="Execution mode.")
@@ -1979,6 +2068,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files.")
     parser.add_argument("--log-dir", type=Path, help="Optional log directory for task runs.")
     parser.add_argument("--force-history", action="store_true", help="Overwrite existing Product Pulse history snapshots during backfill.")
+    parser.add_argument("--lock-timeout-seconds", type=int, default=1800, help="Maximum time to wait for another homepage briefing run.")
     return add_git_publish_args(parser)
 
 
