@@ -1,6 +1,6 @@
 {
   "date": "2026-04-26",
-  "refreshed_at": "2026-04-26T09:04:44.173223+08:00",
+  "refreshed_at": "2026-04-26T09:07:10.784444+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-04-26T08:00:00+00:00",
       "display_date": "APR 26",
       "image_src": "/assets/images/home-briefing/2026-04-26/industry-ae717297587b5497-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-17/industry-fe16d4c78044656e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-19/industry-4ce861799639912b-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Humanoid robots are supposed to be the biggest thing in the history of anything , but despite real progress elsewhere, they're still perpetually two years away . The quadrupeds? They've proven to be a little bit closer to prime time - and...",
       "published_at": "2026-04-25T22:52:27+00:00",
       "display_date": "APR 26",
-      "image_src": "/assets/images/home-briefing/2026-04-06/industry-25ece8d07159ccb8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-06/industry-25ece8d07159ccb8-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-26/industry-ae717297587b5497-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-26/industry-ae717297587b5497-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-04-25T21:43:37+00:00",
       "display_date": "APR 26",
       "image_src": "/assets/images/home-briefing/2026-04-26/industry-f4d9c00ab5d10359-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-13/industry-f381ded40450d09d-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-27/industry-292357a419f6ee39-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "This week on the Cult of Mac podcast: Tim Cook really is stepping down from his CEO role at Apple! We discuss the past and the future. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-04-25T19:00:45+00:00",
       "display_date": "APR 26",
-      "image_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-31/apple-14d0af2a31f03aa6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-31/apple-14d0af2a31f03aa6-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Turn your device into a smart teacher with Flowkey's interactive piano lessons, real-time feedback and song-first approach to learning. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals....",
       "published_at": "2026-04-25T18:20:52+00:00",
       "display_date": "APR 26",
-      "image_src": "/assets/images/home-briefing/2026-03-18/apple-a32fd05a5dde8e7a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-18/apple-a32fd05a5dde8e7a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-14/apple-86cb4df59105a0ea-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-14/apple-86cb4df59105a0ea-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-04-25T17:56:00+00:00",
       "display_date": "APR 26",
       "image_src": "/assets/images/home-briefing/2026-04-26/apple-be69a8c8f119fa2a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-53f8174730db4732-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-07/apple-dd41b42f5a23b023-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-04-25T16:00:00+00:00",
       "display_date": "APR 26",
       "image_src": "/assets/images/home-briefing/2026-04-26/industry-37519abb8082a3ac-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/industry-5f146a26459c393b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-13/industry-f381ded40450d09d-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-04-25T14:34:00+00:00",
       "display_date": "APR 25",
       "image_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-20/apple-18651bfd2a68a660-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-04-24T15:00:41+00:00",
       "display_date": "APR 24",
       "image_src": "/assets/images/home-briefing/2026-04-26/semiconductor-0cc3985732fb5fd7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-07/semiconductor-27ad6edcd36a8f04-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-12/semiconductor-bc442cc81fba215d-thumb.webp"
     }
   ]
 }
