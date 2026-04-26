@@ -2110,6 +2110,58 @@
       pointer-events: none;
     }
 
+    .pagination-jump {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-left: 2px;
+      padding-left: 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pagination-jump label {
+      color: #aeb9df;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pagination-jump input {
+      width: 58px;
+      height: 30px;
+      border: 1px solid rgba(115, 169, 255, 0.26);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #f7f9ff;
+      font: 600 13px/1 "Inter", "Avenir Next", "Segoe UI", sans-serif;
+      text-align: center;
+      outline: none;
+    }
+
+    .pagination-jump input:focus {
+      border-color: rgba(115, 169, 255, 0.68);
+      box-shadow: 0 0 0 3px rgba(37, 144, 241, 0.16);
+    }
+
+    .pagination-jump button {
+      height: 30px;
+      border: 1px solid rgba(115, 169, 255, 0.28);
+      border-radius: 10px;
+      background: rgba(37, 144, 241, 0.12);
+      color: #9fc4ff;
+      cursor: pointer;
+      font: 700 12px/1 "Inter", "Avenir Next", "Segoe UI", sans-serif;
+      padding: 0 9px;
+    }
+
+    .pagination-jump button:hover,
+    .pagination-jump button:focus-visible {
+      color: #ffffff;
+      background: rgba(37, 144, 241, 0.22);
+      border-color: rgba(115, 169, 255, 0.46);
+    }
+
     article {
       width: min(70vw, 980px);
       border: 1px solid rgba(122, 139, 203, 0.22);
@@ -5353,31 +5405,47 @@
         return;
       }
 
+      function pageHref(pageNumber) {
+        var targetParams = new URLSearchParams(window.location.search);
+        if (pageNumber === 1) {
+          targetParams.delete('page');
+        } else {
+          targetParams.set('page', String(pageNumber));
+        }
+        var query = targetParams.toString();
+        return query ? ('?' + query) : window.location.pathname;
+      }
+
+      function rememberPaginationScroll(pathWithSearch) {
+        try {
+          window.sessionStorage.setItem(
+            paginationScrollKey,
+            JSON.stringify({
+              path: pathWithSearch,
+              y: window.scrollY || window.pageYOffset || 0
+            })
+          );
+        } catch (error) {}
+      }
+
       pager.hidden = false;
       pager.innerHTML = '';
       var prevLink = document.createElement(currentPage > 1 ? 'a' : 'span');
       prevLink.className = 'pagination-prev' + (currentPage > 1 ? '' : ' pagination-disabled');
       if (currentPage > 1) {
-        var prevParams = new URLSearchParams(window.location.search);
         var prevPage = Math.max(1, currentPage - pageStep);
-        if (prevPage === 1) {
-          prevParams.delete('page');
-        } else {
-          prevParams.set('page', String(prevPage));
-        }
-        var prevQuery = prevParams.toString();
-        prevLink.href = prevQuery ? ('?' + prevQuery) : window.location.pathname;
+        prevLink.href = pageHref(prevPage);
       }
       prevLink.textContent = '< Prev';
       pager.appendChild(prevLink);
 
       var pageGroup = document.createElement('div');
       pageGroup.className = 'pagination-group';
-      var windowStart = Math.floor((currentPage - 1) / pageStep) * pageStep + 1;
-      var windowEnd = Math.min(totalPages, windowStart + pageWindowSize - 1);
-      if (windowEnd - windowStart + 1 < pageWindowSize) {
-        windowStart = Math.max(1, windowEnd - pageWindowSize + 1);
-      }
+      var visiblePageCount = Math.min(pageWindowSize, totalPages);
+      var pagesBeforeCurrent = Math.floor((visiblePageCount - 1) / 2);
+      var pagesAfterCurrent = visiblePageCount - pagesBeforeCurrent - 1;
+      var windowStart = Math.max(1, currentPage - pagesBeforeCurrent);
+      var windowEnd = Math.min(totalPages, currentPage + pagesAfterCurrent);
 
       for (var pageNumber = windowStart; pageNumber <= windowEnd; pageNumber++) {
         if (pageNumber === currentPage) {
@@ -5390,15 +5458,7 @@
         }
 
         var link = document.createElement('a');
-        var nextParams = new URLSearchParams(window.location.search);
-        if (pageNumber === 1) {
-          nextParams.delete('page');
-        } else {
-          nextParams.set('page', String(pageNumber));
-        }
-
-        var query = nextParams.toString();
-        link.href = query ? ('?' + query) : window.location.pathname;
+        link.href = pageHref(pageNumber);
         link.textContent = String(pageNumber);
         link.setAttribute('aria-label', 'Go to page ' + pageNumber);
         pageGroup.appendChild(link);
@@ -5409,32 +5469,61 @@
       var nextLink = document.createElement(currentPage < totalPages ? 'a' : 'span');
       nextLink.className = 'pagination-next' + (currentPage < totalPages ? '' : ' pagination-disabled');
       if (currentPage < totalPages) {
-        var forwardParams = new URLSearchParams(window.location.search);
         var nextPage = Math.min(totalPages, currentPage + pageStep);
-        if (nextPage === 1) {
-          forwardParams.delete('page');
-        } else {
-          forwardParams.set('page', String(nextPage));
-        }
-        var forwardQuery = forwardParams.toString();
-        nextLink.href = forwardQuery ? ('?' + forwardQuery) : window.location.pathname;
+        nextLink.href = pageHref(nextPage);
       }
       nextLink.textContent = 'Next >';
       pager.appendChild(nextLink);
+
+      var jumpForm = document.createElement('form');
+      jumpForm.className = 'pagination-jump';
+      jumpForm.setAttribute('aria-label', 'Jump to blog page');
+
+      var jumpLabel = document.createElement('label');
+      jumpLabel.textContent = 'Page';
+
+      var jumpInput = document.createElement('input');
+      jumpInput.type = 'number';
+      jumpInput.min = '1';
+      jumpInput.max = String(totalPages);
+      jumpInput.inputMode = 'numeric';
+      jumpInput.placeholder = String(currentPage);
+      jumpInput.setAttribute('aria-label', 'Enter a page number from 1 to ' + totalPages);
+
+      var jumpButton = document.createElement('button');
+      jumpButton.type = 'submit';
+      jumpButton.textContent = 'Go';
+
+      jumpForm.appendChild(jumpLabel);
+      jumpForm.appendChild(jumpInput);
+      jumpForm.appendChild(jumpButton);
+      pager.appendChild(jumpForm);
 
       pager.addEventListener('click', function (event) {
         var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
         if (!link || !pager.contains(link)) return;
 
-        try {
-          window.sessionStorage.setItem(
-            paginationScrollKey,
-            JSON.stringify({
-              path: link.pathname + link.search,
-              y: window.scrollY || window.pageYOffset || 0
-            })
-          );
-        } catch (error) {}
+        rememberPaginationScroll(link.pathname + link.search);
+      });
+
+      jumpInput.addEventListener('input', function () {
+        jumpInput.setCustomValidity('');
+      });
+
+      jumpForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var targetPage = Number.parseInt(jumpInput.value, 10);
+        if (!Number.isFinite(targetPage) || targetPage < 1 || targetPage > totalPages) {
+          jumpInput.setCustomValidity('Enter a page number from 1 to ' + totalPages + '.');
+          jumpInput.reportValidity();
+          return;
+        }
+
+        jumpInput.setCustomValidity('');
+        var href = pageHref(targetPage);
+        var targetUrl = new URL(href, window.location.href);
+        rememberPaginationScroll(targetUrl.pathname + targetUrl.search);
+        window.location.href = href;
       });
     })();
   </script>
