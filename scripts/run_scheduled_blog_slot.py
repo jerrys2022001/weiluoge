@@ -11,9 +11,13 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 ENABLE_POST_PUBLISH_INDEX_ENV = 'WEILUOGE_ENABLE_POST_PUBLISH_INDEX'
+PUBLISH_LOCK_TIMEOUT_SECONDS = 45 * 60
+PUBLISH_LOCK_STALE_SECONDS = 2 * 60 * 60
+PUBLISH_LOCK_POLL_SECONDS = 5
 
 
 def parse_args() -> argparse.Namespace:
@@ -82,6 +86,73 @@ def append_run_log(repo_root: Path, message: str) -> None:
     log_path = log_dir / f"{now:%Y-%m-%d}.log"
     with log_path.open("a", encoding="utf-8") as handle:
         handle.write(f"[{now:%Y-%m-%d %H:%M:%S%z}] {message}\n")
+
+
+class SharedPublishLock:
+    def __init__(
+        self,
+        repo_root: Path,
+        timeout_seconds: int = PUBLISH_LOCK_TIMEOUT_SECONDS,
+        stale_seconds: int = PUBLISH_LOCK_STALE_SECONDS,
+        poll_seconds: int = PUBLISH_LOCK_POLL_SECONDS,
+    ):
+        self.lock_path = repo_root / ".tmp" / "scheduled-blog-publish.lock"
+        self.timeout_seconds = timeout_seconds
+        self.stale_seconds = stale_seconds
+        self.poll_seconds = poll_seconds
+        self.fd: int | None = None
+
+    def _created_at(self) -> int | None:
+        try:
+            raw = self.lock_path.read_text(encoding="utf-8").strip()
+        except OSError:
+            return None
+        values: dict[str, str] = {}
+        for part in raw.split():
+            if "=" not in part:
+                continue
+            key, value = part.split("=", 1)
+            values[key] = value
+        created = values.get("time")
+        return int(created) if created and created.isdigit() else None
+
+    def _clear_stale_lock_if_needed(self) -> bool:
+        created_at = self._created_at()
+        is_stale = created_at is None or (time.time() - created_at) > self.stale_seconds
+        if not is_stale:
+            return False
+        try:
+            self.lock_path.unlink()
+        except FileNotFoundError:
+            return True
+        except OSError:
+            return False
+        return True
+
+    def __enter__(self) -> "SharedPublishLock":
+        self.lock_path.parent.mkdir(parents=True, exist_ok=True)
+        deadline = time.time() + self.timeout_seconds
+        while True:
+            try:
+                self.fd = os.open(str(self.lock_path), os.O_CREAT | os.O_EXCL | os.O_RDWR)
+                payload = f"pid={os.getpid()} time={int(time.time())}\n".encode("utf-8")
+                os.write(self.fd, payload)
+                return self
+            except FileExistsError:
+                if self._clear_stale_lock_if_needed():
+                    continue
+                if time.time() >= deadline:
+                    raise TimeoutError(f"Timed out waiting for scheduled blog publish lock: {self.lock_path}") from None
+                time.sleep(self.poll_seconds)
+
+    def __exit__(self, exc_type: object, exc: object, traceback: object) -> None:
+        if self.fd is not None:
+            os.close(self.fd)
+            self.fd = None
+        try:
+            self.lock_path.unlink()
+        except FileNotFoundError:
+            pass
 
 
 def extract_published_file(output: str) -> str | None:
@@ -214,48 +285,45 @@ def main() -> int:
     temp_root = Path(tempfile.mkdtemp(prefix="scheduled-blog-", dir=str(repo_root / ".tmp")))
     worktree_path = temp_root / "worktree"
     try:
-        append_run_log(
-            repo_root,
-            f"start lane={args.lane} offset={args.slot_offset} date={args.date or 'today'} dry_run={str(args.dry_run).lower()}",
-        )
-        worktree_ref, ref_source = select_worktree_ref(repo_root, git_command, args)
-        append_run_log(repo_root, f"worktree_ref={worktree_ref} source={ref_source}")
-        run_command(
-            repo_root,
-            [git_command, "worktree", "add", "--detach", str(worktree_path), worktree_ref],
-        )
-
-        command = build_publish_command(script_root, worktree_path, args)
-        completed = run_command(worktree_path, command, check=False)
-        publish_output = (completed.stdout or "") + "\n" + (completed.stderr or "")
-        published_file = extract_published_file(publish_output)
-        if completed.returncode != 0:
-            print(
-                f"worktree publish failed for lane={args.lane} code={completed.returncode}; retrying with local repo state",
-                file=sys.stderr,
-            )
-            append_run_log(
-                repo_root,
-                f"worktree_publish_failed lane={args.lane} code={completed.returncode} fallback=local_repo",
-            )
-            fallback_command = build_publish_command(script_root, repo_root, args)
-            try:
-                fallback_completed = run_command(repo_root, fallback_command)
-            except SystemExit as exc:
+        try:
+            with SharedPublishLock(repo_root):
                 append_run_log(
                     repo_root,
-                    f"local_repo_publish_failed lane={args.lane} code={exc.code}",
+                    f"start lane={args.lane} offset={args.slot_offset} date={args.date or 'today'} dry_run={str(args.dry_run).lower()}",
                 )
-                raise
-            publish_output = (fallback_completed.stdout or "") + "\n" + (fallback_completed.stderr or "")
-            published_file = extract_published_file(publish_output)
-        if should_trigger_post_publish_index(args) and published_file is not None:
-            trigger_post_publish_index(repo_root, published_file, args.post_publish_index_delay_seconds)
-        append_run_log(
-            repo_root,
-            f"done lane={args.lane} offset={args.slot_offset} published_file={published_file or 'none'}",
-        )
-        return 0
+                append_run_log(repo_root, f"publish_lock_acquired lane={args.lane} offset={args.slot_offset}")
+                worktree_ref, ref_source = select_worktree_ref(repo_root, git_command, args)
+                append_run_log(repo_root, f"worktree_ref={worktree_ref} source={ref_source}")
+                run_command(
+                    repo_root,
+                    [git_command, "worktree", "add", "--detach", str(worktree_path), worktree_ref],
+                )
+
+                command = build_publish_command(script_root, worktree_path, args)
+                completed = run_command(worktree_path, command, check=False)
+                publish_output = (completed.stdout or "") + "\n" + (completed.stderr or "")
+                published_file = extract_published_file(publish_output)
+                if completed.returncode != 0:
+                    print(
+                        f"worktree publish failed for lane={args.lane} code={completed.returncode}",
+                        file=sys.stderr,
+                    )
+                    append_run_log(
+                        repo_root,
+                        f"worktree_publish_failed lane={args.lane} code={completed.returncode} fallback=disabled",
+                    )
+                    return completed.returncode
+                if should_trigger_post_publish_index(args) and published_file is not None:
+                    trigger_post_publish_index(repo_root, published_file, args.post_publish_index_delay_seconds)
+                append_run_log(
+                    repo_root,
+                    f"done lane={args.lane} offset={args.slot_offset} published_file={published_file or 'none'}",
+                )
+                return 0
+        except TimeoutError as exc:
+            print(str(exc), file=sys.stderr)
+            append_run_log(repo_root, f"publish_lock_timeout lane={args.lane} offset={args.slot_offset}")
+            return 1
     finally:
         subprocess.run(
             [git_command, "worktree", "remove", str(worktree_path), "--force"],
