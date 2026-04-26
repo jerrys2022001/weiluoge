@@ -17,6 +17,10 @@ STOP_WORDS = {
     "should", "after", "before", "first", "second", "third", "guide", "explained", "use",
     "using", "latest", "blog", "velocai", "current", "key", "practical", "reliable",
     "update", "2026",
+    # App and product boilerplate should not make separate long-tail topics look duplicated.
+    "ai", "app", "apps", "iphone", "ipad", "ios", "bluetooth", "explorer", "cleanup",
+    "pro", "translate", "translation", "translator", "find", "finder", "dualshot",
+    "camera",
 }
 SKIP_HEADERS = (
     "tl;dr",

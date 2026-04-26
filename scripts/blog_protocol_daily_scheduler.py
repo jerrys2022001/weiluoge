@@ -166,6 +166,36 @@ ANGLES: list[ProtocolAngle] = [
         application_focus="This topic matters in health sensors, battery monitors, industrial telemetry, and companion-device apps where the wrong delivery mode can cause either silent data loss or unnecessary latency.",
         challenge_focus="Many support issues start as vague sync complaints. The real cause is often an unexamined notification strategy, queueing assumption, or acknowledgement expectation across firmware and apps.",
     ),
+    ProtocolAngle(
+        slug_prefix="ble-connection-parameters-debugging-guide",
+        title="BLE Connection Parameters Explained with Bluetooth Explorer",
+        description="A practical Bluetooth Explorer guide to connection interval, slave latency, supervision timeout, and the product tradeoffs behind BLE connection tuning.",
+        teaser="Connection parameters are where battery life, responsiveness, and disconnect risk meet.",
+        topic="BLE Connection Parameters",
+        protocol_focus="Connection interval, slave latency, and supervision timeout control how often devices exchange data and how long a link can appear quiet before it is treated as broken.",
+        application_focus="This matters for wearables, remotes, sensors, and accessories because the same BLE device may need fast response during setup and lower power during normal idle use.",
+        challenge_focus="The hard part is testing transitions. A product can feel fine in one state and still fail when it moves between onboarding, active streaming, background sync, and low-power standby.",
+    ),
+    ProtocolAngle(
+        slug_prefix="bluetooth-rssi-signal-debugging-guide",
+        title="Bluetooth RSSI Signal Debugging with Bluetooth Explorer",
+        description="Use Bluetooth Explorer to interpret RSSI, signal movement, radio noise, and nearby-device behavior when debugging real Bluetooth products.",
+        teaser="RSSI is useful when teams treat it as a noisy clue, not a magic distance number.",
+        topic="Bluetooth RSSI Debugging",
+        protocol_focus="RSSI reflects received signal strength, but it changes with body blocking, antenna placement, orientation, walls, phone model, and other 2.4 GHz activity.",
+        application_focus="RSSI debugging helps teams improve onboarding, proximity features, accessory recovery, and field support because it connects radio behavior to what users actually see.",
+        challenge_focus="The most common mistake is over-promising precision. Good debugging content explains trends, sampling, and environmental checks instead of pretending one reading is a fixed distance.",
+    ),
+    ProtocolAngle(
+        slug_prefix="bluetooth-device-name-appearance-data-guide",
+        title="Bluetooth Device Name and Appearance Data Guide",
+        description="A Bluetooth Explorer guide to local name, appearance data, advertised services, and how metadata choices affect discovery, onboarding, and support.",
+        teaser="Small metadata choices decide whether users and test teams recognize the right device quickly.",
+        topic="Bluetooth Device Metadata",
+        protocol_focus="Local name, appearance, manufacturer data, and advertised services shape how a device presents itself before a full connection or GATT browse begins.",
+        application_focus="This matters for onboarding, support screenshots, QA testing, and multi-device environments where several similar accessories may be discoverable at the same time.",
+        challenge_focus="The challenge is consistency. Firmware, mobile apps, and documentation need to agree on naming and identifiers or users can connect to the wrong target with confidence.",
+    ),
 ]
 
 

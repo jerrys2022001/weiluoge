@@ -124,6 +124,36 @@ ANGLES: list[FindAngle] = [
         workflow_focus="Find AI fits this scenario because nearby scan, distance radar, and device grouping help users work through enclosed spaces methodically instead of relying on random hand searches under seats and mats.",
         edge_focus="That matters because car recovery is usually less about map memory and more about patient short-range movement, where the app can keep the search organized and lower the chance of quitting too early.",
     ),
+    FindAngle(
+        slug_prefix="find-ai-school-bag-backpack-recovery-guide",
+        title="Find AI School Bag Recovery Checklist for Lost Earbuds",
+        description="A Find AI checklist for finding lost earbuds, AirPods, and small bluetooth devices in backpacks, school bags, gym bags, and laptop sleeves.",
+        teaser="Bags hide small bluetooth devices in layers, so the search needs a sequence rather than one quick shake-out.",
+        topic="Backpack and School Bag Recovery",
+        intent_focus="This search intent comes from users who believe the earbuds are still physically close but buried inside a backpack, gym bag, school bag, laptop sleeve, or side pocket.",
+        workflow_focus="Find AI supports this scenario by pairing nearby bluetooth scan confidence with slow compartment-by-compartment movement, so users can test each pocket instead of emptying everything at once.",
+        edge_focus="That makes the article distinct from generic lost-AirPods content because the answer is about short-range signal changes inside dense fabric, zippers, notebooks, chargers, and layered bag compartments.",
+    ),
+    FindAngle(
+        slug_prefix="find-ai-couch-cushion-recovery-guide",
+        title="Find AI Couch Cushion Search Guide for Small Bluetooth Devices",
+        description="Use Find AI to search couches, cushions, blankets, and living-room gaps for lost AirPods, earbuds, and small bluetooth devices.",
+        teaser="A couch search is easy to overdo by hand and easy to underdo with a bluetooth scan. The useful answer combines both.",
+        topic="Couch Cushion Bluetooth Recovery",
+        intent_focus="People searching this topic usually know the device vanished at home, but they need a practical way to separate likely couch gaps from the rest of the room.",
+        workflow_focus="Find AI can guide that search by helping users compare signal strength around cushions, arm rests, blankets, and nearby tables before they start dismantling the whole living room.",
+        edge_focus="This gives the page a unique home-recovery angle that is different from broad AirPods recovery and better aligned with long-tail searches about couch cushions and small bluetooth accessories.",
+    ),
+    FindAngle(
+        slug_prefix="find-ai-office-desk-drawer-recovery-guide",
+        title="Find AI Office Desk and Drawer Search Guide",
+        description="A Find AI workflow for recovering earbuds, AirPods, and small bluetooth devices around office desks, drawers, laptop bags, and shared workspaces.",
+        teaser="Office recovery is less about one dramatic clue and more about reducing noise around desks, drawers, bags, and shared surfaces.",
+        topic="Office Desk and Drawer Recovery",
+        intent_focus="This intent is about misplaced bluetooth accessories in workspaces where the device may be near laptops, chargers, metal drawers, conference rooms, or coworker devices.",
+        workflow_focus="Find AI helps by letting users pin the target device, read nearby signal changes, and search desk zones in a repeatable order before expanding to shared rooms.",
+        edge_focus="The office angle also supports GEO because it names a concrete environment, the Find AI app, bluetooth finder behavior, AirPods, earbuds, and practical recovery steps in one answerable topic.",
+    ),
 ]
 
 
