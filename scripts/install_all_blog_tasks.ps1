@@ -14,6 +14,7 @@ param(
   [string]$TranslateWindowEnd = "08:30",
   [string]$HomeBriefAt = "08:30",
   [string]$HomeBriefCheckAt = "08:40",
+  [string]$HomeBriefSecondaryCheckAt = "20:30",
   [string]$PreflightAt = "08:15",
   [string]$WatchdogAt = "08:35",
   [bool]$ReplaceExisting = $true
@@ -84,6 +85,7 @@ if ($ReplaceExisting) {
     "WeiLuoGe-Live-Update-Blog-Morning-3",
     "WeiLuoGe-Blog-Watchdog-08-35",
     "WeiLuoGe-Home-Brief-Check-08-40",
+    "WeiLuoGe-Home-Brief-Check-20-30",
     "WeiLuoGe-Morning-Catchup-AtLogOn"
   )
   foreach ($taskName in $legacyTaskNames) {
@@ -153,8 +155,10 @@ Invoke-Installer $homeBriefInstaller {
     -RepoRoot $RepoRoot `
     -PublishAt $HomeBriefAt `
     -CheckAt $HomeBriefCheckAt `
+    -SecondaryCheckAt $HomeBriefSecondaryCheckAt `
     -TaskName "WeiLuoGe-Home-Brief-Daily-08-30" `
-    -CheckTaskName "WeiLuoGe-Home-Brief-Check-08-40"
+    -CheckTaskName "WeiLuoGe-Home-Brief-Check-08-40" `
+    -SecondaryCheckTaskName "WeiLuoGe-Home-Brief-Check-20-30"
 }
 
 Invoke-Installer $preflightInstaller {
@@ -192,6 +196,7 @@ $expectedTaskNames = @(
   "WeiLuoGe-Translate-AI-Blog-Morning-1",
   "WeiLuoGe-Home-Brief-Daily-08-30",
   "WeiLuoGe-Home-Brief-Check-08-40",
+  "WeiLuoGe-Home-Brief-Check-20-30",
   "WeiLuoGe-Blog-Preflight-08-15",
   "WeiLuoGe-Blog-Watchdog-08-35",
   "WeiLuoGe-Morning-Catchup-AtLogOn"
@@ -213,6 +218,7 @@ Write-Output "  DualShot Camera: 1 slot between $DualShotWindowStart and $DualSh
 Write-Output "  Translate AI: 1 slot between $TranslateWindowStart and $TranslateWindowEnd"
 Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
+Write-Output "  Home Brief second check: daily at $HomeBriefSecondaryCheckAt"
 Write-Output "  Blog preflight: daily at $PreflightAt"
 Write-Output "  Blog watchdog: daily at $WatchdogAt"
 Write-Output "  Morning catch-up: at logon with a short delay"

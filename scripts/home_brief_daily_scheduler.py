@@ -350,10 +350,17 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
         source_url="https://www.bluetooth.com/blog/",
         feed_url="https://www.bluetooth.com/blog/feed/",
         keywords=(
-            "bluetooth core",
+            "bluetooth 6",
+            "core spec",
             "auracast",
+            "broadcast audio",
             "connection intervals",
             "channel sounding",
+            "direction finding",
+            "mesh",
+            "periodic advertising",
+            "le audio",
+            "gatt",
             "industrial",
             "tracking",
             "monitoring",
@@ -368,22 +375,24 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
     BriefSource(
         slug="bluetooth",
         eyebrow="Bluetooth Standards & Uses",
-        source_name="Nordic News",
-        source_url="https://www.nordicsemi.com/Nordic-news",
-        feed_url="https://www.nordicsemi.com/RSS?contentType=News",
+        source_name="Silicon Labs Bluetooth",
+        source_url="https://news.silabs.com/press-releases?category=797",
+        feed_url="https://news.silabs.com/press-releases?category=797&pagetemplate=rss",
         keywords=(
             "bluetooth",
             "ble",
             "le audio",
-            "direction finding",
-            "find my",
-            "tracking",
-            "nrf connect",
-            "gatt",
-            "wireless",
+            "matter",
+            "multiprotocol",
+            "location services",
+            "soc",
+            "module",
+            "edge ai",
+            "machine learning",
+            "wireless connectivity",
         ),
         fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
-        item_count=2,
+        item_count=1,
     ),
     BriefSource(
         slug="bluetooth",
@@ -400,10 +409,119 @@ BRIEF_SOURCES: tuple[BriefSource, ...] = (
             "tracking",
             "nrf connect",
             "gatt",
+            "matter",
+            "industrial",
+            "medical",
+            "sensor",
             "wireless",
         ),
         fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="bluetooth",
+        eyebrow="Bluetooth Standards & Uses",
+        source_name="Blecon",
+        source_url="https://blecon.net/blog/",
+        feed_url="https://blecon.net/blog/rss.xml",
+        keywords=(
+            "bluetooth",
+            "ble",
+            "ambient iot",
+            "smart labels",
+            "tracking",
+            "retail",
+            "supply chain",
+            "frontline devices",
+            "zebra",
+            "location",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
         item_count=2,
+    ),
+    BriefSource(
+        slug="bluetooth",
+        eyebrow="Bluetooth Standards & Uses",
+        source_name="BeaconZone",
+        source_url="https://www.beaconzone.co.uk/blog/",
+        feed_url="https://www.beaconzone.co.uk/blog/feed/",
+        keywords=(
+            "bluetooth beacons",
+            "beacon",
+            "rssi",
+            "indoor tracking",
+            "asset monitoring",
+            "navigation",
+            "peer contact",
+            "location",
+            "proximity",
+            "care",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="bluetooth",
+        eyebrow="Bluetooth Standards & Uses",
+        source_name="SoundGuys Bluetooth",
+        source_url="https://www.soundguys.com/tag/bluetooth/",
+        feed_url="https://www.soundguys.com/tag/bluetooth/feed/",
+        keywords=(
+            "bluetooth",
+            "auracast",
+            "le audio",
+            "codec",
+            "wireless headphones",
+            "wireless earbuds",
+            "bluetooth speakers",
+            "comparison",
+            "review",
+            "hearing aids",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="bluetooth",
+        eyebrow="Bluetooth Standards & Uses",
+        source_name="Android Authority Bluetooth",
+        source_url="https://www.androidauthority.com/tag/bluetooth/",
+        feed_url="https://www.androidauthority.com/tag/bluetooth/feed/",
+        keywords=(
+            "bluetooth",
+            "airtag",
+            "tracker",
+            "tile",
+            "earbuds",
+            "headphones",
+            "hi-res audio",
+            "stalking",
+            "controller",
+            "android",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=1,
+    ),
+    BriefSource(
+        slug="bluetooth",
+        eyebrow="Bluetooth Standards & Uses",
+        source_name="9to5Google Bluetooth",
+        source_url="https://9to5google.com/guides/bluetooth/",
+        feed_url="https://9to5google.com/guides/bluetooth/feed/",
+        keywords=(
+            "bluetooth",
+            "auracast",
+            "fast pair",
+            "aptx adaptive",
+            "chrome os",
+            "android",
+            "fuchsia",
+            "security patch",
+            "battery level",
+            "hub",
+        ),
+        fallback_image="/assets/images/stock-2026-03/stock-06.jpg",
+        item_count=1,
     ),
 )
 
@@ -465,8 +583,15 @@ MIN_BRIEF_ITEMS = 10
 RECENT_BACKFILL_DAYS = 7
 MIN_SAME_DAY_ITEMS = 8
 BRIEF_HISTORY_KEEP_DAYS = 90
+SLUG_FRESHNESS_MAX_AGE_DAYS = {
+    "bluetooth": 7,
+}
+SLUG_FRESHNESS_MIN_COUNTS = {
+    "bluetooth": 1,
+}
 SLUG_MAX_COUNTS = {
     "apple": 5,
+    "bluetooth": 2,
 }
 SLUG_MIN_COUNTS = {
     "apple": 4,
@@ -762,6 +887,20 @@ def is_within_recent_window(value: datetime | None, target_day: date, days: int)
     return oldest_day <= local_day <= target_day
 
 
+def item_age_in_days(value: datetime | None, target_day: date) -> int | None:
+    if value is None:
+        return None
+    return (target_day - value.astimezone().date()).days
+
+
+def is_fresh_for_slug(slug: str, value: datetime | None, target_day: date) -> bool:
+    max_age = SLUG_FRESHNESS_MAX_AGE_DAYS.get(slug)
+    if max_age is None:
+        return True
+    age = item_age_in_days(value, target_day)
+    return age is not None and 0 <= age <= max_age
+
+
 def is_screenshot_like_path(path: Path) -> bool:
     lowered = path.name.lower()
     return any(part in lowered for part in SCREENSHOT_NAME_PARTS)
@@ -1023,6 +1162,79 @@ def enforce_min_same_day_entries(
         slug_counts[candidate.source.slug] = slug_counts.get(candidate.source.slug, 0) + 1
         selected_links.add(candidate.item.link)
         same_day_count += 1
+
+    return selected_entries
+
+
+def count_fresh_selected_entries(
+    selected_entries: list[tuple[BriefSource, FeedItem]],
+    slug: str,
+    target_day: date,
+) -> int:
+    return sum(
+        1
+        for source, item in selected_entries
+        if source.slug == slug and is_fresh_for_slug(slug, item.published_at, target_day)
+    )
+
+
+def enforce_slug_freshness(
+    selected_entries: list[tuple[BriefSource, FeedItem]],
+    candidates: list[CandidateEntry],
+    target_day: date,
+) -> list[tuple[BriefSource, FeedItem]]:
+    if not SLUG_FRESHNESS_MIN_COUNTS:
+        return selected_entries
+
+    selected_links = {item.link for _, item in selected_entries}
+    slug_counts = Counter(source.slug for source, _ in selected_entries)
+
+    def replacement_index(target_slug: str) -> int | None:
+        best_index: int | None = None
+        best_key: tuple[int, int, float] | None = None
+        for idx, (source, item) in enumerate(selected_entries):
+            minimum = SLUG_MIN_COUNTS.get(source.slug, 0)
+            age = item_age_in_days(item.published_at, target_day)
+            age_score = age if age is not None else 10_000
+            published_ts = item.published_at.timestamp() if item.published_at else 0.0
+            if source.slug == target_slug and not is_fresh_for_slug(target_slug, item.published_at, target_day):
+                key = (0, -age_score, published_ts)
+            elif source.slug != target_slug and slug_counts.get(source.slug, 0) > minimum:
+                freshness_group = 1 if not is_fresh_for_slug(source.slug, item.published_at, target_day) else 2
+                key = (freshness_group, -age_score, published_ts)
+            else:
+                continue
+            if best_key is None or key < best_key:
+                best_index = idx
+                best_key = key
+        return best_index
+
+    for slug, required_count in SLUG_FRESHNESS_MIN_COUNTS.items():
+        fresh_candidates = sorted(
+            [
+                candidate
+                for candidate in candidates
+                if candidate.source.slug == slug and is_fresh_for_slug(slug, candidate.item.published_at, target_day)
+            ],
+            key=candidate_sort_key,
+        )
+        for candidate in fresh_candidates:
+            if count_fresh_selected_entries(selected_entries, slug, target_day) >= required_count:
+                break
+            if candidate.item.link in selected_links:
+                continue
+
+            idx = replacement_index(slug)
+            if idx is None:
+                break
+
+            old_source, old_item = selected_entries[idx]
+            slug_counts[old_source.slug] = max(0, slug_counts.get(old_source.slug, 0) - 1)
+            selected_links.discard(old_item.link)
+
+            selected_entries[idx] = (candidate.source, candidate.item)
+            slug_counts[candidate.source.slug] = slug_counts.get(candidate.source.slug, 0) + 1
+            selected_links.add(candidate.item.link)
 
     return selected_entries
 
@@ -1832,6 +2044,48 @@ def count_same_day_home_brief_items(index_path: Path, target_day: date) -> int:
     return len(re.findall(rf'<span aria-hidden="true">\|</span> {re.escape(stamp)}</p>', html))
 
 
+def load_brief_history_snapshot(repo_root: Path, snapshot_day: date) -> dict[str, object] | None:
+    snapshot_path = repo_root / BRIEF_HISTORY_REL / f"{snapshot_day.isoformat()}.json"
+    if not snapshot_path.exists():
+        return None
+    try:
+        payload = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def count_fresh_history_items_for_slug(repo_root: Path, snapshot_day: date, slug: str, target_day: date) -> int:
+    payload = load_brief_history_snapshot(repo_root, snapshot_day)
+    if payload is None:
+        return 0
+    raw_items = payload.get("items")
+    if not isinstance(raw_items, list):
+        return 0
+
+    fresh_count = 0
+    for item in raw_items:
+        if not isinstance(item, dict) or item.get("slug") != slug:
+            continue
+        raw_published = item.get("published_at")
+        if not isinstance(raw_published, str):
+            continue
+        try:
+            published_at = datetime.fromisoformat(raw_published)
+        except ValueError:
+            continue
+        if is_fresh_for_slug(slug, published_at, target_day):
+            fresh_count += 1
+    return fresh_count
+
+
+def history_snapshot_meets_freshness_requirements(repo_root: Path, snapshot_day: date, target_day: date) -> bool:
+    for slug, required_count in SLUG_FRESHNESS_MIN_COUNTS.items():
+        if count_fresh_history_items_for_slug(repo_root, snapshot_day, slug, target_day) < required_count:
+            return False
+    return True
+
+
 def publish_homepage_to_git(repo_root: Path, remote: str, branch: str, push: bool, extra_paths: list[str] | None = None) -> str:
     git_command = resolve_git_command()
     tracked_paths = [HOME_INDEX_REL.as_posix(), SITEMAP_REL.as_posix(), BRIEF_IMAGES_REL.as_posix(), *(extra_paths or [])]
@@ -1915,6 +2169,7 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
 
     selected_entries = choose_balanced_entries(candidate_pool)
     selected_entries = enforce_min_same_day_entries(selected_entries, candidate_pool, target_day)
+    selected_entries = enforce_slug_freshness(selected_entries, candidate_pool, target_day)
     same_day_selected = sum(1 for _, item in selected_entries if is_same_local_day(item.published_at, target_day))
 
     if same_day_selected < MIN_SAME_DAY_ITEMS:
@@ -1923,6 +2178,7 @@ def build_briefing() -> tuple[list[BriefEntry], datetime]:
         extend_candidate_pool(candidate_pool, extra_source_items, target_day)
         selected_entries = choose_balanced_entries(candidate_pool)
         selected_entries = enforce_min_same_day_entries(selected_entries, candidate_pool, target_day)
+        selected_entries = enforce_slug_freshness(selected_entries, candidate_pool, target_day)
 
     selected_entries.sort(
         key=lambda pair: pair[1].published_at.timestamp() if pair[1].published_at else 0.0,
@@ -1968,14 +2224,21 @@ def run_unlocked(args: argparse.Namespace) -> int:
         homepage_day = extract_home_brief_date(index_path)
         homepage_items = count_home_brief_items(index_path)
         homepage_same_day_items = count_same_day_home_brief_items(index_path, target_day)
+        freshness_ok = (
+            homepage_day == target_day
+            and history_snapshot_meets_freshness_requirements(repo_root, target_day, target_day)
+        )
+        bluetooth_fresh_items = count_fresh_history_items_for_slug(repo_root, target_day, "bluetooth", target_day)
         if (
             homepage_day == target_day
             and homepage_items >= MIN_BRIEF_ITEMS
             and homepage_same_day_items >= MIN_SAME_DAY_ITEMS
+            and freshness_ok
         ):
             message = (
                 "check_ok "
-                f"date={homepage_day.isoformat()} items={homepage_items} same_day_items={homepage_same_day_items}"
+                f"date={homepage_day.isoformat()} items={homepage_items} same_day_items={homepage_same_day_items} "
+                f"bluetooth_fresh_items={bluetooth_fresh_items}"
             )
             print(message)
             write_log(log_dir, message)
@@ -1985,7 +2248,8 @@ def run_unlocked(args: argparse.Namespace) -> int:
             "check_repair_needed "
             f"date={(homepage_day.isoformat() if homepage_day else 'missing')} "
             f"items={homepage_items} "
-            f"same_day_items={homepage_same_day_items}",
+            f"same_day_items={homepage_same_day_items} "
+            f"bluetooth_fresh_items={bluetooth_fresh_items}",
         )
 
     entries, refreshed_at = build_briefing()

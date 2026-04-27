@@ -4,8 +4,10 @@
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$PublishAt = "08:30",
   [string]$CheckAt = "08:40",
+  [string]$SecondaryCheckAt = "20:30",
   [string]$TaskName = "WeiLuoGe-Home-Brief-Daily-08-30",
-  [string]$CheckTaskName = "WeiLuoGe-Home-Brief-Check-08-40"
+  [string]$CheckTaskName = "WeiLuoGe-Home-Brief-Check-08-40",
+  [string]$SecondaryCheckTaskName = "WeiLuoGe-Home-Brief-Check-20-30"
 )
 
 Set-StrictMode -Version Latest
@@ -36,9 +38,19 @@ $CheckTrigger = New-ScheduledTaskTrigger -Daily -At $CheckAt
 
 Register-ScheduledTask -TaskName $CheckTaskName -Action $CheckAction -Trigger $CheckTrigger -Settings $Settings -Force | Out-Null
 
+if ($SecondaryCheckAt) {
+  $SecondaryCheckTrigger = New-ScheduledTaskTrigger -Daily -At $SecondaryCheckAt
+  Register-ScheduledTask -TaskName $SecondaryCheckTaskName -Action $CheckAction -Trigger $SecondaryCheckTrigger -Settings $Settings -Force | Out-Null
+}
+
 Write-Output "Installed task: $TaskName"
 Write-Output "Schedule: daily at $PublishAt"
 Write-Output "Command: $PythonCommand $RunArgs"
 Write-Output "Installed task: $CheckTaskName"
 Write-Output "Schedule: daily at $CheckAt"
 Write-Output "Command: $PythonCommand $CheckArgs"
+if ($SecondaryCheckAt) {
+  Write-Output "Installed task: $SecondaryCheckTaskName"
+  Write-Output "Schedule: daily at $SecondaryCheckAt"
+  Write-Output "Command: $PythonCommand $CheckArgs"
+}
