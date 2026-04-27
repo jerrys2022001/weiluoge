@@ -1,52 +1,80 @@
 {
   "date": "2026-04-27",
-  "refreshed_at": "2026-04-27T10:32:54.479352+08:00",
+  "refreshed_at": "2026-04-27T20:30:01.051647+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Samsung Global Newsroom",
-      "source_url": "https://news.samsung.com/global",
-      "title": "Samsung Wallet's New 'Trips' Feature Enables Seamless Journeys for Global Travelers",
-      "link": "https://news.samsung.com/global/samsung-wallets-new-trips-feature-enables-seamless-journeys-for-global-travelers",
-      "summary": "Samsung Electronics today announced the launch of \"Trips,\" a new feature in Samsung Wallet designed to help Samsung Galaxy users organize and manage travel-related experiences in one place. Created for travelers who want a seamless...",
-      "published_at": "2026-04-27T08:00:00+00:00",
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "MIT Technology Review",
+      "source_url": "https://www.technologyreview.com/",
+      "title": "The Download: DeepSeek's latest AI breakthrough, and the race to build world models",
+      "link": "https://www.technologyreview.com/2026/04/27/1136438/the-download-deepseek-v4-ai-world-models/",
+      "summary": "This is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology. Three reasons why DeepSeek's new model matters On Friday, Chinese AI firm DeepSeek released a preview...",
+      "published_at": "2026-04-27T12:10:00+00:00",
       "display_date": "APR 27",
-      "image_src": "/assets/images/home-briefing/2026-04-27/industry-bc1f175cf10e6ff1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-07/industry-8f7826d26b8b5540-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/ai-0d9c49804a222572-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-18/ai-4f34d4b145d89127-thumb.webp"
     },
     {
       "index": 2,
-      "slug": "semiconductor",
-      "eyebrow": "Semiconductor Breakthroughs",
-      "source_name": "SemiWiki",
-      "source_url": "https://semiwiki.com/",
-      "title": "SemiWiki Q&A with Julie Rogers, Executive Director, ESD Alliance",
-      "link": "https://semiwiki.com/semiconductor-services/esd-alliance/368712-semiwiki-qa-with-julie-rogers-executive-director-esd-alliance/",
-      "summary": "The Electronic System Design Alliance (ESD Alliance) , a SEMI Technology Community, an international association of companies providing goods and services throughout the semiconductor design ecosystem, is a forum to address technical,...",
-      "published_at": "2026-04-26T21:00:49+00:00",
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "Electrek",
+      "source_url": "https://electrek.co/",
+      "title": "Tesla files to deliver Elon Musk's $56 billion pay package - ending the saga",
+      "link": "https://electrek.co/2026/04/27/tesla-files-deliver-elon-musk-56-billion-pay-package-shares/",
+      "summary": "Tesla has filed an S-8 registration statement with the SEC to register 303,960,630 shares of common stock for CEO Elon Musk under his 2018 pay package. At today's share price of ~$376, those shares are worth over $114 billion. The filing...",
+      "published_at": "2026-04-27T10:57:37+00:00",
       "display_date": "APR 27",
-      "image_src": "/assets/images/home-briefing/2026-04-27/semiconductor-38dba6542866160e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-13/semiconductor-f87097bfa37d4cf1-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/industry-70b156b3d906707c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-20/industry-d513423111c55baa-thumb.webp"
     },
     {
       "index": 3,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "What Tim Cook built",
-      "link": "https://techcrunch.com/2026/04/26/what-tim-cook-built/",
-      "summary": "On the latest episode of Equity, we discuss how Apple has changed since Cook became CEO in 2011, and what challenges incoming CEO John Ternus will be facing.",
-      "published_at": "2026-04-26T20:22:51+00:00",
+      "source_name": "Electrek",
+      "source_url": "https://electrek.co/",
+      "title": "Tesla finally launches 'Robotaxi' app on Android, nearly a year after iOS",
+      "link": "https://electrek.co/2026/04/27/tesla-robotaxi-app-android-launch-year-after-ios/",
+      "summary": "Tesla has released its \"Robotaxi\" app on the Google Play Store, making the ride-hailing service available to Android users for the first time. The iOS version launched in September 2025 - putting the Android release nearly a year behind....",
+      "published_at": "2026-04-27T10:11:47+00:00",
       "display_date": "APR 27",
-      "image_src": "/assets/images/home-briefing/2026-04-27/industry-8f36f79c58604169-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-16/industry-9647c8d154c78f6b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-30/industry-97708ea9896171b3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-30/industry-97708ea9896171b3-thumb.webp"
     },
     {
       "index": 4,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "Linux kernel's 'second-in-command' uses local AI bot to hunt bugs, powered by 'clanker' system with AMD's Ryzen AI Max+ - Framework Desktop has resulted in close to two dozen patches",
+      "link": "https://www.tomshardware.com/software/linux/linux-kernels-second-in-command-uses-framework-desktop-to-hunt-bugs-with-local-ai",
+      "summary": "Greg Kroah-Hartman posted a photo to Mastodon this weekend showing the hardware behind his AI-assisted bug-finding tool.",
+      "published_at": "2026-04-27T10:00:00+00:00",
+      "display_date": "APR 27",
+      "image_src": "/assets/images/home-briefing/2026-04-27/ai-8207a04ef5ea1f83-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-07/ai-9c87475a1e8a3b89-thumb.webp"
+    },
+    {
+      "index": 5,
+      "slug": "semiconductor",
+      "eyebrow": "Semiconductor Breakthroughs",
+      "source_name": "Semiconductor Engineering",
+      "source_url": "https://semiengineering.com/",
+      "title": "When Semiconductor Materials Misbehave",
+      "link": "https://semiengineering.com/when-semiconductor-materials-misbehave/",
+      "summary": "The gap between lab performance and fab reality is growing wider as packages grow more complex. The post When Semiconductor Materials Misbehave appeared first on Semiconductor Engineering .",
+      "published_at": "2026-04-27T07:01:30+00:00",
+      "display_date": "APR 27",
+      "image_src": "/assets/images/home-briefing/2026-04-27/semiconductor-1bbf03d5d59f9794-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-14/semiconductor-2cd796ac29b844cb-thumb.webp"
+    },
+    {
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -60,21 +88,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-03-26/apple-aa9d04976ddb92f2-thumb.webp"
     },
     {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "John Ternus could borrow from Microsoft's playbook to reinvigorate Apple",
-      "link": "https://9to5mac.com/2026/04/26/john-ternus-reinvigorate-apple-engineering-early-retirement/",
-      "summary": "Microsoft recently announced something rather interesting - a voluntary employee buyout . In short, if your age and tenure at the company add up to 70 or greater, you're able to voluntarily leave the company, retire early, and receive a...",
-      "published_at": "2026-04-26T17:28:00+00:00",
-      "display_date": "APR 27",
-      "image_src": "/assets/images/home-briefing/2026-04-27/apple-f914483ad15ee7c9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-ef275835524c1d99-thumb.webp"
-    },
-    {
-      "index": 6,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -88,7 +102,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-03-19/apple-3de84cf58f35f1d4-thumb.webp"
     },
     {
-      "index": 7,
+      "index": 8,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -102,7 +116,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-07/apple-8f3b50325dced041-thumb.webp"
     },
     {
-      "index": 8,
+      "index": 9,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -116,20 +130,6 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-04/apple-11ff201925a763c6-thumb.webp"
     },
     {
-      "index": 9,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "Toyota's limited edition $3,500 Crown gaming chair has heating, cooling, and a USB-C seatbelt buckle - Toyota Crown front car seat turned into gaming chair, enjoy in-car comforts while on your PC",
-      "link": "https://www.tomshardware.com/peripherals/gaming-chairs/toyotas-limited-edition-usd3-500-crown-gaming-chair-has-heating-cooling-and-a-usb-c-seatbelt-buckle-enjoy-in-car-comforts-while-you-are-on-your-pc",
-      "summary": "The world's largest automaker has branched out into computer chairs with a limited edition model as part of The Crown Collection.",
-      "published_at": "2026-04-26T14:31:39+00:00",
-      "display_date": "APR 26",
-      "image_src": "/assets/images/home-briefing/2026-03-20/ai-f7a8d907f935efb5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-20/ai-f7a8d907f935efb5-thumb.webp"
-    },
-    {
       "index": 10,
       "slug": "bluetooth",
       "eyebrow": "Bluetooth Standards & Uses",
@@ -141,7 +141,7 @@
       "published_at": "2026-04-24T07:47:39+00:00",
       "display_date": "APR 24",
       "image_src": "/assets/images/home-briefing/2026-04-27/bluetooth-511af4dc0f02f48f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/bluetooth-cfa04605b22ae381-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-22/bluetooth-cfa04605b22ae381-thumb.webp"
     }
   ]
 }
