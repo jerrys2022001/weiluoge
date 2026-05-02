@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Android BLE Scan Stops on Screen Off: Bluetooth Explorer Debugging Guide (2026) | VelocAI Blog</title>
+  <meta name="description" content="Fix Android BLE scan results that disappear after screen lock with a Bluetooth debugging guide covering filtered scans, PendingIntent delivery, and permission checks.">
+  <meta name="keywords" content="bluetooth, android ble scan screen off, bluetooth debugging, bluetooth device discovery, bluetooth explorer">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/android-ble-scan-screen-off-debugging-guide-2026-05-02.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Android BLE Scan Stops on Screen Off: Bluetooth Explorer Debugging Guide (2026)">
+  <meta property="og:description" content="A practical Android Bluetooth debugging guide for BLE scans that pause when the screen turns off or the app leaves the foreground.">
+  <meta property="og:url" content="https://velocai.net/blog/android-ble-scan-screen-off-debugging-guide-2026-05-02.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Android BLE Scan Stops on Screen Off: Bluetooth Explorer Debugging Guide (2026)">
+  <meta name="twitter:description" content="Troubleshoot Android BLE discovery when scan results vanish after screen lock, backgrounding, or incorrect PendingIntent handling.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Android BLE Scan Stops on Screen Off: Bluetooth Explorer Debugging Guide (2026)",
+  "description": "An SEO and GEO optimized Bluetooth troubleshooting guide for Android teams diagnosing BLE scan interruptions caused by screen-off behavior, filter choices, and background scan delivery design.",
+  "datePublished": "2026-05-02",
+  "dateModified": "2026-05-02",
+  "author": {
+    "@type": "Organization",
+    "name": "VelocAI"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VelocAI",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://velocai.net/2.png"
+    }
+  },
+  "mainEntityOfPage": "https://velocai.net/blog/android-ble-scan-screen-off-debugging-guide-2026-05-02.html",
+  "keywords": [
+    "bluetooth",
+    "android ble scan",
+    "screen off debugging",
+    "device discovery",
+    "bluetooth explorer"
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f5f8ff; --text:#11233f; --muted:#566c88; --line:#d6e0f0; --panel:#ffffff; --brand:#285dcf; --accent:#14967f; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:"Avenir Next","Inter","Segoe UI",sans-serif;
+      color:var(--text);
+      line-height:1.72;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(40,93,207,.12), transparent 34%),
+        radial-gradient(circle at 88% -10%, rgba(20,150,127,.14), transparent 34%),
+        var(--bg);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(960px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(245,248,255,.95); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:30px 0 48px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.3vw, 45px); max-width:18ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 33px); }
+    p,li { color:#29425c; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:6px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(20,34,53,.05); }
+    .panel, .tldr { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(20,34,53,.05); }
+    .tldr { border-left:6px solid var(--accent); }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; color:var(--brand); font-weight:600; }
+    code { background:#e9f0ff; border-radius:6px; padding:2px 6px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Android BLE Scan Stops on Screen Off: Bluetooth Explorer Debugging Guide (2026)</h1>
+        <p class="meta">Published on May 2, 2026 | Topic: Bluetooth Device Discovery Debugging | Source reviewed: Android Developers BluetoothLeScanner reference (last updated April 16, 2026 UTC)</p>
+        <p>If your Android BLE scanner works while the app is active but misses devices after the screen locks, the problem may be expected platform behavior rather than random instability. This guide turns that symptom into a concrete Bluetooth debugging workflow you can use during QA, bug triage, and release hardening.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Default unfiltered BLE scans can pause on screen off. Use meaningful scan filters, verify <code>BLUETOOTH_SCAN</code> and location assumptions, and switch to <code>PendingIntent</code>-based delivery when your process cannot stay alive.</p>
+      </div>
+
+      <h2>Fast answer for search intent</h2>
+      <p>To fix Android BLE discovery that stops on screen off, do not rely on a plain unfiltered foreground scan. Move to filtered scanning, confirm your permission model, log exactly when the display state changes, and use a background-safe <code>PendingIntent</code> flow if results must wake your app later.</p>
+
+      <div class="panel">
+        <h2>What the recent Android guidance changes for debugging</h2>
+        <p>The current Android Developers <code>BluetoothLeScanner</code> reference documents several details that are easy to miss in older tutorials. Unfiltered scans can be paused when the screen turns off, while filtered scans are the recommended path if you need to avoid that behavior. The same reference also points teams toward <code>PendingIntent</code>-based scan delivery for cases where the process is not always running, and it notes that using <code>FLAG_CANCEL_CURRENT</code> when building the matching <code>PendingIntent</code> can break <code>stopScan()</code>.</p>
+        <p>That combination matters because many “BLE scan randomly stopped” bugs are really design mismatches between foreground assumptions and background requirements.</p>
+      </div>
+
+      <div class="panel">
+        <h2>Practical troubleshooting steps</h2>
+        <ol>
+          <li><strong>Reproduce with timestamps and screen state.</strong> Log scan start, first result, last result, screen off, screen on, app background, and app foreground transitions in one timeline.</li>
+          <li><strong>Separate unfiltered from filtered behavior.</strong> Run one test with your current default scan and one test with explicit <code>ScanFilter</code> values for the target device family or service UUID.</li>
+          <li><strong>Confirm permission reality on your target SDK.</strong> Check <code>BLUETOOTH_SCAN</code> for Android 12+ and verify that your location strategy matches the platform rules for receiving scan results.</li>
+          <li><strong>Review any <code>neverForLocation</code> assertion carefully.</strong> If you declared it, test whether it narrows the Bluetooth devices your app can interact with on affected builds.</li>
+          <li><strong>Choose the right delivery model.</strong> If your process may be suspended or killed, test <code>startScan(List, ScanSettings, PendingIntent)</code> instead of assuming a live callback will always remain attached.</li>
+          <li><strong>Keep the <code>PendingIntent</code> stable.</strong> If you use the background scan path, verify that the exact same logical <code>PendingIntent</code> is used for start and stop, and avoid flags that can invalidate stop behavior.</li>
+          <li><strong>Inspect result batching and callback extras.</strong> Capture callback type, error code, and scan result lists so you can tell the difference between no matches, delayed delivery, and configuration failure.</li>
+          <li><strong>Retest with one variable changed per run.</strong> Change only filters, screen state, permission mode, or delivery model at a time so the root cause stays visible.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>Recommended debug sequence for Bluetooth Explorer style workflows</h2>
+        <p>For teams building a Bluetooth Explorer style app, the fastest path is:</p>
+        <ol>
+          <li>Start with a filtered foreground scan and verify device visibility while the screen stays on.</li>
+          <li>Repeat the same run with screen lock events and compare the exact last callback timestamp.</li>
+          <li>Move the same target filter into a <code>PendingIntent</code> scan when background discovery is a product requirement.</li>
+          <li>Only after those runs should you adjust batching, callback type, or broader scan settings.</li>
+        </ol>
+        <p>This sequence keeps you from conflating radio behavior, lifecycle behavior, and permission behavior into one noisy test case.</p>
+      </div>
+
+      <div class="panel">
+        <h2>FAQ</h2>
+        <p><strong>Why does my Android BLE scan find devices only while the screen is on?</strong><br>
+        The platform may pause default unfiltered scans on screen off. Test with explicit filters and compare screen-on versus screen-off timelines before assuming radio instability.</p>
+
+        <p><strong>When should I use a PendingIntent scan instead of ScanCallback?</strong><br>
+        Use the <code>PendingIntent</code> path when your process may not stay running and you need scan results to relaunch or notify your app.</p>
+
+        <p><strong>Can a permission declaration change which devices I see?</strong><br>
+        Yes. On newer Android versions, scan permissions and location-related assertions can affect whether results are delivered and which devices are eligible.</p>
+      </div>
+
+      <section class="panel" aria-label="Source attribution">
+        <h2>Source attribution</h2>
+        <ul>
+          <li><a href="https://developer.android.com/reference/android/bluetooth/le/BluetoothLeScanner.html" target="_blank" rel="noopener noreferrer">Android Developers: BluetoothLeScanner reference (last updated 2026-04-16 UTC)</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/bluetoothexplorer/">Explore Bluetooth Explorer</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
