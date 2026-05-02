@@ -1,6 +1,6 @@
 {
   "date": "2026-05-02",
-  "refreshed_at": "2026-05-02T09:21:07.395438+08:00",
+  "refreshed_at": "2026-05-02T09:23:21.773597+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-05-01T23:47:33+00:00",
       "display_date": "MAY 02",
       "image_src": "/assets/images/home-briefing/2026-05-02/apple-537ea853a117ac0b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-ef275835524c1d99-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-9842cf9309f3af43-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Apple has accused the Competition Commission of India (CCI) of overstepping its judicial authority in a new court filing tied to an ongoing antitrust case in the country. Here are the details.",
       "published_at": "2026-05-01T23:35:57+00:00",
       "display_date": "MAY 02",
-      "image_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "At TechCrunch's sold-out StrictlyVC event in San Francisco on Thursday night, we covered a lot of ground in a short time, beginning with the question everyone in the industry is asking right now: in a world where rival Cursor is reportedly...",
       "published_at": "2026-05-01T23:06:50+00:00",
       "display_date": "MAY 02",
-      "image_src": "/assets/images/home-briefing/2026-04-26/industry-f4d9c00ab5d10359-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-26/industry-f4d9c00ab5d10359-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-10/industry-fe3dd1e651bfd4dd-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-10/industry-fe3dd1e651bfd4dd-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "Apple refreshed the 14-inch and 16-inch MacBook Pro with M5 Pro and M5 Max models in March 2026, but depending on your needs and interests, you might want to skip this generation because there's something better in the works. The M5 Pro...",
       "published_at": "2026-05-01T15:43:16-07:00",
       "display_date": "MAY 02",
-      "image_src": "/assets/images/home-briefing/2026-04-14/apple-86cb4df59105a0ea-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-14/apple-86cb4df59105a0ea-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-29/apple-d86f97736ef97613-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-29/apple-d86f97736ef97613-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-05-01T22:13:27+00:00",
       "display_date": "MAY 02",
       "image_src": "/assets/images/home-briefing/2026-05-02/industry-b804e5a62c0e7cde-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-20/industry-dc5ad1750a230ca7-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-01/industry-d01aa35b675ce01a-thumb.webp"
     },
     {
       "index": 6,
@@ -113,7 +113,7 @@
       "published_at": "2026-05-01T16:00:45+00:00",
       "display_date": "MAY 02",
       "image_src": "/assets/images/home-briefing/2026-05-02/ai-8a8d6c2551fa55b9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/ai-f801f46ce2c37e43-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-05/ai-6c6dcb2b4c8c4e82-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-05-01T14:43:00+00:00",
       "display_date": "MAY 01",
       "image_src": "/assets/images/home-briefing/2026-05-02/bluetooth-952a49a10a272502-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-27/bluetooth-b21c9c054056fdc6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/bluetooth-cfa04605b22ae381-thumb.webp"
     },
     {
       "index": 10,
