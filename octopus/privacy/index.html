@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Octopus Privacy Policy</title>
+  <meta
+    name="description"
+    content="Privacy Policy for Octopus, covering Codex server connections, SSH and WebSocket configuration, chat sessions, approvals, voice input, attachments, notifications, purchases, diagnostics, and data handling."
+  >
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://octopus.velocai.net/privacy/">
+  <link rel="icon" type="image/png" href="/octopus.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Octopus">
+  <meta property="og:title" content="Octopus Privacy Policy">
+  <meta property="og:description" content="How Octopus handles Codex sessions, server credentials, prompts, attachments, voice input, notifications, purchases, and diagnostics.">
+  <meta property="og:url" content="https://octopus.velocai.net/privacy/">
+  <meta property="og:image" content="https://octopus.velocai.net/octopus.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Octopus Privacy Policy">
+  <meta name="twitter:description" content="Privacy details for Octopus, the iPhone companion for Codex sessions.">
+  <meta name="twitter:image" content="https://octopus.velocai.net/octopus.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef7f8;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: #ffffff;
+      --text: #15202e;
+      --muted: #5b6775;
+      --line: #d7e3ea;
+      --accent: #0f766e;
+      --accent-soft: #e4f7f4;
+      --cool: #2563eb;
+      --cool-soft: #edf4ff;
+      --cool-line: #b9cef8;
+      --shadow: 0 28px 80px rgba(21, 32, 46, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 28%),
+        linear-gradient(180deg, #f8fffd 0%, var(--bg) 100%);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      background: transparent;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 28px auto 56px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .brand::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--cool));
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.78);
+    }
+
+    .card {
+      margin-top: 18px;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 1.38rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 1.06rem;
+    }
+
+    p, ul, ol, table {
+      margin: 0 0 16px;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    code {
+      padding: 0.15em 0.35em;
+      border-radius: 6px;
+      background: #f3f7fb;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.92em;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero p {
+      max-width: 54rem;
+    }
+
+    .notice {
+      margin: 24px 0 30px;
+      padding: 20px 22px;
+      border: 1px solid var(--cool-line);
+      border-radius: 20px;
+      background: var(--cool-soft);
+    }
+
+    .notice h2 {
+      margin-top: 0;
+      font-size: 1.14rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--surface-strong);
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 980px);
+        margin: 16px auto 28px;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 22px;
+      }
+
+      th, td {
+        padding: 12px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="brand" href="../">Octopus</a>
+
+    <main class="card">
+      <section class="hero">
+        <div>
+          <h1>Octopus Privacy Policy</h1>
+          <p class="meta">Last updated: May 3, 2026</p>
+        </div>
+        <p>
+          This Privacy Policy explains how <strong>Octopus</strong> handles information when you use the current app
+          experience, including Codex app-server and SSH connections, chat sessions, approvals, voice input, image and
+          file attachments, workspace and automation views, notifications, purchases, diagnostics, and support.
+        </p>
+      </section>
+
+      <section class="notice">
+        <h2>Important Notes</h2>
+        <p>
+          <strong>Octopus is a client for environments you connect.</strong> Prompts, messages, approvals, attachment
+          metadata, workspace lists, task history, and automation details are exchanged with the Mac, server, or Codex
+          app-server endpoint that you choose to connect. Octopus does not need to operate its own AI model training
+          pipeline to provide the core app experience.
+        </p>
+        <p>
+          <strong>Sensitive connection details are handled locally where possible.</strong> Saved server profiles,
+          preferred working directories, thread caches, and lightweight workspace caches may be stored on your device.
+          SSH passwords, private keys, passphrases, and trusted host fingerprints are intended to be stored in the
+          iOS Keychain or equivalent protected local storage.
+        </p>
+        <p>
+          <strong>Only use Octopus with servers and workspaces you are authorized to access.</strong> Content you send
+          through Octopus may be processed by your connected Codex runtime, model provider, shell, repository tools,
+          MCP servers, or other services configured in that environment.
+        </p>
+        <p>
+          We do not request App Tracking Transparency permission, and the current app does not use IDFA-based ad
+          tracking for cross-app advertising.
+        </p>
+      </section>
+
+      <h2>1. App Scope</h2>
+      <p>
+        Octopus is an iPhone companion for continuing Codex sessions from mobile. It helps you connect to a Codex
+        app-server or SSH-accessible machine, browse servers, sessions, threads, projects, and automations, send prompts
+        and attachments, review model output, respond to approval cards, and return to a running thread from Live
+        Activity or notification surfaces.
+      </p>
+
+      <h2>2. Features and Processing Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Main Input</th>
+            <th>Purpose</th>
+            <th>How It Is Processed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Server Connection Setup</td>
+            <td>Display name, WebSocket URL, SSH host, port, username, password, private key, passphrase, working directory</td>
+            <td>Connect Octopus to your Mac, server, or Codex app-server</td>
+            <td>Stored locally when you choose to remember the server; credentials are intended for protected local storage</td>
+          </tr>
+          <tr>
+            <td>SSH Host Fingerprint Trust</td>
+            <td>Host fingerprint and user confirmation</td>
+            <td>Help prevent accidental trust of an unexpected SSH host</td>
+            <td>Stored locally after you approve the host</td>
+          </tr>
+          <tr>
+            <td>Chat and Codex Turns</td>
+            <td>Prompts, thread identifiers, selected model settings, approval choices, structured replies</td>
+            <td>Start, resume, and continue Codex sessions from iPhone</td>
+            <td>Sent to the connected server/runtime you choose; cached locally where needed for UI continuity</td>
+          </tr>
+          <tr>
+            <td>Images and File Attachments</td>
+            <td>Selected photos, camera captures, files, filenames, sizes, and attachment metadata</td>
+            <td>Add context to a Codex turn</td>
+            <td>Prepared on-device, then sent to the connected server/runtime when you submit the message</td>
+          </tr>
+          <tr>
+            <td>Voice Input</td>
+            <td>Microphone audio and speech transcript</td>
+            <td>Convert your speech into a prompt before sending</td>
+            <td>Uses Apple microphone and speech recognition technologies; the resulting text may be sent to your connected runtime</td>
+          </tr>
+          <tr>
+            <td>Sessions, Workspaces, and Automations</td>
+            <td>Thread IDs, titles, project paths, workspace lists, automation names, schedules, prompts, run history, status summaries</td>
+            <td>Show recent work, active status, pending approvals, and automation history</td>
+            <td>Loaded from your connected server and cached locally for faster browsing</td>
+          </tr>
+          <tr>
+            <td>Notifications and Deep Links</td>
+            <td>Thread ID, server ID, task status, pending approval state, completion status, URL such as <code>/chat?sessionID=...</code></td>
+            <td>Return you to the correct thread from system surfaces</td>
+            <td>Handled by iOS notification and Live Activity mechanisms; payloads are kept as small as practical</td>
+          </tr>
+          <tr>
+            <td>Purchases and Subscriptions</td>
+            <td>Purchase status, paywall and product data, subscription entitlement state</td>
+            <td>Unlock paid features when enabled</td>
+            <td>Handled through Apple in-app purchase infrastructure and Adapty SDK services</td>
+          </tr>
+          <tr>
+            <td>Diagnostics and Crash Reporting</td>
+            <td>Crash logs, app version, device and OS diagnostics, non-IDFA analytics events</td>
+            <td>Improve reliability and understand feature health</td>
+            <td>May be processed by Firebase Crashlytics and Firebase Analytics without IDFA support</td>
+          </tr>
+          <tr>
+            <td>Support Contact</td>
+            <td>Email content you choose to send</td>
+            <td>Respond to issues, feedback, or privacy requests</td>
+            <td>Handled by your email provider and our support inbox</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. Information We Process</h2>
+
+      <h3>3.1 Connection and Server Information</h3>
+      <ul>
+        <li>Server display names, hostnames, ports, WebSocket URLs, transport mode, and preferred working directories.</li>
+        <li>SSH usernames, passwords, private keys, and passphrases when you choose SSH authentication.</li>
+        <li>Trusted SSH host fingerprints after you approve a first connection.</li>
+        <li>Connection status, error summaries, app-server compatibility hints, and retry state.</li>
+      </ul>
+
+      <h3>3.2 Chat, Thread, Workspace, and Automation Information</h3>
+      <ul>
+        <li>Prompts and text you type, dictate, or submit as structured user input.</li>
+        <li>Thread identifiers, titles, project paths, model selections, sandbox or approval mode metadata, status labels, and token counters returned by the connected runtime.</li>
+        <li>Assistant responses, tool call summaries, approval cards, command/file-change permission requests, and your approval decisions.</li>
+        <li>Workspace lists, recent-session derived project lists, automation prompts, schedules, run history, final messages, and related status summaries.</li>
+      </ul>
+
+      <h3>3.3 Attachments, Camera, Photos, Files, Microphone, and Speech</h3>
+      <ul>
+        <li>Images and files you explicitly select or capture for a message.</li>
+        <li>Attachment previews, temporary prepared files, filenames, file sizes, and related metadata needed to send the attachment.</li>
+        <li>Microphone audio used for voice input and speech transcripts produced from that audio.</li>
+        <li>Photo library or camera access only when you choose an image or capture flow that requires it.</li>
+      </ul>
+
+      <h3>3.4 Local Settings, Caches, Purchases, and Technical Data</h3>
+      <ul>
+        <li>Preferences such as theme, font, remembered server choices, connection form values, and local onboarding state.</li>
+        <li>Local SQLite or similar caches for server profiles, recent sessions, conversation history windows, workspace catalogs, and thread state.</li>
+        <li>Purchase entitlement status, paywall/product metadata, and subscription state when paid features are enabled.</li>
+        <li>Technical diagnostics such as app version, OS version, crash traces, performance signals, and non-IDFA analytics events.</li>
+      </ul>
+
+      <h2>4. Permissions We Request</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Why We Request It</th>
+            <th>What Happens If You Decline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Microphone</td>
+            <td>To convert your voice into prompt text during voice input.</td>
+            <td>You can still type prompts, but voice input will not be available.</td>
+          </tr>
+          <tr>
+            <td>Speech Recognition</td>
+            <td>To transcribe spoken input into text before you submit it.</td>
+            <td>You can still type prompts, but speech-to-text features will not be available.</td>
+          </tr>
+          <tr>
+            <td>Camera</td>
+            <td>To take a photo for an attachment when you choose the camera flow.</td>
+            <td>You can still type prompts and may still attach existing files or photos, but camera capture will not be available.</td>
+          </tr>
+          <tr>
+            <td>Photo Library / Photo Picker</td>
+            <td>To let you choose images for a message or save generated images when that feature is available.</td>
+            <td>You can still type prompts, but photo-dependent attachment or save flows may be unavailable.</td>
+          </tr>
+          <tr>
+            <td>Notifications</td>
+            <td>To alert you about pending confirmations, completed tasks, and thread status changes.</td>
+            <td>You can still use the app, but you may need to reopen it manually to check status.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. When Data Leaves Your Device</h2>
+      <p>
+        Octopus sends information off your iPhone only when needed to complete a feature you request or when a service
+        provider is used for app operations. The most important case is your chosen connection target.
+      </p>
+      <ul>
+        <li>When you connect to a WebSocket or SSH endpoint, prompts, attachment payloads, approval decisions, and session requests are sent to that endpoint.</li>
+        <li>Your connected Codex runtime may then send prompts, attachments, tool results, and environment context to the model provider or tools configured in that runtime.</li>
+        <li>Voice transcription may be processed by Apple speech technologies according to Apple’s terms and system behavior.</li>
+        <li>Crash reporting and non-IDFA analytics may be sent to Firebase services to improve reliability.</li>
+        <li>Purchase and subscription checks may be processed by Apple and Adapty when paid features are enabled.</li>
+        <li>If you email support, your message is processed by your email provider and delivered to our support inbox.</li>
+      </ul>
+
+      <h2>6. Third-Party Services and Providers</h2>
+      <p>
+        Depending on the feature you use and the environment you connect, Octopus may interact with third-party
+        services or SDK-backed integrations such as:
+      </p>
+      <ul>
+        <li>Apple services, including microphone, speech recognition, photo picker, camera, notifications, Live Activities, Keychain, and in-app purchases.</li>
+        <li>Your connected Codex app-server, SSH host, local computer, remote server, MCP server, shell tools, repositories, and configured model providers.</li>
+        <li>Firebase Crashlytics and Firebase Analytics without IDFA support for diagnostics and reliability.</li>
+        <li>Adapty services for paywalls, product metadata, purchase restoration, and subscription entitlement state when enabled.</li>
+      </ul>
+      <p class="note">
+        Connected runtimes and third-party providers process data under their own privacy terms once you choose to use
+        those services or send data to those environments.
+      </p>
+
+      <h2>7. Storage and Retention</h2>
+      <ul>
+        <li>Remembered server profiles, preferences, onboarding state, workspace caches, thread lists, and conversation history windows may be stored locally on your device.</li>
+        <li>SSH credentials, private keys, passphrases, and trusted host fingerprints are intended to be kept in protected local storage such as the iOS Keychain.</li>
+        <li>Prompt and thread content may also be stored by the connected Codex runtime, server, model provider, or repository tools according to their own configuration and policies.</li>
+        <li>Temporary attachment files and previews may be kept locally while a message is prepared, sent, retried, or displayed, then cleaned up by the app or system.</li>
+        <li>Diagnostic and subscription records may be retained by the relevant provider according to that provider’s retention practices.</li>
+      </ul>
+
+      <h2>8. Data Sharing and Disclosure</h2>
+      <p>We do not sell your personal information. We share information only in these limited situations:</p>
+      <ul>
+        <li>With the server, runtime, model provider, tool, or destination that you choose to use through Octopus.</li>
+        <li>With service providers needed to operate app features, such as crash reporting, subscription management, and platform purchase processing.</li>
+        <li>When required by law, regulation, legal process, or to protect rights, safety, and the integrity of the service.</li>
+      </ul>
+
+      <h2>9. Tracking and Advertising</h2>
+      <ul>
+        <li>The current app does not request App Tracking Transparency permission.</li>
+        <li>The current app does not use IDFA-based cross-app advertising tracking.</li>
+        <li>Firebase Analytics is configured without IDFA support in the current project setup.</li>
+        <li>Octopus is designed around productivity, remote session continuity, approvals, and automation monitoring rather than ad targeting.</li>
+      </ul>
+
+      <h2>10. Your Choices</h2>
+      <ul>
+        <li>You can choose which server, WebSocket endpoint, SSH host, workspace, model, and runtime environment to connect.</li>
+        <li>You can choose not to remember a server, or delete saved servers and local app data where the app provides controls.</li>
+        <li>You can deny microphone, speech recognition, camera, photo library, and notification access in iOS Settings.</li>
+        <li>You can choose not to attach images or files, not to use voice input, and not to submit approval decisions from mobile.</li>
+        <li>You can delete the app to remove app-sandbox data stored locally on your device. Data already sent to connected runtimes or providers must be managed in those environments.</li>
+      </ul>
+
+      <h2>11. Policy Updates</h2>
+      <p>
+        We may update this Privacy Policy as the app evolves. When we make material changes, we will update the
+        "Last updated" date on this page. Your continued use of the app after an updated policy becomes effective means
+        the updated policy will apply to future use of the app.
+      </p>
+
+      <h2>12. Contact</h2>
+      <div class="contact">
+        <p>
+          If you have questions, suggestions, or privacy-related requests about Octopus, you can contact the support
+          team at <a href="mailto:goodaiapp@gmail.com">goodaiapp@gmail.com</a>.
+        </p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
