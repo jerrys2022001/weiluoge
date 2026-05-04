@@ -1,6 +1,6 @@
 {
   "date": "2026-05-04",
-  "refreshed_at": "2026-05-04T10:33:32.487872+08:00",
+  "refreshed_at": "2026-05-04T10:36:12.856280+08:00",
   "item_count": 10,
   "items": [
     {
@@ -28,8 +28,8 @@
       "summary": "In this week's \"Sunday Reboot,\" Apple drives on with F1 in Miami, Q2 was a financial spectacular, and 'Ted Lasso' season 4 can't arrive fast enough. Formula 1, Apple's financials, and Apple TV Sunday Reboot is a weekly column covering some...",
       "published_at": "2026-05-03T20:27:08+00:00",
       "display_date": "MAY 04",
-      "image_src": "/assets/images/home-briefing/2026-03-19/apple-3de84cf58f35f1d4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-19/apple-3de84cf58f35f1d4-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-21/apple-ef275835524c1d99-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-ef275835524c1d99-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-05-03T20:16:51+00:00",
       "display_date": "MAY 04",
       "image_src": "/assets/images/home-briefing/2026-05-04/industry-21e8b31171b2b24b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-20/industry-f154242a4fb6b47a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-27/industry-292357a419f6ee39-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-05-03T18:16:23+00:00",
       "display_date": "MAY 04",
       "image_src": "/assets/images/home-briefing/2026-05-04/industry-5d4d9edbd9681fc9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-20/industry-8bf2e4864028542e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-28/industry-de9a2c7d9ca87cdb-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-05-03T18:00:09+00:00",
       "display_date": "MAY 04",
       "image_src": "/assets/images/home-briefing/2026-05-04/industry-ac056f8bad0a25dd-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-16/industry-9647c8d154c78f6b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-19/industry-d76a50cbaed969ce-thumb.webp"
     },
     {
       "index": 6,
@@ -98,8 +98,8 @@
       "summary": "The Apple Watch updates in watchOS 27 includes new watch faces, with Apple testing a new simpler version of the Modular Ultra for the standard model. Apple Watch Ultra 2 with Modular Ultra watch face In the run-up to WWDC in June, the...",
       "published_at": "2026-05-03T14:50:55+00:00",
       "display_date": "MAY 03",
-      "image_src": "/assets/images/home-briefing/2026-04-17/apple-b129b757d2d8cb65-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-b129b757d2d8cb65-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-17/apple-f210cc02ecba80a2-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/apple-f210cc02ecba80a2-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Learn why Apple absolutely cannot unlock an iPhone after its user dies, and how you can prevent access problems for your loved ones. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-05-03T14:10:39+00:00",
       "display_date": "MAY 03",
-      "image_src": "/assets/images/home-briefing/2026-04-26/apple-be69a8c8f119fa2a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-26/apple-be69a8c8f119fa2a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-21/apple-db8b84ec6fc7ca1d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-db8b84ec6fc7ca1d-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-05-03T07:10:12-07:00",
       "display_date": "MAY 03",
       "image_src": "/assets/images/home-briefing/2026-05-04/apple-2726abbeb0635ce7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-08/apple-43bf1ee65f180a63-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-c2d260767e8e058c-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-01T14:43:00+00:00",
       "display_date": "MAY 01",
       "image_src": "/assets/images/home-briefing/2026-05-04/bluetooth-952a49a10a272502-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-21/bluetooth-cfa04605b22ae381-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-28/bluetooth-b21c9c054056fdc6-thumb.webp"
     }
   ]
 }
