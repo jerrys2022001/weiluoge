@@ -17,6 +17,9 @@ STOP_WORDS = {
     "should", "after", "before", "first", "second", "third", "guide", "explained", "use",
     "using", "latest", "blog", "velocai", "current", "key", "practical", "reliable",
     "update", "2026",
+    # Live fallback and scheduler scaffolding should not make unrelated app lanes look duplicated.
+    "source", "fallback", "slot", "article", "fresh", "signal", "signals", "lessons",
+    "live", "expanded", "local", "candidate", "scheduler", "publishing", "publish",
     # App and product boilerplate should not make separate long-tail topics look duplicated.
     "ai", "app", "apps", "iphone", "ipad", "ios", "bluetooth", "explorer", "cleanup",
     "pro", "translate", "translation", "translator", "find", "finder", "dualshot",
@@ -246,6 +249,48 @@ def extract_body_counter(html: str) -> Counter[str]:
             focus_parts.append(happened_match.group(1))
         focus_html = " ".join(focus_parts)
         focus_text = re.sub(r"<[^>]+>", " ", focus_html)
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS
+        )
+
+    if "expanded-source fallback" in html.lower() or "live-source" in html.lower():
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        hero_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_match:
+            focus_parts.append(hero_match.group(1))
+
+        tldr_match = re.search(r'<div class="tldr">.*?<p>.*?TL;DR:\s*(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if tldr_match:
+            focus_parts.append(tldr_match.group(1))
+
+        changed_match = re.search(
+            r"<h2>\s*What changed in .*?</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if changed_match:
+            focus_parts.append(changed_match.group(1))
+
+        impact_match = re.search(
+            r"<h2>\s*Why does this update matter\?</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if impact_match:
+            focus_parts.append(impact_match.group(1))
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
         focus_text = re.sub(r"\s+", " ", focus_text).lower()
         return Counter(
             token

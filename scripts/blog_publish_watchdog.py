@@ -206,7 +206,20 @@ def list_same_day_posts(repo_root: Path, git_command: str, content_ref: str, tar
         line.strip()
         for line in completed.stdout.splitlines()
         if line.strip().endswith(suffix)
+        and post_is_indexable_at_ref(repo_root, git_command, content_ref, line.strip())
     )
+
+
+def post_is_indexable_at_ref(repo_root: Path, git_command: str, content_ref: str, relative_path: str) -> bool:
+    completed = run_git_command(
+        repo_root,
+        git_command,
+        ["show", f"{content_ref}:{relative_path}"],
+        check=False,
+    )
+    if completed.returncode != 0:
+        return False
+    return '<meta name="robots" content="noindex' not in completed.stdout.lower()
 
 
 def normalize_title(value: str) -> str:

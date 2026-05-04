@@ -20,6 +20,7 @@ from blog_similarity import (
     normalize_title,
     title_overlap,
 )
+from site_tools import build_site_search_index
 
 SITE_URL = "https://velocai.net"
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -179,7 +180,7 @@ def update_index(index_path: Path, merged_names: set[str]) -> bool:
     updated = updated[: script_match.start()] + replacement + updated[script_match.end() :]
 
     section_match = re.search(
-        r'(<section class="list" aria-label="Latest blog posts">\s*)(.*?)(\s*</section>)',
+        r'(<section\b(?=[^>]*class="list")(?=[^>]*aria-label="Latest blog posts")[^>]*>\s*)(.*?)(\s*</section>)',
         updated,
         re.DOTALL,
     )
@@ -253,6 +254,7 @@ def merge_duplicates(
 
     update_index(index_path, merged_names)
     update_sitemap(sitemap_path, merged_names)
+    build_site_search_index(repo_root)
     return 0
 
 

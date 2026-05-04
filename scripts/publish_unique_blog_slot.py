@@ -56,14 +56,6 @@ from blog_similarity import load_blog_pages, max_similarity_against_existing
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
-LIVE_REWRITE_SOFT_THRESHOLD = {
-    "cleanup": 0.70,
-    "protocol": 0.70,
-    "find": 0.70,
-    "dualshot": 0.70,
-    "translate": 0.70,
-    "updates": 0.70,
-}
 MIN_DAILY_BLUETOOTH_POSTS = 2
 MIN_DAILY_TRANSLATE_POSTS = 1
 MIN_DAILY_FIND_POSTS = 1
@@ -177,11 +169,9 @@ def parse_args() -> argparse.Namespace:
 def default_similarity_threshold(lane: str) -> float:
     if lane == "cleanup":
         return 0.40
-    return 0.50
-
-
-def default_live_rewrite_threshold(lane: str) -> float:
-    return LIVE_REWRITE_SOFT_THRESHOLD[lane]
+    if lane in {"protocol", "updates"}:
+        return 0.50
+    return 0.30
 
 
 def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
@@ -239,8 +229,6 @@ def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> lis
 
 def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
     items: list[Candidate] = []
-    if lane in {"cleanup", "translate", "find", "dualshot"}:
-        return items
     live_candidates = build_live_candidates(target_day, lane)
     if live_candidates:
         rotate = slot_offset % len(live_candidates)
@@ -252,6 +240,21 @@ def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> 
 
 def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | None:
     blog_dir = repo_root / "blog"
+    from blog_cleanup_focus_scheduler import ANGLES as CLEANUP_ANGLES
+
+    slug_prefixes = tuple(angle.slug_prefix for angle in CLEANUP_ANGLES)
+    suffix = f"-{target_day.isoformat()}.html"
+    existing = sorted(
+        path
+        for path in blog_dir.glob(f"*{suffix}")
+        if path.name.startswith(slug_prefixes) and page_is_indexable(path)
+    )
+    if existing:
+        for candidate in [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup", 0)]:
+            if candidate.post.filename == existing[0].name:
+                return candidate
+        meta = post_meta_from_article_file(existing[0])
+        return Candidate(lane="cleanup", origin="existing", identifier="cleanup-quota-file", post=meta, html=existing[0].read_text(encoding="utf-8", errors="ignore"))
     candidates = [*build_local_candidates(target_day, "cleanup", 0), *build_fallback_candidates(target_day, "cleanup", 0)]
     for candidate in candidates:
         article_path = blog_dir / candidate.post.filename
@@ -272,9 +275,21 @@ def is_find_candidate(candidate: Candidate) -> bool:
     return candidate.post.filename.startswith("find-ai-")
 
 
+def page_is_indexable(path: Path) -> bool:
+    try:
+        html = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return False
+    return '<meta name="robots" content="noindex' not in html.lower()
+
+
 def list_same_day_prefixed_posts(blog_dir: Path, target_day: date, prefix: str) -> list[Path]:
     suffix = f"-{target_day.isoformat()}.html"
-    return sorted(path for path in blog_dir.glob(f"*{suffix}") if path.name.startswith(prefix))
+    return sorted(
+        path
+        for path in blog_dir.glob(f"*{suffix}")
+        if path.name.startswith(prefix) and page_is_indexable(path)
+    )
 
 
 def count_same_day_bluetooth_posts(blog_dir: Path, target_day: date) -> int:
@@ -409,14 +424,6 @@ def choose_from_ranked_candidates(
     preferred_live_ranked = [item for item in live_ranked if is_bluetooth_candidate(item[1])] if bluetooth_quota_open else live_ranked
     fallback_live_ranked = live_ranked if preferred_live_ranked else []
 
-    if lane in {"translate", "find", "dualshot"}:
-        for similarity, candidate in local_ranked:
-            if similarity < similarity_threshold:
-                return candidate, similarity
-        for similarity, candidate in local_ranked:
-            return candidate, similarity
-        return None
-
     for similarity, candidate in local_ranked:
         if similarity < similarity_threshold:
             return candidate, similarity
@@ -428,54 +435,6 @@ def choose_from_ranked_candidates(
         for similarity, candidate in fallback_live_ranked:
             if similarity < similarity_threshold:
                 return candidate, similarity
-
-    live_soft_threshold = default_live_rewrite_threshold(lane)
-    for similarity, candidate in preferred_live_ranked:
-        if similarity < live_soft_threshold:
-            return Candidate(
-                lane=candidate.lane,
-                origin="live-forced",
-                identifier=candidate.identifier,
-                post=candidate.post,
-                html=candidate.html,
-            ), similarity
-    if preferred_live_ranked is not live_ranked:
-        for similarity, candidate in fallback_live_ranked:
-            if similarity < live_soft_threshold:
-                return Candidate(
-                    lane=candidate.lane,
-                    origin="live-forced",
-                    identifier=candidate.identifier,
-                    post=candidate.post,
-                    html=candidate.html,
-                ), similarity
-
-    for similarity, candidate in preferred_live_ranked:
-        return Candidate(
-            lane=candidate.lane,
-            origin="live-forced",
-            identifier=candidate.identifier,
-            post=candidate.post,
-            html=candidate.html,
-        ), similarity
-
-    for similarity, candidate in fallback_live_ranked:
-        return Candidate(
-            lane=candidate.lane,
-            origin="live-forced",
-            identifier=candidate.identifier,
-            post=candidate.post,
-            html=candidate.html,
-        ), similarity
-
-    for similarity, candidate in local_ranked:
-        return Candidate(
-            lane=candidate.lane,
-            origin="local-forced",
-            identifier=candidate.identifier,
-            post=candidate.post,
-            html=candidate.html,
-        ), similarity
 
     return None
 
@@ -523,10 +482,11 @@ def choose_candidate(
     if chosen is not None:
         return chosen
 
-    live_soft_threshold = default_live_rewrite_threshold(lane)
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
-        f"strict_threshold={similarity_threshold:.2f} live_soft_threshold={live_soft_threshold:.2f}"
+        f"similarity_threshold={similarity_threshold:.2f}; "
+        "local candidates and expanded live-source candidates were exhausted; "
+        "skipping publish instead of force-publishing a near-duplicate local topic"
     )
 
 

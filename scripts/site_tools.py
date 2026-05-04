@@ -211,6 +211,27 @@ def normalize_href(relative_path: Path, href: str) -> str:
     return normalized
 
 
+def internal_href_to_path(href: str) -> Path | None:
+    clean = (href or "").split("#", 1)[0].split("?", 1)[0].strip()
+    if clean.startswith("https://velocai.net/"):
+        clean = clean.removeprefix("https://velocai.net")
+    elif clean == "https://velocai.net":
+        clean = "/"
+    elif clean.startswith(("http://", "https://")):
+        return None
+    if not clean.startswith("/"):
+        return None
+    if clean == "/":
+        return Path("index.html")
+    rel = clean.lstrip("/")
+    if clean.endswith("/"):
+        return Path(rel) / "index.html"
+    candidate = Path(rel)
+    if candidate.suffix:
+        return candidate
+    return candidate / "index.html"
+
+
 def extract_link_records(
     relative_path: Path,
     text: str,
@@ -218,6 +239,7 @@ def extract_link_records(
     page_heading: str,
     category: str,
     locale: str,
+    known_paths: set[Path],
     max_records: int = MAX_LINK_RECORDS_PER_PAGE,
 ) -> list[SearchRecord]:
     body_match = BODY_RE.search(text)
@@ -230,6 +252,9 @@ def extract_link_records(
         attrs = {name.lower(): val for name, _, val in ATTR_RE.findall(match.group(1))}
         href = normalize_href(relative_path, attrs.get("href", ""))
         if not href:
+            continue
+        target_path = internal_href_to_path(href)
+        if target_path is not None and target_path not in known_paths:
             continue
         if href in seen_hrefs:
             continue
@@ -290,6 +315,11 @@ def discover_site_html_files(repo_root: Path) -> list[Path]:
             continue
         if relative.name in EXCLUDED_FILES:
             continue
+        if '<meta name="robots" content="noindex' in path.read_text(
+            encoding="utf-8",
+            errors="ignore",
+        ).lower():
+            continue
         files.append(path)
     return sorted(files)
 
@@ -338,7 +368,7 @@ def parse_search_records(repo_root: Path, path: Path, known_paths: set[Path]) ->
         focus="",
         external_url="",
     )
-    link_records = extract_link_records(relative, text, title, heading, category, locale)
+    link_records = extract_link_records(relative, text, title, heading, category, locale, known_paths)
     return [page_record, *link_records]
 
 

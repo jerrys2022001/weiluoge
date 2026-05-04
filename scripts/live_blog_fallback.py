@@ -16,6 +16,7 @@ from pathlib import Path
 from blog_daily_scheduler import PostMeta, SITE_URL, format_human
 from home_brief_daily_scheduler import (
     BRIEF_SOURCES,
+    EXTRA_SAME_DAY_SOURCES,
     FeedItem,
     clean_text,
     clip_text,
@@ -65,7 +66,17 @@ CURATED_PROTOCOL_PAGES = (
 )
 
 LANE_ALLOWED_SOURCES = {
-    "protocol": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected"},
+    "protocol": {
+        "Bluetooth SIG",
+        "Nordic News",
+        "Nordic GetConnected",
+        "Silicon Labs Bluetooth",
+        "Blecon",
+        "BeaconZone",
+        "SoundGuys Bluetooth",
+        "Android Authority Bluetooth",
+        "9to5Google Bluetooth",
+    },
     "updates": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
 }
 
@@ -73,11 +84,15 @@ APP_FUNCTION_KEYWORDS = {
     "cleanup": (
         "files",
         "storage",
-        "backup",
-        "back up",
+        "icloud backup",
+        "backup files",
+        "backup data",
+        "back up your mac",
         "icloud",
         "nas",
-        "drive",
+        "icloud drive",
+        "database",
+        "cloud",
         "system data",
         "storage full",
         "free up storage",
@@ -106,20 +121,90 @@ APP_FUNCTION_KEYWORDS = {
         "rssi",
         "bluetooth signal",
     ),
+    "translate": (
+        "translate",
+        "translation",
+        "translator",
+        "live translation",
+        "speech translation",
+        "language translation",
+        "multilingual",
+        "caption",
+        "subtitle",
+        "ocr",
+        "text recognition",
+        "transcription",
+    ),
+    "dualshot": (
+        "camera",
+        "video",
+        "record",
+        "recording",
+        "creator",
+        "demo",
+        "tutorial",
+        "vlog",
+        "youtube",
+        "short-form",
+        "livestream",
+    ),
 }
 
 CLEANUP_TITLE_REQUIRED = (
     "storage",
-    "backup",
-    "back up",
+    "icloud backup",
+    "backup files",
+    "backup data",
+    "back up your mac",
     "icloud",
     "files",
     "nas",
-    "drive",
+    "icloud drive",
+    "database",
+    "cloud",
     "system data",
 )
 
 UPDATES_TITLE_REQUIRED = APP_FUNCTION_KEYWORDS["cleanup"] + APP_FUNCTION_KEYWORDS["find"] + APP_FUNCTION_KEYWORDS["bluetooth"]
+
+LANE_SOURCE_SLUGS = {
+    "cleanup": ("apple",),
+    "translate": ("ai", "apple"),
+    "find": ("apple", "bluetooth"),
+    "dualshot": ("apple", "ai"),
+    "protocol": ("bluetooth",),
+    "updates": ("apple", "ai", "bluetooth"),
+}
+
+LANE_REQUIRED_KEYWORDS = {
+    "cleanup": APP_FUNCTION_KEYWORDS["cleanup"],
+    "translate": APP_FUNCTION_KEYWORDS["translate"],
+    "find": APP_FUNCTION_KEYWORDS["find"] + APP_FUNCTION_KEYWORDS["bluetooth"],
+    "dualshot": APP_FUNCTION_KEYWORDS["dualshot"],
+    "protocol": APP_FUNCTION_KEYWORDS["bluetooth"],
+    "updates": UPDATES_TITLE_REQUIRED,
+}
+
+LANE_FALLBACK_PREFIX = {
+    "cleanup": "iphone-storage-full-cleanup-five-step-order-live-source-update",
+    "translate": "translate-ai-live-translation-workflow-update",
+    "find": "find-ai-live-device-finding-update",
+    "dualshot": "dualshot-camera-product-demo-tutorial-guide-live-source-update",
+}
+
+LANE_TOPIC = {
+    "cleanup": "cleanup pro Storage Cleanup",
+    "translate": "Translate AI Translation Workflow",
+    "find": "find AI Device Recovery",
+    "dualshot": "DualShot Camera Creator Workflow",
+}
+
+LANE_APP_TERM = {
+    "cleanup": "cleanup pro",
+    "translate": "Translate",
+    "find": "find AI",
+    "dualshot": "DualShot Camera",
+}
 
 
 def matches_keyword(text: str, keyword: str) -> bool:
@@ -165,6 +250,33 @@ def slugify(value: str, limit: int = 72) -> str:
     return slug[:limit].strip("-") or "update"
 
 
+def source_pool_for_lane(lane: str):
+    preferred_slugs = LANE_SOURCE_SLUGS.get(lane, ())
+    seen: set[tuple[str, str, str]] = set()
+    for source in (*BRIEF_SOURCES, *EXTRA_SAME_DAY_SOURCES):
+        key = (source.slug, source.source_name, source.feed_url)
+        if key in seen or source.slug not in preferred_slugs:
+            continue
+        seen.add(key)
+        if lane in LANE_ALLOWED_SOURCES and source.source_name not in LANE_ALLOWED_SOURCES[lane]:
+            continue
+        yield source
+
+
+def render_source_slug_for_lane(lane: str, source_slug: str) -> str:
+    if source_slug in {"apple", "ai", "bluetooth"}:
+        return source_slug
+    if lane == "translate":
+        return "ai"
+    if lane in {"cleanup", "find", "dualshot"}:
+        return "apple"
+    return "bluetooth"
+
+
+def article_prefix_for_lane(lane: str, source_slug: str) -> str:
+    return LANE_FALLBACK_PREFIX.get(lane, article_prefix_for_source_slug(source_slug))
+
+
 def article_prefix_for_source_slug(source_slug: str) -> str:
     if source_slug == "apple":
         return "apple-feature-performance-commentary"
@@ -179,6 +291,10 @@ def topic_for_source_slug(source_slug: str) -> str:
     if source_slug == "ai":
         return "AI Technology Outlook"
     return "Bluetooth Industry Update"
+
+
+def topic_for_lane(lane: str, source_slug: str) -> str:
+    return LANE_TOPIC.get(lane, topic_for_source_slug(source_slug))
 
 
 def teaser_for_source_slug(source_slug: str) -> str:
@@ -243,7 +359,454 @@ def keywords_for_source_slug(source_slug: str) -> list[str]:
     ]
 
 
-def build_live_description(source_slug: str, source_name: str, summary: str) -> str:
+def keywords_for_lane(lane: str, source_slug: str) -> list[str]:
+    if lane not in LANE_APP_TERM:
+        return keywords_for_source_slug(source_slug)
+    app_term = LANE_APP_TERM[lane]
+    lane_keywords = [app_term, *APP_FUNCTION_KEYWORDS[lane]]
+    source_keywords = keywords_for_source_slug(source_slug)
+    return list(dict.fromkeys([*lane_keywords, *source_keywords]))
+
+
+def story_label(value: str, limit: int = 34) -> str:
+    cleaned = clean_text(value)
+    cleaned = re.sub(r"\s*[-|]\s*(MacRumors|AppleInsider|9to5Mac|TechCrunch|OpenAI|Bluetooth.*)$", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"[^A-Za-z0-9+ ]+", "", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    if len(cleaned) <= limit:
+        return cleaned or "Live Source Update"
+    clipped = cleaned[:limit].rsplit(" ", 1)[0].strip()
+    return clipped or cleaned[:limit].strip()
+
+
+def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, str] | None:
+    if lane not in LANE_APP_TERM:
+        return None
+    label = story_label(item.title)
+    if lane == "cleanup":
+        return (
+            f"Cleanup Pro Storage Lessons from {label}",
+            f"Live-source cleanup pro commentary on {label}, focused on storage pressure, file growth, backup hygiene, and safe iPhone cleanup decisions.",
+        )
+    if lane == "translate":
+        return (
+            f"Translate AI Workflow Lessons from {label}",
+            f"Live-source Translate commentary on {label}, focused on translation, speech, OCR, captions, and multilingual workflow decisions.",
+        )
+    if lane == "find":
+        return (
+            f"find AI Recovery Lessons from {label}",
+            f"Live-source find AI commentary on {label}, focused on device discovery, Bluetooth signals, nearby recovery, and lost-item workflows.",
+        )
+    if lane == "dualshot":
+        return (
+            f"DualShot Camera Creator Lessons from {label}",
+            f"Live-source DualShot Camera commentary on {label}, focused on camera capture, demo recording, creator workflow, and video repurposing.",
+        )
+    return None
+
+
+def lane_summary(lane: str, source_slug: str, source_name: str, item: FeedItem) -> str:
+    base = clean_summary(source_slug, source_name, item)
+    if lane not in LANE_APP_TERM:
+        return base
+    app_term = LANE_APP_TERM[lane]
+    return clip_text(
+        f"{base} This expanded-source fallback reframes the update for {app_term} readers so the blog slot can stay fresh without reusing a near-duplicate local topic.",
+        limit=260,
+    )
+
+
+def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, haystack: str) -> bool:
+    if lane == "cleanup":
+        return any(
+            matches_keyword(haystack, keyword)
+            for keyword in (
+                "photo cleanup",
+                "storage",
+                "512gb",
+                "256gb",
+                "memory costs",
+                "icloud backup",
+                "backup files",
+                "backup data",
+                "back up your mac",
+                "icloud",
+                "icloud drive",
+                "files",
+                "database",
+                "data back",
+                "deleted",
+                "cloud data",
+                "system data",
+            )
+        )
+    if lane == "translate":
+        strict_terms = (
+            "translate",
+            "translation",
+            "translator",
+            "live translation",
+            "speech translation",
+            "language translation",
+            "caption",
+            "subtitle",
+            "ocr",
+            "text recognition",
+            "transcription",
+        )
+        return any(matches_keyword(title_text, keyword) for keyword in strict_terms)
+    if lane == "find":
+        return any(
+            matches_keyword(haystack, keyword)
+            for keyword in (
+                "find my",
+                "airtag",
+                "lost",
+                "location",
+                "tracking",
+                "asset tracking",
+                "ble tracking",
+                "bluetooth",
+                "beacon",
+                "nearby",
+                "fast pair",
+            )
+        )
+    if lane == "dualshot":
+        return any(
+            matches_keyword(haystack, keyword)
+            for keyword in (
+                "camera",
+                "video",
+                "recording",
+                "record",
+                "creator",
+                "demo",
+                "tutorial",
+                "vlog",
+                "youtube",
+                "short-form",
+                "livestream",
+            )
+        )
+    return any(matches_keyword(haystack, keyword) for keyword in LANE_REQUIRED_KEYWORDS[lane])
+
+
+def app_lane_profile(lane: str) -> dict[str, object]:
+    return {
+        "cleanup": {
+            "eyebrow": "cleanup pro live storage fallback",
+            "intent": "storage cleanup, backup hygiene, file growth, and safe deletion order",
+            "workflow": "review large files, old downloads, duplicate media, offline caches, and backup state before deleting anything important",
+            "risk": "storage advice becomes weak when it skips backup readiness, hidden caches, or the order in which users should inspect files",
+            "primary": "Open Cleanup Pro",
+            "primary_url": "/apps/",
+            "secondary": "iPhone storage cleanup",
+        },
+        "translate": {
+            "eyebrow": "Translate live workflow fallback",
+            "intent": "translation, OCR, captions, voice input, and multilingual review workflows",
+            "workflow": "capture the source text or speech, translate it, review uncertain phrases, and keep context for follow-up conversations",
+            "risk": "translation advice becomes weak when it ignores speech quality, OCR errors, idioms, or human review for high-stakes wording",
+            "primary": "Open Translate",
+            "primary_url": "/translate/",
+            "secondary": "AI translation workflow",
+        },
+        "find": {
+            "eyebrow": "find AI live recovery fallback",
+            "intent": "nearby-device discovery, Bluetooth signal reading, last-seen context, and lost-item recovery",
+            "workflow": "check the device category, scan nearby signals, compare movement context, and separate a weak signal from a real recovery lead",
+            "risk": "finding advice becomes weak when it treats every Bluetooth or location clue as equally trustworthy",
+            "primary": "Open find AI",
+            "primary_url": "/apps/",
+            "secondary": "device recovery workflow",
+        },
+        "dualshot": {
+            "eyebrow": "DualShot Camera live creator fallback",
+            "intent": "creator recording, product demos, tutorials, camera framing, and video repurposing",
+            "workflow": "plan the main shot, capture the presenter or context angle, protect audio clarity, and repurpose the recording for multiple channels",
+            "risk": "creator advice becomes weak when it talks about video trends without explaining capture setup, framing, and editing consequences",
+            "primary": "Open DualShot Camera",
+            "primary_url": "/apps/",
+            "secondary": "creator capture workflow",
+        },
+    }[lane]
+
+
+def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, str]]:
+    profile = app_lane_profile(lane)
+    return [
+        ("Live source signal", source_title, f"Turns a fresh source item into {profile['secondary']} context"),
+        ("User intent", str(profile["intent"]), "Keeps the article tied to a real app-centered search need"),
+        ("Workflow check", str(profile["workflow"]), "Moves the story from headline coverage into an actionable sequence"),
+        ("Duplicate guard", "Use source-specific facts, dates, and terms before publishing", "Prevents the scheduler from recycling a familiar local topic"),
+    ]
+
+
+def app_lane_checklist(lane: str, source_title: str) -> list[str]:
+    profile = app_lane_profile(lane)
+    return [
+        f"Name the source update directly: {source_title}.",
+        f"Connect the update to {profile['intent']}.",
+        f"Explain the workflow step: {profile['workflow']}.",
+        "Check topic-bearing similarity before publishing the generated article.",
+        "Skip the slot if neither local topics nor expanded sources produce a low-duplicate candidate.",
+    ]
+
+
+def app_lane_geo_answers(lane: str) -> list[str]:
+    profile = app_lane_profile(lane)
+    app_term = LANE_APP_TERM[lane]
+    return [
+        f"{app_term} coverage should answer a specific workflow question near the top of the page.",
+        f"Expanded-source fallback articles should connect fresh news to {profile['intent']}.",
+        "A low-duplicate blog candidate needs source-specific facts, not only a reused app template.",
+        "The scheduler should broaden live sources when local topics repeat, then enforce the same similarity threshold.",
+        "If every candidate remains too similar, the correct behavior is to skip publishing rather than force a local post.",
+    ]
+
+
+def app_lane_faq_items(lane: str) -> list[tuple[str, str]]:
+    profile = app_lane_profile(lane)
+    app_term = LANE_APP_TERM[lane]
+    return [
+        (
+            f"Why use expanded sources for {app_term} blog slots?",
+            "Expanded sources give the scheduler fresh facts and angles when the local topic pool has become too repetitive.",
+        ),
+        (
+            "Should a scheduler publish a local candidate when every candidate is too similar?",
+            "No. It should skip publishing after exhausting local and live-source candidates, because forcing a near-duplicate weakens SEO and GEO quality.",
+        ),
+        (
+            f"What makes this {app_term} article useful for readers?",
+            f"It ties the live source item to {profile['workflow']}, so readers get a practical workflow answer rather than a generic news rewrite.",
+        ),
+    ]
+
+
+def render_app_live_article(day: date, source_slug: str, source_name: str, item: FeedItem, post: PostMeta, lane: str) -> str:
+    canonical = f"{SITE_URL}/blog/{post.filename}"
+    human_date = format_human(day)
+    source_published = item.published_at.astimezone().strftime("%B %d, %Y") if item.published_at else human_date
+    source_title = clean_text(item.title)
+    summary = lane_summary(lane, source_slug, source_name, item)
+    profile = app_lane_profile(lane)
+    app_term = LANE_APP_TERM[lane]
+    keyword_coverage = keywords_for_lane(lane, source_slug) + [slugify(item.title).replace("-", " ")]
+    table_rows = app_lane_table_rows(lane, source_title)
+    checklist_items = app_lane_checklist(lane, source_title)
+    geo_answers = app_lane_geo_answers(lane)
+    faq_items = app_lane_faq_items(lane)
+    table_html = "\n".join(
+        f"          <tr><td>{escape(col1)}</td><td>{escape(col2)}</td><td>{escape(col3)}</td></tr>"
+        for col1, col2, col3 in table_rows
+    )
+    checklist_html = "\n".join(f"          <li>{escape(item)}</li>" for item in checklist_items)
+    geo_html = "\n".join(f"          <li>{escape(item)}</li>" for item in geo_answers)
+    faq_html = "\n".join(
+        f"      <p><strong>{escape(question)}</strong><br>\n      {escape(answer)}</p>\n"
+        for question, answer in faq_items
+    )
+    source_links = [(f"{source_name}: {source_title}", item.link), *background_links_for(source_slug)]
+    source_links_html = "\n".join(
+        f'          <li><a href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a></li>'
+        for label, url in source_links
+    )
+    keywords = ", ".join(keyword_coverage)
+    tldr = (
+        f"As of {human_date}, this {app_term} fallback article uses {source_name} as a fresh source signal. "
+        f"The useful answer is how {source_title} changes {profile['secondary']} decisions without recycling a near-duplicate local topic."
+    )
+
+    return f"""<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(post.title)} | VelocAI Blog</title>
+  <meta name="description" content="{escape(post.description)}">
+  <meta name="keywords" content="{escape(keywords)}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="{escape(canonical)}">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="{escape(post.title)}">
+  <meta property="og:description" content="{escape(post.description)}">
+  <meta property="og:url" content="{escape(canonical)}">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{escape(post.title)}">
+  <meta name="twitter:description" content="{escape(post.description)}">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@graph": [
+    {{
+      "@type": "BlogPosting",
+      "headline": {json_string(post.title)},
+      "description": {json_string(post.description)},
+      "datePublished": {json_string(post.published_iso)},
+      "dateModified": {json_string(post.published_iso)},
+      "author": {{"@type": "Organization", "name": "VelocAI"}},
+      "publisher": {{
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {{"@type": "ImageObject", "url": "https://velocai.net/2.png"}}
+      }},
+      "mainEntityOfPage": {json_string(canonical)},
+      "keywords": {json.dumps(keyword_coverage[:8], ensure_ascii=False)}
+    }},
+    {{
+      "@type": "FAQPage",
+      "mainEntity": [
+        {json.dumps([{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq_items], ensure_ascii=False)[1:-1]}
+      ]
+    }}
+  ]
+}}
+  </script>
+  <style>
+    :root {{ --bg:#f7faf8; --text:#18241f; --muted:#52645c; --line:#cfdcd4; --panel:#ffffff; --brand:#176b54; --brand-soft:#e7f5ee; }}
+    * {{ box-sizing:border-box; }}
+    body {{ margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }}
+    a {{ color:inherit; text-decoration:none; }}
+    .wrap {{ width:min(920px, calc(100% - 34px)); margin:0 auto; }}
+    header {{ border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }}
+    .top {{ padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }}
+    .brand {{ display:inline-flex; align-items:center; gap:10px; font-weight:700; }}
+    .brand img {{ width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; }}
+    nav {{ display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }}
+    nav a:hover {{ color:var(--text); }}
+    main {{ padding:36px 0 56px; }}
+    h1,h2,h3 {{ margin:0; line-height:1.22; }}
+    h1 {{ font-size:clamp(30px, 4.2vw, 48px); max-width:25ch; }}
+    h2 {{ margin-top:30px; font-size:clamp(24px, 3vw, 34px); }}
+    p,li,td,th {{ color:#31443b; font-size:17px; }}
+    ul,ol {{ padding-left:22px; }}
+    .meta {{ margin-top:10px; color:var(--muted); font-size:14px; }}
+    .hero, .panel, .tldr, .capsule, table {{ background:var(--panel); border:1px solid var(--line); border-radius:18px; }}
+    .hero {{ padding:26px; box-shadow:0 12px 28px rgba(28,44,36,.05); }}
+    .panel, .tldr, .capsule {{ margin-top:24px; padding:22px; box-shadow:0 12px 28px rgba(28,44,36,.05); }}
+    .tldr {{ border-left:6px solid #2a9d74; }}
+    .capsule {{ background:#fbfdfb; }}
+    .eyebrow {{ display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }}
+    .hero > p:not(.meta) {{ margin:14px 0 0; max-width:none; }}
+    .links {{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }}
+    .links a {{ border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }}
+    table {{ width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }}
+    th,td {{ padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }}
+    tr:last-child td {{ border-bottom:none; }}
+    th {{ color:var(--text); font-weight:700; background:rgba(23,107,84,.08); }}
+    .sources a {{ color:var(--brand); border-bottom:1px solid #9fc7b7; }}
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">{escape(str(profile["eyebrow"]))}</span>
+        <h1>{escape(post.title)}</h1>
+        <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | Source: {escape(source_name)} | Source date: {escape(source_published)}</p>
+        <p>{escape(summary)}</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+      </div>
+
+      <h2>What changed in {escape(day.strftime("%B %Y"))}?</h2>
+      <p>{escape(source_title)} gives this {escape(app_term)} slot a fresh source angle. The page should use that source signal to answer {escape(str(profile["intent"]))}, not to repeat a familiar local article outline.</p>
+
+      <table aria-label="{escape(post.topic)} live source coverage">
+        <thead>
+          <tr><th>Coverage area</th><th>Specific angle</th><th>Publishing value</th></tr>
+        </thead>
+        <tbody>
+{table_html}
+        </tbody>
+      </table>
+
+      <h2>Why does this matter for {escape(app_term)}?</h2>
+      <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. For this lane, the practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}. That gives search engines and AI systems a concrete answer block instead of another reusable template.</p>
+
+      <h2>Where can users apply this signal?</h2>
+      <p>Users can apply the signal when they compare a current workflow against the source update. A {escape(app_term)} article should explain the next action, the verification step, and the reason the update changes a real decision.</p>
+
+      <div class="capsule">
+        <p><strong>Citation capsule:</strong> As of {human_date}, {escape(post.title.lower())} reframes a live source item from {escape(source_name)} into {escape(str(profile["secondary"]))} guidance. It is publishable only if its topic-bearing similarity stays below the lane threshold.</p>
+      </div>
+
+      <h2>What should the workflow check next?</h2>
+      <p>{escape(str(profile["risk"]).capitalize())}. The scheduler should therefore keep source-specific facts visible and reject the candidate if the article still reads like a recycled local post.</p>
+
+      <div class="panel">
+        <h2>Practical decision checklist</h2>
+        <ul>
+{checklist_html}
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>GEO answer blocks</h2>
+        <ul>
+{geo_html}
+        </ul>
+      </div>
+
+      <h2>How should teams avoid duplicate coverage?</h2>
+      <p>Teams should first try the fixed local topic pool, then broaden live sources for the lane, then run topic-bearing similarity. If no candidate clears the threshold, the correct output is a skipped publish attempt with a clear error, not a forced local article.</p>
+
+      <h2>FAQ</h2>
+{faq_html}
+      <section class="sources" aria-label="Source attribution">
+        <h3>Source attribution</h3>
+        <ul>
+{source_links_html}
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/apps/">Browse VelocAI apps</a>
+        <a href="{escape(str(profile["primary_url"]))}">{escape(str(profile["primary"]))}</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
+"""
+
+
+def build_live_description(source_slug: str, source_name: str, summary: str, lane: str = "updates") -> str:
+    if lane in LANE_APP_TERM:
+        app_term = LANE_APP_TERM[lane]
+        combined = (
+            f"{summary.rstrip('.')}."
+            f" Covers what {source_name} signals mean for {app_term} workflows and fresh SEO/GEO blog coverage."
+        )
+        return clip_text(combined, limit=158)
     suffix = {
         "apple": f" Covers upgrade relevance, storage impact, and what {source_name} signals mean for cleanup planning.",
         "ai": f" Covers workflow impact, deployment relevance, and what {source_name} signals mean for teams evaluating AI changes.",
@@ -382,9 +945,10 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
             "Bluetooth indoor navigation: what changed",
             "March 2026 Bluetooth commentary on indoor navigation, positioning potential, and the deployment questions product teams should validate next.",
         )
+    label = story_label(raw, limit=30)
     return (
-        "Bluetooth update guide: what changed and why",
-        "March 2026 Bluetooth commentary focused on practical implementation, debugging, and product impact for teams tracking standards and deployment changes.",
+        f"Bluetooth Protocol: {label}",
+        f"May 2026 Bluetooth protocol commentary on {label}, focused on pairing behavior, device discovery, interoperability, signal reliability, and what product teams should test before rollout.",
     )
 
 
@@ -657,13 +1221,13 @@ def faq_items_for(source_slug: str) -> list[tuple[str, str]]:
     }[source_slug]
 
 
-def render_live_article(day: date, source_slug: str, source_name: str, item: FeedItem, post: PostMeta) -> str:
+def render_live_article(day: date, source_slug: str, source_name: str, item: FeedItem, post: PostMeta, lane: str = "updates") -> str:
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
     source_published = item.published_at.astimezone().strftime("%B %d, %Y") if item.published_at else human_date
-    summary = clean_summary(source_slug, source_name, item)
+    summary = lane_summary(lane, source_slug, source_name, item)
     opening_intro = opening_intro_for(source_slug, clean_text(item.title), summary)
-    keyword_coverage = keywords_for_source_slug(source_slug) + [slugify(item.title).replace("-", " ")]
+    keyword_coverage = keywords_for_lane(lane, source_slug) + [slugify(item.title).replace("-", " ")]
     faq_items = faq_items_for(source_slug)
     challenge_items = challenge_items_for(source_slug)
     geo_answers = geo_answers_for(source_slug)
@@ -885,71 +1449,65 @@ def build_candidate_from_item(
     source_name: str,
     item: FeedItem,
     *,
+    lane: str = "updates",
     filename: str | None = None,
 ) -> LiveBlogCandidate:
-    resolved_filename = filename or f"{article_prefix_for_source_slug(source_slug)}-{slugify(item.title)}-{target_day.isoformat()}.html"
-    title, rewritten_summary = rewritten_story_focus(source_slug, item)
-    summary = rewritten_summary if rewritten_summary else clean_summary(source_slug, source_name, item)
-    opening_intro = opening_intro_for(source_slug, clean_text(item.title), summary)
-    description = build_live_description(source_slug, source_name, summary)
+    resolved_filename = filename or f"{article_prefix_for_lane(lane, source_slug)}-{slugify(item.title)}-{target_day.isoformat()}.html"
+    lane_focus = lane_story_focus(lane, source_slug, item)
+    title, rewritten_summary = lane_focus if lane_focus is not None else rewritten_story_focus(source_slug, item)
+    summary = rewritten_summary if rewritten_summary else lane_summary(lane, source_slug, source_name, item)
+    if lane in LANE_APP_TERM:
+        opening_intro = lane_summary(lane, source_slug, source_name, item)
+    else:
+        opening_intro = opening_intro_for(source_slug, clean_text(item.title), summary)
+    description = build_live_description(source_slug, source_name, summary, lane)
     post = PostMeta(
         filename=resolved_filename,
         title=title,
         description=description,
         teaser=clip_text(opening_intro, limit=160),
-        topic=topic_for_source_slug(source_slug),
+        topic=topic_for_lane(lane, source_slug),
         published_iso=target_day.isoformat(),
     )
-    html = render_live_article(target_day, source_slug, source_name, item, post)
+    if lane in LANE_APP_TERM:
+        html = render_app_live_article(target_day, source_slug, source_name, item, post, lane)
+    else:
+        html = render_live_article(target_day, source_slug, source_name, item, post, lane)
     return LiveBlogCandidate(post=post, html=html, link=item.link, source_name=source_name)
 
 
 def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
-    preferred_slugs = {
-        "protocol": ("bluetooth",),
-        "updates": ("apple", "ai", "bluetooth"),
-    }.get(lane)
-    if preferred_slugs is None:
+    if lane not in LANE_SOURCE_SLUGS:
         return []
     collected: list[tuple[str, str, FeedItem]] = []
     seen_links: set[str] = set()
-    for slug in preferred_slugs:
-        sources = [
-            source
-            for source in BRIEF_SOURCES
-            if source.slug == slug and source.source_name in LANE_ALLOWED_SOURCES[lane]
-        ]
-        for source in sources:
-            try:
-                items = parse_feed_items(cached_fetch_bytes(source.feed_url))
-            except Exception:
+    for source in source_pool_for_lane(lane):
+        try:
+            items = parse_feed_items(cached_fetch_bytes(source.feed_url))
+        except Exception:
+            continue
+        for item in items:
+            title_text = clean_text(item.title).lower()
+            haystack = f"{title_text} {clean_text(item.summary)}".lower()
+            required = LANE_REQUIRED_KEYWORDS[lane]
+            if not item_matches_lane_intent(lane, source.slug, title_text, haystack):
                 continue
-            for item in items:
-                haystack = clean_text(item.title).lower()
-                if lane == "cleanup":
-                    required = CLEANUP_TITLE_REQUIRED
-                elif lane == "updates":
-                    required = UPDATES_TITLE_REQUIRED
-                else:
-                    required = APP_FUNCTION_KEYWORDS["bluetooth"] + APP_FUNCTION_KEYWORDS["find"]
-                if not any(matches_keyword(haystack, keyword) for keyword in required):
-                    continue
-                padded_title = f" {clean_text(item.title).lower()} "
-                if any(pattern in padded_title for pattern in NOISE_PATTERNS):
-                    continue
-                if score_item(item, source.keywords) <= 0:
-                    continue
-                if not item.link or item.link in seen_links:
-                    continue
-                seen_links.add(item.link)
-                collected.append((slug, source.source_name, item))
+            padded_title = f" {clean_text(item.title).lower()} "
+            if any(pattern in padded_title for pattern in NOISE_PATTERNS):
+                continue
+            if score_item(item, source.keywords) <= 0 and not any(matches_keyword(haystack, keyword) for keyword in required[:4]):
+                continue
+            if not item.link or item.link in seen_links:
+                continue
+            seen_links.add(item.link)
+            collected.append((render_source_slug_for_lane(lane, source.slug), source.source_name, item))
     if lane in {"protocol", "updates"}:
         for page in CURATED_PROTOCOL_PAGES:
             item = feed_item_from_curated_page(page)
             if item is None:
                 continue
             haystack = clean_text(item.title).lower()
-            required = APP_FUNCTION_KEYWORDS["bluetooth"] + APP_FUNCTION_KEYWORDS["find"]
+            required = LANE_REQUIRED_KEYWORDS[lane]
             if not any(matches_keyword(haystack, keyword) for keyword in required):
                 continue
             if item.link in seen_links:
@@ -962,6 +1520,6 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
 
 def build_live_candidates(target_day: date, lane: str) -> list[LiveBlogCandidate]:
     return [
-        build_candidate_from_item(target_day, source_slug, source_name, item)
+        build_candidate_from_item(target_day, source_slug, source_name, item, lane=lane)
         for source_slug, source_name, item in unique_feed_items_for_lane(lane)
     ]
