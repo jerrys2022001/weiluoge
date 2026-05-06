@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dual Shot Camera 隐私政策</title>
+  <meta
+    name="description"
+    content="Dual Shot Camera 隐私政策，说明相机、麦克风、相册、分享与 YouTube 上传相关的数据处理方式。"
+  >
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f0e9;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: #ffffff;
+      --text: #182134;
+      --muted: #5d6877;
+      --line: #d9dfeb;
+      --accent: #1d4ed8;
+      --accent-soft: #e9f1ff;
+      --warm: #ff8b68;
+      --warm-soft: #fff3ed;
+      --warm-line: #f5c3af;
+      --shadow: 0 28px 80px rgba(24, 33, 52, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background:
+        radial-gradient(circle at top left, rgba(255, 139, 104, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(74, 157, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, #fffaf5 0%, var(--bg) 100%);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      background: transparent;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 28px auto 56px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .brand::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--warm), #4a9dff);
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.78);
+    }
+
+    .card {
+      margin-top: 18px;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 1.38rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 1.06rem;
+    }
+
+    p, ul, ol, table {
+      margin: 0 0 16px;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    code {
+      padding: 0.15em 0.35em;
+      border-radius: 6px;
+      background: #f3f6fb;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.92em;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero p {
+      max-width: 52rem;
+    }
+
+    .notice {
+      margin: 24px 0 30px;
+      padding: 20px 22px;
+      border: 1px solid var(--warm-line);
+      border-radius: 20px;
+      background: var(--warm-soft);
+    }
+
+    .notice h2 {
+      margin-top: 0;
+      font-size: 1.14rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--surface-strong);
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 980px);
+        margin: 16px auto 28px;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 22px;
+      }
+
+      th, td {
+        padding: 12px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="brand" href="../">Dual Shot Camera</a>
+
+    <main class="card">
+      <section class="hero">
+        <div>
+          <h1>Dual Shot Camera 隐私政策</h1>
+          <p class="meta">最后更新：2026 年 4 月 11 日</p>
+        </div>
+        <p>
+          本隐私政策说明 <strong>Dual Shot Camera</strong> 在你使用当前 App 版本时如何处理信息，
+          包括双摄拍照、双摄录像、单路视频拍摄、保存到系统相册，以及可选的分享和上传流程。
+        </p>
+      </section>
+
+      <section class="notice">
+        <h2>重要说明</h2>
+        <p>
+          <strong>核心拍摄能力主要在设备本地运行。</strong>
+          照片和视频拍摄、本地预览生成、导出文件准备，以及将媒体保存到你的系统相册，
+          主要都在你的 iPhone 上完成。
+        </p>
+        <p>
+          <strong>我们只会在你使用相应功能时申请必要权限。</strong>
+          当前 App 会申请相机、麦克风和相册权限。
+          如果你拒绝麦克风权限，App 在支持的场景下仍可录制无声视频。
+        </p>
+        <p>
+          <strong>你主动选择的第三方功能，可能会将数据发送给对应第三方。</strong>
+          例如，当你上传到 YouTube 时，所选视频文件以及你填写的标题、描述和可见性设置
+          会发送给 Google/YouTube。
+          当你分享到其他已安装 App 或平台时，你选择的媒体会传递给对应 App 或服务。
+        </p>
+        <p>
+          我们不会申请 App Tracking Transparency（ATT）权限，当前 App 也不使用基于 IDFA 的跨 App 广告跟踪。
+        </p>
+      </section>
+
+      <h2>1. 适用范围</h2>
+      <p>
+        Dual Shot Camera 是一款面向 iPhone 的拍摄应用，聚焦于创作者友好的拍摄与导出体验。
+        根据你选择的模式，App 可以生成双输出照片或视频结果、单路竖屏视频结果、显示系统相册中的最近媒体，
+        并帮助你分享或上传你创建的内容。
+      </p>
+
+      <h2>2. 功能与处理方式概览</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>功能</th>
+            <th>主要输入</th>
+            <th>用途</th>
+            <th>处理方式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>双摄拍照</td>
+            <td>相机画面</td>
+            <td>按照所选拍摄模式生成照片结果</td>
+            <td>设备本地处理</td>
+          </tr>
+          <tr>
+            <td>双摄录像 / 单路录像</td>
+            <td>相机画面，以及在获得授权时的麦克风音频</td>
+            <td>录制适合创作与分享的视频素材</td>
+            <td>设备本地处理</td>
+          </tr>
+          <tr>
+            <td>预览、缩略图与分享导出准备</td>
+            <td>App 生成的媒体文件</td>
+            <td>生成本地预览、缩略图与分享专用导出文件</td>
+            <td>设备本地处理</td>
+          </tr>
+          <tr>
+            <td>保存到系统相册</td>
+            <td>App 内拍摄生成的照片或视频</td>
+            <td>写入 Apple Photos，并刷新最近媒体缩略图</td>
+            <td>通过 Apple 相册接口在本地完成</td>
+          </tr>
+          <tr>
+            <td>分享到已安装 App</td>
+            <td>所选照片或视频素材、可选分享文案</td>
+            <td>将媒体发送到 Instagram、TikTok、WhatsApp、X、Snapchat 或系统分享目的地</td>
+            <td>交由你选择的目标 App 或服务处理</td>
+          </tr>
+          <tr>
+            <td>YouTube 上传</td>
+            <td>所选视频文件、Google 账号授权、标题、描述、可见性设置</td>
+            <td>将视频直接上传到你的 YouTube 账号</td>
+            <td>在你授权后直接发送给 Google/YouTube</td>
+          </tr>
+          <tr>
+            <td>支持与反馈</td>
+            <td>你主动发送的邮件内容</td>
+            <td>响应问题反馈或建议</td>
+            <td>由你的邮件服务商和我们的支持邮箱处理</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. 我们处理的信息</h2>
+
+      <h3>3.1 相机与麦克风内容</h3>
+      <ul>
+        <li>用于拍摄照片和视频的实时相机输入。</li>
+        <li>若你授予麦克风权限，则包括录制视频时的音频。</li>
+        <li>App 在保存或分享前于本地生成的媒体文件。</li>
+      </ul>
+
+      <h3>3.2 相册相关信息</h3>
+      <ul>
+        <li>用于在首页展示最近媒体的缩略图。</li>
+        <li>相册授权状态，以及在适用时的有限相册访问状态。</li>
+        <li>App 保存媒体后对应的本地相册标识符，以便后续分享流程引用这些已保存内容。</li>
+      </ul>
+
+      <h3>3.3 分享与上传信息</h3>
+      <ul>
+        <li>你明确选择进行分享或上传的照片或视频。</li>
+        <li>可选的分享文案或目的地相关元数据。</li>
+        <li>对于 YouTube 上传，你在上传表单中确认的标题、描述和可见性设置。</li>
+        <li>当你选择使用该功能时，用于完成 YouTube 上传授权的 Google 账号授权数据。</li>
+      </ul>
+
+      <h3>3.4 本地设置与技术信息</h3>
+      <ul>
+        <li>外观模式、应用语言、闪光灯模式及相关拍摄设置等偏好。</li>
+        <li>在拍摄与分享流程中本地生成的临时导出文件和分享准备文件。</li>
+        <li>完成你主动选择的第三方流程所需的基础技术信息，例如回调 URL 和已安装 App Scheme 检查结果。</li>
+      </ul>
+
+      <h2>4. 我们申请的权限</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>权限</th>
+            <th>申请原因</th>
+            <th>拒绝后的影响</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>相机</td>
+            <td>用于在 Dual Shot Camera 中拍摄照片和视频。</td>
+            <td>你将无法使用拍摄功能。</td>
+          </tr>
+          <tr>
+            <td>麦克风</td>
+            <td>用于为视频录制声音。</td>
+            <td>你仍可能可以录制无声视频，但无法录制音频。</td>
+          </tr>
+          <tr>
+            <td>相册</td>
+            <td>用于将拍摄结果保存到 Apple Photos、展示最近媒体缩略图，以及从 App 打开系统相册。</td>
+            <td>App 将无法保存到你的相册，也无法展示依赖相册访问的相关界面内容。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. 何时数据会离开你的设备</h2>
+      <p>
+        App 的普通拍摄流程是在本地完成的。只有当你主动选择依赖网络的功能，
+        或者完成你所请求的服务必须调用第三方提供方时，数据才会离开你的设备。
+      </p>
+      <ul>
+        <li>如果你上传到 YouTube，所选视频文件和上传元数据会发送给 Google/YouTube。</li>
+        <li>如果你分享至第三方 App 或服务，所选媒体会交给对应目的地处理。</li>
+        <li>如果你给我们发送支持邮件，邮件会由你的邮箱服务商处理并投递到我们的支持邮箱。</li>
+      </ul>
+
+      <h2>6. 第三方服务与提供方</h2>
+      <p>
+        根据你使用的功能，Dual Shot Camera 可能会与以下类型的第三方服务或 SDK 集成能力交互：
+      </p>
+      <ul>
+        <li>Apple 服务，包括系统相册和系统分享能力。</li>
+        <li>当你选择上传到 YouTube 时，使用 Google Sign-In 和 YouTube 上传接口。</li>
+        <li>你主动选择作为分享目的地的社交、消息或视频平台 App。</li>
+      </ul>
+      <p class="note">
+        一旦你发起分享、上传或跳转，这些第三方会依据它们各自的隐私政策处理相关数据。
+      </p>
+
+      <h2>7. 存储与保留</h2>
+      <ul>
+        <li>你拍摄的媒体会先在设备本地处理，之后如果你允许保存，则可能写入系统相册。</li>
+        <li>App 可能会保留用于预览、导出或分享准备的本地临时文件，直到这些文件被替换、清理或由系统移除。</li>
+        <li>设置项和轻量缓存可能会保存在设备本地，用于保留你的偏好并改善使用体验。</li>
+      </ul>
+
+      <h2>8. 数据共享与披露</h2>
+      <p>我们不会出售你的个人信息。我们仅会在以下有限场景下共享信息：</p>
+      <ul>
+        <li>与完成你所请求功能所必需的平台方或服务提供方共享。</li>
+        <li>与你主动选择的社交、消息或视频平台共享你指定的内容。</li>
+        <li>在法律、监管、司法程序要求，或为保护权利、安全及服务完整性所必需时披露。</li>
+      </ul>
+
+      <h2>9. 跟踪与广告</h2>
+      <ul>
+        <li>当前 App 不会申请 App Tracking Transparency 权限。</li>
+        <li>当前 App 不使用基于 IDFA 的跨 App 广告跟踪。</li>
+        <li>App 的设计重点是拍摄、导出和创作分享流程，而不是广告定向。</li>
+      </ul>
+
+      <h2>10. 你的选择</h2>
+      <ul>
+        <li>你可以在 iOS 设置中拒绝或关闭相机、麦克风和相册权限。</li>
+        <li>你可以选择不使用 YouTube 上传或第三方分享目的地。</li>
+        <li>你可以通过 Apple Photos 删除已保存的媒体。</li>
+        <li>你可以卸载 App，以移除保存在应用沙盒中的本地数据。</li>
+      </ul>
+
+      <h2>11. 政策更新</h2>
+      <p>
+        随着 App 演进，我们可能会更新本隐私政策。
+        当我们做出重要变更时，会更新本页顶部的“最后更新”日期。
+        你在新政策生效后继续使用 App，即表示更新后的政策将适用于你之后对 App 的使用。
+      </p>
+
+      <h2>12. 联系我们</h2>
+      <div class="contact">
+        <p>
+          如果你对 Dual Shot Camera 的隐私处理有任何问题、建议或相关请求，
+          可以通过 <a href="mailto:goodaiapp@gmail.com">goodaiapp@gmail.com</a> 联系支持团队。
+        </p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
