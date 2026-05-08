@@ -1,6 +1,6 @@
 {
   "date": "2026-05-08",
-  "refreshed_at": "2026-05-08T08:40:03.094405+08:00",
+  "refreshed_at": "2026-05-08T08:46:01.468728+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "The GameSir Pocket Taco is an interesting, single-purpose game controller built for retro gaming on iPhone via emulation. Its low price makes its tradeoffs worth it for nostalgia seekers. GameSir Pocket Taco review Since Apple enabled the...",
       "published_at": "2026-05-08T00:27:51+00:00",
       "display_date": "MAY 08",
-      "image_src": "/assets/images/home-briefing/2026-04-09/apple-e4eb6403f5acf3ed-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-09/apple-e4eb6403f5acf3ed-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-17/apple-5a83de5ccdd7b735-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-5a83de5ccdd7b735-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-05-08T00:01:55+00:00",
       "display_date": "MAY 08",
       "image_src": "/assets/images/home-briefing/2026-05-08/apple-68554d7c85287e17-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-23/apple-0d2dc7c0e6565c0f-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "Apple has failed to reduce the scope of a UK class-action lawsuit, and all iCloud users in the country will be owed $95 if the company loses. Apple could be forced to pay $95 to all iCloud users in the UK, if a class-action lawsuit agains...",
       "published_at": "2026-05-07T22:59:12+00:00",
       "display_date": "MAY 08",
-      "image_src": "/assets/images/home-briefing/2026-04-18/apple-83b1fe9d46693ded-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-18/apple-83b1fe9d46693ded-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-21/apple-47b689931477bdd7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-47b689931477bdd7-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "The nearly universal 10% tariffs enacted by Trump have been declared illegal, pending appeal, so Apple may get even more cost reduction across its supply chain and additional refunds. Liberation Day tariffs and their follow up are both...",
       "published_at": "2026-05-07T22:48:16+00:00",
       "display_date": "MAY 08",
-      "image_src": "/assets/images/home-briefing/2026-04-08/apple-0949d2f7493ab3d7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-08/apple-0949d2f7493ab3d7-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-05-07T22:22:39+00:00",
       "display_date": "MAY 08",
       "image_src": "/assets/images/home-briefing/2026-05-08/apple-ab6f0ffdc7c0fd09-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-9b92fec16eb8e732-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-30/apple-3dd9eff52e50f910-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-05-07T22:12:56+00:00",
       "display_date": "MAY 08",
       "image_src": "/assets/images/home-briefing/2026-05-08/industry-1ef1d1f6fea79a9a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-04/industry-95311a26dd50e213-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/industry-fe16d4c78044656e-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-05-07T21:49:24+00:00",
       "display_date": "MAY 08",
       "image_src": "/assets/images/home-briefing/2026-05-08/industry-544e370684f5c137-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/industry-70b156b3d906707c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/industry-608c562e2c77ddff-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-05-07T20:34:00+00:00",
       "display_date": "MAY 08",
       "image_src": "/assets/images/home-briefing/2026-05-08/semiconductor-c3c495ae4db0b5fb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/semiconductor-38dba6542866160e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-18/semiconductor-0fd8099e8d5afd55-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-06T15:45:58+00:00",
       "display_date": "MAY 06",
       "image_src": "/assets/images/home-briefing/2026-05-08/bluetooth-96502a5df26054e7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-23/bluetooth-38664e01aa81161b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-01/bluetooth-c02892d9efad0fa9-thumb.webp"
     }
   ]
 }
