@@ -196,14 +196,14 @@ LANE_TOPIC = {
     "cleanup": "cleanup pro Storage Cleanup",
     "translate": "Translate AI Translation Workflow",
     "find": "find AI Device Recovery",
-    "dualshot": "DualShot Camera Creator Workflow",
+    "dualshot": "Dual Camera Creator Workflow",
 }
 
 LANE_APP_TERM = {
     "cleanup": "cleanup pro",
     "translate": "Translate",
     "find": "find AI",
-    "dualshot": "DualShot Camera",
+    "dualshot": "Dual Camera",
 }
 
 
@@ -400,8 +400,8 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
         )
     if lane == "dualshot":
         return (
-            f"DualShot Camera Creator Lessons from {label}",
-            f"Live-source DualShot Camera commentary on {label}, focused on camera capture, demo recording, creator workflow, and video repurposing.",
+            f"Dual Camera Creator Lessons from {label}",
+            f"Live-source Dual Camera commentary on {label}, focused on camera capture, demo recording, creator workflow, and video repurposing.",
         )
     return None
 
@@ -523,11 +523,11 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "secondary": "device recovery workflow",
         },
         "dualshot": {
-            "eyebrow": "DualShot Camera live creator fallback",
+            "eyebrow": "Dual Camera live creator fallback",
             "intent": "creator recording, product demos, tutorials, camera framing, and video repurposing",
             "workflow": "plan the main shot, capture the presenter or context angle, protect audio clarity, and repurpose the recording for multiple channels",
             "risk": "creator advice becomes weak when it talks about video trends without explaining capture setup, framing, and editing consequences",
-            "primary": "Open DualShot Camera",
+            "primary": "Open Dual Camera",
             "primary_url": "/apps/",
             "secondary": "creator capture workflow",
         },

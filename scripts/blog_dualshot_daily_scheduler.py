@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish one daily English blog post focused on DualShot Camera creator workflows."""
+"""Publish one daily English blog post focused on Dual Camera creator workflows."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ from blog_daily_scheduler import (
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
 CORE_KEYWORDS = [
-    "dualshot camera",
+    "dual camera",
     "dual recorder app iphone",
     "record landscape and portrait video iphone",
     "creator video app iphone",
@@ -51,7 +51,7 @@ LONG_TAIL_KEYWORDS = [
     "iphone creator workflow for behind the scenes clips",
     "video app for product walkthroughs and creator demos",
     "how to shoot once for short form and wide playback",
-    "dualshot camera app for travel vlogs and tutorials",
+    "dual camera app for travel vlogs and tutorials",
 ]
 
 
@@ -71,89 +71,89 @@ class DualShotAngle:
 ANGLES: list[DualShotAngle] = [
     DualShotAngle(
         slug_prefix="dualshot-camera-one-take-creator-workflow-guide",
-        title="Why DualShot Camera Fits a One-Take Creator Workflow",
-        description="A practical DualShot Camera guide for creators who want one iPhone take to become both landscape video and portrait content without repeating the shoot.",
+        title="Why Dual Camera Fits a One-Take Creator Workflow",
+        description="A practical Dual Camera guide for creators who want one iPhone take to become both landscape video and portrait content without repeating the shoot.",
         teaser="The strongest creator workflow is often not more editing. It is fewer repeated takes before editing even begins.",
         topic="One-Take Creator Workflow",
         intent_focus="Users searching this topic usually already know they need both wide and vertical output. The real question is whether one iPhone workflow can reduce repeated setup, repeated speaking, and repeated camera alignment.",
-        workflow_focus="DualShot Camera fits because the product promise is simple and high intent: record landscape and portrait video at the same time, then reuse the same moment across more than one publishing format.",
+        workflow_focus="Dual Camera fits because the product promise is simple and high intent: record landscape and portrait video at the same time, then reuse the same moment across more than one publishing format.",
         edge_focus="That matters because creator fatigue usually starts before post-production. Each repeated take adds energy loss, continuity risk, and small framing differences that make the final package feel less consistent.",
         scenario_focus="This angle works well for solo creators, educators, and founders who want one clean take for tutorials, announcements, walkthroughs, and short social cutdowns.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-short-form-long-form-guide",
-        title="How DualShot Camera Helps You Shoot for Short Form and Long Form Together",
-        description="See how DualShot Camera supports creators who need portrait clips for social posts and landscape footage for longer playback from the same iPhone recording session.",
+        title="How Dual Camera Helps You Shoot for Short Form and Long Form Together",
+        description="See how Dual Camera supports creators who need portrait clips for social posts and landscape footage for longer playback from the same iPhone recording session.",
         teaser="Publishing to more than one format stops feeling efficient the moment every format needs its own reshoot.",
         topic="Short-Form and Long-Form Recording",
         intent_focus="This search intent comes from creators balancing YouTube-style playback with vertical platforms. They need a practical way to capture for both without making the shoot twice as slow.",
-        workflow_focus="DualShot Camera answers that need directly by turning one recording session into two output paths: wide footage for longer edits and portrait footage for vertical distribution.",
+        workflow_focus="Dual Camera answers that need directly by turning one recording session into two output paths: wide footage for longer edits and portrait footage for vertical distribution.",
         edge_focus="That dual-format capture is useful because platform demands are different, but the moment being recorded is often the same. Capturing both early protects timing, expression, and framing continuity.",
         scenario_focus="This topic serves vloggers, product reviewers, coaches, and social teams that publish one core idea across multiple channels.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-product-demo-tutorial-guide",
-        title="Use DualShot Camera for Product Demos and Tutorial Recording on iPhone",
-        description="A DualShot Camera guide for creators recording product demos, walkthroughs, and tutorials that need both landscape playback and portrait cutdowns from one take.",
+        title="Use Dual Camera for Product Demos and Tutorial Recording on iPhone",
+        description="A Dual Camera guide for creators recording product demos, walkthroughs, and tutorials that need both landscape playback and portrait cutdowns from one take.",
         teaser="A good product demo loses momentum when the presenter has to repeat the same explanation just to fit a second aspect ratio.",
         topic="Product Demos and Tutorials",
         intent_focus="Users searching this cluster usually need faster demo production: one explanation, one gesture sequence, one setup, and multiple publishable outputs for product pages, social clips, and update posts.",
-        workflow_focus="DualShot Camera fits tutorial and demo work because it reduces the friction between a full explanation for long-form viewers and a compact vertical asset for discovery and promotion.",
+        workflow_focus="Dual Camera fits tutorial and demo work because it reduces the friction between a full explanation for long-form viewers and a compact vertical asset for discovery and promotion.",
         edge_focus="The scientific part is simple cause and effect: fewer retakes means more consistent voice, more consistent framing, and less editing work to reconcile near-duplicate clips that do not quite match.",
         scenario_focus="This is especially useful for app demos, hardware walkthroughs, tutorial segments, unboxings, and onboarding content that must explain once and publish many times.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-travel-vlog-repurposing-guide",
-        title="When DualShot Camera Makes Travel Vlog Repurposing Easier",
-        description="Learn how DualShot Camera helps travel creators capture one iPhone moment for wide vlog edits and portrait social clips without rebuilding the same scene twice.",
+        title="When Dual Camera Makes Travel Vlog Repurposing Easier",
+        description="Learn how Dual Camera helps travel creators capture one iPhone moment for wide vlog edits and portrait social clips without rebuilding the same scene twice.",
         teaser="Travel footage gets harder to repeat the second the train leaves, the light changes, or the crowd shifts.",
         topic="Travel Vlog Repurposing",
         intent_focus="Travel creators search for faster capture workflows because reshoots are often impossible. The right app needs to preserve the moment while still supporting more than one publishing format later.",
-        workflow_focus="DualShot Camera supports that reality by capturing the same travel moment once while keeping both long-form and short-form options open after the trip moves on.",
+        workflow_focus="Dual Camera supports that reality by capturing the same travel moment once while keeping both long-form and short-form options open after the trip moves on.",
         edge_focus="That is valuable because travel content is time sensitive in a literal way. Lighting, motion, crowd density, and access windows change quickly, so one-take efficiency has a measurable production benefit.",
         scenario_focus="This angle fits city walks, hotel reviews, food clips, transit moments, scenic b-roll, and behind-the-scenes travel posts.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-talking-head-social-clips-guide",
-        title="How DualShot Camera Helps Talking-Head Creators Publish Faster",
-        description="A practical DualShot Camera guide for talking-head videos, commentary, coaching clips, and interviews that need both wide and vertical output from one session.",
+        title="How Dual Camera Helps Talking-Head Creators Publish Faster",
+        description="A practical Dual Camera guide for talking-head videos, commentary, coaching clips, and interviews that need both wide and vertical output from one session.",
         teaser="Talking-head creators usually do not need more camera theory. They need fewer reasons to repeat the same sentence.",
         topic="Talking-Head Creator Workflow",
         intent_focus="People searching this workflow are often recording themselves regularly for lessons, commentary, or brand content. Their pain point is repetitive setup and repetitive speaking, not lack of ideas.",
-        workflow_focus="DualShot Camera is a strong fit because a single take can feed a wide master clip plus a portrait post without forcing the speaker to reset tone, posture, and timing for a second recording pass.",
+        workflow_focus="Dual Camera is a strong fit because a single take can feed a wide master clip plus a portrait post without forcing the speaker to reset tone, posture, and timing for a second recording pass.",
         edge_focus="This improves consistency. When the same sentence is recorded twice, subtle voice changes and hand-position changes create more edit friction than most creators expect.",
         scenario_focus="This topic serves consultants, coaches, educators, founders, interview hosts, and creator-led brands publishing daily commentary or educational clips.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-multicam-ultra-wide-framing-guide",
-        title="Why Multicam and Ultra Wide Support Matter in DualShot Camera",
-        description="A DualShot Camera guide to multicam and ultra wide framing choices for creators who want more usable composition before editing vertical and horizontal versions.",
+        title="Why Multicam and Ultra Wide Support Matter in Dual Camera",
+        description="A Dual Camera guide to multicam and ultra wide framing choices for creators who want more usable composition before editing vertical and horizontal versions.",
         teaser="Good framing is not only about aesthetics. It decides how much room the editor has after the shoot is already over.",
         topic="Multicam and Ultra Wide Framing",
         intent_focus="Searchers in this cluster want to know whether framing flexibility changes real output quality or is just another camera-feature checklist item.",
-        workflow_focus="DualShot Camera can answer that because multicam and ultra wide support give creators more room to protect both aspect ratios before the edit starts.",
+        workflow_focus="Dual Camera can answer that because multicam and ultra wide support give creators more room to protect both aspect ratios before the edit starts.",
         edge_focus="This matters scientifically in the workflow sense: wider and cleaner source framing lowers the risk of cropping out hands, products, or contextual details once clips are reformatted for vertical distribution.",
         scenario_focus="This topic fits product tables, desk demos, interviews, walking shots, cooking clips, and tutorial scenes where composition must survive more than one final crop.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-behind-the-scenes-content-guide",
-        title="Use DualShot Camera for Behind-the-Scenes and Creator Process Clips",
-        description="See how DualShot Camera helps creators capture behind-the-scenes content, process footage, and studio moments for both wide edits and vertical social posts.",
+        title="Use Dual Camera for Behind-the-Scenes and Creator Process Clips",
+        description="See how Dual Camera helps creators capture behind-the-scenes content, process footage, and studio moments for both wide edits and vertical social posts.",
         teaser="Behind-the-scenes content works best when it feels natural, which is exactly why extra retakes can ruin it.",
         topic="Behind-the-Scenes Content",
         intent_focus="Users searching this angle usually want more publishable context from the same shoot: process clips, setup moments, quick explanations, and extra footage that keeps the audience close to the work.",
-        workflow_focus="DualShot Camera supports that goal because creators can keep one natural recording session and still leave with footage that works for both recap edits and portrait snippets.",
+        workflow_focus="Dual Camera supports that goal because creators can keep one natural recording session and still leave with footage that works for both recap edits and portrait snippets.",
         edge_focus="The hidden benefit is retention of spontaneity. Behind-the-scenes footage loses credibility when it is obviously recreated only to fit another format.",
         scenario_focus="This topic is useful for studio diaries, maker videos, setup tours, editing process clips, rehearsal footage, and launch-week creator updates.",
     ),
     DualShotAngle(
         slug_prefix="dualshot-camera-small-team-shoot-efficiency-guide",
-        title="When DualShot Camera Saves Time for Small Creator Teams",
-        description="A DualShot Camera workflow guide for small creator teams that need faster capture, cleaner handoffs, and more reusable footage from each iPhone shoot.",
+        title="When Dual Camera Saves Time for Small Creator Teams",
+        description="A Dual Camera workflow guide for small creator teams that need faster capture, cleaner handoffs, and more reusable footage from each iPhone shoot.",
         teaser="Small teams do not usually run out of ideas first. They run out of time, attention, and reshoot patience.",
         topic="Small-Team Creator Efficiency",
         intent_focus="This query comes from small teams handling strategy, filming, editing, and publishing in the same week. They need a camera workflow that creates more usable assets without multiplying production time.",
-        workflow_focus="DualShot Camera helps because one session can deliver wide and portrait material for different editors, channels, or deadlines without reassembling the crew for another pass.",
+        workflow_focus="Dual Camera helps because one session can deliver wide and portrait material for different editors, channels, or deadlines without reassembling the crew for another pass.",
         edge_focus="That operational gain is measurable: fewer resets, fewer repeated lines, faster edit branching, and less version confusion once the footage reaches post-production.",
         scenario_focus="This angle fits startup launch teams, lean ecommerce studios, creators with one assistant, and social teams building weekly product content on iPhone.",
     ),
@@ -208,16 +208,16 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
     keyword_text = ", ".join(keywords)
     focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
     tldr = (
-        f"As of {human_date}, DualShot Camera is most useful when creators need one iPhone take to become both "
+        f"As of {human_date}, Dual Camera is most useful when creators need one iPhone take to become both "
         "landscape video and portrait content. That workflow reduces reshoots, preserves timing, and creates more "
         "publishable footage for social clips, tutorials, demos, and travel posts."
     )
     answer_first = (
-        f"As of {human_date}, search intent around DualShot Camera is high because creators are trying to solve a "
+        f"As of {human_date}, search intent around Dual Camera is high because creators are trying to solve a "
         "practical problem: how to shoot once for short-form and long-form publishing without rebuilding the same scene twice."
     )
     workflow_lead = (
-        f"As of {human_date}, DualShot Camera has a strong SEO and GEO position because the feature list maps cleanly "
+        f"As of {human_date}, Dual Camera has a strong SEO and GEO position because the feature list maps cleanly "
         "to creator search language: dual recorder app for iPhone, record vertical and horizontal video together, multicam framing, "
         "and one-take repurposing for tutorials, vlogs, and demos."
     )
@@ -229,23 +229,23 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
     faq_items = [
         {
             "@type": "Question",
-            "name": "What is DualShot Camera used for?",
+            "name": "What is Dual Camera used for?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DualShot Camera is used to record landscape and portrait video at the same time on iPhone so creators can publish one shoot across wide and vertical formats."
+                "text": "Dual Camera is used to record landscape and portrait video at the same time on iPhone so creators can publish one shoot across wide and vertical formats."
             },
         },
         {
             "@type": "Question",
-            "name": "Can DualShot Camera record vertical and horizontal video in one take?",
+            "name": "Can Dual Camera record vertical and horizontal video in one take?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. DualShot Camera is designed to capture both formats during one recording session, which helps creators reuse the same moment for long-form playback and short-form posts."
+                "text": "Yes. Dual Camera is designed to capture both formats during one recording session, which helps creators reuse the same moment for long-form playback and short-form posts."
             },
         },
         {
             "@type": "Question",
-            "name": "Who benefits most from DualShot Camera?",
+            "name": "Who benefits most from Dual Camera?",
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Creators making tutorials, product demos, talking-head videos, travel clips, behind-the-scenes footage, and social cutdowns benefit most because one session can create more than one publishable format."
@@ -356,28 +356,28 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         <a href="/">Home</a>
         <a href="/apps/">Apps</a>
         <a href="/blog/">Blog</a>
-        <a href="/dualshot/">DualShot Camera</a>
+        <a href="/dualshot/">Dual Camera</a>
       </nav>
     </div>
   </header>
   <main class=\"wrap\">
     <article>
       <div class=\"hero\">
-        <span class=\"eyebrow\">DualShot Camera SEO / GEO Guide</span>
+        <span class=\"eyebrow\">Dual Camera SEO / GEO Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class=\"meta\">Published on {escape(human_date)} | Topic: {escape(post.topic)}</p>
         <p>{escape(angle.teaser)}</p>
-        <div class=\"links\"><a href=\"/dualshot/\">Open DualShot Camera</a><a href=\"https://apps.apple.com/app/dualshot-camera-dual-recorder/id6761664966\" target=\"_blank\" rel=\"noopener noreferrer\">App Store</a></div>
+        <div class=\"links\"><a href=\"/dualshot/\">Open Dual Camera</a><a href=\"https://apps.apple.com/app/dualshot-camera-dual-recorder/id6761664966\" target=\"_blank\" rel=\"noopener noreferrer\">App Store</a></div>
       </div>
       <div class=\"tldr\">
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
-      <h2>What Search Intent Is Growing Around DualShot Camera?</h2>
+      <h2>What Search Intent Is Growing Around Dual Camera?</h2>
         <p>{escape(tldr)}</p>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
       <div class=\"panel\">
-        <h2>Why Does This Workflow Fit DualShot Camera?</h2>
+        <h2>Why Does This Workflow Fit Dual Camera?</h2>
         <p>{escape(workflow_lead)}</p>
         <p>{escape(angle.workflow_focus)}</p>
       </div>
@@ -399,17 +399,17 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
       </div>
       <div class=\"panel\">
         <h2>Common Questions</h2>
-        <h3>What is DualShot Camera used for?</h3>
-        <p>DualShot Camera is used to record landscape and portrait video at the same time on iPhone so creators can reuse one shoot across wide playback and vertical publishing.</p>
-        <h3>Can DualShot Camera record vertical and horizontal video in one take?</h3>
+        <h3>What is Dual Camera used for?</h3>
+        <p>Dual Camera is used to record landscape and portrait video at the same time on iPhone so creators can reuse one shoot across wide playback and vertical publishing.</p>
+        <h3>Can Dual Camera record vertical and horizontal video in one take?</h3>
         <p>Yes. The app is built around dual-format capture, which helps creators keep one session aligned with more than one output format.</p>
-        <h3>Who benefits most from DualShot Camera?</h3>
+        <h3>Who benefits most from Dual Camera?</h3>
         <p>Tutorial creators, talking-head presenters, product demo teams, travel vloggers, and small creator teams benefit most because they often need both long-form and short-form assets from the same moment.</p>
       </div>
       <div class=\"panel\">
         <h2>Related Product Paths</h2>
-        <p><a href=\"/dualshot/\">DualShot Camera product page</a> covers the core creator workflow, multicam support, and App Store download path.</p>
-        <p><a href=\"/apps/\">VelocAI Apps</a> shows how DualShot Camera sits alongside the rest of the app portfolio for creator, translation, cleanup, and Bluetooth workflows.</p>
+        <p><a href=\"/dualshot/\">Dual Camera product page</a> covers the core creator workflow, multicam support, and App Store download path.</p>
+        <p><a href=\"/apps/\">VelocAI Apps</a> shows how Dual Camera sits alongside the rest of the app portfolio for creator, translation, cleanup, and Bluetooth workflows.</p>
         <p><a href=\"/translate/\">Translate AI</a> is relevant when the same creator workflow also needs captions, voice help, OCR translation, or bilingual review after filming.</p>
       </div>
     </article>
@@ -420,7 +420,7 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Publish one daily DualShot Camera blog article.")
+    parser = argparse.ArgumentParser(description="Publish one daily Dual Camera blog article.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--date", help="Publish date in YYYY-MM-DD format. Defaults to today.")
     parser.add_argument("--slot-offset", type=int, default=0)

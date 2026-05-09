@@ -6,7 +6,7 @@ All future website content in this repo should be optimized for both SEO and GEO
 That applies to landing pages, blog posts, metadata, FAQ sections, schema, internal links, and index/sitemap updates.
 
 Current preferred content ranges:
-- Creator video capture, dual-format recording, and repurposing workflows for DualShot Camera
+- Creator video capture, dual-format recording, and repurposing workflows for Dual Camera
 - Bluetooth protocol, Bluetooth applications, and troubleshooting for Bluetooth Explorer
 - iPhone storage cleanup and system-impact analysis for AI Cleanup PRO
 - AI translation, OCR, offline packs, and pronunciation workflows for Translate AI
@@ -15,7 +15,7 @@ Current preferred content ranges:
 
 Minimum content rule:
 - define a clear primary search intent for each page
-- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find AI`, `cleanup pro`, `translate`, or `DualShot Camera`
+- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find AI`, `cleanup pro`, `translate`, or `Dual Camera`
 - use high-intent keywords naturally in the title, H1, meta description, and major headings
 - keep the opening section concise and directly answer the likely query
 - include scannable sections and FAQ-style answers when useful for AI retrieval
@@ -128,7 +128,7 @@ The default morning publishing mix now creates 6 app-focused blog posts:
 - 1 AI Cleanup PRO post
 - 2 Bluetooth Explorer posts
 - 1 Find AI post
-- 1 DualShot Camera post
+- 1 Dual Camera post
 - 1 Translate AI post
 
 Install the full schedule:
@@ -138,7 +138,7 @@ Default windows:
 - Cleanup PRO: `08:20~08:21`
 - Bluetooth Explorer: `08:22~08:24`
 - Find AI: `08:26~08:27`
-- DualShot Camera: `08:28~08:29`
+- Dual Camera: `08:28~08:29`
 - Translate AI: `08:29~08:30`
 
 ## Storage Cleanup + System Impact Blog (08:20, 1/day)
