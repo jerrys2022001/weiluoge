@@ -1,10 +1,24 @@
 {
   "date": "2026-05-09",
-  "refreshed_at": "2026-05-09T08:40:03.525059+08:00",
+  "refreshed_at": "2026-05-09T15:58:18.543506+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "Electrek",
+      "source_url": "https://electrek.co/",
+      "title": "New Chevy Spark EUV is officially the best selling electric SUV in Brazil",
+      "link": "https://electrek.co/2026/05/08/new-chevy-spark-euv-is-officially-the-best-selling-electric-suv-in-brazil/",
+      "summary": "Chevy resurrected Spark EUV nameplate with the launch of the all-new, affordable Chevy Spark EUV for 2026, with the hopes that its new, 220-mile range EV would be a \"game changer\" that helps accelerate the company's EV transition in...",
+      "published_at": "2026-05-09T01:57:01+00:00",
+      "display_date": "MAY 09",
+      "image_src": "/assets/images/home-briefing/2026-05-09/industry-385d463ccbbde94f-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-24/industry-dad0c7e8d133d806-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -15,10 +29,10 @@
       "published_at": "2026-05-08T23:21:36+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/industry-d76e187f7a7abe61-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-25/industry-631d82ff65ca899f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-21/industry-532981859fa156a4-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -29,10 +43,10 @@
       "published_at": "2026-05-08T16:14:00-07:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/apple-b4f6fa3a007e7536-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-03/apple-2ef14bb7e6ed1b4b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -43,10 +57,10 @@
       "published_at": "2026-05-08T15:38:56-07:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-9b92fec16eb8e732-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b428fb0a80b422c8-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "bluetooth",
       "eyebrow": "Bluetooth Standards & Uses",
       "source_name": "Bluetooth SIG",
@@ -57,10 +71,10 @@
       "published_at": "2026-05-08T21:34:00+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/bluetooth-ac878d68f0cedfbc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-24/bluetooth-38664e01aa81161b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-21/bluetooth-cfa04605b22ae381-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -70,11 +84,11 @@
       "summary": "While not too much has been reported about the next Apple Watch models, there are a few rumors about potential design changes and watchOS 27 features. Apple Watch Series 12 and Apple Watch Ultra 4 models are expected to be released in...",
       "published_at": "2026-05-08T14:07:39-07:00",
       "display_date": "MAY 09",
-      "image_src": "/assets/images/home-briefing/2026-03-19/apple-3de84cf58f35f1d4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-19/apple-3de84cf58f35f1d4-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -85,10 +99,10 @@
       "published_at": "2026-05-08T20:53:27+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/apple-7ff14e76abd15625-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-07/apple-13c22f414200fd87-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-20/apple-473e9a6bc8606319-thumb.webp"
     },
     {
-      "index": 7,
+      "index": 8,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "NVIDIA Newsroom",
@@ -102,7 +116,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-12/semiconductor-657421eef269e759-thumb.webp"
     },
     {
-      "index": 8,
+      "index": 9,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -113,21 +127,7 @@
       "published_at": "2026-05-08T19:59:28+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-09/apple-a534fefd43e6eae3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
-    },
-    {
-      "index": 9,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "Kia's midsize electric SUV spotted in the US again, but this one is different [Image]",
-      "link": "https://electrek.co/2026/05/08/kias-midsize-ev-suv-spotted-in-the-us-but-its-different-image/",
-      "summary": "The EV5 is about the size of Kia's best-selling Sportage SUV and the Tesla Model Y. After opening orders in Europe and Canada, Kia's midsize electric SUV was spotted testing in the US again, but this one looks a little different.",
-      "published_at": "2026-05-08T19:56:27+00:00",
-      "display_date": "MAY 09",
-      "image_src": "/assets/images/home-briefing/2026-05-09/industry-bc3ed7dd9efeedad-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/industry-544e370684f5c137-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-5fc49674876feb61-thumb.webp"
     },
     {
       "index": 10,
