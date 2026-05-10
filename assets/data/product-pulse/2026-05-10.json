@@ -1,6 +1,6 @@
 {
   "date": "2026-05-10",
-  "refreshed_at": "2026-05-10T09:27:09.696715+08:00",
+  "refreshed_at": "2026-05-10T20:30:03.696236+08:00",
   "item_count": 10,
   "items": [
     {
@@ -9,30 +9,72 @@
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
       "source_url": "https://electrek.co/",
-      "title": "Tesla postpones Model S/X Signature delivery event, leaving attendees holding the bag",
-      "link": "https://electrek.co/2026/05/09/tesla-postpones-model-s-x-signature-delivery-event/",
-      "summary": "Tesla has postponed its highly anticipated Signature Edition delivery event that was scheduled for May 12 at the Fremont factory. The company sent a brief email to attendees today - just three days before the event - offering no...",
-      "published_at": "2026-05-09T22:08:18+00:00",
+      "title": "Frankfurt expands commercial EV fleet with 10 new vocational trucks",
+      "link": "https://electrek.co/2026/05/10/frankfurt-expands-commercial-ev-fleet-with-10-new-vocational-trucks/",
+      "summary": "The German city is expanding its truck fleet with 10 new, specially upfitted examples of the Mercedes-Benz eEconic heavy-duty EVs, bringing the city's total count of battery-electric low-floor trucks to 34.",
+      "published_at": "2026-05-10T12:17:39+00:00",
       "display_date": "MAY 10",
-      "image_src": "/assets/images/home-briefing/2026-05-01/industry-cfade94cda85970a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-01/industry-cfade94cda85970a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-10/industry-1f4af8a90fc042d1-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-24/industry-d2f2b3f0e2c541a7-thumb.webp"
     },
     {
       "index": 2,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "So you've heard these AI terms and nodded along; let's fix that",
-      "link": "https://techcrunch.com/2026/05/09/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms/",
-      "summary": "The rise of AI has brought an avalanche of new terms and slang. Here is a glossary with definitions of some of the most important words and phrases you might encounter.",
-      "published_at": "2026-05-09T21:45:00+00:00",
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "AI data centers face increasing complaints about inaudible but 'felt' infrasound - citizens complain high- and low-frequency sounds do not register on decibel meters but cause adverse health effects",
+      "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/data-centers-face-increasing-infrasound-complaints-from-neighboring-communities-sounds-do-not-register-on-decibel-meters-but-irritate-local-citizens",
+      "summary": "Residents living near data centers are raising concerns about noise pollution, as these massive sites operate 24/7 and generate low-frequency sounds that disturb the neighborhood's peace.",
+      "published_at": "2026-05-10T11:10:00+00:00",
       "display_date": "MAY 10",
-      "image_src": "/assets/images/home-briefing/2026-05-10/industry-e7f244e835ce8e33-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/industry-0ec269cb35594148-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-10/ai-bf5011fa847d29b4-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-13/ai-5c0d0642919348a2-thumb.webp"
     },
     {
       "index": 3,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "$200 'socketed' Nvidia AI GPU for servers hacked into a PCIe card with custom PCB and 3D-printed cooling - modded Tesla V100 SMX data center GPU runs AI LLMs and is more efficient than many modern midrange offerings in AI inference",
+      "link": "https://www.tomshardware.com/pc-components/gpus/usd200-nvidia-server-ai-gpu-hacked-into-a-pcie-card-with-custom-pcb-and-3d-printed-cooling-modded-tesla-v100-smx-gpu-turing-data-center-card-runs-ai-llms-and-is-more-efficient-than-many-modern-midrange-offerings-in-ai-inference",
+      "summary": "Turns out, Nvidia's older Turing-era V100 AI GPU is still pretty capable today, even with just 16GB of VRAM. A YouTuber got his hands on the SMX variant for just $100, converted it to a PCIe x16 interface for another $100 with an adapter,...",
+      "published_at": "2026-05-10T10:50:00+00:00",
+      "display_date": "MAY 10",
+      "image_src": "/assets/images/home-briefing/2026-05-01/ai-bd7dcec6902f8ebf-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-01/ai-bd7dcec6902f8ebf-thumb.webp"
+    },
+    {
+      "index": 4,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "Ukraine's new AI-guided laser destroys Shahed suicide drones in seconds from 3.1 miles away - also useful for demining operations, trailer-mounted Tryzub system is in final stages of testing",
+      "link": "https://www.tomshardware.com/tech-industry/ukraines-new-ai-laser-burns-holes-in-shahed-drones-from-3-1-miles-away-trailer-mounted-tryzub-system-is-in-final-stages-of-testing-by-maker-celebra-tech",
+      "summary": "Ukraine has developed a mobile AI-powered anti-drone laser that can down lethal Shahed drones up to 3.1 miles away.",
+      "published_at": "2026-05-10T10:00:00+00:00",
+      "display_date": "MAY 10",
+      "image_src": "/assets/images/home-briefing/2026-04-04/ai-c3a4dba6623efd2f-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-04/ai-c3a4dba6623efd2f-thumb.webp"
+    },
+    {
+      "index": 5,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "Steeper discounts: MacBook Pros plunge to as low as $1,499, save up to $500",
+      "link": "https://appleinsider.com/articles/26/05/10/steeper-discounts-macbook-pros-plunge-to-as-low-as-1499-save-up-to-500?utm_source=rss",
+      "summary": "Lower prices are in effect on Apple's 14-inch and 16-inch MacBook Pro laptops, with fresh deals from just $1,499. Save up to $500 on MacBook Pro laptops at B&H - Image credit: Apple The steeper discounts can be found at Apple Authorized...",
+      "published_at": "2026-05-10T06:13:12+00:00",
+      "display_date": "MAY 10",
+      "image_src": "/assets/images/home-briefing/2026-05-02/apple-537ea853a117ac0b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-02/apple-537ea853a117ac0b-thumb.webp"
+    },
+    {
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -46,7 +88,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-11/apple-a7d1d83ebddfc113-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -60,7 +102,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-03-28/apple-23f7ccfde7119d55-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 8,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -72,48 +114,6 @@
       "display_date": "MAY 10",
       "image_src": "/assets/images/home-briefing/2026-04-25/apple-aa0dd126d59bc392-thumb.webp",
       "fallback_src": "/assets/images/home-briefing/2026-04-25/apple-aa0dd126d59bc392-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "The Instax Wide 400 builds on instant photography's simplicity and stretches it, literally",
-      "link": "https://techcrunch.com/2026/05/09/the-instax-wide-400-builds-on-instant-photographys-simplicity-and-stretches-it-literally/",
-      "summary": "In an AI and digital world, analog instant film and retro-style cameras continue to remain popular, fueled by a mix of both nostalgia and novelty.",
-      "published_at": "2026-05-09T15:45:00+00:00",
-      "display_date": "MAY 09",
-      "image_src": "/assets/images/home-briefing/2026-05-10/industry-56a5a492bbb6b05b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-b70cd95ec76f7e64-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "AirPods Max 2 Available for $509 in All Colors on Amazon",
-      "link": "https://www.macrumors.com/2026/05/09/airpods-max-2-for-509-all-colors/",
-      "summary": "Apple's new AirPods Max 2 just launched last month, and you can get all five color options for $509.00 this weekend on Amazon, down from $549.00. Note: MacRumors is an affiliate partner with some of these vendors. When you click a link and...",
-      "published_at": "2026-05-09T07:51:46-07:00",
-      "display_date": "MAY 09",
-      "image_src": "/assets/images/home-briefing/2026-05-10/apple-61ab4f7aef1774a6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-04/apple-11ff201925a763c6-thumb.webp"
-    },
-    {
-      "index": 8,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "Maryland citizens slapped with $2 billion power grid upgrade bill for out-of-state AI data centers - state complains to federal energy regulators, says additional cost breaks 'ratepayer protection pledge' promises",
-      "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/maryland-citizens-slapped-with-usd2-billion-grid-upgrade-bill-for-out-of-state-ai-data-centers-state-complains-to-federal-energy-regulators-says-additional-cost-breaks-ratepayer-protection-pledge-promises",
-      "summary": "Maryland is complaining to the federal energy regulator about PJM's plan to charge it $2 billion for grid upgrades that will mostly benefit data centers, especially as the state claims that the majority of these developments are being...",
-      "published_at": "2026-05-09T14:22:45+00:00",
-      "display_date": "MAY 09",
-      "image_src": "/assets/images/home-briefing/2026-05-10/ai-9b57e029b3807b9c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-22/ai-ea057df5a3ebccb0-thumb.webp"
     },
     {
       "index": 9,
