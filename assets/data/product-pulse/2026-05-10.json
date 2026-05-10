@@ -1,6 +1,6 @@
 {
   "date": "2026-05-10",
-  "refreshed_at": "2026-05-10T09:24:40.055017+08:00",
+  "refreshed_at": "2026-05-10T09:27:09.696715+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "Tesla has postponed its highly anticipated Signature Edition delivery event that was scheduled for May 12 at the Fremont factory. The company sent a brief email to attendees today - just three days before the event - offering no...",
       "published_at": "2026-05-09T22:08:18+00:00",
       "display_date": "MAY 10",
-      "image_src": "/assets/images/home-briefing/2026-03-19/industry-0a14aadc55b94c0b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-19/industry-0a14aadc55b94c0b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-01/industry-cfade94cda85970a-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-01/industry-cfade94cda85970a-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-05-09T21:45:00+00:00",
       "display_date": "MAY 10",
       "image_src": "/assets/images/home-briefing/2026-05-10/industry-e7f244e835ce8e33-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/industry-9d3e10993fa35664-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/industry-0ec269cb35594148-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "This week on the Cult of Mac podcast: Apple's failure to deliver Siri's AI upgrade costs the company $250 million. Get your slice of the pie! (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and...",
       "published_at": "2026-05-09T17:30:03+00:00",
       "display_date": "MAY 10",
-      "image_src": "/assets/images/home-briefing/2026-05-03/apple-216b5d3cf78cbc24-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-03/apple-216b5d3cf78cbc24-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-11/apple-a7d1d83ebddfc113-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-11/apple-a7d1d83ebddfc113-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-05-09T16:35:33+00:00",
       "display_date": "MAY 10",
       "image_src": "/assets/images/home-briefing/2026-05-10/apple-a5a295b7d5bf806d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-b129b757d2d8cb65-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-28/apple-23f7ccfde7119d55-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Apple's high-end, noise-canceling earbuds already provide incredible value, and this AirPods Pro 3 deal makes them way more affordable. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals....",
       "published_at": "2026-05-09T16:20:10+00:00",
       "display_date": "MAY 10",
-      "image_src": "/assets/images/home-briefing/2026-03-17/apple-5d63a382dfa93bf7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-17/apple-5d63a382dfa93bf7-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-25/apple-aa0dd126d59bc392-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-25/apple-aa0dd126d59bc392-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-05-09T15:45:00+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-10/industry-56a5a492bbb6b05b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-08/industry-8718b93f61c29630-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-b70cd95ec76f7e64-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-05-09T07:51:46-07:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-10/apple-61ab4f7aef1774a6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-b7836264221ba147-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-04/apple-11ff201925a763c6-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-05-09T14:22:45+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-10/ai-9b57e029b3807b9c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-19/ai-cba33ce150a1c3cf-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/ai-ea057df5a3ebccb0-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-05-08T21:34:00+00:00",
       "display_date": "MAY 09",
       "image_src": "/assets/images/home-briefing/2026-05-10/bluetooth-ac878d68f0cedfbc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-21/bluetooth-cfa04605b22ae381-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-08/bluetooth-96502a5df26054e7-thumb.webp"
     },
     {
       "index": 10,
