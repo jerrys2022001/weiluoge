@@ -59,10 +59,21 @@ function Assert-TaskExists([string]$taskName) {
   Write-Output "Verified task: $taskName"
 }
 
-function Apply-TaskRuntimeDefaults([string]$taskName) {
-  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+function Apply-TaskRuntimeDefaults([string]$taskName, [bool]$StartWhenAvailable = $false) {
+  $settingsArgs = @{
+    AllowStartIfOnBatteries    = $true
+    DontStopIfGoingOnBatteries = $true
+  }
+  if ($StartWhenAvailable) {
+    $settingsArgs.StartWhenAvailable = $true
+  }
+  $settings = New-ScheduledTaskSettingsSet @settingsArgs
   Set-ScheduledTask -TaskName $taskName -Settings $settings | Out-Null
-  Write-Output "Hardened task settings: $taskName"
+  if ($StartWhenAvailable) {
+    Write-Output "Hardened task settings: $taskName (StartWhenAvailable enabled)"
+  } else {
+    Write-Output "Hardened task settings: $taskName"
+  }
 }
 
 $cleanupInstaller = Ensure-Script "install_storage_impact_blog_task.ps1"
@@ -206,7 +217,8 @@ Write-Output ""
 Write-Output "Verifying installed site tasks..."
 foreach ($taskName in $expectedTaskNames) {
   Assert-TaskExists $taskName
-  Apply-TaskRuntimeDefaults $taskName
+  $allowLateCatchup = ($taskName -eq "WeiLuoGe-Home-Brief-Check-20-30")
+  Apply-TaskRuntimeDefaults -taskName $taskName -StartWhenAvailable:$allowLateCatchup
 }
 
 Write-Output ""

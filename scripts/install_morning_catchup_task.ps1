@@ -21,16 +21,18 @@ if (-not $PythonCommand) {
   throw "Cannot resolve Python command: $PythonExe"
 }
 
-$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+$CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+$Principal = New-ScheduledTaskPrincipal -UserId $CurrentUser -LogonType Interactive -RunLevel Limited
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 $Args = "$PythonArgs `"$ScriptPath`" --repo-root `"$RepoRoot`" --blog-ready-after $BlogReadyAfter --home-ready-after $HomeReadyAfter"
 $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args -WorkingDirectory $RepoRoot
-$Trigger = New-ScheduledTaskTrigger -AtLogOn
+$Trigger = New-ScheduledTaskTrigger -AtLogOn -User $CurrentUser
 if ($LogonDelay) {
   $Trigger.Delay = $LogonDelay
 }
 
-Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings -Force | Out-Null
+Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings -Force -ErrorAction Stop | Out-Null
 
 Write-Output "Installed task: $TaskName"
-Write-Output "Schedule: at logon (delay $LogonDelay)"
+Write-Output "Schedule: at logon for $CurrentUser (delay $LogonDelay)"
 Write-Output "Command: $PythonCommand $Args"

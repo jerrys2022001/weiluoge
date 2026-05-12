@@ -24,19 +24,25 @@ if (-not $PythonCommand) {
 }
 
 $LogDir = Join-Path $RepoRoot "output\home-brief-logs"
-$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+$DefaultSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$SecondaryCheckSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
 $RunArgs = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --git-commit --git-push --log-dir `"$LogDir`""
 $RunAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $RunArgs -WorkingDirectory $RepoRoot
 $RunTrigger = New-ScheduledTaskTrigger -Daily -At $PublishAt
 
-Register-ScheduledTask -TaskName $TaskName -Action $RunAction -Trigger $RunTrigger -Settings $Settings -Force | Out-Null
+Register-ScheduledTask -TaskName $TaskName -Action $RunAction -Trigger $RunTrigger -Settings $DefaultSettings -Force | Out-Null
 
 $CheckArgs = "$PythonArgs `"$ScriptPath`" check --repo-root `"$RepoRoot`" --git-commit --git-push --log-dir `"$LogDir`""
 $CheckAction = New-ScheduledTaskAction -Execute $PythonCommand -Argument $CheckArgs -WorkingDirectory $RepoRoot
 $CheckTrigger = New-ScheduledTaskTrigger -Daily -At $CheckAt
 
-Register-ScheduledTask -TaskName $CheckTaskName -Action $CheckAction -Trigger $CheckTrigger -Settings $Settings -Force | Out-Null
+Register-ScheduledTask -TaskName $CheckTaskName -Action $CheckAction -Trigger $CheckTrigger -Settings $DefaultSettings -Force | Out-Null
+
+if ($SecondaryCheckAt) {
+  $SecondaryCheckTrigger = New-ScheduledTaskTrigger -Daily -At $SecondaryCheckAt
+  Register-ScheduledTask -TaskName $SecondaryCheckTaskName -Action $CheckAction -Trigger $SecondaryCheckTrigger -Settings $SecondaryCheckSettings -Force | Out-Null
+}
 
 if ($SecondaryCheckAt) {
   $SecondaryCheckTrigger = New-ScheduledTaskTrigger -Daily -At $SecondaryCheckAt
