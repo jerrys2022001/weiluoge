@@ -1145,6 +1145,117 @@ summary {
   color: var(--muted);
 }
 
+.download-cta {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.download-cta-stack {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+.download-cta-qr {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 14px);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  width: min(100%, 186px);
+  padding: 14px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 36px rgba(8, 9, 18, 0.32);
+  color: #090c18;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 2;
+}
+
+.download-cta-qr img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 22px;
+  border: 1px solid rgba(9, 12, 24, 0.14);
+  background: #ffffff;
+  object-fit: cover;
+}
+
+.download-cta-qr strong {
+  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.download-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #24b9ff 0%, #7f76ff 48%, #ff4e92 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 32px rgba(20, 104, 255, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.download-cta-badge svg {
+  width: 26px;
+  height: 31px;
+  flex: 0 0 auto;
+  fill: #ffffff;
+}
+
+.download-cta-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.download-cta-copy span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.download-cta-copy strong {
+  color: #ffffff;
+  font-family: "Haffer XH SemiBold", "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.download-cta-stack:hover .download-cta-qr,
+.download-cta-stack:focus-within .download-cta-qr {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.download-cta-stack:hover .download-cta-badge,
+.download-cta-stack:focus-within .download-cta-badge {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 38px rgba(34, 124, 255, 0.34);
+  filter: saturate(1.06) brightness(1.02);
+}
+
+.download-cta .btn-secondary {
+  align-self: flex-end;
+}
+
 .helper-links,
 .footer-links {
   display: flex;
@@ -1192,6 +1303,20 @@ footer,
 @media (max-width: 1080px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .download-cta {
+    align-items: stretch;
+  }
+
+  .download-cta-stack,
+  .download-cta-badge,
+  .download-cta-qr {
+    width: 100%;
+  }
+
+  .download-cta .btn-secondary {
+    width: 100%;
   }
 
   body.theme-explorer .hero-card > img,
