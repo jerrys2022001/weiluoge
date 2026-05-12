@@ -12,6 +12,8 @@ param(
   [string]$DualShotWindowEnd = "08:29",
   [string]$TranslateWindowStart = "08:29",
   [string]$TranslateWindowEnd = "08:30",
+  [string]$OctopusWindowStart = "08:31",
+  [string]$OctopusWindowEnd = "08:32",
   [string]$HomeBriefAt = "08:30",
   [string]$HomeBriefCheckAt = "08:40",
   [string]$HomeBriefSecondaryCheckAt = "20:30",
@@ -81,6 +83,7 @@ $bluetoothInstaller = Ensure-Script "install_protocol_blog_morning_tasks.ps1"
 $findInstaller = Ensure-Script "install_find_ai_blog_task.ps1"
 $dualshotInstaller = Ensure-Script "install_dualshot_blog_task.ps1"
 $translateInstaller = Ensure-Script "install_translate_ai_blog_tasks.ps1"
+$octopusInstaller = Ensure-Script "install_octopus_blog_task.ps1"
 $homeBriefInstaller = Ensure-Script "install_home_brief_daily_task.ps1"
 $preflightInstaller = Ensure-Script "install_blog_preflight_task.ps1"
 $watchdogInstaller = Ensure-Script "install_blog_watchdog_task.ps1"
@@ -159,6 +162,17 @@ Invoke-Installer $translateInstaller {
     -ReplaceExisting:$ReplaceExisting
 }
 
+Invoke-Installer $octopusInstaller {
+  & $octopusInstaller `
+    -PythonExe $PythonExe `
+    -PythonArgs $PythonArgs `
+    -RepoRoot $RepoRoot `
+    -WindowStart $OctopusWindowStart `
+    -WindowEnd $OctopusWindowEnd `
+    -PostsPerDay 2 `
+    -ReplaceExisting:$ReplaceExisting
+}
+
 Invoke-Installer $homeBriefInstaller {
   & $homeBriefInstaller `
     -PythonExe $PythonExe `
@@ -205,6 +219,8 @@ $expectedTaskNames = @(
   "WeiLuoGe-Find-AI-Blog-Morning-1",
   "WeiLuoGe-DualShot-Camera-Blog-Morning-1",
   "WeiLuoGe-Translate-AI-Blog-Morning-1",
+  "WeiLuoGe-Octopus-Blog-Morning-1",
+  "WeiLuoGe-Octopus-Blog-Morning-2",
   "WeiLuoGe-Home-Brief-Daily-08-30",
   "WeiLuoGe-Home-Brief-Check-08-40",
   "WeiLuoGe-Home-Brief-Check-20-30",
@@ -228,6 +244,7 @@ Write-Output "  Bluetooth Explorer: 2 slots between $BluetoothWindowStart and $B
 Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd"
 Write-Output "  Dual Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd"
 Write-Output "  Translate AI: 1 slot between $TranslateWindowStart and $TranslateWindowEnd"
+Write-Output "  Octopus: 2 slots between $OctopusWindowStart and $OctopusWindowEnd"
 Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
 Write-Output "  Home Brief second check: daily at $HomeBriefSecondaryCheckAt"

@@ -148,6 +148,23 @@ APP_FUNCTION_KEYWORDS = {
         "short-form",
         "livestream",
     ),
+    "octopus": (
+        "codex",
+        "agent",
+        "coding agent",
+        "developer tools",
+        "remote coding",
+        "thread",
+        "approval",
+        "approvals",
+        "permissions",
+        "ssh",
+        "server",
+        "automation",
+        "voice",
+        "files",
+        "project",
+    ),
 }
 
 CLEANUP_TITLE_REQUIRED = (
@@ -172,6 +189,7 @@ LANE_SOURCE_SLUGS = {
     "translate": ("ai", "apple"),
     "find": ("apple", "bluetooth"),
     "dualshot": ("apple", "ai"),
+    "octopus": ("ai", "apple"),
     "protocol": ("bluetooth",),
     "updates": ("apple", "ai", "bluetooth"),
 }
@@ -181,6 +199,7 @@ LANE_REQUIRED_KEYWORDS = {
     "translate": APP_FUNCTION_KEYWORDS["translate"],
     "find": APP_FUNCTION_KEYWORDS["find"] + APP_FUNCTION_KEYWORDS["bluetooth"],
     "dualshot": APP_FUNCTION_KEYWORDS["dualshot"],
+    "octopus": APP_FUNCTION_KEYWORDS["octopus"],
     "protocol": APP_FUNCTION_KEYWORDS["bluetooth"],
     "updates": UPDATES_TITLE_REQUIRED,
 }
@@ -190,6 +209,7 @@ LANE_FALLBACK_PREFIX = {
     "translate": "translate-ai-live-translation-workflow-update",
     "find": "find-ai-live-device-finding-update",
     "dualshot": "dualshot-camera-product-demo-tutorial-guide-live-source-update",
+    "octopus": "octopus-mobile-codex-workflow-live-source-update",
 }
 
 LANE_TOPIC = {
@@ -197,6 +217,7 @@ LANE_TOPIC = {
     "translate": "Translate AI Translation Workflow",
     "find": "find AI Device Recovery",
     "dualshot": "Dual Camera Creator Workflow",
+    "octopus": "Octopus Mobile Codex Workflow",
 }
 
 LANE_APP_TERM = {
@@ -204,6 +225,7 @@ LANE_APP_TERM = {
     "translate": "Translate",
     "find": "find AI",
     "dualshot": "Dual Camera",
+    "octopus": "Octopus",
 }
 
 
@@ -267,6 +289,8 @@ def render_source_slug_for_lane(lane: str, source_slug: str) -> str:
     if source_slug in {"apple", "ai", "bluetooth"}:
         return source_slug
     if lane == "translate":
+        return "ai"
+    if lane == "octopus":
         return "ai"
     if lane in {"cleanup", "find", "dualshot"}:
         return "apple"
@@ -403,6 +427,11 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
             f"Dual Camera Creator Lessons from {label}",
             f"Live-source Dual Camera commentary on {label}, focused on camera capture, demo recording, creator workflow, and video repurposing.",
         )
+    if lane == "octopus":
+        return (
+            f"Octopus Mobile Coding Lessons from {label}",
+            f"Live-source Octopus commentary on {label}, focused on mobile coding approvals, thread continuity, automation follow-up, SSH-linked workflow, and developer context from iPhone or iPad.",
+        )
     return None
 
 
@@ -442,7 +471,7 @@ def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, hayst
             )
         )
     if lane == "translate":
-        strict_terms = (
+        title_terms = (
             "translate",
             "translation",
             "translator",
@@ -455,7 +484,31 @@ def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, hayst
             "text recognition",
             "transcription",
         )
-        return any(matches_keyword(title_text, keyword) for keyword in strict_terms)
+        if any(matches_keyword(title_text, keyword) for keyword in title_terms):
+            return True
+
+        voice_terms = (
+            "audio model",
+            "audio models",
+            "dubbing",
+            "language learning",
+            "voice ai",
+            "voice feature",
+            "voice features",
+            "voice engine",
+            "real-time voice",
+            "realtime voice",
+            "realtime api",
+            "speech",
+            "spoken",
+            "language gap",
+            "language gaps",
+            "multilingual",
+            "caption",
+            "subtitle",
+            "transcription",
+        )
+        return source_slug == "ai" and any(matches_keyword(haystack, keyword) for keyword in voice_terms)
     if lane == "find":
         return any(
             matches_keyword(haystack, keyword)
@@ -488,6 +541,26 @@ def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, hayst
                 "youtube",
                 "short-form",
                 "livestream",
+            )
+        )
+    if lane == "octopus":
+        return any(
+            matches_keyword(haystack, keyword)
+            for keyword in (
+                "codex",
+                "coding agent",
+                "agent",
+                "developer tools",
+                "remote coding",
+                "thread",
+                "approval",
+                "permissions",
+                "ssh",
+                "server",
+                "automation",
+                "tool results",
+                "prompt",
+                "workflow",
             )
         )
     return any(matches_keyword(haystack, keyword) for keyword in LANE_REQUIRED_KEYWORDS[lane])
@@ -530,6 +603,15 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "primary": "Open Dual Camera",
             "primary_url": "/apps/",
             "secondary": "creator capture workflow",
+        },
+        "octopus": {
+            "eyebrow": "Octopus live mobile coding fallback",
+            "intent": "mobile Codex continuity, approvals, SSH-linked sessions, runtime follow-up, and developer context capture",
+            "workflow": "review session state, approve the next action, add voice or file context, and move the coding thread forward without reopening the full desktop setup",
+            "risk": "mobile coding advice becomes weak when it promises convenience without explaining approvals, thread continuity, or how remote context gets back into the same workflow",
+            "primary": "Open Octopus",
+            "primary_url": "/octopus/",
+            "secondary": "mobile Codex workflow",
         },
     }[lane]
 

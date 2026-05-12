@@ -12,11 +12,12 @@ import sys
 import time
 from collections import Counter
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path, PurePosixPath
 
 from blog_cleanup_focus_scheduler import ANGLES as CLEANUP_ANGLES
 from blog_dualshot_daily_scheduler import ANGLES as DUALSHOT_ANGLES
+from blog_octopus_daily_scheduler import ANGLES as OCTOPUS_ANGLES
 
 
 @dataclass(frozen=True)
@@ -33,17 +34,21 @@ BLOG_TASKS: tuple[BlogTask, ...] = (
     BlogTask("WeiLuoGe-Find-AI-Blog-Morning-1", "find", 0),
     BlogTask("WeiLuoGe-DualShot-Camera-Blog-Morning-1", "dualshot", 0),
     BlogTask("WeiLuoGe-Translate-AI-Blog-Morning-1", "translate", 0),
+    BlogTask("WeiLuoGe-Octopus-Blog-Morning-1", "octopus", 0),
+    BlogTask("WeiLuoGe-Octopus-Blog-Morning-2", "octopus", 1),
 )
-TARGET_DAILY_TOTAL = 6
+TARGET_DAILY_TOTAL = 8
 TARGET_DAILY_CLEANUP = 1
 TARGET_DAILY_BLUETOOTH = 2
 TARGET_DAILY_FIND = 1
 TARGET_DAILY_DUALSHOT = 1
 TARGET_DAILY_TRANSLATE = 1
+TARGET_DAILY_OCTOPUS = 2
 INDEX_ARTICLE_RE = re.compile(r"<article>.*?</article>", re.IGNORECASE | re.DOTALL)
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 CLEANUP_SLUG_PREFIXES = tuple(angle.slug_prefix for angle in CLEANUP_ANGLES)
 DUALSHOT_SLUG_PREFIXES = tuple(angle.slug_prefix for angle in DUALSHOT_ANGLES)
+OCTOPUS_SLUG_PREFIXES = tuple(angle.slug_prefix for angle in OCTOPUS_ANGLES)
 
 
 def parse_args() -> argparse.Namespace:
@@ -68,7 +73,8 @@ def query_task_info(task_name: str) -> tuple[date | None, int | None]:
     powershell_script = (
         "$info = Get-ScheduledTaskInfo -TaskName '{name}' -ErrorAction SilentlyContinue; "
         "if ($null -eq $info) {{ exit 1 }}; "
-        "[pscustomobject]@{{ LastRunTime = $info.LastRunTime; LastTaskResult = $info.LastTaskResult }} "
+        "$lastRun = if ($info.LastRunTime) {{ $info.LastRunTime.ToString('o') }} else {{ $null }}; "
+        "[pscustomobject]@{{ LastRunTime = $lastRun; LastTaskResult = $info.LastTaskResult }} "
         "| ConvertTo-Json -Compress"
     ).format(name=task_name.replace("'", "''"))
     result = subprocess.run(
@@ -89,11 +95,14 @@ def query_task_info(task_name: str) -> tuple[date | None, int | None]:
 
     last_run = None
     raw_last_run = payload.get("LastRunTime")
-    if isinstance(raw_last_run, str) and len(raw_last_run) >= 10:
+    if isinstance(raw_last_run, str) and raw_last_run:
         try:
-            last_run = date.fromisoformat(raw_last_run[:10])
+            last_run = datetime.fromisoformat(raw_last_run).date()
         except ValueError:
-            last_run = None
+            try:
+                last_run = date.fromisoformat(raw_last_run[:10])
+            except ValueError:
+                last_run = None
 
     raw_last_result = payload.get("LastTaskResult")
     last_result = int(raw_last_result) if isinstance(raw_last_result, int | float) else None
@@ -309,6 +318,10 @@ def count_translate_posts(paths: list[str]) -> int:
     return count_matching_posts(paths, ("translate-ai-",))
 
 
+def count_octopus_posts(paths: list[str]) -> int:
+    return count_matching_posts(paths, OCTOPUS_SLUG_PREFIXES)
+
+
 def quota_met(
     total_count: int,
     cleanup_count: int,
@@ -316,6 +329,7 @@ def quota_met(
     find_count: int,
     dualshot_count: int,
     translate_count: int,
+    octopus_count: int,
 ) -> bool:
     return (
         total_count >= TARGET_DAILY_TOTAL
@@ -324,6 +338,7 @@ def quota_met(
         and find_count >= TARGET_DAILY_FIND
         and dualshot_count >= TARGET_DAILY_DUALSHOT
         and translate_count >= TARGET_DAILY_TRANSLATE
+        and octopus_count >= TARGET_DAILY_OCTOPUS
     )
 
 
@@ -342,11 +357,12 @@ def main() -> int:
     find_count = count_find_posts(posts)
     dualshot_count = count_dualshot_posts(posts)
     translate_count = count_translate_posts(posts)
+    octopus_count = count_octopus_posts(posts)
 
-    if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+    if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count, octopus_count):
         print(
             f"quota_already_met total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
-            f"find={find_count} dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
+            f"find={find_count} dualshot={dualshot_count} translate={translate_count} octopus={octopus_count} target_total={TARGET_DAILY_TOTAL}"
         )
         print("watchdog rerun_count=0 failed=0 dry_run=" + str(args.dry_run).lower())
         return 0
@@ -356,7 +372,7 @@ def main() -> int:
     if settle_seconds:
         print(
             f"quota_missing_wait total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
-            f"find={find_count} dualshot={dualshot_count} translate={translate_count} "
+            f"find={find_count} dualshot={dualshot_count} translate={translate_count} octopus={octopus_count} "
             f"settle_seconds={settle_seconds}"
         )
         deadline = time.monotonic() + settle_seconds
@@ -371,11 +387,12 @@ def main() -> int:
             find_count = count_find_posts(posts)
             dualshot_count = count_dualshot_posts(posts)
             translate_count = count_translate_posts(posts)
-            if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+            octopus_count = count_octopus_posts(posts)
+            if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count, octopus_count):
                 print(
                     f"quota_reached_after_wait total={total_count} cleanup={cleanup_count} "
                     f"bluetooth={bluetooth_count} find={find_count} dualshot={dualshot_count} "
-                    f"translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
+                    f"translate={translate_count} octopus={octopus_count} target_total={TARGET_DAILY_TOTAL}"
                 )
                 print("watchdog rerun_count=0 failed=0 dry_run=false")
                 return 0
@@ -420,10 +437,11 @@ def main() -> int:
         find_count = count_find_posts(posts)
         dualshot_count = count_dualshot_posts(posts)
         translate_count = count_translate_posts(posts)
-        if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+        octopus_count = count_octopus_posts(posts)
+        if quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count, octopus_count):
             print(
                 f"quota_reached_after_rerun total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} "
-                f"find={find_count} dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL}"
+                f"find={find_count} dualshot={dualshot_count} translate={translate_count} octopus={octopus_count} target_total={TARGET_DAILY_TOTAL}"
             )
             break
 
@@ -434,17 +452,18 @@ def main() -> int:
     find_count = count_find_posts(posts)
     dualshot_count = count_dualshot_posts(posts)
     translate_count = count_translate_posts(posts)
+    octopus_count = count_octopus_posts(posts)
     print(
         f"post_count total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} find={find_count} "
-        f"dualshot={dualshot_count} translate={translate_count} target_total={TARGET_DAILY_TOTAL} "
+        f"dualshot={dualshot_count} translate={translate_count} octopus={octopus_count} target_total={TARGET_DAILY_TOTAL} "
         f"target_cleanup={TARGET_DAILY_CLEANUP} target_bluetooth={TARGET_DAILY_BLUETOOTH} "
         f"target_find={TARGET_DAILY_FIND} target_dualshot={TARGET_DAILY_DUALSHOT} "
-        f"target_translate={TARGET_DAILY_TRANSLATE}"
+        f"target_translate={TARGET_DAILY_TRANSLATE} target_octopus={TARGET_DAILY_OCTOPUS}"
     )
 
     if not args.dry_run:
         backfill_round = 0
-        while not quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count):
+        while not quota_met(total_count, cleanup_count, bluetooth_count, find_count, dualshot_count, translate_count, octopus_count):
             if cleanup_count < TARGET_DAILY_CLEANUP:
                 lane = "cleanup"
             elif bluetooth_count < TARGET_DAILY_BLUETOOTH:
@@ -453,8 +472,10 @@ def main() -> int:
                 lane = "find"
             elif dualshot_count < TARGET_DAILY_DUALSHOT:
                 lane = "dualshot"
-            else:
+            elif translate_count < TARGET_DAILY_TRANSLATE:
                 lane = "translate"
+            else:
+                lane = "octopus"
             synthetic = BlogTask(
                 task_name=f"watchdog-backfill-{lane}-{backfill_round}",
                 lane=lane,
@@ -465,7 +486,7 @@ def main() -> int:
             print(
                 f"backfill task={synthetic.task_name} lane={lane} offset={synthetic.slot_offset} "
                 f"total={total_count} cleanup={cleanup_count} bluetooth={bluetooth_count} find={find_count} "
-                f"dualshot={dualshot_count} translate={translate_count}"
+                f"dualshot={dualshot_count} translate={translate_count} octopus={octopus_count}"
             )
             code = run_slot(repo_root, synthetic, target_day, False)
             if code != 0:
@@ -491,6 +512,7 @@ def main() -> int:
             find_count = count_find_posts(posts)
             dualshot_count = count_dualshot_posts(posts)
             translate_count = count_translate_posts(posts)
+            octopus_count = count_octopus_posts(posts)
 
     print(f"watchdog rerun_count={rerun_count} failed={len(failed)} dry_run={str(args.dry_run).lower()}")
     if failed:
