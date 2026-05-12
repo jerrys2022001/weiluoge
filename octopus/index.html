@@ -107,12 +107,16 @@
     }
 
     .octopus-store-stack {
+      position: relative;
       display: grid;
       gap: 14px;
       justify-items: start;
     }
 
     .octopus-qr-card {
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 14px);
       display: grid;
       gap: 14px;
       justify-items: center;
@@ -123,6 +127,12 @@
       box-shadow: 0 18px 36px rgba(8, 9, 18, 0.32);
       color: #090c18;
       text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      z-index: 2;
     }
 
     .octopus-qr-card img {
@@ -147,9 +157,10 @@
       min-width: 0;
       padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(11, 14, 25, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 16px 28px rgba(8, 9, 18, 0.26);
+      background: linear-gradient(135deg, #24b9ff 0%, #7f76ff 48%, #ff4e92 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 32px rgba(20, 104, 255, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
 
     .octopus-store-badge svg {
@@ -179,6 +190,21 @@
       font-weight: 600;
     }
 
+    .octopus-store-stack:hover .octopus-qr-card,
+    .octopus-store-stack:focus-within .octopus-qr-card {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .octopus-store-stack:hover .octopus-store-badge,
+    .octopus-store-stack:focus-within .octopus-store-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 38px rgba(34, 124, 255, 0.34);
+      filter: saturate(1.06) brightness(1.02);
+    }
+
     .octopus-download-row .btn-secondary {
       align-self: flex-end;
     }
@@ -193,8 +219,11 @@
       }
 
       .octopus-store-stack,
-      .octopus-qr-card,
       .octopus-store-badge {
+        width: 100%;
+      }
+
+      .octopus-qr-card {
         width: 100%;
       }
 
@@ -531,7 +560,7 @@
               <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;format=svg&amp;bgcolor=ffffff&amp;color=111111&amp;data=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Foctopus-codex-code-app%2Fid6763834077" alt="QR code to download Octopus from the App Store" width="320" height="320" />
               <strong>Scan to download the app</strong>
             </a>
-            <a class="octopus-store-badge" href="https://apps.apple.com/us/app/octopus-codex-code-app/id6763834077" target="_blank" rel="noopener noreferrer" aria-label="Download Octopus on the App Store">
+            <a class="octopus-store-badge" href="https://apps.apple.com/us/app/octopus-codex-code-app/id6763834077" target="_blank" rel="noopener noreferrer" aria-label="Download Octopus on the App Store and reveal the QR code">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M16.365 1.43c0 1.14-.415 2.156-1.244 3.045-.999 1.057-2.21 1.67-3.522 1.565-.017-.14-.026-.287-.026-.442 0-1.095.477-2.266 1.32-3.086.421-.416.956-.763 1.605-1.043.648-.275 1.26-.426 1.837-.452.02.14.03.278.03.413Zm4.219 16.41c-.351.8-.737 1.53-1.159 2.19-.575.898-1.046 1.52-1.416 1.87-.571.577-1.183.87-1.835.88-.469 0-1.036-.135-1.699-.408-.665-.272-1.276-.407-1.833-.407-.585 0-1.211.135-1.878.407-.669.273-1.208.416-1.617.428-.625.027-1.252-.279-1.882-.916-.402-.38-.895-1.024-1.48-1.93-.627-.96-1.142-2.074-1.547-3.342-.434-1.37-.652-2.696-.652-3.977 0-1.468.317-2.733.953-3.79.498-.85 1.162-1.52 1.994-2.014.831-.493 1.729-.745 2.693-.758.528 0 1.221.164 2.083.492.859.327 1.411.492 1.657.492.184 0 .808-.195 1.87-.586.951-.345 1.753-.488 2.407-.431 1.775.143 3.109.846 4.001 2.11-1.587.961-2.373 2.308-2.36 4.038.011 1.348.503 2.47 1.476 3.364.441.417.933.739 1.48.969-.12.348-.247.683-.384 1.01Z" />
               </svg>
