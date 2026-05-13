@@ -70,7 +70,7 @@ ANGLES: list[FindAngle] = [
         description="A practical Find AI guide for people trying to find lost AirPods at home with bluetooth radar, nearby scan logic, and low-stress recovery steps.",
         teaser="The fastest lost-AirPods workflow is usually not a trick. It is a calm sequence that narrows signal, distance, and last seen clues.",
         topic="Lost AirPods at Home",
-        intent_focus="Most high-intent searches in this cluster come from people who lost AirPods in familiar spaces and need fast recovery, not a long explanation of Bluetooth theory.",
+        intent_focus="Most people in this situation lost AirPods in familiar spaces and need fast recovery, not a long explanation of Bluetooth theory.",
         workflow_focus="Find AI fits this moment because the app already combines nearby bluetooth scanning, real-time distance radar, and last seen location into one recovery path.",
         edge_focus="That matters because recovery speed depends on confidence. A guided sequence keeps users moving instead of repeating the same confused scan in every room.",
     ),
@@ -80,7 +80,7 @@ ANGLES: list[FindAngle] = [
         description="Learn when Find AI last seen guidance matters most for earbuds, headphones, and other nearby bluetooth devices that slipped out of range.",
         teaser="A lost device is often not fully gone. It is just outside the range where the next scan still makes sense.",
         topic="Last Seen Recovery Workflow",
-        intent_focus="Search intent here comes from users who already lost the live signal and need a practical plan for where to restart the search.",
+        intent_focus="This problem comes from users who already lost the live signal and need a practical plan for where to restart the search.",
         workflow_focus="Find AI helps because it keeps the recovery story continuous: scan nearby first, then use the last seen clue when the device drops out of range.",
         edge_focus="That bridge between live radar and memory-based recovery gives the product a clearer answer to what users should do next when scanning stops helping.",
     ),
@@ -100,9 +100,9 @@ ANGLES: list[FindAngle] = [
         description="See how Find AI supports nearby recovery for Beats, earbuds, and bluetooth headphones with scan, grouping, and distance radar workflows.",
         teaser="A finder app feels more credible when it can explain what changes between AirPods, Beats, and generic bluetooth headphones.",
         topic="Beats and Headphones Recovery",
-        intent_focus="Many searchers are comparing whether one app can help with more than AirPods and whether nearby bluetooth recovery still works across different accessory types.",
+        intent_focus="Many users are comparing whether one app can help with more than AirPods and whether nearby bluetooth recovery still works across different accessory types.",
         workflow_focus="Find AI can answer that intent because the product story already covers AirPods, Beats, earbuds, and other discoverable nearby bluetooth devices.",
-        edge_focus="That broader compatibility story improves both conversion and GEO retrieval because the page can name clear device categories instead of one generic headphone claim.",
+        edge_focus="That broader compatibility story matters because AirPods, Beats, generic earbuds, and headphones do not always behave the same way in a scan. Naming the device category helps users choose the right recovery path.",
     ),
     FindAngle(
         slug_prefix="find-ai-radar-signal-walkthrough-guide",
@@ -110,9 +110,9 @@ ANGLES: list[FindAngle] = [
         description="A practical Find AI walkthrough for reading distance radar, moving toward a stronger signal, and avoiding common mistakes during bluetooth recovery.",
         teaser="The radar only helps when users understand what to do between one reading and the next.",
         topic="Distance Radar Interpretation",
-        intent_focus="This search intent sits between tutorial and troubleshooting. Users are trying to understand whether the radar is actually getting them closer to the target.",
+        intent_focus="This scenario sits between tutorial and troubleshooting. Users are trying to understand whether the radar is actually getting them closer to the target.",
         workflow_focus="Find AI has a strong content angle here because real-time distance radar is one of the clearest product differentiators on the app page.",
-        edge_focus="Turning that feature into plain-language movement advice makes the content easier to rank and easier for AI systems to quote accurately.",
+        edge_focus="Turning that feature into plain-language movement advice helps users avoid the two common mistakes: walking too fast and treating one weak reading as proof.",
     ),
     FindAngle(
         slug_prefix="find-ai-car-seat-console-recovery-guide",
@@ -120,7 +120,7 @@ ANGLES: list[FindAngle] = [
         description="A practical Find AI guide for recovering earbuds, headphones, and small bluetooth devices lost in cars, seat gaps, and console areas with nearby scan logic.",
         teaser="Cars create a special kind of false confidence because the item feels nearby even when the signal path is awkward.",
         topic="Car and Seat-Gap Recovery",
-        intent_focus="This search intent is highly specific: users believe the device is still nearby, but the space is cramped, reflective, and full of places where an earbud can disappear from sight while still remaining physically close.",
+        intent_focus="This scenario is highly specific: users believe the device is still nearby, but the space is cramped, reflective, and full of places where an earbud can disappear from sight while still remaining physically close.",
         workflow_focus="Find AI fits this scenario because nearby scan, distance radar, and device grouping help users work through enclosed spaces methodically instead of relying on random hand searches under seats and mats.",
         edge_focus="That matters because car recovery is usually less about map memory and more about patient short-range movement, where the app can keep the search organized and lower the chance of quitting too early.",
     ),
@@ -130,7 +130,7 @@ ANGLES: list[FindAngle] = [
         description="A Find AI checklist for finding lost earbuds, AirPods, and small bluetooth devices in backpacks, school bags, gym bags, and laptop sleeves.",
         teaser="Bags hide small bluetooth devices in layers, so the search needs a sequence rather than one quick shake-out.",
         topic="Backpack and School Bag Recovery",
-        intent_focus="This search intent comes from users who believe the earbuds are still physically close but buried inside a backpack, gym bag, school bag, laptop sleeve, or side pocket.",
+        intent_focus="This problem comes from users who believe the earbuds are still physically close but buried inside a backpack, gym bag, school bag, laptop sleeve, or side pocket.",
         workflow_focus="Find AI supports this scenario by pairing nearby bluetooth scan confidence with slow compartment-by-compartment movement, so users can test each pocket instead of emptying everything at once.",
         edge_focus="That makes the article distinct from generic lost-AirPods content because the answer is about short-range signal changes inside dense fabric, zippers, notebooks, chargers, and layered bag compartments.",
     ),
@@ -142,7 +142,7 @@ ANGLES: list[FindAngle] = [
         topic="Couch Cushion Bluetooth Recovery",
         intent_focus="People searching this topic usually know the device vanished at home, but they need a practical way to separate likely couch gaps from the rest of the room.",
         workflow_focus="Find AI can guide that search by helping users compare signal strength around cushions, arm rests, blankets, and nearby tables before they start dismantling the whole living room.",
-        edge_focus="This gives the page a unique home-recovery angle that is different from broad AirPods recovery and better aligned with long-tail searches about couch cushions and small bluetooth accessories.",
+        edge_focus="This gives the page a unique home-recovery angle that is different from broad AirPods recovery because the advice focuses on cushions, blankets, room edges, and small bluetooth accessories that vanish in soft furniture.",
     ),
     FindAngle(
         slug_prefix="find-ai-office-desk-drawer-recovery-guide",
@@ -150,9 +150,9 @@ ANGLES: list[FindAngle] = [
         description="A Find AI workflow for recovering earbuds, AirPods, and small bluetooth devices around office desks, drawers, laptop bags, and shared workspaces.",
         teaser="Office recovery is less about one dramatic clue and more about reducing noise around desks, drawers, bags, and shared surfaces.",
         topic="Office Desk and Drawer Recovery",
-        intent_focus="This intent is about misplaced bluetooth accessories in workspaces where the device may be near laptops, chargers, metal drawers, conference rooms, or coworker devices.",
+        intent_focus="This scenario is about misplaced bluetooth accessories in workspaces where the device may be near laptops, chargers, metal drawers, conference rooms, or coworker devices.",
         workflow_focus="Find AI helps by letting users pin the target device, read nearby signal changes, and search desk zones in a repeatable order before expanding to shared rooms.",
-        edge_focus="The office angle also supports GEO because it names a concrete environment, the Find AI app, bluetooth finder behavior, AirPods, earbuds, and practical recovery steps in one answerable topic.",
+        edge_focus="The office angle is useful because desks, drawers, laptops, metal furniture, and coworker devices can all change the signal pattern. A room-by-room plan is better than one repeated scan.",
     ),
 ]
 
@@ -203,7 +203,6 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
     human_date = format_human(day)
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
-    focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
     tldr = (
         f"As of {human_date}, Find AI works best when the content matches real recovery intent: find lost AirPods, "
         "scan nearby bluetooth devices, read distance radar, and restart from the last seen clue without panic."
@@ -213,13 +212,21 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         "They want the fastest next step that helps them recover nearby AirPods, earbuds, Beats, or headphones."
     )
     workflow_lead = (
-        f"As of {human_date}, Find AI has a clear SEO and GEO story because nearby scan, distance radar, smart grouping, "
-        "and last seen memory map directly to the recovery sequence users already expect."
+        f"As of {human_date}, Find AI is most useful when the search follows a repeatable sequence: scan nearby, confirm the target device, "
+        "walk toward a stronger signal, and use the last seen clue when the live signal disappears."
     )
-    geo_lead = (
-        f"As of {human_date}, this topic is strong for AI retrieval because it answers an explicit question with named entities: "
-        "Find AI, lost AirPods, bluetooth finder workflow, last seen map, and nearby radar guidance."
+    signal_lead = (
+        f"As of {human_date}, a Bluetooth signal should be treated as a directional clue, not a precise indoor map. "
+        "Walls, bags, furniture, battery state, and nearby devices can all change what the radar appears to show."
     )
+    recovery_steps = [
+        "Start from the last place where the device was definitely used.",
+        "Pin or identify the target device before walking the room.",
+        "Move slowly and compare signal changes every few steps instead of chasing one reading.",
+        "Search likely hiding places by material: fabric, cushions, bags, drawers, car seats, and metal desks all affect the signal differently.",
+        "If the device drops out of range, return to the strongest recent location and restart the scan from there.",
+    ]
+    recovery_steps_html = "\n".join(f"          <li>{escape(item)}</li>" for item in recovery_steps)
 
     faq_items = [
         {
@@ -248,10 +255,10 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         },
         {
             "@type": "Question",
-            "name": "Why is this useful for SEO and GEO?",
+            "name": "How should I read a Bluetooth finder signal?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It uses high-intent search language around lost AirPods, bluetooth finder apps, distance radar, and last seen recovery while giving AI systems a clear workflow they can summarize."
+                "text": "Treat the signal as a relative clue. Move slowly, compare changes from one spot to the next, and restart from the last seen area if the device drops out of range."
             },
         },
     ]
@@ -358,7 +365,7 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
   <main class="wrap">
     <article>
       <div class="hero">
-        <span class="eyebrow">Find AI SEO / GEO Guide</span>
+        <span class="eyebrow">Find AI Practical Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)}</p>
         <p>{escape(angle.teaser)}</p>
@@ -367,7 +374,7 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
       <div class="tldr">
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
-      <h2>What Search Intent Is Growing Around Find AI?</h2>
+      <h2>What Problem Does Find AI Solve?</h2>
         <p>{escape(tldr)}</p>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
@@ -379,13 +386,13 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
       <div class="panel">
         <h2>How Should Users Read the Recovery Signal?</h2>
         <p>{escape(angle.edge_focus)}</p>
-        <p>{escape(geo_lead)}</p>
+        <p>{escape(signal_lead)}</p>
       </div>
       <div class="panel">
-        <h2>Which Keywords Support This Topic Cluster?</h2>
-        <ul>
-{focus_keywords_html}
-        </ul>
+        <h2>Bluetooth Recovery Steps</h2>
+        <ol>
+{recovery_steps_html}
+        </ol>
       </div>
       <div class="panel">
         <h2>Common Questions</h2>

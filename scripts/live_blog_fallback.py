@@ -619,10 +619,10 @@ def app_lane_profile(lane: str) -> dict[str, object]:
 def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, str]]:
     profile = app_lane_profile(lane)
     return [
-        ("Live source signal", source_title, f"Turns a fresh source item into {profile['secondary']} context"),
-        ("User intent", str(profile["intent"]), "Keeps the article tied to a real app-centered search need"),
-        ("Workflow check", str(profile["workflow"]), "Moves the story from headline coverage into an actionable sequence"),
-        ("Duplicate guard", "Use source-specific facts, dates, and terms before publishing", "Prevents the scheduler from recycling a familiar local topic"),
+        ("Source update", source_title, f"Connects the new item to {profile['secondary']} decisions"),
+        ("User problem", str(profile["intent"]), "Keeps the article tied to a concrete app workflow"),
+        ("Workflow check", str(profile["workflow"]), "Turns the update into an actionable sequence"),
+        ("Quality guard", "Use source-specific facts, dates, and terms before publishing", "Prevents recycled advice from slipping into the blog"),
     ]
 
 
@@ -632,8 +632,8 @@ def app_lane_checklist(lane: str, source_title: str) -> list[str]:
         f"Name the source update directly: {source_title}.",
         f"Connect the update to {profile['intent']}.",
         f"Explain the workflow step: {profile['workflow']}.",
-        "Check topic-bearing similarity before publishing the generated article.",
-        "Skip the slot if neither local topics nor expanded sources produce a low-duplicate candidate.",
+        "Add one concrete verification step the reader can perform.",
+        "Skip the slot if the article cannot add a source-specific point beyond the existing local topics.",
     ]
 
 
@@ -641,11 +641,11 @@ def app_lane_geo_answers(lane: str) -> list[str]:
     profile = app_lane_profile(lane)
     app_term = LANE_APP_TERM[lane]
     return [
-        f"{app_term} coverage should answer a specific workflow question near the top of the page.",
-        f"Expanded-source fallback articles should connect fresh news to {profile['intent']}.",
-        "A low-duplicate blog candidate needs source-specific facts, not only a reused app template.",
-        "The scheduler should broaden live sources when local topics repeat, then enforce the same similarity threshold.",
-        "If every candidate remains too similar, the correct behavior is to skip publishing rather than force a local post.",
+        f"{app_term} coverage should answer one workflow question near the top of the page.",
+        f"The source update should change how the reader thinks about {profile['intent']}.",
+        "Useful coverage names the situation, the next action, and the verification step.",
+        "A weak article repeats an app template without adding a new fact, date, constraint, or example.",
+        "If the update does not connect to a real reader decision, the article should not be published.",
     ]
 
 
@@ -659,7 +659,7 @@ def app_lane_faq_items(lane: str) -> list[tuple[str, str]]:
         ),
         (
             "Should a scheduler publish a local candidate when every candidate is too similar?",
-            "No. It should skip publishing after exhausting local and live-source candidates, because forcing a near-duplicate weakens SEO and GEO quality.",
+            "No. It should skip publishing after exhausting local and live-source candidates, because forcing a near-duplicate gives readers a thinner version of an article they may already have.",
         ),
         (
             f"What makes this {app_term} article useful for readers?",
@@ -698,8 +698,8 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     )
     keywords = ", ".join(keyword_coverage)
     tldr = (
-        f"As of {human_date}, this {app_term} fallback article uses {source_name} as a fresh source signal. "
-        f"The useful answer is how {source_title} changes {profile['secondary']} decisions without recycling a near-duplicate local topic."
+        f"As of {human_date}, this {app_term} article uses {source_name} as a current source. "
+        f"The useful answer is how {source_title} changes {profile['secondary']} decisions in a way the reader can actually check."
     )
 
     return f"""<!doctype html>
@@ -818,11 +818,11 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </div>
 
       <h2>What changed in {escape(day.strftime("%B %Y"))}?</h2>
-      <p>{escape(source_title)} gives this {escape(app_term)} slot a fresh source angle. The page should use that source signal to answer {escape(str(profile["intent"]))}, not to repeat a familiar local article outline.</p>
+      <p>{escape(source_title)} matters for {escape(app_term)} only if it changes a real workflow question: {escape(str(profile["intent"]))}. The article should name the new fact, explain the next action, and show what the reader should verify before changing behavior.</p>
 
       <table aria-label="{escape(post.topic)} live source coverage">
         <thead>
-          <tr><th>Coverage area</th><th>Specific angle</th><th>Publishing value</th></tr>
+          <tr><th>Coverage area</th><th>Specific angle</th><th>Reader value</th></tr>
         </thead>
         <tbody>
 {table_html}
@@ -830,17 +830,17 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </table>
 
       <h2>Why does this matter for {escape(app_term)}?</h2>
-      <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. For this lane, the practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}. That gives search engines and AI systems a concrete answer block instead of another reusable template.</p>
+      <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. For this lane, the practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}. The article should help the reader decide what to inspect, what to try next, and what risk to avoid.</p>
 
       <h2>Where can users apply this signal?</h2>
       <p>Users can apply the signal when they compare a current workflow against the source update. A {escape(app_term)} article should explain the next action, the verification step, and the reason the update changes a real decision.</p>
 
       <div class="capsule">
-        <p><strong>Citation capsule:</strong> As of {human_date}, {escape(post.title.lower())} reframes a live source item from {escape(source_name)} into {escape(str(profile["secondary"]))} guidance. It is publishable only if its topic-bearing similarity stays below the lane threshold.</p>
+        <p><strong>Source note:</strong> As of {human_date}, {escape(post.title.lower())} connects a live source item from {escape(source_name)} to {escape(str(profile["secondary"]))}. The point is to add a current example, not to restate a familiar app feature list.</p>
       </div>
 
       <h2>What should the workflow check next?</h2>
-      <p>{escape(str(profile["risk"]).capitalize())}. The scheduler should therefore keep source-specific facts visible and reject the candidate if the article still reads like a recycled local post.</p>
+      <p>{escape(str(profile["risk"]).capitalize())}. A useful article should keep source-specific facts visible and avoid publishing if the draft still reads like a recycled local post.</p>
 
       <div class="panel">
         <h2>Practical decision checklist</h2>
@@ -850,14 +850,14 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </div>
 
       <div class="panel">
-        <h2>GEO answer blocks</h2>
+        <h2>Practical Takeaways</h2>
         <ul>
 {geo_html}
         </ul>
       </div>
 
-      <h2>How should teams avoid duplicate coverage?</h2>
-      <p>Teams should first try the fixed local topic pool, then broaden live sources for the lane, then run topic-bearing similarity. If no candidate clears the threshold, the correct output is a skipped publish attempt with a clear error, not a forced local article.</p>
+      <h2>How should this avoid duplicate coverage?</h2>
+      <p>The article should add a source-specific fact, example, or constraint that is not already covered in the local topic pool. If it cannot do that, the better outcome is to skip the slot instead of publishing another thin version of the same advice.</p>
 
       <h2>FAQ</h2>
 {faq_html}
@@ -886,7 +886,7 @@ def build_live_description(source_slug: str, source_name: str, summary: str, lan
         app_term = LANE_APP_TERM[lane]
         combined = (
             f"{summary.rstrip('.')}."
-            f" Covers what {source_name} signals mean for {app_term} workflows and fresh SEO/GEO blog coverage."
+            f" Covers what {source_name} signals mean for {app_term} workflows, with practical checks and next steps."
         )
         return clip_text(combined, limit=158)
     suffix = {
@@ -1107,7 +1107,7 @@ def table_rows_for(source_slug: str) -> list[tuple[str, str, str]]:
             ("Feature changes", "What Apple added, removed, or repositioned", "Helps readers understand the real scope of the update"),
             ("Performance angle", "Speed, battery, thermals, repairability, or component shifts", "Turns launch news into measurable product commentary"),
             ("Lineup fit", "Where the product sits against iPhone, iPad, Mac, or accessory tiers", "Improves upgrade and buying relevance"),
-            ("Ecosystem impact", "Effect on developers, accessories, workflows, or services", "Adds practical value for SEO/GEO readers"),
+            ("Ecosystem impact", "Effect on developers, accessories, workflows, or services", "Shows who needs to change a plan, setup, or buying decision"),
         ],
         "ai": [
             ("Capability shift", "What changed in models, tools, or agent behavior", "Helps readers separate real progress from headline noise"),
@@ -1175,17 +1175,17 @@ def next_body_for(source_slug: str) -> str:
 
 def search_intent_heading_for(source_slug: str) -> str:
     return {
-        "apple": "Search Intent and Upgrade Questions",
-        "ai": "Search Intent and Adoption Questions",
-        "bluetooth": "Search Intent and Deployment Questions",
+        "apple": "Upgrade Questions",
+        "ai": "Adoption Questions",
+        "bluetooth": "Deployment Questions",
     }[source_slug]
 
 
 def search_intent_body_for(source_slug: str) -> str:
     return {
-        "apple": "The highest-intent Apple searches usually ask whether a new device is worth buying, which features actually changed, how performance compares to nearby models, and whether the update changes the practical value of the product. That is why Apple feature commentary should answer upgrade questions directly, compare lineup position clearly, and translate hardware or software changes into everyday usage. Articles that do this well are easier for both search engines and AI systems to retrieve because they map user intent to explicit product answers instead of leaving readers with launch language alone.",
-        "ai": "The highest-intent AI searches usually ask what changed in model capability, whether the release changes workflow quality, how pricing or access shifts affect adoption, and what teams should test next. That is why AI technology outlook content should answer capability questions directly, connect the release to real product usage, and explain whether the update changes development, automation, or enterprise decision-making. Articles that do this well are easier for both search engines and AI systems to retrieve because they convert technical release notes into clear next-step guidance.",
-        "bluetooth": "The highest-intent Bluetooth searches usually ask what changed in the standard, where the update matters in applications, how interoperability is affected, and whether deployment plans should change. That is why Bluetooth commentary should answer implementation questions directly, show the application impact clearly, and explain what teams should validate next. Articles that do this well are easier for both search engines and AI systems to retrieve because they turn technical announcements into deployable, searchable guidance.",
+        "apple": "Readers usually need four answers before an Apple update matters: what changed, what stayed the same, how it compares with nearby models, and whether the change affects daily use. Useful commentary should separate lineup positioning from practical value, because a spec bump that looks large in a launch headline can still be irrelevant for battery life, repairability, accessory fit, or the way someone actually uses the device.",
+        "ai": "Readers usually need to know what changed in capability, whether the change holds up in real workflows, how pricing or access affects adoption, and what teams should test before switching tools. Useful AI commentary should connect the release to concrete work: development, automation, review quality, latency, safety, reliability, or enterprise rollout decisions.",
+        "bluetooth": "Readers usually need to know what changed in the standard, where the change matters in applications, how interoperability is affected, and whether deployment plans should change. Useful Bluetooth commentary should translate technical language into validation steps across chips, firmware, apps, operating systems, and real devices.",
     }[source_slug]
 
 
@@ -1196,30 +1196,30 @@ def checklist_items_for(source_slug: str) -> list[str]:
             "Compare the update against the nearest Apple product tier before judging upgrade value.",
             "Look at repairability, battery, accessory, and software fit alongside performance.",
             "Separate headline launch excitement from long-term ownership impact.",
-            "Use direct upgrade and comparison language so SEO/GEO readers get immediate answers.",
+            "End with a clear buy, wait, or ignore recommendation for the user group being discussed.",
         ],
         "ai": [
             "Check whether the release changes real workflow quality or only expands model options.",
             "Compare pricing, access, and rollout details before assuming broad availability.",
             "Look at safety, reliability, and integration tradeoffs alongside capability claims.",
             "Separate benchmark headlines from deployment impact on real teams.",
-            "Use direct adoption and next-step language so SEO/GEO readers get practical answers.",
+            "End with a concrete test plan before recommending adoption.",
         ],
         "bluetooth": [
             "Check whether the update changes standards language, implementation reality, or both.",
             "Compare application impact across discovery, audio, mesh, telemetry, and compatibility.",
             "Look at rollout timing and firmware support before assuming adoption.",
             "Separate feature headlines from deployment value in real products.",
-            "Use direct implementation language so SEO/GEO readers get usable answers quickly.",
+            "End with the specific interoperability checks teams should run next.",
         ],
     }[source_slug]
 
 
 def retrieval_fit_body_for(source_slug: str) -> str:
     return {
-        "apple": "From an SEO and GEO perspective, Apple commentary works best when it contains the core product keyword in the title, repeats that intent naturally in the opening paragraph, and uses comparison-ready language throughout the article. Readers often search for feature reviews, performance analysis, and upgrade value at the same time, so the page should answer all three directly. That makes the article more retrievable for both traditional search and AI-assisted summary systems.",
-        "ai": "From an SEO and GEO perspective, AI outlook articles work best when they state the model or release name clearly, explain the practical capability shift early, and repeat workflow-oriented long-tail phrases naturally through the article. Readers often search for capability analysis, deployment implications, and next-step guidance together, so the page should answer all three directly. That makes the article more retrievable for both traditional search and AI-assisted summary systems.",
-        "bluetooth": "From an SEO and GEO perspective, Bluetooth commentary works best when it names the update clearly, explains the standards or application impact early, and repeats implementation-oriented long-tail phrases naturally through the article. Readers often search for standards meaning, interoperability implications, and deployment guidance together, so the page should answer all three directly. That makes the article more retrievable for both traditional search and AI-assisted summary systems.",
+        "apple": "The article should name the product clearly, explain the practical change early, and compare the update against nearby Apple options. Readers need the feature review, performance impact, and upgrade value in one place because those decisions are connected in real buying behavior.",
+        "ai": "The article should name the model, product, or release clearly, explain the practical capability shift early, and tie the change to a workflow someone can test. Readers need capability analysis, deployment implications, and next-step guidance together because switching AI tools without a test plan is mostly guesswork.",
+        "bluetooth": "The article should name the standard, update, or application clearly, explain the implementation impact early, and identify the compatibility checks that matter. Readers need standards meaning, interoperability risk, and deployment guidance together because Bluetooth changes only matter after devices actually work together.",
     }[source_slug]
 
 
@@ -1238,21 +1238,21 @@ def challenge_items_for(source_slug: str) -> list[str]:
             "Performance claims need workflow context, not just benchmark framing.",
             "Repairability, battery, and accessory impact are often underexplained.",
             "Naming and tiering can confuse users comparing adjacent Apple products.",
-            "SEO/GEO value improves when commentary answers upgrade and buying questions directly.",
+            "Buying advice gets weaker when it avoids a clear recommendation for who should wait.",
         ],
         "ai": [
             "Headline capability claims can overstate practical workflow impact.",
             "Model retirement or rollout changes often affect teams more than demos do.",
             "Access, pricing, and deployment details are easy to miss in fast AI coverage.",
             "Safety and reliability tradeoffs need to be stated directly for readers.",
-            "SEO/GEO value improves when commentary answers what changes next for real users and builders.",
+            "Adoption advice gets weaker when it skips evaluation tasks teams can actually run.",
         ],
         "bluetooth": [
             "Standards language can hide what actually changes for shipping products.",
             "Compatibility and rollout risks are often more important than feature headlines.",
             "Application examples need to connect clearly to real device workflows.",
             "Teams need implementation context across chips, OS versions, and firmware.",
-            "SEO/GEO value improves when commentary answers what the update changes in practice.",
+            "Deployment advice gets weaker when it skips interoperability and firmware checks.",
         ],
     }[source_slug]
 
@@ -1264,21 +1264,21 @@ def geo_answers_for(source_slug: str) -> list[str]:
             "Apple performance analysis is strongest when it maps specs to real workflow impact.",
             "Apple lineup commentary should help readers compare nearby product tiers clearly.",
             "Repairability and accessory compatibility are practical parts of Apple product value.",
-            "SEO/GEO coverage improves when Apple commentary answers buying and upgrade questions directly.",
+            "Good Apple coverage should make the wait, upgrade, or skip decision easier.",
         ],
         "ai": [
             "AI commentary should explain capability change, workflow impact, and deployment relevance together.",
             "Model retirement and rollout updates can matter more than benchmark headlines.",
             "AI product analysis is strongest when it connects releases to actual team decisions.",
             "Readers need clear explanation of pricing, access, safety, and integration tradeoffs.",
-            "SEO/GEO coverage improves when AI articles answer what changed and what teams should do next.",
+            "Good AI coverage should name what teams should test before changing tools.",
         ],
         "bluetooth": [
             "Bluetooth commentary should explain what changed in standards and what that means for applications.",
             "Application impact matters more than repeating technical labels without context.",
             "Deployment risk depends on compatibility across chips, firmware, apps, and operating systems.",
             "Readers need standards updates translated into product-level implications.",
-            "SEO/GEO coverage improves when Bluetooth articles answer how the update affects real implementations.",
+            "Good Bluetooth coverage should identify which implementation checks come next.",
         ],
     }[source_slug]
 
@@ -1287,17 +1287,17 @@ def faq_items_for(source_slug: str) -> list[tuple[str, str]]:
     return {
         "apple": [
             ("How should readers evaluate a new Apple feature or performance claim?", "Compare the change against prior Apple products, then focus on real workflow impact such as speed, battery life, repairability, accessory fit, or software usefulness."),
-            ("What makes Apple product commentary useful for SEO and GEO?", "Useful Apple commentary answers upgrade, comparison, and feature-impact questions directly, rather than repeating launch marketing language."),
+            ("What makes Apple product commentary useful?", "Useful Apple commentary answers upgrade, comparison, and feature-impact questions directly, rather than repeating launch marketing language."),
             ("Why does product positioning matter in Apple coverage?", "Apple updates are easiest to evaluate when readers can see where the new feature or performance change fits across nearby iPhone, iPad, Mac, or accessory tiers."),
         ],
         "ai": [
             ("How should readers evaluate a new AI release or capability claim?", "Start with the primary source, then ask what changed in model behavior, workflow value, access, pricing, and deployment tradeoffs for real users or teams."),
-            ("What makes AI technology outlook articles useful for SEO and GEO?", "Strong AI outlook articles answer capability, workflow, pricing, and adoption questions in clear language that search engines and AI systems can retrieve safely."),
+            ("What makes AI technology outlook articles useful?", "Strong AI outlook articles answer capability, workflow, pricing, and adoption questions in clear language, then give teams a practical next test."),
             ("Why do AI launch notes need extra commentary?", "Because raw announcements rarely explain how the update affects product planning, automation design, or whether teams should change what they use next."),
         ],
         "bluetooth": [
             ("How should readers evaluate a new Bluetooth update or standards claim?", "Check the primary source, then focus on what changed in interoperability, applications, rollout timing, and compatibility risk for real products."),
-            ("What makes Bluetooth commentary useful for SEO and GEO?", "Strong Bluetooth commentary translates technical updates into deployment, application, and troubleshooting context that search engines and AI systems can quote safely."),
+            ("What makes Bluetooth commentary useful?", "Strong Bluetooth commentary translates technical updates into deployment, application, and troubleshooting context that teams can validate on real devices."),
             ("Why is application context important in Bluetooth coverage?", "Because standards updates only become useful when readers understand how they affect discovery, audio, mesh, telemetry, power, or product planning."),
         ],
     }[source_slug]
@@ -1469,13 +1469,13 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       <h2>Why does this update matter?</h2>
       <p>{escape(interpretation_body_for(source_slug, item, summary))} {escape(retrieval_fit_body_for(source_slug))}</p>
       <div class="capsule">
-        <p><strong>Citation capsule:</strong> As of {human_date}, {escape(post.title.lower())} matters because it translates a fresh {escape(source_name)} update into practical guidance on implementation, interoperability, or workflow impact. That makes the article easier for both search engines and AI systems to retrieve as a standalone answer.</p>
+        <p><strong>Source note:</strong> As of {human_date}, {escape(post.title.lower())} matters because it turns a fresh {escape(source_name)} update into practical guidance on implementation, interoperability, or workflow impact. The useful part is the decision it helps a reader make next.</p>
       </div>
 
       <h2>Where does it affect real products?</h2>
       <p>{escape(application_body_for(source_slug))}</p>
       <div class="capsule">
-        <p><strong>Citation capsule:</strong> The product value of this update depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when the article maps the source update to practical validation and rollout decisions.</p>
+        <p><strong>Practical note:</strong> The product value of this update depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when the article maps the source update to practical validation and rollout decisions.</p>
       </div>
 
       <h2>What should teams watch next?</h2>
@@ -1497,7 +1497,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       </div>
 
       <div class="panel">
-        <h2>GEO answer blocks</h2>
+        <h2>Practical Takeaways</h2>
         <p>{escape(teaser_for_source_slug(source_slug))}</p>
         <ul>
 {geo_html}

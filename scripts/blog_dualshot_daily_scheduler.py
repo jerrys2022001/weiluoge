@@ -75,7 +75,7 @@ ANGLES: list[DualShotAngle] = [
         description="A practical Dual Camera guide for creators who want one iPhone take to become both landscape video and portrait content without repeating the shoot.",
         teaser="The strongest creator workflow is often not more editing. It is fewer repeated takes before editing even begins.",
         topic="One-Take Creator Workflow",
-        intent_focus="Users searching this topic usually already know they need both wide and vertical output. The real question is whether one iPhone workflow can reduce repeated setup, repeated speaking, and repeated camera alignment.",
+        intent_focus="Creators in this situation usually already know they need both wide and vertical output. The real question is whether one iPhone workflow can reduce repeated setup, repeated speaking, and repeated camera alignment.",
         workflow_focus="Dual Camera fits because the product promise is simple and high intent: record landscape and portrait video at the same time, then reuse the same moment across more than one publishing format.",
         edge_focus="That matters because creator fatigue usually starts before post-production. Each repeated take adds energy loss, continuity risk, and small framing differences that make the final package feel less consistent.",
         scenario_focus="This angle works well for solo creators, educators, and founders who want one clean take for tutorials, announcements, walkthroughs, and short social cutdowns.",
@@ -86,7 +86,7 @@ ANGLES: list[DualShotAngle] = [
         description="See how Dual Camera supports creators who need portrait clips for social posts and landscape footage for longer playback from the same iPhone recording session.",
         teaser="Publishing to more than one format stops feeling efficient the moment every format needs its own reshoot.",
         topic="Short-Form and Long-Form Recording",
-        intent_focus="This search intent comes from creators balancing YouTube-style playback with vertical platforms. They need a practical way to capture for both without making the shoot twice as slow.",
+        intent_focus="This problem comes from creators balancing YouTube-style playback with vertical platforms. They need a practical way to capture for both without making the shoot twice as slow.",
         workflow_focus="Dual Camera answers that need directly by turning one recording session into two output paths: wide footage for longer edits and portrait footage for vertical distribution.",
         edge_focus="That dual-format capture is useful because platform demands are different, but the moment being recorded is often the same. Capturing both early protects timing, expression, and framing continuity.",
         scenario_focus="This topic serves vloggers, product reviewers, coaches, and social teams that publish one core idea across multiple channels.",
@@ -97,7 +97,7 @@ ANGLES: list[DualShotAngle] = [
         description="A Dual Camera guide for creators recording product demos, walkthroughs, and tutorials that need both landscape playback and portrait cutdowns from one take.",
         teaser="A good product demo loses momentum when the presenter has to repeat the same explanation just to fit a second aspect ratio.",
         topic="Product Demos and Tutorials",
-        intent_focus="Users searching this cluster usually need faster demo production: one explanation, one gesture sequence, one setup, and multiple publishable outputs for product pages, social clips, and update posts.",
+        intent_focus="Creators in this scenario usually need faster demo production: one explanation, one gesture sequence, one setup, and multiple publishable outputs for product pages, social clips, and update posts.",
         workflow_focus="Dual Camera fits tutorial and demo work because it reduces the friction between a full explanation for long-form viewers and a compact vertical asset for discovery and promotion.",
         edge_focus="The scientific part is simple cause and effect: fewer retakes means more consistent voice, more consistent framing, and less editing work to reconcile near-duplicate clips that do not quite match.",
         scenario_focus="This is especially useful for app demos, hardware walkthroughs, tutorial segments, unboxings, and onboarding content that must explain once and publish many times.",
@@ -130,7 +130,7 @@ ANGLES: list[DualShotAngle] = [
         description="A Dual Camera guide to multicam and ultra wide framing choices for creators who want more usable composition before editing vertical and horizontal versions.",
         teaser="Good framing is not only about aesthetics. It decides how much room the editor has after the shoot is already over.",
         topic="Multicam and Ultra Wide Framing",
-        intent_focus="Searchers in this cluster want to know whether framing flexibility changes real output quality or is just another camera-feature checklist item.",
+        intent_focus="Creators comparing this workflow want to know whether framing flexibility changes real output quality or is just another camera-feature checklist item.",
         workflow_focus="Dual Camera can answer that because multicam and ultra wide support give creators more room to protect both aspect ratios before the edit starts.",
         edge_focus="This matters scientifically in the workflow sense: wider and cleaner source framing lowers the risk of cropping out hands, products, or contextual details once clips are reformatted for vertical distribution.",
         scenario_focus="This topic fits product tables, desk demos, interviews, walking shots, cooking clips, and tutorial scenes where composition must survive more than one final crop.",
@@ -141,7 +141,7 @@ ANGLES: list[DualShotAngle] = [
         description="See how Dual Camera helps creators capture behind-the-scenes content, process footage, and studio moments for both wide edits and vertical social posts.",
         teaser="Behind-the-scenes content works best when it feels natural, which is exactly why extra retakes can ruin it.",
         topic="Behind-the-Scenes Content",
-        intent_focus="Users searching this angle usually want more publishable context from the same shoot: process clips, setup moments, quick explanations, and extra footage that keeps the audience close to the work.",
+        intent_focus="Creators using this angle usually want more publishable context from the same shoot: process clips, setup moments, quick explanations, and extra footage that keeps the audience close to the work.",
         workflow_focus="Dual Camera supports that goal because creators can keep one natural recording session and still leave with footage that works for both recap edits and portrait snippets.",
         edge_focus="The hidden benefit is retention of spontaneity. Behind-the-scenes footage loses credibility when it is obviously recreated only to fit another format.",
         scenario_focus="This topic is useful for studio diaries, maker videos, setup tours, editing process clips, rehearsal footage, and launch-week creator updates.",
@@ -152,7 +152,7 @@ ANGLES: list[DualShotAngle] = [
         description="A Dual Camera workflow guide for small creator teams that need faster capture, cleaner handoffs, and more reusable footage from each iPhone shoot.",
         teaser="Small teams do not usually run out of ideas first. They run out of time, attention, and reshoot patience.",
         topic="Small-Team Creator Efficiency",
-        intent_focus="This query comes from small teams handling strategy, filming, editing, and publishing in the same week. They need a camera workflow that creates more usable assets without multiplying production time.",
+        intent_focus="This problem comes from small teams handling strategy, filming, editing, and publishing in the same week. They need a camera workflow that creates more usable assets without multiplying production time.",
         workflow_focus="Dual Camera helps because one session can deliver wide and portrait material for different editors, channels, or deadlines without reassembling the crew for another pass.",
         edge_focus="That operational gain is measurable: fewer resets, fewer repeated lines, faster edit branching, and less version confusion once the footage reaches post-production.",
         scenario_focus="This angle fits startup launch teams, lean ecommerce studios, creators with one assistant, and social teams building weekly product content on iPhone.",
@@ -206,25 +206,31 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
     human_date = format_human(day)
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
-    focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
     tldr = (
         f"As of {human_date}, Dual Camera is most useful when creators need one iPhone take to become both "
         "landscape video and portrait content. That workflow reduces reshoots, preserves timing, and creates more "
         "publishable footage for social clips, tutorials, demos, and travel posts."
     )
     answer_first = (
-        f"As of {human_date}, search intent around Dual Camera is high because creators are trying to solve a "
-        "practical problem: how to shoot once for short-form and long-form publishing without rebuilding the same scene twice."
+        f"As of {human_date}, Dual Camera solves a practical production problem: how to shoot once for short-form "
+        "and long-form publishing without rebuilding the same scene twice."
     )
     workflow_lead = (
-        f"As of {human_date}, Dual Camera has a strong SEO and GEO position because the feature list maps cleanly "
-        "to creator search language: dual recorder app for iPhone, record vertical and horizontal video together, multicam framing, "
-        "and one-take repurposing for tutorials, vlogs, and demos."
+        f"As of {human_date}, Dual Camera is useful when the capture plan is specific: decide which subject must stay readable in landscape, "
+        "which action must stay centered in portrait, and which parts of the scene cannot be cropped out later."
     )
-    geo_lead = (
-        f"As of {human_date}, this topic works well for AI retrieval when the article names the product, the workflow, "
-        "the use case, and the measurable benefit in plain language instead of vague creator buzzwords."
+    practical_lead = (
+        f"As of {human_date}, the strongest one-take workflow is built before recording: lock the scene, test audio, leave safe crop room, "
+        "and verify that both outputs still explain the same moment clearly."
     )
+    shoot_checklist = [
+        "Record a 10-second test and confirm both landscape and portrait framing before the real take.",
+        "Keep faces, products, hands, labels, and screen details inside the safe area for both outputs.",
+        "Check audio from the actual speaking distance, not from the setup position.",
+        "Avoid fast side-to-side gestures if the vertical crop needs to preserve detail.",
+        "Name the clip by scene or product before editing so the wide and vertical versions stay paired.",
+    ]
+    shoot_checklist_html = "\n".join(f"          <li>{escape(item)}</li>" for item in shoot_checklist)
 
     faq_items = [
         {
@@ -253,10 +259,10 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         },
         {
             "@type": "Question",
-            "name": "Why is this topic useful for SEO and GEO?",
+            "name": "What should creators check before recording?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It matches high-intent searches around iPhone creator workflows, dual-format recording, and repurposing one take into both portrait and landscape video while giving AI systems a clear answer structure."
+                "text": "Creators should check framing, audio, safe crop room, lighting changes, and whether the same take still works for both landscape playback and portrait social posts."
             },
         },
     ]
@@ -363,7 +369,7 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
   <main class=\"wrap\">
     <article>
       <div class=\"hero\">
-        <span class=\"eyebrow\">Dual Camera SEO / GEO Guide</span>
+        <span class=\"eyebrow\">Dual Camera Practical Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class=\"meta\">Published on {escape(human_date)} | Topic: {escape(post.topic)}</p>
         <p>{escape(angle.teaser)}</p>
@@ -372,7 +378,7 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
       <div class=\"tldr\">
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
-      <h2>What Search Intent Is Growing Around Dual Camera?</h2>
+      <h2>What Problem Does Dual Camera Solve?</h2>
         <p>{escape(tldr)}</p>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
@@ -387,14 +393,14 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         <p>{escape(angle.edge_focus)}</p>
       </div>
       <div class=\"panel\">
-        <h2>How Does This Improve SEO and GEO Retrieval?</h2>
-        <p>{escape(geo_lead)}</p>
-        <p>For search engines, the page answers a specific creator question with a named app, a specific workflow, and concrete use cases. For AI systems, the structure is easy to summarize because it connects product features to user outcomes without vague creator buzzwords.</p>
+        <h2>What Should Creators Check Before Recording?</h2>
+        <p>{escape(practical_lead)}</p>
+        <p>Before pressing record, check audio, lighting, subject distance, hand movement, and safe crop space. If either format hides the product, face, gesture, or key background detail, fix the setup before the take instead of repairing it in editing.</p>
       </div>
       <div class=\"panel\">
-        <h2>Which Keywords Support This Topic Cluster?</h2>
+        <h2>One-Take Setup Checklist</h2>
         <ul>
-{focus_keywords_html}
+{shoot_checklist_html}
         </ul>
       </div>
       <div class=\"panel\">

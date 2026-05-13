@@ -23,12 +23,17 @@ STOP_WORDS = {
     # App and product boilerplate should not make separate long-tail topics look duplicated.
     "ai", "app", "apps", "iphone", "ipad", "ios", "bluetooth", "explorer", "cleanup",
     "pro", "translate", "translation", "translator", "find", "finder", "dualshot",
-    "camera",
+    "camera", "x27",
 }
 SKIP_HEADERS = (
     "tl;dr",
     "high-intent keyword coverage",
+    "daily focus areas",
+    "daily cleanup focus areas",
+    "protocol focus areas",
     "geo answer blocks for ai retrieval",
+    "practical cleanup rules",
+    "practical protocol rules",
     "faq",
     "common questions",
     "source attribution",
@@ -98,7 +103,7 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 
 def extract_body_counter(html: str) -> Counter[str]:
-    if "Translate AI SEO / GEO Guide" in html:
+    if "Translate AI SEO / GEO Guide" in html or "Translate AI Practical Guide" in html:
         translate_common_tokens = {
             "translate",
             "translation",
@@ -130,7 +135,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             focus_parts.append(tldr_match.group(1))
 
         intent_match = re.search(
-            r"<h2>\s*What Search Intent Is Growing Around Translate AI\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*(?:What Search Intent Is Growing Around Translate AI\?|Why Do Users Keep Searching This Problem\?)\s*</h2>\s*<p>(.*?)</p>",
             html,
             re.IGNORECASE | re.DOTALL,
         )
@@ -169,7 +174,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
-    if "Find AI SEO / GEO Guide" in html:
+    if "Find AI SEO / GEO Guide" in html or "Find AI Practical Guide" in html:
         find_common_tokens = {
             "find",
             "finder",
@@ -205,7 +210,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             focus_parts.append(tldr_match.group(1))
 
         intent_match = re.search(
-            r"<h2>\s*What Search Intent Is Growing Around Find AI\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*(?:What Search Intent Is Growing Around Find AI\?|What Problem Does Find AI Solve\?)\s*</h2>\s*<p>(.*?)</p>",
             html,
             re.IGNORECASE | re.DOTALL,
         )
@@ -254,6 +259,80 @@ def extract_body_counter(html: str) -> Counter[str]:
             token
             for token in re.findall(r"[a-z0-9]{3,}", focus_text)
             if token not in STOP_WORDS
+        )
+
+    if "live workflow fallback" in html.lower() or "expanded-source fallback reframes" in html.lower():
+        app_live_common_tokens = {
+            "answer",
+            "angle",
+            "article",
+            "block",
+            "candidate",
+            "check",
+            "coverage",
+            "duplicate",
+            "expanded",
+            "fallback",
+            "familiar",
+            "fresh",
+            "guidance",
+            "item",
+            "lane",
+            "local",
+            "matter",
+            "matters",
+            "page",
+            "publish",
+            "publishable",
+            "readers",
+            "recycled",
+            "scheduler",
+            "search",
+            "signal",
+            "similarity",
+            "slot",
+            "source",
+            "systems",
+            "template",
+            "threshold",
+            "update",
+            "workflow",
+        }
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        hero_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_match:
+            focus_parts.append(hero_match.group(1).split("This expanded-source fallback", 1)[0])
+
+        first_row_match = re.search(
+            r"<tbody>\s*<tr>\s*<td>.*?</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if first_row_match:
+            focus_parts.extend(first_row_match.groups())
+
+        checklist_match = re.search(
+            r"<li>Name the source update directly:\s*(.*?)\.</li>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if checklist_match:
+            focus_parts.append(checklist_match.group(1))
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS and token not in app_live_common_tokens
         )
 
     if "expanded-source fallback" in html.lower() or "live-source" in html.lower():

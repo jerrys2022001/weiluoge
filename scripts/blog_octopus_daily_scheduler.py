@@ -78,18 +78,18 @@ ANGLES: list[OctopusAngle] = [
         description="A practical Octopus guide for approving agent actions, command requests, and permission decisions from iPhone or iPad without losing thread context.",
         teaser="The approval step is where mobile coding either feels useful or turns into a notification graveyard.",
         topic="Remote Coding Approvals",
-        intent_focus="Users searching this problem already trust the coding agent to do work. What they need next is a mobile approval flow that keeps the project moving when they are away from the desk.",
+        intent_focus="Developers in this situation already trust the coding agent to do work. What they need next is a mobile approval flow that keeps the project moving when they are away from the desk.",
         workflow_focus="Octopus fits this intent because the visible App Store copy centers approvals, command decisions, and permission handling as a first-class mobile workflow rather than a hidden admin screen.",
         edge_focus="That matters because approval latency compounds. A five-minute delay on every command review can turn a productive coding session into a stop-start chain that burns time on both the human side and the agent side.",
         scenario_focus="This angle serves founders, solo developers, and engineering leads who want to keep code tasks moving while commuting, walking between meetings, or stepping away from the main workstation.",
     ),
     OctopusAngle(
         slug_prefix="octopus-resume-codex-threads-away-from-desk-guide",
-        title="Why Octopus Works for Resuming Codex Threads Away from the Desk",
+        title="Resume Codex Threads from iPhone with Octopus",
         description="See how Octopus supports mobile Codex continuity on iPhone and iPad when you need to resume threads, review progress, and continue the same work state remotely.",
         teaser="Most remote coding friction starts when the thread context lives on one machine and the decision-maker lives somewhere else.",
         topic="Resume Codex Threads from Mobile",
-        intent_focus="Search intent here comes from users who do not want a brand-new mobile workflow. They want the same Codex thread, the same recent context, and the same work history from a smaller screen.",
+        intent_focus="The problem here comes from users who do not want a brand-new mobile workflow. They want the same Codex thread, the same recent context, and the same work history from a smaller screen.",
         workflow_focus="Octopus is a strong fit because the App Store page explicitly frames the product around carrying Codex sessions on your phone and resuming threads from iPhone or iPad.",
         edge_focus="That continuity matters because restarting a coding conversation from memory is slower than reopening the actual thread with its messages, approvals, tool results, and recent activity intact.",
         scenario_focus="This topic fits developers checking progress from lunch, product managers following a release thread from mobile, and founders reviewing agent output while away from the keyboard.",
@@ -100,7 +100,7 @@ ANGLES: list[OctopusAngle] = [
         description="A practical Octopus guide to adding voice notes, screenshots, images, and files from mobile so Codex threads stay grounded in real debugging context.",
         teaser="A remote coding thread gets much better the moment mobile context stops meaning text only.",
         topic="Voice, Image, and File Context",
-        intent_focus="Users searching this workflow usually hit the same limit: they can read the thread from mobile, but they also need a fast way to attach the bug screenshot, log capture, whiteboard photo, or spoken note that explains the next step.",
+        intent_focus="This workflow usually hits the same limit: users can read the thread from mobile, but they also need a fast way to attach the bug screenshot, log capture, whiteboard photo, or spoken note that explains the next step.",
         workflow_focus="Octopus fits because the visible product description calls out voice, images, and files directly, which makes the app easier to position for practical debugging and handoff workflows.",
         edge_focus="The real gain is compression. A screenshot, photo, or short voice note can replace several back-and-forth messages when the issue depends on visual state, phrasing nuance, or a quick spoken explanation.",
         scenario_focus="This topic works for mobile bug triage, on-call notes, QA follow-up, device screenshots, visual regressions, and rapid explanation of failing test behavior.",
@@ -118,11 +118,11 @@ ANGLES: list[OctopusAngle] = [
     ),
     OctopusAngle(
         slug_prefix="octopus-automation-runs-history-mobile-guide",
-        title="When Octopus Is Best for Reviewing Automation Runs and History",
-        description="A guide to using Octopus for mobile review of automation lists, run-now actions, and run history so repeated coding tasks stay visible outside the desktop session.",
+        title="Review Automation Runs on iPhone with Octopus",
+        description="Use Octopus to review automation lists, run-now actions, and run history from iPhone so repeated coding tasks stay visible.",
         teaser="Automation only saves time if someone can still see what ran, what failed, and what needs the next push.",
         topic="Automation Runs and History",
-        intent_focus="Users searching this problem usually have repeated tasks already in motion. Their question is whether mobile review can keep automation understandable without making them open the laptop every time a task finishes or stalls.",
+        intent_focus="Teams with this problem usually have repeated tasks already in motion. Their question is whether mobile review can keep automation understandable without making them open the laptop every time a task finishes or stalls.",
         workflow_focus="Octopus is well matched because the App Store page explicitly lists automation lists, run-now actions, and run history as part of the mobile feature set.",
         edge_focus="That matters operationally because the hardest part of automation is not pressing run. It is keeping visibility into retries, result state, and whether the system still reflects the intent of the original task.",
         scenario_focus="This angle serves teams running recurring code quality jobs, content schedulers, release checklists, indexing flows, and repeatable publishing tasks that need lightweight mobile oversight.",
@@ -133,7 +133,7 @@ ANGLES: list[OctopusAngle] = [
         description="See how Octopus can act as a second development screen for Codex sessions, approvals, and runtime status when the main coding work stays on another machine.",
         teaser="A second screen is useful only when it reduces context switching instead of creating more of it.",
         topic="Second Development Screen",
-        intent_focus="This query comes from developers comparing whether mobile access is merely passive or whether it can genuinely reduce the need to keep returning to the laptop for status checks and small decisions.",
+        intent_focus="This situation comes from developers comparing whether mobile access is merely passive or whether it can genuinely reduce the need to keep returning to the laptop for status checks and small decisions.",
         workflow_focus="Octopus has a good answer here because the App Store screenshot content includes the idea of a second development screen rather than just a generic companion app.",
         edge_focus="That is important because productive mobile tooling is usually about micro-decisions: glanceable state, quick approvals, short prompts, and targeted follow-up when the main environment is still doing the heavy work.",
         scenario_focus="This topic fits desk-plus-phone setups, iPad sidecar habits, team leads watching build progress, and solo developers who want ambient awareness of active coding sessions.",
@@ -144,8 +144,8 @@ ANGLES: list[OctopusAngle] = [
         description="A practical Octopus guide to runtime status, notifications, and Live Activity deep links for developers who need quicker follow-up from mobile.",
         teaser="A useful coding notification is not the alert itself. It is the speed of getting back into the right thread with the right context.",
         topic="Runtime Status and Live Activity",
-        intent_focus="Users searching this topic want to know whether mobile coding tools can reduce the gap between a status change and the next meaningful action.",
-        workflow_focus="Octopus fits because the visible feature list includes runtime status, notifications, and Live Activity deep links, which aligns neatly with high-intent searches around remote follow-up and mobile oversight.",
+        intent_focus="Developers in this situation want to know whether mobile coding tools can reduce the gap between a status change and the next meaningful action.",
+        workflow_focus="Octopus fits because the visible feature list includes runtime status, notifications, and Live Activity deep links, which align with real remote follow-up and mobile oversight needs.",
         edge_focus="That feature cluster matters because generic notifications create awareness, but deep links plus thread continuity create action. The difference is whether the user can do the next thing immediately.",
         scenario_focus="This angle serves developers following long-running tasks, approval queues, release-time checks, or background automation that changes state while they are away from the desk.",
     ),
@@ -155,7 +155,7 @@ ANGLES: list[OctopusAngle] = [
         description="A mobile Octopus workflow for triaging bugs, sharing failing test context, and sending fast follow-up notes to active Codex threads from iPhone or iPad.",
         teaser="A bug report gets much more useful when the person holding the phone can still add context to the exact thread doing the fix.",
         topic="Mobile Bug Triage",
-        intent_focus="Searchers in this cluster usually need a quick bridge between observation and action: a screenshot from QA, a short spoken note, a failing test summary, or a reminder to inspect a specific regression.",
+        intent_focus="Teams in this situation usually need a quick bridge between observation and action: a screenshot from QA, a short spoken note, a failing test summary, or a reminder to inspect a specific regression.",
         workflow_focus="Octopus is a strong fit because voice input, image input, files, markdown messages, and thread continuity create a cleaner path from mobile observation to agent action.",
         edge_focus="That matters because bug triage is highly perishable. The longer the context sits outside the thread, the more likely the details get rewritten badly, forgotten, or split across too many tools.",
         scenario_focus="This topic fits QA feedback, staging checks, test result review, release-day issue capture, and support escalations that need to move quickly into the coding workflow.",
@@ -166,7 +166,7 @@ ANGLES: list[OctopusAngle] = [
         description="A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.",
         teaser="Mobile access becomes valuable when the session list tells you where the real work lives without making you reconstruct it from memory.",
         topic="Project and Thread Organization",
-        intent_focus="This search intent comes from users who already have more than one workspace, server, or thread in motion and need a mobile view that keeps those contexts distinct.",
+        intent_focus="This problem comes from users who already have more than one workspace, server, or thread in motion and need a mobile view that keeps those contexts distinct.",
         workflow_focus="Octopus addresses that directly because the App Store feature list highlights server, project, thread, and recent session management rather than collapsing everything into one flat message history.",
         edge_focus="That structure matters because remote coding breaks down fast when the user cannot tell which environment the next approval or follow-up belongs to.",
         scenario_focus="This angle helps teams with multiple repos, consultants switching client contexts, and solo developers keeping side projects, production work, and experiments separated on mobile.",
@@ -177,7 +177,7 @@ ANGLES: list[OctopusAngle] = [
         description="See why Octopus host fingerprint confirmation and device Keychain storage matter for safer mobile coding access to Mac and server sessions.",
         teaser="Remote access only feels smooth after the trust step feels clear.",
         topic="SSH Fingerprint and Keychain Setup",
-        intent_focus="Users searching this area are looking past the headline workflow and into the credibility question: can a mobile coding companion handle connection trust and credential storage in a way that feels sane?",
+        intent_focus="Developers evaluating this area are looking past the headline workflow and into the credibility question: can a mobile coding companion handle connection trust and credential storage in a way that feels sane?",
         workflow_focus="Octopus has a clear product angle because the App Store feature bullets mention SSH host fingerprint confirmation and device Keychain storage as visible parts of the setup experience.",
         edge_focus="That matters because secure connection flows are part of product adoption. A mobile developer tool is easier to recommend when trust prompts are explicit and credential handling is predictable.",
         scenario_focus="This topic serves developers onboarding a new server, reconnecting from travel, reviewing SSH prompts on iPad, or trying to keep remote access both quick and understandable.",
@@ -231,23 +231,54 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
     human_date = format_human(day)
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
-    focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
     tldr = (
-        f"As of {human_date}, Octopus is most useful when a Codex session needs to keep moving after the developer leaves the desk. "
-        "The product fits approvals, thread continuity, SSH-linked work, automation follow-up, and mobile context capture from iPhone or iPad."
+        f"As of {human_date}, Octopus is most useful when a Codex session needs to keep moving away from the desk. "
+        "It covers thread review, action approval, SSH-backed access, automation checks, and quick context capture from iPhone or iPad."
     )
     answer_first = (
-        f"As of {human_date}, high-intent Octopus searches are not generic mobile coding queries. "
-        "They are workflow questions about approvals, thread continuity, runtime status, automation history, and how to add useful context from a phone."
+        f"As of {human_date}, most Octopus use cases come down to a short list of actions: open the same thread, review the next command, add missing context, and return to the session later."
     )
     workflow_lead = (
-        f"As of {human_date}, Octopus has a strong SEO and GEO position because the visible App Store feature list maps directly to practical developer language: "
-        "connect to a Mac or server, resume threads, approve actions, add voice or image context, and monitor automation runs remotely."
+        f"As of {human_date}, the feature list is concrete: Mac or server connections, thread and project history, approvals, voice and image input, file context, automation runs, SSH trust prompts, and live status."
     )
-    geo_lead = (
-        f"As of {human_date}, this topic is easy for AI systems to retrieve because it names the app, the device context, the coding workflow, "
-        "and the outcome in explicit terms instead of vague productivity language."
-    )
+    action_items = [
+        "Open the current Codex thread from iPhone or iPad.",
+        "Check the active server, project, and recent session state.",
+        "Review the next command, approval, or permission request.",
+        "Attach voice notes, screenshots, images, or files when the thread needs more context.",
+        "Use automation history and runtime status to see what ran and what still needs attention.",
+    ]
+    action_html = "\n".join(f"          <li>{escape(item)}</li>" for item in action_items)
+    approval_checks = [
+        "Does the command match the project and branch shown in the thread?",
+        "Is the requested permission proportional to the task, or is it asking for broader access than needed?",
+        "Did the previous tool result finish cleanly, or is the agent acting on a failed command?",
+        "Would this action write files, change dependencies, run network calls, or publish content?",
+        "Is there enough context in the thread to approve from mobile, or should the decision wait for desktop review?",
+    ]
+    approval_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in approval_checks)
+    context_checks = [
+        "Keep the server, project, and branch visible before making an approval decision.",
+        "Use screenshots or files when the thread depends on UI state, logs, or a failing test artifact.",
+        "Use voice notes for short direction changes, but keep destructive actions written clearly in the thread.",
+        "Return to the desktop for broad file rewrites, merge conflict resolution, dependency upgrades, or publishing steps.",
+        "Treat repeated automation failures as a stop signal until the root cause is inspected in the full workspace.",
+    ]
+    context_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in context_checks)
+    workflow_steps = [
+        "Open the recent thread or session.",
+        "Verify the server or project that owns the work.",
+        "Add the missing context if the task depends on a screenshot, voice note, or file.",
+        "Approve the action if it matches the thread, then return to the same session later.",
+    ]
+    workflow_html = "\n".join(f"          <li>{escape(item)}</li>" for item in workflow_steps)
+    limit_items = [
+        "Use the phone for review, approval, short prompts, screenshots, logs, and follow-up notes.",
+        "Use the desktop when the decision requires reading a large diff, resolving merge conflicts, editing many files, or comparing long terminal output.",
+        "Treat SSH fingerprint prompts as trust decisions, not routine taps. Confirm the host before continuing.",
+        "If automation history shows repeated failures, stop approving retries and inspect the root cause from the full workspace.",
+    ]
+    limit_html = "\n".join(f"          <li>{escape(item)}</li>" for item in limit_items)
 
     faq_items = [
         {
@@ -276,10 +307,10 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         },
         {
             "@type": "Question",
-            "name": "Why is Octopus a good SEO and GEO topic?",
+            "name": "When should I avoid approving from mobile?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It matches high-intent searches around mobile coding approvals, Codex thread continuity, remote server context, and developer workflow follow-up while giving AI systems a structured answer to quote."
+                "text": "Avoid approving from mobile when the request depends on a large diff, unclear file changes, a risky permission, a failed previous command, or an SSH host you cannot verify."
             },
         },
     ]
@@ -402,7 +433,7 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
   <main class="wrap">
     <article>
       <div class="hero">
-        <span class="eyebrow">Octopus SEO / GEO Guide</span>
+        <span class="eyebrow">Octopus Practical Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)}</p>
         <p>{escape(angle.teaser)}</p>
@@ -411,28 +442,41 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
       <div class="tldr">
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
-      <h2>What Search Intent Is Growing Around Octopus?</h2>
-        <p>{escape(answer_first)}</p>
-        <p>{escape(angle.intent_focus)}</p>
       <div class="panel">
-        <h2>Why Does This Workflow Fit Octopus?</h2>
-        <p>{escape(workflow_lead)}</p>
-        <p>{escape(angle.workflow_focus)}</p>
+        <h2>What Octopus Does</h2>
+        <ul>
+{action_html}
+        </ul>
       </div>
       <div class="panel">
-        <h2>Which Mobile Coding Scenario Benefits Most?</h2>
+        <h2>How To Use It</h2>
+        <ol>
+{workflow_html}
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>What To Check Before Approving</h2>
+        <ul>
+{approval_checks_html}
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>When It Helps Most</h2>
+        <p>{escape(answer_first)}</p>
+        <p>{escape(angle.intent_focus)}</p>
         <p>{escape(angle.scenario_focus)}</p>
         <p>{escape(angle.edge_focus)}</p>
       </div>
       <div class="panel">
-        <h2>Why Does This Work for SEO and GEO?</h2>
-        <p>{escape(geo_lead)}</p>
-        <p>For search engines, the page answers a specific mobile coding question with a named app and concrete workflow terms. For AI systems, the structure is easy to cite because it connects Octopus, Codex sessions, remote approvals, and mobile context capture in plain language.</p>
+        <h2>Limits And Failure Modes</h2>
+        <ul>
+{limit_html}
+        </ul>
       </div>
       <div class="panel">
-        <h2>Which Keywords Support This Topic Cluster?</h2>
+        <h2>Mobile Review Checklist</h2>
         <ul>
-{focus_keywords_html}
+{context_checks_html}
         </ul>
       </div>
       <div class="panel">
@@ -443,6 +487,8 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         <p>Yes. The product story explicitly includes approval cards for command and permission decisions, which makes Octopus relevant for mobile follow-up on active coding threads.</p>
         <h3>Does Octopus support SSH and server-backed workflows?</h3>
         <p>Yes. The visible App Store feature list highlights Codex app-server and SSH connections, along with server, project, thread, and recent session management.</p>
+        <h3>When should I avoid approving from mobile?</h3>
+        <p>Do not approve from mobile when the action depends on a large diff, a broad permission, an unclear server identity, repeated automation failures, or terminal output that needs careful desktop review.</p>
       </div>
       <div class="panel">
         <h2>Related Product Paths</h2>
