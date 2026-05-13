@@ -16,6 +16,7 @@ REQUIRED_MODULES = (
     "blog_find_ai_daily_scheduler",
     "blog_dualshot_daily_scheduler",
     "blog_translate_ai_daily_scheduler",
+    "blog_octopus_daily_scheduler",
     "publish_unique_blog_slot",
     "run_scheduled_blog_slot",
     "blog_publish_watchdog",

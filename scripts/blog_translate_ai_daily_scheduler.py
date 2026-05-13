@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish one daily English blog post focused on Translate AI use cases and search intent."""
+"""Publish one daily English blog post focused on practical Translate AI use cases."""
 
 from __future__ import annotations
 
@@ -77,7 +77,7 @@ ANGLES: list[TranslateAngle] = [
         description="A practical Translate AI guide for users who need offline translation, downloadable language packs, and lower-stress travel workflows on iPhone and iPad.",
         teaser="Offline translation sounds like a backup feature until the trip starts and the signal stops cooperating.",
         topic="Offline Translation for Travel",
-        intent_focus="Offline translation matters most when the user cannot afford hesitation: airport signs, taxi handoffs, hotel check-in, menus, and payment questions. Search intent here is not academic. It is immediate, practical, and tied to moments where a weak connection creates real friction.",
+        intent_focus="Offline translation matters most when the user cannot afford hesitation: airport signs, taxi handoffs, hotel check-in, menus, and payment questions. The need is immediate, practical, and tied to moments where a weak connection creates real friction.",
         workflow_focus="Translate AI fits this scenario because the product page already frames downloadable language packs as part of the core workflow, not as an afterthought. That makes the app easier to position for users who want one translation setup before the trip rather than five separate tools after something goes wrong.",
         edge_focus="The real edge is emotional, not just technical. When translation still works offline, the user keeps momentum, asks the next question faster, and avoids the awkward pause where everyone waits for the phone to reconnect.",
         comparison_need="Offline access before the trip starts",
@@ -91,7 +91,7 @@ ANGLES: list[TranslateAngle] = [
         teaser="The best camera translation workflow is the one you can trust when the line behind you is getting longer.",
         topic="Photo and OCR Translation",
         intent_focus="Photo translation queries usually come from people who do not want to retype anything. They want to point the camera at a menu, sign, label, or short note and understand the important part before the moment passes.",
-        workflow_focus="Translate AI is well positioned for this because the product page already centers photo and OCR translation as a headline feature. That lets the blog answer high-intent search terms directly while pushing readers into the product page with almost no conceptual gap.",
+        workflow_focus="Translate AI is well positioned for this because the product page already centers photo and OCR translation as a headline feature. The workflow is easy to explain because the reader can move directly from the article to the matching product action.",
         edge_focus="OCR feels small on paper, but in practice it changes user behavior. People translate more often when the cost of checking meaning drops from typing a full phrase to simply holding up the phone for two seconds.",
         comparison_need="Fast reading of printed text",
         comparison_fit="Use camera and OCR translation for menus, posters, labels, handwritten notes, and simple documents.",
@@ -103,8 +103,8 @@ ANGLES: list[TranslateAngle] = [
         description="A Translate AI guide to voice translation on iPhone, focused on pronunciation, short replies, and quick conversation support that feels usable in real moments.",
         teaser="Voice translation only feels impressive for a second; what matters is whether it keeps the conversation moving.",
         topic="Voice Translation for Conversations",
-        intent_focus="Users searching for a voice translator app are usually not trying to demo the feature to friends. They need a reply, a clarification, or a polite follow-up in a real exchange where speed matters more than theoretical perfection.",
-        workflow_focus="Translate AI helps here because voice translation, listen-back pronunciation, and AI-enhanced phrasing sit in one app story. That combination supports a stronger SEO answer for users comparing literal output with something they can actually say out loud.",
+        intent_focus="Users who need a voice translator are usually not trying to demo the feature to friends. They need a reply, a clarification, or a polite follow-up in a real exchange where speed matters more than theoretical perfection.",
+        workflow_focus="Translate AI helps here because voice translation, listen-back pronunciation, and AI-enhanced phrasing sit in one app story. That combination helps users compare a literal output with wording they can actually say out loud.",
         edge_focus="The hidden win is confidence. Users speak sooner when they can hear the phrase back, sense the tone, and avoid the stiff literal translation that makes them sound more robotic than they intended.",
         comparison_need="Speak and listen during live moments",
         comparison_fit="Start with voice input, check the result, and use pronunciation support before saying it aloud.",
@@ -116,7 +116,7 @@ ANGLES: list[TranslateAngle] = [
         description="Learn why Translate AI highlights AI Mode for more natural phrasing and how that matters when direct word-for-word translation feels awkward on iPhone.",
         teaser="Sometimes the literal version is technically correct and still completely wrong for the situation.",
         topic="AI-Enhanced Phrasing",
-        intent_focus="A lot of translation search intent now sits between raw meaning and usable tone. Users want the sentence that gets the point across without sounding like a dictionary entry glued together in a hurry.",
+        intent_focus="A lot of translation work now sits between raw meaning and usable tone. Users want the sentence that gets the point across without sounding like a dictionary entry glued together in a hurry.",
         workflow_focus="Translate AI can speak to that need because AI Mode is already framed as part of the product promise. That gives the blog a clear angle: not just 'can it translate' but 'can it help the user sound more natural when tone matters'.",
         edge_focus="This is where the app stops being only a utility and starts feeling like a communication assistant. When the output reads smoother, the user edits less, second-guesses less, and keeps the conversation moving.",
         comparison_need="Natural wording instead of literal output",
@@ -142,8 +142,8 @@ ANGLES: list[TranslateAngle] = [
         description="A Translate AI guide for users comparing all-in-one translator apps that combine typed text, voice translation, and photo OCR workflows on iPhone.",
         teaser="Bundling everything into one app only helps if the workflow still feels obvious when you are in a hurry.",
         topic="All-in-One Translation Workflow",
-        intent_focus="This search intent comes from comparison fatigue. Users are tired of opening one app for typed text, another for camera OCR, and a third for audio, then trying to remember where the useful result went.",
-        workflow_focus="Translate AI has a strong SEO/GEO story here because its product page already joins text, voice, photo translation, AI mode, and history into one practical workflow. The blog can then answer 'why one app' without inventing features the page does not support.",
+        intent_focus="This problem comes from comparison fatigue. Users are tired of opening one app for typed text, another for camera OCR, and a third for audio, then trying to remember where the useful result went.",
+        workflow_focus="Translate AI is useful here because text, voice, photo translation, AI mode, and history live in one practical workflow. The user can switch input modes without rebuilding the task in another app.",
         edge_focus="Consolidation matters because memory matters. If the user remembers one icon and one interface, they are more likely to use translation in the moment instead of delaying the task until it no longer matters.",
         comparison_need="One place for text, voice, and image input",
         comparison_fit="Keep translation, pronunciation, OCR capture, and saved results inside the same Translate AI workflow.",
@@ -168,8 +168,8 @@ ANGLES: list[TranslateAngle] = [
         description="A Translate AI guide for users who want translation, examples, meanings, and pronunciation support to feel useful for language learning instead of passive lookup.",
         teaser="If the app can only answer the question once, it helps; if it helps you remember next time, it starts pulling real weight.",
         topic="Language Learning Support",
-        intent_focus="Some translation searches are really learning searches in disguise. The user needs the answer now, but they also want enough context to remember the phrase, hear it, and reuse it next time.",
-        workflow_focus="Translate AI has a clean story here because meanings, examples, synonyms, and pronunciation already appear on the product page. The blog can translate that into search language people actually use when comparing translator apps for study support.",
+        intent_focus="Some translation tasks are really learning tasks in disguise. The user needs the answer now, but they also want enough context to remember the phrase, hear it, and reuse it next time.",
+        workflow_focus="Translate AI has a clean story here because meanings, examples, synonyms, and pronunciation already appear on the product page. The article can turn that feature set into study advice people can actually follow.",
         edge_focus="Learning sticks when the app gives a little more than raw output. Hearing pronunciation, seeing examples, and revisiting history turns the translation result into something the user can recognize later without starting from zero.",
         comparison_need="More context than a one-line translation result",
         comparison_fit="Use examples, meanings, synonyms, and pronunciation cues to reinforce what the translated phrase actually means in practice.",
@@ -194,12 +194,12 @@ ANGLES: list[TranslateAngle] = [
         description="A Translate AI blog guide on retention features like history, OCR, voice support, and AI phrasing that make a translator app useful beyond one quick test.",
         teaser="Download is easy; staying on the home screen is the hard part.",
         topic="Why Users Keep a Translator App",
-        intent_focus="Search intent at the comparison stage often sounds like feature shopping, but underneath it is a retention question: will this app still matter next week, or is it only for one trip and one screenshot?",
+        intent_focus="Comparison-stage thinking often sounds like feature shopping, but underneath it is a retention question: will this app still matter next week, or is it only for one trip and one screenshot?",
         workflow_focus="Translate AI can answer that better than a generic list post because the product page already covers the features that drive repeat use: multi-input translation, history, offline access, examples, and pronunciation support.",
         edge_focus="Retention is built from small repeat wins. If the user keeps finding one more useful thing inside the app, the product earns another day on the device instead of getting archived into a folder and forgotten.",
         comparison_need="Value after the novelty phase ends",
         comparison_fit="Keep using Translate AI for recurring phrases, quick OCR checks, voice support, and better phrasing in everyday communication.",
-        comparison_why="That gives the app a stronger long-tail story for both search engines and AI retrieval systems.",
+        comparison_why="That gives the app a stronger repeat-use case because the same phrase, screenshot, or voice task can come back later without starting from zero.",
     ),
     TranslateAngle(
         slug_prefix="translate-ai-pronunciation-drills-daily-practice-guide",
@@ -220,7 +220,7 @@ ANGLES: list[TranslateAngle] = [
         description="A practical Translate AI OCR guide for receipts, invoices, and printed documents when you need meaning fast without retyping on iPhone or iPad.",
         teaser="Typing tiny numbers and item names is the slowest way to understand a receipt.",
         topic="Receipts, Invoices, and OCR Translation",
-        intent_focus="Receipt and invoice translation intent is high because the user needs an answer now: what was charged, what the item is, and whether the quantity or currency matches expectations. This is more about accuracy and speed than language learning.",
+        intent_focus="Receipt and invoice translation is urgent because the user needs an answer now: what was charged, what the item is, and whether the quantity or currency matches expectations. This is more about accuracy and speed than language learning.",
         workflow_focus="Translate AI fits this use case because camera OCR reduces input friction. Users can capture the printed text, translate it, then focus on key fields like totals, taxes, and item descriptions without rewriting everything by hand.",
         edge_focus="The real edge is minimizing mistakes. OCR-based capture reduces typos and lets the user verify the important lines quickly before they leave the store or close an expense report.",
         comparison_need="Understand printed documents quickly",
@@ -233,7 +233,7 @@ ANGLES: list[TranslateAngle] = [
         description="A practical Translate AI guide for bilingual meeting notes, quick summaries, and wording checks when teams need faster review across languages on iPhone and iPad.",
         teaser="Meeting notes are useful only if the second review is faster than rewriting everything from scratch.",
         topic="Bilingual Meeting Notes Review",
-        intent_focus="This search intent comes from work and study scenarios where users need to review notes, summaries, and action items across two languages without turning a simple check into a full translation project.",
+        intent_focus="This problem comes from work and study scenarios where users need to review notes, summaries, and action items across two languages without turning a simple check into a full translation project.",
         workflow_focus="Translate AI supports this because users can translate short sections, compare phrasing, and keep the useful version in history for follow-up messages or later edits.",
         edge_focus="The product value here is iteration speed. A translator that helps users compare and refine short note blocks becomes more useful than one that only handles one-off sentence conversion.",
         comparison_need="Review short bilingual notes quickly",
@@ -246,7 +246,7 @@ ANGLES: list[TranslateAngle] = [
         description="A Translate AI camera guide for labels, packaging, ingredients, and short printed details when users need quick OCR translation on iPhone.",
         teaser="Packaging text is where small print turns into slow decisions.",
         topic="Labels, Packaging, and OCR",
-        intent_focus="Users searching this topic usually need fast interpretation of labels, ingredients, warnings, or product details while shopping or checking items at home. The intent is immediate and practical.",
+        intent_focus="Users in this situation usually need fast interpretation of labels, ingredients, warnings, or product details while shopping or checking items at home. The need is immediate and practical.",
         workflow_focus="Translate AI fits because camera OCR lets users point at dense packaging text, capture the useful lines, and translate them without typing product terms manually.",
         edge_focus="The benefit is not just speed. It also reduces misreads on tiny print, which makes the app more trustworthy for decisions that depend on specific wording.",
         comparison_need="Understand label details on the spot",
@@ -302,23 +302,30 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
     human_date = format_human(day)
     keywords = build_article_keywords(day, angle)
     keyword_text = ", ".join(keywords)
-    focus_keywords_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_window(day, size=6))
     tldr = (
         f"As of {human_date}, Translate AI is most compelling when users need one iPhone workflow for text translation, "
         "voice support, photo OCR, offline packs, and more natural phrasing instead of juggling separate utilities."
     )
     answer_first = (
-        f"As of {human_date}, the highest-intent Translate AI searches are not generic 'translator app' queries anymore. "
-        "They are use-case searches: offline travel translation, camera text reading, quick voice replies, and smoother AI-assisted phrasing."
+        f"As of {human_date}, Translate AI is most useful in concrete moments: offline travel translation, "
+        "camera text reading, quick voice replies, and smoother AI-assisted phrasing."
     )
     workflow_lead = (
         f"As of {human_date}, the product story works because Translate AI does not ask the user to choose one input mode forever. "
         "It gives them text, voice, photo and OCR, history, and downloadable language packs in the same path."
     )
-    geo_lead = (
-        f"As of {human_date}, this topic is good for both SEO and GEO because the answer is explicit, entity-rich, and easy for AI systems to cite: "
-        "what Translate AI does, who it helps, and why the workflow matters in practical situations."
+    practical_lead = (
+        f"As of {human_date}, this topic is useful when the article explains the input, the risk, and the review step: "
+        "what the user translates, where OCR or speech can fail, and when a human should re-check the result."
     )
+    verification_items = [
+        "Check names, numbers, dates, currencies, addresses, and product labels before acting on the output.",
+        "For voice input, replay the source phrase if the room is noisy or the speaker used names, slang, or abbreviations.",
+        "For OCR, zoom in on small print and compare the translated line against the original layout.",
+        "Use AI Mode for tone and phrasing, but keep the original meaning visible while editing.",
+        "Get human review for legal, medical, contractual, immigration, or safety-critical text.",
+    ]
+    verification_items_html = "\n".join(f"          <li>{escape(item)}</li>" for item in verification_items)
 
     faq_items = [
         {
@@ -477,7 +484,7 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
   <main class="wrap">
     <article>
       <div class="hero">
-        <span class="eyebrow">Translate AI SEO / GEO Guide</span>
+        <span class="eyebrow">Translate AI Practical Guide</span>
         <h1>{escape(post.title)}</h1>
         <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | App focus: Translate AI</p>
         <p>{escape(answer_first)}</p>
@@ -532,20 +539,18 @@ def render_article_html(day: date, angle: TranslateAngle, post: PostMeta) -> str
       </div>
 
       <div class="panel">
-        <h2>Why Does This Topic Work For SEO And GEO?</h2>
-        <p>{escape(geo_lead)}</p>
+        <h2>What Should Users Verify Before Trusting The Result?</h2>
+        <p>{escape(practical_lead)}</p>
         <p>{escape(tldr)}</p>
         <p>
-          The entity is explicit, the workflow is concrete, and the intent is narrow enough to rank for useful long-tail queries such as
-          <strong>ai translator app iphone</strong>, <strong>photo translator app ios</strong>, <strong>offline translation app iphone</strong>,
-          and <strong>voice translator app iphone</strong>.
+          Check names, numbers, dates, currency, addresses, tone, and any sentence that changes a decision. For travel and study, a fast translation is often enough. For contracts, medical text, legal wording, or high-stakes work, use Translate AI as a first pass and get human review before acting.
         </p>
       </div>
 
       <div class="panel">
-        <h2>Focus Keywords For This Article</h2>
+        <h2>Translation Review Checklist</h2>
         <ul>
-{focus_keywords_html}
+{verification_items_html}
         </ul>
       </div>
 

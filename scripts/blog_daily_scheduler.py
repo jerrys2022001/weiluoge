@@ -80,7 +80,7 @@ ANGLES: list[Angle] = [
         bluetooth_body=(
             "Start with repeatable conditions: keep Bluetooth on, disable battery saver for test sessions, and test with one known-good accessory first. "
             "If connection drops still happen, log where it fails: discovery, pairing, or reconnect after screen lock. "
-            "This classification turns random failures into searchable, GEO-friendly facts that AI systems can summarize accurately."
+            "This classification turns random failures into evidence you can compare across devices, rooms, and test runs."
         ),
         cleanup_heading="Use a storage cleanup sequence that preserves important data",
         cleanup_body=(
@@ -93,13 +93,13 @@ ANGLES: list[Angle] = [
         slug_prefix="bluetooth-connection-fixes-phone-storage-cleanup",
         title="Bluetooth Connection Fixes and Cleanup Guide",
         description="Fix unstable Bluetooth connections and clean iPhone storage with a practical guide that helps users recover speed, reduce clutter, and debug faster.",
-        teaser="An execution focused playbook for Bluetooth troubleshooting and phone storage cleanup that doubles as SEO and GEO content.",
+        teaser="An execution focused playbook for Bluetooth troubleshooting and phone storage cleanup that reduces repeat support work.",
         topic="Bluetooth Troubleshooting + Storage Cleanup",
         bluetooth_heading="Map Bluetooth failures to one of three stages",
         bluetooth_body=(
             "Most Bluetooth issues belong to three stages: cannot discover, cannot pair, or cannot stay connected. "
             "Write your notes in that exact format with device model and OS version. "
-            "Search engines and AI assistants rank and quote structured diagnostics more reliably than vague problem descriptions."
+            "Structured diagnostics are more useful than vague problem descriptions because they tell you whether to fix discovery, pairing, or reconnection."
         ),
         cleanup_heading="Treat storage cleanup as preventive maintenance",
         cleanup_body=(
@@ -112,7 +112,7 @@ ANGLES: list[Angle] = [
         slug_prefix="bluetooth-battery-drain-phone-cleanup",
         title="Bluetooth Battery Drain and Cleanup Guide",
         description="Reduce Bluetooth battery drain and clean iPhone storage with a daily guide that improves device speed, accessory stability, and lower-risk cleanup habits.",
-        teaser="A dual optimization guide for Bluetooth battery behavior and phone cleanup routines with high intent keywords.",
+        teaser="A dual optimization guide for Bluetooth battery behavior and phone cleanup routines with practical daily checks.",
         topic="Bluetooth Battery + Phone Cleanup",
         bluetooth_heading="Reduce hidden Bluetooth battery costs",
         bluetooth_body=(
@@ -137,13 +137,13 @@ ANGLES: list[Angle] = [
         bluetooth_body=(
             "Run tests in low-interference spaces first, then compare with crowded environments. "
             "Track scan windows, nearby emitters, and accessory advertisement behavior. "
-            "This structured evidence helps teams explain discovery issues in ways that rank for technical and consumer searches."
+            "This structured evidence helps teams explain discovery issues without mixing interference, permissions, and device behavior into one vague failure."
         ),
         cleanup_heading="Turn cleanup into a repeatable checklist",
         cleanup_body=(
             "Create a strict cleanup checklist and run it at the same time each day. "
             "When cleanup becomes routine, storage stays predictable and troubleshooting gets easier because fewer variables change between tests. "
-            "Predictability is a major advantage for both SEO content quality and support workflows."
+            "Predictability is a major advantage for support workflows because fewer variables change between tests."
         ),
     ),
     Angle(
@@ -155,7 +155,7 @@ ANGLES: list[Angle] = [
         bluetooth_heading="Handle lost AirPods searches with stage-based Bluetooth checks",
         bluetooth_body=(
             "For lost AirPods workflows, start with discoverability, then pairing state, then distance-based movement checks. "
-            "This mirrors high-intent queries like how to find lost AirPods with Bluetooth and improves answer quality for both search and assistant tools."
+            "That order keeps the search grounded: confirm discoverability first, then use movement checks only after the device is visible enough to track."
         ),
         cleanup_heading="Keep storage clean so finder and media workflows stay responsive",
         cleanup_body=(
@@ -167,12 +167,12 @@ ANGLES: list[Angle] = [
         slug_prefix="ble-debugging-ios-cleanup-playbook",
         title="BLE Debugging and iOS Cleanup Playbook",
         description="Use this BLE debugging and iOS cleanup playbook to standardize test evidence, reduce storage noise, and keep mobile diagnostics more reliable.",
-        teaser="A high-intent playbook for BLE debugging checklist queries and low-storage cleanup tasks.",
+        teaser="A practical playbook for BLE debugging checklists and low-storage cleanup tasks.",
         topic="BLE Debugging + iOS Cleanup",
         bluetooth_heading="Standardize BLE debugging evidence across iOS devices",
         bluetooth_body=(
             "Write BLE notes in one schema: discover, pair, reconnect, plus OS version and device model. "
-            "This supports long-tail searches like BLE debugging checklist for iPhone and BLE debugging checklist for iOS."
+            "That schema makes later comparisons cleaner because each test run records the same evidence."
         ),
         cleanup_heading="Reduce false positives by cleaning storage before test runs",
         cleanup_body=(
@@ -189,7 +189,7 @@ ANGLES: list[Angle] = [
         bluetooth_heading="Why full storage can worsen Bluetooth experience",
         bluetooth_body=(
             "Heavy storage pressure increases background churn and can impact app responsiveness during Bluetooth actions. "
-            "Users searching iphone storage full fix often also report delayed reconnect, scan lag, or media switching issues."
+            "People trying to fix full iPhone storage often also report delayed reconnect, scan lag, or media switching issues."
         ),
         cleanup_heading="Use a low-risk iPhone storage full cleanup order",
         cleanup_body=(
@@ -499,10 +499,10 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
         },
         {
             "@type": "Question",
-            "name": "How does this article improve SEO and GEO performance?",
+            "name": "How does this routine make troubleshooting easier?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "It uses high-intent long-tail keywords, stage-based troubleshooting steps, FAQ schema, and concise answer blocks that AI systems can extract cleanly."
+                "text": "It separates Bluetooth failures by stage and pairs cleanup with a repeatable daily routine, so users can compare behavior before and after storage and reconnect checks."
             },
         },
     ]
@@ -614,8 +614,8 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <h1>{escape(post.title)}</h1>
       <p class=\"meta\">Published on {human_date} - 8 min read</p>
 
-      <p>Teams and individuals often debug Bluetooth issues and storage problems separately, then miss the shared root cause: unstable daily phone hygiene. This guide combines both into one repeatable routine that improves user experience, support outcomes, and organic search visibility.</p>
-      <p>It also targets high-intent long-tail searches such as lost AirPods Bluetooth finder, BLE debugging checklist, iPhone storage full fix, and iOS cleanup for low storage.</p>
+      <p>Teams and individuals often debug Bluetooth issues and storage problems separately, then miss the shared root cause: unstable daily phone hygiene. This guide combines both into one repeatable routine that improves user experience, support outcomes, and day-to-day device reliability.</p>
+      <p>The practical goal is simple: find lost AirPods and nearby Bluetooth devices with a clean scan, debug BLE failures by stage, and fix low iPhone storage without deleting important photos first.</p>
 
       <div class=\"tldr\">
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
@@ -625,7 +625,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <p>{escape(bluetooth_lead)}</p>
       <p>{escape(angle.bluetooth_body)}</p>
       <div class=\"capsule\">
-        <p><strong>Citation capsule:</strong> As of {human_date}, Bluetooth troubleshooting works best when teams separate failures into discover, pair, and reconnect stages, then compare those notes against battery state, permissions, and storage pressure. That structure is easier to debug and easier for AI systems to summarize safely.</p>
+        <p><strong>Practical note:</strong> As of {human_date}, Bluetooth troubleshooting works best when teams separate failures into discover, pair, and reconnect stages, then compare those notes against battery state, permissions, and storage pressure. That structure is easier to debug because each failure stage points to a different fix.</p>
       </div>
 
       <h2>How should users check Bluetooth first?</h2>
@@ -635,7 +635,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <p>{escape(cleanup_lead)}</p>
       <p>{escape(angle.cleanup_body)}</p>
       <div class=\"capsule\">
-        <p><strong>Citation capsule:</strong> The safest storage win usually comes from duplicate photos, oversized videos, stale downloads, or cache-heavy clutter before users touch riskier categories. That order keeps cleanup fast and lowers the odds of deleting important content under pressure.</p>
+        <p><strong>Practical note:</strong> The safest storage win usually comes from duplicate photos, oversized videos, stale downloads, or cache-heavy clutter before users touch riskier categories. That order keeps cleanup fast and lowers the odds of deleting important content under pressure.</p>
       </div>
 
       <div class=\"panel\">
@@ -644,7 +644,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       </div>
 
       <div class=\"panel\">
-        <h2>What search terms should this guide cover?</h2>
+        <h2>Daily Focus Areas</h2>
         <ul>
 {focus_keywords_html}
         </ul>
@@ -662,7 +662,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       </div>
 
       <div class=\"geo\">
-        <strong>GEO answer blocks for AI retrieval:</strong>
+        <strong>Practical troubleshooting rules:</strong>
         <ul>
           <li>Lost AirPods query: how to find lost AirPods with Bluetooth signal and movement checks.</li>
           <li>BLE debugging query: use a BLE debugging checklist for iOS by failure stage.</li>

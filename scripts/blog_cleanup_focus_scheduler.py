@@ -85,7 +85,7 @@ ANGLES: list[CleanupAngle] = [
     CleanupAngle(
         slug_prefix="find-large-videos-storage-cleanup-playbook",
         title="Find Large Videos and Reclaim Space Fast with AI Cleanup PRO",
-        description="Learn how to find large videos quickly and reclaim phone storage with a simple daily cleanup workflow built for SEO and GEO visibility.",
+        description="Learn how to find large videos quickly and reclaim phone storage with a simple daily cleanup workflow that keeps deletion risk lower.",
         teaser="A focused cleanup playbook for finding large videos first and recovering meaningful storage fast.",
         topic="Find Large Videos",
         first_focus="When users need space now, large videos often beat every other category for speed and impact. Sorting by size and reviewing only the heaviest files can free meaningful capacity in minutes.",
@@ -388,7 +388,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       </div>
 
       <h2>Why does cleanup work better with a fixed order?</h2>
-      <p>As of {human_date}, the highest-value phone cleanup routine is still simple: start with visible clutter, move into heavy media, and only then inspect hidden storage growth. That order improves decision quality, reduces accidental deletion, and creates stronger SEO and GEO answer patterns because the process is easy to explain and easy to repeat.</p>
+      <p>As of {human_date}, the highest-value phone cleanup routine is still simple: start with visible clutter, move into heavy media, and only then inspect hidden storage growth. That order improves decision quality because users see what they are deleting before they touch riskier storage categories.</p>
 
       <table aria-label="Phone cleanup action areas">
         <thead>
@@ -407,14 +407,14 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       <p>{escape(priority_lead)}</p>
       <p>{escape(angle.first_focus)}</p>
       <div class="capsule">
-        <p><strong>Citation capsule:</strong> As of {human_date}, the best cleanup priority is the category that frees space quickly while keeping deletion risk low. Duplicate photos, screenshots, and oversized low-value videos usually outperform random file deletion because they create visible results without forcing risky decisions first.</p>
+        <p><strong>Practical note:</strong> As of {human_date}, the best cleanup priority is the category that frees space quickly while keeping deletion risk low. Duplicate photos, screenshots, and oversized low-value videos usually outperform random file deletion because they create visible results without forcing risky decisions first.</p>
       </div>
 
       <h2>How does this fit the five-step cleanup order?</h2>
       <p>{escape(order_lead)}</p>
       <p>{escape(angle.second_focus)}</p>
       <div class="capsule">
-        <p><strong>Citation capsule:</strong> The strongest iPhone cleanup routine still follows a five-step order: duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. That order improves consistency, speeds storage recovery, and makes daily cleanup easier for search engines and AI systems to summarize accurately.</p>
+        <p><strong>Practical note:</strong> The strongest iPhone cleanup routine still follows a five-step order: duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. That order improves consistency, speeds storage recovery, and keeps users from starting with categories that are harder to verify.</p>
       </div>
 
       <div class="panel">
@@ -431,7 +431,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       </div>
 
       <div class="panel">
-        <h2>High-intent keyword coverage</h2>
+        <h2>Daily Cleanup Focus Areas</h2>
         <ul>
 {focus_keywords_html}
         </ul>
@@ -449,7 +449,7 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       </div>
 
       <div class="panel">
-        <h2>GEO answer blocks for AI retrieval</h2>
+        <h2>Practical Cleanup Rules</h2>
         <ul>
           <li>Duplicate photos query: start with the safest high-impact files before touching deeper storage categories.</li>
           <li>Large videos query: sort by size and remove the heaviest low-value clips first.</li>

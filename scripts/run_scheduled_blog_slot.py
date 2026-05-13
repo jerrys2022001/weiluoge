@@ -23,7 +23,7 @@ PUBLISH_LOCK_POLL_SECONDS = 5
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run scheduled blog publishing from a clean worktree.")
     parser.add_argument("--repo-root", type=Path, required=True)
-    parser.add_argument("--lane", choices=["cleanup", "protocol", "find", "dualshot", "translate", "updates"], required=True)
+    parser.add_argument("--lane", choices=["cleanup", "protocol", "find", "dualshot", "translate", "octopus", "updates"], required=True)
     parser.add_argument("--slot-offset", type=int, default=0)
     parser.add_argument("--date")
     parser.add_argument("--git-commit", action="store_true")

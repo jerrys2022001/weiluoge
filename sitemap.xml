@@ -2,21 +2,261 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://velocai.net/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://velocai.net/apps/</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-unboxing-the-awesome-pricey-c-3po-and-stormtrooper-bluetooth-speakers-vi-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-virtual-virus-that-transmits-between-phones-developed-to-mimic-covid-spr-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-ios-27-s-upgraded-camera-app-will-be-fully-customizable-per-report-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-hate-listening-to-high-fidelity-music-here-s-a-bluetooth-cassette-walkma-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-google-unveils-googlebook-a-new-ai-laptop-built-around-gemini-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-improving-instruction-hierarchy-in-frontier-llms-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-what-parameter-golf-taught-us-about-ai-assisted-research-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-no-code-personal-agents-powered-by-gpt-4-1-and-realtime-api-2026-05-13.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-does-android-s-poor-bluetooth-performance-make-you-want-to-jump-ship-pol-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-qualcomm-vs-apple-the-race-to-own-bluetooth-audio-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-these-iphone-short-films-make-an-incredibly-strong-case-for-indie-filmma-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-using-bluetooth-beacons-to-detect-peer-contact-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-secure-your-family-s-digital-life-and-stop-paying-monthly-with-65-off-pc-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-inside-mirakl-s-agentic-commerce-vision-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/octopus-project-thread-session-management-guide-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-introducing-next-generation-audio-models-in-the-api-2026-05-12.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-google-brought-fuchsia-demo-to-official-bluetooth-testing-event-unplugfe-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-ruuvitag-review-sensors-ble-javascript-and-lots-of-nerd-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-louis-rossmann-tells-3d-printer-maker-bambu-lab-to-go-bleep-yourself-ove-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-the-bose-soundlink-revolve-plus-ii-is-at-its-lowest-price-in-years-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-does-iphone-need-its-own-macbook-neo-moment-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-speak-is-personalizing-language-learning-with-ai-2026-05-11.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-review-aukey-sport-bluetooth-headphone-25-you-won-t-regret-spending-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-why-is-there-variation-of-rssi-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-delayed-siri-features-class-action-suit-ends-with-massive-250m-settlemen-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-energizer-s-ultimate-child-shield-batteries-minimizes-burns-if-your-chil-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-apple-stops-weirdly-storing-data-that-let-cops-spy-on-signal-chats-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-uber-uses-openai-to-help-people-earn-smarter-and-book-faster-2026-05-10.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-9to5toys-lunch-break-huawei-watch-band-300-lumsing-bluetooth-adapter-17-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-samsung-nest-arm-and-others-say-smart-homes-need-more-than-wifi-and-blue-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-amd-posts-record-first-quarter-results-driven-by-skyrocketing-data-cente-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-anyone-can-crash-your-iphone-with-this-cute-little-200-tool-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-apple-s-512gb-mac-studio-vanishes-a-quiet-acknowledgment-of-the-ram-shor-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-how-descript-engineers-multilingual-video-dubbing-at-scale-2026-05-09.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-android-11-s-new-gabeldorsche-bluetooth-stack-was-given-its-name-for-a-g-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/bluetooth-industry-update-aptx-voice-what-it-means-for-bluetooth-call-quality-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/dualshot-camera-product-demo-tutorial-guide-live-source-update-launching-sora-responsibly-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/find-ai-live-device-finding-update-gamesir-pocket-taco-review-an-emulator-friendly-retro-controller-with-so-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-hands-on-lexar-es5-brings-magsafe-convenience-and-prores-ssd-speeds-to-y-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/translate-ai-live-translation-workflow-update-bringing-powerful-ai-to-millions-across-europe-with-deutsche-telekom-2026-05-08.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-industry-update-free-example-beacon-data-set-2026-05-07.html</loc>
@@ -3824,9 +4064,9 @@
   </url>
   <url>
     <loc>https://velocai.net/octopus/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/octopus/privacy/index-c.html</loc>
@@ -3836,7 +4076,7 @@
   </url>
   <url>
     <loc>https://velocai.net/octopus/privacy/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

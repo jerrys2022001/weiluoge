@@ -12,6 +12,8 @@ param(
   [string]$DualShotWindowEnd = "08:29",
   [string]$TranslateWindowStart = "08:29",
   [string]$TranslateWindowEnd = "08:30",
+  [string]$OctopusWindowStart = "08:31",
+  [string]$OctopusWindowEnd = "08:32",
   [string]$HomeBriefAt = "08:30",
   [string]$HomeBriefCheckAt = "08:40",
   [string]$HomeBriefSecondaryCheckAt = "20:30",
@@ -59,10 +61,21 @@ function Assert-TaskExists([string]$taskName) {
   Write-Output "Verified task: $taskName"
 }
 
-function Apply-TaskRuntimeDefaults([string]$taskName) {
-  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+function Apply-TaskRuntimeDefaults([string]$taskName, [bool]$StartWhenAvailable = $false) {
+  $settingsArgs = @{
+    AllowStartIfOnBatteries    = $true
+    DontStopIfGoingOnBatteries = $true
+  }
+  if ($StartWhenAvailable) {
+    $settingsArgs.StartWhenAvailable = $true
+  }
+  $settings = New-ScheduledTaskSettingsSet @settingsArgs
   Set-ScheduledTask -TaskName $taskName -Settings $settings | Out-Null
-  Write-Output "Hardened task settings: $taskName"
+  if ($StartWhenAvailable) {
+    Write-Output "Hardened task settings: $taskName (StartWhenAvailable enabled)"
+  } else {
+    Write-Output "Hardened task settings: $taskName"
+  }
 }
 
 $cleanupInstaller = Ensure-Script "install_storage_impact_blog_task.ps1"
@@ -70,6 +83,7 @@ $bluetoothInstaller = Ensure-Script "install_protocol_blog_morning_tasks.ps1"
 $findInstaller = Ensure-Script "install_find_ai_blog_task.ps1"
 $dualshotInstaller = Ensure-Script "install_dualshot_blog_task.ps1"
 $translateInstaller = Ensure-Script "install_translate_ai_blog_tasks.ps1"
+$octopusInstaller = Ensure-Script "install_octopus_blog_task.ps1"
 $homeBriefInstaller = Ensure-Script "install_home_brief_daily_task.ps1"
 $preflightInstaller = Ensure-Script "install_blog_preflight_task.ps1"
 $watchdogInstaller = Ensure-Script "install_blog_watchdog_task.ps1"
@@ -148,6 +162,17 @@ Invoke-Installer $translateInstaller {
     -ReplaceExisting:$ReplaceExisting
 }
 
+Invoke-Installer $octopusInstaller {
+  & $octopusInstaller `
+    -PythonExe $PythonExe `
+    -PythonArgs $PythonArgs `
+    -RepoRoot $RepoRoot `
+    -WindowStart $OctopusWindowStart `
+    -WindowEnd $OctopusWindowEnd `
+    -PostsPerDay 2 `
+    -ReplaceExisting:$ReplaceExisting
+}
+
 Invoke-Installer $homeBriefInstaller {
   & $homeBriefInstaller `
     -PythonExe $PythonExe `
@@ -194,6 +219,8 @@ $expectedTaskNames = @(
   "WeiLuoGe-Find-AI-Blog-Morning-1",
   "WeiLuoGe-DualShot-Camera-Blog-Morning-1",
   "WeiLuoGe-Translate-AI-Blog-Morning-1",
+  "WeiLuoGe-Octopus-Blog-Morning-1",
+  "WeiLuoGe-Octopus-Blog-Morning-2",
   "WeiLuoGe-Home-Brief-Daily-08-30",
   "WeiLuoGe-Home-Brief-Check-08-40",
   "WeiLuoGe-Home-Brief-Check-20-30",
@@ -206,7 +233,8 @@ Write-Output ""
 Write-Output "Verifying installed site tasks..."
 foreach ($taskName in $expectedTaskNames) {
   Assert-TaskExists $taskName
-  Apply-TaskRuntimeDefaults $taskName
+  $allowLateCatchup = ($taskName -eq "WeiLuoGe-Home-Brief-Check-20-30")
+  Apply-TaskRuntimeDefaults -taskName $taskName -StartWhenAvailable:$allowLateCatchup
 }
 
 Write-Output ""
@@ -214,8 +242,9 @@ Write-Output "Installed full daily site schedule:"
 Write-Output "  Cleanup PRO: 1 slot between $CleanupWindowStart and $CleanupWindowEnd"
 Write-Output "  Bluetooth Explorer: 2 slots between $BluetoothWindowStart and $BluetoothWindowEnd"
 Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd"
-Write-Output "  DualShot Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd"
+Write-Output "  Dual Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd"
 Write-Output "  Translate AI: 1 slot between $TranslateWindowStart and $TranslateWindowEnd"
+Write-Output "  Octopus: 2 slots between $OctopusWindowStart and $OctopusWindowEnd"
 Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
 Write-Output "  Home Brief second check: daily at $HomeBriefSecondaryCheckAt"

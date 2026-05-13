@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Workflow Lessons from Parameter Golf | VelocAI Blog</title>
+  <meta name="description" content="Parameter Golf shows why mobile Codex work needs short approvals, clear experiment notes, and tighter handoff context in Octopus.">
+  <meta name="keywords" content="Octopus, codex, agent, coding agent, developer tools, remote coding, thread, approval, approvals, permissions, ssh, server, automation, voice, files, project, find ai workflow changes, find ai product updates, cleanup ai automation workflow, find ai model impact, cleanup ai operations checklist, find ai capability shifts, what parameter golf taught us about ai assisted research">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-what-parameter-golf-taught-us-about-ai-assisted-research-2026-05-13.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Workflow Lessons from Parameter Golf">
+  <meta property="og:description" content="Parameter Golf shows why mobile Codex work needs short approvals, clear experiment notes, and tighter handoff context in Octopus.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-what-parameter-golf-taught-us-about-ai-assisted-research-2026-05-13.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Workflow Lessons from Parameter Golf">
+  <meta name="twitter:description" content="Parameter Golf shows why mobile Codex work needs short approvals, clear experiment notes, and tighter handoff context in Octopus.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Workflow Lessons from Parameter Golf",
+      "description": "Parameter Golf shows why mobile Codex work needs short approvals, clear experiment notes, and tighter handoff context in Octopus.",
+      "datePublished": "2026-05-13",
+      "dateModified": "2026-05-13",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-what-parameter-golf-taught-us-about-ai-assisted-research-2026-05-13.html",
+      "keywords": [
+        "Octopus",
+        "codex",
+        "agent",
+        "coding agent",
+        "developer tools",
+        "remote coding",
+        "thread",
+        "approval"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Parameter Golf teach about Octopus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It shows that constrained coding work depends on clean iteration history. Octopus should preserve the prompt, result, approval, and next note in the same mobile thread."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I approve Codex actions from iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Approve from iPhone when the command is narrow, the project context is visible, and the previous output succeeded. Wait for desktop when the decision depends on a large diff or risky permission."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can Octopus make mobile coding less fragile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can keep server, project, thread, files, voice notes, and approvals together so mobile follow-up adds context instead of scattering it."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7faf8; --text:#18241f; --muted:#52645c; --line:#cfdcd4; --panel:#ffffff; --brand:#176b54; --brand-soft:#e7f5ee; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:24ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    h3 { margin-top:18px; font-size:20px; }
+    p,li,td,th { color:#31443b; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr, .capsule { background:var(--panel); border:1px solid var(--line); border-radius:18px; }
+    .hero { padding:26px; box-shadow:0 12px 28px rgba(28,44,36,.05); }
+    .panel, .tldr, .capsule { margin-top:24px; padding:22px; box-shadow:0 12px 28px rgba(28,44,36,.05); }
+    .tldr { border-left:6px solid #2a9d74; }
+    .capsule { background:#fbfdfb; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .hero > p:not(.meta) { margin:14px 0 0; max-width:none; }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }
+    .sources a { color:var(--brand); border-bottom:1px solid #9fc7b7; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus workflow note</span>
+        <h1>Octopus Workflow Lessons from Parameter Golf</h1>
+        <p class="meta">Published on May 13, 2026 | Topic: Octopus Mobile Codex Workflow | Source: OpenAI News | Source date: May 12, 2026</p>
+        <p>Parameter Golf is useful for Octopus because it makes one thing painfully obvious: when a coding task has tight constraints, the tiny decisions matter. Not in a vague productivity sense. In the boring sense that the prompt, the run history, the failed attempt, the approval, and the next note all need to stay attached to the same thread, or the work slowly turns into archaeology.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Parameter Golf points to a practical Octopus rule: use the phone for small, well-scoped Codex decisions, and keep enough context in the thread that the next approval is not a guess.</p>
+      </div>
+
+      <h2>The Real Lesson</h2>
+      <p>A constraint-heavy challenge like Parameter Golf rewards clean iteration. You try something, look at the result, change one variable, and keep the trail readable enough that the next person, or the same person fifteen minutes later, knows why the run changed.</p>
+      <p>That is exactly where mobile coding usually falls apart. The phone is fine for a quick approval, a short note, a screenshot, or checking whether an automation finished. It is bad for reconstructing a missing decision tree. Octopus should therefore make the thread feel like the source of truth, not a notification inbox with a code editor taped to it.</p>
+      <h2>Mobile Use</h2>
+      <p>Use Octopus when the next step is narrow: approve a command that matches the visible task, attach a screenshot from a device, send a short voice note, or check whether the latest run produced the expected file. That is the good version of mobile coding.</p>
+      <p>Do not use the phone to bless a broad dependency upgrade, a destructive file operation, or a permission request where the branch, server, and previous output are not obvious. Yes, that sounds conservative. Good. Conservative is what keeps mobile approval from becoming a very fast way to make a mess.</p>
+      <h2>What To Record</h2>
+      <p>Write down the thing that changed, not just the thing you want. For example: &quot;test failed after moving parser edge cases&quot; is better than &quot;fix tests.&quot; A phone-sized note can still carry useful engineering context if it names the file, the observed behavior, and the next hypothesis.</p>
+      <p>If the issue is visual, attach the screenshot. If the explanation is faster spoken, record the voice note, but keep destructive instructions typed clearly. Octopus is strongest when it turns mobile context into thread context immediately.</p>
+      <h2>Approval Rules</h2>
+      <p>Before approving from mobile, check three things: the project name, the requested action, and the previous tool result. If any of those are fuzzy, wait until desktop. The point is not to slow the agent down; the point is to avoid approving a command that only looked reasonable because the screen was small.</p>
+      <p>For repeated automation failures, stop approving retries. A failed scheduler that keeps asking for another run is not a mobile task anymore. It needs the full workspace, logs, and probably a calmer chair.</p>
+
+      <div class="panel">
+        <h2>Field Checklist</h2>
+        <ul>
+          <li>Approve only commands that match the visible thread and project.</li>
+          <li>Attach screenshots or files when the task depends on real device state.</li>
+          <li>Use voice notes for context, not for risky destructive instructions.</li>
+          <li>Pause mobile approvals when the previous run failed or the permission looks broad.</li>
+          <li>Return to desktop for large diffs, dependency changes, merge conflicts, and publishing steps.</li>
+        </ul>
+      </div>
+
+      <h2>FAQ</h2>
+      <p><strong>What does Parameter Golf teach about Octopus?</strong><br>
+      It shows that constrained coding work depends on clean iteration history. Octopus should preserve the prompt, result, approval, and next note in the same mobile thread.</p>
+      <p><strong>When should I approve Codex actions from iPhone?</strong><br>
+      Approve from iPhone when the command is narrow, the project context is visible, and the previous output succeeded. Wait for desktop when the decision depends on a large diff or risky permission.</p>
+      <p><strong>How can Octopus make mobile coding less fragile?</strong><br>
+      It can keep server, project, thread, files, voice notes, and approvals together so mobile follow-up adds context instead of scattering it.</p>
+
+      <section class="sources" aria-label="Source attribution">
+        <h3>Source attribution</h3>
+        <ul>
+          <li><a href="https://openai.com/index/what-parameter-golf-taught-us" target="_blank" rel="noopener noreferrer">OpenAI News: What Parameter Golf taught us about AI-assisted research</a></li>
+          <li><a href="https://openai.com/news/" target="_blank" rel="noopener noreferrer">OpenAI News</a></li>
+          <li><a href="https://openai.com/api/" target="_blank" rel="noopener noreferrer">OpenAI API</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/apps/">Browse VelocAI apps</a>
+        <a href="/octopus/">Open Octopus</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
