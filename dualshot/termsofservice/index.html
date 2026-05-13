@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dual Shot Camera Terms of Service</title>
+  <meta
+    name="description"
+    content="Terms of Service for Dual Shot Camera, including App Store license terms, subscriptions, user media, third-party sharing, and support contact information."
+  >
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/dualshot/termsofservice/index.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f0e9;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: #ffffff;
+      --text: #182134;
+      --muted: #5d6877;
+      --line: #d9dfeb;
+      --accent: #1d4ed8;
+      --accent-soft: #e9f1ff;
+      --ink: #111827;
+      --warm: #ff8b68;
+      --warm-soft: #fff3ed;
+      --warm-line: #f5c3af;
+      --green: #0f766e;
+      --green-soft: #e8f7f4;
+      --shadow: 0 28px 80px rgba(24, 33, 52, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background:
+        radial-gradient(circle at top left, rgba(255, 139, 104, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(74, 157, 255, 0.18), transparent 26%),
+        linear-gradient(180deg, #fffaf5 0%, var(--bg) 100%);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      background: transparent;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 28px auto 56px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .brand::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--warm), #4a9dff);
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.78);
+    }
+
+    .card {
+      margin-top: 18px;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.2;
+    }
+
+    h1 {
+      max-width: 13ch;
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 1.38rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 1.06rem;
+    }
+
+    p, ul, ol, table {
+      margin: 0 0 16px;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    code {
+      padding: 0.15em 0.35em;
+      border-radius: 6px;
+      background: #f3f6fb;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.92em;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.58fr);
+      gap: clamp(18px, 4vw, 34px);
+      align-items: start;
+    }
+
+    .hero p {
+      max-width: 52rem;
+    }
+
+    .summary {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .summary a {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .summary a::after {
+      content: ">";
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .notice {
+      margin: 24px 0 30px;
+      padding: 20px 22px;
+      border: 1px solid var(--warm-line);
+      border-radius: 20px;
+      background: var(--warm-soft);
+    }
+
+    .notice h2 {
+      margin-top: 0;
+      font-size: 1.14rem;
+    }
+
+    .callout {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(15, 118, 110, 0.22);
+      border-radius: 18px;
+      background: var(--green-soft);
+    }
+
+    .callout strong {
+      color: var(--green);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--surface-strong);
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 980px);
+        margin: 16px auto 28px;
+      }
+
+      .card {
+        padding: 20px 16px;
+        border-radius: 22px;
+      }
+
+      .summary {
+        padding: 16px;
+      }
+
+      th, td {
+        padding: 12px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="brand" href="../">Dual Shot Camera</a>
+
+    <main class="card">
+      <section class="hero">
+        <div>
+          <h1>Dual Shot Camera Terms of Service</h1>
+          <p class="meta">Last updated: May 13, 2026</p>
+          <p>
+            These Terms of Service explain the rules for using <strong>Dual Shot Camera</strong>, an iPhone app for
+            dual-photo capture, dual-video capture, single-video capture, local media export, saving to Apple Photos,
+            and optional sharing or upload flows.
+          </p>
+        </div>
+
+        <nav class="summary" aria-label="Terms summary">
+          <a href="#apple-license">Apple License</a>
+          <a href="#subscriptions">Purchases</a>
+          <a href="#user-content">Your Media</a>
+          <a href="#third-party-services">Third Parties</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </section>
+
+      <section class="notice">
+        <h2>Plain-English Highlights</h2>
+        <p>
+          <strong>You keep ownership of the photos, videos, audio, captions, and other content you create.</strong>
+          You are responsible for having the rights and permissions needed to record, save, share, or upload that
+          content.
+        </p>
+        <p>
+          <strong>Apps obtained through the App Store are licensed, not sold.</strong> Your use of Dual Shot Camera is
+          also subject to Apple's App Store terms, usage rules, and the Apple standard end user license agreement
+          unless a custom license is made available for the app.
+        </p>
+        <p>
+          <strong>Any purchases or subscriptions offered in the app are handled through Apple.</strong> Prices,
+          billing period, free-trial availability, renewal terms, and cancellation controls are shown in the App Store
+          purchase flow before you confirm.
+        </p>
+      </section>
+
+      <h2 id="agreement">1. Agreement to These Terms</h2>
+      <p>
+        By downloading, accessing, or using Dual Shot Camera, you agree to these Terms. If you do not agree, do not use
+        the app. If you use the app on behalf of an organization, you represent that you have authority to accept these
+        Terms for that organization.
+      </p>
+      <p>
+        These Terms apply to the app experience we provide. They do not replace the Apple Media Services Terms and
+        Conditions, App Store usage rules, Apple's standard Licensed Application End User License Agreement, or
+        third-party service terms that apply to platforms you choose to use.
+      </p>
+
+      <h2 id="service">2. The Service</h2>
+      <p>
+        Dual Shot Camera helps you capture and prepare media on iPhone. Depending on the app version, device support,
+        operating system permissions, and selected mode, the app may support:
+      </p>
+      <ul>
+        <li>Dual photo capture and local photo export.</li>
+        <li>Dual video capture and single video capture.</li>
+        <li>Microphone audio recording when you grant microphone permission.</li>
+        <li>Saving selected media to Apple Photos when you grant photo library permission.</li>
+        <li>Opening, sharing, or uploading selected media through Apple system features or third-party platforms.</li>
+        <li>Subscription, trial, or purchase flows if premium features are offered in your app version or region.</li>
+      </ul>
+      <p>
+        Some features may not be available on every device, iOS version, country or region, network condition, or
+        third-party destination. We may update, change, suspend, or discontinue features where needed for product,
+        safety, legal, platform, or operational reasons.
+      </p>
+
+      <h2 id="apple-license">3. Apple App Store License Terms</h2>
+      <div class="callout">
+        <p>
+          <strong>App Store license baseline:</strong> If you obtained Dual Shot Camera from the App Store, the app is
+          licensed to you and not sold to you. The Apple standard Licensed Application End User License Agreement
+          applies unless Apple or the app provider makes a valid custom EULA available for the app.
+        </p>
+      </div>
+      <p>
+        Your license is limited to a non-transferable right to use Dual Shot Camera on Apple-branded products that you
+        own or control, as permitted by Apple's applicable usage rules. You may not copy, modify, reverse engineer,
+        redistribute, sublicense, or make the app available over a network except where allowed by applicable law,
+        Apple's usage rules, or open-source component licenses that may apply to specific components.
+      </p>
+      <p>
+        Apple is not responsible for providing maintenance or support for Dual Shot Camera. Support questions,
+        complaints, or claims about the app should be directed to us using the contact information below.
+      </p>
+
+      <h2 id="eligibility">4. Eligibility and Accounts</h2>
+      <p>
+        You must be able to form a legally binding agreement to use the app. If you are under the age of majority in
+        your country or region, you may use the app only with permission and supervision from a parent or legal
+        guardian. The app is not intended to be submitted to the App Store Kids Category unless the App Store listing
+        expressly says otherwise.
+      </p>
+      <p>
+        Dual Shot Camera may allow optional authentication with third-party services, such as Google, only when needed
+        for a feature you choose, such as uploading a video to YouTube. Your use of that third-party account remains
+        subject to the third party's own terms and policies.
+      </p>
+
+      <h2 id="permissions">5. Device Permissions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Why It Is Used</th>
+            <th>Your Control</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Camera</td>
+            <td>To capture photos and videos in the app.</td>
+            <td>You can allow or revoke access in iOS Settings.</td>
+          </tr>
+          <tr>
+            <td>Microphone</td>
+            <td>To record audio into video files when audio recording is enabled.</td>
+            <td>You can deny access; supported video flows may continue without audio.</td>
+          </tr>
+          <tr>
+            <td>Photo Library</td>
+            <td>To save captures, show recent-media previews, or open selected media workflows.</td>
+            <td>You can manage full, limited, or denied access in iOS Settings.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        You agree not to bypass, disable, misrepresent, or interfere with iOS permission controls, platform security,
+        or App Store purchase controls.
+      </p>
+
+      <h2 id="user-content">6. Your Media and User Content</h2>
+      <p>
+        "User Content" means photos, videos, audio, titles, descriptions, captions, thumbnails, metadata, support
+        messages, or other material you create, import, save, share, upload, or send while using Dual Shot Camera.
+      </p>
+      <ul>
+        <li>You keep ownership of your User Content.</li>
+        <li>You grant us only the limited rights needed to operate, support, debug, improve, and protect the app.</li>
+        <li>You are responsible for obtaining all rights, releases, and consents needed for the people, places, music, trademarks, copyrighted material, and other protected content in your User Content.</li>
+        <li>You are responsible for complying with laws that apply to recording, privacy, publicity, intellectual property, export, and online sharing in your country or region.</li>
+      </ul>
+      <p>
+        Dual Shot Camera is primarily an on-device capture and export tool. The app does not claim ownership of your
+        camera roll, and normal capture processing is designed to happen locally unless you choose a network-dependent
+        feature, such as a third-party upload or support email.
+      </p>
+
+      <h2 id="acceptable-use">7. Acceptable Use</h2>
+      <p>You agree not to use Dual Shot Camera to:</p>
+      <ul>
+        <li>Violate any law, regulation, contract, platform rule, or third-party right.</li>
+        <li>Record, share, or upload content without required consent or legal authority.</li>
+        <li>Create, distribute, or promote unlawful, abusive, harassing, hateful, sexually exploitative, deceptive, defamatory, or otherwise harmful content.</li>
+        <li>Infringe copyright, trademark, publicity, privacy, or other intellectual property rights.</li>
+        <li>Mislead viewers about the source, context, consent, or authenticity of media.</li>
+        <li>Interfere with app security, payment systems, usage limits, third-party integrations, or platform review requirements.</li>
+        <li>Use the app in a way that could distract you from driving, operating equipment, or acting safely.</li>
+      </ul>
+      <p>
+        If the app later includes public posting, community, collaboration, or creator-content features, we may remove
+        or restrict content, accounts, or access that violates these Terms, and we may provide reporting, blocking,
+        filtering, or moderation tools appropriate for that feature.
+      </p>
+
+      <h2 id="subscriptions">8. Purchases, Subscriptions, and Trials</h2>
+      <p>
+        Some versions or regions of Dual Shot Camera may offer free features, paid features, auto-renewable
+        subscriptions, free trials, introductory offers, or other in-app purchases through Apple.
+      </p>
+      <ul>
+        <li>All digital purchases in the iOS app are processed by Apple through the App Store unless Apple permits another method for your storefront or feature.</li>
+        <li>The price, billing period, included access, trial duration, renewal terms, and any introductory offer are shown before you confirm the purchase.</li>
+        <li>Auto-renewable subscriptions renew automatically unless canceled at least 24 hours before the end of the current billing period, or as otherwise stated by Apple in the purchase flow.</li>
+        <li>You can manage or cancel subscriptions in your Apple ID subscription settings.</li>
+        <li>If a free trial is offered, the subscription may convert to a paid subscription when the trial ends unless you cancel before the trial deadline shown by Apple.</li>
+        <li>Refund requests and billing disputes for App Store purchases are handled by Apple under Apple's policies.</li>
+        <li>Restoring purchases may require network access, Apple account availability, and third-party purchase SDK availability.</li>
+      </ul>
+      <p>
+        Paid access should be available without requiring unrelated tasks such as posting on social media, uploading
+        contacts, rating the app, or taking store-related actions. We may change future pricing or features, but
+        changes to active subscriptions will be handled according to Apple's subscription rules and notices.
+      </p>
+
+      <h2 id="third-party-services">9. Third-Party Services and Destinations</h2>
+      <p>
+        The app may interact with Apple services, Google/YouTube, social platforms, messaging apps, installed share
+        destinations, email providers, purchase providers, analytics or diagnostics tools, or other third-party
+        services needed for features you choose.
+      </p>
+      <ul>
+        <li>When you share or upload content to a third-party service, that service may process your content under its own terms and privacy policy.</li>
+        <li>You are responsible for ensuring that your use of third-party services complies with their rules, including YouTube, Google, social platforms, and messaging services.</li>
+        <li>We do not control third-party services and are not responsible for their availability, moderation decisions, data practices, payment rules, or content policies.</li>
+        <li>Third-party services may change, suspend, revoke, rate-limit, or discontinue access in ways that affect app features.</li>
+      </ul>
+
+      <h2 id="privacy">10. Privacy</h2>
+      <p>
+        Our <a href="../privacy/index.html">Privacy Policy</a> explains what information Dual Shot Camera processes,
+        why it is processed, when data may leave your device, and how you can control app permissions. By using the
+        app, you also agree to the data practices described in the Privacy Policy.
+      </p>
+
+      <h2 id="intellectual-property">11. Our Intellectual Property</h2>
+      <p>
+        Dual Shot Camera, including the app design, software, branding, logos, interface elements, text, and related
+        materials, is owned by us or our licensors and is protected by intellectual property laws. These Terms do not
+        grant you any ownership interest in the app or our materials.
+      </p>
+      <p>
+        You may send feedback, ideas, or suggestions. If you do, you allow us to use them without restriction or
+        compensation, while you keep ownership of any underlying rights you already hold.
+      </p>
+
+      <h2 id="updates">12. Updates and Availability</h2>
+      <p>
+        We may provide updates, bug fixes, security improvements, feature changes, or compatibility updates. Some
+        updates may be required for continued use. The app may be unavailable or limited because of device capability,
+        operating system changes, third-party service changes, network conditions, App Store availability, legal
+        requirements, maintenance, or events outside our control.
+      </p>
+
+      <h2 id="warranty">13. Disclaimers</h2>
+      <p>
+        To the maximum extent permitted by law, Dual Shot Camera is provided "as is" and "as available." We do not
+        guarantee that the app will be uninterrupted, error-free, compatible with every device or third-party platform,
+        or suitable for every filming, publishing, professional, commercial, evidentiary, or archival purpose.
+      </p>
+      <p>
+        You are responsible for reviewing important recordings, keeping backups, confirming uploads, complying with
+        platform rules, and ensuring that media is saved or exported before deleting files or uninstalling the app.
+      </p>
+
+      <h2 id="liability">14. Limitation of Liability</h2>
+      <p>
+        To the maximum extent permitted by law, we will not be liable for indirect, incidental, special, consequential,
+        exemplary, or punitive damages, or for loss of profits, revenue, data, content, goodwill, or business
+        opportunity, arising from or related to your use of the app.
+      </p>
+      <p>
+        To the maximum extent permitted by law, our total liability for claims related to Dual Shot Camera will not
+        exceed the greater of the amount you paid us for the app or in-app purchases during the twelve months before
+        the event giving rise to the claim, or USD $50. Some jurisdictions do not allow certain limitations, so some
+        limits may not apply to you.
+      </p>
+
+      <h2 id="indemnity">15. Your Responsibility for Claims</h2>
+      <p>
+        To the extent permitted by law, you agree to defend, indemnify, and hold us harmless from claims, damages,
+        losses, liabilities, costs, and expenses arising from your User Content, your misuse of the app, your violation
+        of these Terms, your violation of law, or your infringement of another person's rights.
+      </p>
+
+      <h2 id="termination">16. Termination</h2>
+      <p>
+        You may stop using the app at any time. We may suspend or terminate access to features if you violate these
+        Terms, create legal or safety risk, misuse third-party integrations, interfere with platform rules, or if we
+        need to comply with law or App Store requirements. Sections that by their nature should survive termination
+        will continue to apply.
+      </p>
+
+      <h2 id="legal-compliance">17. Legal Compliance and Export</h2>
+      <p>
+        You are responsible for using the app in compliance with applicable laws and regulations, including export,
+        sanctions, privacy, recording consent, intellectual property, consumer protection, and online platform laws.
+        You represent that you are not barred from using the app under applicable sanctions or export-control rules.
+      </p>
+
+      <h2 id="apple-beneficiary">18. Apple as Third-Party Beneficiary</h2>
+      <p>
+        If you downloaded Dual Shot Camera from the App Store, Apple and Apple's subsidiaries are third-party
+        beneficiaries of these Terms as they relate to the app. Upon your acceptance of these Terms, Apple has the
+        right to enforce these Terms against you as a third-party beneficiary where applicable.
+      </p>
+
+      <h2 id="changes">19. Changes to These Terms</h2>
+      <p>
+        We may update these Terms as the app evolves or as legal, platform, or operational requirements change. When we
+        make material changes, we will update the "Last updated" date on this page. Your continued use of the app after
+        updated Terms become effective means you accept the updated Terms for future use.
+      </p>
+
+      <h2 id="contact">20. Contact</h2>
+      <div class="contact">
+        <p>
+          If you have questions, complaints, or claims about Dual Shot Camera or these Terms, contact the support team
+          at <a href="mailto:goodaiapp@gmail.com">goodaiapp@gmail.com</a>.
+        </p>
+        <p class="note">
+          App name: Dual Shot Camera<br>
+          App Store app ID: 6761664966<br>
+          Website: <a href="https://velocai.net/dualshot/">https://velocai.net/dualshot/</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
