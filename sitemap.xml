@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/iphone-storage-full-cleanup-five-step-order-live-source-update-bartender-pro-brings-widgets-clipboard-and-file-storage-to-the-macbook-n-2026-05-14.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-industry-update-unboxing-the-awesome-pricey-c-3po-and-stormtrooper-bluetooth-speakers-vi-2026-05-13.html</loc>
@@ -4053,6 +4059,12 @@
   <url>
     <loc>https://velocai.net/dualshot/privacy/index.html</loc>
     <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/dualshot/termsofservice/index.html</loc>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
