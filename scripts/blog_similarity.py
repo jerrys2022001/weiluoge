@@ -261,7 +261,16 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS
         )
 
-    if "live workflow fallback" in html.lower() or "expanded-source fallback reframes" in html.lower():
+    lowered_html = html.lower()
+    if (
+        "live workflow fallback" in lowered_html
+        or "expanded-source fallback reframes" in lowered_html
+        or "live workflow update" in lowered_html
+        or "live recovery update" in lowered_html
+        or "live creator update" in lowered_html
+        or "live mobile coding update" in lowered_html
+        or "live storage update" in lowered_html
+    ):
         app_live_common_tokens = {
             "answer",
             "angle",
@@ -335,7 +344,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in app_live_common_tokens
         )
 
-    if "expanded-source fallback" in html.lower() or "live-source" in html.lower():
+    if "expanded-source fallback" in lowered_html or "live-source" in lowered_html or "source update from" in lowered_html:
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
         if title_match:
