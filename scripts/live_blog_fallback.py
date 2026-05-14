@@ -406,7 +406,8 @@ def story_label(value: str, limit: int = 34) -> str:
 def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, str] | None:
     if lane not in LANE_APP_TERM:
         return None
-    label = story_label(item.title)
+    label_limit = 28 if lane == "find" else 24
+    label = story_label(item.title, limit=label_limit)
     if lane == "cleanup":
         return (
             f"Cleanup Pro Storage Lessons from {label}",
@@ -674,6 +675,20 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
         f"As of {human_date}, this {app_term} update uses {source_name} as a current source. "
         f"The useful answer is how {source_title} changes {profile['secondary']} decisions in a way the reader can actually check."
     )
+    action_checks = [
+        f"Identify the exact fact in {source_name} that changes the {app_term} workflow.",
+        f"Compare that fact with the current step where users handle {profile['secondary']}.",
+        "Decide whether the next action is a setup change, a review step, a recovery attempt, or no change at all.",
+        "Keep the original source open when the change affects compatibility, privacy, permissions, storage, capture quality, or device behavior.",
+    ]
+    action_checks_html = "\n".join(f"          <li>{escape(check)}</li>" for check in action_checks)
+    ignore_checks = [
+        "The source is about a distant platform change that does not affect the user's current device or workflow.",
+        "The update describes a product announcement but gives no behavior, limit, compatibility, or rollout detail to test.",
+        "The next step would require risky changes before the user can verify the source detail in their own setup.",
+        f"The reader only needs background context and does not need to change how they use {app_term} today.",
+    ]
+    ignore_checks_html = "\n".join(f"          <li>{escape(check)}</li>" for check in ignore_checks)
 
     return f"""<!doctype html>
 <html lang="en-US">
@@ -805,7 +820,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       <h2>Why does this matter for {escape(app_term)}?</h2>
       <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. The practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}, then decide what to inspect, what to try next, and what risk to avoid.</p>
 
-      <h2>Where can users apply this signal?</h2>
+      <h2>Applying The Signal</h2>
       <p>Users can apply the signal when they compare a current workflow against the source update. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the update changes a real decision.</p>
 
       <div class="capsule">
@@ -815,9 +830,20 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       <h2>What should the workflow check next?</h2>
       <p>{escape(str(profile["risk"]).capitalize())}. Readers should keep the source-specific facts visible, especially when the update changes a setup, review step, recovery signal, or approval path.</p>
 
+      <h2>Action Steps For This Signal</h2>
+      <p>The safest way to use the update is to turn it into one small decision. For {escape(app_term)}, that means connecting the source detail to a step the user can inspect, repeat, or undo without guessing.</p>
+      <ol>
+{action_checks_html}
+      </ol>
 
       <h2>What should readers verify next?</h2>
       <p>Check the source detail against the current workflow, confirm which step changes, and look for one risk that the update reduces or introduces. If the update does not change a real action, treat it as context rather than a reason to change the routine.</p>
+
+      <h2>When should users ignore the update?</h2>
+      <p>Not every live item deserves a workflow change. The update should stay in the background when it does not create a clearer action, a measurable risk reduction, or a better way to complete the task.</p>
+      <ul>
+{ignore_checks_html}
+      </ul>
 
       <h2>FAQ</h2>
 {faq_html}
@@ -848,14 +874,28 @@ def build_live_description(source_slug: str, source_name: str, summary: str, lan
             f"{summary.rstrip('.')}."
             f" Covers what {source_name} signals mean for {app_term} workflows, with practical checks and next steps."
         )
-        return clip_text(combined, limit=158)
+        description = clip_text(combined, limit=158)
+        if len(description) < 150:
+            description = clip_text(f"{description.rstrip('.')} with source-backed workflow guidance.", limit=158)
+        if len(description) > 160:
+            description = (
+                f"{source_name} update for {app_term} workflows, with practical checks, source context, "
+                "and next steps readers can verify today."
+            )
+        if len(description) > 160:
+            description = description[:157].rstrip(" ,.;") + "..."
+        description = description.replace("'", "")
+        return description
     suffix = {
         "apple": f" Covers upgrade relevance, storage impact, and what {source_name} signals mean for cleanup planning.",
         "ai": f" Covers workflow impact, deployment relevance, and what {source_name} signals mean for teams evaluating AI changes.",
         "bluetooth": f" Covers application impact, rollout risk, and what {source_name} signals mean for Bluetooth product teams.",
     }[source_slug]
     combined = f"{summary.rstrip('.')}." + suffix
-    return clip_text(combined, limit=158)
+    description = clip_text(combined, limit=158)
+    if len(description) < 150:
+        description = clip_text(f"{description.rstrip('.')} with practical checks for readers.", limit=158)
+    return description
 
 
 def strip_suffix(title: str, suffix: str) -> str:
@@ -1232,6 +1272,45 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         f"As of {human_date}, {post.title.lower()} matters because it turns a source update from {source_name} into deployment guidance. "
         "The practical question is what changed, where it affects products, and what teams should verify next."
     )
+    validation_items = {
+        "apple": [
+            "Compare the claim with the device, OS version, storage tier, and accessory setup users actually have.",
+            "Separate launch positioning from measurable changes such as performance, battery life, repairability, app behavior, or upgrade timing.",
+            "Check whether the update creates an immediate decision or only informs a future purchase, rollout, or support note.",
+            "Avoid changing recommendations until the source detail is confirmed against the user's current Apple product context.",
+        ],
+        "ai": [
+            "Map the announcement to one workflow: generation quality, latency, tool use, safety review, pricing, access, or deployment reliability.",
+            "Run a small comparison task before changing model routing, automation design, or user-facing behavior.",
+            "Check whether the update changes evaluation criteria or simply adds context to a tool the team already understands.",
+            "Keep human review in place when the update affects high-stakes wording, privacy, permissions, or production automation.",
+        ],
+        "bluetooth": [
+            "Test the change on real hardware instead of relying only on standards or vendor wording.",
+            "Check pairing, discovery, RSSI behavior, connection intervals, audio path, firmware version, and OS compatibility where relevant.",
+            "Look for edge cases across older devices, crowded radio environments, and mixed chipset deployments.",
+            "Treat the source as a planning signal until interoperability tests confirm the behavior in the target product.",
+        ],
+    }[source_slug]
+    validation_html = "\n".join(f"          <li>{escape(item)}</li>" for item in validation_items)
+    no_change_items = {
+        "apple": [
+            "The update affects a model, market, or OS version outside the user's current upgrade window.",
+            "The source does not include enough detail to change buying, support, or storage planning advice.",
+            "The decision depends on hands-on performance, repair data, battery behavior, or app compatibility that is not available yet.",
+        ],
+        "ai": [
+            "The release changes positioning but not the team's actual workflow, cost profile, access path, or quality bar.",
+            "The source is too early to justify changing production automation, user promises, or compliance review.",
+            "The current toolchain already handles the task reliably and the update does not improve a measurable bottleneck.",
+        ],
+        "bluetooth": [
+            "The update does not affect the profiles, chipsets, operating systems, or environments used by the target product.",
+            "The source is about a consumer deal or broad trend rather than interoperability, protocol behavior, or application design.",
+            "The team cannot reproduce the behavior on real devices, so the item should stay as background context.",
+        ],
+    }[source_slug]
+    no_change_html = "\n".join(f"          <li>{escape(item)}</li>" for item in no_change_items)
     faq_html = "\n".join(
         f"      <p><strong>{escape(question)}</strong><br>\n      {escape(answer)}</p>\n"
         for question, answer in faq_items
@@ -1376,7 +1455,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         <p><strong>Source note:</strong> As of {human_date}, {escape(post.title.lower())} matters because it turns a fresh {escape(source_name)} update into practical guidance on implementation, interoperability, or workflow impact. The useful part is the decision it helps a reader make next.</p>
       </div>
 
-      <h2>Where does it affect real products?</h2>
+      <h2>Product Impact Areas</h2>
       <p>{escape(application_body_for(source_slug))}</p>
       <div class="capsule">
         <p><strong>Practical note:</strong> The product value of this update depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when they map the source update to practical validation and rollout decisions.</p>
@@ -1384,6 +1463,12 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
 
       <h2>What should teams watch next?</h2>
       <p>{escape(next_body_for(source_slug))} {escape(search_intent_body_for(source_slug))}</p>
+
+      <h2>Validation Before Acting</h2>
+      <p>A source update is most useful when it becomes a small validation plan. Teams should keep the test narrow enough to run quickly and specific enough to change a real product or workflow decision.</p>
+      <ol>
+{validation_html}
+      </ol>
 
       <div class="panel">
         <h2>What are the key risks in 2026?</h2>
@@ -1393,6 +1478,11 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
         </ol>
       </div>
 
+      <h2>When does the update not matter?</h2>
+      <p>The item should not drive a roadmap, rollout, or recommendation unless it changes a concrete user outcome. It is reasonable to log it as context when the following limits apply.</p>
+      <ul>
+{no_change_html}
+      </ul>
 
       <h2>FAQ</h2>
 {faq_html}
