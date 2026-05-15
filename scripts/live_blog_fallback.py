@@ -43,6 +43,7 @@ class CuratedPage:
 
 CACHE_ROOT = Path(tempfile.gettempdir()) / "weiluoge-live-cache"
 CACHE_TTL_SECONDS = 6 * 60 * 60
+MAX_NEWS_SOURCE_AGE_DAYS = 365
 
 
 NOISE_PATTERNS = (
@@ -51,10 +52,62 @@ NOISE_PATTERNS = (
     " coupon ",
     " discount ",
     " deal ",
+    " deals ",
+    " today in apple history ",
     " buy now ",
+    " best price ",
+    " record low ",
     " clearance ",
     " giveaway ",
+    " ransomware ",
+    " stock market ",
+    " f1 streaming ",
+    " netflix ",
 )
+
+LANE_DISALLOWED_PATTERNS = {
+    "cleanup": (
+        "ransomware",
+        "stolen",
+        "hacker",
+        "hackers",
+        "spy",
+        "supreme court",
+        "app store commission",
+        "marketshare",
+        "sales",
+        "ai phone",
+        "save up",
+        "coupon",
+        "coupons",
+        "deal",
+    ),
+    "dualshot": (
+        "history",
+        "downloads from netflix",
+        "recycled material",
+        "macbook pro",
+        "ssd",
+        "amd",
+        "settlement",
+        "siri",
+        "spotify",
+        "podcast",
+    ),
+    "find": (
+        "ransomware",
+        "foxconn",
+        "marketshare",
+        "smartphone sales",
+        "apple history",
+    ),
+    "octopus": (
+        "3d printing",
+        "recycled glass",
+        "iphone sales",
+        "smartphone market",
+    ),
+}
 
 CURATED_PROTOCOL_PAGES = (
     CuratedPage("bluetooth", "Bluetooth SIG", "https://www.bluetooth.com/specifications/specs/core-specification-6-2/"),
@@ -78,6 +131,14 @@ LANE_ALLOWED_SOURCES = {
         "9to5Google Bluetooth",
     },
     "updates": {"Bluetooth SIG", "Nordic News", "Nordic GetConnected", "Apple Newsroom", "MacRumors", "AppleInsider", "MacStories", "9to5Mac", "OpenAI News", "Tom's Hardware"},
+}
+
+LANE_APP_ALLOWED_SOURCES = {
+    "cleanup": {"9to5Mac", "MacRumors", "AppleInsider", "Ars Technica Apple", "MacStories"},
+    "translate": {"OpenAI News", "Cult of Mac"},
+    "find": {"9to5Mac", "AppleInsider", "Android Authority Bluetooth", "BeaconZone", "Blecon"},
+    "dualshot": {"OpenAI News", "9to5Mac", "AppleInsider", "MacRumors"},
+    "octopus": {"OpenAI News", "MacRumors", "AppleInsider"},
 }
 
 APP_FUNCTION_KEYWORDS = {
@@ -241,6 +302,29 @@ def json_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+def news_source_age_days(item: FeedItem, target_day: date) -> int | None:
+    if item.published_at is None:
+        return None
+    return (target_day - item.published_at.astimezone().date()).days
+
+
+def is_recent_news_source(item: FeedItem, target_day: date) -> bool:
+    age = news_source_age_days(item, target_day)
+    return age is not None and 0 <= age <= MAX_NEWS_SOURCE_AGE_DAYS
+
+
+def require_recent_news_source(item: FeedItem, target_day: date) -> None:
+    age = news_source_age_days(item, target_day)
+    if age is None:
+        raise ValueError("Live blog news sources must include a publish date.")
+    if age < 0:
+        raise ValueError("Live blog news sources cannot be dated after the article date.")
+    if age > MAX_NEWS_SOURCE_AGE_DAYS:
+        raise ValueError(
+            f"Live blog news source is {age} days old; maximum allowed age is {MAX_NEWS_SOURCE_AGE_DAYS} days."
+        )
+
+
 def cache_paths_for_url(url: str) -> tuple[Path, Path]:
     key = hashlib.sha256(url.encode("utf-8")).hexdigest()
     cache_dir = CACHE_ROOT
@@ -281,6 +365,8 @@ def source_pool_for_lane(lane: str):
             continue
         seen.add(key)
         if lane in LANE_ALLOWED_SOURCES and source.source_name not in LANE_ALLOWED_SOURCES[lane]:
+            continue
+        if lane in LANE_APP_ALLOWED_SOURCES and source.source_name not in LANE_APP_ALLOWED_SOURCES[lane]:
             continue
         yield source
 
@@ -448,29 +534,24 @@ def lane_summary(lane: str, source_slug: str, source_name: str, item: FeedItem) 
 
 
 def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, haystack: str) -> bool:
+    disallowed = LANE_DISALLOWED_PATTERNS.get(lane, ())
+    if any(pattern in haystack for pattern in disallowed):
+        return False
     if lane == "cleanup":
-        return any(
-            matches_keyword(haystack, keyword)
-            for keyword in (
-                "photo cleanup",
-                "storage",
-                "512gb",
-                "256gb",
-                "memory costs",
-                "icloud backup",
-                "backup files",
-                "backup data",
-                "back up your mac",
-                "icloud",
-                "icloud drive",
-                "files",
-                "database",
-                "data back",
-                "deleted",
-                "cloud data",
-                "system data",
-            )
+        cleanup_title_terms = (
+            "storage",
+            "file storage",
+            "files",
+            "icloud",
+            "icloud backup",
+            "icloud drive",
+            "backup",
+            "pcloud",
+            "macbook notch",
+            "512gb",
+            "256gb",
         )
+        return any(matches_keyword(title_text, keyword) for keyword in cleanup_title_terms)
     if lane == "translate":
         title_terms = (
             "translate",
@@ -511,59 +592,105 @@ def item_matches_lane_intent(lane: str, source_slug: str, title_text: str, hayst
         )
         return source_slug == "ai" and any(matches_keyword(haystack, keyword) for keyword in voice_terms)
     if lane == "find":
-        return any(
+        strict_find_terms = (
+            "find my",
+            "airtag",
+            "tracker",
+            "trackers",
+            "luggage tracker",
+            "lost",
+            "stolen",
+            "location",
+            "asset tracking",
+            "ble tracking",
+            "smart labels",
+            "beacon",
+            "beacons",
+            "indoor navigation",
+            "spatial signal",
+            "nearby finding",
+        )
+        return any(matches_keyword(title_text, keyword) for keyword in strict_find_terms) or any(
             matches_keyword(haystack, keyword)
-            for keyword in (
-                "find my",
-                "airtag",
-                "lost",
-                "location",
-                "tracking",
-                "asset tracking",
-                "ble tracking",
-                "bluetooth",
-                "beacon",
-                "nearby",
-                "fast pair",
-            )
+            for keyword in strict_find_terms
+            if keyword not in {"lost", "location"}
         )
     if lane == "dualshot":
-        return any(
-            matches_keyword(haystack, keyword)
-            for keyword in (
-                "camera",
-                "video",
-                "recording",
-                "record",
-                "creator",
-                "demo",
-                "tutorial",
-                "vlog",
-                "youtube",
-                "short-form",
-                "livestream",
-            )
+        title_terms = (
+            "camera",
+            "video",
+            "recording",
+            "record",
+            "creator",
+            "demo",
+            "tutorial",
+            "vlog",
+            "youtube",
+            "short-form",
+            "livestream",
+            "sora",
+            "cinematic",
+            "iphone short",
+            "short films",
+            "video app",
         )
+        return any(matches_keyword(title_text, keyword) for keyword in title_terms)
     if lane == "octopus":
-        return any(
-            matches_keyword(haystack, keyword)
-            for keyword in (
-                "codex",
-                "coding agent",
-                "agent",
-                "developer tools",
-                "remote coding",
-                "thread",
-                "approval",
-                "permissions",
-                "ssh",
-                "server",
-                "automation",
-                "tool results",
-                "prompt",
-                "workflow",
-            )
+        title_terms = (
+            "codex",
+            "coding agent",
+            "agent apps",
+            "ai agent",
+            "ai agents",
+            "developer tools",
+            "remote coding",
+            "sandbox",
+            "nvidia engineers",
+            "finance teams use codex",
         )
+        support_terms = (
+            "thread",
+            "approval",
+            "permissions",
+            "ssh",
+            "server",
+            "automation",
+            "tool results",
+            "prompt",
+            "workflow",
+        )
+        return any(matches_keyword(title_text, keyword) for keyword in title_terms) or any(
+            matches_keyword(haystack, keyword) for keyword in support_terms
+        )
+    if lane == "protocol":
+        protocol_terms = (
+            "bluetooth sig",
+            "core",
+            "specification",
+            "standard",
+            "standards",
+            "auracast",
+            "le audio",
+            "channel sounding",
+            "mesh",
+            "gatt",
+            "beacon",
+            "beacons",
+            "asset tracking",
+            "industrial",
+            "iot",
+            "manufacturing",
+            "healthcare",
+            "connection interval",
+            "connection intervals",
+            "interoperability",
+            "chipset",
+            "chipsets",
+            "device vendors",
+            "broadcast audio",
+            "ada compliant",
+        )
+        return any(matches_keyword(haystack, keyword) for keyword in protocol_terms)
     return any(matches_keyword(haystack, keyword) for keyword in LANE_REQUIRED_KEYWORDS[lane])
 
 
@@ -620,7 +747,7 @@ def app_lane_profile(lane: str) -> dict[str, object]:
 def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, str]]:
     profile = app_lane_profile(lane)
     return [
-        ("Source update", source_title, f"Connects the new item to {profile['secondary']} decisions"),
+        ("Fresh evidence", source_title, f"Connects the new item to {profile['secondary']} decisions"),
         ("User problem", str(profile["intent"]), "Shows which app decision the update affects"),
         ("Workflow check", str(profile["workflow"]), "Turns the update into an actionable sequence"),
         ("Reader check", "Compare the current source detail with the workflow before changing behavior", "Keeps the advice grounded in a real action"),
@@ -672,8 +799,8 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     )
     keywords = ", ".join(keyword_coverage)
     tldr = (
-        f"As of {human_date}, this {app_term} update uses {source_name} as a current source. "
-        f"The useful answer is how {source_title} changes {profile['secondary']} decisions in a way the reader can actually check."
+        f"As of {human_date}, {source_title} gives {app_term} readers a concrete signal to test against {profile['secondary']}. "
+        f"The useful answer is what to inspect next, what risk to reduce, and when the source should stay as background context."
     )
     action_checks = [
         f"Identify the exact fact in {source_name} that changes the {app_term} workflow.",
@@ -821,10 +948,10 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. The practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}, then decide what to inspect, what to try next, and what risk to avoid.</p>
 
       <h2>Applying The Signal</h2>
-      <p>Users can apply the signal when they compare a current workflow against the source update. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the update changes a real decision.</p>
+      <p>Users can apply the signal when they compare a current workflow against the source detail. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the detail changes a real decision.</p>
 
       <div class="capsule">
-        <p><strong>Source note:</strong> As of {human_date}, {escape(post.title.lower())} connects a live source item from {escape(source_name)} to {escape(str(profile["secondary"]))}. The point is to add a current example, not to restate a familiar app feature list.</p>
+        <p><strong>Reader note:</strong> As of {human_date}, {escape(post.title.lower())} connects a fresh {escape(source_name)} detail to {escape(str(profile["secondary"]))}. Keep it practical: change the workflow only when the source points to a step the user can inspect, repeat, or verify.</p>
       </div>
 
       <h2>What should the workflow check next?</h2>
@@ -1269,7 +1396,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     keyword_html = "\n".join(f"          <li>{escape(item)}</li>" for item in keyword_coverage[:6])
     challenge_html = "\n".join(f"          <li>{escape(item)}</li>" for item in challenge_items)
     tldr = (
-        f"As of {human_date}, {post.title.lower()} matters because it turns a source update from {source_name} into deployment guidance. "
+        f"As of {human_date}, {post.title.lower()} matters because it turns a fresh {source_name} item into deployment guidance. "
         "The practical question is what changed, where it affects products, and what teams should verify next."
     )
     validation_items = {
@@ -1429,7 +1556,7 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     <article>
       <div class="hero">
         <h1>{escape(post.title)}</h1>
-        <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | Source: {escape(source_name)}</p>
+        <p class="meta">Published on {escape(human_date)} | Topic: {escape(post.topic)} | Source: {escape(source_name)} | Source date: {escape(source_published)}</p>
         <p>{escape(opening_intro)}</p>
       </div>
 
@@ -1452,20 +1579,20 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       <h2>Why does this update matter?</h2>
       <p>{escape(interpretation_body_for(source_slug, item, summary))} {escape(retrieval_fit_body_for(source_slug))}</p>
       <div class="capsule">
-        <p><strong>Source note:</strong> As of {human_date}, {escape(post.title.lower())} matters because it turns a fresh {escape(source_name)} update into practical guidance on implementation, interoperability, or workflow impact. The useful part is the decision it helps a reader make next.</p>
+        <p><strong>Reader note:</strong> As of {human_date}, {escape(post.title.lower())} is useful only if it changes implementation, interoperability, workflow impact, or the next validation step. The useful part is the decision it helps a reader make next.</p>
       </div>
 
       <h2>Product Impact Areas</h2>
       <p>{escape(application_body_for(source_slug))}</p>
       <div class="capsule">
-        <p><strong>Practical note:</strong> The product value of this update depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when they map the source update to practical validation and rollout decisions.</p>
+        <p><strong>Practical note:</strong> The product value of this item depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when they map the source detail to practical validation and rollout decisions.</p>
       </div>
 
       <h2>What should teams watch next?</h2>
       <p>{escape(next_body_for(source_slug))} {escape(search_intent_body_for(source_slug))}</p>
 
       <h2>Validation Before Acting</h2>
-      <p>A source update is most useful when it becomes a small validation plan. Teams should keep the test narrow enough to run quickly and specific enough to change a real product or workflow decision.</p>
+      <p>A fresh source is most useful when it becomes a small validation plan. Teams should keep the test narrow enough to run quickly and specific enough to change a real product or workflow decision.</p>
       <ol>
 {validation_html}
       </ol>
@@ -1514,6 +1641,7 @@ def build_candidate_from_item(
     lane: str = "updates",
     filename: str | None = None,
 ) -> LiveBlogCandidate:
+    require_recent_news_source(item, target_day)
     resolved_filename = filename or f"{article_prefix_for_lane(lane, source_slug)}-{slugify(item.title)}-{target_day.isoformat()}.html"
     lane_focus = lane_story_focus(lane, source_slug, item)
     title, rewritten_summary = lane_focus if lane_focus is not None else rewritten_story_focus(source_slug, item)
@@ -1538,7 +1666,7 @@ def build_candidate_from_item(
     return LiveBlogCandidate(post=post, html=html, link=item.link, source_name=source_name)
 
 
-def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
+def unique_feed_items_for_lane(lane: str, target_day: date) -> list[tuple[str, str, FeedItem]]:
     if lane not in LANE_SOURCE_SLUGS:
         return []
     collected: list[tuple[str, str, FeedItem]] = []
@@ -1549,6 +1677,8 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
         except Exception:
             continue
         for item in items:
+            if not is_recent_news_source(item, target_day):
+                continue
             title_text = clean_text(item.title).lower()
             haystack = f"{title_text} {clean_text(item.summary)}".lower()
             required = LANE_REQUIRED_KEYWORDS[lane]
@@ -1563,19 +1693,6 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
                 continue
             seen_links.add(item.link)
             collected.append((render_source_slug_for_lane(lane, source.slug), source.source_name, item))
-    if lane in {"protocol", "updates"}:
-        for page in CURATED_PROTOCOL_PAGES:
-            item = feed_item_from_curated_page(page)
-            if item is None:
-                continue
-            haystack = clean_text(item.title).lower()
-            required = LANE_REQUIRED_KEYWORDS[lane]
-            if not any(matches_keyword(haystack, keyword) for keyword in required):
-                continue
-            if item.link in seen_links:
-                continue
-            seen_links.add(item.link)
-            collected.append((page.source_slug, page.source_name, item))
     collected.sort(key=lambda entry: entry[2].published_at.timestamp() if entry[2].published_at else 0.0, reverse=True)
     return collected
 
@@ -1583,5 +1700,5 @@ def unique_feed_items_for_lane(lane: str) -> list[tuple[str, str, FeedItem]]:
 def build_live_candidates(target_day: date, lane: str) -> list[LiveBlogCandidate]:
     return [
         build_candidate_from_item(target_day, source_slug, source_name, item, lane=lane)
-        for source_slug, source_name, item in unique_feed_items_for_lane(lane)
+        for source_slug, source_name, item in unique_feed_items_for_lane(lane, target_day)
     ]
