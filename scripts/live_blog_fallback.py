@@ -802,20 +802,14 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
         f"As of {human_date}, {source_title} gives {app_term} readers a concrete signal to test against {profile['secondary']}. "
         f"The useful answer is what to inspect next, what risk to reduce, and when the source should stay as background context."
     )
-    action_checks = [
-        f"Identify the exact fact in {source_name} that changes the {app_term} workflow.",
-        f"Compare that fact with the current step where users handle {profile['secondary']}.",
-        "Decide whether the next action is a setup change, a review step, a recovery attempt, or no change at all.",
-        "Keep the original source open when the change affects compatibility, privacy, permissions, storage, capture quality, or device behavior.",
-    ]
-    action_checks_html = "\n".join(f"          <li>{escape(check)}</li>" for check in action_checks)
-    ignore_checks = [
-        "The source is about a distant platform change that does not affect the user's current device or workflow.",
-        "The update describes a product announcement but gives no behavior, limit, compatibility, or rollout detail to test.",
-        "The next step would require risky changes before the user can verify the source detail in their own setup.",
-        f"The reader only needs background context and does not need to change how they use {app_term} today.",
-    ]
-    ignore_checks_html = "\n".join(f"          <li>{escape(check)}</li>" for check in ignore_checks)
+    action_summary = (
+        f"For {app_term}, the cleanest next move is to name the source detail, compare it with the user's current "
+        f"{profile['secondary']} flow, and change only the step that can be checked in the app or device state."
+    )
+    ignore_summary = (
+        "If the update does not change a setup choice, review step, compatibility risk, capture quality issue, "
+        "or recovery signal, it is background reading rather than a reason to change the routine."
+    )
 
     return f"""<!doctype html>
 <html lang="en-US">
@@ -947,30 +941,14 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       <h2>Why does this matter for {escape(app_term)}?</h2>
       <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. The practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}, then decide what to inspect, what to try next, and what risk to avoid.</p>
 
-      <h2>Applying The Signal</h2>
+      <h2>What this changes</h2>
       <p>Users can apply the signal when they compare a current workflow against the source detail. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the detail changes a real decision.</p>
-
-      <div class="capsule">
-        <p><strong>Practical context:</strong> As of {human_date}, {escape(post.title.lower())} connects recent reporting from {escape(source_name)} to {escape(str(profile["secondary"]))}. Keep it practical: change the workflow only when the source points to a step the user can inspect, repeat, or verify.</p>
-      </div>
 
       <h2>What should the workflow check next?</h2>
       <p>{escape(str(profile["risk"]).capitalize())}. Readers should keep the source-specific facts visible, especially when the update changes a setup, review step, recovery signal, or approval path.</p>
 
-      <h2>Action Steps For This Signal</h2>
-      <p>The safest way to use the update is to turn it into one small decision. For {escape(app_term)}, that means connecting the source detail to a step the user can inspect, repeat, or undo without guessing.</p>
-      <ol>
-{action_checks_html}
-      </ol>
-
-      <h2>What should readers verify next?</h2>
-      <p>Check the source detail against the current workflow, confirm which step changes, and look for one risk that the update reduces or introduces. If the update does not change a real action, treat it as context rather than a reason to change the routine.</p>
-
-      <h2>When should users ignore the update?</h2>
-      <p>Not every live item deserves a workflow change. The update should stay in the background when it does not create a clearer action, a measurable risk reduction, or a better way to complete the task.</p>
-      <ul>
-{ignore_checks_html}
-      </ul>
+      <h2>What should change now?</h2>
+      <p>{escape(action_summary)} {escape(ignore_summary)}</p>
 
       <h2>FAQ</h2>
 {faq_html}
@@ -1578,15 +1556,9 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
 
       <h2>Why does this update matter?</h2>
       <p>{escape(interpretation_body_for(source_slug, item, summary))} {escape(retrieval_fit_body_for(source_slug))}</p>
-      <div class="capsule">
-        <p><strong>Reader note:</strong> As of {human_date}, {escape(post.title.lower())} is useful only if it changes implementation, interoperability, workflow impact, or the next validation step. The useful part is the decision it helps a reader make next.</p>
-      </div>
 
       <h2>Product Impact Areas</h2>
       <p>{escape(application_body_for(source_slug))}</p>
-      <div class="capsule">
-        <p><strong>Practical note:</strong> The product value of this item depends on where it changes real workflows such as deployment timing, compatibility checks, or user-facing behavior. Teams benefit most when they map the source detail to practical validation and rollout decisions.</p>
-      </div>
 
       <h2>What should teams watch next?</h2>
       <p>{escape(next_body_for(source_slug))} {escape(search_intent_body_for(source_slug))}</p>

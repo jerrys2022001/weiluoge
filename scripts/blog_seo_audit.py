@@ -34,6 +34,15 @@ FORBIDDEN_VISIBLE_COPY_PATTERNS = (
     r"live source item",
     r"live-source update",
     r"answer blocks?",
+    r"Practical decision checklist",
+    r"Practical Takeaways",
+    r"Practical note",
+    r"Reader note",
+    r"Action Steps For This Signal",
+    r"What should readers verify next",
+    r"When should users ignore the update",
+    r"publishable only if",
+    r"expanded sources give the scheduler",
 )
 
 

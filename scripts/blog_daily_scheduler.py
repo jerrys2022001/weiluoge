@@ -624,9 +624,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <h2>Why does this Bluetooth and cleanup routine matter?</h2>
       <p>{escape(bluetooth_lead)}</p>
       <p>{escape(angle.bluetooth_body)}</p>
-      <div class=\"capsule\">
-        <p><strong>Practical note:</strong> As of {human_date}, Bluetooth troubleshooting works best when teams separate failures into discover, pair, and reconnect stages, then compare those notes against battery state, permissions, and storage pressure. That structure is easier to debug because each failure stage points to a different fix.</p>
-      </div>
+      <p>As of {human_date}, Bluetooth troubleshooting works best when teams separate failures into discover, pair, and reconnect stages, then compare those notes against battery state, permissions, and storage pressure. That structure is easier to debug because each failure stage points to a different fix.</p>
 
       <h2>How should users check Bluetooth first?</h2>
       <p>{escape(angle.bluetooth_heading)}. {escape(angle.bluetooth_body)}</p>
@@ -634,9 +632,7 @@ def render_article_html(day: date, angle: Angle, post: PostMeta) -> str:
       <h2>What cleanup step creates the safest storage win?</h2>
       <p>{escape(cleanup_lead)}</p>
       <p>{escape(angle.cleanup_body)}</p>
-      <div class=\"capsule\">
-        <p><strong>Practical note:</strong> The safest storage win usually comes from duplicate photos, oversized videos, stale downloads, or cache-heavy clutter before users touch riskier categories. That order keeps cleanup fast and lowers the odds of deleting important content under pressure.</p>
-      </div>
+      <p>The safest storage win usually comes from duplicate photos, oversized videos, stale downloads, or cache-heavy clutter before users touch riskier categories. That order keeps cleanup fast and lowers the odds of deleting important content under pressure.</p>
 
       <div class=\"panel\">
         <h2>Why does the daily 20:00 checklist work?</h2>

@@ -432,16 +432,12 @@ def render_article_html(day: date, angle: ProtocolAngle, post: PostMeta) -> str:
       <h2>How should teams interpret this protocol area?</h2>
       <p>{escape(interpretation_lead)}</p>
       <p>{escape(angle.protocol_focus)}</p>
-      <div class="capsule">
-        <p><strong>Practical note:</strong> As of {human_date}, Bluetooth protocol interpretation works best when teams map each layer to one product behavior such as discovery, trust, data exchange, or power. That framing reduces debugging guesswork because each layer points to a different failure mode.</p>
-      </div>
+      <p>As of {human_date}, Bluetooth protocol interpretation works best when teams map each layer to one product behavior such as discovery, trust, data exchange, or power. That framing reduces debugging guesswork because each layer points to a different failure mode.</p>
 
       <h2>Where does it matter in real products?</h2>
       <p>{escape(application_lead)}</p>
       <p>{escape(angle.application_focus)}</p>
-      <div class="capsule">
-        <p><strong>Practical note:</strong> Bluetooth applications succeed when protocol choices match workflow goals like setup speed, telemetry stability, or battery efficiency. Teams that connect protocol details to product outcomes usually plan features faster and diagnose interoperability issues with less wasted effort.</p>
-      </div>
+      <p>Bluetooth applications succeed when protocol choices match workflow goals like setup speed, telemetry stability, or battery efficiency. Teams that connect protocol details to product outcomes usually plan features faster and diagnose interoperability issues with less wasted effort.</p>
 
       <div class="panel">
         <h2>What makes deployment difficult in 2026?</h2>

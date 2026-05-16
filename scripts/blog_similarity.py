@@ -103,7 +103,7 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 
 def extract_body_counter(html: str) -> Counter[str]:
-    if "Translate AI SEO / GEO Guide" in html or "Translate AI Practical Guide" in html:
+    if "Translate AI Practical Guide" in html:
         translate_common_tokens = {
             "translate",
             "translation",
@@ -174,7 +174,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
-    if "Find AI SEO / GEO Guide" in html or "Find AI Practical Guide" in html:
+    if "Find AI Practical Guide" in html:
         find_common_tokens = {
             "find",
             "finder",

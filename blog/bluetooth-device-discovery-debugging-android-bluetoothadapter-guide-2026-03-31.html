@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
@@ -116,7 +116,7 @@
         <p><strong>TL;DR:</strong> Run one bounded discovery session at a time, validate permission state before starting, register receivers before scan start, and log device results consistently. This sequence solves most Bluetooth device discovery debugging incidents faster.</p>
       </div>
 
-      <h2>Fast answer block for search and AI retrieval</h2>
+      <h2>Fast answer block for search and reader review</h2>
       <p>For Android Bluetooth device discovery debugging, use this order: verify runtime permissions and Nearby Devices grant, confirm adapter state, start a single discovery session, observe <code>ACTION_FOUND</code> and completion broadcasts, and stop before re-running. Repeat with one variable changed each run to isolate the failure source.</p>
 
       <div class="panel">
