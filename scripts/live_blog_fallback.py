@@ -750,7 +750,7 @@ def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, st
         ("Fresh evidence", source_title, f"Connects the new item to {profile['secondary']} decisions"),
         ("User problem", str(profile["intent"]), "Shows which app decision the update affects"),
         ("Workflow check", str(profile["workflow"]), "Turns the update into an actionable sequence"),
-        ("Reader check", "Compare the current source detail with the workflow before changing behavior", "Keeps the advice grounded in a real action"),
+        ("Reader check", "Compare the cited detail with the workflow before changing behavior", "Keeps the advice grounded in a real action"),
     ]
 
 
@@ -768,7 +768,7 @@ def app_lane_faq_items(lane: str) -> list[tuple[str, str]]:
         ),
         (
             f"What makes this {app_term} workflow useful?",
-            f"It ties the live source item to {profile['workflow']}, so readers can decide what to inspect, what to try next, and what to avoid.",
+            f"It ties the cited update to {profile['workflow']}, so readers can decide what to inspect, what to try next, and what to avoid.",
         ),
     ]
 
@@ -951,7 +951,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       <p>Users can apply the signal when they compare a current workflow against the source detail. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the detail changes a real decision.</p>
 
       <div class="capsule">
-        <p><strong>Reader note:</strong> As of {human_date}, {escape(post.title.lower())} connects a fresh {escape(source_name)} detail to {escape(str(profile["secondary"]))}. Keep it practical: change the workflow only when the source points to a step the user can inspect, repeat, or verify.</p>
+        <p><strong>Practical context:</strong> As of {human_date}, {escape(post.title.lower())} connects recent reporting from {escape(source_name)} to {escape(str(profile["secondary"]))}. Keep it practical: change the workflow only when the source points to a step the user can inspect, repeat, or verify.</p>
       </div>
 
       <h2>What should the workflow check next?</h2>
