@@ -1,12 +1,18 @@
 {
-  "latest_date": "2026-05-16",
-  "updated_at": "2026-05-16T09:52:41.124993+08:00",
+  "latest_date": "2026-05-17",
+  "updated_at": "2026-05-17T08:40:02.479436+08:00",
   "entries": [
+    {
+      "date": "2026-05-17",
+      "path": "/assets/data/product-pulse/2026-05-17.json",
+      "item_count": 10,
+      "refreshed_at": "2026-05-17T08:40:02.479436+08:00"
+    },
     {
       "date": "2026-05-16",
       "path": "/assets/data/product-pulse/2026-05-16.json",
       "item_count": 10,
-      "refreshed_at": "2026-05-16T09:52:41.124993+08:00"
+      "refreshed_at": "2026-05-16T09:39:09.221492+08:00"
     },
     {
       "date": "2026-05-15",
@@ -132,19 +138,13 @@
       "date": "2026-04-25",
       "path": "/assets/data/product-pulse/2026-04-25.json",
       "item_count": 10,
-      "refreshed_at": "2026-04-25T10:23:26.764047+08:00"
+      "refreshed_at": "2026-04-25T09:31:39.633184+08:00"
     },
     {
       "date": "2026-04-24",
       "path": "/assets/data/product-pulse/2026-04-24.json",
       "item_count": 10,
       "refreshed_at": "2026-04-24T08:30:02.964993+08:00"
-    },
-    {
-      "date": "2026-04-23",
-      "path": "/assets/data/product-pulse/2026-04-23.json",
-      "item_count": 10,
-      "refreshed_at": "2026-04-23T09:31:32.552730+08:00"
     },
     {
       "date": "2026-04-22",
@@ -174,7 +174,7 @@
       "date": "2026-04-18",
       "path": "/assets/data/product-pulse/2026-04-18.json",
       "item_count": 10,
-      "refreshed_at": "2026-04-18T10:07:07.971387+08:00"
+      "refreshed_at": "2026-04-18T10:07:08.026320+08:00"
     },
     {
       "date": "2026-04-17",
