@@ -1,7 +1,31 @@
 {
-  "latest_date": "2026-05-13",
-  "updated_at": "2026-05-13T08:30:02.859709+08:00",
+  "latest_date": "2026-05-17",
+  "updated_at": "2026-05-17T09:20:41.889089+08:00",
   "entries": [
+    {
+      "date": "2026-05-17",
+      "path": "/assets/data/product-pulse/2026-05-17.json",
+      "item_count": 10,
+      "refreshed_at": "2026-05-17T09:20:41.889089+08:00"
+    },
+    {
+      "date": "2026-05-16",
+      "path": "/assets/data/product-pulse/2026-05-16.json",
+      "item_count": 10,
+      "refreshed_at": "2026-05-16T09:39:09.221492+08:00"
+    },
+    {
+      "date": "2026-05-15",
+      "path": "/assets/data/product-pulse/2026-05-15.json",
+      "item_count": 10,
+      "refreshed_at": "2026-05-15T08:30:02.533497+08:00"
+    },
+    {
+      "date": "2026-05-14",
+      "path": "/assets/data/product-pulse/2026-05-14.json",
+      "item_count": 10,
+      "refreshed_at": "2026-05-14T08:30:01.873699+08:00"
+    },
     {
       "date": "2026-05-13",
       "path": "/assets/data/product-pulse/2026-05-13.json",

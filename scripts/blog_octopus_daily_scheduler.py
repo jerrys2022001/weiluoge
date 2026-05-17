@@ -162,7 +162,7 @@ ANGLES: list[OctopusAngle] = [
     ),
     OctopusAngle(
         slug_prefix="octopus-project-thread-session-management-guide",
-        title="How Octopus Keeps Server, Project, and Thread Context Organized",
+        title="Keep Octopus Server and Thread Context Organized",
         description="A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.",
         teaser="Mobile access becomes valuable when the session list tells you where the real work lives without making you reconstruct it from memory.",
         topic="Project and Thread Organization",
@@ -265,6 +265,14 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         "Treat repeated automation failures as a stop signal until the root cause is inspected in the full workspace.",
     ]
     context_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in context_checks)
+    state_checks = [
+        "Confirm the active project and recent thread title before approving a command.",
+        "Check the last tool result so you know whether the agent is continuing from success or recovering from failure.",
+        "Look at the permission scope: file writes, dependency changes, network calls, publish steps, or SSH access should be easy to explain.",
+        "Attach the screenshot, log excerpt, or file that proves the next instruction is grounded in the current problem.",
+        "Leave a short follow-up note when the mobile decision changes priority, deadline, or the expected output.",
+    ]
+    state_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in state_checks)
     workflow_steps = [
         "Open the recent thread or session.",
         "Verify the server or project that owns the work.",
@@ -307,10 +315,10 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         },
         {
             "@type": "Question",
-            "name": "When should I avoid approving from mobile?",
+            "name": "Why does Octopus matter for mobile coding workflows?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Avoid approving from mobile when the request depends on a large diff, unclear file changes, a risky permission, a failed previous command, or an SSH host you cannot verify."
+                "text": "Octopus matters because it keeps server, project, thread, approval, and context signals visible on iPhone or iPad, so a developer can make small coding decisions without rebuilding the session from memory."
             },
         },
     ]
@@ -443,7 +451,7 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
       <div class="panel">
-        <h2>What Octopus Does</h2>
+        <h2>What Does Octopus Do?</h2>
         <ul>
 {action_html}
         </ul>
@@ -461,17 +469,29 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         </ul>
       </div>
       <div class="panel">
-        <h2>When It Helps Most</h2>
+        <h2>When Does It Help Most?</h2>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
         <p>{escape(angle.scenario_focus)}</p>
         <p>{escape(angle.edge_focus)}</p>
       </div>
       <div class="panel">
-        <h2>Limits And Failure Modes</h2>
+        <h2>What State Should You Inspect?</h2>
+        <p>{escape(workflow_lead)} The important habit is to inspect state before acting, not after the approval has already moved the thread forward.</p>
+        <ul>
+{state_checks_html}
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Where Can The Mobile Flow Fail?</h2>
         <ul>
 {limit_html}
         </ul>
+      </div>
+      <div class="panel">
+        <h2>What Risk Does This Reduce?</h2>
+        <p>{escape(angle.workflow_focus)} The risk it reduces is accidental context switching: approving the right command in the wrong repo, missing a failed previous step, or giving a short mobile instruction without the artifact the agent needs.</p>
+        <p>For small decisions, the phone or iPad flow is enough when the thread state, requested action, and expected result all fit on the screen. For broad changes, the better move is to use Octopus as a review and handoff surface, then return to the desktop before touching large diffs or irreversible operations.</p>
       </div>
       <div class="panel">
         <h2>Mobile Review Checklist</h2>
@@ -480,7 +500,7 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         </ul>
       </div>
       <div class="panel">
-        <h2>Common Questions</h2>
+        <h3>Common Questions</h3>
         <h3>What is Octopus used for?</h3>
         <p>Octopus is used to carry Codex sessions to iPhone and iPad so users can resume threads, approve actions, and add context with voice, images, and files.</p>
         <h3>Can Octopus help with remote coding approvals?</h3>
@@ -489,12 +509,13 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         <p>Yes. The visible App Store feature list highlights Codex app-server and SSH connections, along with server, project, thread, and recent session management.</p>
         <h3>When should I avoid approving from mobile?</h3>
         <p>Do not approve from mobile when the action depends on a large diff, a broad permission, an unclear server identity, repeated automation failures, or terminal output that needs careful desktop review.</p>
+        <h3>Why does Octopus matter for mobile coding workflows?</h3>
+        <p>It keeps the project, server, thread, approval request, and supporting context in one mobile surface, which makes quick decisions safer than acting from a bare notification or memory.</p>
       </div>
       <div class="panel">
-        <h2>Related Product Paths</h2>
+        <h3>Related Product Paths</h3>
         <p><a href="/octopus/">Octopus product page</a> covers the App Store listing details, mobile workflow highlights, and download path.</p>
-        <p><a href="/apps/">VelocAI Apps</a> shows how Octopus sits beside creator, Bluetooth, cleanup, and translation workflows in the same portfolio.</p>
-        <p><a href="/bluetoothexplorer/">Bluetooth Explorer</a> is relevant when the same mobile workflow also needs device-side debugging, BLE inspection, or packet-level troubleshooting.</p>
+        <p><a href="{APP_STORE_URL}" target="_blank" rel="noopener noreferrer">Octopus on the App Store</a> is the source for install details and current platform availability.</p>
       </div>
     </article>
   </main>

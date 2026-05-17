@@ -103,7 +103,7 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 
 def extract_body_counter(html: str) -> Counter[str]:
-    if "Translate AI SEO / GEO Guide" in html or "Translate AI Practical Guide" in html:
+    if "Translate AI Practical Guide" in html:
         translate_common_tokens = {
             "translate",
             "translation",
@@ -174,7 +174,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
-    if "Find AI SEO / GEO Guide" in html or "Find AI Practical Guide" in html:
+    if "Find AI Practical Guide" in html:
         find_common_tokens = {
             "find",
             "finder",
@@ -241,6 +241,123 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in find_common_tokens
         )
 
+    if (
+        "Octopus Practical Guide" in html
+        or "Octopus live mobile coding" in html
+        or ("Octopus" in html and "/octopus/" in html and "mobile Codex" in html)
+    ):
+        octopus_common_tokens = {
+            "action",
+            "actions",
+            "active",
+            "advice",
+            "agent",
+            "agents",
+            "approval",
+            "approvals",
+            "approve",
+            "approving",
+            "background",
+            "capture",
+            "change",
+            "changes",
+            "codex",
+            "coding",
+            "command",
+            "commands",
+            "context",
+            "continuity",
+            "decision",
+            "desktop",
+            "developer",
+            "developers",
+            "files",
+            "follow",
+            "history",
+            "ipad",
+            "iphone",
+            "linked",
+            "mac",
+            "mobile",
+            "next",
+            "octopus",
+            "only",
+            "permission",
+            "permissions",
+            "project",
+            "question",
+            "real",
+            "remote",
+            "review",
+            "runtime",
+            "server",
+            "session",
+            "sessions",
+            "ssh",
+            "state",
+            "step",
+            "thread",
+            "threads",
+            "tool",
+            "tools",
+            "try",
+            "useful",
+            "user",
+            "users",
+            "variable",
+            "visible",
+            "voice",
+            "weak",
+            "whether",
+            "work",
+            "workflow",
+            "workflows",
+        }
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        hero_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_match:
+            focus_parts.append(hero_match.group(1))
+
+        tldr_match = re.search(r'<div class="tldr">.*?<p>.*?TL;DR:\s*(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if tldr_match:
+            focus_parts.append(tldr_match.group(1))
+
+        section_patterns = (
+            r"<h2>\s*When It Helps Most\s*</h2>\s*((?:<p>.*?</p>\s*){1,4})",
+            r"<h2>\s*Limits And Failure Modes\s*</h2>\s*<ul>(.*?)</ul>",
+            r"<h2>\s*What problem does this help solve\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*How should you apply it\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*What should the workflow prove\?\s*</h2>\s*<p>(.*?)</p>",
+        )
+        for pattern in section_patterns:
+            match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
+            if match:
+                focus_parts.append(match.group(1))
+
+        first_row_match = re.search(
+            r"<tbody>\s*<tr>\s*<td>.*?</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if first_row_match:
+            focus_parts.extend(first_row_match.groups())
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS and token not in octopus_common_tokens
+        )
+
     if "<h2>What Happened</h2>" in html:
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
@@ -261,7 +378,16 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS
         )
 
-    if "live workflow fallback" in html.lower() or "expanded-source fallback reframes" in html.lower():
+    lowered_html = html.lower()
+    if (
+        "live workflow fallback" in lowered_html
+        or "expanded-source fallback reframes" in lowered_html
+        or "live workflow update" in lowered_html
+        or "live recovery update" in lowered_html
+        or "live creator update" in lowered_html
+        or "live mobile coding update" in lowered_html
+        or "live storage update" in lowered_html
+    ):
         app_live_common_tokens = {
             "answer",
             "angle",
@@ -335,7 +461,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in app_live_common_tokens
         )
 
-    if "expanded-source fallback" in html.lower() or "live-source" in html.lower():
+    if "expanded-source fallback" in lowered_html or "live-source" in lowered_html or "source update from" in lowered_html:
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
         if title_match:

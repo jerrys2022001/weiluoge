@@ -22,6 +22,31 @@ RECOMMENDED_QUESTION_RATIO_MAX = 0.70
 RECOMMENDED_INTERNAL_LINKS_MIN = 3
 RECOMMENDED_INTERNAL_LINKS_MAX = 10
 RECOMMENDED_EXTERNAL_LINKS_MIN = 3
+FORBIDDEN_VISIBLE_COPY_PATTERNS = (
+    r"\bSEO\b",
+    r"\bGEO\b",
+    r"search engines?",
+    r"AI systems?",
+    r"AI-assisted summary systems?",
+    r"Source note",
+    r"as a current source",
+    r"current source",
+    r"live source item",
+    r"live-source update",
+    r"answer blocks?",
+    r"Practical decision checklist",
+    r"Practical Takeaways",
+    r"Practical note",
+    r"Practical context",
+    r"Reader note",
+    r"Action Steps For This Signal",
+    r"What should readers verify next",
+    r"When should users ignore the update",
+    r"What should you check next",
+    r"When should you ignore the update",
+    r"publishable only if",
+    r"expanded sources give the scheduler",
+)
 
 
 @dataclass(frozen=True)
@@ -87,6 +112,15 @@ def clean_heading_text(value: str) -> str:
     return text.strip()
 
 
+def visible_body_text(html: str) -> str:
+    body = extract_tag(html, r"<body[^>]*>(.*?)</body>") or html
+    body = re.sub(r"<script\b.*?</script>", " ", body, flags=re.IGNORECASE | re.DOTALL)
+    body = re.sub(r"<style\b.*?</style>", " ", body, flags=re.IGNORECASE | re.DOTALL)
+    body = re.sub(r"<[^>]+>", " ", body)
+    body = re.sub(r"\s+", " ", body)
+    return body.strip()
+
+
 def extract_links(html: str) -> tuple[list[str], list[str]]:
     hrefs = re.findall(r'href="([^"]+)"', html, re.IGNORECASE)
     internal = [href for href in hrefs if href.startswith("/") and not href.startswith("//")]
@@ -109,6 +143,7 @@ def validate_generated_article(html: str, *, expected_canonical: str) -> SeoAudi
     h2s = [clean_heading_text(value) for value in extract_headings(html, 2)]
     h3s = [clean_heading_text(value) for value in extract_headings(html, 3)]
     internal_links, external_links = extract_links(html)
+    visible_text = visible_body_text(html)
 
     if page_title:
         add_check(checks, "Title present", "PASS", page_title)
@@ -250,6 +285,22 @@ def validate_generated_article(html: str, *, expected_canonical: str) -> SeoAudi
         add_check(checks, "FAQ schema", "PASS", "FAQPage schema present")
     else:
         add_check(checks, "FAQ schema", "WARN", "FAQPage schema not found")
+
+    forbidden_visible_terms = [
+        pattern
+        for pattern in FORBIDDEN_VISIBLE_COPY_PATTERNS
+        if re.search(pattern, visible_text, re.IGNORECASE)
+    ]
+    if forbidden_visible_terms:
+        add_check(
+            checks,
+            "Visible reader copy",
+            "FAIL",
+            "Visible article copy contains internal or explanatory language: "
+            + ", ".join(forbidden_visible_terms),
+        )
+    else:
+        add_check(checks, "Visible reader copy", "PASS", "No internal search/retrieval language in body copy")
 
     return SeoAuditReport(checks=checks)
 

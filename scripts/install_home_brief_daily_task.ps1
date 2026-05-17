@@ -24,7 +24,7 @@ if (-not $PythonCommand) {
 }
 
 $LogDir = Join-Path $RepoRoot "output\home-brief-logs"
-$DefaultSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$DefaultSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 $SecondaryCheckSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
 $RunArgs = "$PythonArgs `"$ScriptPath`" run --repo-root `"$RepoRoot`" --git-commit --git-push --log-dir `"$LogDir`""

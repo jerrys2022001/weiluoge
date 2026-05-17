@@ -21,6 +21,17 @@ PREFIX_TO_SLUG = {
     "bluetooth-industry-update-": "bluetooth",
 }
 
+PREFIX_TO_LANE = {
+    "bluetooth-industry-update-": "protocol",
+    "iphone-storage-full-cleanup-five-step-order-live-source-update-": "cleanup",
+    "find-ai-live-device-finding-update-": "find",
+    "dualshot-camera-product-demo-tutorial-guide-live-source-update-": "dualshot",
+    "translate-ai-live-translation-workflow-update-": "translate",
+    "octopus-mobile-codex-workflow-live-source-update-": "octopus",
+}
+
+MAX_NEWS_SOURCE_AGE_DAYS = 365
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Refresh live fallback blog posts to the latest HTML template.")
@@ -35,6 +46,13 @@ def source_slug_for_name(filename: str) -> str | None:
         if filename.startswith(prefix):
             return source_slug
     return None
+
+
+def lane_for_name(filename: str) -> str:
+    for prefix, lane in PREFIX_TO_LANE.items():
+        if filename.startswith(prefix):
+            return lane
+    return "updates"
 
 
 def parse_source_name(html: str) -> str:
@@ -53,18 +71,6 @@ def parse_source_link(html: str) -> str:
     return match.group(1).strip()
 
 
-def parse_page_title(html: str) -> str:
-    match = re.search(r"<title>(.*?)\s*\|", html, re.DOTALL)
-    if not match:
-        raise ValueError("Cannot find title in live blog file.")
-    return match.group(1).strip()
-
-
-def parse_meta_description(html: str) -> str:
-    match = re.search(r'<meta\s+name="description"\s+content="(.*?)"\s*/?>', html, re.DOTALL)
-    return match.group(1).strip() if match else ""
-
-
 def find_feed_item(source_name: str, target_link: str) -> FeedItem | None:
     source = next((item for item in BRIEF_SOURCES if item.source_name == source_name), None)
     if source is None:
@@ -74,13 +80,24 @@ def find_feed_item(source_name: str, target_link: str) -> FeedItem | None:
     except Exception:
         return None
     for item in items:
-        if item.link == target_link:
+        if item.link == target_link and item.published_at is not None:
             return item
     return None
 
 
-def fallback_feed_item(title: str, link: str, summary: str) -> FeedItem:
-    return FeedItem(title=title, link=link, summary=summary, published_at=None, image_url="")
+def source_slug_for_live_file(filename: str, source_name: str) -> str | None:
+    from live_blog_fallback import render_source_slug_for_lane
+
+    lane = lane_for_name(filename)
+    if lane in {"cleanup", "dualshot", "find", "octopus", "translate"}:
+        if source_name == "OpenAI News":
+            return "ai"
+        if "Bluetooth" in source_name or source_name in {"BeaconZone", "Blecon", "Nordic News", "Nordic GetConnected"}:
+            return "bluetooth"
+        if source_name in {"9to5Mac", "MacRumors", "AppleInsider", "MacStories", "Ars Technica Apple", "Cult of Mac"}:
+            return "apple"
+        return render_source_slug_for_lane(lane, "apple")
+    return source_slug_for_name(filename)
 
 
 def refresh_posts(repo_root: Path, target_date: str, dry_run: bool) -> int:
@@ -91,24 +108,36 @@ def refresh_posts(repo_root: Path, target_date: str, dry_run: bool) -> int:
 
     refreshed = 0
     for path in files:
-        source_slug = source_slug_for_name(path.name)
+        html = path.read_text(encoding="utf-8")
+        try:
+            source_name = parse_source_name(html)
+        except ValueError:
+            print(f"skip {path.name} missing source metadata", file=sys.stderr)
+            continue
+        source_slug = source_slug_for_live_file(path.name, source_name)
         if source_slug is None:
             continue
-        html = path.read_text(encoding="utf-8")
-        source_name = parse_source_name(html)
-        source_link = parse_source_link(html)
-        current_title = parse_page_title(html)
-        current_summary = parse_meta_description(html)
+        try:
+            source_link = parse_source_link(html)
+        except ValueError:
+            print(f"skip {path.name} missing source link", file=sys.stderr)
+            continue
         item = find_feed_item(source_name, source_link)
         if item is None:
-            base_title = re.sub(r":\s*(Apple Feature and Performance Commentary|AI Technology Outlook|Bluetooth Standards and Application Commentary)$", "", current_title)
-            item = fallback_feed_item(base_title, source_link, current_summary)
+            print(f"skip {path.name} missing recent feed item", file=sys.stderr)
+            continue
+
+        source_day = item.published_at.astimezone().date() if item.published_at else None
+        if source_day is None or source_day > date.fromisoformat(target_date) or (date.fromisoformat(target_date) - source_day).days > MAX_NEWS_SOURCE_AGE_DAYS:
+            print(f"skip {path.name} stale source date {source_day.isoformat() if source_day else 'unknown'}", file=sys.stderr)
+            continue
 
         candidate = build_candidate_from_item(
             target_day=date.fromisoformat(target_date),
             source_slug=source_slug,
             source_name=source_name,
             item=item,
+            lane=lane_for_name(path.name),
             filename=path.name,
         )
 

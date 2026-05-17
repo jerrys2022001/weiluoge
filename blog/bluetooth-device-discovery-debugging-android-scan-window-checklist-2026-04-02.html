@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
@@ -118,7 +118,7 @@
         <p><strong>TL;DR:</strong> Instrument <code>onScanResult</code>, <code>onBatchScanResults</code>, and <code>onScanFailed</code> in one trace, tune <code>ScanSettings</code> per test objective, and stop restarting scans without cooldown. This closes most "device not found" tickets in bluetooth app workflows.</p>
       </div>
 
-      <h2>Fast answer block for search and AI retrieval</h2>
+      <h2>Fast answer block for search and reader review</h2>
       <p>For Android bluetooth device discovery debugging, triage by callback path first: if <code>onScanFailed</code> fires, map the error code; if callbacks fire with sparse data, review filters and scan mode; if no callback arrives, audit app lifecycle and scanner instance ownership. Then rerun with one settings change only.</p>
 
       <div class="panel">

@@ -406,16 +406,12 @@ def render_article_html(day: date, angle: CleanupAngle, post: PostMeta) -> str:
       <h2>What should users clean first?</h2>
       <p>{escape(priority_lead)}</p>
       <p>{escape(angle.first_focus)}</p>
-      <div class="capsule">
-        <p><strong>Practical note:</strong> As of {human_date}, the best cleanup priority is the category that frees space quickly while keeping deletion risk low. Duplicate photos, screenshots, and oversized low-value videos usually outperform random file deletion because they create visible results without forcing risky decisions first.</p>
-      </div>
+      <p>As of {human_date}, the best cleanup priority is the category that frees space quickly while keeping deletion risk low. Duplicate photos, screenshots, and oversized low-value videos usually outperform random file deletion because they create visible results without forcing risky decisions first.</p>
 
       <h2>How does this fit the five-step cleanup order?</h2>
       <p>{escape(order_lead)}</p>
       <p>{escape(angle.second_focus)}</p>
-      <div class="capsule">
-        <p><strong>Practical note:</strong> The strongest iPhone cleanup routine still follows a five-step order: duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. That order improves consistency, speeds storage recovery, and keeps users from starting with categories that are harder to verify.</p>
-      </div>
+      <p>The strongest iPhone cleanup routine still follows a five-step order: duplicate photos, large videos, screenshots, WhatsApp media, then system storage review. That order improves consistency, speeds storage recovery, and keeps users from starting with categories that are harder to verify.</p>
 
       <div class="panel">
         <h2>What makes cleanup fail in real life?</h2>
