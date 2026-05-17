@@ -205,10 +205,10 @@ def should_trigger_post_publish_index(args: argparse.Namespace) -> bool:
         return True
     return str(os.environ.get(ENABLE_POST_PUBLISH_INDEX_ENV, "")).strip() == "1"
 
-def build_publish_command(script_root: Path, repo_root: Path, args: argparse.Namespace) -> list[str]:
+def build_publish_command(repo_root: Path, args: argparse.Namespace) -> list[str]:
     command = [
         sys.executable,
-        str(script_root / "scripts" / "publish_unique_blog_slot.py"),
+        str(repo_root / "scripts" / "publish_unique_blog_slot.py"),
         "--repo-root",
         str(repo_root),
         "--lane",
@@ -279,7 +279,6 @@ def select_worktree_ref(repo_root: Path, git_command: str, args: argparse.Namesp
 def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
-    script_root = resolve_script_root()
     git_command = resolve_git_command()
     (repo_root / ".tmp").mkdir(parents=True, exist_ok=True)
     temp_root = Path(tempfile.mkdtemp(prefix="scheduled-blog-", dir=str(repo_root / ".tmp")))
@@ -299,7 +298,7 @@ def main() -> int:
                     [git_command, "worktree", "add", "--detach", str(worktree_path), worktree_ref],
                 )
 
-                command = build_publish_command(script_root, worktree_path, args)
+                command = build_publish_command(worktree_path, args)
                 completed = run_command(worktree_path, command, check=False)
                 publish_output = (completed.stdout or "") + "\n" + (completed.stderr or "")
                 published_file = extract_published_file(publish_output)

@@ -335,7 +335,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             r"<h2>\s*Limits And Failure Modes\s*</h2>\s*<ul>(.*?)</ul>",
             r"<h2>\s*What problem does this help solve\?\s*</h2>\s*<p>(.*?)</p>",
             r"<h2>\s*How should you apply it\?\s*</h2>\s*<p>(.*?)</p>",
-            r"<h2>\s*What should you check next\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*What should the workflow prove\?\s*</h2>\s*<p>(.*?)</p>",
         )
         for pattern in section_patterns:
             match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)

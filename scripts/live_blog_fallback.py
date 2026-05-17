@@ -799,16 +799,16 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     )
     keywords = ", ".join(keyword_coverage)
     tldr = (
-        f"As of {human_date}, {source_title} gives {app_term} readers a concrete signal to test against {profile['secondary']}. "
-        f"The useful answer is what to inspect next, what risk to reduce, and when the source should stay as background context."
+        f"As of {human_date}, {source_title} matters to {app_term} readers only if it changes a real {profile['secondary']} decision. "
+        "The point is to separate a useful workflow signal from a headline that is merely adjacent to the app."
     )
     action_summary = (
-        f"For {app_term}, the cleanest next move is to name the source detail, compare it with the user's current "
-        f"{profile['secondary']} flow, and change only the step that can be checked in the app or device state."
+        f"For {app_term}, the next move is to compare the update with the user's current {profile['secondary']} flow, "
+        "then change only the step that can be inspected in the app, device state, or saved session context."
     )
     ignore_summary = (
-        "If the update does not change a setup choice, review step, compatibility risk, capture quality issue, "
-        "or recovery signal, it is background reading rather than a reason to change the routine."
+        "If the update does not alter a setup choice, review step, compatibility risk, capture quality issue, or recovery signal, "
+        "the honest answer is to leave the working routine alone."
     )
 
     return f"""<!doctype html>
@@ -926,8 +926,8 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
         <p><strong>TL;DR:</strong> {escape(tldr)}</p>
       </div>
 
-      <h2>What changed in {escape(day.strftime("%B %Y"))}?</h2>
-      <p>{escape(source_title)} matters for {escape(app_term)} when it changes a real workflow question: {escape(str(profile["intent"]))}. The useful check is to identify the new fact, choose the next action, and verify whether the workflow actually changes.</p>
+      <h2>What changed?</h2>
+      <p>{escape(source_title)} is worth reading through a {escape(app_term)} lens only when it changes the shape of a real task: {escape(str(profile["intent"]))}. If the update does not change what the user can inspect, repeat, or verify, it should stay as context instead of becoming advice.</p>
 
       <table aria-label="{escape(post.topic)} live source coverage">
         <thead>
@@ -938,16 +938,16 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
         </tbody>
       </table>
 
-      <h2>Why does this matter for {escape(app_term)}?</h2>
-      <p>The source item matters when it changes how a reader thinks about {escape(str(profile["secondary"]))}. The practical answer is to connect {escape(source_title)} with {escape(str(profile["workflow"]))}, then decide what to inspect, what to try next, and what risk to avoid.</p>
+      <h2>Why does it matter?</h2>
+      <p>The useful reading is not that every current headline should become an app workflow. The useful reading is narrower: connect {escape(source_title)} with {escape(str(profile["workflow"]))}, then ask whether that connection removes friction, reduces risk, or exposes a better decision point for the user.</p>
 
-      <h2>What this changes</h2>
-      <p>Users can apply the signal when they compare a current workflow against the source detail. For {escape(app_term)}, the useful next step is to pair the action with a verification step and a clear reason the detail changes a real decision.</p>
+      <h2>Where can it help?</h2>
+      <p>It helps when the update turns into a small, visible action inside the workflow. For {escape(app_term)}, that means the user can follow the next step, see the state change, and decide whether the result is better than the old routine.</p>
 
-      <h2>What should the workflow check next?</h2>
-      <p>{escape(str(profile["risk"]).capitalize())}. Readers should keep the source-specific facts visible, especially when the update changes a setup, review step, recovery signal, or approval path.</p>
+      <h2>Where can it mislead?</h2>
+      <p>{escape(str(profile["risk"]).capitalize())}. The risky move is to treat an adjacent news item as proof that the user should change behavior today. A good article should say when the update is too distant, too vague, or too early to act on.</p>
 
-      <h2>What should change now?</h2>
+      <h2>What should change?</h2>
       <p>{escape(action_summary)} {escape(ignore_summary)}</p>
 
       <h2>FAQ</h2>

@@ -37,10 +37,13 @@ FORBIDDEN_VISIBLE_COPY_PATTERNS = (
     r"Practical decision checklist",
     r"Practical Takeaways",
     r"Practical note",
+    r"Practical context",
     r"Reader note",
     r"Action Steps For This Signal",
     r"What should readers verify next",
     r"When should users ignore the update",
+    r"What should you check next",
+    r"When should you ignore the update",
     r"publishable only if",
     r"expanded sources give the scheduler",
 )
