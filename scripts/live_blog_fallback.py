@@ -412,7 +412,7 @@ def teaser_for_source_slug(source_slug: str) -> str:
         return "A search-focused Apple commentary on new product features, performance tradeoffs, and upgrade relevance."
     if source_slug == "ai":
         return "A forward-looking AI commentary focused on model capability, workflow impact, and what changes next."
-    return "A latest-info Bluetooth commentary focused on standards, applications, and practical deployment impact."
+    return "A Bluetooth commentary focused on standards, applications, and deployment impact."
 
 
 def source_home_url(source_slug: str) -> str:
