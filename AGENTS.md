@@ -47,3 +47,15 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - For daily protocol and live-update publishing, reject any new post whose topic-bearing similarity against the existing blog corpus reaches 50% or higher.
 - Protocol-topic daily publishing must stay within Bluetooth protocol subject matter, not generic consumer tech or generic AI news.
 - If the fixed local topic pool cannot supply the required number of daily posts under that rule, fetch the latest live source items and rewrite them into new SEO/GEO blog posts instead of reusing near-duplicate templates.
+
+## Blog Writing Method
+- Every blog post must start from one distinct reader decision, not from a reusable article shell. Before drafting, name the app, the source signal, the user action, the inspected state, the reduced risk, and the stop condition.
+- Never reuse the same visible question set, FAQ questions, checklist labels, table rows, or "what changed / why it matters / where it helps / what should change" structure across two posts in the same publishing day.
+- FAQ blocks must answer from the current app and current source angle. Do not use generic questions such as "Why does this source matter?", "How should readers use this update?", or "What makes this workflow useful?" unless the answers are deeply specific and not repeated elsewhere.
+- For APP live posts, generate section headings from the app workflow and source signal. Examples: Octopus enterprise posts use handoff, traceability, client context, approval owner, and desktop boundary; Octopus security posts use evidence, validation step, patch scope, command output, and remediation boundary.
+- Similarity must be checked after stripping shared navigation, source attribution, product links, and boilerplate. If two same-day posts in the same app lane exceed 30% topic-bearing similarity, rewrite one or both before publishing.
+- If two posts mention the same app, their reader problems must still differ. One Octopus article may cover enterprise handoff; another may cover SSH trust, API cost, or security validation. The FAQ and checklist must make that difference obvious without reading the source headline.
+- Prefer narrow concrete nouns over template labels: use "Security approval checklist", "Enterprise handoff checklist", "RSSI debug checklist", "Privacy cleanup checklist", or "Translation trust checklist" instead of "Practical decision checklist".
+- Visible copy must not expose internal framing terms or template labels such as "SEO", "GEO", "AI retrieval", "search engines", "source item", "live source", "Practical context", "Practical note", "The workflow test", "The failure mode", or "The next move".
+- Each article should contain at least one app-specific failure mode and one app-specific limit. For Octopus, always say when iPhone or iPad review is enough and when the workflow must move back to desktop review.
+- Treat source material as a reasoning prompt, not as a rewrite target. The final article should add a distinct analysis: what the user should inspect, what signal could mislead them, what step is safe to approve, and what evidence would change the decision.

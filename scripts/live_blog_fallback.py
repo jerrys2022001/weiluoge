@@ -637,7 +637,22 @@ def app_lane_profile(lane: str) -> dict[str, object]:
     }[lane]
 
 
-def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, str]]:
+def app_lane_table_rows(lane: str, source_title: str, summary: str = "") -> list[tuple[str, str, str]]:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return [
+            ("Business context", "Client, portfolio, meeting, and follow-up state", "Shows whether mobile review has enough real-world context to be useful"),
+            ("Approval owner", "Who requested the action and who will rely on the output", "Prevents a phone tap from approving work for the wrong banker, client, or thread"),
+            ("Traceability", "Saved notes, generated communications, and captured next actions", "Makes enterprise speed auditable instead of merely fast"),
+            ("Phone boundary", source_title, "Defines when Octopus should monitor a workflow and when desktop review is required"),
+        ]
+    if lane == "octopus" and signal == "security_review":
+        return [
+            ("Security claim", "The file, boundary, invariant, or behavior being questioned", "Keeps mobile review attached to evidence instead of a vague risk label"),
+            ("Validation step", "Minimal reproduction, test command, diff, or sandbox result", "Shows whether the finding is real before a human approves a fix"),
+            ("Approval scope", "One read, one test, one patch, or one narrow follow-up", "Prevents security work from becoming an open-ended phone approval"),
+            ("Desktop handoff", source_title, "Names the point where broad remediation needs a larger screen and fuller context"),
+        ]
     return {
         "cleanup": [
             ("Data residue", "What invisible or forgotten files might remain", "Connects cleanup work to privacy, not only free space"),
@@ -672,7 +687,24 @@ def app_lane_table_rows(lane: str, source_title: str) -> list[tuple[str, str, st
     }[lane]
 
 
-def app_lane_checklist(lane: str, source_title: str) -> list[str]:
+def app_lane_checklist(lane: str, source_title: str, summary: str = "") -> list[str]:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return [
+            "Check the client, portfolio, or meeting context before approving a mobile follow-up.",
+            "Verify which system of record or approved data source the thread is using.",
+            "Approve only a bounded output: a meeting note, next-action draft, small script, or traceable summary.",
+            "Save the reasoning note that explains why the output is ready for a banker or teammate to review.",
+            "Move to desktop when the work changes compliance logic, reporting structure, integrations, or client-facing policy.",
+        ]
+    if lane == "octopus" and signal == "security_review":
+        return [
+            "Identify the exact file, function, boundary, or invariant behind the security claim.",
+            "Ask Codex to produce one minimal validation step before approving any fix.",
+            "Approve only a narrow read, test, reproduction, or single-file patch from mobile.",
+            "Inspect the resulting evidence: terminal output, diff, failing case, or sandbox result.",
+            "Stop and switch to desktop for broad remediation, dependency changes, auth logic, or unclear exploit paths.",
+        ]
     return {
         "cleanup": [
             "Confirm backup state before deleting chat media, screenshots, exports, or app caches.",
@@ -712,7 +744,22 @@ def app_lane_checklist(lane: str, source_title: str) -> list[str]:
     }[lane]
 
 
-def app_lane_takeaways(lane: str) -> list[str]:
+def app_lane_takeaways(lane: str, source_title: str = "", summary: str = "") -> list[str]:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return [
+            "Enterprise Codex work is valuable when the handoff is traceable, narrow, and tied to a real business task.",
+            "Octopus should make the current client, project, source data, and pending action visible before mobile approval.",
+            "Speed is not the point by itself; the useful gain is less context hunting and more time for judgment.",
+            "The phone is for continuity and checkpointing, not for approving policy-heavy workflow changes from a notification.",
+        ]
+    if lane == "octopus" and signal == "security_review":
+        return [
+            "Security review from mobile should start with evidence, not a label.",
+            "Octopus is safest when it turns a finding into one inspectable validation step before a fix.",
+            "A phone can approve a bounded reproduction or narrow patch; it should not bless a sweeping remediation.",
+            "The useful security question is whether the invariant holds, what proved it, and what still needs desktop review.",
+        ]
     return {
         "cleanup": [
             "Cleanup Pro is strongest when cleanup starts with evidence: what file, from which app, with what privacy or storage cost.",
@@ -747,8 +794,21 @@ def app_lane_takeaways(lane: str) -> list[str]:
     }[lane]
 
 
-def app_lane_faq_items(lane: str) -> list[tuple[str, str]]:
+def app_lane_faq_items(lane: str, source_title: str = "", summary: str = "") -> list[tuple[str, str]]:
     app_term = LANE_APP_TERM[lane]
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return [
+            (f"How should {app_term} users read an enterprise Codex story?", "Read it as a handoff design test: does the mobile session show the business context, source data, pending action, and reason for approval clearly enough to trust the next step?"),
+            ("When is mobile approval useful in a banking-style workflow?", "It is useful for reviewing a meeting note, a small follow-up draft, a narrow script result, or a traceable next action after the hard context has already been loaded."),
+            ("When should enterprise Codex work leave the phone?", "Move to desktop when the task changes compliance rules, reporting structure, client-facing language, integrations, or any decision that needs a full audit trail."),
+        ]
+    if lane == "octopus" and signal == "security_review":
+        return [
+            (f"How should {app_term} users read a Codex Security article?", "Read it as an evidence workflow: what behavior is being questioned, what validation step proves or disproves it, and what approval is safe from mobile?"),
+            ("What should be approved from mobile during security review?", "Approve a bounded action such as reading a specific file, running one test, generating a minimal reproduction, or applying one narrow patch with visible evidence."),
+            ("When is iPhone or iPad not enough for a security fix?", "It is not enough when the evidence spans a large diff, auth logic, dependency changes, unclear exploit paths, or remediation that deserves desktop review."),
+        ]
     return {
         "cleanup": [
             (f"When should {app_term} users care about a privacy or storage update?", "They should care when the update changes what data can be inspected, backed up, deleted, or safely left alone."),
@@ -800,7 +860,30 @@ def app_lane_related_paths(lane: str) -> list[tuple[str, str]]:
     return deduped
 
 
-def app_lane_labels(lane: str) -> dict[str, str]:
+def app_lane_labels(lane: str, source_title: str = "", summary: str = "") -> dict[str, str]:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return {
+            "problem": "The enterprise handoff question",
+            "next": "Check the business context",
+            "checklist": "Enterprise handoff checklist",
+            "takeaways": "Banking workflow notes",
+            "ignore": "When speed is not enough",
+            "faq": "Enterprise Octopus questions",
+            "related": "Developer paths",
+            "sources": "Octopus sources",
+        }
+    if lane == "octopus" and signal == "security_review":
+        return {
+            "problem": "The security evidence question",
+            "next": "Check the proof step",
+            "checklist": "Security approval checklist",
+            "takeaways": "Security review notes",
+            "ignore": "When mobile review is too thin",
+            "faq": "Security Octopus questions",
+            "related": "Developer paths",
+            "sources": "Octopus sources",
+        }
     return {
         "cleanup": {
             "problem": "The storage question",
@@ -855,6 +938,77 @@ def app_lane_labels(lane: str) -> dict[str, str]:
     }[lane]
 
 
+def app_lane_intro_body(lane: str, source_title: str, summary: str, profile: dict[str, object]) -> str:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return (
+            f"{source_title} matters for Octopus only if it changes the handoff between business context and a pending Codex action. "
+            "For an enterprise user, the question is not 'can this run on a phone?' The question is whether the mobile view shows the client, source material, requested output, and approval owner clearly enough to continue without losing accountability."
+        )
+    if lane == "octopus" and signal == "security_review":
+        return (
+            f"{source_title} matters for Octopus only if it changes how a security claim becomes evidence. "
+            "The user should be able to see the suspected boundary, the exact file or behavior under review, the smallest validation step, and the point where remediation becomes too large for iPhone or iPad approval."
+        )
+    return (
+        f"{source_title} matters for {LANE_APP_TERM[lane]} only if it changes a real workflow question: {profile['intent']}. "
+        "Start with the user problem, then decide whether the source gives you a better next step or just an interesting background signal."
+    )
+
+
+def app_lane_context_body(lane: str, source_title: str, source_name: str, post: PostMeta, profile: dict[str, object], human_date: str, summary: str) -> str:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return (
+            f"As of {human_date}, {post.title.lower()} is useful when it turns {source_name} enterprise reporting into a handoff check: "
+            "who needs the output, what source data supports it, what changed in the thread, and which approval should wait for a fuller workspace."
+        )
+    if lane == "octopus" and signal == "security_review":
+        return (
+            f"As of {human_date}, {post.title.lower()} is useful when it turns {source_name} security reasoning into an evidence check: "
+            "what was tested, what output proved it, what patch is narrow enough, and which remediation belongs on desktop."
+        )
+    return (
+        f"As of {human_date}, {post.title.lower()} connects recent reporting from {source_name} to {profile['secondary']}. "
+        "Use it as a practical example, not as a reason to abandon a workflow that already works."
+    )
+
+
+def app_lane_next_body(lane: str, source_title: str, summary: str, profile: dict[str, object]) -> str:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return (
+            "Before approving from mobile, inspect the business context first: client or portfolio, source data, requested output, last model result, and the person who will rely on it. "
+            "Change only the handoff step that is visible in the thread; leave policy, integration, and client-facing judgment for desktop review."
+        )
+    if lane == "octopus" and signal == "security_review":
+        return (
+            "Before approving from mobile, inspect the proof step first: named file, command, failing case, sandbox output, or narrow diff. "
+            "Approve evidence gathering before remediation, and stop when the work expands beyond one visible security claim."
+        )
+    return (
+        f"{str(profile['risk']).capitalize()}. Check one visible signal first, then change one workflow variable at a time so you can tell whether the update actually helped."
+    )
+
+
+def app_lane_ignore_body(lane: str, source_title: str, summary: str) -> str:
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        return (
+            "Ignore the speed story when the thread cannot show the business reason, source data, approval owner, or downstream reviewer. "
+            "Enterprise work that moves fast but loses traceability is not a better mobile workflow; it is just a faster way to create cleanup work for someone else."
+        )
+    if lane == "octopus" and signal == "security_review":
+        return (
+            "Ignore the security angle when the thread cannot name the evidence, reproduce the behavior, or explain why a specific patch reduces risk. "
+            "If the finding needs broad reasoning across auth, dependencies, deployment, or a long diff, Octopus should preserve context and wait for desktop review."
+        )
+    return (
+        "Ignore it when it does not change the task you need to complete, the risk you are trying to reduce, or the result you can verify. "
+        "Good app workflows do not need to chase every update; they need a clear reason to change."
+    )
+
+
 def source_signal_type(source_title: str, summary: str) -> str:
     haystack = f"{source_title} {summary}".lower()
     if any(term in haystack for term in ("safari", "browser", "tabs", "web data")):
@@ -900,20 +1054,20 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
     if lane == "octopus" and signal == "security_review":
         return [
             (
-                "The approval gap",
-                f"{source_title} is not really about replacing one scanner label with another. The useful Octopus angle is the gap between a tool saying it reasoned about risk and a mobile user deciding whether to approve the next action. On iPhone or iPad, the safe move is to inspect the command, the touched path, and the claimed security finding before treating the assistant's confidence as permission to continue.",
+                "A label is not proof",
+                f"{source_title} should not be read as a fight over whether one security label is better than another. The Octopus angle is evidence: what behavior is being questioned, what file or boundary is involved, and what small validation step can run before a mobile user approves a change.",
             ),
             (
-                "Mobile review pattern",
-                f"In Octopus, this should become a smaller approval pattern: read the security claim, open the relevant diff or terminal output, approve only the next bounded command, then save the thread context that explains why. That is different from rubber-stamping a broad security run while away from the desk, and yes, it is slower, but the slowdown is the point when the task can mutate code or permissions.",
+                "The phone-sized action",
+                "In Octopus, a security approval should fit on one screen: inspect the named file, run one test, ask for a minimal reproduction, or approve one narrow patch. If the thread cannot name the exact evidence it needs next, the phone should pause the session instead of rewarding vague confidence.",
             ),
             (
-                "Where the phone is enough",
-                "The phone is enough for triage: confirming that the thread is on the right repository, checking whether the finding names a real file, and asking Codex to narrow the next step. It is not enough for a sweeping remediation, a vague permission request, or any change where the important evidence is hidden in a long diff that deserves a desktop review.",
+                "Evidence before remediation",
+                "A mobile security workflow should preserve the evidence trail: command, output, changed path, reason for the patch, and the result after the patch. That trail matters more than a dramatic vulnerability sentence because the user may need to review the decision later from the desktop.",
             ),
             (
-                "The better next action",
-                f"Use {app_term} to keep the review alive, not to compress the whole security decision into one tap. The useful next action is to ask for a minimal reproduction or a single-file patch, then approve that bounded step only after the state in the thread matches the risk described by {source_name}.",
+                "Desktop handoff",
+                f"Use {app_term} to keep security triage moving, not to compress the whole security decision into one tap. The moment the task touches authentication, dependency upgrades, broad permission changes, or a long diff, the safer next action is to save the thread state and continue from a full workspace.",
             ),
         ]
 
@@ -921,19 +1075,19 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
         return [
             (
                 "The bank lesson",
-                f"{source_title} matters because banking workflows punish fuzzy context. The Octopus reading is not that every professional should code from a phone; it is that Codex work becomes more valuable when the handoff is narrow, auditable, and attached to a real task such as a follow-up fix, a meeting-prep script, or a small internal tool change.",
+                f"{source_title} matters because banking workflows punish fuzzy context. The Octopus reading is not that every professional should code from a phone; it is that Codex work becomes more valuable when the handoff is narrow, auditable, and attached to a real task such as a client follow-up, meeting-prep note, portfolio check, or small internal tool change.",
             ),
             (
-                "Thread continuity",
-                f"Octopus should be used after the hard context has already been loaded: repository, server, recent session, and the specific command waiting for approval. The mobile step is then a continuity layer. You check the thread, add a missing note with voice or file context, and move the work forward without pretending a bank-grade review can happen from a notification banner.",
+                "Context before speed",
+                "The enterprise win is not tapping faster. It is avoiding context loss between a banker, a task, a data source, and a pending Codex action. Octopus should show the project, source material, last result, and the requested next step clearly enough that the user can say yes, no, or wait without reconstructing the whole day.",
             ),
             (
-                "The compliance edge",
-                "The risk is not only bad code. It is approving work in the wrong project, against stale context, or after the assistant has drifted from the business request. A useful mobile coding flow should show the server, project, thread, last action, and pending permission clearly enough that a tired user does not approve the wrong thing in a taxi queue.",
+                "Audit trail",
+                "The risk is not only bad code. It is approving a summary, script, or follow-up against stale context after the assistant has drifted from the business request. A useful mobile flow should keep the reason for approval close to the output, so speed does not erase accountability.",
             ),
             (
-                "Practical takeaway",
-                f"For {app_term}, the practical takeaway is to treat enterprise Codex stories as a design test: can the mobile session show exactly what changed, why it changed, and what needs approval next? If the answer is no, the phone is for monitoring, not execution.",
+                "Where Octopus fits",
+                f"For {app_term}, the practical takeaway is to treat enterprise Codex stories as a design test: can the mobile session show who needs the work, what changed, which source the answer used, and what needs approval next? If the answer is no, the phone is for monitoring, not execution.",
             ),
         ]
 
@@ -1224,13 +1378,13 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     source_title = clean_text(item.title)
     summary = lane_summary(lane, source_slug, source_name, item)
     profile = app_lane_profile(lane)
-    labels = app_lane_labels(lane)
+    labels = app_lane_labels(lane, source_title, summary)
     app_term = LANE_APP_TERM[lane]
     keyword_coverage = keywords_for_lane(lane, source_slug) + [slugify(item.title).replace("-", " ")]
-    table_rows = app_lane_table_rows(lane, source_title)
-    checklist_items = app_lane_checklist(lane, source_title)
-    takeaways = app_lane_takeaways(lane)
-    faq_items = app_lane_faq_items(lane)
+    table_rows = app_lane_table_rows(lane, source_title, summary)
+    checklist_items = app_lane_checklist(lane, source_title, summary)
+    takeaways = app_lane_takeaways(lane, source_title, summary)
+    faq_items = app_lane_faq_items(lane, source_title, summary)
     related_paths = app_lane_related_paths(lane)
     analysis_sections = app_lane_analysis_sections(lane, source_title, summary, source_name, human_date)
     table_html = "\n".join(
@@ -1257,10 +1411,22 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
         for label, url in source_links
     )
     keywords = ", ".join(keyword_coverage)
-    tldr = (
-        f"As of {human_date}, this {app_term} article uses recent reporting from {source_name}. "
-        f"The useful answer is whether {source_title} changes a real {profile['secondary']} decision, what to try first, and when to ignore it."
-    )
+    signal = source_signal_type(source_title, summary)
+    if lane == "octopus" and signal == "enterprise_codex":
+        tldr = (
+            f"As of {human_date}, this Octopus article reads {source_title} as an enterprise handoff lesson. "
+            "The useful check is whether the mobile session shows business context, source data, approval owner, and a desktop boundary before anyone moves faster."
+        )
+    elif lane == "octopus" and signal == "security_review":
+        tldr = (
+            f"As of {human_date}, this Octopus article reads {source_title} as a security evidence lesson. "
+            "The useful check is whether the phone can approve one validation step, see the proof, and stop before broad remediation needs desktop review."
+        )
+    else:
+        tldr = (
+            f"As of {human_date}, this {app_term} article uses recent reporting from {source_name}. "
+            f"The useful answer is whether {source_title} changes a real {profile['secondary']} decision, which signal to inspect first, and when the phone or iPad should hand the work back to desktop review."
+        )
 
     return f"""<!doctype html>
 <html lang="en-US">
@@ -1378,7 +1544,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </div>
 
       <h2>{escape(labels["problem"])}</h2>
-      <p>{escape(source_title)} matters for {escape(app_term)} only if it changes a real workflow question: {escape(str(profile["intent"]))}. Start with the user problem, then decide whether the source gives you a better next step or just an interesting background signal.</p>
+      <p>{escape(app_lane_intro_body(lane, source_title, summary, profile))}</p>
 
       <table aria-label="{escape(post.topic)} source coverage">
         <thead>
@@ -1392,11 +1558,11 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
 {analysis_html}
 
       <div class="capsule">
-        <p>As of {human_date}, {escape(post.title.lower())} connects recent reporting from {escape(source_name)} to {escape(str(profile["secondary"]))}. Use it as a practical example, not as a reason to abandon a workflow that already works.</p>
+        <p>{escape(app_lane_context_body(lane, source_title, source_name, post, profile, human_date, summary))}</p>
       </div>
 
       <h2>{escape(labels["next"])}</h2>
-      <p>{escape(str(profile["risk"]).capitalize())}. Check one visible signal first, then change one workflow variable at a time so you can tell whether the update actually helped.</p>
+      <p>{escape(app_lane_next_body(lane, source_title, summary, profile))}</p>
 
       <div class="panel">
         <h3>{escape(labels["checklist"])}</h3>
@@ -1413,7 +1579,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </div>
 
       <h2>{escape(labels["ignore"])}</h2>
-      <p>Ignore it when it does not change the task you need to complete, the risk you are trying to reduce, or the result you can verify. Good app workflows do not need to chase every update; they need a clear reason to change.</p>
+      <p>{escape(app_lane_ignore_body(lane, source_title, summary))}</p>
 
       <h2>{escape(labels["faq"])}</h2>
 {faq_html}
