@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Protocol: Why is There Variation of RSSI | VelocAI Blog</title>
+  <meta name="description" content="May 2026 Bluetooth protocol commentary on Why is There Variation of RSSI, focused on pairing behavior, device discovery, interoperability, signal...">
+  <meta name="keywords" content="bluetooth latest update, bluetooth standards commentary, bluetooth application analysis, bluetooth industry outlook, bluetooth feature update, bluetooth product implications, why is there variation of rssi">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-industry-update-why-is-there-variation-of-rssi-2026-05-19.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Protocol: Why is There Variation of RSSI">
+  <meta property="og:description" content="May 2026 Bluetooth protocol commentary on Why is There Variation of RSSI, focused on pairing behavior, device discovery, interoperability, signal...">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-industry-update-why-is-there-variation-of-rssi-2026-05-19.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Protocol: Why is There Variation of RSSI">
+  <meta name="twitter:description" content="May 2026 Bluetooth protocol commentary on Why is There Variation of RSSI, focused on pairing behavior, device discovery, interoperability, signal...">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth Protocol: Why is There Variation of RSSI",
+      "description": "May 2026 Bluetooth protocol commentary on Why is There Variation of RSSI, focused on pairing behavior, device discovery, interoperability, signal...",
+      "datePublished": "2026-05-19",
+      "dateModified": "2026-05-19",
+      "author": {"@type": "Organization", "name": "VelocAI"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {"@type": "ImageObject", "url": "https://velocai.net/2.png"}
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-industry-update-why-is-there-variation-of-rssi-2026-05-19.html",
+      "keywords": ["bluetooth latest update", "bluetooth standards commentary", "bluetooth application analysis", "bluetooth industry outlook", "bluetooth feature update", "bluetooth product implications", "why is there variation of rssi"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Does RSSI variation mean my Bluetooth beacon is faulty?", "acceptedAnswer": {"@type": "Answer", "text": "Not by itself. Variation can come from receiver hardware, scan timing, orientation, body blocking, and the surrounding environment."}}, {"@type": "Question", "name": "Can RSSI be used for distance?", "acceptedAnswer": {"@type": "Answer", "text": "Only cautiously. It can support broad proximity decisions, but exact distance from a single RSSI value is fragile indoors."}}, {"@type": "Question", "name": "What should Bluetooth Explorer users test first?", "acceptedAnswer": {"@type": "Answer", "text": "Hold the beacon fixed, collect repeated readings, change receiver orientation, compare devices, and inspect the spread before changing product logic."}}
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:24ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr, .capsule, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr, .capsule { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid #2fc3aa; }
+    .capsule { background:#f8fbff; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .hero > p:not(.meta) { margin:14px 0 0; max-width:none; }
+    .cta-row,.links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+    .cta-row a,.links a { border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }
+    .cta-row .primary { background:var(--brand); color:#fff; border-color:var(--brand); }
+    table { width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    th,td { padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    th { color:var(--text); font-weight:700; background:rgba(29,99,199,.08); }
+    .sources a { color:var(--brand); border-bottom:1px solid #9fcad0; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Protocol: Why is There Variation of RSSI</h1>
+        <p class="meta">Published on May 19, 2026 | Topic: Bluetooth Industry Update | Source: BeaconZone | Source date: April 24, 2026</p>
+        <p>Why is There Variation of RSSI? is a useful Bluetooth Explorer topic because RSSI is the number people want to treat as distance, and it is also the number most eager to embarrass them. The practical issue is not whether RSSI fluctuates. It does. The issue is whether the product can behave responsibly while that fluctuation is happening.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> As of May 19, 2026, this BeaconZone item is best read as an RSSI volatility guide. Teams should use Bluetooth Explorer to inspect signal spread, sampling windows, and device differences before turning RSSI into proximity or distance logic.</p>
+      </div>
+
+      <h2>RSSI Is Noisy</h2>
+      <p>BeaconZone published the item on April 24, 2026, and the core point is pleasantly unromantic: smartphones and gateways can see changing RSSI values from the same beacon even when nobody thinks the setup is changing. That does not automatically mean the beacon is broken. It usually means the measurement path is messy: antenna orientation, body blocking, reflections, scan timing, transmit power, and receiver behavior are all in the room with you, being annoying.</p>
+
+      <table aria-label="RSSI variation debugging guide">
+        <thead>
+          <tr><th>RSSI factor</th><th>What to inspect</th><th>Why it matters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Receiver behavior</td><td>Phone model, gateway antenna, OS scanning policy</td><td>Different receivers can report different signal histories</td></tr>
+          <tr><td>Body and orientation</td><td>Pocket position, hand grip, beacon rotation, user movement</td><td>Small physical changes can look like large proximity changes</td></tr>
+          <tr><td>Sampling window</td><td>Single scan, rolling median, percentile, or timeout window</td><td>The chosen window decides whether noise becomes a false alert</td></tr>
+          <tr><td>Environment</td><td>Walls, metal shelves, multipath, doors, and people</td><td>The same beacon behaves differently across real spaces</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The Device Problem</h2>
+      <p>BeaconZone explains why Received Signal Strength Indicator values from smartphones and gateways can fluctuate even when the beacon appears unchanged, covering receiver behavior, environment, orientation, and... The mistake is assuming RSSI is an objective distance meter. It is not. It is a receiver-side observation shaped by hardware, firmware, scan cadence, and the RF path between beacon and scanner. Bluetooth Explorer users should compare readings across devices before deciding that the beacon, the phone, or the building is the villain.</p>
+      <div class="capsule">
+        <p>The useful product decision is how much trust to give a jumpy signal. If a workflow only needs &#x27;near enough to investigate,&#x27; RSSI can be helpful. If it promises exact distance, precise room choice, or automated safety behavior from one reading, the design is asking a noisy metric to do courtroom testimony.</p>
+      </div>
+
+      <h2>Test The Variation</h2>
+      <p>A practical test is boring in exactly the right way: keep the beacon fixed, rotate the phone, change pocket position, scan for several windows, repeat with another receiver, and record the spread. Then walk the same path twice. If the signal profile changes more than the product decision can tolerate, the app needs smoothing, confidence states, or a different signal altogether.</p>
+      <div class="capsule">
+        <p>Do not debug RSSI from a single screenshot. Debug it from repeated readings, device notes, and the exact physical setup that produced the surprise.</p>
+      </div>
+
+      <h2>Avoid Fake Distance</h2>
+      <p>Teams should avoid turning one RSSI value into a polished distance label. Use ranges, confidence language, hysteresis, and fallback checks. For Bluetooth Explorer, the better next step is to show trend and variance so the person holding the phone can tell whether the signal is stable enough to act on.</p>
+
+      <div class="panel">
+        <h2>RSSI traps</h2>
+        <p>RSSI is useful, but it punishes products that pretend the number is cleaner than the radio environment.</p>
+        <ol>
+          <li>A single RSSI reading can change because the user turns their body, not because the beacon moved.</li>
+          <li>Phones and gateways may smooth, sample, or expose RSSI differently.</li>
+          <li>Distance formulas can look precise while hiding huge indoor error bars.</li>
+          <li>Short sampling windows can trigger false proximity changes.</li>
+          <li>A product that hides signal uncertainty leaves support teams explaining ghosts.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <h2>RSSI debug checklist</h2>
+        <ul>
+          <li>Record repeated RSSI samples instead of judging one scan result.</li>
+          <li>Test at least two receiver types before blaming the beacon.</li>
+          <li>Note body position, beacon orientation, walls, doors, and nearby metal.</li>
+          <li>Use median or percentile windows before making proximity decisions.</li>
+          <li>Show uncertainty when the signal spread is wider than the product action can tolerate.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Bluetooth Explorer angle</h2>
+        <p>For Bluetooth Explorer, the win is not making RSSI look calm. The win is showing when it is not calm enough to trust.</p>
+        <ul>
+          <li>RSSI variation is normal in Bluetooth beacon workflows and does not always mean hardware failure.</li>
+          <li>Bluetooth Explorer-style signal inspection should compare trend, spread, receiver type, and physical setup.</li>
+          <li>RSSI should guide proximity decisions only when the sampling window and confidence threshold are explicit.</li>
+          <li>Exact distance from one RSSI value is fragile in indoor environments.</li>
+          <li>Better Bluetooth products expose uncertainty instead of hiding noisy signal behavior.</li>
+        </ul>
+      </div>
+
+      <h2>RSSI questions</h2>
+      <p><strong>Does RSSI variation mean my Bluetooth beacon is faulty?</strong><br>
+      Not by itself. Variation can come from receiver hardware, scan timing, orientation, body blocking, and the surrounding environment.</p>
+
+      <p><strong>Can RSSI be used for distance?</strong><br>
+      Only cautiously. It can support broad proximity decisions, but exact distance from a single RSSI value is fragile indoors.</p>
+
+      <p><strong>What should Bluetooth Explorer users test first?</strong><br>
+      Hold the beacon fixed, collect repeated readings, change receiver orientation, compare devices, and inspect the spread before changing product logic.</p>
+
+      <section class="sources" aria-label="Source attribution">
+        <h3>RSSI source</h3>
+        <ul>
+          <li><a href="https://www.beaconzone.co.uk/blog/why-is-there-variation-of-rssi/" target="_blank" rel="noopener noreferrer">BeaconZone: Why is There Variation of RSSI?</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/" target="_blank" rel="noopener noreferrer">Bluetooth SIG Specifications</a></li>
+          <li><a href="https://www.bluetooth.com/learn-about-bluetooth/" target="_blank" rel="noopener noreferrer">Bluetooth SIG Features</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/blog/">Back to blog index</a>
+        <a href="/apps/">Browse VelocAI apps</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
+
