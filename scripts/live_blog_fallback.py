@@ -408,6 +408,7 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
     if lane not in LANE_APP_TERM:
         return None
     label = story_label(item.title)
+    lowered = f"{clean_text(item.title)} {clean_text(item.summary)}".lower()
     if lane == "cleanup":
         return (
             f"How Cleanup Pro Users Should Read {label}",
@@ -419,6 +420,26 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
             f"A practical Translate AI guide for applying {label} to speech, OCR, captions, travel, and multilingual review workflows.",
         )
     if lane == "find":
+        if any(term in lowered for term in ("deal", "price", "discount", "sale", "off", "amazon", "best buy")):
+            if any(term in lowered for term in ("airtag", "find my", "tracker", "tag")):
+                return (
+                    "How Find AI Users Should Read AirTag and Recovery Deals",
+                    "A practical Find AI guide for deciding whether cheaper AirTags, spare devices, or accessory pricing changes recovery setup, scan confidence, or privacy boundaries.",
+                )
+            return (
+                "How Find AI Users Should Read Device Deals and Recovery Gear",
+                "A practical Find AI guide for deciding whether a sale on nearby hardware changes recovery setup, scan confidence, or last-seen checks.",
+            )
+        if any(term in lowered for term in ("airtag", "find my", "tracker", "lost", "recovery")):
+            return (
+                "How Find AI Users Should Read Lost-Device Recovery Signals",
+                "A practical Find AI guide for applying this update to nearby scanning, last-seen context, and the line between recovery and tracking.",
+            )
+        if not any(term in lowered for term in ("find my", "airtag", "tracker", "lost", "recovery", "device", "bluetooth", "earbud", "headphone", "tag", "nearby")):
+            return (
+                "How Find AI Users Should Treat Background Apple News on Mobile",
+                "A practical Find AI guide for deciding whether this background Apple story changes recovery confidence, nearby scanning, or the cost of keeping a second device ready.",
+            )
         return (
             f"How find AI Users Should Read {label}",
             f"A practical find AI guide for deciding whether {label} changes Bluetooth signal checks, nearby scanning, or lost-device recovery steps.",
@@ -429,6 +450,16 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
             f"A practical Dual Camera guide for applying {label} to creator capture, demo recording, framing, and video repurposing decisions.",
         )
     if lane == "octopus":
+        if any(term in lowered for term in ("browser", "architecture", "built", "building", "chatgpt", "openai")):
+            return (
+                "How Octopus Keeps AI Browser Work Moving on Mobile",
+                "A practical Octopus guide for deciding whether this architecture story changes mobile approvals, thread continuity, or the point where desktop review still matters.",
+            )
+        if not any(term in lowered for term in ("codex", "agent", "ssh", "developer", "approval", "token", "repo", "repository", "workflow", "terminal")):
+            return (
+                "How Octopus Users Should Treat Background Apple News on Mobile",
+                "A practical Octopus guide for deciding whether a background Apple story changes mobile approvals, thread continuity, or whether the task should stay on desktop.",
+            )
         return (
             f"How Octopus Users Should Read {label}",
             f"A practical Octopus guide for applying {label} to mobile Codex approvals, thread continuity, SSH-linked work, and iPhone or iPad follow-up.",
@@ -441,6 +472,34 @@ def lane_summary(lane: str, source_slug: str, source_name: str, item: FeedItem) 
     if lane not in LANE_APP_TERM:
         return base
     app_term = LANE_APP_TERM[lane]
+    lowered = f"{clean_text(item.title)} {base}".lower()
+    if lane == "find":
+        if any(term in lowered for term in ("deal", "price", "discount", "sale", "off", "amazon", "best buy")):
+            if any(term in lowered for term in ("airtag", "find my", "tracker", "tag")):
+                return clip_text(
+                    f"{base} For {app_term} readers, the useful question is whether cheaper AirTags or spare devices change recovery setup, scan confidence, or privacy boundaries.",
+                    limit=260,
+                )
+            return clip_text(
+                f"{base} For {app_term} readers, the useful question is whether the sale changes recovery hardware, last-seen checks, or the cost of tagging items.",
+                limit=260,
+            )
+        if any(term in lowered for term in ("airtag", "find my", "tracker", "lost", "recovery")):
+            return clip_text(
+                f"{base} For {app_term} readers, the useful question is whether the clue is strong enough to follow or only worth logging.",
+                limit=260,
+            )
+    if lane == "octopus":
+        if any(term in lowered for term in ("browser", "architecture", "built", "building", "chatgpt", "openai")):
+            return clip_text(
+                f"{base} For {app_term} readers, the useful question is whether this changes mobile approvals, thread continuity, or the next file or command to inspect.",
+                limit=260,
+            )
+        if not any(term in lowered for term in ("codex", "agent", "ssh", "developer", "approval", "token", "repo", "repository", "workflow", "terminal")):
+            return clip_text(
+                f"{base} For {app_term} readers, this is mostly background context; the real question is whether the current thread still has a clear approval boundary.",
+                limit=260,
+            )
     return clip_text(
         f"{base} For {app_term} readers, the useful question is whether this changes a real workflow, saves a step, reduces risk, or simply stays background context.",
         limit=260,
@@ -711,35 +770,35 @@ def app_lane_checklist(lane: str, source_title: str, summary: str = "") -> list[
             "Sort large files by source app so private residue is reviewed before bulk deletion.",
             "Keep one audit pass for files that look small but reveal sensitive activity.",
             "Delete in batches, reopen Photos and Files, then check whether storage pressure actually moved.",
-            f"Treat {source_title} as a privacy prompt only when it changes what data you can inspect.",
+            f"Treat {source_title} as a cleanup cue only when it changes what data you inspect before deleting.",
         ],
         "translate": [
             "Keep the original phrase beside the translated phrase until the message is sent or saved.",
             "Listen back to speech output when tone, names, or pronunciation matter.",
             "Flag idioms, legal wording, medical wording, prices, and dates for human review.",
             "Save corrected phrases into history instead of re-translating the same problem later.",
-            f"Use {source_title} as a distribution signal, not proof that every translation is trustworthy.",
+            f"Treat {source_title} as a translation cue only when it changes the words, tone, or input method you need to trust.",
         ],
         "find": [
             "Verify device identity before acting on a Bluetooth or location clue.",
             "Compare signal movement over time instead of trusting one strong reading.",
             "Use last-seen context to narrow the search area, then stop when the clue stops improving.",
             "Avoid sharing recovery details that could expose someone else's location or routine.",
-            f"Read {source_title} as a confidence lesson, not as encouragement to chase every signal.",
+            f"Treat {source_title} as useful only when it changes recovery confidence, device identity, or tagging cost.",
         ],
         "dualshot": [
             "Name the primary shot before recording the second angle.",
             "Estimate storage for raw clips, retakes, exported cuts, and cloud sync before a long session.",
             "Record one short test clip to check framing, audio, and file size.",
             "Delete failed takes only after the useful cut or transcript is safely exported.",
-            f"Use {source_title} to decide whether storage capacity changes the shoot, not just the shopping cart.",
+            f"Treat {source_title} as useful only when it changes the shot plan, reuse plan, or storage budget.",
         ],
         "octopus": [
             "Check the current spend signal before letting another agent loop run.",
             "Ask Codex to name the retry reason, expected output, and stop condition in one sentence.",
             "Approve one bounded attempt, then inspect whether the result changed the task state.",
             "Pause anything that touches billing, auth, deployment, dependencies, or broad file ranges.",
-            f"Use {source_title} as a reminder that mobile Codex sessions need budgets, not just convenience.",
+            f"Treat {source_title} as useful only when it changes the next bounded approval or the reason to keep the thread moving.",
         ],
     }[lane]
 
@@ -1011,6 +1070,8 @@ def app_lane_ignore_body(lane: str, source_title: str, summary: str) -> str:
 
 def source_signal_type(source_title: str, summary: str) -> str:
     haystack = f"{source_title} {summary}".lower()
+    if any(term in haystack for term in ("browser", "architecture", "built", "building")) and any(term in haystack for term in ("chatgpt", "openai", "agent", "workflow", "developer")):
+        return "ai_research_loop"
     if any(term in haystack for term in ("safari", "browser", "tabs", "web data")):
         return "iphone_safari"
     if any(term in haystack for term in ("signal chats", "cops", "spy", "storing data", "private data", "chat data")):
@@ -1033,6 +1094,8 @@ def source_signal_type(source_title: str, summary: str) -> str:
         return "tracker_privacy"
     if any(term in haystack for term in ("doj", "emissions", "cheating", "investigation", "record user data", "lawsuit")):
         return "evidence_capture"
+    if any(term in haystack for term in ("whatsapp", "media share", "share sheet", "attachment", "attachments", "disappearing messages")):
+        return "message_media_cleanup"
     if any(term in haystack for term in ("storage", "ram", "ssd", "1tb", "512gb", "macbook", "backup", "icloud")):
         return "storage_pressure"
     if any(term in haystack for term in ("language learning", "translation", "conversation", "pronunciation", "speech", "caption")):
@@ -1050,6 +1113,8 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
     signal = source_signal_type(source_title, summary)
     secondary = str(profile["secondary"])
     workflow = str(profile["workflow"])
+    haystack = f"{source_title} {summary}".lower()
+    dealish = any(term in haystack for term in ("deal", "price", "discount", "sale", "off", "amazon", "best buy"))
 
     if lane == "octopus" and signal == "security_review":
         return [
@@ -1128,6 +1193,46 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
             (
                 "Octopus takeaway",
                 "For Octopus, the useful product lesson is that approval cards should carry cost and scope intuition, not just yes-or-no permission. A mobile coding workflow gets safer when the user can see whether the agent is about to solve the task or wander around burning budget.",
+            ),
+        ]
+
+    if lane == "find" and dealish:
+        return [
+            (
+                "Recovery gear, not shopping noise",
+                f"{source_title} matters for Find AI only if it changes how cheaply a person can keep recovery gear ready. AirTag pricing can matter because tagging more items is a real recovery decision; a MacBook or iPad sale only matters if it changes the spare device you use to keep Find AI reachable.",
+            ),
+            (
+                "What the price actually changes",
+                "The useful part of the deal is not the headline number. It is whether a lower price makes it easier to tag keys, bags, cases, or travel gear, or whether it gives you a second device that can stay signed in and available when the main phone is out of reach.",
+            ),
+            (
+                "What it does not change",
+                "A discount does not improve recovery confidence by itself. You still need device identity, last-seen context, and a clear separation between a lost-item workflow and a privacy-sensitive tracker workflow.",
+            ),
+            (
+                "The safer next step",
+                f"Use {app_term} to check whether the deal changes your recovery kit, not just your shopping list. If the item you are considering would not change tagging coverage, signal confidence, or a spare-device setup, it is background noise rather than a recovery trigger.",
+            ),
+        ]
+
+    if lane == "octopus" and signal == "workflow_signal":
+        return [
+            (
+                "This is background context",
+                f"{source_title} does not change Octopus by itself. The only useful question is whether it changes the current coding thread enough to justify another mobile approval, or whether it should stay a desktop read.",
+            ),
+            (
+                "The mobile approval boundary",
+                "Octopus should make the next action narrow: one command, one file group, one retry, or one note that keeps the thread moving. If the update does not change that boundary, the headline is just context around the work.",
+            ),
+            (
+                "When the phone is enough",
+                "The phone is enough for checking the current repo, the last command, and the next bounded step. It is not enough for a large diff, a vague permission change, or a job where the important evidence is still hidden in desktop-sized context.",
+            ),
+            (
+                "What to do next",
+                f"Use {app_term} to keep the thread honest: ask for the stop condition, read the changed files, and decide whether the next tap is a safe continuation or a prompt to move back to the desk.",
             ),
         ]
 
@@ -1268,6 +1373,26 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
             (
                 "Cleanup Pro takeaway",
                 "For Cleanup Pro, the point is to make hidden data visible enough for a sane decision. Delete the obvious waste, review the sensitive leftovers, and keep backup status in the same mental frame as free space.",
+            ),
+        ]
+
+    if lane == "cleanup" and signal == "message_media_cleanup":
+        return [
+            (
+                "Shared media becomes storage residue",
+                f"{source_title} is relevant to Cleanup Pro because message sharing is one of the quiet ways iPhone storage grows. A cleaner share sheet can make sending easier, but it can also create duplicate photos, saved edits, forwarded clips, and attachments that users forget to remove later.",
+            ),
+            (
+                "The cleanup point",
+                "The useful habit is to inspect the media trail after a heavy chat day: original files, edited copies, downloaded attachments, forwarded videos, and screenshots made to explain the conversation. That is more concrete than clearing a whole app cache and hoping nothing important disappears.",
+            ),
+            (
+                "What not to delete",
+                "Do not delete message media just because it appears twice. Keep files that document work, travel, purchases, support cases, family records, or anything that is not backed up elsewhere. Cleanup is safest when it separates throwaway duplicates from records the user may need later.",
+            ),
+            (
+                "Cleanup Pro takeaway",
+                "For Cleanup Pro, the article should turn messaging updates into an inspection routine: sort by source app, review large media first, remove obvious duplicate exports, then verify storage moved. That gives the user a repeatable action instead of a vague privacy warning.",
             ),
         ]
 
