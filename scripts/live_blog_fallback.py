@@ -2353,8 +2353,8 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     next_body = str(custom_profile["next_body"]) if custom_profile else f"{next_body_for(source_slug)} {search_intent_body_for(source_slug)}"
     risk_heading = str(custom_profile["risk_heading"]) if custom_profile else "What are the key risks in 2026?"
     risk_intro = str(custom_profile["risk_intro"]) if custom_profile else challenge_intro_for(source_slug)
-    checklist_heading = str(custom_profile["checklist_heading"]) if custom_profile else "Practical decision checklist"
-    takeaway_heading = str(custom_profile["takeaway_heading"]) if custom_profile else "Practical Takeaways"
+    checklist_heading = str(custom_profile["checklist_heading"]) if custom_profile else "What should teams verify first?"
+    takeaway_heading = str(custom_profile["takeaway_heading"]) if custom_profile else "What to remember"
     takeaway_intro = str(custom_profile["takeaway_intro"]) if custom_profile else teaser_for_source_slug(source_slug)
     faq_heading = str(custom_profile["faq_heading"]) if custom_profile else "FAQ"
     sources_heading = str(custom_profile["sources_heading"]) if custom_profile else "Source attribution"
