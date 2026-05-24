@@ -62,11 +62,11 @@ from blog_similarity import load_blog_pages, max_similarity_against_existing
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
-MIN_DAILY_BLUETOOTH_POSTS = 2
+MIN_DAILY_BLUETOOTH_POSTS = 1
 MIN_DAILY_TRANSLATE_POSTS = 1
 MIN_DAILY_FIND_POSTS = 1
 MIN_DAILY_DUALSHOT_POSTS = 1
-MIN_DAILY_OCTOPUS_POSTS = 2
+MIN_DAILY_OCTOPUS_POSTS = 1
 LOCK_TIMEOUT_SECONDS = 20 * 60
 LOCK_POLL_SECONDS = 5
 ENABLE_UPDATES_LANE_ENV = "WEILUOGE_ENABLE_UPDATES_LANE"
@@ -109,10 +109,46 @@ class PublishLock:
         )
 
     def _pid_is_running(self, pid: int | None) -> bool:
-        if pid is None:
+        if pid is None or pid <= 0:
             return False
+
+        if os.name == "nt":
+            try:
+                import ctypes
+                from ctypes import wintypes
+            except Exception:
+                return True
+
+            process_query_limited_information = 0x1000
+            still_active = 259
+            error_access_denied = 5
+
+            kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+            kernel32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+            kernel32.OpenProcess.restype = wintypes.HANDLE
+            kernel32.GetExitCodeProcess.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
+            kernel32.GetExitCodeProcess.restype = wintypes.BOOL
+            kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+            kernel32.CloseHandle.restype = wintypes.BOOL
+
+            handle = kernel32.OpenProcess(process_query_limited_information, False, pid)
+            if not handle:
+                return ctypes.get_last_error() == error_access_denied
+
+            try:
+                exit_code = wintypes.DWORD()
+                if not kernel32.GetExitCodeProcess(handle, ctypes.byref(exit_code)):
+                    return True
+                return exit_code.value == still_active
+            finally:
+                kernel32.CloseHandle(handle)
+
         try:
             os.kill(pid, 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True
         except OSError:
             return False
         return True

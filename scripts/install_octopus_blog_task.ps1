@@ -4,7 +4,7 @@ param(
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$WindowStart = "08:31",
   [string]$WindowEnd = "08:32",
-  [int]$PostsPerDay = 2,
+  [int]$PostsPerDay = 1,
   [string]$TaskNamePrefix = "WeiLuoGe-Octopus-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )
@@ -74,10 +74,11 @@ for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
   $Args = "$PythonArgs `"$ScriptPath`" --lane octopus --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
-  $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
+  $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args -WorkingDirectory $RepoRoot
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
+  $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-  Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Force | Out-Null
+  Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Settings $Settings -Force | Out-Null
 
   Write-Output "Installed task: $taskName"
   Write-Output "Schedule: daily at $publishAt (slot-offset=$i)"
