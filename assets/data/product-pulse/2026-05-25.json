@@ -1,6 +1,6 @@
 {
   "date": "2026-05-25",
-  "refreshed_at": "2026-05-25T08:11:48.567471+08:00",
+  "refreshed_at": "2026-05-25T08:30:02.549067+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-05-24T23:00:18+00:00",
       "display_date": "MAY 25",
       "image_src": "/assets/images/home-briefing/2026-05-25/semiconductor-bb59d611bfc8d2eb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/semiconductor-e33776c4aa184d1b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-13/semiconductor-5e332cf1c0c0a433-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-05-24T21:39:21+00:00",
       "display_date": "MAY 25",
       "image_src": "/assets/images/home-briefing/2026-05-25/industry-d07cbcc15aa7f7b7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-19/industry-5538456cd181b23a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-07/industry-b8196a0613e5b736-thumb.webp"
     },
     {
       "index": 3,
@@ -57,7 +57,7 @@
       "published_at": "2026-05-24T21:00:54+00:00",
       "display_date": "MAY 25",
       "image_src": "/assets/images/home-briefing/2026-05-25/semiconductor-0e6479bb33106d02-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-06/semiconductor-bc4b0214ec6905b3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-01/semiconductor-c2589ab54f080fe0-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-05-24T13:02:41-07:00",
       "display_date": "MAY 25",
       "image_src": "/assets/images/home-briefing/2026-05-25/apple-8405a41643b8e951-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-13/apple-abbcf8a6f4ae66a2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-46033d7db55e45be-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "Save $300 on Apple's latest 14-inch MacBook Pro with an upgrade to the M5 Pro 18C CPU/20C GPU chip and boost to 48GB RAM. The flash deal ends today. Save $300 on a 14-inch MacBook Pro with 48GB RAM - Image credit: Apple Apple's M5 Pro...",
       "published_at": "2026-05-24T18:58:29+00:00",
       "display_date": "MAY 25",
-      "image_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-14/apple-92482e0bbda58147-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/apple-92482e0bbda58147-thumb.webp"
     },
     {
       "index": 7,
@@ -98,8 +98,8 @@
       "summary": "Apple will unveil watchOS 27 during its WWDC 2026 keynote on Monday, June 8, and a handful of new features have been rumored already. The first developer beta of watchOS 27 should be available immediately following the keynote, and a...",
       "published_at": "2026-05-24T11:53:47-07:00",
       "display_date": "MAY 25",
-      "image_src": "/assets/images/home-briefing/2026-04-19/apple-ffcd1c67d73de5f8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-19/apple-ffcd1c67d73de5f8-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-22/apple-14557da5ec579025-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/apple-14557da5ec579025-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Apple reportedly plans to make watchOS 27 a stability-focused release, prioritizing performance and usability improvements. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-05-24T17:59:39+00:00",
       "display_date": "MAY 25",
-      "image_src": "/assets/images/home-briefing/2026-03-25/apple-b7836264221ba147-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-b7836264221ba147-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-22T07:45:48+00:00",
       "display_date": "MAY 22",
       "image_src": "/assets/images/home-briefing/2026-05-25/bluetooth-33dba414258fad51-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-06/bluetooth-b382e3a32ab4b409-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-01/bluetooth-c02892d9efad0fa9-thumb.webp"
     }
   ]
 }
