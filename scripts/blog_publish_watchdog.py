@@ -24,13 +24,22 @@ class BlogTask:
     task_name: str
     lane: str
     slot_offset: int
+    similarity_threshold: float
+
+
+LANE_SIMILARITY_THRESHOLDS: dict[str, float] = {
+    "protocol": 0.80,
+    "find": 0.70,
+    "dualshot": 0.50,
+    "octopus": 0.65,
+}
 
 
 BLOG_TASKS: tuple[BlogTask, ...] = (
-    BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1", "protocol", 0),
-    BlogTask("WeiLuoGe-Find-AI-Blog-Morning-1", "find", 0),
-    BlogTask("WeiLuoGe-DualShot-Camera-Blog-Morning-1", "dualshot", 0),
-    BlogTask("WeiLuoGe-Octopus-Blog-Morning-1", "octopus", 0),
+    BlogTask("WeiLuoGe-Bluetooth-Protocol-Blog-Morning-1", "protocol", 0, LANE_SIMILARITY_THRESHOLDS["protocol"]),
+    BlogTask("WeiLuoGe-Find-AI-Blog-Morning-1", "find", 0, LANE_SIMILARITY_THRESHOLDS["find"]),
+    BlogTask("WeiLuoGe-DualShot-Camera-Blog-Morning-1", "dualshot", 0, LANE_SIMILARITY_THRESHOLDS["dualshot"]),
+    BlogTask("WeiLuoGe-Octopus-Blog-Morning-1", "octopus", 0, LANE_SIMILARITY_THRESHOLDS["octopus"]),
 )
 TARGET_DAILY_TOTAL = 4
 TARGET_DAILY_BLUETOOTH = 1
@@ -115,6 +124,8 @@ def run_slot(repo_root: Path, task: BlogTask, target_day: date, dry_run: bool, t
         task.lane,
         "--slot-offset",
         str(task.slot_offset),
+        "--similarity-threshold",
+        f"{task.similarity_threshold:.2f}",
         "--date",
         target_day.isoformat(),
     ]
@@ -403,6 +414,7 @@ def main() -> int:
         rerun_count += 1
         print(
             f"rerun task={task.task_name} lane={task.lane} offset={task.slot_offset} "
+            f"similarity_threshold={task.similarity_threshold:.2f} "
             f"last_run={(last_run.isoformat() if last_run else 'missing')} last_result={last_result}"
         )
         code = run_slot(repo_root, task, target_day, args.dry_run, args.slot_timeout_seconds)
@@ -473,11 +485,13 @@ def main() -> int:
                 task_name=f"watchdog-backfill-{lane}-{backfill_round}",
                 lane=lane,
                 slot_offset=backfill_round,
+                similarity_threshold=LANE_SIMILARITY_THRESHOLDS[lane],
             )
             rerun_count += 1
             backfill_round += 1
             print(
                 f"backfill task={synthetic.task_name} lane={lane} offset={synthetic.slot_offset} "
+                f"similarity_threshold={synthetic.similarity_threshold:.2f} "
                 f"total={total_count} bluetooth={bluetooth_count} find={find_count} "
                 f"dualshot={dualshot_count} octopus={octopus_count}"
             )

@@ -5,6 +5,7 @@ param(
   [string]$WindowStart = "08:31",
   [string]$WindowEnd = "08:32",
   [int]$PostsPerDay = 1,
+  [double]$SimilarityThreshold = 0.65,
   [string]$TaskNamePrefix = "WeiLuoGe-Octopus-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )
@@ -73,7 +74,7 @@ if ($ReplaceExisting) {
 for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
-  $Args = "$PythonArgs `"$ScriptPath`" --lane octopus --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
+  $Args = "$PythonArgs `"$ScriptPath`" --lane octopus --repo-root `"$RepoRoot`" --slot-offset $i --similarity-threshold $SimilarityThreshold --git-commit --git-push"
   $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args -WorkingDirectory $RepoRoot
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
   $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable

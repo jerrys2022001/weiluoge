@@ -4,12 +4,16 @@ param(
   [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
   [string]$BluetoothWindowStart = "08:22",
   [string]$BluetoothWindowEnd = "08:23",
+  [double]$BluetoothSimilarityThreshold = 0.80,
   [string]$FindWindowStart = "08:26",
   [string]$FindWindowEnd = "08:27",
+  [double]$FindSimilarityThreshold = 0.70,
   [string]$DualShotWindowStart = "08:28",
   [string]$DualShotWindowEnd = "08:29",
+  [double]$DualShotSimilarityThreshold = 0.50,
   [string]$OctopusWindowStart = "08:31",
   [string]$OctopusWindowEnd = "08:32",
+  [double]$OctopusSimilarityThreshold = 0.65,
   [string]$HomeBriefAt = "08:30",
   [string]$HomeBriefCheckAt = "08:40",
   [string]$HomeBriefSecondaryCheckAt = "20:30",
@@ -115,6 +119,7 @@ Invoke-Installer $bluetoothInstaller {
     -WindowStart $BluetoothWindowStart `
     -WindowEnd $BluetoothWindowEnd `
     -PostsPerDay 1 `
+    -SimilarityThreshold $BluetoothSimilarityThreshold `
     -ReplaceExisting:$ReplaceExisting
 }
 
@@ -126,6 +131,7 @@ Invoke-Installer $findInstaller {
     -WindowStart $FindWindowStart `
     -WindowEnd $FindWindowEnd `
     -PostsPerDay 1 `
+    -SimilarityThreshold $FindSimilarityThreshold `
     -ReplaceExisting:$ReplaceExisting
 }
 
@@ -137,6 +143,7 @@ Invoke-Installer $dualshotInstaller {
     -WindowStart $DualShotWindowStart `
     -WindowEnd $DualShotWindowEnd `
     -PostsPerDay 1 `
+    -SimilarityThreshold $DualShotSimilarityThreshold `
     -ReplaceExisting:$ReplaceExisting
 }
 
@@ -148,6 +155,7 @@ Invoke-Installer $octopusInstaller {
     -WindowStart $OctopusWindowStart `
     -WindowEnd $OctopusWindowEnd `
     -PostsPerDay 1 `
+    -SimilarityThreshold $OctopusSimilarityThreshold `
     -ReplaceExisting:$ReplaceExisting
 }
 
@@ -213,10 +221,10 @@ foreach ($taskName in $expectedTaskNames) {
 
 Write-Output ""
 Write-Output "Installed full daily site schedule:"
-Write-Output "  Bluetooth Explorer: 1 slot between $BluetoothWindowStart and $BluetoothWindowEnd"
-Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd"
-Write-Output "  Dual Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd"
-Write-Output "  Octopus: 1 slot between $OctopusWindowStart and $OctopusWindowEnd"
+Write-Output "  Bluetooth Explorer: 1 slot between $BluetoothWindowStart and $BluetoothWindowEnd (similarity threshold $BluetoothSimilarityThreshold)"
+Write-Output "  Find AI: 1 slot between $FindWindowStart and $FindWindowEnd (similarity threshold $FindSimilarityThreshold)"
+Write-Output "  Dual Camera: 1 slot between $DualShotWindowStart and $DualShotWindowEnd (similarity threshold $DualShotSimilarityThreshold)"
+Write-Output "  Octopus: 1 slot between $OctopusWindowStart and $OctopusWindowEnd (similarity threshold $OctopusSimilarityThreshold)"
 Write-Output "  Home Brief run: daily at $HomeBriefAt"
 Write-Output "  Home Brief check: daily at $HomeBriefCheckAt"
 Write-Output "  Home Brief second check: daily at $HomeBriefSecondaryCheckAt"
