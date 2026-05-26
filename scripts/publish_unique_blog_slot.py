@@ -212,9 +212,7 @@ def parse_args() -> argparse.Namespace:
 def default_similarity_threshold(lane: str) -> float:
     if lane == "cleanup":
         return 0.40
-    if lane in {"protocol", "updates"}:
-        return 0.50
-    return 0.30
+    return 0.40
 
 
 def build_local_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:

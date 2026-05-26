@@ -5,7 +5,7 @@ param(
   [string]$WindowStart = "08:31",
   [string]$WindowEnd = "08:32",
   [int]$PostsPerDay = 1,
-  [double]$SimilarityThreshold = 0.65,
+  [double]$SimilarityThreshold = 0.40,
   [string]$TaskNamePrefix = "WeiLuoGe-Octopus-Blog-Morning",
   [bool]$ReplaceExisting = $true
 )

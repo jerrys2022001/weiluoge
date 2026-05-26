@@ -28,10 +28,10 @@ class BlogTask:
 
 
 LANE_SIMILARITY_THRESHOLDS: dict[str, float] = {
-    "protocol": 0.80,
-    "find": 0.70,
-    "dualshot": 0.50,
-    "octopus": 0.65,
+    "protocol": 0.40,
+    "find": 0.40,
+    "dualshot": 0.40,
+    "octopus": 0.40,
 }
 
 

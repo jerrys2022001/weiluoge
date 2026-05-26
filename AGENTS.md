@@ -40,11 +40,21 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - Prefer evergreen, factual wording and direct problem-solution framing over vague branding language.
 - Add or preserve helpful internal links, canonical metadata, structured data, and sitemap/index updates when relevant.
 - If a change would reduce SEO/GEO value, call it out before proceeding unless the user explicitly prioritizes another goal.
-- Daily blog publishing target is 8 posts: 2 posts around `Octopus`, 1 post around `Translate AI`, 1 post around `Dual Camera`, 2 posts around `Bluetooth Explorer`, 1 post around `find AI`, and 1 post around `cleanup pro`.
+- Daily blog publishing target is 4 posts: 1 post around `Dual Camera`, 1 post around `Bluetooth Explorer`, 1 post around `find AI`, and 1 post around `Octopus`.
+- Hard blog similarity limit: every new or updated daily blog post must have topic-bearing similarity below 40% (`< 0.40`) against the existing blog corpus before publication; do not publish, keep indexed, or count any daily blog post at 40% or higher.
+- Scheduled blog tasks, watchdog backfills, manual reruns, live-source fallbacks, and local topic candidates must all enforce the same `< 0.40` similarity limit; do not raise per-lane thresholds to force a publish.
+- Daily blog posts must stay tightly positioned around one clear domain, one explicit audience, and one primary problem; avoid mixed-topic articles that dilute intent.
+- Daily blog openings must quickly surface a pain point, strong viewpoint, or useful tension so readers understand why the article matters in the first paragraph.
+- Daily blog structure must follow a clear top-down flow: concise answer or thesis first, then ordered sections with short paragraphs, scannable subheadings, and grouped takeaways.
+- Daily blog content must be practical and specific: include examples, data where available, operational experience, decision rules, failure modes, checklists, or concrete solutions instead of vague praise or abstract commentary.
+- Daily blog language must be plain, fluent, and direct; prefer short readable sentences and avoid unnecessary jargon.
+- Daily blog posts must take a clear position when making recommendations, explain the tradeoff, and avoid hedging that leaves the reader without a usable decision.
+- Daily blog formatting must feel light to read: short sections, useful headings, compact paragraphs, and no dense walls of text.
+- Daily blog conclusions must close the loop by summarizing the core point, recapping the useful method or lesson, and optionally ending with a light reader-facing prompt.
+- Daily blog voice must stay consistent across the site: practical, clear, opinionated, and recognizable without becoming casual filler.
 - For blog maintenance, treat posts as merge candidates when topic-bearing content similarity is above 30% after stripping shared boilerplate sections.
 - Apply that 30% rule within the same intent cluster, using title/topic overlap to avoid merging unrelated long-tail pages that only share templates.
-- For daily blog publishing, reject any new cleanup post whose topic-bearing similarity against the existing blog corpus reaches 40% or higher.
-- For daily protocol and live-update publishing, reject any new post whose topic-bearing similarity against the existing blog corpus reaches 50% or higher.
+- For daily blog publishing, reject any new post in any lane whose topic-bearing similarity against the existing blog corpus reaches 40% or higher.
 - Protocol-topic daily publishing must stay within Bluetooth protocol subject matter, not generic consumer tech or generic AI news.
 - If the fixed local topic pool cannot supply the required number of daily posts under that rule, fetch the latest live source items and rewrite them into new SEO/GEO blog posts instead of reusing near-duplicate templates.
 
