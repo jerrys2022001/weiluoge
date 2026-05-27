@@ -1,10 +1,24 @@
 {
   "date": "2026-05-27",
-  "refreshed_at": "2026-05-27T08:40:05.201451+08:00",
+  "refreshed_at": "2026-05-27T08:44:31.715475+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "WhatsApp will soon let iPhone users share documents with Meta AI",
+      "link": "https://9to5mac.com/2026/05/26/whatsapp-will-soon-let-iphone-users-share-documents-with-meta-ai/",
+      "summary": "Meta is working on a new WhatsApp feature that lets users upload documents directly to Meta AI from the in-chat attachment menu. Here are the details.",
+      "published_at": "2026-05-27T00:40:33+00:00",
+      "display_date": "MAY 27",
+      "image_src": "/assets/images/home-briefing/2026-05-27/apple-ad8051c2b51d6099-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-29/apple-d86f97736ef97613-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -14,11 +28,11 @@
       "summary": "Renders and 3D-printed models of the iPhone Fold are enough for some case manufacturers to try and get ahead of the competition, but don't treat their listings as leaks. Cases overlaid on an iPhone render is a classic move for...",
       "published_at": "2026-05-26T23:54:07+00:00",
       "display_date": "MAY 27",
-      "image_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-29/apple-ca59582e5ba5c158-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-29/apple-ca59582e5ba5c158-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -29,10 +43,10 @@
       "published_at": "2026-05-26T23:29:15+00:00",
       "display_date": "MAY 27",
       "image_src": "/assets/images/home-briefing/2026-05-27/apple-158d4f67bcce74d4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/apple-e2271a2daf133cb5-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -43,10 +57,10 @@
       "published_at": "2026-05-26T23:26:51+00:00",
       "display_date": "MAY 27",
       "image_src": "/assets/images/home-briefing/2026-05-27/apple-0f4be83c6c836f79-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/apple-20f2233cf6a036e9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-23/apple-0d2dc7c0e6565c0f-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -56,22 +70,8 @@
       "summary": "Apple's security releases page has been updated with additional information regarding the security issues resolved in iOS 18, iOS 26 , and other OS versions. Apple has released new security details about its older OS updates. The company...",
       "published_at": "2026-05-26T23:15:26+00:00",
       "display_date": "MAY 27",
-      "image_src": "/assets/images/home-briefing/2026-05-05/apple-3cffde7e38c95e1d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-05/apple-3cffde7e38c95e1d-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "Apple Releases New Firmware for AirTag 2",
-      "link": "https://www.macrumors.com/2026/05/26/airtag-2-firmware-3049/",
-      "summary": "Apple today released new firmware for its second-generation AirTag item trackers. The firmware has a 3.0.49 version number, up from 3.0.45, and it is the second firmware update that Apple has provided for the ‌AirTag‌ 2. There is no word...",
-      "published_at": "2026-05-26T15:46:18-07:00",
-      "display_date": "MAY 27",
-      "image_src": "/assets/images/home-briefing/2026-05-27/apple-47d92394c7d6f068-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-c2d260767e8e058c-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-05-26T22:32:56+00:00",
       "display_date": "MAY 27",
       "image_src": "/assets/images/home-briefing/2026-05-27/industry-8c04ed2054f91395-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-24/industry-d2f2b3f0e2c541a7-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-26/industry-9a12780dab6a55c8-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-05-26T21:33:40+00:00",
       "display_date": "MAY 27",
       "image_src": "/assets/images/home-briefing/2026-05-27/industry-13d5603dc83de9f1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/industry-f5766b38f144b346-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-10/industry-585e3ab05dba2a69-thumb.webp"
     },
     {
       "index": 8,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-22T07:45:48+00:00",
       "display_date": "MAY 22",
       "image_src": "/assets/images/home-briefing/2026-05-27/bluetooth-33dba414258fad51-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-16/bluetooth-624f8cf4309a07ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-22/bluetooth-624f8cf4309a07ac-thumb.webp"
     }
   ]
 }
