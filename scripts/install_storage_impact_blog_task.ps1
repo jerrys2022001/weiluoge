@@ -5,6 +5,7 @@ param(
   [string]$WindowStart = "08:20",
   [string]$WindowEnd = "08:21",
   [int]$PostsPerDay = 1,
+  [double]$SimilarityThreshold = 0.40,
   [string]$TaskNamePrefix = "WeiLuoGe-Storage-Impact-Blog-Daily",
   [bool]$ReplaceExisting = $true
 )
@@ -82,11 +83,12 @@ foreach ($legacyTaskName in $legacyTaskNames) {
 for ($i = 0; $i -lt $publishMinutes.Count; $i++) {
   $publishAt = Format-HHMM $publishMinutes[$i]
   $taskName = "$TaskNamePrefix-$($i + 1)"
-  $Args = "$PythonArgs `"$ScriptPath`" --lane cleanup --repo-root `"$RepoRoot`" --slot-offset $i --git-commit --git-push"
-  $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
+  $Args = "$PythonArgs `"$ScriptPath`" --lane cleanup --repo-root `"$RepoRoot`" --slot-offset $i --similarity-threshold $SimilarityThreshold --git-commit --git-push"
+  $Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args -WorkingDirectory $RepoRoot
   $Trigger = New-ScheduledTaskTrigger -Daily -At $publishAt
+  $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-  Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Force | Out-Null
+  Register-ScheduledTask -TaskName $taskName -Action $Action -Trigger $Trigger -Settings $Settings -Force | Out-Null
 
   Write-Output "Installed task: $taskName"
   Write-Output "Schedule: daily at $publishAt (angle-offset=$i)"

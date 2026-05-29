@@ -15,7 +15,7 @@ Current preferred content ranges:
 
 Minimum content rule:
 - define a clear primary search intent for each page
-- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find AI`, `cleanup pro`, `translate`, or `Dual Camera`
+- make every core keyword phrase include at least one app-centered term: `bluetooth`, `find AI`, `cleanup pro`, `Translate`, `Dual Camera`, or `Octopus`
 - use high-intent keywords naturally in the title, H1, meta description, and major headings
 - keep the opening section concise and directly answer the likely query
 - include scannable sections and FAQ-style answers when useful for AI retrieval
@@ -106,45 +106,41 @@ Dry run:
 Install with the same two windows:
 `powershell -ExecutionPolicy Bypass -File scripts/install_x_story_tasks.ps1 -ContentMode velocai-mix -PostMode playwright -WindowSpec "morning|08:30|09:30|6|6","evening|20:30|21:30|6|6" -WorkerEveryMinutes 5`
 
-## Daily Blog Auto Publishing (20:00)
+## Daily Blog Auto Publishing (08:15~08:35, 4/day)
 
-This task publishes one English blog post per day about Bluetooth + phone cleanup,
-updates `blog/index.html`, and updates `sitemap.xml` for SEO/GEO visibility.
-
-1. Dry run once:
-`python scripts/blog_daily_scheduler.py run --dry-run`
-2. Publish immediately (manual run):
-`python scripts/blog_daily_scheduler.py run`
-3. Install the daily Windows scheduled task (default: 20:00):
-`powershell -ExecutionPolicy Bypass -File scripts/install_blog_daily_task.ps1`
-
-Optional:
-- Change schedule time: `-PublishAt "20:00"`
-- Force overwrite for a date: `python scripts/blog_daily_scheduler.py run --date 2026-03-05 --force`
-
-## Full Morning App Blog Mix (08:20~08:30, 6/day)
-
-The default morning publishing mix now creates 6 app-focused blog posts:
-- 1 AI Cleanup PRO post
-- 2 Bluetooth Explorer posts
+The default morning publishing mix creates 4 app-focused blog posts:
+- 1 Bluetooth Explorer protocol post
 - 1 Find AI post
 - 1 Dual Camera post
-- 1 Translate AI post
+- 1 Octopus post
 
 Install the full schedule:
 `powershell -ExecutionPolicy Bypass -File scripts/install_all_blog_tasks.ps1`
 
 Default windows:
-- Cleanup PRO: `08:20~08:21`
-- Bluetooth Explorer: `08:22~08:24`
+- Blog preflight: `08:15`
+- Bluetooth Explorer: `08:22~08:23`
 - Find AI: `08:26~08:27`
 - Dual Camera: `08:28~08:29`
-- Translate AI: `08:29~08:30`
+- Octopus: `08:31~08:32`
+- Blog watchdog/backfill: `08:35`
 
-## Storage Cleanup + System Impact Blog (08:20, 1/day)
+Daily uniqueness rule:
+- Every scheduled, watchdog, manual rerun, local-topic, and live-source fallback blog candidate must stay below 40% topic-bearing similarity versus the existing blog corpus.
+- Candidates at 40% or higher must not be published, indexed, or counted toward the daily quota.
+- Protocol posts must stay on Bluetooth Explorer protocol topics, not generic consumer tech or generic AI news.
+- If local fixed topics cannot satisfy the 40% rule, the scheduler falls back to live source items and rewrites them into new blog posts.
+
+Legacy manual schedulers still exist for older single-lane experiments, but they are not part of the default daily blog target:
+- `scripts/install_blog_daily_task.ps1`
+- `scripts/install_storage_impact_blog_task.ps1`
+- `scripts/install_translate_ai_blog_task.ps1`
+- `scripts/install_live_update_blog_tasks.ps1`
+
+## Storage Cleanup + System Impact Blog (legacy/manual)
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:20 -WindowEnd 08:21 -PostsPerDay 1`
+`powershell -ExecutionPolicy Bypass -File scripts/install_storage_impact_blog_task.ps1 -WindowStart 08:20 -WindowEnd 08:21 -PostsPerDay 1 -SimilarityThreshold 0.40`
 
 ## Homepage Daily Briefing (08:30)
 
@@ -165,26 +161,20 @@ Dry run:
 Install the daily Windows task at `08:30`:
 `powershell -ExecutionPolicy Bypass -File scripts/install_home_brief_daily_task.ps1 -PublishAt "08:30"`
 
-## Bluetooth Explorer Blog (08:22~08:24, 2/day)
+## Bluetooth Explorer Blog (08:22~08:23, 1/day)
 
-This publishes 2 English posts each morning focused on Bluetooth Explorer use cases, protocol interpretation, and practical applications.
-It installs 2 scheduled tasks (default: 08:22 and 08:24) and uses `--slot-offset` to avoid duplicates.
-
-Daily uniqueness rule:
-- Cleanup posts must stay below 40% topic-bearing similarity versus the existing blog corpus.
-- Protocol and live-update posts must stay below 50% topic-bearing similarity versus the existing blog corpus.
-- Protocol posts must stay on Bluetooth protocol topics.
-- If local fixed topics cannot satisfy that rule, the scheduler falls back to live source items and rewrites them into new blog posts.
+This publishes 1 English post each morning focused on Bluetooth Explorer protocol interpretation and practical applications.
+It installs 1 scheduled task by default and uses `--slot-offset` to avoid duplicates on reruns.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:22 -WindowEnd 08:24 -PostsPerDay 2`
+`powershell -ExecutionPolicy Bypass -File scripts/install_protocol_blog_morning_tasks.ps1 -WindowStart 08:22 -WindowEnd 08:23 -PostsPerDay 1 -SimilarityThreshold 0.40`
 
-## Live Update Blog (08:46~08:50, 3/day)
+## Live Update Blog (legacy/manual)
 
-This publishes 3 live-update blog posts each morning from current online sources, but only when the topic stays related to app functionality and remains below the 50% similarity ceiling.
+This legacy installer can publish live-update blog posts from current online sources. It is not part of the default daily blog target, and any manual use must keep candidates below the 40% similarity ceiling.
 
 Install:
-`powershell -ExecutionPolicy Bypass -File scripts/install_live_update_blog_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3`
+`powershell -ExecutionPolicy Bypass -File scripts/install_live_update_blog_tasks.ps1 -WindowStart 08:46 -WindowEnd 08:50 -PostsPerDay 3 -SimilarityThreshold 0.40`
 
 ## Google Index Request Task (10:30)
 

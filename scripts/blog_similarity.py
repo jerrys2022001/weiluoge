@@ -103,7 +103,7 @@ def title_tokens_for(title: str) -> frozenset[str]:
 
 
 def extract_body_counter(html: str) -> Counter[str]:
-    if "Translate AI Practical Guide" in html:
+    if "Translate AI SEO / GEO Guide" in html or "Translate AI Practical Guide" in html:
         translate_common_tokens = {
             "translate",
             "translation",
@@ -174,7 +174,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in translate_common_tokens
         )
 
-    if "Find AI Practical Guide" in html:
+    if "Find AI SEO / GEO Guide" in html or "Find AI Practical Guide" in html:
         find_common_tokens = {
             "find",
             "finder",
@@ -243,7 +243,7 @@ def extract_body_counter(html: str) -> Counter[str]:
 
     if (
         "Octopus Practical Guide" in html
-        or "Octopus live mobile coding" in html
+        or "Octopus live mobile coding fallback" in html
         or ("Octopus" in html and "/octopus/" in html and "mobile Codex" in html)
     ):
         octopus_common_tokens = {
@@ -253,22 +253,22 @@ def extract_body_counter(html: str) -> Counter[str]:
             "advice",
             "agent",
             "agents",
-            "approval",
-            "approvals",
-            "approve",
-            "approving",
             "background",
             "capture",
             "change",
             "changes",
+            "approve",
+            "approving",
+            "approval",
+            "approvals",
             "codex",
             "coding",
             "command",
             "commands",
-            "context",
             "continuity",
-            "decision",
+            "context",
             "desktop",
+            "decision",
             "developer",
             "developers",
             "files",
@@ -276,10 +276,8 @@ def extract_body_counter(html: str) -> Counter[str]:
             "history",
             "ipad",
             "iphone",
-            "linked",
             "mac",
             "mobile",
-            "next",
             "octopus",
             "only",
             "permission",
@@ -290,9 +288,9 @@ def extract_body_counter(html: str) -> Counter[str]:
             "remote",
             "review",
             "runtime",
-            "server",
             "session",
             "sessions",
+            "server",
             "ssh",
             "state",
             "step",
@@ -335,7 +333,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             r"<h2>\s*Limits And Failure Modes\s*</h2>\s*<ul>(.*?)</ul>",
             r"<h2>\s*What problem does this help solve\?\s*</h2>\s*<p>(.*?)</p>",
             r"<h2>\s*How should you apply it\?\s*</h2>\s*<p>(.*?)</p>",
-            r"<h2>\s*What should the workflow prove\?\s*</h2>\s*<p>(.*?)</p>",
+            r"<h2>\s*What should you check next\?\s*</h2>\s*<p>(.*?)</p>",
         )
         for pattern in section_patterns:
             match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
@@ -378,16 +376,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS
         )
 
-    lowered_html = html.lower()
-    if (
-        "live workflow fallback" in lowered_html
-        or "expanded-source fallback reframes" in lowered_html
-        or "live workflow update" in lowered_html
-        or "live recovery update" in lowered_html
-        or "live creator update" in lowered_html
-        or "live mobile coding update" in lowered_html
-        or "live storage update" in lowered_html
-    ):
+    if "live workflow fallback" in html.lower() or "expanded-source fallback reframes" in html.lower():
         app_live_common_tokens = {
             "answer",
             "angle",
@@ -461,7 +450,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in app_live_common_tokens
         )
 
-    if "expanded-source fallback" in lowered_html or "live-source" in lowered_html or "source update from" in lowered_html:
+    if "expanded-source fallback" in html.lower() or "live-source" in html.lower():
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
         if title_match:

@@ -18,6 +18,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", help="Target date in YYYY-MM-DD. Defaults to today.")
     parser.add_argument("--blog-ready-after", default="08:35")
     parser.add_argument("--home-ready-after", default="08:40")
+    parser.add_argument("--child-timeout-seconds", type=int, default=3 * 60 * 60)
     return parser.parse_args()
 
 
@@ -41,16 +42,26 @@ def append_log(repo_root: Path, message: str) -> None:
         handle.write(f"[{stamp}] {message}\n")
 
 
-def run_command(label: str, args: list[str], repo_root: Path) -> int:
-    completed = subprocess.run(
-        args,
-        cwd=repo_root,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        check=False,
-    )
+def run_command(label: str, args: list[str], repo_root: Path, timeout_seconds: int) -> int:
+    try:
+        completed = subprocess.run(
+            args,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+            timeout=max(1, timeout_seconds),
+        )
+    except subprocess.TimeoutExpired as exc:
+        if exc.stdout:
+            print(exc.stdout, end="")
+        if exc.stderr:
+            print(exc.stderr, end="", file=sys.stderr)
+        append_log(repo_root, f"{label} timeout_seconds={timeout_seconds}")
+        return 124
+
     if completed.stdout:
         print(completed.stdout, end="")
     if completed.stderr:
@@ -100,7 +111,7 @@ def main() -> int:
             "--date",
             target_day.isoformat(),
         ]
-        exit_codes.append(run_command("blog_watchdog", blog_args, repo_root))
+        exit_codes.append(run_command("blog_watchdog", blog_args, repo_root, args.child_timeout_seconds))
     else:
         append_log(repo_root, f"blog_watchdog skipped now={now.strftime('%H:%M:%S')}")
 
@@ -117,7 +128,7 @@ def main() -> int:
             "--log-dir",
             str(home_log_dir),
         ]
-        exit_codes.append(run_command("home_brief_check", home_args, repo_root))
+        exit_codes.append(run_command("home_brief_check", home_args, repo_root, args.child_timeout_seconds))
     else:
         append_log(repo_root, f"home_brief_check skipped now={now.strftime('%H:%M:%S')}")
 

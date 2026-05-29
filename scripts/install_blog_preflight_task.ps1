@@ -20,10 +20,11 @@ if (-not $PythonCommand) {
 }
 
 $Args = "$PythonArgs `"$ScriptPath`" --repo-root `"$RepoRoot`""
-$Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args
+$Action = New-ScheduledTaskAction -Execute $PythonCommand -Argument $Args -WorkingDirectory $RepoRoot
 $Trigger = New-ScheduledTaskTrigger -Daily -At $CheckAt
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
-Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Force | Out-Null
+Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings -Force | Out-Null
 
 Write-Output "Installed task: $TaskName"
 Write-Output "Schedule: daily at $CheckAt"

@@ -88,6 +88,52 @@ def append_run_log(repo_root: Path, message: str) -> None:
         handle.write(f"[{now:%Y-%m-%d %H:%M:%S%z}] {message}\n")
 
 
+def process_is_running(pid: int | None) -> bool:
+    if pid is None or pid <= 0:
+        return False
+
+    if os.name == "nt":
+        try:
+            import ctypes
+            from ctypes import wintypes
+        except Exception:
+            return True
+
+        process_query_limited_information = 0x1000
+        still_active = 259
+        error_access_denied = 5
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+        kernel32.OpenProcess.restype = wintypes.HANDLE
+        kernel32.GetExitCodeProcess.argtypes = [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)]
+        kernel32.GetExitCodeProcess.restype = wintypes.BOOL
+        kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel32.CloseHandle.restype = wintypes.BOOL
+
+        handle = kernel32.OpenProcess(process_query_limited_information, False, pid)
+        if not handle:
+            return ctypes.get_last_error() == error_access_denied
+
+        try:
+            exit_code = wintypes.DWORD()
+            if not kernel32.GetExitCodeProcess(handle, ctypes.byref(exit_code)):
+                return True
+            return exit_code.value == still_active
+        finally:
+            kernel32.CloseHandle(handle)
+
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
 class SharedPublishLock:
     def __init__(
         self,
@@ -102,23 +148,29 @@ class SharedPublishLock:
         self.poll_seconds = poll_seconds
         self.fd: int | None = None
 
-    def _created_at(self) -> int | None:
+    def _read_lock_metadata(self) -> tuple[int | None, int | None]:
         try:
             raw = self.lock_path.read_text(encoding="utf-8").strip()
         except OSError:
-            return None
+            return None, None
         values: dict[str, str] = {}
         for part in raw.split():
             if "=" not in part:
                 continue
             key, value = part.split("=", 1)
             values[key] = value
+        pid = values.get("pid")
         created = values.get("time")
-        return int(created) if created and created.isdigit() else None
+        return (
+            int(pid) if pid and pid.isdigit() else None,
+            int(created) if created and created.isdigit() else None,
+        )
 
     def _clear_stale_lock_if_needed(self) -> bool:
-        created_at = self._created_at()
-        is_stale = created_at is None or (time.time() - created_at) > self.stale_seconds
+        pid, created_at = self._read_lock_metadata()
+        stale_by_pid = pid is None or not process_is_running(pid)
+        stale_by_age = created_at is None or (time.time() - created_at) > self.stale_seconds
+        is_stale = stale_by_pid or stale_by_age
         if not is_stale:
             return False
         try:

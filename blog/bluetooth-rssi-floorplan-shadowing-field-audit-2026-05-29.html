@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth RSSI Floorplan Shadowing Audit with Bluetooth Explorer | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to separate RSSI floorplan shadowing, antenna orientation, and body blocking from real firmware defects before a field escalation.">
+  <meta name="keywords" content="bluetooth rssi audit, bluetooth explorer rssi shadowing, bluetooth floorplan signal test, ble field debugging checklist, bluetooth antenna orientation test, bluetooth body blocking rssi">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-rssi-floorplan-shadowing-field-audit-2026-05-29.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth RSSI Floorplan Shadowing Audit with Bluetooth Explorer">
+  <meta property="og:description" content="Use Bluetooth Explorer to separate RSSI floorplan shadowing, antenna orientation, and body blocking from real firmware defects before a field escalation.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-rssi-floorplan-shadowing-field-audit-2026-05-29.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth RSSI Floorplan Shadowing Audit with Bluetooth Explorer">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to separate RSSI floorplan shadowing, antenna orientation, and body blocking from real firmware defects before a field escalation.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth RSSI Floorplan Shadowing Audit with Bluetooth Explorer",
+      "description": "Use Bluetooth Explorer to separate RSSI floorplan shadowing, antenna orientation, and body blocking from real firmware defects before a field escalation.",
+      "datePublished": "2026-05-29",
+      "dateModified": "2026-05-29",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-rssi-floorplan-shadowing-field-audit-2026-05-29.html",
+      "keywords": [
+        "bluetooth rssi audit",
+        "bluetooth explorer rssi shadowing",
+        "bluetooth floorplan signal test",
+        "ble field debugging checklist",
+        "bluetooth antenna orientation test",
+        "bluetooth body blocking rssi"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can RSSI prove exact Bluetooth distance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. RSSI is a noisy signal clue. It is useful for trends, movement checks, and dead-zone discovery, but it should not be treated as a precise distance reading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a Bluetooth Explorer RSSI audit record?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Record the checkpoint, phone orientation, accessory position, body blocking, nearby metal or water barriers, RSSI range, and whether the weak zone follows the room or the device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is RSSI weakness more likely to be a firmware issue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Suspect firmware when the weak readings follow the accessory across multiple rooms, repeat across phone orientations, or line up with connection events in device logs."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7fbff; --text:#1b2b3a; --muted:#536779; --line:#d8e4ee; --panel:#ffffff; --brand:#1466c3; --soft:#eaf4ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    h3 { margin-top:22px; font-size:20px; }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero { padding:28px 0 18px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:#173f74; font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a>
+      <nav><a href="/blog/">Blog</a><a href="/bluetooth-explorer/">Bluetooth Explorer</a><a href="/apps/">Apps</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <section class="hero">
+        <h1>Bluetooth RSSI Floorplan Shadowing Audit with Bluetooth Explorer</h1>
+        <p class="meta">Published May 29, 2026 ? Bluetooth Explorer field workflow</p>
+        <p class="lead">Bluetooth Explorer gives field teams a repeatable way to test RSSI shadowing before they blame a phone model, firmware build, or accessory batch.</p>
+      </section>
+      <div class="tldr"><p><strong>TL;DR:</strong> Treat RSSI as a movement pattern, not a distance number. Walk the same route twice, rotate the phone at each checkpoint, mark signal cliffs on a floorplan, and only escalate to firmware once the weak zone follows the device instead of the room.</p></div>
+      <h2>What Happened</h2>
+      <p>In warehouse aisles, apartment hallways, clinics, and retail back rooms, RSSI often drops because metal shelving, elevator cores, water-filled walls, pocket placement, and human body blocking change the radio path. A floorplan audit marks those cliffs on the map, repeats the walk in both directions, rotates the phone at each checkpoint, and records whether the accessory moved or stayed fixed.</p>
+      <h2>Why This Bluetooth Explorer Audit Matters</h2>
+      <p>The useful decision is simple: if the weak zone follows the room, tune placement and onboarding instructions; if it follows the device, collect firmware logs and antenna notes. That distinction keeps support teams from opening a firmware incident for what is really a radio environment problem.</p>
+      <h2>Run The Floorplan Walk</h2>
+      <ol>
+        <li>Open Bluetooth Explorer and lock onto the target accessory before you start moving.</li>
+        <li>Mark five to eight checkpoints on the actual floorplan: doorway, shelf end, elevator wall, desk cluster, hallway corner, and the normal user position.</li>
+        <li>At each checkpoint, hold the phone in portrait, landscape, pocket-height, and chest-height positions for a short reading window.</li>
+        <li>Repeat the route in reverse. A real shadow zone should appear in the same physical area, not only in one walking direction.</li>
+        <li>Move the accessory two meters and repeat the worst checkpoint. If the dip moves with the accessory, inspect antenna placement and firmware logs.</li>
+      </ol>
+      <h2>Decision Table</h2>
+      <table>
+        <thead><tr><th>Observation</th><th>Likely cause</th><th>Next action</th></tr></thead>
+        <tbody>
+          <tr><td>RSSI drops near the same wall with several phones</td><td>Floorplan shadowing or material absorption</td><td>Change placement, add setup guidance, or adjust user path instructions</td></tr>
+          <tr><td>RSSI changes sharply when the phone rotates</td><td>Phone antenna orientation or hand blocking</td><td>Test a second grip and avoid treating one orientation as baseline truth</td></tr>
+          <tr><td>RSSI weakness follows one accessory to multiple rooms</td><td>Accessory antenna, enclosure, battery, or firmware behavior</td><td>Collect firmware logs and compare against a known-good unit</td></tr>
+        </tbody>
+      </table>
+      <h2>Common Failure Modes</h2>
+      <ul>
+        <li><strong>One reading becomes the whole story.</strong> A single RSSI number is not enough. Record a short range and a movement trend.</li>
+        <li><strong>The test ignores body blocking.</strong> People often carry phones in pockets or bags, so include those positions before blaming discovery code.</li>
+        <li><strong>The map is too vague.</strong> Write down physical landmarks. ?Near the shelf end? is more useful than ?back room.?</li>
+        <li><strong>Firmware is blamed too early.</strong> Escalate only after the weak signal follows the device across locations or aligns with connection events.</li>
+      </ul>
+      <h2>FAQ</h2>
+      <p><strong>Can RSSI prove exact Bluetooth distance?</strong><br>No. RSSI is a noisy clue. Use it for trend, movement, and dead-zone checks, not as a precise ruler.</p>
+      <p><strong>What should the audit record?</strong><br>Record checkpoint, phone orientation, accessory position, body blocking, nearby metal or water barriers, RSSI range, and whether the weak zone follows the room or device.</p>
+      <p><strong>When should the team suspect firmware?</strong><br>Suspect firmware when weak readings follow the accessory across multiple rooms, repeat across phone orientations, or line up with connection events in logs.</p>
+      <div class="note"><p><strong>Bottom line:</strong> Bluetooth Explorer is most useful when the scan becomes evidence. A short floorplan audit turns RSSI from a vague complaint into a decision about placement, documentation, antenna design, or firmware investigation.</p></div>
+      <div class="links"><a href="/bluetooth-explorer/">Open Bluetooth Explorer</a><a href="/blog/">Back to Blog</a><a href="/apps/">Browse VelocAI Apps</a></div>
+    </article>
+  </main>
+  <footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+</body>
+</html>
