@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Connection Event Timeline Audit | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to audit connection events, scan timing, GATT handoff, and disconnect clues before a Bluetooth bug becomes a vague support ticket.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-connection-event-timeline-audit-2026-05-30.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Connection Event Timeline Audit">
+  <meta property="og:description" content="Use Bluetooth Explorer to audit connection events, scan timing, GATT handoff, and disconnect clues before a Bluetooth bug becomes a vague support ticket.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-connection-event-timeline-audit-2026-05-30.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Connection Event Timeline Audit">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to audit connection events, scan timing, GATT handoff, and disconnect clues before a Bluetooth bug becomes a vague support ticket.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth Connection Event Timeline Audit",
+      "description": "Use Bluetooth Explorer to audit connection events, scan timing, GATT handoff, and disconnect clues before a Bluetooth bug becomes a vague support ticket.",
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-connection-event-timeline-audit-2026-05-30.html",
+      "keywords": [
+        "Bluetooth Explorer",
+        "Bluetooth Explorer Connection Timeline",
+        "mobile workflow",
+        "field checklist"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Bluetooth connection event timeline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a simple timestamp list that separates scan, advertisement, connection, GATT browse, first value, idle, and disconnect behavior."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Bluetooth Explorer help this audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It lets the team observe nearby devices and connection behavior directly enough to turn a vague complaint into a staged investigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should firmware be investigated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Investigate firmware when the same stage fails across rooms, phones, and repeated tests, especially after sleep or reconnect transitions."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7fbff; --text:#1b2b3a; --muted:#536779; --line:#d8e4ee; --panel:#ffffff; --brand:#1466c3; --soft:#eaf4ff; }
+    * { box-sizing:border-box; } body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; } .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,251,255,.94); } .top { padding:14px 0; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; } .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; } main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; } h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; } h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; } ul,ol { padding-left:22px; } .meta { margin-top:10px; color:var(--muted); font-size:14px; } .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; } table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { color:#20344a; background:var(--soft); } .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; } .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:#173f74; font-weight:650; } footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Bluetooth Explorer field workflow</p><h1>Bluetooth Connection Event Timeline Audit</h1><p class="meta">Published May 30, 2026 | Topic: Bluetooth Explorer Connection Timeline</p><p class="lead">Bluetooth connection bugs get easier when every discovery, connect, service browse, notification, and disconnect moment has a timestamp.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Build a connection event timeline before changing firmware. Record scan start, first advertisement, connect attempt, GATT browse, first useful value, idle period, and disconnect. If the delay lives before connection, inspect advertising and scan behavior. If it appears after connection, inspect GATT, permissions, or power transitions.</p></div>
+    <h2>Why connection timelines beat vague bug reports</h2><p>A user saying the accessory feels slow can mean many different things. The phone may discover late, connect late, browse services slowly, wait for notification setup, or drop after an idle period. Bluetooth Explorer helps separate those stages so the team fixes the stage that actually failed.</p>
+    <h2>Run the event timeline audit</h2><ol>        <li>Start Bluetooth Explorer before the accessory is powered on so the first advertisement is visible.</li>
+        <li>Write down scan start, first visible packet, tap-to-connect time, service list time, first value time, and disconnect time.</li>
+        <li>Repeat with the phone locked, unlocked, near the body, and one room away from the accessory.</li>
+        <li>Compare a known-good unit with the failing unit before changing firmware or onboarding copy.</li>
+        <li>Keep the slowest stage as the incident title so the next person sees the real failure boundary.</li></ol>
+    <h2>What should you compare?</h2><table><thead><tr><th>Observation</th><th>Likely cause</th><th>Next action</th></tr></thead><tbody>          <tr><td>Delay before first packet</td><td>Advertising interval, payload state, radio shadow, or power mode</td><td>Check advertising settings and nearby interference first</td></tr>
+          <tr><td>Delay after connect</td><td>GATT browse, permissions, bonding, or service cache</td><td>Capture service discovery and app permission state</td></tr>
+          <tr><td>Drop after idle</td><td>Connection parameters, supervision timeout, or sleep transition</td><td>Compare active and standby behavior with timestamps</td></tr></tbody></table>
+    <h2>Failure modes to avoid</h2><ul>        <li>Do not merge discovery delay and GATT delay into one complaint.</li>
+        <li>Do not test only beside a desk if the product is used in pockets, hallways, or clinics.</li>
+        <li>Do not treat one phone result as proof until a second phone repeats the same stage delay.</li>
+        <li>Do not rewrite onboarding copy when the event timeline points to firmware sleep behavior.</li></ul>
+    <h2>What the team should decide next</h2><p>If the timeline shows the same stage failing across phones, create a focused engineering ticket for that stage. If the failure moves with room position, improve placement guidance. If only one phone model fails, preserve the trace and compare platform behavior before promising a broad fix.</p>
+    <h2>FAQ</h2>      <p><strong>What is a Bluetooth connection event timeline?</strong><br>It is a simple timestamp list that separates scan, advertisement, connection, GATT browse, first value, idle, and disconnect behavior.</p>
+      <p><strong>Why does Bluetooth Explorer help this audit?</strong><br>It lets the team observe nearby devices and connection behavior directly enough to turn a vague complaint into a staged investigation.</p>
+      <p><strong>When should firmware be investigated?</strong><br>Investigate firmware when the same stage fails across rooms, phones, and repeated tests, especially after sleep or reconnect transitions.</p>
+    <h2>Useful references</h2><ul>        <li><a href="https://www.bluetooth.com/learn-about-bluetooth/tech-overview/" target="_blank" rel="noopener noreferrer">Bluetooth technology overview</a></li>
+        <li><a href="https://www.bluetooth.com/learn-about-bluetooth/key-attributes/range/" target="_blank" rel="noopener noreferrer">Bluetooth range guide</a></li>
+        <li><a href="https://developer.android.com/develop/connectivity/bluetooth/ble/ble-overview" target="_blank" rel="noopener noreferrer">Android BLE overview</a></li></ul>
+    <div class="note"><p><strong>Bottom line:</strong> A Bluetooth Explorer workflow for turning connection complaints into a timestamped event timeline.</p></div>
+    <div class="links">        <a href="/bluetooth-explorer/">Open Bluetooth Explorer</a>
+        <a href="/blog/">Back to blog</a>
+        <a href="/apps/">Browse VelocAI apps</a>
+        <a href="/blog/bluetooth-rssi-floorplan-shadowing-field-audit-2026-05-29.html">Read the RSSI audit</a></div>
+  </article></main>
+  <footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+</body>
+</html>
