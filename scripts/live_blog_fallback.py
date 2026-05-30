@@ -1555,7 +1555,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
 {analysis_html}
 
       <div class="capsule">
-        <p><strong>Practical context:</strong> As of {human_date}, {escape(post.title.lower())} connects recent reporting from {escape(source_name)} to {escape(str(profile["secondary"]))}. Use it as a practical example, not as a reason to abandon a workflow that already works.</p>
+        <p><strong>Workflow fit:</strong> As of {human_date}, {escape(post.title.lower())} connects recent reporting from {escape(source_name)} to {escape(str(profile["secondary"]))}. Use it as a concrete example, not as a reason to abandon a workflow that already works.</p>
       </div>
 
       <h2>{escape(labels["next"])}</h2>
@@ -2225,8 +2225,8 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
     next_body = str(custom_profile["next_body"]) if custom_profile else f"{next_body_for(source_slug)} {search_intent_body_for(source_slug)}"
     risk_heading = str(custom_profile["risk_heading"]) if custom_profile else "What are the key risks in 2026?"
     risk_intro = str(custom_profile["risk_intro"]) if custom_profile else challenge_intro_for(source_slug)
-    checklist_heading = str(custom_profile["checklist_heading"]) if custom_profile else "Practical decision checklist"
-    takeaway_heading = str(custom_profile["takeaway_heading"]) if custom_profile else "Practical Takeaways"
+    checklist_heading = str(custom_profile["checklist_heading"]) if custom_profile else "Decision checklist"
+    takeaway_heading = str(custom_profile["takeaway_heading"]) if custom_profile else "Useful takeaways"
     takeaway_intro = str(custom_profile["takeaway_intro"]) if custom_profile else teaser_for_source_slug(source_slug)
     faq_heading = str(custom_profile["faq_heading"]) if custom_profile else "FAQ"
     sources_heading = str(custom_profile["sources_heading"]) if custom_profile else "Source attribution"
@@ -2384,13 +2384,13 @@ def render_live_article(day: date, source_slug: str, source_name: str, item: Fee
       <h2>{escape(interpretation_heading)}</h2>
       <p>{escape(interpretation_body)}</p>
       <div class="capsule">
-        <p><strong>Practical context:</strong> {escape(context_body)}</p>
+        <p><strong>Workflow fit:</strong> {escape(context_body)}</p>
       </div>
 
       <h2>{escape(application_heading)}</h2>
       <p>{escape(application_body)}</p>
       <div class="capsule">
-        <p><strong>Practical note:</strong> {escape(note_body)}</p>
+        <p><strong>Useful detail:</strong> {escape(note_body)}</p>
       </div>
 
       <h2>{escape(next_heading)}</h2>
