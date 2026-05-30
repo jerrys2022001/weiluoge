@@ -134,7 +134,7 @@ Daily uniqueness rule:
 Legacy manual schedulers still exist for older single-lane experiments, but they are not part of the default daily blog target:
 - `scripts/install_blog_daily_task.ps1`
 - `scripts/install_storage_impact_blog_task.ps1`
-- `scripts/install_translate_ai_blog_task.ps1`
+- `scripts/install_translate_ai_blog_tasks.ps1`
 - `scripts/install_live_update_blog_tasks.ps1`
 
 ## Storage Cleanup + System Impact Blog (legacy/manual)
