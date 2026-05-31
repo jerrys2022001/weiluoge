@@ -1,10 +1,80 @@
 {
   "date": "2026-05-31",
-  "refreshed_at": "2026-05-31T13:58:40.454472+08:00",
+  "refreshed_at": "2026-05-31T22:01:13.881760+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "New AI-compute cryptocurrency Pearl sparks a GPU mining rush but profitability is already sliding - RTX 5090 daily revenue has halved to $17.19 since April",
+      "link": "https://www.tomshardware.com/tech-industry/cryptomining/new-ai-compute-cryptocurrency-pearl-sparks-a-gpu-mining-rush-but-profitability-is-sliding",
+      "summary": "A new cryptocurrency called Pearl has set off a short-lived GPU mining rush.",
+      "published_at": "2026-05-31T12:40:00+00:00",
+      "display_date": "MAY 31",
+      "image_src": "/assets/images/home-briefing/2026-05-31/ai-3cc8e4d4a3c946b9-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-04/ai-c3a4dba6623efd2f-thumb.webp"
+    },
+    {
+      "index": 2,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "The 'ultimate mosquito killer' uses lasers and AI - custom model trained to detect and lock lasers on these pests",
+      "link": "https://www.tomshardware.com/maker-stem/robot-kits/the-ultimate-mosquito-killer-uses-lasers-and-ai-custom-model-trained-to-detect-and-lock-lasers-on-these-pests",
+      "summary": "A computer vision and robotics expert has created and trained what he boasts is \"the ultimate mosquito killer\" using machine learning and a laser.",
+      "published_at": "2026-05-31T12:20:00+00:00",
+      "display_date": "MAY 31",
+      "image_src": "/assets/images/home-briefing/2026-05-31/ai-6e7b1204ff7f655d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-07/ai-9c87475a1e8a3b89-thumb.webp"
+    },
+    {
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "Crime blotter: Man arrrested for $31,000 iPhone theft",
+      "link": "https://appleinsider.com/articles/26/05/31/crime-blotter-man-arrrested-for-31000-iphone-theft?utm_source=rss",
+      "summary": "London iPhone theft victims have reported threats, AirTag catches a burglar in Pittsburgh, and California prisoners did not receive iPads, all in this week's Apple Crime Blotter. Man in cuffs - Image Credit: Pixabay The latest in an...",
+      "published_at": "2026-05-31T11:32:52+00:00",
+      "display_date": "MAY 31",
+      "image_src": "/assets/images/home-briefing/2026-03-25/apple-353a9276bcf1cbf7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-353a9276bcf1cbf7-thumb.webp"
+    },
+    {
+      "index": 4,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "You can still run the original Nvidia Control Panel by grabbing it from the Microsoft Store today - app remains useful to adjust a handful of RTX Pro and Quadro features, and may be handy for troubleshooting",
+      "link": "https://www.tomshardware.com/pc-components/gpu-drivers/you-can-still-run-the-original-nvidia-control-panel-by-grabbing-it-from-the-microsoft-store-today-app-remains-useful-to-adjust-a-handful-of-rtx-pro-and-quadro-features-and-may-be-handy-for-troubleshooting",
+      "summary": "The old Nvidia Control Panel is now a separate, optional download, but is it worth grabbing?",
+      "published_at": "2026-05-31T11:30:00+00:00",
+      "display_date": "MAY 31",
+      "image_src": "/assets/images/home-briefing/2026-05-31/ai-05dc0bb2204b1d42-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/ai-b6e8fa71a1073367-thumb.webp"
+    },
+    {
+      "index": 5,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Apple TV 4K on track to break a record no one wants to see happen",
+      "link": "https://9to5mac.com/2026/05/31/apple-tv-4k-might-break-a-record-no-one-wants-to-see-happen/",
+      "summary": "It makes sense that Apple TV 4K customers are vocal about the lack of new hardware. The current set-top box , introduced in 2022, runs the risk of breaking a record no one wants to see happen.",
+      "published_at": "2026-05-31T08:00:00+00:00",
+      "display_date": "MAY 31",
+      "image_src": "/assets/images/home-briefing/2026-05-31/apple-b998d99ae28dd613-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/apple-2ca04336e6f22b3c-thumb.webp"
+    },
+    {
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -15,24 +85,10 @@
       "published_at": "2026-05-30T11:19:45-07:00",
       "display_date": "MAY 31",
       "image_src": "/assets/images/home-briefing/2026-05-31/apple-85406ad7fca30c6b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-02/apple-871b9baa1d7a1452-thumb.webp"
     },
     {
-      "index": 2,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "A robot startup is wreaking havoc on short-term rentals in San Francisco - Airbnb hosts allege 'guests' secretly tested robots indoors, left the units completely trashed",
-      "link": "https://www.tomshardware.com/tech-industry/a-robot-startup-is-wreaking-havoc-on-short-term-rentals-in-san-francisco-airbnb-hosts-allege-guests-secretly-tested-robots-indoors-left-the-units-completely-trashed",
-      "summary": "Picture this: you're the owner of a dainty place in San Francisco. You put it up on Airbnb, considering the area is sprawling with AI bros, thinking you'd get a pretty good return on your investment. What you actually get in return are...",
-      "published_at": "2026-05-30T17:09:50+00:00",
-      "display_date": "MAY 31",
-      "image_src": "/assets/images/home-briefing/2026-05-31/ai-1687326963873e62-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-17/ai-389ebf6b2b5af2fe-thumb.webp"
-    },
-    {
-      "index": 3,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -42,11 +98,11 @@
       "summary": "This week on the Cult of Mac podcast: The Ferrari Luce is the closest thing to an Apple car we'll ever see, thanks to Jony Ive's role. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-05-30T16:35:56+00:00",
       "display_date": "MAY 31",
-      "image_src": "/assets/images/home-briefing/2026-04-16/apple-00ea6604389055f8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-16/apple-00ea6604389055f8-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-21/apple-eb2e8ca783027bd0-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/apple-eb2e8ca783027bd0-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 8,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -57,63 +113,7 @@
       "published_at": "2026-05-30T16:20:00+00:00",
       "display_date": "MAY 31",
       "image_src": "/assets/images/home-briefing/2026-05-31/industry-169ff3d508c483d7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-16/industry-38deee077d95d18f-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "Here's one of my feature requests for Visual Intelligence in iOS 27",
-      "link": "https://9to5mac.com/2026/05/30/apple-intelligence-reminders-capabilities-in-visual-intelligence/",
-      "summary": "One of the core Apple Intelligence features to date has been Visual Intelligence. It started off in a r ather limited capacity through Camera Control, but with iOS 26, the company expanded it to screenshots. I've found those capabilities...",
-      "published_at": "2026-05-30T16:17:45+00:00",
-      "display_date": "MAY 31",
-      "image_src": "/assets/images/home-briefing/2026-05-31/apple-f2832cedbb75efb1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "Here's how Incogni helps you protect your family from scams and spam",
-      "link": "https://9to5mac.com/2026/05/30/incogni-helps-you-protect-family-from-scams-spam/",
-      "summary": "We manage huge chunks of our life online these days, which means there is a mass of personal data entrusted to a range of different companies. You probably already use Apple privacy tools like App Tracking Transparency , Hide My Email ,...",
-      "published_at": "2026-05-30T16:00:00+00:00",
-      "display_date": "MAY 31",
-      "image_src": "/assets/images/home-briefing/2026-05-04/apple-2726abbeb0635ce7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-04/apple-2726abbeb0635ce7-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Meta is reportedly developing an AI pendant",
-      "link": "https://techcrunch.com/2026/05/30/meta-is-reportedly-developing-an-ai-pendant/",
-      "summary": "Meta seems to be making big bets on AI-powered hardware.",
-      "published_at": "2026-05-30T15:59:58+00:00",
-      "display_date": "MAY 30",
-      "image_src": "/assets/images/home-briefing/2026-05-27/industry-13d5603dc83de9f1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-27/industry-13d5603dc83de9f1-thumb.webp"
-    },
-    {
-      "index": 8,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "Cult of Mac",
-      "source_url": "https://www.cultofmac.com/",
-      "title": "Sick of cloud storage subscriptions? Grab a 2TB portable SSD at a steep discount.",
-      "link": "https://www.cultofmac.com/deals/sandisk-extreme-2tb-portable-ssd-deal",
-      "summary": "The SanDisk Extreme is a pocket-size 2TB portable SSD that hits read speeds up to 1050 MB/s and write speeds up to 1000 MB/s. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
-      "published_at": "2026-05-30T15:55:47+00:00",
-      "display_date": "MAY 30",
-      "image_src": "/assets/images/home-briefing/2026-04-04/apple-11ff201925a763c6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-04/apple-11ff201925a763c6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-06/industry-25ece8d07159ccb8-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-29T09:30:53+00:00",
       "display_date": "MAY 29",
       "image_src": "/assets/images/home-briefing/2026-05-31/bluetooth-1c328c49521d9472-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/bluetooth-624f8cf4309a07ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-18/bluetooth-a91093790090f50b-thumb.webp"
     }
   ]
 }
