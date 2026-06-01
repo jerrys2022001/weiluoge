@@ -1,6 +1,6 @@
 {
   "date": "2026-06-01",
-  "refreshed_at": "2026-06-01T08:48:28.359074+08:00",
+  "refreshed_at": "2026-06-01T08:51:06.785523+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-01T08:00:00+00:00",
       "display_date": "JUN 01",
       "image_src": "/assets/images/home-briefing/2026-06-01/industry-3d50f11d5cc4ec11-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-13/industry-f381ded40450d09d-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-26/industry-9a12780dab6a55c8-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-01T08:00:00+00:00",
       "display_date": "JUN 01",
       "image_src": "/assets/images/home-briefing/2026-06-01/industry-6e47e6fa8a7dd6cd-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/industry-d62a07411b9ee84c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-06/industry-41bae13785adc222-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "Film fans with a massive movie collection can make their own mini Netflix by using Jellyfin and a Mac as a file server. Here's how to create your own home video streaming service. Jellyfin is a media server tool. Streaming services like...",
       "published_at": "2026-05-31T23:26:25+00:00",
       "display_date": "JUN 01",
-      "image_src": "/assets/images/home-briefing/2026-03-30/apple-5538b102df1ec683-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-30/apple-5538b102df1ec683-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "9to5Mac Security Bite is exclusively brought to you by Mosyle, the only Apple Unified Platform . Making Apple devices work-ready and enterprise-safe is all we do. Our unique integrated approach to management and security combines...",
       "published_at": "2026-05-31T23:22:51+00:00",
       "display_date": "JUN 01",
-      "image_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-02/apple-dda5368154087158-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-02/apple-dda5368154087158-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-05-31T14:44:33-07:00",
       "display_date": "JUN 01",
       "image_src": "/assets/images/home-briefing/2026-06-01/apple-f72827e987d45836-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/apple-2264b79f8aa3d7a2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-03/apple-216b5d3cf78cbc24-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "London iPhone theft victims have reported threats, AirTag catches a burglar in Pittsburgh, and California prisoners did not receive iPads, all in this week's Apple Crime Blotter. Man in cuffs - Image Credit: Pixabay The latest in an...",
       "published_at": "2026-05-31T20:03:11+00:00",
       "display_date": "JUN 01",
-      "image_src": "/assets/images/home-briefing/2026-03-25/apple-427a6d0fffb7570a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-427a6d0fffb7570a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-17/apple-b129b757d2d8cb65-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-b129b757d2d8cb65-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-05-31T18:28:17+00:00",
       "display_date": "JUN 01",
       "image_src": "/assets/images/home-briefing/2026-06-01/industry-ff3308288e1557e6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-26/industry-f4d9c00ab5d10359-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-30/industry-c6e0ff4b00d82516-thumb.webp"
     },
     {
       "index": 8,
@@ -141,7 +141,7 @@
       "published_at": "2026-05-29T09:30:53+00:00",
       "display_date": "MAY 29",
       "image_src": "/assets/images/home-briefing/2026-06-01/bluetooth-1c328c49521d9472-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-18/bluetooth-a91093790090f50b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-26/bluetooth-b21c9c054056fdc6-thumb.webp"
     }
   ]
 }
