@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth GATT Cache Debugging with Bluetooth Explorer | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to debug stale GATT caches with service changed clues, database hash checks, handle maps, and clean retests.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-gatt-database-cache-debugging-bluetooth-explorer-2026-06-02.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth GATT Cache Debugging with Bluetooth Explorer">
+  <meta property="og:description" content="Use Bluetooth Explorer to debug stale GATT caches with service changed clues, database hash checks, handle maps, and clean retests.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-gatt-database-cache-debugging-bluetooth-explorer-2026-06-02.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth GATT Cache Debugging with Bluetooth Explorer">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to debug stale GATT caches with service changed clues, database hash checks, handle maps, and clean retests.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth GATT Cache Debugging with Bluetooth Explorer",
+      "description": "Use Bluetooth Explorer to debug stale GATT caches with service changed clues, database hash checks, handle maps, and clean retests.",
+      "datePublished": "2026-06-02",
+      "dateModified": "2026-06-02",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-gatt-database-cache-debugging-bluetooth-explorer-2026-06-02.html",
+      "keywords": [
+        "bluetooth",
+        "Bluetooth Explorer",
+        "GATT cache",
+        "Service Changed",
+        "database hash"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the quickest sign of a stale GATT cache?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The fresh pairing works while the bonded reconnect keeps failing after firmware changed services, handles, or characteristic properties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Service Changed matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It tells a bonded client that the attribute table changed and the cached map should be rediscovered."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should Bluetooth Explorer users escalate to firmware review?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escalate when the peripheral changes the table but does not provide a reliable cache refresh path for bonded clients."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f8fbff; --text:#17283a; --muted:#536779; --line:#d7e3ee; --panel:#fff; --soft:#eaf4ff; --brand:#176b9a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(248,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note,.panel { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Bluetooth Explorer protocol workflow</p><h1>Bluetooth GATT Cache Debugging with Bluetooth Explorer</h1><p class="meta">Published June 02, 2026 | Topic: Bluetooth Explorer GATT cache debugging</p><p class="lead">A stale GATT cache is annoying because the bug looks random: the peripheral firmware changed, the app still writes to an old handle, and everyone blames pairing before checking whether the client ever learned that the table moved.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Use Bluetooth Explorer to compare the expected GATT table with what the client actually sees. Check Service Changed behavior, Database Hash, bonded-state assumptions, and handle reuse before deleting pairings as a ritual.</p></div>
+      <h2>Why does the cache lie?</h2>
+      <p>BLE clients cache services and characteristics so reconnects are faster. That is useful until firmware changes a UUID, handle order, or characteristic property and the central keeps acting on yesterday's map.</p>
+      <h2>What should Bluetooth Explorer inspect?</h2>
+      <p>Inspect the service list, characteristic handles, descriptors, properties, Database Hash support, and whether a Service Changed indication arrives after a firmware update. Put the old and new maps next to each other.</p>
+      <h2>How should teams retest?</h2>
+      <p>Run one bonded reconnect, one fresh pairing, and one firmware-change pass with the same client device. If only the fresh pairing works, the problem is probably cache invalidation rather than radio range or app timing.</p>
+      <h2>When is deleting the bond a bad answer?</h2>
+      <p>Deleting the bond can hide the bug. It proves the fresh map works, but it does not prove normal users will recover after an update. Keep the bond long enough to verify the migration path.</p>
+    <table aria-label="GATT cache debugging matrix"><thead><tr><th>Evidence</th><th>Likely meaning</th><th>Next action</th></tr></thead><tbody>
+          <tr><td>Fresh pairing works, bonded reconnect fails</td><td>Client cache may still point at old handles</td><td>Check Service Changed and Database Hash behavior</td></tr>
+          <tr><td>UUIDs match but properties changed</td><td>App logic may be using a stale capability assumption</td><td>Compare characteristic flags before changing retry code</td></tr>
+          <tr><td>Handle order changed after firmware update</td><td>Cached handle writes can hit the wrong target</td><td>Preserve the old map and test migration on a bonded device</td></tr>
+    </tbody></table>
+    <div class="panel"><h2>How do you keep the retest honest?</h2><ul>
+          <li>Save the pre-update service map before flashing firmware.</li>
+          <li>Record whether the client is bonded, paired, or completely fresh.</li>
+          <li>Check for Service Changed indication delivery before manually deleting the bond.</li>
+          <li>Compare Database Hash values when both sides support the feature.</li>
+          <li>Retest the same write, notify, and read path after the cache refresh.</li>
+    </ul></div>
+    <h2>What should users ask?</h2>
+      <p><strong>What is the quickest sign of a stale GATT cache?</strong><br>
+      The fresh pairing works while the bonded reconnect keeps failing after firmware changed services, handles, or characteristic properties.</p>
+      <p><strong>Why does Service Changed matter?</strong><br>
+      It tells a bonded client that the attribute table changed and the cached map should be rediscovered.</p>
+      <p><strong>When should Bluetooth Explorer users escalate to firmware review?</strong><br>
+      Escalate when the peripheral changes the table but does not provide a reliable cache refresh path for bonded clients.</p>
+    <h2>Useful references</h2><ul>
+          <li><a href="https://www.bluetooth.com/specifications/specs/core-specification/" target="_blank" rel="noopener noreferrer">Bluetooth Core specification</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/specs/gatt-specification-supplement/" target="_blank" rel="noopener noreferrer">Bluetooth GATT overview</a></li>
+          <li><a href="https://developer.apple.com/documentation/corebluetooth" target="_blank" rel="noopener noreferrer">Apple Core Bluetooth documentation</a></li>
+    </ul>
+    <div class="note"><p><strong>Bottom line:</strong> Bluetooth Explorer makes stale GATT cache bugs easier to prove because it turns a vague reconnect failure into maps, hashes, handles, and update behavior.</p></div>
+    <div class="links"><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/blog/">Back to blog</a><a href="/apps/">Browse VelocAI apps</a><a href="/blog/bluetooth-att-gatt-l2cap-data-flow-guide-2026-04-01.html">Read ATT GATT L2CAP guide</a></div>
+  </article></main><footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body></html>
