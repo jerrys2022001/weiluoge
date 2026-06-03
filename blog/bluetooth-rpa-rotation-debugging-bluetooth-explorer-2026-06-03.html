@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth RPA Rotation Debugging with Bluetooth Explorer | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to debug Bluetooth RPA rotation with address timing, identity resolution clues, privacy checks, and clean retests.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-rpa-rotation-debugging-bluetooth-explorer-2026-06-03.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth RPA Rotation Debugging with Bluetooth Explorer">
+  <meta property="og:description" content="Use Bluetooth Explorer to debug Bluetooth RPA rotation with address timing, identity resolution clues, privacy checks, and clean retests.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-rpa-rotation-debugging-bluetooth-explorer-2026-06-03.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth RPA Rotation Debugging with Bluetooth Explorer">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to debug Bluetooth RPA rotation with address timing, identity resolution clues, privacy checks, and clean retests.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth RPA Rotation Debugging with Bluetooth Explorer",
+      "description": "Use Bluetooth Explorer to debug Bluetooth RPA rotation with address timing, identity resolution clues, privacy checks, and clean retests.",
+      "datePublished": "2026-06-03",
+      "dateModified": "2026-06-03",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-rpa-rotation-debugging-bluetooth-explorer-2026-06-03.html",
+      "keywords": [
+        "bluetooth",
+        "Bluetooth Explorer",
+        "RPA rotation",
+        "resolvable private address",
+        "identity resolution"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a new Bluetooth address always mean a new device?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A device using a resolvable private address can change addresses while still representing the same physical peripheral."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safest grouping clue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Identity resolution from a bonded relationship is stronger than name matching, RSSI closeness, or a single repeated service UUID."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should Bluetooth Explorer users stop grouping sightings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop when the evidence is only a shared name or a vague signal pattern in a busy area."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f8fbff; --text:#17283a; --muted:#536779; --line:#d7e3ee; --panel:#fff; --soft:#eaf4ff; --brand:#176b9a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(248,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note,.panel { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Bluetooth Explorer protocol workflow</p><h1>Bluetooth RPA Rotation Debugging with Bluetooth Explorer</h1><p class="meta">Published June 03, 2026 | Topic: Bluetooth Explorer RPA rotation debugging</p><p class="lead">Randomized Bluetooth addresses are good privacy and bad debugging when the team treats every new address as a new device. The bug report says duplicate devices; the protocol evidence often says address rotation was working and the app forgot how to group the clues.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Use Bluetooth Explorer to record the old address, new address, rotation timing, advertised data, bond state, and identity-resolution result before changing discovery logic or blaming the peripheral.</p></div>
+      <h2>Why does RPA confuse discovery?</h2>
+      <p>A resolvable private address is supposed to change. The problem starts when product logic expects a stable address and ignores the identity clues that should connect several sightings to the same device.</p>
+      <h2>What should Bluetooth Explorer capture?</h2>
+      <p>Capture address type, timestamp, advertised name, service UUIDs, manufacturer data, RSSI pattern, and whether the client is bonded. The useful evidence is the sequence, not a single scan row.</p>
+      <h2>How should teams retest?</h2>
+      <p>Run one controlled scan for a full rotation window, then repeat after toggling bond state or app permissions. Keep the location fixed so movement does not masquerade as a privacy behavior change.</p>
+      <h2>When is grouping risky?</h2>
+      <p>Do not group devices only because the names match. In a crowded room, matching names and similar RSSI are weak. Group only when identity resolution, payload continuity, or a controlled test path supports the decision.</p>
+    <table aria-label="RPA rotation debugging matrix"><thead><tr><th>Observation</th><th>Likely meaning</th><th>Next move</th></tr></thead><tbody>
+          <tr><td>Address changes but payload stays consistent</td><td>Privacy rotation may be normal</td><td>Check identity resolution before creating a duplicate device record</td></tr>
+          <tr><td>Name matches across several nearby devices</td><td>The app may be grouping too aggressively</td><td>Require stronger payload or bond evidence</td></tr>
+          <tr><td>Rotation timing changes after reconnect</td><td>Bond state or controller policy may be involved</td><td>Compare bonded and unbonded scans under the same setup</td></tr>
+    </tbody></table>
+    <div class="panel"><h2>How do you keep the scan useful?</h2><ul>
+          <li>Log timestamps for every address change instead of saving one screenshot.</li>
+          <li>Separate address type from advertised name in the notes.</li>
+          <li>Record whether the phone is bonded to the peripheral.</li>
+          <li>Keep the scanner still for the first pass to reduce RSSI confusion.</li>
+          <li>Retest with one variable changed: bond state, permission, firmware, or distance.</li>
+    </ul></div>
+    <h2>What should users ask?</h2>
+      <p><strong>Does a new Bluetooth address always mean a new device?</strong><br>
+      No. A device using a resolvable private address can change addresses while still representing the same physical peripheral.</p>
+      <p><strong>What is the safest grouping clue?</strong><br>
+      Identity resolution from a bonded relationship is stronger than name matching, RSSI closeness, or a single repeated service UUID.</p>
+      <p><strong>When should Bluetooth Explorer users stop grouping sightings?</strong><br>
+      Stop when the evidence is only a shared name or a vague signal pattern in a busy area.</p>
+    <h2>Useful references</h2><ul>
+          <li><a href="https://www.bluetooth.com/blog/bluetooth-technology-protecting-your-privacy/" target="_blank" rel="noopener noreferrer">Bluetooth privacy overview</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/specs/core-specification/" target="_blank" rel="noopener noreferrer">Bluetooth Core specification</a></li>
+          <li><a href="https://developer.apple.com/documentation/corebluetooth" target="_blank" rel="noopener noreferrer">Apple Core Bluetooth documentation</a></li>
+    </ul>
+    <div class="note"><p><strong>Bottom line:</strong> Bluetooth Explorer helps teams debug RPA rotation by turning duplicate-looking scan rows into timing, address type, bond state, and identity-resolution evidence.</p></div>
+    <div class="links"><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/blog/">Back to blog</a><a href="/apps/">Browse VelocAI apps</a><a href="/blog/bluetooth-gatt-database-cache-debugging-bluetooth-explorer-2026-06-02.html">Read GATT cache guide</a></div>
+  </article></main><footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body></html>
