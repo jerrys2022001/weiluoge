@@ -1,10 +1,24 @@
 {
   "date": "2026-06-04",
-  "refreshed_at": "2026-06-04T08:25:19.142171+08:00",
+  "refreshed_at": "2026-06-04T08:30:02.022278+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Report details Apple's plan to use Nvidia chips for the Gemini-powered Siri",
+      "link": "https://9to5mac.com/2026/06/03/report-details-apples-plan-to-use-nvidia-chips-for-the-gemini-powered-siri/",
+      "summary": "A new report from The Information shares fresh details on how the new Gemini-powered Siri will work under the hood. Here are the details.",
+      "published_at": "2026-06-04T00:25:24+00:00",
+      "display_date": "JUN 04",
+      "image_src": "/assets/images/home-briefing/2026-06-04/apple-322d5ae1f6db4c51-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-01/apple-f72827e987d45836-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -14,11 +28,11 @@
       "summary": "Apple's latest privacy ad is filled with chrome-wearing spies that disappear as soon as the person opens Safari . It's yet another ad that doesn't shy away from calling out surveillance capitalism. Apple's new campaign targeting Chrome's...",
       "published_at": "2026-06-04T00:09:31+00:00",
       "display_date": "JUN 04",
-      "image_src": "/assets/images/home-briefing/2026-04-06/apple-d1cfb8732f0f2feb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-06/apple-d1cfb8732f0f2feb-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-03/apple-588e56381ce4fc45-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-03/apple-588e56381ce4fc45-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -29,10 +43,10 @@
       "published_at": "2026-06-04T00:09:00+00:00",
       "display_date": "JUN 04",
       "image_src": "/assets/images/home-briefing/2026-06-04/apple-ba78b34e12464f61-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-95f4d74ec7a28927-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-f914483ad15ee7c9-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -42,11 +56,11 @@
       "summary": "Apple patents an Apple Pencil for the Vision Pro that could simulate the texture of virtual surfaces with haptic feedback. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-03T23:59:28+00:00",
       "display_date": "JUN 04",
-      "image_src": "/assets/images/home-briefing/2026-05-22/apple-8c0d1c5b338e4123-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/apple-8c0d1c5b338e4123-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-12/apple-83422f1f87bd8be3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-12/apple-83422f1f87bd8be3-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -56,22 +70,8 @@
       "summary": "Starting July 13, some older iPhones, iPads and Macs will lose the ability to edit, save and create files. Here's what you can do. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-03T23:35:16+00:00",
       "display_date": "JUN 04",
-      "image_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Apple TV's 'Prehistoric Planet' brought extinct animals to life with custom instruments",
-      "link": "https://appleinsider.com/articles/26/06/03/apple-tvs-prehistoric-planet-brought-extinct-animals-to-life-with-custom-instruments?utm_source=rss",
-      "summary": "The music produced for Apple TV's \"Prehistoric Planet\" was created in part with custom instruments made from actual fossils and replicas of skulls. The score of the Apple TV show \"Prehistoric Planet\" used custom-made instruments. Image...",
-      "published_at": "2026-06-03T23:03:05+00:00",
-      "display_date": "JUN 04",
-      "image_src": "/assets/images/home-briefing/2026-04-08/apple-f381eca346f9aeac-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-08/apple-f381eca346f9aeac-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-24/apple-0bbc7c504cc22584-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-24/apple-0bbc7c504cc22584-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-03T21:13:05+00:00",
       "display_date": "JUN 04",
       "image_src": "/assets/images/home-briefing/2026-06-04/industry-26be38a5311b7f11-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-11/industry-44681b9ced614ff8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-04/industry-5d4d9edbd9681fc9-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-03T19:38:32+00:00",
       "display_date": "JUN 04",
       "image_src": "/assets/images/home-briefing/2026-06-04/industry-043fe45085d4987c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-24/industry-baaa87f3891b6cba-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-02/industry-64429aaa9c907184-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-03T17:45:15+00:00",
       "display_date": "JUN 04",
       "image_src": "/assets/images/home-briefing/2026-06-04/semiconductor-5d913e1198423dc0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-28/semiconductor-5e673e760b0ea6f8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-15/semiconductor-20c74a57716cb59b-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-03T16:48:46+00:00",
       "display_date": "JUN 04",
       "image_src": "/assets/images/home-briefing/2026-06-04/ai-4e26011db2fb6b90-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-14/ai-e752e40f9647eb2f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-10/ai-9b57e029b3807b9c-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-01T16:37:54+00:00",
       "display_date": "JUN 02",
       "image_src": "/assets/images/home-briefing/2026-06-04/bluetooth-ba429f6d0d25b88c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-18/bluetooth-a91093790090f50b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-05/bluetooth-b382e3a32ab4b409-thumb.webp"
     }
   ]
 }
