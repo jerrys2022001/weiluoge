@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth BIGInfo Broadcast Audio Debugging Guide | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to debug BIGInfo broadcast audio setup with BIS indexes, presentation delay, encryption flags, and sync notes.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-biginfo-broadcast-audio-debugging-guide-2026-06-04.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth BIGInfo Broadcast Audio Debugging Guide">
+  <meta property="og:description" content="Use Bluetooth Explorer to debug BIGInfo broadcast audio setup with BIS indexes, presentation delay, encryption flags, and sync notes.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-biginfo-broadcast-audio-debugging-guide-2026-06-04.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth BIGInfo Broadcast Audio Debugging Guide">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to debug BIGInfo broadcast audio setup with BIS indexes, presentation delay, encryption flags, and sync notes.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth BIGInfo Broadcast Audio Debugging Guide",
+      "description": "Use Bluetooth Explorer to debug BIGInfo broadcast audio setup with BIS indexes, presentation delay, encryption flags, and sync notes.",
+      "datePublished": "2026-06-04",
+      "dateModified": "2026-06-04",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-biginfo-broadcast-audio-debugging-guide-2026-06-04.html",
+      "keywords": [
+        "bluetooth",
+        "Bluetooth Explorer",
+        "BIGInfo",
+        "broadcast audio",
+        "BIS index"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the first BIGInfo debugging clue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check whether periodic sync succeeded and whether BIGInfo is visible before blaming audio playback."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the BIS index matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The BIS index tells the receiver which stream inside the broadcast group it is joining."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should teams inspect broadcaster setup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inspect setup when BIGInfo is absent, encryption flags are wrong, or BIS mapping does not match the user interface."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f8fbff; --text:#17283a; --muted:#536779; --line:#d7e3ee; --panel:#fff; --soft:#eaf4ff; --brand:#176b9a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(248,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note,.panel { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Bluetooth Explorer protocol workflow</p><h1>Bluetooth BIGInfo Broadcast Audio Debugging Guide</h1><p class="meta">Published June 04, 2026 | Topic: Bluetooth Explorer BIGInfo broadcast debugging</p><p class="lead">Broadcast audio failures are easy to blame on the speaker or phone, but the useful clues often arrive earlier: BIGInfo timing, BIS indexes, encryption flags, presentation delay, and whether the receiver ever had enough data to join the stream.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Use Bluetooth Explorer to record BIGInfo fields, broadcast code expectations, BIS index mapping, periodic sync state, presentation delay, and PHY before changing playback logic.</p></div>
+      <h2>Why does BIGInfo matter?</h2>
+      <p>BIGInfo tells a receiver how to understand a broadcast isochronous group. If the receiver never sees the right timing, encryption, or BIS structure, later audio debugging is mostly theater.</p>
+      <h2>What should Bluetooth Explorer capture?</h2>
+      <p>Capture periodic sync state, BIGInfo presence, BIS count, BIS index, PHY, framing, encryption flag, and presentation delay. Those fields explain whether the receiver can even attempt the stream.</p>
+      <h2>How should teams retest?</h2>
+      <p>Run one open broadcast, one encrypted broadcast, and one wrong-code attempt. Keep the same receiver placement so sync quality is not confused with authorization or metadata problems.</p>
+      <h2>When is it not an audio bug?</h2>
+      <p>Do not blame codec or speaker output when BIGInfo is missing, the BIS index is wrong, or the broadcast code expectation does not match. The stream has to be joinable first.</p>
+    <table aria-label="BIGInfo broadcast audio triage"><thead><tr><th>Evidence</th><th>Likely meaning</th><th>Next move</th></tr></thead><tbody>
+          <tr><td>Periodic sync works, BIGInfo missing</td><td>Receiver sees the advertiser but cannot learn the broadcast group</td><td>Check broadcaster configuration before audio code</td></tr>
+          <tr><td>BIS index does not match UI choice</td><td>The app may be joining the wrong stream</td><td>Map BIS indexes to visible program names</td></tr>
+          <tr><td>Encrypted flag differs from expected code</td><td>Join failure may be authorization, not radio quality</td><td>Retest open and encrypted broadcasts separately</td></tr>
+    </tbody></table>
+    <div class="panel"><h2>How do you keep the retest honest?</h2><ul>
+          <li>Record whether periodic sync happened before checking audio behavior.</li>
+          <li>Write down BIS count, BIS index, and presentation delay.</li>
+          <li>Separate open broadcast tests from encrypted broadcast tests.</li>
+          <li>Keep receiver placement fixed for the first three captures.</li>
+          <li>Map each visible program choice to the raw broadcast metadata.</li>
+    </ul></div>
+    <h2>What should users ask?</h2>
+      <p><strong>What is the first BIGInfo debugging clue?</strong><br>
+      Check whether periodic sync succeeded and whether BIGInfo is visible before blaming audio playback.</p>
+      <p><strong>Why does the BIS index matter?</strong><br>
+      The BIS index tells the receiver which stream inside the broadcast group it is joining.</p>
+      <p><strong>When should teams inspect broadcaster setup?</strong><br>
+      Inspect setup when BIGInfo is absent, encryption flags are wrong, or BIS mapping does not match the user interface.</p>
+    <h2>Useful references</h2><ul>
+          <li><a href="https://www.bluetooth.com/specifications/specs/core-specification/" target="_blank" rel="noopener noreferrer">Bluetooth Core specification</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/specs/gatt-specification-supplement/" target="_blank" rel="noopener noreferrer">Bluetooth GATT supplement</a></li>
+          <li><a href="https://developer.apple.com/documentation/corebluetooth" target="_blank" rel="noopener noreferrer">Apple Core Bluetooth documentation</a></li>
+    </ul>
+    <div class="note"><p><strong>Bottom line:</strong> Bluetooth Explorer turns broadcast audio debugging into concrete BIGInfo, BIS, encryption, and sync evidence before teams chase playback symptoms.</p></div>
+    <div class="links"><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/blog/">Back to blog</a><a href="/apps/">Browse VelocAI apps</a><a href="/blog/ble-periodic-advertising-sync-debugging-bluetooth-explorer-2026-06-01.html">Read periodic advertising guide</a></div>
+  </article></main><footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body></html>

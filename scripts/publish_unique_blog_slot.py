@@ -59,6 +59,7 @@ from blog_octopus_daily_scheduler import (
     render_article_html as render_octopus_html,
 )
 from blog_similarity import load_blog_pages, max_similarity_against_existing
+from evergreen_blog_fallback import build_evergreen_candidates as build_evergreen_blog_candidates
 from live_blog_fallback import LiveBlogCandidate, build_live_candidates
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
@@ -288,6 +289,19 @@ def build_fallback_candidates(target_day: date, lane: str, slot_offset: int) -> 
     return items
 
 
+def build_evergreen_candidates(target_day: date, lane: str, slot_offset: int) -> list[Candidate]:
+    return [
+        Candidate(
+            lane=lane,
+            origin="evergreen",
+            identifier=item.identifier,
+            post=item.post,
+            html=item.html,
+        )
+        for item in build_evergreen_blog_candidates(target_day, lane, slot_offset)
+    ]
+
+
 def cleanup_quota_satisfied(repo_root: Path, target_day: date) -> Candidate | None:
     blog_dir = repo_root / "blog"
     from blog_cleanup_focus_scheduler import ANGLES as CLEANUP_ANGLES
@@ -494,6 +508,16 @@ def choose_from_ranked_candidates(
     return None
 
 
+def choose_first_below_threshold(
+    ranked: list[tuple[float, Candidate]],
+    similarity_threshold: float,
+) -> tuple[Candidate, float] | None:
+    for similarity, candidate in ranked:
+        if similarity < similarity_threshold:
+            return candidate, similarity
+    return None
+
+
 def choose_candidate(
     repo_root: Path,
     target_day: date,
@@ -515,6 +539,9 @@ def choose_candidate(
     live_ranked = evaluate_candidates(build_fallback_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
     fresh_live_ranked, repeated_live_ranked = split_recent_repeats(live_ranked, recent_repeat_keys)
 
+    evergreen_ranked = evaluate_candidates(build_evergreen_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
+    fresh_evergreen_ranked, repeated_evergreen_ranked = split_recent_repeats(evergreen_ranked, recent_repeat_keys)
+
     chosen = choose_from_ranked_candidates(
         lane=lane,
         blog_dir=blog_dir,
@@ -523,6 +550,10 @@ def choose_candidate(
         local_ranked=fresh_local_ranked,
         live_ranked=fresh_live_ranked,
     )
+    if chosen is not None:
+        return chosen
+
+    chosen = choose_first_below_threshold(fresh_evergreen_ranked, similarity_threshold)
     if chosen is not None:
         return chosen
 
@@ -537,10 +568,14 @@ def choose_candidate(
     if chosen is not None:
         return chosen
 
+    chosen = choose_first_below_threshold(repeated_evergreen_ranked, similarity_threshold)
+    if chosen is not None:
+        return chosen
+
     raise ValueError(
         f"Could not find a publishable {lane} blog candidate. "
         f"similarity_threshold={similarity_threshold:.2f}; "
-        "local candidates and expanded live-source candidates were exhausted; "
+        "local candidates, expanded live-source candidates, and evergreen fallback candidates were exhausted; "
         "skipping publish instead of force-publishing a near-duplicate local topic"
     )
 

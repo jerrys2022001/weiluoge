@@ -465,6 +465,7 @@ def main() -> int:
 
     if not args.dry_run:
         backfill_round = 0
+        backfill_lane_index = 0
         while not quota_met(total_count, bluetooth_count, find_count, dualshot_count, octopus_count):
             if backfill_round >= args.max_backfill_rounds:
                 failed.append("watchdog-backfill-limit")
@@ -473,14 +474,19 @@ def main() -> int:
                     file=sys.stderr,
                 )
                 break
+            missing_lanes: list[str] = []
             if bluetooth_count < TARGET_DAILY_BLUETOOTH:
-                lane = "protocol"
-            elif find_count < TARGET_DAILY_FIND:
-                lane = "find"
-            elif dualshot_count < TARGET_DAILY_DUALSHOT:
-                lane = "dualshot"
-            else:
-                lane = "octopus"
+                missing_lanes.append("protocol")
+            if find_count < TARGET_DAILY_FIND:
+                missing_lanes.append("find")
+            if dualshot_count < TARGET_DAILY_DUALSHOT:
+                missing_lanes.append("dualshot")
+            if octopus_count < TARGET_DAILY_OCTOPUS:
+                missing_lanes.append("octopus")
+            if not missing_lanes:
+                break
+            lane = missing_lanes[backfill_lane_index % len(missing_lanes)]
+            backfill_lane_index += 1
             synthetic = BlogTask(
                 task_name=f"watchdog-backfill-{lane}-{backfill_round}",
                 lane=lane,
@@ -498,7 +504,7 @@ def main() -> int:
             code = run_slot(repo_root, synthetic, target_day, False, args.slot_timeout_seconds)
             if code != 0:
                 failed.append(synthetic.task_name)
-                break
+                continue
             content_ref = resolve_content_ref(repo_root, git_command, args.git_remote, args.git_branch)
             try:
                 previous_index_count, _ = assert_publish_integrity(
@@ -511,7 +517,7 @@ def main() -> int:
             except ValueError as exc:
                 failed.append(synthetic.task_name)
                 print(str(exc), file=sys.stderr)
-                break
+                continue
             posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
             total_count = len(posts)
             bluetooth_count = count_bluetooth_posts(posts)
@@ -519,7 +525,22 @@ def main() -> int:
             dualshot_count = count_dualshot_posts(posts)
             octopus_count = count_octopus_posts(posts)
 
-    print(f"watchdog rerun_count={rerun_count} failed={len(failed)} dry_run={str(args.dry_run).lower()}")
+    posts = list_same_day_posts(repo_root, git_command, content_ref, target_day)
+    total_count = len(posts)
+    bluetooth_count = count_bluetooth_posts(posts)
+    find_count = count_find_posts(posts)
+    dualshot_count = count_dualshot_posts(posts)
+    octopus_count = count_octopus_posts(posts)
+    final_quota_met = quota_met(total_count, bluetooth_count, find_count, dualshot_count, octopus_count)
+    if failed and final_quota_met:
+        print("resolved_failed_tasks=" + ",".join(failed))
+        failed = []
+
+    print(
+        f"watchdog rerun_count={rerun_count} failed={len(failed)} dry_run={str(args.dry_run).lower()} "
+        f"final_total={total_count} final_bluetooth={bluetooth_count} final_find={find_count} "
+        f"final_dualshot={dualshot_count} final_octopus={octopus_count}"
+    )
     if failed:
         print("failed_tasks=" + ",".join(failed), file=sys.stderr)
         return 1
