@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth ISOAL SDU Framing Debugging Guide | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to debug ISOAL SDU framing with timestamp drift, packet loss, flush timeout clues, and clean receiver notes.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-isoal-sdu-framing-debugging-guide-2026-06-06.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth ISOAL SDU Framing Debugging Guide">
+  <meta property="og:description" content="Use Bluetooth Explorer to debug ISOAL SDU framing with timestamp drift, packet loss, flush timeout clues, and clean receiver notes.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-isoal-sdu-framing-debugging-guide-2026-06-06.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth ISOAL SDU Framing Debugging Guide">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to debug ISOAL SDU framing with timestamp drift, packet loss, flush timeout clues, and clean receiver notes.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth ISOAL SDU Framing Debugging Guide",
+      "description": "Use Bluetooth Explorer to debug ISOAL SDU framing with timestamp drift, packet loss, flush timeout clues, and clean receiver notes.",
+      "datePublished": "2026-06-06",
+      "dateModified": "2026-06-06",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-isoal-sdu-framing-debugging-guide-2026-06-06.html",
+      "keywords": [
+        "bluetooth",
+        "Bluetooth Explorer",
+        "ISOAL",
+        "SDU framing",
+        "isochronous data"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the first ISOAL clue to check?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check timestamp spacing and SDU boundaries before judging the decoded payload."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does flush timeout matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tight flush timeout can turn late data into missing data, which looks like a higher-level failure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should teams inspect controller behavior?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inspect controller behavior when timing gaps appear before the app receives a complete payload."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f8fbff; --text:#17283a; --muted:#536779; --line:#d7e3ee; --panel:#fff; --soft:#eaf4ff; --brand:#176b9a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(248,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note,.panel { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Bluetooth Explorer protocol workflow</p><h1>Bluetooth ISOAL SDU Framing Debugging Guide</h1><p class="meta">Published June 06, 2026 | Topic: Bluetooth Explorer ISOAL framing debugging</p><p class="lead">Isochronous bugs rarely announce themselves cleanly. One receiver hears a click, another drops a sensor frame, and the first useful clue is usually not the app log. It is whether SDUs are being framed, flushed, and timed the same way on every run.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Use Bluetooth Explorer to record SDU interval, timestamp spacing, packet loss, flush timeout, controller role, and receiver placement before changing codec, parser, or retry logic.</p></div>
+      <h2>Where does the trail start?</h2>
+      <p>Start with the SDU timing. If timestamps drift before the app sees the payload, the bug is already below the application layer.</p>
+      <h2>What should Bluetooth Explorer capture?</h2>
+      <p>Capture interval, sequence gaps, flush timeout, transport role, PHY, and whether drops cluster near movement or interference. Keep the raw timing next to the user-facing symptom.</p>
+      <h2>How should teams retest?</h2>
+      <p>Run one fixed-position pass, one movement pass, and one high-traffic pass. Change only one pressure at a time so timing drift does not get blamed on parsing.</p>
+      <h2>When is it not a codec issue?</h2>
+      <p>Do not tune codec settings when SDUs arrive late, incomplete, or out of rhythm. A clean payload cannot fix a broken delivery shape.</p>
+    <table aria-label="ISOAL framing triage"><thead><tr><th>Clue</th><th>What it means</th><th>Next move</th></tr></thead><tbody>
+          <tr><td>Timestamps drift before decode</td><td>Timing is unstable below app logic</td><td>Check interval and flush behavior first</td></tr>
+          <tr><td>Loss clusters during movement</td><td>Placement or coexistence may be involved</td><td>Repeat with fixed receiver position</td></tr>
+          <tr><td>Payload parses after clean timing</td><td>Parser changes can be tested safely</td><td>Compare raw SDU boundaries before editing code</td></tr>
+    </tbody></table>
+    <div class="panel"><h2>How do you keep timing evidence clean?</h2><ul>
+          <li>Record the expected SDU interval before the test.</li>
+          <li>Save sequence gaps and timestamp spacing together.</li>
+          <li>Keep the receiver still for the first pass.</li>
+          <li>Retest movement and radio noise separately.</li>
+          <li>Do not change codec and transport settings in the same run.</li>
+    </ul></div>
+    <h2>What should users ask?</h2>
+      <p><strong>What is the first ISOAL clue to check?</strong><br>
+      Check timestamp spacing and SDU boundaries before judging the decoded payload.</p>
+      <p><strong>Why does flush timeout matter?</strong><br>
+      A tight flush timeout can turn late data into missing data, which looks like a higher-level failure.</p>
+      <p><strong>When should teams inspect controller behavior?</strong><br>
+      Inspect controller behavior when timing gaps appear before the app receives a complete payload.</p>
+    <h2>Useful references</h2><ul>
+          <li><a href="https://www.bluetooth.com/specifications/specs/core-specification/" target="_blank" rel="noopener noreferrer">Bluetooth Core specification</a></li>
+          <li><a href="https://www.bluetooth.com/learn-about-bluetooth/feature-enhancements/le-audio/" target="_blank" rel="noopener noreferrer">Bluetooth LE Audio overview</a></li>
+          <li><a href="https://developer.apple.com/documentation/corebluetooth" target="_blank" rel="noopener noreferrer">Apple Core Bluetooth documentation</a></li>
+    </ul>
+    <div class="note"><p><strong>Bottom line:</strong> Bluetooth Explorer helps teams treat isochronous drops as timing evidence first, then parser or codec evidence only after the transport shape is clean.</p></div>
+    <div class="links"><a href="/bluetoothexplorer/">Bluetooth Explorer</a><a href="/blog/">Back to blog</a><a href="/apps/">Browse VelocAI apps</a><a href="/blog/bluetooth-biginfo-broadcast-audio-debugging-guide-2026-06-04.html">Read BIGInfo guide</a></div>
+  </article></main><footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body></html>

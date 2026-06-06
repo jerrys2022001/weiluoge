@@ -242,6 +242,109 @@ def extract_body_counter(html: str) -> Counter[str]:
         )
 
     if (
+        "Dual Camera creator workflow" in html
+        or "Dual Camera Practical Guide" in html
+        or ("Dual Camera" in html and "/dual-camera/" in html)
+    ):
+        dual_camera_common_tokens = {
+            "action",
+            "actions",
+            "angle",
+            "angles",
+            "app",
+            "apps",
+            "camera",
+            "cameras",
+            "capture",
+            "captured",
+            "captures",
+            "capturing",
+            "check",
+            "checks",
+            "clip",
+            "clips",
+            "close",
+            "context",
+            "dual",
+            "edit",
+            "edited",
+            "editing",
+            "enough",
+            "footage",
+            "frame",
+            "frames",
+            "guide",
+            "iphone",
+            "keep",
+            "keeps",
+            "later",
+            "moment",
+            "moments",
+            "one",
+            "phone",
+            "record",
+            "recorded",
+            "recording",
+            "review",
+            "show",
+            "showing",
+            "shows",
+            "shot",
+            "shots",
+            "side",
+            "steady",
+            "take",
+            "trim",
+            "useful",
+            "video",
+            "videos",
+            "view",
+            "views",
+            "wide",
+            "workflow",
+            "workflows",
+        }
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        hero_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_match:
+            focus_parts.append(hero_match.group(1))
+
+        tldr_match = re.search(r'<div class="tldr">.*?<p>.*?TL;DR:\s*(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if tldr_match:
+            focus_parts.append(tldr_match.group(1))
+
+        section_matches = re.findall(
+            r"<h2>\s*(?:Why use two views\?|What should the first .*? show\?|How should .*? record\?|When is one camera enough\?|Why does this setup help\?|What should the second angle prove\?)\s*</h2>\s*<p>(.*?)</p>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        focus_parts.extend(section_matches)
+
+        first_row_match = re.search(
+            r"<tbody>\s*<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*<td>(.*?)</td>",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if first_row_match:
+            focus_parts.extend(first_row_match.groups())
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS and token not in dual_camera_common_tokens
+        )
+
+    if (
         "Octopus Practical Guide" in html
         or "Octopus live mobile coding fallback" in html
         or ("Octopus" in html and "/octopus/" in html and "mobile Codex" in html)

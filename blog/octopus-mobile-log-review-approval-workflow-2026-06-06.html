@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Mobile Log Review Approval Workflow | VelocAI Blog</title>
+  <meta name="description" content="Use Octopus to review mobile log triage with error scope, changed files, retry limits, rollback notes, and desktop handoff rules.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-mobile-log-review-approval-workflow-2026-06-06.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Mobile Log Review Approval Workflow">
+  <meta property="og:description" content="Use Octopus to review mobile log triage with error scope, changed files, retry limits, rollback notes, and desktop handoff rules.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-mobile-log-review-approval-workflow-2026-06-06.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Mobile Log Review Approval Workflow">
+  <meta name="twitter:description" content="Use Octopus to review mobile log triage with error scope, changed files, retry limits, rollback notes, and desktop handoff rules.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Mobile Log Review Approval Workflow",
+      "description": "Use Octopus to review mobile log triage with error scope, changed files, retry limits, rollback notes, and desktop handoff rules.",
+      "datePublished": "2026-06-06",
+      "dateModified": "2026-06-06",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-mobile-log-review-approval-workflow-2026-06-06.html",
+      "keywords": [
+        "Octopus",
+        "mobile Codex",
+        "log review",
+        "approval workflow",
+        "rollback notes"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should Octopus users approve log triage from mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Approve when the error is narrow, files are visible, output is specific, and the next action is reversible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What state should users inspect first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inspect error line, command output, changed files, retry reason, and rollback readiness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the phone or iPad flow not enough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is not enough for broad diffs, credentials, deployment, data migrations, or architecture decisions."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f8fbff; --text:#17283a; --muted:#536779; --line:#d7e3ee; --panel:#fff; --soft:#eaf4ff; --brand:#176b9a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(248,251,255,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { height:36px; width:auto; max-width:52px; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4vw, 46px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(23px, 3vw, 32px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .lead { font-size:20px; color:#243b53; max-width:780px; }
+    .tldr,.note,.panel { margin:24px 0; padding:18px 20px; border:1px solid var(--line); background:var(--panel); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); }
+    th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#20344a; background:var(--soft); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .links a { padding:10px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--brand); font-weight:650; }
+    footer { border-top:1px solid var(--line); padding:22px 0; color:var(--muted); font-size:14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header><div class="wrap top"><a class="brand" href="/"><img src="/2.png" alt="VelocAI logo"><span>VelocAI Blog</span></a><nav><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a><a href="/apps/">Apps</a></nav></div></header>
+  <main class="wrap"><article>
+    <section class="hero"><p class="meta">Octopus Practical Guide</p><h1>Octopus Mobile Log Review Approval Workflow</h1><p class="meta">Published June 06, 2026 | Topic: Octopus mobile log review</p><p class="lead">Log triage feels safe from a phone until the next tap turns into a broad rewrite. The useful mobile review is narrow: one error, one file group, one retry reason, and a visible stop point.</p></section>
+    <div class="tldr"><p><strong>TL;DR:</strong> Use Octopus for log review when Codex has isolated the error, named the changed files, shown the command output, and made the next approval reversible.</p></div>
+      <h2>When It Helps Most</h2>
+      <p>Octopus helps when the mobile task is to approve one bounded diagnostic step, not to redesign the fix from a small screen.</p>
+      <h2>What should users inspect?</h2>
+      <p>Inspect the error line, command, changed files, retry reason, and whether the next action touches config, credentials, deployment, or data.</p>
+      <h2>How should approval work?</h2>
+      <p>Approve one follow-up at a time: rerun a test, inspect a stack trace, revert a file, or write a summary. Stop if the task gets wider.</p>
+      <h2>Limits And Failure Modes</h2>
+      <p>The phone is not enough for broad diffs, unclear ownership, credential changes, or a fix that needs architecture judgment.</p>
+    <table aria-label="Octopus log review decisions"><thead><tr><th>Signal</th><th>Risk reduced</th><th>Stop point</th></tr></thead><tbody>
+          <tr><td>One error and one command</td><td>Keeps triage narrow</td><td>Stop if the next step changes many files</td></tr>
+          <tr><td>Changed files are visible</td><td>Prevents blind approval</td><td>Stop if the diff cannot be reviewed</td></tr>
+          <tr><td>Rollback note exists</td><td>Makes the next tap reversible</td><td>Stop before deploy or credential changes</td></tr>
+    </tbody></table>
+    <div class="panel"><h2>How do you keep the approval bounded?</h2><ul>
+          <li>Ask Codex to name the exact error and command output.</li>
+          <li>Open the changed-files list before approving another step.</li>
+          <li>Require a retry reason and expected result in one sentence.</li>
+          <li>Write the rollback note before touching deployment or config.</li>
+          <li>Move to desktop when the fix spans ownership boundaries.</li>
+    </ul></div>
+    <h2>What should users ask?</h2>
+      <p><strong>When should Octopus users approve log triage from mobile?</strong><br>
+      Approve when the error is narrow, files are visible, output is specific, and the next action is reversible.</p>
+      <p><strong>What state should users inspect first?</strong><br>
+      Inspect error line, command output, changed files, retry reason, and rollback readiness.</p>
+      <p><strong>When is the phone or iPad flow not enough?</strong><br>
+      It is not enough for broad diffs, credentials, deployment, data migrations, or architecture decisions.</p>
+    <h2>Useful references</h2><ul>
+          <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests" target="_blank" rel="noopener noreferrer">GitHub pull request review docs</a></li>
+          <li><a href="https://github.com/ossf/scorecard" target="_blank" rel="noopener noreferrer">OpenSSF Scorecard project</a></li>
+          <li><a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json" target="_blank" rel="noopener noreferrer">npm package lock documentation</a></li>
+    </ul>
+    <div class="note"><p><strong>Bottom line:</strong> Octopus is useful for mobile log review when the next approval is narrow, evidenced, and easy to reverse.</p></div>
+    <div class="links"><a href="/octopus/">Octopus</a><a href="/blog/">Back to blog</a><a href="/apps/">Browse VelocAI apps</a><a href="/blog/octopus-mobile-dependency-upgrade-approval-workflow-2026-06-02.html">Read dependency approval guide</a></div>
+  </article></main><footer><div class="wrap">&copy; 2026 VelocAI. Practical mobile workflows for real product decisions.</div></footer>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body></html>

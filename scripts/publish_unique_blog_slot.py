@@ -542,6 +542,11 @@ def choose_candidate(
     evergreen_ranked = evaluate_candidates(build_evergreen_candidates(target_day, lane, slot_offset), existing_pages, blog_dir, force)
     fresh_evergreen_ranked, repeated_evergreen_ranked = split_recent_repeats(evergreen_ranked, recent_repeat_keys)
 
+    if lane == "octopus":
+        chosen = choose_first_below_threshold(fresh_evergreen_ranked, similarity_threshold)
+        if chosen is not None:
+            return chosen
+
     chosen = choose_from_ranked_candidates(
         lane=lane,
         blog_dir=blog_dir,
@@ -552,6 +557,11 @@ def choose_candidate(
     )
     if chosen is not None:
         return chosen
+
+    if lane == "octopus":
+        chosen = choose_first_below_threshold(repeated_evergreen_ranked, similarity_threshold)
+        if chosen is not None:
+            return chosen
 
     chosen = choose_first_below_threshold(fresh_evergreen_ranked, similarity_threshold)
     if chosen is not None:
