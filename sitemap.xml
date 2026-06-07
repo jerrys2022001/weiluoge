@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://velocai.net/blog/</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://velocai.net/blog/octopus-mobile-codex-workflow-live-source-update-run-google-s-gemma-llms-right-on-your-mac-with-the-new-ai-edge-gallery-2026-06-07.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://velocai.net/blog/bluetooth-isoal-sdu-framing-debugging-guide-2026-06-06.html</loc>
