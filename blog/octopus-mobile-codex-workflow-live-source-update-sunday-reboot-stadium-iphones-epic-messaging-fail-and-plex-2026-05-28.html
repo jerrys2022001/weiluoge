@@ -29,7 +29,7 @@
       "headline": "When Mobile Coding News Should Change Octopus Flow",
       "description": "An Octopus guide to deciding when mobile coding news should change approvals, thread continuity, SSH-linked sessions, or when work should move back to desktop.",
       "datePublished": "2026-05-28",
-      "dateModified": "2026-05-28",
+      "dateModified": "2026-06-07",
       "author": {"@type": "Organization", "name": "VelocAI"},
       "publisher": {
         "@type": "Organization",
@@ -103,7 +103,7 @@
   <main class="wrap">
     <article>
       <div class="hero">
-        <span class="eyebrow">Octopus live mobile coding fallback</span>
+        <span class="eyebrow">Octopus mobile coding workflow</span>
         <h1>When Mobile Coding News Should Change Octopus Flow</h1>
         <p class="meta">Published on May 28, 2026 | Topic: Octopus Mobile Codex Workflow | Source: AppleInsider | Source date: May 25, 2026</p>
         <p>Most Apple and app-industry headlines are background noise for a coding session. Octopus users only need to change the mobile workflow when the news affects approvals, thread continuity, SSH context, or the point where a task should move back to a larger screen.</p>
@@ -134,6 +134,8 @@
       <h2>Where should the approval boundary sit?</h2>
       <p>Octopus should make the next action narrow: one command, one file group, one retry, or one note that keeps the thread moving. If the update does not change that boundary, the headline is just context around the work.</p>
 
+      <p>A good mobile approval sounds almost boring: "run the failing test once," "inspect this diff," "continue the rebase after these files are staged," or "summarize the last error before touching code." A bad mobile approval is vague: "try again," "fix it," or "keep going." Octopus is most valuable when it lets the developer approve a small step without losing the thread, not when it turns the phone into a tiny place to bless an unlimited debugging loop.</p>
+
       <h2>When is the phone enough?</h2>
       <p>The phone is enough for checking the current repo, the last command, and the next bounded step. It is not enough for a large diff, a vague permission change, or a job where the important evidence is still hidden in desktop-sized context.</p>
 
@@ -145,7 +147,7 @@
       </div>
 
       <h2>Check the approval boundary</h2>
-      <p>Mobile coding advice becomes weak when it promises convenience without explaining approvals, thread continuity, or how remote context gets back into the same workflow. Check one visible signal first, then change one workflow variable at a time so you can tell whether the update actually helped.</p>
+      <p>Mobile coding advice becomes weak when it promises convenience without explaining approvals, thread continuity, or how remote context gets back into the same workflow. Check the last command, changed files, current branch, test result, and next requested permission before you tap through. If any one of those is unclear, ask the agent to restate the plan in a single bounded step.</p>
 
       <div class="panel">
         <h3>Mobile approval checklist</h3>
@@ -170,6 +172,8 @@
 
       <h2>When the phone is not enough</h2>
       <p>Ignore it when it does not change the task you need to complete, the risk you are trying to reduce, or the result you can verify. Good app workflows do not need to chase every update; they need a clear reason to change.</p>
+
+      <p>Move back to desktop when the important evidence is visual, when the diff is large, when a deployment or credential is involved, or when the agent is still discovering the problem rather than executing a known fix. The phone is excellent for continuity. It is a poor place to review a wide architectural change, a confusing merge, or a permission prompt that could affect the whole repo.</p>
 
       <h2>Octopus questions</h2>
       <p><strong>When should Octopus users continue an agent loop from mobile?</strong><br>
