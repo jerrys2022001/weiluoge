@@ -1,6 +1,6 @@
 {
   "date": "2026-06-08",
-  "refreshed_at": "2026-06-08T08:26:14.355180+08:00",
+  "refreshed_at": "2026-06-08T08:30:01.781419+08:00",
   "item_count": 10,
   "items": [
     {
@@ -57,7 +57,7 @@
       "published_at": "2026-06-07T20:26:13+00:00",
       "display_date": "JUN 08",
       "image_src": "/assets/images/home-briefing/2026-06-08/industry-ae4b3cabbbb0ff70-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-17/industry-c15e9171e5d66bde-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-01/industry-d5bcaed38f53cf92-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "WWDC's keynote will celebrate macOS 27 , but it will also be a funeral for Intel Macs. The final countdown for their apps starts tomorrow. If only Apple keynotes gave blunt advice... The introduction of Apple Silicon immediately put a...",
       "published_at": "2026-06-07T20:12:26+00:00",
       "display_date": "JUN 08",
-      "image_src": "/assets/images/home-briefing/2026-04-19/apple-bfaa6613562e9015-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-19/apple-bfaa6613562e9015-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-26/apple-c9dc827348b94623-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-26/apple-c9dc827348b94623-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "The battle to rework the failed Apple Intelligence initiative and Siri stems from a fateful meeting of executives that triggered a major restructuring of Apple's AI efforts. Here's what happened, and when it all went down. Siri on an...",
       "published_at": "2026-06-07T20:05:25+00:00",
       "display_date": "JUN 08",
-      "image_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-07T20:00:01+00:00",
       "display_date": "JUN 08",
       "image_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-12/apple-d4316c4a6800860d-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-03/apple-2ef14bb7e6ed1b4b-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "The WWDC swag bag for 2026 has arrived, with attendees getting a bag, a bottle, and a collection of pins, including one of Little Finder Guy. WWDC 2026 swag bag - Image Credit: Canoopsy/X Each year, visitors to Apple Park taking part in...",
       "published_at": "2026-06-07T19:47:28+00:00",
       "display_date": "JUN 08",
-      "image_src": "/assets/images/home-briefing/2026-03-19/apple-7529aeeea7bf7e42-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-19/apple-7529aeeea7bf7e42-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/apple-f914483ad15ee7c9-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-f914483ad15ee7c9-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-07T12:45:00+00:00",
       "display_date": "JUN 07",
       "image_src": "/assets/images/home-briefing/2026-06-08/ai-ea69b8cd98e2c6bb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-31/ai-916a1bcacb93ecfb-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-02/ai-f6dd02993644c1f5-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-01T16:37:54+00:00",
       "display_date": "JUN 02",
       "image_src": "/assets/images/home-briefing/2026-06-08/bluetooth-ba429f6d0d25b88c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-05/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-09/bluetooth-ac878d68f0cedfbc-thumb.webp"
     }
   ]
 }
