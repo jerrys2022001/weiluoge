@@ -27,6 +27,14 @@ SITE_URL = "https://velocai.net"
 BLOG_INDEX_REL = Path("blog/index.html")
 SITEMAP_REL = Path("sitemap.xml")
 
+LEGACY_BLOG_TEMPLATE_PATTERNS = [
+    re.compile(r"\bUsers Should Read\b", re.IGNORECASE),
+    re.compile(r"\bUsers Should Treat\b", re.IGNORECASE),
+    re.compile(r"\bTreat Background Apple News\b", re.IGNORECASE),
+    re.compile(r"\blive\b.{0,80}\bfallback\b", re.IGNORECASE | re.DOTALL),
+    re.compile(r"\bCheck one visible signal\b", re.IGNORECASE),
+]
+
 CORE_KEYWORDS = [
     "bluetooth troubleshooting",
     "phone cleanup",
@@ -281,12 +289,43 @@ def is_retryable_push_error(error: ValueError) -> bool:
     return any(marker in message for marker in retry_markers)
 
 
-def copy_publish_paths(source_root: Path, target_root: Path, tracked_paths: list[str]) -> None:
-    for rel_path in tracked_paths:
-        source = source_root / rel_path
-        target = target_root / rel_path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, target)
+def copy_publish_article(source_root: Path, target_root: Path, post: PostMeta) -> str:
+    rel_path = (Path("blog") / post.filename).as_posix()
+    source = source_root / rel_path
+    if not source.exists():
+        raise ValueError(f"Cannot publish missing article: {source}")
+
+    target = target_root / rel_path
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    return rel_path
+
+
+def fail_on_legacy_blog_templates(repo_root: Path, rel_paths: list[str]) -> None:
+    legacy_hits: list[str] = []
+    for rel_path in rel_paths:
+        path = repo_root / rel_path
+        if not path.exists() or path.suffix.lower() != ".html":
+            continue
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for pattern in LEGACY_BLOG_TEMPLATE_PATTERNS:
+            if pattern.search(text):
+                legacy_hits.append(rel_path)
+                break
+
+    if legacy_hits:
+        joined = ", ".join(sorted(set(legacy_hits)))
+        raise ValueError(f"Refusing to publish legacy blog template output in: {joined}")
+
+
+def rebuild_publish_outputs(worktree_path: Path, post: PostMeta) -> None:
+    index_path = worktree_path / BLOG_INDEX_REL
+    sitemap_path = worktree_path / SITEMAP_REL
+
+    update_blog_index(index_path, post)
+    update_sitemap(sitemap_path, post)
+    inject_site_tools_into_file(index_path)
+    build_site_search_index(worktree_path)
 
 
 def publish_blog_post_via_temp_worktree(
@@ -302,12 +341,18 @@ def publish_blog_post_via_temp_worktree(
     last_error: ValueError | None = None
 
     for attempt in range(1, max_attempts + 1):
-        temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(repo_root / ".tmp")))
+        temp_parent = repo_root / ".tmp"
+        temp_parent.mkdir(parents=True, exist_ok=True)
+        temp_root = Path(tempfile.mkdtemp(prefix="blog-publish-", dir=str(temp_parent)))
         worktree_path = temp_root / "worktree"
         try:
             run_git_command(repo_root, git_command, ["fetch", remote, branch])
             run_git_command(repo_root, git_command, ["worktree", "add", "--detach", str(worktree_path), f"{remote}/{branch}"])
-            copy_publish_paths(repo_root, worktree_path, tracked_paths)
+            copied_article = copy_publish_article(repo_root, worktree_path, post)
+            rebuild_publish_outputs(worktree_path, post)
+            if copied_article not in tracked_paths:
+                tracked_paths = [copied_article, *tracked_paths]
+            fail_on_legacy_blog_templates(worktree_path, tracked_paths)
             run_git_command(worktree_path, git_command, ["add", "--", *tracked_paths])
             staged = run_git_command(worktree_path, git_command, ["diff", "--cached", "--name-only", "--", *tracked_paths])
             if not staged.stdout.strip():

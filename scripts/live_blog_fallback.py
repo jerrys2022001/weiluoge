@@ -1714,7 +1714,7 @@ def rewritten_story_focus(source_slug: str, item: FeedItem) -> tuple[str, str]:
                     )
                 if "fold" in lowered and any(keyword in lowered for keyword in ("1tb", "price", "money")):
                     return (
-                        "iPhone Fold 1TB Price Rumor: What Cleanup Users Should Know",
+                        "iPhone Fold 1TB Price Rumor for Cleanup Planning",
                         "March 2026 Apple commentary on the iPhone Fold 1TB price rumor, storage planning, and what cleanup-conscious users should weigh before buying.",
                     )
                 return (
