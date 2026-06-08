@@ -346,7 +346,7 @@ def extract_body_counter(html: str) -> Counter[str]:
 
     if (
         "Octopus Practical Guide" in html
-        or "Octopus live mobile coding fallback" in html
+        or "Octopus mobile coding workflow" in html
         or ("Octopus" in html and "/octopus/" in html and "mobile Codex" in html)
     ):
         octopus_common_tokens = {
@@ -479,7 +479,7 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS
         )
 
-    if "live workflow fallback" in html.lower() or "expanded-source fallback reframes" in html.lower():
+    if "trust workflow" in html.lower() or "expanded-source fallback reframes" in html.lower():
         app_live_common_tokens = {
             "answer",
             "angle",

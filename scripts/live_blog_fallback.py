@@ -411,42 +411,42 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
     lowered = f"{clean_text(item.title)} {clean_text(item.summary)}".lower()
     if lane == "cleanup":
         return (
-            f"How Cleanup Pro Users Should Read {label}",
+            f"Cleanup Pro Storage Check for {label}",
             f"A practical Cleanup Pro guide for deciding whether {label} changes iPhone storage cleanup order, backup checks, or safe deletion priorities.",
         )
     if lane == "translate":
         return (
-            f"How Translate AI Users Should Read {label}",
+            f"Translate AI Review Workflow for {label}",
             f"A practical Translate AI guide for applying {label} to speech, OCR, captions, travel, and multilingual review workflows.",
         )
     if lane == "find":
         if any(term in lowered for term in ("deal", "price", "discount", "sale", "off", "amazon", "best buy")):
             if any(term in lowered for term in ("airtag", "find my", "tracker", "tag")):
                 return (
-                    "How Find AI Users Should Read AirTag and Recovery Deals",
+                    "Find AI Recovery Deal Check for AirTag Gear",
                     "A practical Find AI guide for deciding whether cheaper AirTags, spare devices, or accessory pricing changes recovery setup, scan confidence, or privacy boundaries.",
                 )
             return (
-                "How Find AI Users Should Read Device Deals and Recovery Gear",
+                "Find AI Recovery Gear Deal Check",
                 "A practical Find AI guide for deciding whether a sale on nearby hardware changes recovery setup, scan confidence, or last-seen checks.",
             )
         if any(term in lowered for term in ("airtag", "find my", "tracker", "lost", "recovery")):
             return (
-                "How Find AI Users Should Read Lost-Device Recovery Signals",
+                "Find AI Lost-Device Recovery Signal Check",
                 "A practical Find AI guide for applying this update to nearby scanning, last-seen context, and the line between recovery and tracking.",
             )
         if not any(term in lowered for term in ("find my", "airtag", "tracker", "lost", "recovery", "device", "bluetooth", "earbud", "headphone", "tag", "nearby")):
             return (
-                "How Find AI Users Should Treat Background Apple News on Mobile",
+                "Find AI Recovery Signals for Background Apple News",
                 "A practical Find AI guide for deciding whether this background Apple story changes recovery confidence, nearby scanning, or the cost of keeping a second device ready.",
             )
         return (
-            f"How find AI Users Should Read {label}",
+            f"Find AI Signal Check for {label}",
             f"A practical find AI guide for deciding whether {label} changes Bluetooth signal checks, nearby scanning, or lost-device recovery steps.",
         )
     if lane == "dualshot":
         return (
-            f"How Dual Camera Creators Should Read {label}",
+            f"Dual Camera Recording Plan for {label}",
             f"A practical Dual Camera guide for applying {label} to creator capture, demo recording, framing, and video repurposing decisions.",
         )
     if lane == "octopus":
@@ -457,11 +457,11 @@ def lane_story_focus(lane: str, source_slug: str, item: FeedItem) -> tuple[str, 
             )
         if not any(term in lowered for term in ("codex", "agent", "ssh", "developer", "approval", "token", "repo", "repository", "workflow", "terminal")):
             return (
-                "How Octopus Users Should Treat Background Apple News on Mobile",
+                "Octopus Mobile Approval Boundary for Background News",
                 "A practical Octopus guide for deciding whether a background Apple story changes mobile approvals, thread continuity, or whether the task should stay on desktop.",
             )
         return (
-            f"How Octopus Users Should Read {label}",
+            f"Octopus Mobile Workflow Check for {label}",
             f"A practical Octopus guide for applying {label} to mobile Codex approvals, thread continuity, SSH-linked work, and iPhone or iPad follow-up.",
         )
     return None
@@ -639,10 +639,11 @@ def item_is_recent_for_target(item: FeedItem, target_day: date) -> bool:
 def app_lane_profile(lane: str) -> dict[str, object]:
     return {
         "cleanup": {
-            "eyebrow": "cleanup pro live storage fallback",
+            "eyebrow": "Cleanup Pro storage workflow",
             "intent": "duplicate photo cleanup, iPhone storage cleanup, backup hygiene, and safe deletion order",
             "workflow": "review large files, old downloads, duplicate media, offline caches, and backup state before deleting anything important",
             "risk": "cleanup advice becomes weak when it skips backup readiness, hidden caches, or the order in which users should inspect files",
+            "next_check": "Start with backup state, source app, file type, and deletion risk before changing the cleanup order.",
             "primary": "Open AI Cleanup PRO",
             "primary_url": "/ai-cleanup-pro/",
             "product_label": "AI Cleanup PRO product page",
@@ -650,10 +651,11 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "secondary": "iPhone storage cleanup",
         },
         "translate": {
-            "eyebrow": "Translate live workflow fallback",
+            "eyebrow": "Translate AI trust workflow",
             "intent": "translation, OCR, captions, voice input, and multilingual review workflows",
             "workflow": "capture the source text or speech, translate it, review uncertain phrases, and keep context for follow-up conversations",
             "risk": "translation advice becomes weak when it ignores speech quality, OCR errors, idioms, or human review for high-stakes wording",
+            "next_check": "Verify input capture, meaning, tone, pronunciation, and saved correction before reusing the phrase.",
             "primary": "Open Translate AI",
             "primary_url": "/translate/",
             "product_label": "Translate AI product page",
@@ -661,10 +663,11 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "secondary": "AI translation workflow",
         },
         "find": {
-            "eyebrow": "find AI live recovery fallback",
+            "eyebrow": "find AI recovery workflow",
             "intent": "nearby-device discovery, Bluetooth signal reading, last-seen context, and lost-item recovery",
             "workflow": "check the device category, scan nearby signals, compare movement context, and separate a weak signal from a real recovery lead",
             "risk": "finding advice becomes weak when it treats every Bluetooth or location clue as equally trustworthy",
+            "next_check": "Verify device identity, signal trend, last-seen time, and privacy boundary before acting on the clue.",
             "primary": "Open Find AI",
             "primary_url": "/aifind/",
             "product_label": "Find AI product page",
@@ -672,10 +675,11 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "secondary": "device recovery workflow",
         },
         "dualshot": {
-            "eyebrow": "Dual Camera live creator fallback",
+            "eyebrow": "Dual Camera creator workflow",
             "intent": "creator recording, product demos, tutorials, camera framing, and video repurposing",
             "workflow": "plan the main shot, capture the presenter or context angle, protect audio clarity, and repurpose the recording for multiple channels",
             "risk": "creator advice becomes weak when it talks about video trends without explaining capture setup, framing, and editing consequences",
+            "next_check": "Check shot purpose, second angle, audio path, storage budget, and reuse target before changing the capture plan.",
             "primary": "Open Dual Camera",
             "primary_url": "/dualshot/",
             "product_label": "Dual Camera product page",
@@ -683,10 +687,11 @@ def app_lane_profile(lane: str) -> dict[str, object]:
             "secondary": "creator capture workflow",
         },
         "octopus": {
-            "eyebrow": "Octopus live mobile coding fallback",
+            "eyebrow": "Octopus mobile coding workflow",
             "intent": "mobile Codex continuity, approvals, SSH-linked sessions, runtime follow-up, and developer context capture",
             "workflow": "review session state, approve the next action, add voice or file context, and move the coding thread forward without reopening the full desktop setup",
             "risk": "mobile coding advice becomes weak when it promises convenience without explaining approvals, thread continuity, or how remote context gets back into the same workflow",
+            "next_check": "Check current branch, changed files, last command, requested permission, and stop condition before approving from mobile.",
             "primary": "Open Octopus",
             "primary_url": "/octopus/",
             "product_label": "Octopus product page",
@@ -1380,6 +1385,64 @@ def app_lane_analysis_sections(lane: str, source_title: str, summary: str, sourc
     ]
 
 
+def app_lane_guardrail_sections(lane: str, source_title: str, app_term: str, profile: dict[str, object]) -> list[tuple[str, str]]:
+    workflow = str(profile["workflow"])
+    if lane == "cleanup":
+        return [
+            (
+                "Decision guardrail",
+                f"Before changing a Cleanup Pro routine because of {source_title}, write down the storage symptom in plain language: iCloud warning, camera roll pressure, app cache growth, duplicate bursts, or a backup that has not finished. Then inspect only the bucket tied to that symptom. A full-device sweep sounds efficient, but it often hides the one deletion that actually needed a second check.",
+            ),
+            (
+                "Stop condition",
+                "Stop the cleanup pass when the next deletion would remove the only visible copy, when the file source is unclear, or when the space gain is smaller than the review time. The safer move is to export, verify, and come back later with a narrower target.",
+            ),
+        ]
+    if lane == "translate":
+        return [
+            (
+                "Decision guardrail",
+                f"Before applying {source_title} to a Translate AI workflow, decide whether the phrase is casual, operational, or high-stakes. Casual phrases can move fast. Operational phrases need a saved original beside the translated version. High-stakes wording involving money, dates, medicine, legal terms, or names needs a second review before the user sends it.",
+            ),
+            (
+                "Stop condition",
+                "Stop the translation loop when the app output sounds fluent but the source context is missing. That is where mistakes look most polished. Re-capture the text, listen to the audio again, or shorten the sentence until the user can verify one meaning at a time.",
+            ),
+        ]
+    if lane == "find":
+        return [
+            (
+                "Decision guardrail",
+                f"Before changing a find AI recovery habit because of {source_title}, separate the clue from the conclusion. A Bluetooth hit, a last-seen time, and a nearby movement pattern are different signals. The workflow should log which one changed, whether it repeated, and whether following it would cross a privacy or safety boundary.",
+            ),
+            (
+                "Stop condition",
+                "Stop the recovery pass when the signal jumps between rooms, belongs to the wrong device class, or cannot be repeated after a short pause. At that point the useful action is to mark uncertainty, not to chase the strongest-looking number.",
+            ),
+        ]
+    if lane == "dualshot":
+        return [
+            (
+                "Decision guardrail",
+                f"Before changing a Dual Camera setup because of {source_title}, name the job of the second angle. It should prove a product state, show a hand movement, capture presenter context, or create a reusable tutorial cutaway. If it does none of those things, it adds storage pressure and editing time without improving the viewer's understanding.",
+            ),
+            (
+                "Stop condition",
+                "Stop the recording plan when the second view competes with the main action, when audio routing is uncertain, or when the clip has no reuse target. A shorter single-angle take is usually better than a complicated dual-angle take that cannot be edited cleanly.",
+            ),
+        ]
+    return [
+        (
+            "Decision guardrail",
+            f"Before approving a mobile Octopus step because of {source_title}, reduce the task to one inspectable state change: files touched, command output, test result, dependency change, or branch status. The phone or iPad flow works best when the next tap advances that state without opening a broad new investigation.",
+        ),
+        (
+            "Stop condition",
+            f"Stop the mobile loop when the next action needs wide context, secrets, deployment access, package installation, or a multi-file judgment that cannot be reviewed in the current session. {app_term} should keep {workflow}; it should not turn a quick approval into an invisible desktop replacement.",
+        ),
+    ]
+
+
 def render_app_live_article(day: date, source_slug: str, source_name: str, item: FeedItem, post: PostMeta, lane: str) -> str:
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
@@ -1396,6 +1459,7 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     faq_items = app_lane_faq_items(lane)
     related_paths = app_lane_related_paths(lane)
     analysis_sections = app_lane_analysis_sections(lane, source_title, summary, source_name, human_date)
+    guardrail_sections = app_lane_guardrail_sections(lane, source_title, app_term, profile)
     table_html = "\n".join(
         f"          <tr><td>{escape(col1)}</td><td>{escape(col2)}</td><td>{escape(col3)}</td></tr>"
         for col1, col2, col3 in table_rows
@@ -1413,6 +1477,10 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
     analysis_html = "\n\n".join(
         f"      <h2>{escape(heading)}</h2>\n      <p>{escape(body)}</p>"
         for heading, body in analysis_sections
+    )
+    guardrail_html = "\n\n".join(
+        f"      <h2>{escape(heading)}</h2>\n      <p>{escape(body)}</p>"
+        for heading, body in guardrail_sections
     )
     source_links = [(f"{source_name}: {source_title}", item.link), *background_links_for(source_slug)]
     source_links_html = "\n".join(
@@ -1559,7 +1627,9 @@ def render_app_live_article(day: date, source_slug: str, source_name: str, item:
       </div>
 
       <h2>{escape(labels["next"])}</h2>
-      <p>{escape(str(profile["risk"]).capitalize())}. Check one visible signal first, then change one workflow variable at a time so you can tell whether the update actually helped.</p>
+      <p>{escape(str(profile["risk"]).capitalize())}. {escape(str(profile["next_check"]))}</p>
+
+{guardrail_html}
 
       <div class="panel">
         <h3>{escape(labels["checklist"])}</h3>
