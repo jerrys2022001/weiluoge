@@ -1,6 +1,6 @@
 {
   "date": "2026-06-10",
-  "refreshed_at": "2026-06-10T08:26:19.270682+08:00",
+  "refreshed_at": "2026-06-10T08:30:02.448155+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-10T00:26:10+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-10/industry-7103f48d49272f3e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-23/industry-8311274c762f2701-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/industry-250c514da1816ddc-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Is Apple holding back new tvOS 27 features as it preps a new set-top box? Apple TV HD and the Apple TV 4K (1st generation) won't get tvOS 27. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and...",
       "published_at": "2026-06-10T00:17:13+00:00",
       "display_date": "JUN 10",
-      "image_src": "/assets/images/home-briefing/2026-04-15/apple-b428fb0a80b422c8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b428fb0a80b422c8-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-13/apple-abbcf8a6f4ae66a2-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-13/apple-abbcf8a6f4ae66a2-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-09T23:54:02+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-10/apple-bff4c303cb876dcc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-09/apple-76a55dcd1dc0cb31-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-ec0e50da45ca3c53-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "If you've ever wanted a native way to control how your AirPods sound across every device and app, Apple has finally provided it in iOS 27. Here's where to find the setting and what it can do. AirPods have a built-in EQ in Settings Apple's...",
       "published_at": "2026-06-09T23:42:35+00:00",
       "display_date": "JUN 10",
-      "image_src": "/assets/images/home-briefing/2026-04-10/apple-9c021982e3f941a2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-9c021982e3f941a2-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-21/apple-b4bad51b992cdca1-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-21/apple-b4bad51b992cdca1-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "A new TrendForce report shows Apple's iPhone production growing sharply in Q1, even as rising memory costs put pressure on the broader smartphone market. Here are the details.",
       "published_at": "2026-06-09T23:24:21+00:00",
       "display_date": "JUN 10",
-      "image_src": "/assets/images/home-briefing/2026-05-13/apple-8c7ce55f715fdc4a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-13/apple-8c7ce55f715fdc4a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-22/apple-14557da5ec579025-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/apple-14557da5ec579025-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "B&H's popular $899 MacBook Air deal has been extended exclusively for AppleInsider readers, but supply is limited and this upgraded model may sell out at any time. Grab this M4 MacBook Air with a 10-core GPU for just $899 - Image credit:...",
       "published_at": "2026-06-09T23:04:04+00:00",
       "display_date": "JUN 10",
-      "image_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-07/apple-3dd7d6318935785d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-07/apple-3dd7d6318935785d-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-09T22:34:27+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-10/semiconductor-1fb0b0083cc1cc40-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-04/semiconductor-6fe17e351713b029-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-27/semiconductor-34014d8dd3ac6daa-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-09T21:52:35+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-10/industry-1545de0630d238a8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-19/industry-1ee2387505ca9129-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-01/industry-6e47e6fa8a7dd6cd-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-09T19:25:21+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-10/bluetooth-bc86e19e347771d1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-05/bluetooth-952a49a10a272502-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/bluetooth-624f8cf4309a07ac-thumb.webp"
     }
   ]
 }
