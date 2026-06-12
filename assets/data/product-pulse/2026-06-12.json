@@ -1,6 +1,6 @@
 {
   "date": "2026-06-12",
-  "refreshed_at": "2026-06-12T07:21:02.728629+08:00",
+  "refreshed_at": "2026-06-12T08:31:51.710630+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "From the dictation button problem to Apple Intelligence, iOS 27 brings one of the biggest Messages app upgrades in years. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-12T00:14:47+00:00",
       "display_date": "JUN 12",
-      "image_src": "/assets/images/home-briefing/2026-04-06/apple-d1cfb8732f0f2feb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-06/apple-d1cfb8732f0f2feb-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-28/apple-23f7ccfde7119d55-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-28/apple-23f7ccfde7119d55-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-12T00:02:13+00:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/apple-804c484057c73888-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-25/apple-4605f68a3acf68ef-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-1c4efab10000d059-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-11T16:35:38-07:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/apple-8ca049edd4e94b71-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-29/apple-e472d4df53bedc29-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-06-11T23:20:24+00:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/apple-2d72ee71a71c09a0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-44ce03073e332f75-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-22/apple-8c0d1c5b338e4123-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "It's the bumper annual WWDC episode! Benjamin and Chance give their first impressions of all the announcements from WWDC 2026, including the new Siri AI and overhauled Apple Intelligence initiatives, as well as the platform features in iOS...",
       "published_at": "2026-06-11T23:19:27+00:00",
       "display_date": "JUN 12",
-      "image_src": "/assets/images/home-briefing/2026-03-30/apple-0c5411f3045b3f08-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-30/apple-0c5411f3045b3f08-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-07/apple-0737316152e632b2-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/apple-0737316152e632b2-thumb.webp"
     },
     {
       "index": 6,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-11T21:13:03+00:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/industry-6f0121c7d43655e8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-04/industry-95311a26dd50e213-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-08/industry-e6fd3a4a3d584af6-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-11T19:10:44+00:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/industry-a3850b5a3538aba4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-26/industry-95a60d83e5ebea52-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-15/industry-32d6c2ab0564f07c-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-11T18:48:34+00:00",
       "display_date": "JUN 12",
       "image_src": "/assets/images/home-briefing/2026-06-12/ai-882cc516efa2946e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-21/ai-00d4d03720e35354-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-22/ai-63562cfdf3070586-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-09T19:25:21+00:00",
       "display_date": "JUN 10",
       "image_src": "/assets/images/home-briefing/2026-06-12/bluetooth-bc86e19e347771d1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-07/bluetooth-96502a5df26054e7-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-21/bluetooth-624f8cf4309a07ac-thumb.webp"
     }
   ]
 }
