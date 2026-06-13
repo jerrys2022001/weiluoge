@@ -1,6 +1,6 @@
 {
   "date": "2026-06-13",
-  "refreshed_at": "2026-06-13T11:48:18.079438+08:00",
+  "refreshed_at": "2026-06-13T11:51:24.349697+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-13T02:26:30+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/industry-ad4c32ae26847245-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-10/industry-1f4af8a90fc042d1-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-09/industry-bc3ed7dd9efeedad-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-12T23:43:21+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/apple-0a5a58f9850846e2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-12/apple-484b3dbeef5b6bb4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-03/apple-588e56381ce4fc45-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-12T23:00:54+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/industry-5cd320eba9a7e5f5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-23/industry-857029e8aa8fbf3f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-19/industry-1ee2387505ca9129-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "While CarPlay was mentioned only once during the WWDC26 keynote, it includes several improvements and, as always, a new set of wallpapers. You can download them below.",
       "published_at": "2026-06-12T22:41:55+00:00",
       "display_date": "JUN 13",
-      "image_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-01/apple-8f3e8c3bab73eaee-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-25/apple-353a9276bcf1cbf7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-353a9276bcf1cbf7-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-06-12T15:30:39-07:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/apple-aaf1a77f8b196fa4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-9c021982e3f941a2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-17/apple-747adaeeb3ea634a-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-12T22:02:57+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/industry-dc22717f82bc6598-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-56390575e66abfa3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-28/industry-d85bb8be7831bcdd-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-12T14:05:57-07:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/apple-caa24b82dc02bb8e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-09/apple-e4eb6403f5acf3ed-thumb.webp"
     },
     {
       "index": 8,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-12T20:57:12+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-13/bluetooth-609e8424e2c61cc8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-16/bluetooth-a91093790090f50b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-13/bluetooth-609e8424e2c61cc8-thumb.webp"
     },
     {
       "index": 10,
