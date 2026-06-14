@@ -1,6 +1,6 @@
 {
   "date": "2026-06-14",
-  "refreshed_at": "2026-06-14T01:13:55.832433+08:00",
+  "refreshed_at": "2026-06-14T10:04:22.197095+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-14T08:00:00+00:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/industry-8257d88e59db14ce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/industry-f5766b38f144b346-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-24/industry-baaa87f3891b6cba-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-14T00:08:59+00:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/industry-004cc62ba1e8a96f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/industry-5cd320eba9a7e5f5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-27/industry-f1d4c73f88149fc5-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-13T22:53:12+00:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/apple-75593a1eb55012a8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-11/apple-8f58071105886dca-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-11/apple-a7d1d83ebddfc113-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "Apple's high-end, noise-canceling earbuds already provide incredible value, and this AirPods Pro 3 deal makes them way more affordable. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals....",
       "published_at": "2026-06-13T22:15:10+00:00",
       "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-05-29/apple-6e4b36738799c0be-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-29/apple-6e4b36738799c0be-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-26/apple-7687469a1d62d0d6-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-06-13T15:13:22-07:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/apple-bffaf3035d0c758b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/apple-0a5a58f9850846e2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-13T22:08:13+00:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/apple-8c573ea0f5fec1d3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-26/apple-aa9d04976ddb92f2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-13T20:42:31+00:00",
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-06-14/industry-520043b632ca493f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-28/industry-dfdab97454d18a58-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-23/industry-8311274c762f2701-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-13T14:13:22+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-14/ai-0d5bbe1851a85409-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-20/ai-f7a8d907f935efb5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/ai-ea057df5a3ebccb0-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "AgentPerf from Artificial Analysis, the industry's first agentic AI benchmark, gives developers, enterprises and infrastructure providers a clear way to compare systems for agentic AI. In the first round of published results, the NVIDIA...",
       "published_at": "2026-06-12T21:00:08+00:00",
       "display_date": "JUN 13",
-      "image_src": "/assets/images/home-briefing/2026-05-08/semiconductor-c3c495ae4db0b5fb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/semiconductor-c3c495ae4db0b5fb-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-21/semiconductor-e33776c4aa184d1b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-21/semiconductor-e33776c4aa184d1b-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-12T20:57:12+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-14/bluetooth-609e8424e2c61cc8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/bluetooth-609e8424e2c61cc8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-14/bluetooth-609e8424e2c61cc8-thumb.webp"
     }
   ]
 }
