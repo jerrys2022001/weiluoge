@@ -29,7 +29,7 @@
       "headline": "Octopus Workflow: When Tech News Is Background",
       "description": "An Octopus mobile coding guide for separating useful developer workflow signals from unrelated tech news before changing Codex approvals or remote habits.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-06-07",
+      "dateModified": "2026-06-14",
       "author": {"@type": "Organization", "name": "VelocAI"},
       "publisher": {
         "@type": "Organization",
@@ -42,7 +42,7 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "Why does this source matter for Octopus?", "acceptedAnswer": {"@type": "Answer", "text": "It gives readers a current example to compare against mobile Codex continuity, approvals, SSH-linked sessions, runtime follow-up, and developer context capture, so the next step stays tied to a real workflow rather than a generic feature list."}}, {"@type": "Question", "name": "How should readers use this update?", "acceptedAnswer": {"@type": "Answer", "text": "Start with the source fact, map it to review session state, approve the next action, add voice or file context, and move the coding thread forward without reopening the full desktop setup, then verify the risk before changing the routine."}}, {"@type": "Question", "name": "What makes this Octopus workflow useful?", "acceptedAnswer": {"@type": "Answer", "text": "It ties the live source item to review session state, approve the next action, add voice or file context, and move the coding thread forward without reopening the full desktop setup, so readers can decide what to inspect, what to try next, and what to avoid."}}
+        {"@type": "Question", "name": "Why should Octopus users filter unrelated tech news?", "acceptedAnswer": {"@type": "Answer", "text": "Mobile coding screens already compress branch state, approvals, command output, and file context, so unrelated news can make the next decision harder to audit."}}, {"@type": "Question", "name": "How should readers use this update?", "acceptedAnswer": {"@type": "Answer", "text": "Ask whether the outside information changes a dependency, permission, deployment target, API limit, or active command before adding it to a Codex thread."}}, {"@type": "Question", "name": "What makes this Octopus workflow useful?", "acceptedAnswer": {"@type": "Answer", "text": "It gives users a practical filter for mobile coding: keep interesting background reading out of the active thread unless it changes the next engineering decision."}}
       ]
     }
   ]
@@ -120,7 +120,7 @@
         <h2>How should Octopus users filter a live signal?</h2>
         <ol>
           <li>Ask whether the update changes the repo, dependency, deployment target, permission, or approval risk.</li>
-          <li>Check the active thread state before adding new context from a live source.</li>
+          <li>Check the active thread state before adding outside context from an article, release note, or benchmark.</li>
           <li>Use voice, image, or file context only when it helps the agent make the next coding decision.</li>
           <li>Keep unrelated industry stories outside the thread so approvals stay focused and auditable.</li>
         </ol>
@@ -131,7 +131,7 @@
 
       <div class="panel">
         <h2>What belongs in the thread?</h2>
-        <p>Octopus users should add outside context only when it changes the code decision in front of them. A source item belongs in the thread if it affects a dependency, a security assumption, a deployment target, an API limit, a user-facing requirement, or the reason an approval is being requested. It does not belong there merely because it is a technology story. Mobile coding already compresses the evidence into a small screen; adding unrelated material makes the next approval less trustworthy.</p>
+        <p>Octopus users should add outside context only when it changes the code decision in front of them. A link or note belongs in the thread if it affects a dependency, a security assumption, a deployment target, an API limit, a user-facing requirement, or the reason an approval is being requested. It does not belong there merely because it is a technology story. Mobile coding already compresses the evidence into a small screen; adding unrelated material makes the next approval less trustworthy.</p>
         <p>The practical workflow is to ask three questions before pasting a link or note into the Codex thread. Does this change the next command? Does it change the risk of the current action? Does it help the agent inspect a file, test result, or failure mode? If the answer is no, keep the news out of the thread. Put it in a reading list, not inside the active coding loop.</p>
       </div>
 
@@ -147,16 +147,16 @@
       </div>
 
       <div class="capsule">
-        <p><strong>Practical note:</strong> Use the live source as a decision prompt, not as an automatic reason to change the workflow. The change is worth acting on only when it improves a task the reader can inspect and repeat.</p>
+        <p><strong>Practical note:</strong> Treat outside tech news as background until it changes the active repository, command, permission, or failure mode. Octopus should keep the current coding loop narrow enough to review from a phone.</p>
       </div>
 
-      <h2>When should you ignore the live source?</h2>
+      <h2>When should you ignore the outside update?</h2>
       <p>Ignore it when it does not affect code, dependencies, infrastructure, security posture, project requirements, or the approval you are being asked to make. Interesting is not the same as actionable.</p>
 
-      <p>That is especially true from a phone. Octopus is strongest when it protects the current thread from drift. If a source item is interesting but unrelated, the best mobile action is to save it outside the active thread and return to the pending approval. If the item is relevant, summarize the exact impact in one sentence before asking Codex to act. "This changes the dependency version we should test" is actionable. "This is a neat materials startup" is reading material, not coding context.</p>
+      <p>That is especially true from a phone. Octopus is strongest when it protects the current thread from drift. If an article is interesting but unrelated, the best mobile action is to save it outside the active thread and return to the pending approval. If it is relevant, summarize the exact impact in one sentence before asking Codex to act. "This changes the dependency version we should test" is actionable. "This is a neat materials startup" is reading material, not coding context.</p>
 
       <h2>Recommended next step</h2>
-      <p>Run the smallest safe test first: ask whether the source changes the next command, the current risk, or the file evidence. Only add it to Octopus when the evidence improves speed, clarity, safety, or confidence.</p>
+      <p>Run the smallest safe test first: ask whether the outside update changes the next command, the current risk, or the file evidence. Only add it to Octopus when the evidence improves speed, clarity, safety, or confidence.</p>
 
       <h2>FAQ</h2>
       <p><strong>Should Octopus users add every tech update to a Codex thread?</strong><br>

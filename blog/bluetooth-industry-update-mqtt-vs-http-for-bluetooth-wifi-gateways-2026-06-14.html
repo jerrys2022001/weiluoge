@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Gateway Queues: MQTT vs HTTP for BLE Data | VelocAI Blog</title>
+  <meta name="description" content="A Bluetooth Explorer guide to choosing MQTT or HTTP for BLE gateway telemetry, with queue, retry, topic, payload, and debugging checks for reliable beacon data.">
+  <meta name="keywords" content="bluetooth, Bluetooth Explorer, BLE gateway, MQTT Bluetooth gateway, HTTP Bluetooth gateway, beacon telemetry, BLE packets, gateway queue, Bluetooth protocol analysis">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-industry-update-mqtt-vs-http-for-bluetooth-wifi-gateways-2026-06-14.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Gateway Queues: MQTT vs HTTP for BLE Data">
+  <meta property="og:description" content="A Bluetooth Explorer guide to choosing MQTT or HTTP for BLE gateway telemetry, with queue, retry, topic, payload, and debugging checks for reliable beacon data.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-industry-update-mqtt-vs-http-for-bluetooth-wifi-gateways-2026-06-14.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Gateway Queues: MQTT vs HTTP for BLE Data">
+  <meta name="twitter:description" content="A Bluetooth Explorer guide to choosing MQTT or HTTP for BLE gateway telemetry, with queue, retry, topic, payload, and debugging checks for reliable beacon data.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth Gateway Queues: MQTT vs HTTP for BLE Data",
+      "description": "A Bluetooth Explorer guide to choosing MQTT or HTTP for BLE gateway telemetry, with queue, retry, topic, payload, and debugging checks for reliable beacon data.",
+      "datePublished": "2026-06-14",
+      "dateModified": "2026-06-14",
+      "author": {"@type": "Organization", "name": "VelocAI"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {"@type": "ImageObject", "url": "https://velocai.net/2.png"}
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-industry-update-mqtt-vs-http-for-bluetooth-wifi-gateways-2026-06-14.html",
+      "keywords": ["bluetooth", "Bluetooth Explorer", "BLE gateway", "MQTT Bluetooth gateway", "HTTP Bluetooth gateway", "beacon telemetry", "BLE packets", "gateway queue"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Is MQTT always better for Bluetooth gateways?", "acceptedAnswer": {"@type": "Answer", "text": "No. MQTT is usually stronger for continuous telemetry and lossy networks, but HTTP can be simpler for low-frequency reports, batch uploads, and systems that already expose a stable web ingestion endpoint."}},
+        {"@type": "Question", "name": "What should teams inspect before choosing?", "acceptedAnswer": {"@type": "Answer", "text": "Inspect scan cadence, duplicate filtering, queue depth, retry rules, payload identity, and how the cloud handles late or repeated BLE observations."}},
+        {"@type": "Question", "name": "How does Bluetooth Explorer help?", "acceptedAnswer": {"@type": "Answer", "text": "Bluetooth Explorer helps compare what the phone sees locally with what a gateway forwards, making it easier to catch missing advertisements, unstable RSSI windows, and incorrect beacon identity before rollout."}}
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7faf8; --text:#18241f; --muted:#52645c; --line:#cfdcd4; --panel:#ffffff; --brand:#176b54; --brand-soft:#e7f5ee; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:25ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li,td,th { color:#31443b; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr, .capsule, table { background:var(--panel); border:1px solid var(--line); border-radius:18px; }
+    .hero { padding:26px; box-shadow:0 12px 28px rgba(28,44,36,.05); }
+    .panel, .tldr, .capsule { margin-top:24px; padding:22px; box-shadow:0 12px 28px rgba(28,44,36,.05); }
+    .tldr { border-left:6px solid #2a9d74; }
+    .capsule { background:#fbfdfb; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .hero > p:not(.meta) { margin:14px 0 0; max-width:none; }
+    .links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }
+    table { width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    th,td { padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    th { color:var(--text); font-weight:700; background:rgba(23,107,84,.08); }
+    .sources a { color:var(--brand); border-bottom:1px solid #9fc7b7; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/">
+        <img src="/velocai.png" alt="VelocAI logo" width="102" height="73">
+        <span>VelocAI Blog</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Bluetooth gateway protocol</span>
+        <h1>Bluetooth Gateway Queues: MQTT vs HTTP for BLE Data</h1>
+        <p class="meta">Published on June 14, 2026 | Topic: Bluetooth gateway telemetry | Source: BeaconZone</p>
+        <p>A Bluetooth gateway decision is rarely just "MQTT or HTTP." The harder question is what happens between the BLE scan and the cloud write: duplicate packets, weak RSSI windows, offline buffering, late timestamps, and payloads that no longer prove which beacon was actually seen.</p>
+      </div>
+
+      <div class="tldr">
+        <p><strong>TL;DR:</strong> Choose MQTT when BLE gateways need a long-running telemetry stream with retained state, topic routing, and predictable reconnect behavior. Choose HTTP when the gateway sends smaller batches to a simple ingestion endpoint. In both cases, validate the local BLE observation with Bluetooth Explorer before trusting the server record.</p>
+      </div>
+
+      <h2>What breaks first?</h2>
+      <p>The first failure is usually not the transport. It is the gap between what the radio heard and what the backend thinks happened. A beacon may advertise several times inside one scan window. The gateway may collapse those observations into one record. The network may drop for thirty seconds. The cloud may receive an old event after a newer one. If the payload does not carry enough identity, time, and scanner context, the protocol choice cannot save the data model.</p>
+
+      <div class="panel">
+        <h2>Gateway Decision Table</h2>
+        <table aria-label="Bluetooth gateway MQTT and HTTP decision table">
+          <thead>
+            <tr><th>Gateway condition</th><th>MQTT fit</th><th>HTTP fit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Continuous beacon monitoring</td><td>Strong fit because topics and reconnect handling match ongoing telemetry.</td><td>Possible, but repeated POST retries can create duplicate events without careful IDs.</td></tr>
+            <tr><td>Periodic inventory snapshots</td><td>Useful when the broker already routes site and room topics.</td><td>Strong fit when snapshots are small, infrequent, and easy to batch.</td></tr>
+            <tr><td>Weak or intermittent backhaul</td><td>Works well if the gateway queues messages and exposes last-will or reconnect state.</td><td>Works only when retry, ordering, and idempotency are explicit.</td></tr>
+            <tr><td>Simple enterprise integration</td><td>May require broker operations the team does not already run.</td><td>Often easier when the receiving system already owns authentication and logs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>How should teams choose?</h2>
+      <p>Start with event shape. If the gateway forwards every observation as a stream, MQTT usually gives the cleaner mental model: topic per site, gateway, room, or beacon class; subscriber groups for alerting and storage; connection state that can be monitored separately from beacon state. If the gateway reports a finished batch, HTTP is often enough and easier to reason about.</p>
+      <p>The decision gets ugly when teams pretend a batch is a stream or a stream is a batch. A live occupancy screen should not wait for a slow upload cycle. A daily asset inventory does not need a permanent broker connection if one signed HTTP request can deliver the summary. The transport should match how fast a wrong or late beacon observation would change the user's decision.</p>
+
+      <h2>Which fields belong in the payload?</h2>
+      <p>A reliable BLE gateway payload should include the beacon identifier, scanner identifier, observed timestamp, forwarded timestamp, RSSI window, packet count, scan interval, firmware version, and a dedupe key. That sounds fussy until the first production incident, at which point every missing field becomes a small mystery with a support ticket attached.</p>
+      <p>Bluetooth Explorer is useful here because it gives teams a phone-side reference. If the phone sees a beacon every few seconds but the gateway record shows long gaps, the issue may be scan scheduling, antenna placement, filtering, or queue behavior. If the phone also sees unstable RSSI, the gateway is probably reporting a real radio condition rather than inventing a transport problem.</p>
+
+      <div class="panel">
+        <h2>What should Bluetooth Explorer verify?</h2>
+        <ul>
+          <li>Compare local beacon identity with the gateway payload so aliases, UUIDs, majors, minors, or manufacturer data are not quietly rewritten.</li>
+          <li>Record RSSI spread for at least one realistic scan window instead of judging a single strong or weak value.</li>
+          <li>Check whether the gateway drops duplicate advertisements before or after timestamping them.</li>
+          <li>Test a brief network outage and inspect whether queued observations keep their original observed time.</li>
+          <li>Confirm that retry behavior is idempotent, especially for HTTP uploads that may repeat after a timeout.</li>
+        </ul>
+      </div>
+
+      <h2>Rollout Failure Modes</h2>
+      <p>The most expensive mistake is treating transport success as telemetry truth. A broker accepting a message does not prove the beacon was close enough to matter. A 200 response from an HTTP endpoint does not prove the upload is unique, current, or attached to the right gateway. Gateway code should log both sides: radio observation and network delivery.</p>
+      <p>There is also a privacy and operations angle. Continuous MQTT topics can make monitoring easier, but they can also expose more movement detail if topic design is sloppy. HTTP batches can reduce live visibility, but they can be easier to scrub, sign, and store with existing infrastructure. The better choice is the one your team can debug under stress, not the one that sounds more modern.</p>
+
+      <div class="capsule">
+        <p><strong>Protocol rule:</strong> Pick the transport after the BLE event contract is stable. Identity, timing, dedupe, queue depth, and retry behavior should be written down before the team argues about broker topics or REST paths.</p>
+      </div>
+
+      <h2>When is HTTP enough?</h2>
+      <p>HTTP is enough when the gateway sends a bounded report, the backend can tolerate a small delay, and the system has a clear duplicate strategy. Examples include scheduled inventory checks, maintenance logs, room-level summaries, or a gateway health report that does not require second-by-second user action.</p>
+      <p>HTTP becomes fragile when every retry looks like a new observation. If the endpoint cannot recognize repeated event IDs, the system may count one beacon twice, mark an asset as moving when it is not, or alert on stale data after the radio situation has already changed. That is not an HTTP flaw. It is a contract flaw.</p>
+
+      <h2>FAQ</h2>
+      <p><strong>Is MQTT always better for Bluetooth gateways?</strong><br>
+      No. MQTT is usually stronger for continuous telemetry and lossy networks, but HTTP can be simpler for low-frequency reports, batch uploads, and systems that already expose a stable web ingestion endpoint.</p>
+      <p><strong>What should teams inspect before choosing?</strong><br>
+      Inspect scan cadence, duplicate filtering, queue depth, retry rules, payload identity, and how the cloud handles late or repeated BLE observations.</p>
+      <p><strong>How does Bluetooth Explorer help?</strong><br>
+      It helps compare what the phone sees locally with what a gateway forwards, making it easier to catch missing advertisements, unstable RSSI windows, and incorrect beacon identity before rollout.</p>
+
+      <section class="sources" aria-label="Source attribution">
+        <h3>Source attribution</h3>
+        <ul>
+          <li><a href="https://www.beaconzone.co.uk/blog/mqtt-vs-http-for-bluetooth-wifi-gateways/" target="_blank" rel="noopener noreferrer">BeaconZone: MQTT vs HTTP for Bluetooth WiFi Gateways</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/" target="_blank" rel="noopener noreferrer">Bluetooth SIG Specifications</a></li>
+          <li><a href="https://www.bluetooth.com/learn-about-bluetooth/" target="_blank" rel="noopener noreferrer">Bluetooth SIG: Learn About Bluetooth</a></li>
+        </ul>
+      </section>
+
+      <div class="links">
+        <a href="/bluetoothexplorer/">Open Bluetooth Explorer</a>
+        <a href="/blog/bluetooth-industry-update-why-is-there-variation-of-rssi-2026-05-19.html">RSSI variation guide</a>
+        <a href="/blog/">Blog index</a>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
