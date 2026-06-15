@@ -1,6 +1,6 @@
 {
   "date": "2026-06-15",
-  "refreshed_at": "2026-06-15T06:00:02.744008+08:00",
+  "refreshed_at": "2026-06-15T08:30:01.881901+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-14T20:22:51+00:00",
       "display_date": "JUN 15",
       "image_src": "/assets/images/home-briefing/2026-06-15/industry-b61b298001119ab8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-10/industry-e7f244e835ce8e33-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-21/industry-532981859fa156a4-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-14T19:25:08+00:00",
       "display_date": "JUN 15",
       "image_src": "/assets/images/home-briefing/2026-06-15/industry-3bfd82b622c40ed1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-28/industry-d85bb8be7831bcdd-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-18/industry-686cd3157fe628d6-thumb.webp"
     },
     {
       "index": 3,
@@ -43,10 +43,24 @@
       "published_at": "2026-06-14T18:30:00+00:00",
       "display_date": "JUN 15",
       "image_src": "/assets/images/home-briefing/2026-06-15/industry-09dee14d61efc8a8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-01/industry-d5bcaed38f53cf92-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-b70cd95ec76f7e64-thumb.webp"
     },
     {
       "index": 4,
+      "slug": "ai",
+      "eyebrow": "AI Developments",
+      "source_name": "OpenAI News",
+      "source_url": "https://openai.com/news/",
+      "title": "Introducing the OpenAI Partner Network",
+      "link": "https://openai.com/index/introducing-openai-partner-network",
+      "summary": "OpenAI launches the Partner Network, investing $150M to help global partners accelerate enterprise AI adoption, deployment, and transformation.",
+      "published_at": "2026-06-14T17:00:00+00:00",
+      "display_date": "JUN 15",
+      "image_src": "/assets/images/home-briefing/2026-04-28/ai-c53450ae1da75ff1-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-28/ai-c53450ae1da75ff1-thumb.webp"
+    },
+    {
+      "index": 5,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -57,10 +71,10 @@
       "published_at": "2026-06-14T16:38:09+00:00",
       "display_date": "JUN 15",
       "image_src": "/assets/images/home-briefing/2026-06-15/industry-4198c0bbe7ef91ee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/industry-bc3ed7dd9efeedad-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-10/industry-1545de0630d238a8-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -70,11 +84,11 @@
       "summary": "As is often the case, Apple has leaked its own hardware. Here are the signs that the folding iPhone and MacBook Pro with touchscreen are coming, and where they are. A render of a potential iPhone Fold design - image credit: AppleInsider...",
       "published_at": "2026-06-14T15:40:41+00:00",
       "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-05-08/apple-68554d7c85287e17-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/apple-68554d7c85287e17-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-09/apple-d2c584270f80a647-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-d2c584270f80a647-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -84,22 +98,8 @@
       "summary": "It's obviously speculation, and repeated at that, but a new report argues that it's more likely that Apple will eventually charge a fee for Siri Ai now that Apple Intelligence has improved so much. For now, Siri AI is free, although...",
       "published_at": "2026-06-14T14:51:08+00:00",
       "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-04-10/apple-c2d260767e8e058c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-c2d260767e8e058c-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "Microsoft is reportedly testing Copilot+ AI features with discrete GPUs instead of NPUs - a feature available on Windows App SDK with a Windows Insider Experimental Channel build and Developer Mode turned on",
-      "link": "https://www.tomshardware.com/software/windows/microsoft-is-reportedly-testing-copilot-ai-features-with-discrete-gpus-instead-of-npus-a-feature-available-on-windows-app-sdk-with-a-windows-insider-experimental-channel-build-and-developer-mode-turned-on",
-      "summary": "Microsoft is experimenting with Windows AI features on non-Copilot devices, finally allowing AI features to run on discrete GPUs. This move expands its user base and gives more users access to Windows 11 local AI capabilities.",
-      "published_at": "2026-06-14T13:00:00+00:00",
-      "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-06-15/ai-d6cd9cdf15bbd1e3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/ai-63562cfdf3070586-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Dell has rebuilt the XPS 13 to directly take on Apple's MacBook Neo on price. Here's how the entry-level models compare on specs and value. MacBook Neo [left] vs Dell XPS 13 [right] Apple's MacBook Neo arrived as the company's most...",
       "published_at": "2026-06-14T11:32:01+00:00",
       "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-06-14/apple-bffaf3035d0c758b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-14/apple-bffaf3035d0c758b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "An employee disappearing with a MacBook, a man convicted of tracking a woman with an AirTag , and a woman who used an AirTag to track her husband in ICE custody, all in this week's Apple Crime Blotter. Man in cuffs - Image Credit: Pixabay...",
       "published_at": "2026-06-14T11:18:59+00:00",
       "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-04-19/apple-bfaa6613562e9015-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-19/apple-bfaa6613562e9015-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-12T20:57:12+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-15/bluetooth-609e8424e2c61cc8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-14/bluetooth-609e8424e2c61cc8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-21/bluetooth-624f8cf4309a07ac-thumb.webp"
     }
   ]
 }
