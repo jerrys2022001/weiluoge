@@ -1,10 +1,24 @@
 {
   "date": "2026-06-15",
-  "refreshed_at": "2026-06-15T08:30:01.881901+08:00",
+  "refreshed_at": "2026-06-15T08:40:01.462070+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "Samsung Global Newsroom",
+      "source_url": "https://news.samsung.com/global",
+      "title": "Samsung Art Store Brings Art Basel to Homes Worldwide With New Curated Collection",
+      "link": "https://news.samsung.com/global/samsung-art-store-brings-art-basel-to-homes-worldwide-with-new-curated-collection",
+      "summary": "Samsung Electronics, global display leader and provider of the Official Art TV of Art Basel, today announced the launch of the Art Basel in Basel (ABB) 2026 Collection, a curated digital exhibition available exclusively on Samsung Art...",
+      "published_at": "2026-06-15T08:00:00+00:00",
+      "display_date": "JUN 15",
+      "image_src": "/assets/images/home-briefing/2026-06-15/industry-70265b9da849f63c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-18/industry-9b05da3a22d2f5d1-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -18,7 +32,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-21/industry-532981859fa156a4-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -32,7 +46,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-05-18/industry-686cd3157fe628d6-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -46,7 +60,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-03-22/industry-b70cd95ec76f7e64-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "ai",
       "eyebrow": "AI Developments",
       "source_name": "OpenAI News",
@@ -60,7 +74,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-28/ai-c53450ae1da75ff1-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -74,7 +88,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-06-10/industry-1545de0630d238a8-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -88,7 +102,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-d2c584270f80a647-thumb.webp"
     },
     {
-      "index": 7,
+      "index": 8,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -102,7 +116,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp"
     },
     {
-      "index": 8,
+      "index": 9,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -114,20 +128,6 @@
       "display_date": "JUN 14",
       "image_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp",
       "fallback_src": "/assets/images/home-briefing/2026-04-27/apple-a51ca4b4ac869366-thumb.webp"
-    },
-    {
-      "index": 9,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Crime blotter: Arrested NFL star accused of biting iPhone",
-      "link": "https://appleinsider.com/articles/26/06/14/crime-blotter-arrested-nfl-star-accused-of-biting-iphone?utm_source=rss",
-      "summary": "An employee disappearing with a MacBook, a man convicted of tracking a woman with an AirTag , and a woman who used an AirTag to track her husband in ICE custody, all in this week's Apple Crime Blotter. Man in cuffs - Image Credit: Pixabay...",
-      "published_at": "2026-06-14T11:18:59+00:00",
-      "display_date": "JUN 14",
-      "image_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-31/apple-727dcb720f21cd8b-thumb.webp"
     },
     {
       "index": 10,
