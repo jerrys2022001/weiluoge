@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Octopus Keeps Server, Project, and Thread Context Organized | VelocAI Blog</title>
+  <meta name="description" content="A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.">
+  <meta name="keywords" content="octopus codex code app, mobile codex workflow iphone, approve coding agent actions from phone, resume codex threads on ipad, developer tools app iphone, ssh coding session iphone, remote coding companion iphone, project and thread organization, octopus project thread session management guide, iphone developer tools app for remote server context, approve ai coding permissions remotely on ipad, mobile second screen for codex sessions, runtime status notifications for coding agents on iphone, how to keep project and thread context organized on phone, ssh host fingerprint confirmation iphone coding workflow, use voice notes for mobile bug triage, how to review tool results and files on iphone">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-project-thread-session-management-guide-2026-06-15.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="How Octopus Keeps Server, Project, and Thread Context Organized">
+  <meta property="og:description" content="A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-project-thread-session-management-guide-2026-06-15.html">
+  <meta property="og:image" content="https://velocai.net/octopus/octopus.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Octopus Keeps Server, Project, and Thread Context Organized">
+  <meta name="twitter:description" content="A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.">
+  <meta name="twitter:image" content="https://velocai.net/octopus/octopus.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How Octopus Keeps Server, Project, and Thread Context Organized",
+      "description": "A practical Octopus guide to managing server, project, thread, and recent session context on mobile so coding work stays understandable across devices.",
+      "datePublished": "2026-06-15",
+      "dateModified": "2026-06-15",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/velocai.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-project-thread-session-management-guide-2026-06-15.html",
+      "keywords": [
+        "octopus codex code app",
+        "mobile codex workflow iphone",
+        "approve coding agent actions from phone",
+        "resume codex threads on ipad",
+        "developer tools app iphone",
+        "ssh coding session iphone",
+        "remote coding companion iphone",
+        "project and thread organization",
+        "octopus project thread session management guide",
+        "iphone developer tools app for remote server context",
+        "approve ai coding permissions remotely on ipad",
+        "mobile second screen for codex sessions",
+        "runtime status notifications for coding agents on iphone",
+        "how to keep project and thread context organized on phone",
+        "ssh host fingerprint confirmation iphone coding workflow",
+        "use voice notes for mobile bug triage",
+        "how to review tool results and files on iphone"
+      ],
+      "about": [
+        "Octopus",
+        "Project and Thread Organization",
+        "mobile coding workflow",
+        "Codex sessions"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Octopus : Codex Code App",
+      "operatingSystem": "iPhone and iPad",
+      "applicationCategory": "DeveloperApplication",
+      "url": "https://velocai.net/octopus/",
+      "downloadUrl": "https://apps.apple.com/us/app/octopus-codex-code-app/id6763834077",
+      "featureList": [
+        "Resume Codex threads",
+        "Approve commands and permissions remotely",
+        "Connect through app-server and SSH",
+        "Add voice, image, and file context",
+        "Review automation runs and history"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Octopus used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Octopus is used to carry Codex sessions to iPhone and iPad, connect to a Mac or server, resume threads, approve actions, and add context with voice, images, and files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Octopus help with remote coding approvals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Octopus is positioned around reviewing command and permission approvals remotely so coding sessions can keep moving when you are away from the main workstation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Octopus support SSH and server-backed workflows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The visible feature list highlights Codex app-server and SSH connections, along with server, project, thread, and recent session management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I avoid approving from mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avoid approving from mobile when the request depends on a large diff, unclear file changes, a risky permission, a failed previous command, or an SSH host you cannot verify."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f4f9ff; --text:#1a2838; --muted:#4b6178; --line:#cfe0f1; --panel:#ffffff; --brand:#1d63c7; --brand-soft:#e6f2ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at 8% 2%, rgba(66,139,233,.18), transparent 34%), radial-gradient(circle at 88% -6%, rgba(47,195,170,.14), transparent 32%), var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(244,249,255,.92); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(29,99,199,.16); }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    nav a:hover { color:var(--text); }
+    main { padding:36px 0 56px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(30px, 4.2vw, 48px); max-width:24ch; }
+    h2 { margin-top:30px; font-size:clamp(24px, 3vw, 34px); }
+    p,li,td,th { color:#30475f; font-size:17px; }
+    ul,ol { padding-left:22px; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .hero, .panel, .tldr, .capsule, table { background:var(--panel); border:1px solid var(--line); border-radius:24px; }
+    .hero { padding:26px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .panel, .tldr, .capsule { margin-top:24px; padding:22px; box-shadow:0 14px 32px rgba(24,36,54,.05); }
+    .tldr { border-left:6px solid #2fc3aa; }
+    .capsule { background:#f8fbff; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:8px 12px; background:var(--brand-soft); color:var(--brand); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .hero > p:not(.meta) { margin:14px 0 0; max-width:none; }
+    .cta-row,.links { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+    .cta-row a,.links a { border:1px solid #bdd7de; border-radius:999px; padding:10px 14px; font-weight:600; font-size:14px; color:var(--brand); background:#fff; }
+    .cta-row .primary { background:var(--brand); color:#fff; border-color:var(--brand); }
+    table { width:100%; margin-top:24px; border-collapse:separate; border-spacing:0; overflow:hidden; }
+    th,td { padding:16px 18px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    th { color:var(--text); font-weight:700; background:rgba(29,99,199,.08); }
+    .sources a { color:var(--brand); border-bottom:1px solid #9fcad0; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="103" height="103"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/octopus/">Octopus</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus Practical Guide</span>
+        <h1>How Octopus Keeps Server, Project, and Thread Context Organized</h1>
+        <p class="meta">Published on June 15, 2026 | Topic: Project and Thread Organization</p>
+        <p>Mobile access becomes valuable when the session list tells you where the real work lives without making you reconstruct it from memory.</p>
+        <div class="cta-row"><a class="primary" href="/octopus/">Open Octopus</a><a href="https://apps.apple.com/us/app/octopus-codex-code-app/id6763834077" target="_blank" rel="noopener noreferrer">App Store</a></div>
+      </div>
+      <div class="tldr">
+        <p>As of June 15, 2026, Octopus is most useful when a Codex session needs to keep moving away from the desk. It covers thread review, action approval, SSH-backed access, automation checks, and quick context capture from iPhone or iPad.</p>
+      </div>
+      <div class="panel">
+        <h2>What the App Changes</h2>
+        <ul>
+          <li>Open the current Codex thread from iPhone or iPad.</li>
+          <li>Check the active server, project, and recent session state.</li>
+          <li>Review the next command, approval, or permission request.</li>
+          <li>Attach voice notes, screenshots, images, or files when the thread needs more context.</li>
+          <li>Use automation history and runtime status to see what ran and what still needs attention.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>What to Do First</h2>
+        <ol>
+          <li>Open the recent thread or session.</li>
+          <li>Verify the server or project that owns the work.</li>
+          <li>Add the missing context if the task depends on a screenshot, voice note, or file.</li>
+          <li>Approve the action if it matches the thread, then return to the same session later.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h2>The Trust Boundary</h2>
+        <ul>
+          <li>Does the command match the project and branch shown in the thread?</li>
+          <li>Is the requested permission proportional to the task, or is it asking for broader access than needed?</li>
+          <li>Did the previous tool result finish cleanly, or is the agent acting on a failed command?</li>
+          <li>Would this action write files, change dependencies, run network calls, or publish content?</li>
+          <li>Is there enough context in the thread to approve from mobile, or should the decision wait for desktop review?</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Why This Session Belongs on Phone</h2>
+        <p>As of June 15, 2026, most Octopus use cases come down to a short list of actions: open the same thread, review the next command, add missing context, and return to the session later.</p>
+        <p>This problem comes from users who already have more than one workspace, server, or thread in motion and need a mobile view that keeps those contexts distinct.</p>
+        <p>This angle helps teams with multiple repos, consultants switching client contexts, and solo developers keeping side projects, production work, and experiments separated on mobile.</p>
+        <p>That structure matters because remote coding breaks down fast when the user cannot tell which environment the next approval or follow-up belongs to.</p>
+      </div>
+      <div class="panel">
+        <h2>Failure Modes</h2>
+        <ul>
+          <li>Use the phone for review, approval, short prompts, screenshots, logs, and follow-up notes.</li>
+          <li>Use the desktop when the decision requires reading a large diff, resolving merge conflicts, editing many files, or comparing long terminal output.</li>
+          <li>Treat SSH fingerprint prompts as trust decisions, not routine taps. Confirm the host before continuing.</li>
+          <li>If automation history shows repeated failures, stop approving retries and inspect the root cause from the full workspace.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>What to Confirm on the Go</h2>
+        <ul>
+          <li>Keep the server, project, and branch visible before making an approval decision.</li>
+          <li>Use screenshots or files when the thread depends on UI state, logs, or a failing test artifact.</li>
+          <li>Use voice notes for short direction changes, but keep destructive actions written clearly in the thread.</li>
+          <li>Return to the desktop for broad file rewrites, merge conflict resolution, dependency upgrades, or publishing steps.</li>
+          <li>Treat repeated automation failures as a stop signal until the root cause is inspected in the full workspace.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Related Path</h2>
+        <ul>
+          <li>Return to the same thread instead of starting a fresh mobile conversation.</li>
+          <li>Use the recent session list to keep project ownership obvious.</li>
+          <li>Add voice or image context only when it removes a real ambiguity.</li>
+          <li>Escalate to desktop if the next step is a wide diff, conflict resolution, or publish action.</li>
+        </ul>
+        <p><a href="/octopus/">Octopus product page</a> covers the mobile workflow, App Store listing details, and connection features in one place.</p>
+        <p><a href="/bluetoothexplorer/">Bluetooth Explorer</a> is relevant when the task moves from approval flow into device-side debugging or BLE inspection.</p>
+      </div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

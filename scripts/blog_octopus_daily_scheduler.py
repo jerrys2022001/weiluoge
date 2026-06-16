@@ -22,6 +22,7 @@ from blog_daily_scheduler import (
     update_blog_index,
     update_sitemap,
 )
+from blog_similarity import load_blog_pages, max_similarity_against_existing
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
 APP_STORE_URL = "https://apps.apple.com/us/app/octopus-codex-code-app/id6763834077"
@@ -226,6 +227,10 @@ def build_post_meta(day: date, angle: OctopusAngle) -> PostMeta:
     )
 
 
+def structure_variant(day: date, angle: OctopusAngle) -> int:
+    return (day.toordinal() + len(angle.slug_prefix)) % 3
+
+
 def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
@@ -249,6 +254,7 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         "Use automation history and runtime status to see what ran and what still needs attention.",
     ]
     action_html = "\n".join(f"          <li>{escape(item)}</li>" for item in action_items)
+    variant = structure_variant(day, angle)
     approval_checks = [
         "Does the command match the project and branch shown in the thread?",
         "Is the requested permission proportional to the task, or is it asking for broader access than needed?",
@@ -287,6 +293,20 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         "If automation history shows repeated failures, stop approving retries and inspect the root cause from the full workspace.",
     ]
     limit_html = "\n".join(f"          <li>{escape(item)}</li>" for item in limit_items)
+    mobile_checks = [
+        "Check whether the thread still matches the project you meant to touch.",
+        "Confirm whether the request is a review, an approval, or a real action before tapping through.",
+        "Use screenshots or files when the task depends on visual state or failed output.",
+        "Wait for desktop when the change looks broad, destructive, or ambiguous on a small screen.",
+    ]
+    mobile_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in mobile_checks)
+    follow_up_paths = [
+        "Return to the same thread instead of starting a fresh mobile conversation.",
+        "Use the recent session list to keep project ownership obvious.",
+        "Add voice or image context only when it removes a real ambiguity.",
+        "Escalate to desktop if the next step is a wide diff, conflict resolution, or publish action.",
+    ]
+    follow_up_paths_html = "\n".join(f"          <li>{escape(item)}</li>" for item in follow_up_paths)
 
     faq_items = [
         {
@@ -448,74 +468,64 @@ def render_article_html(day: date, angle: OctopusAngle, post: PostMeta) -> str:
         <div class="cta-row"><a class="primary" href="/octopus/">Open Octopus</a><a href="{APP_STORE_URL}" target="_blank" rel="noopener noreferrer">App Store</a></div>
       </div>
       <div class="tldr">
-        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
+        <p>{escape(tldr)}</p>
       </div>
       <div class="panel">
-        <h2>What Does Octopus Do?</h2>
+        <h2>{escape(["What Octopus Lets You Do", "The Mobile Control Point", "What the App Changes"][variant])}</h2>
         <ul>
 {action_html}
         </ul>
       </div>
       <div class="panel">
-        <h2>How To Use It</h2>
+        <h2>{escape(["How the Mobile Workflow Moves", "Where the Phone Fits", "What to Do First"][variant])}</h2>
         <ol>
 {workflow_html}
         </ol>
       </div>
       <div class="panel">
-        <h2>What To Check Before Approving</h2>
+        <h2>{escape(["Approval Checks That Matter", "Before You Tap Approve", "The Trust Boundary"][variant])}</h2>
         <ul>
 {approval_checks_html}
         </ul>
       </div>
       <div class="panel">
-        <h2>When Does It Help Most?</h2>
+        <h2>{escape(["When It Helps Most", "The Best Mobile Use Case", "Why This Session Belongs on Phone"][variant])}</h2>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
         <p>{escape(angle.scenario_focus)}</p>
         <p>{escape(angle.edge_focus)}</p>
       </div>
       <div class="panel">
-        <h2>What State Should You Inspect?</h2>
+        <h2>{escape(["What State Should You Inspect?", "State Before Approval", "The Signal Check"][variant])}</h2>
         <p>{escape(workflow_lead)} The important habit is to inspect state before acting, not after the approval has already moved the thread forward.</p>
         <ul>
 {state_checks_html}
         </ul>
       </div>
       <div class="panel">
-        <h2>Where Can The Mobile Flow Fail?</h2>
+        <h2>{escape(["Limits and Stop Rules", "When Mobile Is Not Enough", "Failure Modes"][variant])}</h2>
         <ul>
 {limit_html}
         </ul>
       </div>
       <div class="panel">
-        <h2>What Risk Does This Reduce?</h2>
+        <h2>{escape(["What Risk Does This Reduce?", "Why This Mobile Step Matters", "The Failure It Avoids"][variant])}</h2>
         <p>{escape(angle.workflow_focus)} The risk it reduces is accidental context switching: approving the right command in the wrong repo, missing a failed previous step, or giving a short mobile instruction without the artifact the agent needs.</p>
         <p>For small decisions, the phone or iPad flow is enough when the thread state, requested action, and expected result all fit on the screen. For broad changes, the better move is to use Octopus as a review and handoff surface, then return to the desktop before touching large diffs or irreversible operations.</p>
       </div>
       <div class="panel">
-        <h2>Mobile Review Checklist</h2>
+        <h2>{escape(["Mobile Review Checklist", "Context Checks", "What to Confirm on the Go"][variant])}</h2>
         <ul>
-{context_checks_html}
+{context_checks_html if variant != 1 else mobile_checks_html}
         </ul>
       </div>
       <div class="panel">
-        <h3>Common Questions</h3>
-        <h3>What is Octopus used for?</h3>
-        <p>Octopus is used to carry Codex sessions to iPhone and iPad so users can resume threads, approve actions, and add context with voice, images, and files.</p>
-        <h3>Can Octopus help with remote coding approvals?</h3>
-        <p>Yes. The product story explicitly includes approval cards for command and permission decisions, which makes Octopus relevant for mobile follow-up on active coding threads.</p>
-        <h3>Does Octopus support SSH and server-backed workflows?</h3>
-        <p>Yes. The visible App Store feature list highlights Codex app-server and SSH connections, along with server, project, thread, and recent session management.</p>
-        <h3>When should I avoid approving from mobile?</h3>
-        <p>Do not approve from mobile when the action depends on a large diff, a broad permission, an unclear server identity, repeated automation failures, or terminal output that needs careful desktop review.</p>
-        <h3>Why does Octopus matter for mobile coding workflows?</h3>
-        <p>It keeps the project, server, thread, approval request, and supporting context in one mobile surface, which makes quick decisions safer than acting from a bare notification or memory.</p>
-      </div>
-      <div class="panel">
-        <h3>Related Product Paths</h3>
-        <p><a href="/octopus/">Octopus product page</a> covers the App Store listing details, mobile workflow highlights, and download path.</p>
-        <p><a href="{APP_STORE_URL}" target="_blank" rel="noopener noreferrer">Octopus on the App Store</a> is the source for install details and current platform availability.</p>
+        <h2>{escape(["Useful Follow-Up", "Next Step", "Related Path"][variant])}</h2>
+        <ul>
+{follow_up_paths_html}
+        </ul>
+        <p><a href="/octopus/">Octopus product page</a> covers the mobile workflow, App Store listing details, and connection features in one place.</p>
+        <p><a href="/bluetoothexplorer/">Bluetooth Explorer</a> is relevant when the task moves from approval flow into device-side debugging or BLE inspection.</p>
       </div>
     </article>
   </main>
@@ -546,6 +556,9 @@ def main() -> int:
         return 0
 
     blog_dir = repo_root / "blog"
+    similarity = max_similarity_against_existing(html, load_blog_pages(blog_dir))
+    if similarity >= 0.40:
+        raise ValueError(f"Refusing to publish {post.filename}: similarity {similarity:.4f} >= 0.40")
     article_path = blog_dir / post.filename
     article_path.write_text(html, encoding="utf-8")
     inject_site_tools_into_file(article_path)

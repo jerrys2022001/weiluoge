@@ -49,6 +49,14 @@ A skill is a set of local instructions to follow that is stored in a `SKILL.md` 
 - Daily blog posts must stay tightly positioned around one clear domain, one explicit audience, and one primary problem; avoid mixed-topic articles that dilute intent.
 - Daily blog openings must quickly surface a pain point, strong viewpoint, or useful tension so readers understand why the article matters in the first paragraph.
 - Daily blog structure must follow a clear top-down flow: concise answer or thesis first, then ordered sections with short paragraphs, scannable subheadings, and grouped takeaways.
+- Daily blog structure must not fall back to one fixed skeleton across posts in the same lane. Do not keep publishing articles that repeat the same section order, the same rhetorical beats, or the same heading pattern with only nouns swapped.
+- Do not rely on a recurring visible scaffold such as `TL;DR` + `What problem does X solve` + `Why this workflow fits X` + `Common questions` + `Related product paths` as the default daily shape. If a section is not doing real topic work for that article, remove it instead of renaming it.
+- Daily blog headings must be article-specific. Reusing the same heading stack across multiple posts in one app lane is considered a template smell even when the body text changes.
+- Each daily blog post must differentiate its angle inside the same app lane: change the audience, operating context, failure mode, decision threshold, tradeoff, or workflow stage instead of retelling the same advice with a different source hook.
+- Each daily blog post must include at least one concrete differentiator that materially changes the advice: a real example, counterexample, failure mode, stop rule, tradeoff, threshold, or operational checklist tied to that article's specific problem.
+- Reject any draft whose core can be summarized as "the same workflow again with a different headline, source item, or product mention." A fresh title is not enough if the article body still resolves to the same advice path.
+- Internal links should be woven into the article where they help the reader make the next decision. Do not append the same stock "related product paths" block to every daily post.
+- Visible FAQ blocks are optional, not required. Keep FAQ schema when useful, but do not force a visible FAQ section into every article just to complete a template.
 - Daily blog content must be practical and specific: include examples, data where available, operational experience, decision rules, failure modes, checklists, or concrete solutions instead of vague praise or abstract commentary.
 - Daily blog language must be plain, fluent, and direct; prefer short readable sentences and avoid unnecessary jargon.
 - Daily blog posts must take a clear position when making recommendations, explain the tradeoff, and avoid hedging that leaves the reader without a usable decision.

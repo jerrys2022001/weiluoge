@@ -23,6 +23,7 @@ from blog_daily_scheduler import (
     update_blog_index,
     update_sitemap,
 )
+from blog_similarity import load_blog_pages, max_similarity_against_existing
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
 CORE_KEYWORDS = [
@@ -201,6 +202,10 @@ def build_post_meta(day: date, angle: DualShotAngle) -> PostMeta:
     )
 
 
+def structure_variant(day: date, angle: DualShotAngle) -> int:
+    return (day.toordinal() + len(angle.slug_prefix)) % 3
+
+
 def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
@@ -223,6 +228,7 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         f"As of {human_date}, the strongest one-take workflow is built before recording: lock the scene, test audio, leave safe crop room, "
         "and verify that both outputs still explain the same moment clearly."
     )
+    variant = structure_variant(day, angle)
     shoot_checklist = [
         "Record a 10-second test and confirm both landscape and portrait framing before the real take.",
         "Keep faces, products, hands, labels, and screen details inside the safe area for both outputs.",
@@ -231,6 +237,20 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         "Name the clip by scene or product before editing so the wide and vertical versions stay paired.",
     ]
     shoot_checklist_html = "\n".join(f"          <li>{escape(item)}</li>" for item in shoot_checklist)
+    tradeoff_checks = [
+        "If the subject barely fits in portrait, do not assume the editor can fix it later.",
+        "If the product demo depends on tiny on-screen details, leave more crop room than feels necessary.",
+        "If the scene changes lighting quickly, spend the extra minute on a test take instead of trusting the live setup.",
+        "If the vertical cutdown is only marketing garnish, do not let it compromise the readability of the wide master shot.",
+    ]
+    tradeoff_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in tradeoff_checks)
+    publish_paths = [
+        "Use the wide version as the main walkthrough, tutorial, or review asset.",
+        "Use the portrait version for the hook, summary, or strongest visual beat.",
+        "Keep both outputs tied to the same clip name so the edit handoff stays clean.",
+        "Reshoot only when one of the two formats fails the actual publishing job.",
+    ]
+    publish_paths_html = "\n".join(f"          <li>{escape(item)}</li>" for item in publish_paths)
 
     faq_items = [
         {
@@ -376,47 +396,44 @@ def render_article_html(day: date, angle: DualShotAngle, post: PostMeta) -> str:
         <div class=\"links\"><a href=\"/dualshot/\">Open Dual Camera</a><a href=\"https://apps.apple.com/app/dualshot-camera-dual-recorder/id6761664966\" target=\"_blank\" rel=\"noopener noreferrer\">App Store</a></div>
       </div>
       <div class=\"tldr\">
-        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
-      </div>
-      <h2>What Problem Does Dual Camera Solve?</h2>
         <p>{escape(tldr)}</p>
+      </div>
+      <div class=\"panel\">
+        <h2>{escape(["The Production Problem", "Why Creators Reach for This", "What Makes the Shoot Worth Saving"][variant])}</h2>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
+      </div>
       <div class=\"panel\">
-        <h2>Why Does This Workflow Fit Dual Camera?</h2>
+        <h2>{escape(["Where Dual Camera Earns Its Keep", "How the One-Take Workflow Holds Up", "Why the Format Split Matters Early"][variant])}</h2>
         <p>{escape(workflow_lead)}</p>
         <p>{escape(angle.workflow_focus)}</p>
       </div>
       <div class=\"panel\">
-        <h2>Which Creator Scenario Benefits Most?</h2>
+        <h2>{escape(["Best-Fit Scenario", "Who Gets the Most Time Back", "When the Workflow Pays Off"][variant])}</h2>
         <p>{escape(angle.scenario_focus)}</p>
         <p>{escape(angle.edge_focus)}</p>
       </div>
       <div class=\"panel\">
-        <h2>What Should Creators Check Before Recording?</h2>
+        <h2>{escape(["Before You Press Record", "Setup Checks That Actually Matter", "What to Lock Before the Take"][variant])}</h2>
         <p>{escape(practical_lead)}</p>
         <p>Before pressing record, check audio, lighting, subject distance, hand movement, and safe crop space. If either format hides the product, face, gesture, or key background detail, fix the setup before the take instead of repairing it in editing.</p>
       </div>
       <div class=\"panel\">
-        <h2>One-Take Setup Checklist</h2>
+        <h2>{escape(["One-Take Setup Checklist", "Edit-Saving Checklist", "Capture Rules"][variant])}</h2>
         <ul>
 {shoot_checklist_html}
         </ul>
       </div>
       <div class=\"panel\">
-        <h2>Common Questions</h2>
-        <h3>What is Dual Camera used for?</h3>
-        <p>Dual Camera is used to record landscape and portrait video at the same time on iPhone so creators can reuse one shoot across wide playback and vertical publishing.</p>
-        <h3>Can Dual Camera record vertical and horizontal video in one take?</h3>
-        <p>Yes. The app is built around dual-format capture, which helps creators keep one session aligned with more than one output format.</p>
-        <h3>Who benefits most from Dual Camera?</h3>
-        <p>Tutorial creators, talking-head presenters, product demo teams, travel vloggers, and small creator teams benefit most because they often need both long-form and short-form assets from the same moment.</p>
+        <h2>{escape(["Tradeoffs to Accept Early", "What Not to Compromise", "When to Reshoot Instead"][variant])}</h2>
+        <ul>
+{tradeoff_checks_html if variant != 2 else publish_paths_html}
+        </ul>
       </div>
       <div class=\"panel\">
-        <h2>Related Product Paths</h2>
-        <p><a href=\"/dualshot/\">Dual Camera product page</a> covers the core creator workflow, multicam support, and App Store download path.</p>
-        <p><a href=\"/apps/\">VelocAI Apps</a> shows how Dual Camera sits alongside the rest of the app portfolio for creator, translation, cleanup, and Bluetooth workflows.</p>
-        <p><a href=\"/translate/\">Translate AI</a> is relevant when the same creator workflow also needs captions, voice help, OCR translation, or bilingual review after filming.</p>
+        <h2>{escape(["Useful Next Read", "Workflow Follow-Up", "Related Creator Path"][variant])}</h2>
+        <p><a href=\"/dualshot/\">Dual Camera product page</a> is the right next stop if you want the core capture promise, App Store path, and multicam framing context in one place.</p>
+        <p><a href=\"/translate/\">Translate AI</a> becomes relevant when the same shoot also needs captions, OCR translation, or bilingual review after recording.</p>
       </div>
     </article>
   </main>
@@ -447,6 +464,9 @@ def main() -> int:
         return 0
 
     blog_dir = repo_root / "blog"
+    similarity = max_similarity_against_existing(html, load_blog_pages(blog_dir))
+    if similarity >= 0.40:
+        raise ValueError(f"Refusing to publish {post.filename}: similarity {similarity:.4f} >= 0.40")
     article_path = blog_dir / post.filename
     article_path.write_text(html, encoding="utf-8")
     inject_site_tools_into_file(article_path)

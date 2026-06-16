@@ -25,6 +25,20 @@ STOP_WORDS = {
     "pro", "translate", "translation", "translator", "find", "finder", "dualshot",
     "camera", "x27",
 }
+TEMPLATE_HEADER_MARKERS = (
+    "what problem does",
+    "why does this workflow fit",
+    "how should users read",
+    "what octopus does",
+    "how to use it",
+    "what to check before approving",
+    "common questions",
+    "related product paths",
+    "one-take setup checklist",
+    "bluetooth recovery steps",
+    "limits and failure modes",
+    "mobile review checklist",
+)
 SKIP_HEADERS = (
     "tl;dr",
     "high-intent keyword coverage",
@@ -63,6 +77,7 @@ class BlogPage:
     slug_base: str
     title_tokens: frozenset[str]
     body_counter: Counter[str]
+    heading_sequence: tuple[str, ...]
 
     @property
     def relative_url(self) -> str:
@@ -100,6 +115,46 @@ def title_tokens_for(title: str) -> frozenset[str]:
         for token in re.findall(r"[a-z0-9]+", title.lower())
         if token not in STOP_WORDS
     )
+
+
+def normalize_heading(value: str) -> str:
+    cleaned = re.sub(r"<[^>]+>", " ", value)
+    cleaned = re.sub(r"[^a-z0-9\s]", " ", cleaned.lower())
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def heading_sequence_for(html: str) -> list[str]:
+    headings: list[str] = []
+    for match in re.findall(r"<h2[^>]*>(.*?)</h2>", html, re.IGNORECASE | re.DOTALL):
+        normalized = normalize_heading(match)
+        if normalized:
+            headings.append(normalized)
+    return headings
+
+
+def heading_overlap(left: list[str], right: list[str]) -> float:
+    left_set = set(left)
+    right_set = set(right)
+    union = left_set | right_set
+    return len(left_set & right_set) / len(union) if union else 0.0
+
+
+def ordered_heading_overlap(left: list[str], right: list[str]) -> float:
+    if not left or not right:
+        return 0.0
+    shared = sum(1 for left_item, right_item in zip(left, right) if left_item == right_item)
+    return shared / max(len(left), len(right))
+
+
+def template_marker_ratio(headings: list[str]) -> float:
+    if not headings:
+        return 0.0
+    matches = sum(
+        1
+        for heading in headings
+        if any(marker in heading for marker in TEMPLATE_HEADER_MARKERS)
+    )
+    return matches / len(headings)
 
 
 def extract_body_counter(html: str) -> Counter[str]:
@@ -347,6 +402,7 @@ def extract_body_counter(html: str) -> Counter[str]:
     if (
         "Octopus Practical Guide" in html
         or "Octopus mobile coding workflow" in html
+        or "Octopus live mobile coding fallback" in html
         or ("Octopus" in html and "/octopus/" in html and "mobile Codex" in html)
     ):
         octopus_common_tokens = {
@@ -652,6 +708,7 @@ def load_blog_pages(blog_dir: Path) -> list[BlogPage]:
                 slug_base=slug_base_for(path),
                 title_tokens=title_tokens_for(title or path.stem),
                 body_counter=extract_body_counter(html),
+                heading_sequence=tuple(heading_sequence_for(html)),
             )
         )
     return pages
@@ -674,4 +731,19 @@ def max_similarity_against_existing(html: str, existing_pages: list[BlogPage]) -
     body_counter = extract_body_counter(html)
     if not body_counter:
         return 0.0
-    return max((cosine_similarity(body_counter, page.body_counter) for page in existing_pages), default=0.0)
+    candidate_headings = heading_sequence_for(html)
+    candidate_template_ratio = template_marker_ratio(candidate_headings)
+    max_score = 0.0
+    for page in existing_pages:
+        body_score = cosine_similarity(body_counter, page.body_counter)
+        heading_score = heading_overlap(candidate_headings, list(page.heading_sequence))
+        ordered_score = ordered_heading_overlap(candidate_headings, list(page.heading_sequence))
+        template_score = min(candidate_template_ratio, template_marker_ratio(list(page.heading_sequence)))
+        combined = max(
+            body_score,
+            body_score * 0.80 + heading_score * 0.14 + ordered_score * 0.04 + template_score * 0.02,
+            heading_score * 0.55 + ordered_score * 0.25 + template_score * 0.20,
+        )
+        if combined > max_score:
+            max_score = combined
+    return max_score

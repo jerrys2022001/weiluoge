@@ -23,6 +23,7 @@ from blog_daily_scheduler import (
     update_blog_index,
     update_sitemap,
 )
+from blog_similarity import load_blog_pages, max_similarity_against_existing
 from site_tools import build_site_search_index, inject_site_tools_into_file
 
 CORE_KEYWORDS = [
@@ -198,6 +199,10 @@ def build_post_meta(day: date, angle: FindAngle) -> PostMeta:
     )
 
 
+def structure_variant(day: date, angle: FindAngle) -> int:
+    return (day.toordinal() + len(angle.slug_prefix)) % 3
+
+
 def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
     canonical = f"{SITE_URL}/blog/{post.filename}"
     human_date = format_human(day)
@@ -219,6 +224,7 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         f"As of {human_date}, a Bluetooth signal should be treated as a directional clue, not a precise indoor map. "
         "Walls, bags, furniture, battery state, and nearby devices can all change what the radar appears to show."
     )
+    variant = structure_variant(day, angle)
     recovery_steps = [
         "Start from the last place where the device was definitely used.",
         "Pin or identify the target device before walking the room.",
@@ -227,6 +233,20 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         "If the device drops out of range, return to the strongest recent location and restart the scan from there.",
     ]
     recovery_steps_html = "\n".join(f"          <li>{escape(item)}</li>" for item in recovery_steps)
+    search_steps = [
+        "Confirm whether the device is still discoverable before you begin moving room to room.",
+        "Check the strongest nearby signal at the last known location first.",
+        "Use the app's signal changes to decide whether to keep searching the same zone or move on.",
+        "Only expand the search radius after the close-range signal stops improving.",
+    ]
+    search_steps_html = "\n".join(f"          <li>{escape(item)}</li>" for item in search_steps)
+    trap_checks = [
+        "Do not treat one strong spike as proof unless it repeats from the same spot.",
+        "Do not skip bags, cushions, drawers, or seat gaps just because the room scan looks noisy.",
+        "Do not jump to a full-house search before exhausting the closest likely hiding place.",
+        "Do not trust a signal reading after the device has already dropped out of range.",
+    ]
+    trap_checks_html = "\n".join(f"          <li>{escape(item)}</li>" for item in trap_checks)
 
     faq_items = [
         {
@@ -372,42 +392,39 @@ def render_article_html(day: date, angle: FindAngle, post: PostMeta) -> str:
         <div class="links"><a href="/aifind/">Open Find AI</a><a href="https://apps.apple.com/us/app/find-ai-super-bluetooth-finder/id6757230039" target="_blank" rel="noopener noreferrer">App Store</a></div>
       </div>
       <div class="tldr">
-        <p><strong>TL;DR:</strong> {escape(tldr)}</p>
-      </div>
-      <h2>What Problem Does Find AI Solve?</h2>
         <p>{escape(tldr)}</p>
+      </div>
+      <div class="panel">
+        <h2>{escape(angle.topic)}: The Real Decision</h2>
         <p>{escape(answer_first)}</p>
         <p>{escape(angle.intent_focus)}</p>
+      </div>
       <div class="panel">
-        <h2>Why Does This Workflow Fit Find AI?</h2>
+        <h2>{escape(["How the Search Holds Together", "Why This Workflow Works", "What Changes the Signal Story"][variant])}</h2>
         <p>{escape(workflow_lead)}</p>
         <p>{escape(angle.workflow_focus)}</p>
       </div>
       <div class="panel">
-        <h2>How Should Users Read the Recovery Signal?</h2>
+        <h2>{escape(["How to Read the Signal", "Where the Recovery Can Fail", "When to Stop Chasing the Radar"][variant])}</h2>
         <p>{escape(angle.edge_focus)}</p>
         <p>{escape(signal_lead)}</p>
       </div>
       <div class="panel">
-        <h2>Bluetooth Recovery Steps</h2>
+        <h2>{escape(["Bluetooth Recovery Steps", "Search Order", "Recovery Checklist"][variant])}</h2>
         <ol>
-{recovery_steps_html}
+{recovery_steps_html if variant == 0 else search_steps_html if variant == 1 else recovery_steps_html}
         </ol>
       </div>
       <div class="panel">
-        <h2>Common Questions</h2>
-        <h3>Can Find AI help me find lost AirPods nearby?</h3>
-        <p>Yes. Find AI can scan nearby bluetooth devices, show a live distance radar, and help guide you toward lost AirPods or earbuds that are still discoverable.</p>
-        <h3>What should I do if my earbuds disappear from the scan?</h3>
-        <p>Use the last seen clue to return to the most recent detected area, then restart a nearby scan and walk the signal again once the device is back in range.</p>
-        <h3>Does Find AI only work for AirPods?</h3>
-        <p>No. Find AI is designed for AirPods, Beats, earbuds, and other nearby discoverable bluetooth accessories when they are still within a recoverable range.</p>
+        <h2>{escape(["Where People Go Wrong", "Trap Checks", "When This Stops Helping"][variant])}</h2>
+        <ul>
+{trap_checks_html if variant == 1 else recovery_steps_html if variant == 2 else trap_checks_html}
+        </ul>
       </div>
       <div class="panel">
-        <h2>Related Product Paths</h2>
-        <p><a href="/aifind/">Find AI product page</a> explains real-time distance radar, smart device grouping, and last seen location in more detail.</p>
-        <p><a href="/blog/find-lost-airpods-bluetooth-finder-guide.html">Find lost AirPods bluetooth finder guide</a> covers recovery basics for nearby scans and restart logic.</p>
-        <p><a href="/blog/bluetooth-device-discovery-debugging-checklist-2026-03-04.html">Bluetooth device discovery debugging checklist</a> helps when the target is not discoverable during a scan.</p>
+        <h2>{escape(["Useful Next Step", "Related Read", "Follow-Up Path"][variant])}</h2>
+        <p>Open <a href="/aifind/">Find AI</a> if the device is still nearby enough to scan, then compare the strongest signal at the last known location before you widen the search.</p>
+        <p><a href="/blog/find-lost-airpods-bluetooth-finder-guide.html">Find lost AirPods bluetooth finder guide</a> stays useful when you need a simple recovery checklist instead of a deeper signal read.</p>
       </div>
     </article>
   </main>
@@ -438,6 +455,9 @@ def main() -> int:
         return 0
 
     blog_dir = repo_root / "blog"
+    similarity = max_similarity_against_existing(html, load_blog_pages(blog_dir))
+    if similarity >= 0.40:
+        raise ValueError(f"Refusing to publish {post.filename}: similarity {similarity:.4f} >= 0.40")
     article_path = blog_dir / post.filename
     article_path.write_text(html, encoding="utf-8")
     inject_site_tools_into_file(article_path)
