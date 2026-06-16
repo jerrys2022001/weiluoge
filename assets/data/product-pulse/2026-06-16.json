@@ -1,6 +1,6 @@
 {
   "date": "2026-06-16",
-  "refreshed_at": "2026-06-16T08:43:23.629870+08:00",
+  "refreshed_at": "2026-06-16T08:44:48.208516+08:00",
   "item_count": 10,
   "items": [
     {
@@ -29,7 +29,7 @@
       "published_at": "2026-06-15T23:57:30+00:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/apple-0a4cdab425e12965-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/apple-934c61ee9aec8e6b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-07/apple-e313a2f2d897ea3d-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-15T23:51:44+00:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/industry-81df7ac883e402ca-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/industry-70b156b3d906707c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-10/industry-fe3dd1e651bfd4dd-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-06-15T16:17:00-07:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/apple-74ccb940df31dd9b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-01/apple-936bd5d90a81a727-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-02/apple-25ae260d4fa69586-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "From a customizable Camera app to third-party AI in Siri, Apple may have three more surprises lined up for September. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-15T23:13:55+00:00",
       "display_date": "JUN 16",
-      "image_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-16/apple-74ccb940df31dd9b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-16/apple-74ccb940df31dd9b-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-15T23:01:00+00:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/industry-1e9bcee037a02b9d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-13/industry-c1d734b17da17b24-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-19/industry-5538456cd181b23a-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-15T15:56:50-07:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/apple-f081bb65c1c9dec9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-23/apple-b697f462bc3fe27f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-03-25/apple-353a9276bcf1cbf7-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-15T21:50:21+00:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/industry-948e83f3389377bb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/industry-544e370684f5c137-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-16/industry-38deee077d95d18f-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-15T18:46:08+00:00",
       "display_date": "JUN 16",
       "image_src": "/assets/images/home-briefing/2026-06-16/ai-ee987905c5e91bd1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/ai-6a32bf25e1b69779-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-16/ai-c1640cf30c54b600-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-12T20:57:12+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-16/bluetooth-609e8424e2c61cc8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-21/bluetooth-624f8cf4309a07ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-22/bluetooth-624f8cf4309a07ac-thumb.webp"
     }
   ]
 }
