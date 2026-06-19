@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Mobile Approvals Need a Cost Ledger | VelocAI Blog</title>
+  <meta name="description" content="An Octopus workflow for deciding when a mobile Codex approval is a bounded next step and when it is quietly becoming an expensive loop.">
+  <meta name="keywords" content="Mobile Codex Approval Budgeting, Octopus, VelocAI, practical workflow, mobile decision guide">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-mobile-approval-cost-ledger-guide-2026-06-18.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Mobile Approvals Need a Cost Ledger">
+  <meta property="og:description" content="An Octopus workflow for deciding when a mobile Codex approval is a bounded next step and when it is quietly becoming an expensive loop.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-mobile-approval-cost-ledger-guide-2026-06-18.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Mobile Approvals Need a Cost Ledger">
+  <meta name="twitter:description" content="An Octopus workflow for deciding when a mobile Codex approval is a bounded next step and when it is quietly becoming an expensive loop.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Mobile Approvals Need a Cost Ledger",
+      "description": "An Octopus workflow for deciding when a mobile Codex approval is a bounded next step and when it is quietly becoming an expensive loop.",
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-mobile-approval-cost-ledger-guide-2026-06-18.html",
+      "keywords": [
+        "Mobile Codex Approval Budgeting",
+        "Octopus",
+        "VelocAI",
+        "practical workflow",
+        "mobile decision guide"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is a mobile Octopus approval safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the action is narrow, reversible, and tied to a specific expected output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should stop the approval loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Repeated retries, unclear file changes, broad permissions, dependency installs, or deployment access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why keep a cost ledger?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It turns agent time, retries, and tool calls into visible signals before another approval is granted."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f6f8f7; --text:#17201c; --muted:#52615b; --line:#d3ddd8; --panel:#fff; --brand:#176b54; --accent:#d95f43; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(246,248,247,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.2vw, 49px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 32px); }
+    p,li { color:#31443b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.note { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.note { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e6f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .note { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus approval workflow</span>
+        <h1>Octopus Mobile Approvals Need a Cost Ledger</h1>
+        <p class="meta">Published on 2026-06-18 | Topic: Mobile Codex Approval Budgeting</p>
+        <p>An Octopus workflow for deciding when a mobile Codex approval is a bounded next step and when it is quietly becoming an expensive loop.</p>
+      </div>
+      <div class="note">
+        <p><strong>Short answer:</strong> Use Octopus for mobile approvals when the next Codex action has a visible budget, a narrow target, and a stop condition. Use the rest of the workflow only if the next decision changes what you do, not because another app screen looks busy.</p>
+      </div>
+      <section class="panel">
+        <h2>The Cheap Tap</h2>
+        <p>Use Octopus for mobile approvals when the next Codex action has a visible budget, a narrow target, and a stop condition. The dangerous approval is the one that feels tiny on the phone but opens another broad investigation on the server.</p>
+      </section>
+      <section class="panel">
+        <h2>Ledger First</h2>
+        <p>Before approving, ask for the previous command, files touched, expected output, and retry count. If the agent cannot summarize those four items, the thread is not ready for another mobile yes.</p>
+      </section>
+      <section class="panel">
+        <h2>One More Try</h2>
+        <p>Approve one bounded attempt when the next action is a test rerun, a single file patch, or a small diagnostic command. Do not approve another tool loop when the agent is changing strategy, adding dependencies, or touching credentials.</p>
+      </section>
+      <section class="panel">
+        <h2>Desktop Handback</h2>
+        <p>Move back to desktop when the answer needs wide diff review, package installation, deployment access, or a judgment across several unrelated files. Octopus is the control point. It should not become a tiny screen for pretending you reviewed everything.</p>
+      </section>
+      <section class="panel">
+        <h2>Approval Budget Checklist</h2>
+        <ul>
+          <li>Confirm the current project, server, branch, and thread title.</li>
+          <li>Ask Codex to state the next command and expected output in one sentence.</li>
+          <li>Limit mobile approval to one inspectable state change.</li>
+          <li>Pause when retries repeat without a new hypothesis.</li>
+          <li>Use desktop review for dependencies, secrets, deploys, and broad diffs.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Small Questions</h2>
+        <p><strong>When is a mobile Octopus approval safe?</strong><br>When the action is narrow, reversible, and tied to a specific expected output.</p>
+        <p><strong>What should stop the approval loop?</strong><br>Repeated retries, unclear file changes, broad permissions, dependency installs, or deployment access.</p>
+        <p><strong>Why keep a cost ledger?</strong><br>It turns agent time, retries, and tool calls into visible signals before another approval is granted.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/octopus/">Octopus product page</a></li>
+          <li><a href="/bluetoothexplorer/">Bluetooth Explorer product page</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/octopus/">Open Octopus</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

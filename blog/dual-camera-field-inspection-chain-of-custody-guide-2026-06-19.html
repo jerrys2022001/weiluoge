@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dual Camera Makes Training Mistakes Easier to Replay | VelocAI Blog</title>
+  <meta name="description" content="A Dual Camera training workflow for managers who need to show both the learner&#x27;s hand movement and the resulting screen, gauge, product, or machine state.">
+  <meta name="keywords" content="Training Mistake Replay, Dual Camera, VelocAI, practical workflow, mobile decision guide">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/dual-camera-field-inspection-chain-of-custody-guide-2026-06-19.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Dual Camera Makes Training Mistakes Easier to Replay">
+  <meta property="og:description" content="A Dual Camera training workflow for managers who need to show both the learner&#x27;s hand movement and the resulting screen, gauge, product, or machine state.">
+  <meta property="og:url" content="https://velocai.net/blog/dual-camera-field-inspection-chain-of-custody-guide-2026-06-19.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dual Camera Makes Training Mistakes Easier to Replay">
+  <meta name="twitter:description" content="A Dual Camera training workflow for managers who need to show both the learner&#x27;s hand movement and the resulting screen, gauge, product, or machine state.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Dual Camera Makes Training Mistakes Easier to Replay",
+      "description": "A Dual Camera training workflow for managers who need to show both the learner's hand movement and the resulting screen, gauge, product, or machine state.",
+      "datePublished": "2026-06-19",
+      "dateModified": "2026-06-19",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/dual-camera-field-inspection-chain-of-custody-guide-2026-06-19.html",
+      "keywords": [
+        "Training Mistake Replay",
+        "Dual Camera",
+        "VelocAI",
+        "practical workflow",
+        "mobile decision guide"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why use Dual Camera for training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It shows action and result together, which makes coaching more concrete than a written note."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you avoid blame-heavy footage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Record the task sequence, keep the clip short, and discuss the step rather than the person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What clips are worth saving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Save clips that reveal a repeated error, confusing interface, missing inspection step, or workstation layout issue."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f6f8f7; --text:#17201c; --muted:#52615b; --line:#d3ddd8; --panel:#fff; --brand:#176b54; --accent:#d95f43; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(246,248,247,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.2vw, 49px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 32px); }
+    p,li { color:#31443b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.note { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.note { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e6f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .note { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/dualshot/">Dual Camera</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Dual Camera training workflow</span>
+        <h1>Dual Camera Makes Training Mistakes Easier to Replay</h1>
+        <p class="meta">Published on 2026-06-19 | Topic: Training Mistake Replay</p>
+        <p>A Dual Camera training workflow for managers who need to show both the learner&#x27;s hand movement and the resulting screen, gauge, product, or machine state.</p>
+      </div>
+      <div class="note">
+        <p><strong>Short answer:</strong> Use Dual Camera when the training problem is not what someone said, but what their hands did right before the result went sideways. Use the rest of the workflow only if the next decision changes what you do, not because another app screen looks busy.</p>
+      </div>
+      <section class="panel">
+        <h2>The Missed Step</h2>
+        <p>Use Dual Camera when the training problem is not what someone said, but what their hands did right before the result went sideways. A single front camera usually catches the face or the machine. It rarely catches the cause and the consequence together.</p>
+      </section>
+      <section class="panel">
+        <h2>Hands Plus Result</h2>
+        <p>Frame one view on the learner&#x27;s hands, tool, or control panel. Frame the other on the output: screen message, gauge reading, assembled part, packaging label, or machine response. That pair turns a vague coaching note into a replayable moment.</p>
+      </section>
+      <section class="panel">
+        <h2>No Blame Clip</h2>
+        <p>Say the expected step before recording the retry. Keep the clip short and use it to compare sequence, not to embarrass the learner. Good training video is boring enough that people will actually watch it twice.</p>
+      </section>
+      <section class="panel">
+        <h2>Archive Less</h2>
+        <p>Keep only clips that change the next training decision: a repeated grip error, a confusing screen prompt, a missing inspection step, or a layout problem that makes the correct move awkward. Delete the rest after the note is written.</p>
+      </section>
+      <section class="panel">
+        <h2>Training Replay Checklist</h2>
+        <ul>
+          <li>Name the task and expected sequence before the retry starts.</li>
+          <li>Keep one view on hands or controls and one view on the result.</li>
+          <li>Stop recording as soon as the mistake and correction are visible.</li>
+          <li>Tag the clip with the training module, not the learner&#x27;s personality.</li>
+          <li>Keep the video only when it changes the coaching note or workstation setup.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Small Questions</h2>
+        <p><strong>Why use Dual Camera for training?</strong><br>It shows action and result together, which makes coaching more concrete than a written note.</p>
+        <p><strong>How do you avoid blame-heavy footage?</strong><br>Record the task sequence, keep the clip short, and discuss the step rather than the person.</p>
+        <p><strong>What clips are worth saving?</strong><br>Save clips that reveal a repeated error, confusing interface, missing inspection step, or workstation layout issue.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/dualshot/">Dual Camera product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/dualshot/">Open Dual Camera</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

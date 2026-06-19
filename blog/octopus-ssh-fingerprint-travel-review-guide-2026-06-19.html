@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus SSH Prompts Need Extra Skepticism When You Travel | VelocAI Blog</title>
+  <meta name="description" content="An Octopus workflow for reviewing SSH fingerprint prompts, server identity, and mobile coding access when the developer is away from the usual network.">
+  <meta name="keywords" content="Mobile SSH Trust Review, Octopus, VelocAI, practical workflow, mobile decision guide">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-ssh-fingerprint-travel-review-guide-2026-06-19.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus SSH Prompts Need Extra Skepticism When You Travel">
+  <meta property="og:description" content="An Octopus workflow for reviewing SSH fingerprint prompts, server identity, and mobile coding access when the developer is away from the usual network.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-ssh-fingerprint-travel-review-guide-2026-06-19.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus SSH Prompts Need Extra Skepticism When You Travel">
+  <meta name="twitter:description" content="An Octopus workflow for reviewing SSH fingerprint prompts, server identity, and mobile coding access when the developer is away from the usual network.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus SSH Prompts Need Extra Skepticism When You Travel",
+      "description": "An Octopus workflow for reviewing SSH fingerprint prompts, server identity, and mobile coding access when the developer is away from the usual network.",
+      "datePublished": "2026-06-19",
+      "dateModified": "2026-06-19",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-ssh-fingerprint-travel-review-guide-2026-06-19.html",
+      "keywords": [
+        "Mobile SSH Trust Review",
+        "Octopus",
+        "VelocAI",
+        "practical workflow",
+        "mobile decision guide"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should developers approve SSH fingerprints from mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when the host identity and reason for the prompt are clear. No, when the prompt is unexpected or the network context is suspicious."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes travel different?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The developer loses familiar network context and is more likely to rush a trust prompt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should Octopus hand back to desktop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the fingerprint changed unexpectedly, the server controls production, or the approval depends on broad system context."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f6f8f7; --text:#17201c; --muted:#52615b; --line:#d3ddd8; --panel:#fff; --brand:#176b54; --accent:#d95f43; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(246,248,247,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.2vw, 49px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 32px); }
+    p,li { color:#31443b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.note { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.note { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e6f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .note { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus SSH workflow</span>
+        <h1>Octopus SSH Prompts Need Extra Skepticism When You Travel</h1>
+        <p class="meta">Published on 2026-06-19 | Topic: Mobile SSH Trust Review</p>
+        <p>An Octopus workflow for reviewing SSH fingerprint prompts, server identity, and mobile coding access when the developer is away from the usual network.</p>
+      </div>
+      <div class="note">
+        <p><strong>Short answer:</strong> Use Octopus SSH review more slowly when the prompt appears on hotel Wi-Fi, airport Wi-Fi, a client network, or a tethered phone. Use the rest of the workflow only if the next decision changes what you do, not because another app screen looks busy.</p>
+      </div>
+      <section class="panel">
+        <h2>The Travel Prompt</h2>
+        <p>Use Octopus SSH review more slowly when the prompt appears on hotel Wi-Fi, airport Wi-Fi, a client network, or a tethered phone. The prompt may be routine. The point is that travel removes a lot of the quiet context you normally rely on.</p>
+      </section>
+      <section class="panel">
+        <h2>Name The Server</h2>
+        <p>Before accepting a fingerprint, confirm the server label, project, expected host, recent session, and why the connection is happening now. If the answer is just &#x27;I need to check something quickly,&#x27; that is not enough for a trust decision.</p>
+      </section>
+      <section class="panel">
+        <h2>Compare The Story</h2>
+        <p>The fingerprint prompt should match a story: new server, rebuilt host, changed SSH config, or first connection from this device. If the story is not clear, pause and verify from a safer channel before approving.</p>
+      </section>
+      <section class="panel">
+        <h2>Phone Limit</h2>
+        <p>The phone is good for confirming a known host and continuing a narrow session. It is not the right surface for diagnosing an unexpected key change while distracted in public. That decision deserves the desktop, the server console, or another trusted admin path.</p>
+      </section>
+      <section class="panel">
+        <h2>Travel SSH Checklist</h2>
+        <ul>
+          <li>Confirm the network, host label, project, and reason for the connection.</li>
+          <li>Accept first-time fingerprints only when the server identity is already known.</li>
+          <li>Pause unexpected key changes until another trusted channel verifies them.</li>
+          <li>Avoid broad coding approvals from public networks when the prompt context is unclear.</li>
+          <li>Return to desktop review for host rebuilds, credential changes, and production access.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Small Questions</h2>
+        <p><strong>Should developers approve SSH fingerprints from mobile?</strong><br>Yes, when the host identity and reason for the prompt are clear. No, when the prompt is unexpected or the network context is suspicious.</p>
+        <p><strong>What makes travel different?</strong><br>The developer loses familiar network context and is more likely to rush a trust prompt.</p>
+        <p><strong>When should Octopus hand back to desktop?</strong><br>When the fingerprint changed unexpectedly, the server controls production, or the approval depends on broad system context.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/octopus/">Octopus product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/octopus/">Open Octopus</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

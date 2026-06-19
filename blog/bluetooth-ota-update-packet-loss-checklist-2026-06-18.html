@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth OTA Updates Need a Packet Loss Stop Rule | VelocAI Blog</title>
+  <meta name="description" content="A Bluetooth Explorer workflow for firmware teams deciding when an OTA failure is a link problem, a cache problem, or a release blocker.">
+  <meta name="keywords" content="Bluetooth OTA Update Debugging, Bluetooth Explorer, VelocAI, practical workflow, mobile decision guide">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-ota-update-packet-loss-checklist-2026-06-18.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth OTA Updates Need a Packet Loss Stop Rule">
+  <meta property="og:description" content="A Bluetooth Explorer workflow for firmware teams deciding when an OTA failure is a link problem, a cache problem, or a release blocker.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-ota-update-packet-loss-checklist-2026-06-18.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth OTA Updates Need a Packet Loss Stop Rule">
+  <meta name="twitter:description" content="A Bluetooth Explorer workflow for firmware teams deciding when an OTA failure is a link problem, a cache problem, or a release blocker.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth OTA Updates Need a Packet Loss Stop Rule",
+      "description": "A Bluetooth Explorer workflow for firmware teams deciding when an OTA failure is a link problem, a cache problem, or a release blocker.",
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-ota-update-packet-loss-checklist-2026-06-18.html",
+      "keywords": [
+        "Bluetooth OTA Update Debugging",
+        "Bluetooth Explorer",
+        "VelocAI",
+        "practical workflow",
+        "mobile decision guide"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is a Bluetooth OTA retry acceptable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One retry in a noisy room is acceptable. Repeated retries at the same offset are a release signal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should testers clear the GATT cache first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only when the firmware changes services or characteristics. Otherwise cache clearing can hide the actual link problem."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should the bug report include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The transfer offset, phone model, OS version, firmware hash, RSSI range, and whether the peripheral advertised again after failure."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f6f8f7; --text:#17201c; --muted:#52615b; --line:#d3ddd8; --panel:#fff; --brand:#176b54; --accent:#d95f43; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(246,248,247,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.2vw, 49px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 32px); }
+    p,li { color:#31443b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.note { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.note { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e6f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .note { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Bluetooth Explorer protocol workflow</span>
+        <h1>Bluetooth OTA Updates Need a Packet Loss Stop Rule</h1>
+        <p class="meta">Published on 2026-06-18 | Topic: Bluetooth OTA Update Debugging</p>
+        <p>A Bluetooth Explorer workflow for firmware teams deciding when an OTA failure is a link problem, a cache problem, or a release blocker.</p>
+      </div>
+      <div class="note">
+        <p><strong>Short answer:</strong> Treat an OTA update as unsafe when loss clusters around the same transfer range twice in a row. Use the rest of the workflow only if the next decision changes what you do, not because another app screen looks busy.</p>
+      </div>
+      <section class="panel">
+        <h2>The Failure Window</h2>
+        <p>Treat an OTA update as unsafe when loss clusters around the same transfer range twice in a row. A single dropped packet can be noise; repeated loss near the manifest, image boundary, or verification step is a product signal.</p>
+      </section>
+      <section class="panel">
+        <h2>What To Capture</h2>
+        <p>Log connection interval, negotiated MTU, RSSI range, peripheral battery level, firmware build, and the exact byte offset where retry starts. The useful record is not a dramatic screen recording. It is a boring table that lets another engineer reproduce the bad minute.</p>
+      </section>
+      <section class="panel">
+        <h2>Cache Or Link</h2>
+        <p>If service discovery changes after the firmware update, clear the GATT cache before blaming radio conditions. If the attribute table is stable and the failure moves with distance, interference, or phone model, the link is the better suspect.</p>
+      </section>
+      <section class="panel">
+        <h2>Release Gate</h2>
+        <p>Do not ship when three phones fail in the same offset window, when retry count climbs after the verification command, or when the device needs a power cycle to advertise again. That is not a flaky lab day; that is a support queue forming early.</p>
+      </section>
+      <section class="panel">
+        <h2>OTA Debug Checklist</h2>
+        <ul>
+          <li>Run one near-field transfer and one normal-use transfer before changing code.</li>
+          <li>Record MTU, interval, PHY, RSSI, battery, firmware hash, and failure offset.</li>
+          <li>Separate cache refresh tests from radio-distance tests.</li>
+          <li>Stop after two repeated offset failures and inspect the packet window.</li>
+          <li>Keep Bluetooth Explorer notes tied to the firmware build, not the tester&#x27;s memory.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Small Questions</h2>
+        <p><strong>When is a Bluetooth OTA retry acceptable?</strong><br>One retry in a noisy room is acceptable. Repeated retries at the same offset are a release signal.</p>
+        <p><strong>Should testers clear the GATT cache first?</strong><br>Only when the firmware changes services or characteristics. Otherwise cache clearing can hide the actual link problem.</p>
+        <p><strong>What should the bug report include?</strong><br>The transfer offset, phone model, OS version, firmware hash, RSSI range, and whether the peripheral advertised again after failure.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/bluetoothexplorer/">Bluetooth Explorer product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/bluetoothexplorer/">Open Bluetooth Explorer</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
