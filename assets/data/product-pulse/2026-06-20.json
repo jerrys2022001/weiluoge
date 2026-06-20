@@ -1,6 +1,6 @@
 {
   "date": "2026-06-20",
-  "refreshed_at": "2026-06-20T08:30:04.841664+08:00",
+  "refreshed_at": "2026-06-20T08:32:58.503566+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-19T23:00:00+00:00",
       "display_date": "JUN 20",
       "image_src": "/assets/images/home-briefing/2026-06-20/industry-e3f3d473cc0e1721-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-03-30/industry-e59f72d13eb61bf0-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-27/industry-bc1f175cf10e6ff1-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Every tap, every search: Apple's new App Store Personalized Collections feature could be recording all of it. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-19T22:09:52+00:00",
       "display_date": "JUN 20",
-      "image_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-cb888b5c56910569-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-30/apple-ec0e50da45ca3c53-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-ec0e50da45ca3c53-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "Despite iPhone parts manufacturer Tata saying recent water samples collected inside its factory in Hosur, India, showed no signs of contamination, Reuters reports that local health officials are still investigating complaints from nearby...",
       "published_at": "2026-06-19T19:51:38+00:00",
       "display_date": "JUN 20",
-      "image_src": "/assets/images/home-briefing/2026-06-09/apple-257480a8d619c2d9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-257480a8d619c2d9-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-09/apple-4d2db7a46c00d784-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-4d2db7a46c00d784-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-06-19T19:43:48+00:00",
       "display_date": "JUN 20",
       "image_src": "/assets/images/home-briefing/2026-06-20/industry-dff61a3bab7138c3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-01/industry-d01aa35b675ce01a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-25/industry-e4b6b863a7fb34d3-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-06-19T19:38:06+00:00",
       "display_date": "JUN 20",
       "image_src": "/assets/images/home-briefing/2026-06-20/industry-697da332d40d7902-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/industry-c235afa19b01d78e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-07/industry-2f1fec56adf697af-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-19T18:48:49+00:00",
       "display_date": "JUN 20",
       "image_src": "/assets/images/home-briefing/2026-06-20/apple-01845e1b2a381809-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-cf67ae3025bb0df9-thumb.webp"
     },
     {
       "index": 7,
@@ -98,8 +98,8 @@
       "summary": "Alogic is bringing more touch and stylus input options to Mac with a new desktop monitor and portable displays, expanding a lineup that adds a feature Apple doesn't offer on its own hardware yet. The Aspekt Touch 27 The company unveiled...",
       "published_at": "2026-06-19T17:42:55+00:00",
       "display_date": "JUN 20",
-      "image_src": "/assets/images/home-briefing/2026-06-06/apple-da15f0cb9521a9af-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/apple-da15f0cb9521a9af-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-06/apple-e150a393e8d14904-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-06/apple-e150a393e8d14904-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-19T15:55:04+00:00",
       "display_date": "JUN 19",
       "image_src": "/assets/images/home-briefing/2026-06-20/ai-03a54370a014a15f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-01/ai-bd7dcec6902f8ebf-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-02/ai-8a8d6c2551fa55b9-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "Apple-Intel is on, says Trump; Amkor's big win; Intel 18A-P; Amazon to sell its AI chips; Rambus' automotive RoT; Brewer's buy; VLSI Symposium tech; CHIPS Act funding; MIT sensor; RISC-V CPU fuzzing. The post Chip Industry Week In Review...",
       "published_at": "2026-06-19T07:01:41+00:00",
       "display_date": "JUN 19",
-      "image_src": "/assets/images/home-briefing/2026-04-15/semiconductor-3a2e98bd0e944603-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-15/semiconductor-3a2e98bd0e944603-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-12/semiconductor-8e478d66ddc5a64d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-12/semiconductor-8e478d66ddc5a64d-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-12T20:57:12+00:00",
       "display_date": "JUN 13",
       "image_src": "/assets/images/home-briefing/2026-06-20/bluetooth-609e8424e2c61cc8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-25/bluetooth-33dba414258fad51-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-26/bluetooth-33dba414258fad51-thumb.webp"
     }
   ]
 }
