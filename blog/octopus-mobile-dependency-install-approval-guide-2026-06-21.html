@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Should Treat Dependency Installs as a Bigger Approval | VelocAI Blog</title>
+  <meta name="description" content="An Octopus workflow for reviewing package installs from mobile when Codex asks for npm, pip, cargo, or system dependency access.">
+  <meta name="keywords" content="Octopus, Mobile Dependency Approval, VelocAI, practical workflow, decision checklist">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-mobile-dependency-install-approval-guide-2026-06-21.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Should Treat Dependency Installs as a Bigger Approval">
+  <meta property="og:description" content="An Octopus workflow for reviewing package installs from mobile when Codex asks for npm, pip, cargo, or system dependency access.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-mobile-dependency-install-approval-guide-2026-06-21.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Should Treat Dependency Installs as a Bigger Approval">
+  <meta name="twitter:description" content="An Octopus workflow for reviewing package installs from mobile when Codex asks for npm, pip, cargo, or system dependency access.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Should Treat Dependency Installs as a Bigger Approval",
+      "description": "An Octopus workflow for reviewing package installs from mobile when Codex asks for npm, pip, cargo, or system dependency access.",
+      "datePublished": "2026-06-21",
+      "dateModified": "2026-06-21",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-mobile-dependency-install-approval-guide-2026-06-21.html",
+      "keywords": [
+        "Octopus",
+        "Mobile Dependency Approval",
+        "VelocAI",
+        "practical workflow",
+        "decision checklist"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can Octopus approve dependency installs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when the install is narrow, explainable, and followed by lockfile review."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes an install risky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Broad version ranges, scripts, native binaries, private registries, system packages, and unclear file changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should mobile stop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop when the install changes the build system, deployment path, credentials, or a large dependency tree."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7f8f5; --text:#18201b; --muted:#56645d; --line:#d5ddd6; --panel:#fff; --brand:#176b54; --accent:#a85f99; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,248,245,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.1vw, 48px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 31px); }
+    p,li { color:#31433b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.answer { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.answer { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e7f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus dependency workflow</span>
+        <h1>Octopus Should Treat Dependency Installs as a Bigger Approval</h1>
+        <p class="meta">Published on 2026-06-21 | Topic: Mobile Dependency Approval</p>
+        <p>A dependency install does not deserve the same casual thumb tap as a test rerun. Yes, the phone makes it easy. That is exactly why the approval should feel heavier, because the blast radius is not the same.</p>
+      </div>
+      <div class="answer">
+        <p><strong>Useful answer:</strong> An Octopus workflow for reviewing package installs from mobile when Codex asks for npm, pip, cargo, or system dependency access.</p>
+      </div>
+      <section class="panel">
+        <h2>Read The Ask</h2>
+        <p>Before approving from Octopus, make Codex name the package, version range, registry, reason, files that will change, and whether a lockfile update is expected. If the request cannot fit into that summary, the approval is too vague for mobile.</p>
+      </section>
+      <section class="panel">
+        <h2>Package Smell</h2>
+        <p>Pause on abandoned packages, broad version ranges, postinstall scripts, native binaries, credential prompts, or requests that switch package managers. None of those automatically mean no. They mean stop pretending this is a tiny command.</p>
+      </section>
+      <section class="panel">
+        <h2>Bounded Yes</h2>
+        <p>A mobile yes is reasonable when the package is already part of the project convention, the version is pinned or constrained, and the next step is a narrow install plus diff review. Approve the install, then inspect the lockfile before letting the agent wander.</p>
+      </section>
+      <section class="panel">
+        <h2>Desktop Review</h2>
+        <p>Move to desktop for system packages, production deploy changes, private registries, new build tools, or dependency chains that rewrite half the tree. Octopus can hold the thread and context, but the review surface needs to match the risk.</p>
+      </section>
+      <section class="panel">
+        <h2>Install Approval Gate</h2>
+        <ul>
+          <li>Ask for package name, version, registry, reason, and expected file changes.</li>
+          <li>Watch for postinstall scripts, native binaries, and package-manager switches.</li>
+          <li>Approve only one bounded install from mobile.</li>
+          <li>Inspect lockfile and changed files before approving follow-up work.</li>
+          <li>Use desktop review for system packages, private registries, and broad toolchain changes.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Quick Checks</h2>
+        <p><strong>Can Octopus approve dependency installs?</strong><br>Yes, when the install is narrow, explainable, and followed by lockfile review.</p>
+        <p><strong>What makes an install risky?</strong><br>Broad version ranges, scripts, native binaries, private registries, system packages, and unclear file changes.</p>
+        <p><strong>When should mobile stop?</strong><br>Stop when the install changes the build system, deployment path, credentials, or a large dependency tree.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/octopus/">Octopus product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/octopus/">Open Octopus</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

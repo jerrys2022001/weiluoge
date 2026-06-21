@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Sleep-Wake Bugs Are Battery Bugs First | VelocAI Blog</title>
+  <meta name="description" content="A Bluetooth Explorer workflow for teams debugging devices that reconnect after sleep but quietly burn battery through repeated advertising and stale handles.">
+  <meta name="keywords" content="Bluetooth Explorer, Bluetooth Sleep Wake Reconnect, VelocAI, practical workflow, decision checklist">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-sleep-wake-reconnect-battery-guide-2026-06-20.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Sleep-Wake Bugs Are Battery Bugs First">
+  <meta property="og:description" content="A Bluetooth Explorer workflow for teams debugging devices that reconnect after sleep but quietly burn battery through repeated advertising and stale handles.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-sleep-wake-reconnect-battery-guide-2026-06-20.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Sleep-Wake Bugs Are Battery Bugs First">
+  <meta name="twitter:description" content="A Bluetooth Explorer workflow for teams debugging devices that reconnect after sleep but quietly burn battery through repeated advertising and stale handles.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth Sleep-Wake Bugs Are Battery Bugs First",
+      "description": "A Bluetooth Explorer workflow for teams debugging devices that reconnect after sleep but quietly burn battery through repeated advertising and stale handles.",
+      "datePublished": "2026-06-20",
+      "dateModified": "2026-06-20",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-sleep-wake-reconnect-battery-guide-2026-06-20.html",
+      "keywords": [
+        "Bluetooth Explorer",
+        "Bluetooth Sleep Wake Reconnect",
+        "VelocAI",
+        "practical workflow",
+        "decision checklist"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why treat reconnect as a battery issue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because repeated wake, advertise, connect, and fail cycles can drain the peripheral even when the UI looks fine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should Bluetooth Explorer capture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Advertising behavior, RSSI, service discovery, connection attempts, and whether reads use fresh attributes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should the release stop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stop when the wake loop repeats across phones or when idle drain appears before real user action."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7f8f5; --text:#18201b; --muted:#56645d; --line:#d5ddd6; --panel:#fff; --brand:#176b54; --accent:#d95f43; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,248,245,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.1vw, 48px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 31px); }
+    p,li { color:#31433b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.answer { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.answer { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e7f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Bluetooth Explorer power workflow</span>
+        <h1>Bluetooth Sleep-Wake Bugs Are Battery Bugs First</h1>
+        <p class="meta">Published on 2026-06-20 | Topic: Bluetooth Sleep Wake Reconnect</p>
+        <p>The annoying report is usually phrased as a reconnect bug, but the real damage is often battery drain. The device sleeps, wakes, advertises, half-connects, retries, and now the product manager is staring at a battery chart that looks like a tiny ski slope.</p>
+      </div>
+      <div class="answer">
+        <p><strong>Useful answer:</strong> A Bluetooth Explorer workflow for teams debugging devices that reconnect after sleep but quietly burn battery through repeated advertising and stale handles.</p>
+      </div>
+      <section class="panel">
+        <h2>Name The Wake</h2>
+        <p>Start by naming the wake reason before changing firmware. Button press, sensor interrupt, scheduled sample, charger attach, and phone proximity should not be mixed in one test run. If you cannot name the wake reason, every reconnect trace becomes folklore.</p>
+      </section>
+      <section class="panel">
+        <h2>Measure The Quiet</h2>
+        <p>Use Bluetooth Explorer to compare the quiet window before sleep with the first 60 seconds after wake. Record advertising interval, connection attempt count, RSSI, service discovery result, and whether the app reads fresh values or stale handles.</p>
+      </section>
+      <section class="panel">
+        <h2>Battery Tells</h2>
+        <p>The battery clue is repeated activity without user value. Three advertising bursts can be normal. A loop of advertise, connect, fail discovery, disconnect, and advertise again is not normal, even if the app eventually looks connected.</p>
+      </section>
+      <section class="panel">
+        <h2>Ship Or Hold</h2>
+        <p>Hold the build when the wake loop repeats on two phone models or when battery loss appears before the user touches the product. Ship only after the trace shows one clean wake path and one clean fallback path.</p>
+      </section>
+      <section class="panel">
+        <h2>Sleep-Wake Notes</h2>
+        <ul>
+          <li>Test each wake reason separately before combining scenarios.</li>
+          <li>Record advertising interval and connection attempts after wake.</li>
+          <li>Compare fresh pairing against a phone that has old handles cached.</li>
+          <li>Track battery before and after a fixed 30-minute idle window.</li>
+          <li>Stop calling it a reconnect issue when the power trace is the real failure.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Quick Checks</h2>
+        <p><strong>Why treat reconnect as a battery issue?</strong><br>Because repeated wake, advertise, connect, and fail cycles can drain the peripheral even when the UI looks fine.</p>
+        <p><strong>What should Bluetooth Explorer capture?</strong><br>Advertising behavior, RSSI, service discovery, connection attempts, and whether reads use fresh attributes.</p>
+        <p><strong>When should the release stop?</strong><br>Stop when the wake loop repeats across phones or when idle drain appears before real user action.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/bluetoothexplorer/">Bluetooth Explorer product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/bluetoothexplorer/">Open Bluetooth Explorer</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

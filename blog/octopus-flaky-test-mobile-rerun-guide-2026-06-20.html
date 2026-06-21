@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Should Not Approve Flaky Test Reruns Forever | VelocAI Blog</title>
+  <meta name="description" content="An Octopus workflow for approving one mobile Codex rerun, then stopping when flaky tests need evidence instead of another hopeful tap.">
+  <meta name="keywords" content="Octopus, Mobile Flaky Test Approval, VelocAI, practical workflow, decision checklist">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-flaky-test-mobile-rerun-guide-2026-06-20.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Should Not Approve Flaky Test Reruns Forever">
+  <meta property="og:description" content="An Octopus workflow for approving one mobile Codex rerun, then stopping when flaky tests need evidence instead of another hopeful tap.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-flaky-test-mobile-rerun-guide-2026-06-20.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Should Not Approve Flaky Test Reruns Forever">
+  <meta name="twitter:description" content="An Octopus workflow for approving one mobile Codex rerun, then stopping when flaky tests need evidence instead of another hopeful tap.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Should Not Approve Flaky Test Reruns Forever",
+      "description": "An Octopus workflow for approving one mobile Codex rerun, then stopping when flaky tests need evidence instead of another hopeful tap.",
+      "datePublished": "2026-06-20",
+      "dateModified": "2026-06-20",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-flaky-test-mobile-rerun-guide-2026-06-20.html",
+      "keywords": [
+        "Octopus",
+        "Mobile Flaky Test Approval",
+        "VelocAI",
+        "practical workflow",
+        "decision checklist"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is a mobile test rerun okay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When it is one bounded rerun with a known target and a clear expected result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What stops the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A repeated failure, moving failure point, broad command, or missing hypothesis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Octopus help?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It keeps the Codex thread visible and lets the user approve a narrow next step without losing state."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7f8f5; --text:#18201b; --muted:#56645d; --line:#d5ddd6; --panel:#fff; --brand:#176b54; --accent:#c4517c; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,248,245,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.1vw, 48px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 31px); }
+    p,li { color:#31433b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.answer { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.answer { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e7f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus test workflow</span>
+        <h1>Octopus Should Not Approve Flaky Test Reruns Forever</h1>
+        <p class="meta">Published on 2026-06-20 | Topic: Mobile Flaky Test Approval</p>
+        <p>The first rerun feels harmless. The fifth rerun is just a slot machine with a terminal attached. Octopus is useful here only if the phone approval makes the test state clearer, not if it lets everyone avoid diagnosing the flaky thing.</p>
+      </div>
+      <div class="answer">
+        <p><strong>Useful answer:</strong> An Octopus workflow for approving one mobile Codex rerun, then stopping when flaky tests need evidence instead of another hopeful tap.</p>
+      </div>
+      <section class="panel">
+        <h2>One Rerun</h2>
+        <p>Approve one mobile rerun when the failure is narrow, the branch is known, and the expected pass condition is clear. Ask Codex to state the test file, failure line, previous command, and what changes if the rerun passes.</p>
+      </section>
+      <section class="panel">
+        <h2>Collect Evidence</h2>
+        <p>If the rerun fails again, switch from rerun mode to evidence mode. Capture seed, timing, network call, fixture setup, browser/device version, and whether the failure moved. Data is data, even when the data says your test is annoying.</p>
+      </section>
+      <section class="panel">
+        <h2>No Blind Loop</h2>
+        <p>Do not approve a broad test loop from mobile just because the terminal is already there. Repeated failure needs a hypothesis: race condition, shared state, timeout, mock leak, animation wait, or environment drift.</p>
+      </section>
+      <section class="panel">
+        <h2>Desktop Return</h2>
+        <p>Return to desktop when the fix needs multi-file changes, dependency updates, visual diff review, or a long log comparison. The phone can keep the thread moving. It should not make you pretend you read 900 lines of CI output on a sidewalk.</p>
+      </section>
+      <section class="panel">
+        <h2>Rerun Boundary</h2>
+        <ul>
+          <li>Approve one rerun only when the test target is narrow.</li>
+          <li>Ask for the failure line, command, branch, and expected pass condition.</li>
+          <li>After a second failure, collect evidence instead of rerunning.</li>
+          <li>Name one hypothesis before approving any new command.</li>
+          <li>Use desktop review for broad logs, screenshots, dependencies, and multi-file fixes.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Quick Checks</h2>
+        <p><strong>When is a mobile test rerun okay?</strong><br>When it is one bounded rerun with a known target and a clear expected result.</p>
+        <p><strong>What stops the loop?</strong><br>A repeated failure, moving failure point, broad command, or missing hypothesis.</p>
+        <p><strong>How does Octopus help?</strong><br>It keeps the Codex thread visible and lets the user approve a narrow next step without losing state.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/octopus/">Octopus product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/octopus/">Open Octopus</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
