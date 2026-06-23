@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Medical Cart Dropouts Need Location Notes | VelocAI Blog</title>
+  <meta name="description" content="A Bluetooth Explorer workflow for clinical and lab teams separating cart-location interference from device firmware faults during BLE dropouts.">
+  <meta name="keywords" content="Bluetooth Explorer, Bluetooth Medical Cart Interference, VelocAI, practical workflow, decision rule">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-medical-cart-interference-triage-guide-2026-06-23.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Medical Cart Dropouts Need Location Notes">
+  <meta property="og:description" content="A Bluetooth Explorer workflow for clinical and lab teams separating cart-location interference from device firmware faults during BLE dropouts.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-medical-cart-interference-triage-guide-2026-06-23.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Medical Cart Dropouts Need Location Notes">
+  <meta name="twitter:description" content="A Bluetooth Explorer workflow for clinical and lab teams separating cart-location interference from device firmware faults during BLE dropouts.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Bluetooth Medical Cart Dropouts Need Location Notes",
+      "description": "A Bluetooth Explorer workflow for clinical and lab teams separating cart-location interference from device firmware faults during BLE dropouts.",
+      "datePublished": "2026-06-23",
+      "dateModified": "2026-06-23",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/bluetooth-medical-cart-interference-triage-guide-2026-06-23.html",
+      "keywords": [
+        "Bluetooth Explorer",
+        "Bluetooth Medical Cart Interference",
+        "VelocAI",
+        "practical workflow",
+        "decision rule"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why are location notes important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They show whether a dropout follows the environment instead of the device firmware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should Bluetooth Explorer capture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RSSI, disconnect behavior, reconnect timing, and service discovery after the dropout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is firmware the likely cause?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the same failure follows the device across locations under controlled conditions."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7f8f6; --text:#17211c; --muted:#56645d; --line:#d5ddd7; --panel:#fff; --brand:#176b54; --accent:#2f8f75; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,248,246,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.1vw, 48px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 31px); }
+    p,li { color:#31433b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.answer { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.answer { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e7f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/bluetoothexplorer/">Bluetooth Explorer</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Bluetooth Explorer clinical workflow</span>
+        <h1>Bluetooth Medical Cart Dropouts Need Location Notes</h1>
+        <p class="meta">Published on 2026-06-23 | Topic: Bluetooth Medical Cart Interference</p>
+        <p>A medical cart dropout report without a location note is mostly a rumor with a timestamp. The device failed near something, under something, beside something, or while moving through a particular hallway. That context is the test.</p>
+      </div>
+      <div class="answer">
+        <p><strong>Useful answer:</strong> A Bluetooth Explorer workflow for clinical and lab teams separating cart-location interference from device firmware faults during BLE dropouts.</p>
+      </div>
+      <section class="panel">
+        <h2>Mark The Spot</h2>
+        <p>Record the room, cart position, nearby equipment, door state, and whether the cart was moving. If the dropout only happens near one imaging room, one elevator bank, or one charging corner, firmware may be innocent.</p>
+      </section>
+      <section class="panel">
+        <h2>Same Device</h2>
+        <p>Run the same peripheral on the same cart in three places: failure location, neutral hallway, and known-good room. Keep phone model, app version, and battery level stable. Change location first, not everything at once.</p>
+      </section>
+      <section class="panel">
+        <h2>Packet Patience</h2>
+        <p>Use Bluetooth Explorer to record RSSI range, disconnect reason if available, reconnect time, and whether service discovery repeats. A five-second dropout that reconnects cleanly is different from a dead session that needs app restart.</p>
+      </section>
+      <section class="panel">
+        <h2>Escalate Cleanly</h2>
+        <p>Escalate to firmware only after the location pattern fails to explain it. Otherwise the fix may be signage, cart parking rules, access point placement, or replacing one noisy piece of nearby equipment.</p>
+      </section>
+      <section class="panel">
+        <h2>Dropout Triage</h2>
+        <ul>
+          <li>Write room, cart position, motion state, and nearby equipment.</li>
+          <li>Retest the same device in failure, neutral, and known-good locations.</li>
+          <li>Keep phone, app, firmware, and battery stable during location tests.</li>
+          <li>Record RSSI, reconnect time, and whether discovery repeats.</li>
+          <li>Escalate firmware only after location effects are ruled out.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Quick Checks</h2>
+        <p><strong>Why are location notes important?</strong><br>They show whether a dropout follows the environment instead of the device firmware.</p>
+        <p><strong>What should Bluetooth Explorer capture?</strong><br>RSSI, disconnect behavior, reconnect timing, and service discovery after the dropout.</p>
+        <p><strong>When is firmware the likely cause?</strong><br>When the same failure follows the device across locations under controlled conditions.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/bluetoothexplorer/">Bluetooth Explorer product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/bluetoothexplorer/">Open Bluetooth Explorer</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

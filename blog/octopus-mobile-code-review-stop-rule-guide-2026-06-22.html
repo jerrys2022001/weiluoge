@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Is Better for Adding Context Than Guessing From Memory | VelocAI Blog</title>
+  <meta name="description" content="An Octopus workflow for sending voice notes, screenshots, and small files into an active Codex thread when the useful context is away from the desk.">
+  <meta name="keywords" content="Octopus, Mobile Context Handoff, VelocAI, practical workflow, decision rule">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-mobile-code-review-stop-rule-guide-2026-06-22.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Is Better for Adding Context Than Guessing From Memory">
+  <meta property="og:description" content="An Octopus workflow for sending voice notes, screenshots, and small files into an active Codex thread when the useful context is away from the desk.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-mobile-code-review-stop-rule-guide-2026-06-22.html">
+  <meta property="og:image" content="https://velocai.net/2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Is Better for Adding Context Than Guessing From Memory">
+  <meta name="twitter:description" content="An Octopus workflow for sending voice notes, screenshots, and small files into an active Codex thread when the useful context is away from the desk.">
+  <meta name="twitter:image" content="https://velocai.net/2.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Octopus Is Better for Adding Context Than Guessing From Memory",
+      "description": "An Octopus workflow for sending voice notes, screenshots, and small files into an active Codex thread when the useful context is away from the desk.",
+      "datePublished": "2026-06-22",
+      "dateModified": "2026-06-22",
+      "author": {
+        "@type": "Organization",
+        "name": "VelocAI"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VelocAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://velocai.net/2.png"
+        }
+      },
+      "mainEntityOfPage": "https://velocai.net/blog/octopus-mobile-code-review-stop-rule-guide-2026-06-22.html",
+      "keywords": [
+        "Octopus",
+        "Mobile Context Handoff",
+        "VelocAI",
+        "practical workflow",
+        "decision rule"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Octopus best for from mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Adding missing context to an active Codex thread without losing project and server state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What context is useful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Screenshots, voice notes, images, small files, error wording, and customer or device details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should approval wait?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When Codex has not explained how the new context changes the next step."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root { --bg:#f7f8f6; --text:#17211c; --muted:#56645d; --line:#d5ddd7; --panel:#fff; --brand:#176b54; --accent:#a85f99; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(920px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,248,246,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; border-radius:10px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    h1,h2,h3 { margin:0; line-height:1.22; }
+    h1 { font-size:clamp(31px, 4.1vw, 48px); max-width:24ch; }
+    h2 { font-size:clamp(22px, 3vw, 31px); }
+    p,li { color:#31433b; font-size:17px; }
+    ul { padding-left:22px; }
+    .hero,.panel,.answer { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:0 10px 24px rgba(28,44,36,.045); }
+    .hero { padding:26px; }
+    .panel,.answer { margin-top:22px; padding:22px; }
+    .eyebrow { display:inline-flex; margin-bottom:14px; border-radius:999px; padding:7px 12px; background:#e7f4ed; color:var(--brand); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { border-left:6px solid var(--accent); }
+    .links { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #b9d5ca; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--brand); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="102" height="73"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main"><a href="/">Home</a><a href="/apps/">Apps</a><a href="/blog/">Blog</a><a href="/octopus/">Octopus</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <span class="eyebrow">Octopus context workflow</span>
+        <h1>Octopus Is Better for Adding Context Than Guessing From Memory</h1>
+        <p class="meta">Published on 2026-06-22 | Topic: Mobile Context Handoff</p>
+        <p>The best mobile coding move is often not approving anything. It is sending the missing context before the agent invents a theory. A screenshot, a spoken note, or a tiny config file can save ten confident wrong turns.</p>
+      </div>
+      <div class="answer">
+        <p><strong>Useful answer:</strong> An Octopus workflow for sending voice notes, screenshots, and small files into an active Codex thread when the useful context is away from the desk.</p>
+      </div>
+      <section class="panel">
+        <h2>Capture The Clue</h2>
+        <p>Use Octopus when the clue is on your phone: a crash screenshot, a customer wording detail, a photo of a device state, a voice note from a hallway conversation, or a file that explains why the task is not as generic as it looked.</p>
+      </section>
+      <section class="panel">
+        <h2>Name The Thread</h2>
+        <p>Before attaching anything, confirm the project, server, and thread title. Mobile context sent to the wrong repo is worse than no context because it looks helpful while quietly poisoning the next step.</p>
+      </section>
+      <section class="panel">
+        <h2>One Instruction</h2>
+        <p>Attach the artifact with one concrete instruction: inspect this screenshot for the error state, compare this config value, rewrite the copy using this customer phrase, or pause until this log is considered. Do not send a pile of context and hope the agent becomes psychic.</p>
+      </section>
+      <section class="panel">
+        <h2>Then Wait</h2>
+        <p>After the context is added, let Codex restate what changed before approving work. If it cannot explain how the new clue changes the plan, the phone did its job and the next decision belongs back at the desk.</p>
+      </section>
+      <section class="panel">
+        <h2>Context Handoff</h2>
+        <ul>
+          <li>Confirm project, server, and thread before attaching anything.</li>
+          <li>Send one screenshot, voice note, image, or file at a time.</li>
+          <li>Write one instruction that explains how to use the artifact.</li>
+          <li>Ask Codex to restate the changed plan before any approval.</li>
+          <li>Return to desktop when the artifact implies broad code review.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Quick Checks</h2>
+        <p><strong>What is Octopus best for from mobile?</strong><br>Adding missing context to an active Codex thread without losing project and server state.</p>
+        <p><strong>What context is useful?</strong><br>Screenshots, voice notes, images, small files, error wording, and customer or device details.</p>
+        <p><strong>When should approval wait?</strong><br>When Codex has not explained how the new context changes the next step.</p>
+      </section>
+      <section class="panel">
+        <h2>Next Paths</h2>
+        <ul>
+          <li><a href="/octopus/">Octopus product page</a></li>
+          <li><a href="/apps/">VelocAI apps</a></li>
+        </ul>
+      </section>
+      <div class="links"><a href="/blog/">Back to blog index</a><a href="/apps/">Browse VelocAI apps</a><a href="/octopus/">Open Octopus</a></div>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
