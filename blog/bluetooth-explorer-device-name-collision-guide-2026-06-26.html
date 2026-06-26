@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bluetooth Explorer Device Name Collision | VelocAI Blog</title>
+  <meta name="description" content="Use Bluetooth Explorer to diagnose duplicate Bluetooth names, mislabeled accessories, and support mistakes before resetting every device in the room.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/bluetooth-explorer-device-name-collision-guide-2026-06-26.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Bluetooth Explorer Device Name Collision">
+  <meta property="og:description" content="Use Bluetooth Explorer to diagnose duplicate Bluetooth names, mislabeled accessories, and support mistakes before resetting every device in the room.">
+  <meta property="og:url" content="https://velocai.net/blog/bluetooth-explorer-device-name-collision-guide-2026-06-26.html">
+  <meta property="og:image" content="https://velocai.net/apps/bluetooth-explorer-icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bluetooth Explorer Device Name Collision">
+  <meta name="twitter:description" content="Use Bluetooth Explorer to diagnose duplicate Bluetooth names, mislabeled accessories, and support mistakes before resetting every device in the room.">
+  <meta name="twitter:image" content="https://velocai.net/apps/bluetooth-explorer-icon.png">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Bluetooth Explorer Device Name Collision","description":"Use Bluetooth Explorer to diagnose duplicate Bluetooth names, mislabeled accessories, and support mistakes before resetting every device in the room.","datePublished":"2026-06-26","dateModified":"2026-06-26","author":{"@type":"Organization","name":"VelocAI"},"publisher":{"@type":"Organization","name":"VelocAI","logo":{"@type":"ImageObject","url":"https://velocai.net/velocai.png"}},"mainEntityOfPage":"https://velocai.net/blog/bluetooth-explorer-device-name-collision-guide-2026-06-26.html","keywords":["bluetooth","Bluetooth Explorer","duplicate device names","Bluetooth support"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do multiple Bluetooth devices show the same name?","acceptedAnswer":{"@type":"Answer","text":"Manufacturers often ship the same friendly name across devices, and teams may forget to rename replacements."}},{"@type":"Question","name":"Should I reset duplicate Bluetooth devices first?","acceptedAnswer":{"@type":"Answer","text":"No. Identify the physical device and signal pattern first, then reset only if pairing still fails."}},{"@type":"Question","name":"How can teams prevent name collisions?","acceptedAnswer":{"@type":"Answer","text":"Use room names or asset tags in the visible device name and document the naming rule."}}]}]}
+  </script>
+  <style>
+    :root { --bg:#f7faf8; --text:#17221f; --muted:#53645e; --line:#d8e4df; --panel:#ffffff; --accent:#176b5f; --soft:#eaf5f1; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(930px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(23,107,95,.16); }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    article { display:grid; gap:22px; }
+    .hero { border-bottom:1px solid var(--line); padding-bottom:20px; }
+    h1,h2 { margin:0; line-height:1.2; letter-spacing:0; }
+    h1 { font-size:clamp(30px, 4vw, 48px); max-width:25ch; }
+    h2 { margin-top:6px; font-size:clamp(22px, 2.8vw, 31px); }
+    p,li { color:#30463f; font-size:17px; }
+    ul { padding-left:22px; }
+    section { padding:18px 0; border-bottom:1px solid var(--line); }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { margin-top:18px; padding:18px 20px; border-left:5px solid var(--accent); background:var(--soft); }
+    .check { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; box-shadow:0 12px 28px rgba(18,38,32,.05); }
+    .links { display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #bfd4ce; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--accent); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="103" height="103"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/bluetoothexplorer/">Bluetooth Explorer</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Bluetooth Explorer Device Name Collision</h1>
+        <p class="meta">Published on June 26, 2026 | Topic: Device Name Collision | For support teams sorting crowded device lists</p>
+        <p>Duplicate Bluetooth names are a support trap. Everyone says connect to the speaker, then three identical speakers appear and the wrong one gets blamed for the failure.</p>`n        <p class="meta">Bluetooth Explorer Practical Guide</p>
+      </div>
+      <div class="answer">
+        <p>Use Bluetooth Explorer to separate human-readable names from underlying signal identity. Rename, label, or retire devices only after you know which collision is real.</p>
+      </div>
+      <section>
+        <h2>What is actually colliding?</h2>
+        <p>A visible name collision is not always a device collision. Two accessories can share a friendly name while advertising different identifiers, service data, or signal patterns.</p>
+        <p>That is why resetting everything is lazy. It may work, but it destroys evidence before you understand the room.</p>
+      </section>
+      <section>
+        <h2>How should support triage it?</h2>
+        <p>Stand near the expected device and watch which signal strengthens. Then move toward the second candidate and compare. The wrong device often reveals itself by staying strong in the wrong place.</p>
+        <p>Write down the physical label, friendly name, and approximate location. Support tickets need those three fields, not a screenshot of chaos.</p>
+      </section>
+      <section>
+        <h2>Where do naming policies help?</h2>
+        <p>Room names, asset tags, and accessory labels should match. If the sticker says Studio A but the Bluetooth name says Speaker, the system is asking users to fail.</p>
+        <p>Rename only after confirming the device, then record the new convention so the next replacement does not recreate the mess.</p>
+      </section>
+      <section>
+        <h2>When should you reset?</h2>
+        <p>Reset after identity is confirmed and the device still refuses the correct pairing path. Resetting first is a satisfying button press and a poor diagnostic habit.</p>
+      </section>
+      <section class="check">
+        <h2>Name-collision triage</h2>
+        <ul>
+          <li>List every duplicate visible name before touching settings.</li>
+          <li>Move near each physical candidate and compare signal change.</li>
+          <li>Match friendly name to room label or asset tag.</li>
+          <li>Rename one device at a time and retest.</li>
+          <li>Document the final naming rule for replacements.</li>
+        </ul>
+        <p><strong>Stop rule:</strong> If the device belongs to medical, access-control, or safety equipment, stop and follow the vendor's managed-device process.</p>
+      </section>
+      <section>
+        <h2>What should you read next?</h2>
+        <p>Use the app page when you need the tool, then use the related guide only if the next decision is still unclear. The point is to shorten the work, not decorate the tab bar.</p>
+        <div class="links">
+        <a href="/bluetoothexplorer/">Open Bluetooth Explorer</a>
+        <a href="/blog/bluetooth-explorer-warehouse-rssi-walk-test-guide-2026-06-24.html">Use warehouse RSSI walk test</a>
+        <a href="/apps/">Browse apps</a>
+        <a href="/blog/">Back to blog index</a>
+        </div>
+      </section>
+      <section>
+        <h2>Which sources shaped the advice?</h2>
+        <p>The outside links below are here for technical context and platform behavior. The workflow above is deliberately narrower than the news cycle.</p>
+        <ul>
+          <li><a href="https://support.apple.com/en-us/HT204091" target="_blank" rel="noopener noreferrer">Apple Support: pair Bluetooth accessories</a></li>
+          <li><a href="https://www.bluetooth.com/specifications/assigned-numbers/" target="_blank" rel="noopener noreferrer">Bluetooth SIG: assigned numbers</a></li>
+          <li><a href="https://developer.apple.com/bluetooth/" target="_blank" rel="noopener noreferrer">Apple Developer: Core Bluetooth</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is the takeaway?</h2>
+        <p>Bluetooth Explorer is most useful when the operator makes one specific decision before opening the app: what evidence, signal, or file state would actually change the next action. Everything else is just screen activity with a nicer icon.</p>
+        <p class="meta">Keywords: bluetooth, Bluetooth Explorer, duplicate device names, Bluetooth support</p>
+      </section>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Hotfix Diff Review From a Phone | VelocAI Blog</title>
+  <meta name="description" content="Use Octopus for a phone-based hotfix review by checking changed files, failure signals, risk boundaries, and when to hand the work back to a laptop.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-hotfix-diff-review-phone-guide-2026-06-24.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Hotfix Diff Review From a Phone">
+  <meta property="og:description" content="Use Octopus for a phone-based hotfix review by checking changed files, failure signals, risk boundaries, and when to hand the work back to a laptop.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-hotfix-diff-review-phone-guide-2026-06-24.html">
+  <meta property="og:image" content="https://velocai.net/octopus/octopus-icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Hotfix Diff Review From a Phone">
+  <meta name="twitter:description" content="Use Octopus for a phone-based hotfix review by checking changed files, failure signals, risk boundaries, and when to hand the work back to a laptop.">
+  <meta name="twitter:image" content="https://velocai.net/octopus/octopus-icon.png">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Octopus Hotfix Diff Review From a Phone","description":"Use Octopus for a phone-based hotfix review by checking changed files, failure signals, risk boundaries, and when to hand the work back to a laptop.","datePublished":"2026-06-24","dateModified":"2026-06-24","author":{"@type":"Organization","name":"VelocAI"},"publisher":{"@type":"Organization","name":"VelocAI","logo":{"@type":"ImageObject","url":"https://velocai.net/velocai.png"}},"mainEntityOfPage":"https://velocai.net/blog/octopus-hotfix-diff-review-phone-guide-2026-06-24.html","keywords":["Octopus","mobile coding workflow","hotfix review","phone diff review"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can Octopus be used for hotfix review on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes, when the diff is narrow, tests are visible, and rollback ownership is clear."}},{"@type":"Question","name":"What should not be approved from a phone?","acceptedAnswer":{"@type":"Answer","text":"Auth, billing, migrations, broad refactors, and changes without a clear failure signal should wait for a full workstation."}},{"@type":"Question","name":"What is the main risk in mobile hotfix approval?","acceptedAnswer":{"@type":"Answer","text":"The main risk is approving hidden scope because the reviewer did not inspect every changed file and test signal."}}]}]}
+  </script>
+  <style>
+    :root { --bg:#f7faf8; --text:#17221f; --muted:#53645e; --line:#d8e4df; --panel:#ffffff; --accent:#176b5f; --soft:#eaf5f1; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(930px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(23,107,95,.16); }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    article { display:grid; gap:22px; }
+    .hero { border-bottom:1px solid var(--line); padding-bottom:20px; }
+    h1,h2 { margin:0; line-height:1.2; letter-spacing:0; }
+    h1 { font-size:clamp(30px, 4vw, 48px); max-width:25ch; }
+    h2 { margin-top:6px; font-size:clamp(22px, 2.8vw, 31px); }
+    p,li { color:#30463f; font-size:17px; }
+    ul { padding-left:22px; }
+    section { padding:18px 0; border-bottom:1px solid var(--line); }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { margin-top:18px; padding:18px 20px; border-left:5px solid var(--accent); background:var(--soft); }
+    .check { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; box-shadow:0 12px 28px rgba(18,38,32,.05); }
+    .links { display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #bfd4ce; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--accent); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="103" height="103"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/octopus/">Octopus</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Octopus Hotfix Diff Review From a Phone</h1>
+        <p class="meta">Published on June 24, 2026 | Topic: Mobile Hotfix Review | For developers reviewing urgent patches away from a desk</p>
+        <p>A phone is fine for approving a tiny hotfix and bad for pretending you reviewed a system rewrite. The difference is not screen size; it is whether you can inspect the risk surface without guessing.</p>`n        <p class="meta">Octopus Practical Guide</p>
+      </div>
+      <div class="answer">
+        <p>Use Octopus when the diff is narrow, the tests are explicit, and the rollback story is boring. If any of those are missing, the phone flow has reached its limit.</p>
+      </div>
+      <section>
+        <h2>What counts as phone-sized?</h2>
+        <p>A phone-sized hotfix changes one behavior path, one config value, or one isolated copy error. It does not touch migrations, auth, billing, or shared state without a second reviewer at a real keyboard.</p>
+        <p>The practical threshold is simple: if you cannot explain every changed file in one breath, do not approve from the phone.</p>
+      </section>
+      <section>
+        <h2>Which state should you inspect?</h2>
+        <p>Start with the file list, then the exact diff, then the failing signal that motivated the patch. A hotfix with no failure signal is just a rushed change wearing a pager badge.</p>
+        <p>Octopus is useful because you can keep the thread, diff, and notes together while you decide whether the patch actually addresses the symptom.</p>
+      </section>
+      <section>
+        <h2>What risk does the step reduce?</h2>
+        <p>The review reduces accidental scope creep. You are checking whether the fix stayed inside the blast radius promised by the incident note.</p>
+        <p>If the patch also cleans up nearby code, politely reject that part. Cleanup can wait. Production is already having a day.</p>
+      </section>
+      <section>
+        <h2>When is the iPad still not enough?</h2>
+        <p>Move to a laptop when you need to run a full local reproduction, inspect generated artifacts, compare screenshots, or resolve conflicts. Bigger glass helps, but only if the environment can prove the change.</p>
+      </section>
+      <section class="check">
+        <h2>Phone approval gate</h2>
+        <ul>
+          <li>Name the incident signal before reading the diff.</li>
+          <li>Confirm every changed file belongs to the same fix.</li>
+          <li>Check that tests or monitoring cover the failed path.</li>
+          <li>Write the rollback command or owner in the thread.</li>
+          <li>Reject opportunistic refactors bundled into the hotfix.</li>
+        </ul>
+        <p><strong>Stop rule:</strong> If the change touches credentials, payment flow, migrations, or permission checks, stop and require a full workstation review.</p>
+      </section>
+      <section>
+        <h2>What should you read next?</h2>
+        <p>Use the app page when you need the tool, then use the related guide only if the next decision is still unclear. The point is to shorten the work, not decorate the tab bar.</p>
+        <div class="links">
+        <a href="/octopus/">Open Octopus</a>
+        <a href="/blog/octopus-runtime-status-live-activity-guide-2026-06-16.html">Read runtime status workflow</a>
+        <a href="/apps/">Browse apps</a>
+        <a href="/blog/">Back to blog index</a>
+        </div>
+      </section>
+      <section>
+        <h2>Which sources shaped the advice?</h2>
+        <p>The outside links below are here for technical context and platform behavior. The workflow above is deliberately narrower than the news cycle.</p>
+        <ul>
+          <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests" target="_blank" rel="noopener noreferrer">GitHub Docs: reviewing changes in pull requests</a></li>
+          <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reverting-a-pull-request" target="_blank" rel="noopener noreferrer">GitHub Docs: reverting a pull request</a></li>
+          <li><a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">OpenAI Codex</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is the takeaway?</h2>
+        <p>Octopus is most useful when the operator makes one specific decision before opening the app: what evidence, signal, or file state would actually change the next action. Everything else is just screen activity with a nicer icon.</p>
+        <p class="meta">Keywords: Octopus, mobile coding workflow, hotfix review, phone diff review</p>
+      </section>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>

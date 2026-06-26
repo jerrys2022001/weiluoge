@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Shared blog similarity helpers."""
 
 from __future__ import annotations
@@ -515,6 +515,60 @@ def extract_body_counter(html: str) -> Counter[str]:
             if token not in STOP_WORDS and token not in octopus_common_tokens
         )
 
+    if any(marker in html for marker in ("Dual Camera Practical Guide", "Bluetooth Explorer Practical Guide", "find AI Practical Guide")):
+        app_common_tokens = {
+            "action", "actions", "advice", "app", "apps", "apply", "article", "back", "blog",
+            "browse", "camera", "check", "checks", "common", "context", "decision", "device",
+            "dual", "explorer", "find", "guide", "iphone", "links", "open", "practical",
+            "product", "question", "read", "reader", "record", "recording", "rule", "section",
+            "signal", "source", "sources", "step", "stop", "takeaway", "tool", "use", "users",
+            "velocai", "video", "what", "when", "where", "which", "workflow",
+        }
+        focus_parts: list[str] = []
+        title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+        if title_match:
+            focus_parts.append(title_match.group(1))
+
+        hero_match = re.search(
+            r'<div class="hero">.*?<p class="meta">.*?</p>\s*<p>(.*?)</p>',
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if hero_match:
+            focus_parts.append(hero_match.group(1))
+
+        answer_match = re.search(r'<div class="answer">\s*<p>(.*?)</p>', html, re.IGNORECASE | re.DOTALL)
+        if answer_match:
+            focus_parts.append(answer_match.group(1))
+
+        section_matches = re.findall(
+            r"<h2[^>]*>(.*?)</h2>\s*((?:<p>.*?</p>\s*){1,3})",
+            html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        skipped = {
+            "what should you read next?",
+            "which sources shaped the advice?",
+            "what is the takeaway?",
+        }
+        kept = 0
+        for heading, body in section_matches:
+            heading_text = normalize_heading(heading)
+            if heading_text in skipped or heading_text.endswith("pass"):
+                continue
+            focus_parts.append(heading)
+            focus_parts.append(body)
+            kept += 1
+            if kept >= 3:
+                break
+
+        focus_text = re.sub(r"<[^>]+>", " ", " ".join(focus_parts))
+        focus_text = re.sub(r"\s+", " ", focus_text).lower()
+        return Counter(
+            token
+            for token in re.findall(r"[a-z0-9]{3,}", focus_text)
+            if token not in STOP_WORDS and token not in app_common_tokens
+        )
     if "<h2>What Happened</h2>" in html:
         focus_parts: list[str] = []
         title_match = re.search(r"<h1>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
@@ -747,3 +801,4 @@ def max_similarity_against_existing(html: str, existing_pages: list[BlogPage]) -
         if combined > max_score:
             max_score = combined
     return max_score
+

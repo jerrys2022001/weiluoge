@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Octopus Release Note Approval on Mobile | VelocAI Blog</title>
+  <meta name="description" content="Use Octopus to approve release notes from a phone by checking user-visible change scope, screenshots, risk language, and launch blockers.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://velocai.net/blog/octopus-release-note-approval-mobile-guide-2026-06-25.html">
+  <link rel="icon" type="image/x-icon" href="/velocai.ico">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="VelocAI">
+  <meta property="og:title" content="Octopus Release Note Approval on Mobile">
+  <meta property="og:description" content="Use Octopus to approve release notes from a phone by checking user-visible change scope, screenshots, risk language, and launch blockers.">
+  <meta property="og:url" content="https://velocai.net/blog/octopus-release-note-approval-mobile-guide-2026-06-25.html">
+  <meta property="og:image" content="https://velocai.net/octopus/octopus-icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Octopus Release Note Approval on Mobile">
+  <meta name="twitter:description" content="Use Octopus to approve release notes from a phone by checking user-visible change scope, screenshots, risk language, and launch blockers.">
+  <meta name="twitter:image" content="https://velocai.net/octopus/octopus-icon.png">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Octopus Release Note Approval on Mobile","description":"Use Octopus to approve release notes from a phone by checking user-visible change scope, screenshots, risk language, and launch blockers.","datePublished":"2026-06-25","dateModified":"2026-06-25","author":{"@type":"Organization","name":"VelocAI"},"publisher":{"@type":"Organization","name":"VelocAI","logo":{"@type":"ImageObject","url":"https://velocai.net/velocai.png"}},"mainEntityOfPage":"https://velocai.net/blog/octopus-release-note-approval-mobile-guide-2026-06-25.html","keywords":["Octopus","mobile coding workflow","release note approval","phone review"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can release notes be approved from a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes, if the reviewer can inspect the changed path, evidence, final wording, and limitation in one place."}},{"@type":"Question","name":"What should block mobile release-note approval?","acceptedAnswer":{"@type":"Answer","text":"Privacy, pricing, security, migration, and support-impact changes should wait for the normal review path."}},{"@type":"Question","name":"Why are screenshots important for release notes?","acceptedAnswer":{"@type":"Answer","text":"They expose copy overflow, empty states, and mismatches between the shipped feature and the public claim."}}]}]}
+  </script>
+  <style>
+    :root { --bg:#f7faf8; --text:#17221f; --muted:#53645e; --line:#d8e4df; --panel:#ffffff; --accent:#176b5f; --soft:#eaf5f1; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Avenir Next","Inter","Segoe UI",sans-serif; color:var(--text); background:var(--bg); line-height:1.72; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(930px, calc(100% - 34px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(247,250,248,.94); }
+    .top { padding:14px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; }
+    .brand img { width:auto; height:36px; max-width:52px; object-fit:contain; object-position:center; border-radius:10px; box-shadow:0 0 16px rgba(23,107,95,.16); }
+    nav { display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    main { padding:36px 0 58px; }
+    article { display:grid; gap:22px; }
+    .hero { border-bottom:1px solid var(--line); padding-bottom:20px; }
+    h1,h2 { margin:0; line-height:1.2; letter-spacing:0; }
+    h1 { font-size:clamp(30px, 4vw, 48px); max-width:25ch; }
+    h2 { margin-top:6px; font-size:clamp(22px, 2.8vw, 31px); }
+    p,li { color:#30463f; font-size:17px; }
+    ul { padding-left:22px; }
+    section { padding:18px 0; border-bottom:1px solid var(--line); }
+    .meta { margin-top:10px; color:var(--muted); font-size:14px; }
+    .answer { margin-top:18px; padding:18px 20px; border-left:5px solid var(--accent); background:var(--soft); }
+    .check { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; box-shadow:0 12px 28px rgba(18,38,32,.05); }
+    .links { display:flex; gap:12px; flex-wrap:wrap; }
+    .links a { border:1px solid #bfd4ce; border-radius:999px; padding:10px 14px; font-weight:700; font-size:14px; color:var(--accent); background:#fff; }
+  </style>
+  <link rel="stylesheet" href="/assets/css/site-tools.css">
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="/"><img src="/velocai.png" alt="VelocAI logo" width="103" height="103"><span>VelocAI Blog</span></a>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/blog/">Blog</a>
+        <a href="/octopus/">Octopus</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <article>
+      <div class="hero">
+        <h1>Octopus Release Note Approval on Mobile</h1>
+        <p class="meta">Published on June 25, 2026 | Topic: Mobile Release Approval | For founders and PMs reviewing launches while mobile</p>
+        <p>Release notes written on a deadline tend to lie by omission. Not maliciously, just in the normal way teams say fixed when they really mean reduced a very specific failure.</p>`n        <p class="meta">Octopus Practical Guide</p>
+      </div>
+      <div class="answer">
+        <p>Use Octopus for mobile approval only when you can inspect the changed user path, the exact release note, and the known limitation in the same thread.</p>
+      </div>
+      <section>
+        <h2>What are you approving?</h2>
+        <p>You are approving a public claim, not a feeling that the build is probably fine. The release note should name the user-visible change and avoid promising more than the code shipped.</p>
+        <p>If the note says faster, ask for the number or remove the adjective. Vague speed claims age badly.</p>
+      </section>
+      <section>
+        <h2>Which artifacts matter?</h2>
+        <p>Check the diff, screenshot or screen recording, test result, and final text. If one of those is missing, approval from a phone becomes vibes with notifications.</p>
+        <p>Octopus works well here because the approval thread can keep all four artifacts together instead of scattering them through chat.</p>
+      </section>
+      <section>
+        <h2>Where does mobile review fail?</h2>
+        <p>Mobile review fails when a tiny screen hides copy overflow, localization problems, or an empty state. Ask for the failure-state screenshot, not only the happy path.</p>
+        <p>This is the part people skip because the release is almost done. That is exactly why it catches real issues.</p>
+      </section>
+      <section>
+        <h2>When should approval wait?</h2>
+        <p>Wait when the note changes pricing expectations, privacy language, migration steps, or support obligations. Those deserve a proper desk review and probably another person.</p>
+      </section>
+      <section class="check">
+        <h2>Release-note approval gate</h2>
+        <ul>
+          <li>Compare final wording against the actual changed path.</li>
+          <li>Request one screenshot or recording of the feature state.</li>
+          <li>Remove adjectives that lack evidence.</li>
+          <li>Check whether support needs a warning or macro update.</li>
+          <li>Leave a clear approve or block comment in the thread.</li>
+        </ul>
+        <p><strong>Stop rule:</strong> If the release note mentions privacy, pricing, data migration, or security, stop and route it through the normal review owner.</p>
+      </section>
+      <section>
+        <h2>What should you read next?</h2>
+        <p>Use the app page when you need the tool, then use the related guide only if the next decision is still unclear. The point is to shorten the work, not decorate the tab bar.</p>
+        <div class="links">
+        <a href="/octopus/">Open Octopus</a>
+        <a href="/blog/octopus-hotfix-diff-review-phone-guide-2026-06-24.html">Read hotfix review guide</a>
+        <a href="/apps/">Browse apps</a>
+        <a href="/blog/">Back to blog index</a>
+        </div>
+      </section>
+      <section>
+        <h2>Which sources shaped the advice?</h2>
+        <p>The outside links below are here for technical context and platform behavior. The workflow above is deliberately narrower than the news cycle.</p>
+        <ul>
+          <li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes" target="_blank" rel="noopener noreferrer">GitHub Docs: release notes</a></li>
+          <li><a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener noreferrer">Apple Developer: App Store Review Guidelines</a></li>
+          <li><a href="https://openai.com/codex/" target="_blank" rel="noopener noreferrer">OpenAI Codex</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>What is the takeaway?</h2>
+        <p>Octopus is most useful when the operator makes one specific decision before opening the app: what evidence, signal, or file state would actually change the next action. Everything else is just screen activity with a nicer icon.</p>
+        <p class="meta">Keywords: Octopus, mobile coding workflow, release note approval, phone review</p>
+      </section>
+    </article>
+  </main>
+  <script src="/assets/js/site-tools.js" defer></script>
+</body>
+</html>
