@@ -1,6 +1,6 @@
 {
   "date": "2026-06-28",
-  "refreshed_at": "2026-06-28T08:30:02.197268+08:00",
+  "refreshed_at": "2026-06-28T08:40:02.041770+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-06-27T20:42:36+00:00",
       "display_date": "JUN 28",
       "image_src": "/assets/images/home-briefing/2026-06-28/industry-aea1fe4463a7b842-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/industry-8f36f79c58604169-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/industry-227848b72f96e039-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-27T19:30:46+00:00",
       "display_date": "JUN 28",
       "image_src": "/assets/images/home-briefing/2026-06-28/apple-a862bebf239436bb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-a534fefd43e6eae3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-15/apple-b7e5774ab0b3b85b-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-06-27T16:45:09+00:00",
       "display_date": "JUN 28",
       "image_src": "/assets/images/home-briefing/2026-06-28/industry-350aec65f46265ee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/industry-d76e187f7a7abe61-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-25/industry-e4b6b863a7fb34d3-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-06-27T16:21:52+00:00",
       "display_date": "JUN 28",
       "image_src": "/assets/images/home-briefing/2026-06-28/apple-1686848f9fbd6af1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-11/apple-3b40b69f79010435-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-61093635768b9461-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Prime Day 2026 may be over, but you can save up to $650 across Apple's Mac, iPad, AirPods, and AirTag lines. Save up to $650 on Apple products at Amazon - Image credit: Apple Prime Day 2026 may be over, but aggressive deals still remain in...",
       "published_at": "2026-06-27T14:43:09+00:00",
       "display_date": "JUN 27",
-      "image_src": "/assets/images/home-briefing/2026-06-06/apple-e150a393e8d14904-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/apple-e150a393e8d14904-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-01/apple-598113a0d90af82b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-01/apple-598113a0d90af82b-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-06-27T14:24:10+00:00",
       "display_date": "JUN 27",
       "image_src": "/assets/images/home-briefing/2026-06-28/ai-6db158ba282833ff-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-02/ai-99cc4c5c34a5e9e4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-04/ai-c3a4dba6623efd2f-thumb.webp"
     },
     {
       "index": 7,
@@ -98,8 +98,8 @@
       "summary": "When confronted with cancer, Connor Christou fed everything tied tied to his regime - blood results, scan data, wearable output, journal entries - into Claude.",
       "published_at": "2026-06-27T14:00:00+00:00",
       "display_date": "JUN 27",
-      "image_src": "/assets/images/home-briefing/2026-05-06/industry-bc7058f7743598b3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/industry-bc7058f7743598b3-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-24/industry-6d37102eb4d17286-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-24/industry-6d37102eb4d17286-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Amazon's Prime Day Apple Watch deals have been extended into the weekend, with the Series 11 discounted by $120 and the Ultra 3 slashed by $150. Several Apple Watch Prime Day deals have been extended - Image credit: Apple Amazon's Prime...",
       "published_at": "2026-06-27T13:26:10+00:00",
       "display_date": "JUN 27",
-      "image_src": "/assets/images/home-briefing/2026-06-06/apple-0f50aa314e3cc4c7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/apple-0f50aa314e3cc4c7-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-27/apple-158d4f67bcce74d4-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-158d4f67bcce74d4-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-23T13:33:26+00:00",
       "display_date": "JUN 23",
       "image_src": "/assets/images/home-briefing/2026-06-28/bluetooth-dc565014ed75cfc9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/bluetooth-624f8cf4309a07ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-11/bluetooth-ac878d68f0cedfbc-thumb.webp"
     }
   ]
 }
