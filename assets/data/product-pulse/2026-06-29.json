@@ -1,6 +1,6 @@
 {
   "date": "2026-06-29",
-  "refreshed_at": "2026-06-29T08:30:02.216218+08:00",
+  "refreshed_at": "2026-06-29T08:40:02.032132+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "All the controversy surrounding the launch of the first all-electric sedan to ever wear the Ferrari badge hasn't slowed down sales any - every single Ferrari Luce allocated to the Chinese market is already spoken for.",
       "published_at": "2026-06-28T19:27:52+00:00",
       "display_date": "JUN 29",
-      "image_src": "/assets/images/home-briefing/2026-04-30/industry-227848b72f96e039-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-30/industry-227848b72f96e039-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-17/industry-e738b978d78b05fb-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/industry-e738b978d78b05fb-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-06-28T19:05:39+00:00",
       "display_date": "JUN 29",
       "image_src": "/assets/images/home-briefing/2026-06-29/industry-df243bddb106f378-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/industry-3bfd82b622c40ed1-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-19/industry-a24c8c4f379ed84b-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "HP Inc. scales its OpenAI Frontier partnership to deploy AI across customer experiences, software development, and enterprise operations.",
       "published_at": "2026-06-28T17:00:00+00:00",
       "display_date": "JUN 29",
-      "image_src": "/assets/images/home-briefing/2026-05-03/ai-5b85e38c3cc81ff7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-03/ai-5b85e38c3cc81ff7-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-29/ai-37796130527f4768-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/ai-37796130527f4768-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "A project has cloned the Apple II Plus, but instead of using emulation, it goes the harder route by rebuilding Apple's classic computer in hardware. A homebrew Apple II Clone - Image Credit: Simon Boak/Unimplementedtrap.com If someone...",
       "published_at": "2026-06-28T16:27:21+00:00",
       "display_date": "JUN 29",
-      "image_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-23/apple-4f4d5d513b0e0752-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-4f4d5d513b0e0752-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-06-28T09:25:56-07:00",
       "display_date": "JUN 29",
       "image_src": "/assets/images/home-briefing/2026-06-29/apple-ac64c1697ec03a57-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-12/apple-adb5770bb989d273-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/apple-92482e0bbda58147-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "The SanDisk Extreme is a pocket-size 2TB portable SSD that hits read speeds up to 1050 MB/s and write speeds up to 1000 MB/s. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-28T16:15:47+00:00",
       "display_date": "JUN 29",
-      "image_src": "/assets/images/home-briefing/2026-06-05/apple-829fa334dba9eff5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-05/apple-829fa334dba9eff5-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-28T16:13:23+00:00",
       "display_date": "JUN 29",
       "image_src": "/assets/images/home-briefing/2026-06-29/industry-fffd858b10fa79be-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-06/industry-9d3e10993fa35664-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-22/industry-c511cc7d2aba2c5a-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Despite what's sometimes claimed on social media, Apple cannot escape memory prices that have doubled in recent months. Here's why. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-06-28T15:48:46+00:00",
       "display_date": "JUN 28",
-      "image_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-10/apple-95f4d74ec7a28927-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-95f4d74ec7a28927-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-23T13:33:26+00:00",
       "display_date": "JUN 23",
       "image_src": "/assets/images/home-briefing/2026-06-29/bluetooth-dc565014ed75cfc9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-11/bluetooth-ac878d68f0cedfbc-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-12/bluetooth-ac878d68f0cedfbc-thumb.webp"
     }
   ]
 }
