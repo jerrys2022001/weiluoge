@@ -1,10 +1,24 @@
 {
   "date": "2026-06-30",
-  "refreshed_at": "2026-06-30T08:11:17.180653+08:00",
+  "refreshed_at": "2026-06-30T08:30:02.348422+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Stop paying monthly for cloud storage with up to 70% off pCloud Lifetime this 4th of July",
+      "link": "https://9to5mac.com/2026/06/29/stop-paying-monthly-cloud-storage-up-to-70-off-pcloud-lifetime-4th-of-july/",
+      "summary": "For Apple users, storage never feels finished. iPhone photo libraries keep growing, Macs fill up with large projects and downloads, and the monthly services meant to solve the problem can become another subscription to track. pCloud's 4th...",
+      "published_at": "2026-06-29T23:30:00+00:00",
+      "display_date": "JUN 30",
+      "image_src": "/assets/images/home-briefing/2026-06-30/apple-6bba20a018679031-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-17/apple-88b56f456aa5cca3-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -15,10 +29,10 @@
       "published_at": "2026-06-29T23:29:19+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/apple-6d455e00f072b2e4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-44ce03073e332f75-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/apple-e2271a2daf133cb5-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -28,11 +42,11 @@
       "summary": "Apple is contesting a ruling that would force it to pay Optis $502 million for LTE patent infringement, but the UK Supreme Court has yet to reach a verdict. Apple seeks to avoid paying Optis $502 million over alleged patent infringement....",
       "published_at": "2026-06-29T23:07:35+00:00",
       "display_date": "JUN 30",
-      "image_src": "/assets/images/home-briefing/2026-05-09/apple-b4f6fa3a007e7536-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-b4f6fa3a007e7536-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-06/apple-da15f0cb9521a9af-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-06/apple-da15f0cb9521a9af-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -43,10 +57,10 @@
       "published_at": "2026-06-29T22:51:13+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/industry-d888d7c2453e893f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-27/industry-8c04ed2054f91395-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-16/industry-1e9bcee037a02b9d-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -57,10 +71,10 @@
       "published_at": "2026-06-29T15:42:11-07:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/apple-642c6005547538e6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-30/apple-07871120117d37b6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-16/apple-9435e4a8937eb558-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -70,22 +84,8 @@
       "summary": "Apple's long-running patent dispute with Optis is set to enter a new chapter this week, as the case reaches the UK Supreme Court. Here are the details.",
       "published_at": "2026-06-29T21:48:46+00:00",
       "display_date": "JUN 30",
-      "image_src": "/assets/images/home-briefing/2026-05-28/apple-0ca97f3416ed739e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-28/apple-0ca97f3416ed739e-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "User location data that Google & Apple have is protected by Fourth Amendment, says SCOTUS",
-      "link": "https://appleinsider.com/articles/26/06/29/user-location-data-that-google-apple-have-is-protected-by-fourth-amendment-says-scotus?utm_source=rss",
-      "summary": "A new Supreme Court ruling will require police to have probable cause before using sweeping geofence warrants that rely on people's personal location data to find criminals. The Supreme Court rules against the use of geofence warrants...",
-      "published_at": "2026-06-29T21:41:47+00:00",
-      "display_date": "JUN 30",
-      "image_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-20/apple-f54fd29c4ca3b159-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-09/apple-999610fac5df4074-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-999610fac5df4074-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-06-29T21:00:56+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/semiconductor-a2b09473398e6c21-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-11/semiconductor-e4a433ca33eec4e4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-12/semiconductor-8e478d66ddc5a64d-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-06-29T20:55:50+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/industry-101db1803fea5ac7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-22/industry-f5766b38f144b346-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-03/industry-7ab4874d7237993f-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-06-29T18:29:21+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/ai-f2971b98d354057f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-17/ai-2acfde0d118f4808-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-28/ai-c53450ae1da75ff1-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-29T17:46:52+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-06-30/bluetooth-63c59d71b383cb2d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-04/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-05/bluetooth-ba429f6d0d25b88c-thumb.webp"
     }
   ]
 }
