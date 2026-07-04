@@ -1,6 +1,6 @@
 {
   "date": "2026-07-04",
-  "refreshed_at": "2026-07-04T08:28:54.487570+08:00",
+  "refreshed_at": "2026-07-04T08:34:48.297286+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-07-03T21:20:00+00:00",
       "display_date": "JUL 04",
       "image_src": "/assets/images/home-briefing/2026-07-04/industry-5ad3975bf84f7b73-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/industry-c5dfa00a6db22dee-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-29/industry-df243bddb106f378-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-07-03T20:57:53+00:00",
       "display_date": "JUL 04",
       "image_src": "/assets/images/home-briefing/2026-07-04/semiconductor-3d3847941c3e330a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-30/semiconductor-a2b09473398e6c21-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/semiconductor-f560cd68b910aa18-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-07-03T20:55:07+00:00",
       "display_date": "JUL 04",
       "image_src": "/assets/images/home-briefing/2026-07-04/apple-afcb86a9588a5109-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-10/apple-95f4d74ec7a28927-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-08/apple-ab6f0ffdc7c0fd09-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "Researchers from Carnegie Mellon University and UCLA published a technical paper titled \"AgRefactor: Self-Evolving Agentic Workflow for HLS Compatibility and Performance.\" The paper introduces an \"LLM-based multi-agent workflow for...",
       "published_at": "2026-07-03T20:40:09+00:00",
       "display_date": "JUL 04",
-      "image_src": "/assets/images/home-briefing/2026-06-02/semiconductor-d5e688125f42e3a0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-02/semiconductor-d5e688125f42e3a0-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-01/semiconductor-e6755fbbba9ded09-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-01/semiconductor-e6755fbbba9ded09-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Researchers from University of Notre Dame, Georgia Institute of Technology, and Villanova University published a technical paper titled \"Probabilistic Memory for Trustworthy Edge Intelligence.\" Summary: The paper introduces p-MEM as \"a...",
       "published_at": "2026-07-03T20:32:27+00:00",
       "display_date": "JUL 04",
-      "image_src": "/assets/images/home-briefing/2026-07-01/semiconductor-e6755fbbba9ded09-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-01/semiconductor-e6755fbbba9ded09-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-04-18/semiconductor-0fd8099e8d5afd55-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-18/semiconductor-0fd8099e8d5afd55-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "With iPhone Air 2 rumored to be less than a year away, Apple could turn to better cooling or more cameras to make the ultra-thin phone even more popular than the original. Here's what's been rumored, and some other possibilities. iPhone...",
       "published_at": "2026-07-03T19:14:05+00:00",
       "display_date": "JUL 04",
-      "image_src": "/assets/images/home-briefing/2026-06-17/apple-8630939e05d07715-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-17/apple-8630939e05d07715-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-17/apple-2ca04336e6f22b3c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/apple-2ca04336e6f22b3c-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-07-03T12:10:00-07:00",
       "display_date": "JUL 04",
       "image_src": "/assets/images/home-briefing/2026-07-04/apple-ecb4573bf018a670-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-08/apple-a1d697fef29b648b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-18/apple-5634545ca5e10dc7-thumb.webp"
     },
     {
       "index": 8,
@@ -112,22 +112,22 @@
       "summary": "Jon Prosser has formally responded to Apple's lawsuit over alleged iOS leaks, claiming that he is entirely innocent and that colleague Michael Ramacciotti is solely responsible for any alleged trade secret theft. Jon Prosser in a still...",
       "published_at": "2026-07-03T17:47:41+00:00",
       "display_date": "JUL 04",
-      "image_src": "/assets/images/home-briefing/2026-06-22/apple-ee596660ad8c43f3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-22/apple-ee596660ad8c43f3-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-14/apple-75593a1eb55012a8-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-14/apple-75593a1eb55012a8-thumb.webp"
     },
     {
       "index": 9,
       "slug": "ai",
       "eyebrow": "AI Developments",
-      "source_name": "MIT Technology Review",
-      "source_url": "https://www.technologyreview.com/",
-      "title": "The UK's generational tobacco ban might not work. I'm supporting it anyway.",
-      "link": "https://www.technologyreview.com/2026/07/03/1140036/uk-tobacco-ban-might-not-work-children-smoking/",
-      "summary": "As the parent of two little girls, I often think about how their childhood is different from mine. The seven-year-old is learning about AI at school. The five-year-old is given internet-based homework every week. And they are both...",
-      "published_at": "2026-07-03T09:00:00+00:00",
+      "source_name": "Tom's Hardware",
+      "source_url": "https://www.tomshardware.com/",
+      "title": "Brand new Steam Machine hit with 'red line of death' GPU failure after playing No Man's Sky for just five minutes - console 'bricked itself' following update in failure that echoes the horror of the Xbox 360's infamous RROD",
+      "link": "https://www.tomshardware.com/video-games/console-gaming/brand-new-steam-machine-hit-with-red-line-of-death-gpu-failure-after-playing-no-mans-sky-for-just-five-minutes-console-bricked-itself-following-update-in-incident-eerily-reminiscent-of-xbox-360-launch",
+      "summary": "A Redditor experience the deadly \"Red Line of Death\" on their Steam Machine, indicating GPU failure. They've just been playing for five minutes and then updated the console before experiencing the issue.",
+      "published_at": "2026-07-03T13:58:19+00:00",
       "display_date": "JUL 03",
-      "image_src": "/assets/images/home-briefing/2026-07-04/ai-30aaa5b3e8634785-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-05/ai-0509c5b6cac5b387-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-04/ai-b5df1e6d8a6284a1-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-20/ai-947af83496b785e1-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-06-29T17:46:52+00:00",
       "display_date": "JUN 30",
       "image_src": "/assets/images/home-briefing/2026-07-04/bluetooth-63c59d71b383cb2d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-08/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/bluetooth-ba429f6d0d25b88c-thumb.webp"
     }
   ]
 }
