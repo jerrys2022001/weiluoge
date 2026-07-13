@@ -1,10 +1,24 @@
 {
   "date": "2026-07-13",
-  "refreshed_at": "2026-07-13T04:08:20.442815+08:00",
+  "refreshed_at": "2026-07-13T08:30:01.781240+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "9to5Mac Overtime 072: Apple Watch and the new Siri",
+      "link": "https://9to5mac.com/2026/07/12/9to5mac-overtime-072-apple-watch-and-the-new-siri/",
+      "summary": "Jeff and Fernando discuss the new Siri experience on Apple Watch, new Siri features on iOS 27, our Apple Watch feature wish list, enhancements to Messages on iPhone, and the state of social media in 2026. Sponsored by Bitwarden : Check out...",
+      "published_at": "2026-07-13T00:14:05+00:00",
+      "display_date": "JUL 13",
+      "image_src": "/assets/images/home-briefing/2026-07-13/apple-13ccc9af69a4a9d3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-0aa205347e98adb5-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -15,10 +29,10 @@
       "published_at": "2026-07-12T23:00:27+00:00",
       "display_date": "JUL 13",
       "image_src": "/assets/images/home-briefing/2026-07-13/semiconductor-e1e1eda5dcec92a9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-19/semiconductor-796b60639c344166-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/semiconductor-c89421e6f65b9787-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -28,11 +42,11 @@
       "summary": "In this week's Sunday Reboot, an iPhone 17 Pro Max goes underground for a very, very long time. America 250 Sunday Reboot is a weekly column covering some of the lighter stories within the Apple reality distortion field from the past seven...",
       "published_at": "2026-07-12T21:30:53+00:00",
       "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-05-09/apple-b4f6fa3a007e7536-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-b4f6fa3a007e7536-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-10/apple-61ab4f7aef1774a6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-10/apple-61ab4f7aef1774a6-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -42,11 +56,11 @@
       "summary": "Amazon has brought the 42mm Apple Watch Series 11 back down to $299 for the weekend, offering $100 off its regular price. The sale also includes discounts on larger 46mm models and premium titanium styles. Save $100 on Apple Watch Series...",
       "published_at": "2026-07-12T19:35:18+00:00",
       "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-05-27/apple-47d92394c7d6f068-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-47d92394c7d6f068-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-27/apple-ad8051c2b51d6099-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-ad8051c2b51d6099-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -56,11 +70,11 @@
       "summary": "Two new Apple Pencil models are reportedly in development, with refreshed designs expected to debut alongside the 2027 iPad Pro. (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals. )",
       "published_at": "2026-07-12T18:39:44+00:00",
       "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-09/apple-7ff14e76abd15625-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-7ff14e76abd15625-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "Semiconductor Engineering",
@@ -70,11 +84,11 @@
       "summary": "Researchers from Georgia Institute of Technology published a technical paper titled \"Open DRAM Model-Part II: Enabling Processing-in-Memory in 3-D DRAM.\" Abstract Excerpt: \"In this work, we present an \"Open DRAM Model\" that enables...",
       "published_at": "2026-07-12T18:37:26+00:00",
       "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-04-21/semiconductor-0598cca3315a2a07-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-21/semiconductor-0598cca3315a2a07-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-14/semiconductor-00806b7f5c62c652-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/semiconductor-00806b7f5c62c652-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 7,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "Semiconductor Engineering",
@@ -85,21 +99,7 @@
       "published_at": "2026-07-12T17:41:56+00:00",
       "display_date": "JUL 13",
       "image_src": "/assets/images/home-briefing/2026-07-13/semiconductor-1c5f94fa7ebc2902-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-07/semiconductor-9d1a5d708c60bef3-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "Apple Stores to Expand Use of 'Tap to Pay on iPhone'",
-      "link": "https://www.macrumors.com/2026/07/12/apple-stores-to-expand-tap-to-pay-on-iphone/",
-      "summary": "In 2022, Apple began rolling out Tap to Pay on iPhone , a system that allows small business owners and other merchants to accept contactless payments on an iPhone, with no point-of-sale hardware required. The feature allows customers to...",
-      "published_at": "2026-07-12T09:11:18-07:00",
-      "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-07-13/apple-e851b197fb140beb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-61093635768b9461-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-02/semiconductor-4c11a27f9d41c347-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-07-12T15:46:18+00:00",
       "display_date": "JUL 12",
       "image_src": "/assets/images/home-briefing/2026-07-13/ai-737ff150e3be8c54-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-07/ai-ef35c7e004128801-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-10/ai-9b57e029b3807b9c-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-07-10T10:41:19+00:00",
       "display_date": "JUL 10",
       "image_src": "/assets/images/home-briefing/2026-07-13/bluetooth-b2727e38547c0f3e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-20/bluetooth-609e8424e2c61cc8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-21/bluetooth-609e8424e2c61cc8-thumb.webp"
     }
   ]
 }
