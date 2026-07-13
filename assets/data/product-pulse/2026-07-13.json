@@ -1,10 +1,38 @@
 {
   "date": "2026-07-13",
-  "refreshed_at": "2026-07-13T08:40:01.846754+08:00",
+  "refreshed_at": "2026-07-13T11:57:16.621299+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "semiconductor",
+      "eyebrow": "Semiconductor Breakthroughs",
+      "source_name": "SemiWiki",
+      "source_url": "https://semiwiki.com/",
+      "title": "AI Driven Semiconductor Systems",
+      "link": "https://semiwiki.com/semiconductor-services/netapp/370833-ai-driven-semiconductor-systems/",
+      "summary": "AI-driven semiconductor systems are the next major transformation in chip design and manufacturing. The central idea is that semiconductor workflows are becoming too complex, too data-intensive, and too time-sensitive to be managed only...",
+      "published_at": "2026-07-13T03:00:08+00:00",
+      "display_date": "JUL 13",
+      "image_src": "/assets/images/home-briefing/2026-04-26/semiconductor-0cc3985732fb5fd7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-04-26/semiconductor-0cc3985732fb5fd7-thumb.webp"
+    },
+    {
+      "index": 2,
+      "slug": "semiconductor",
+      "eyebrow": "Semiconductor Breakthroughs",
+      "source_name": "SemiWiki",
+      "source_url": "https://semiwiki.com/",
+      "title": "CEO Interview with Dr. Albert Liu of Kneron",
+      "link": "https://semiwiki.com/ceo-interviews/369987-ceo-interview-with-dr-albert-liu-of-kneron/",
+      "summary": "Dr. Albert Liu is the Founder and CEO of Kneron , a full-stack edge AI company pioneering next-generation Neural Processing Unit (NPU) architectures and localized AI infrastructure. Widely recognized as a pioneer in NPU architecture, Dr....",
+      "published_at": "2026-07-13T01:00:31+00:00",
+      "display_date": "JUL 13",
+      "image_src": "/assets/images/home-briefing/2026-05-26/semiconductor-7848db551d3b6790-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-26/semiconductor-7848db551d3b6790-thumb.webp"
+    },
+    {
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -18,7 +46,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-05-29/apple-6e4b36738799c0be-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 4,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -32,7 +60,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-06-15/semiconductor-c89421e6f65b9787-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -46,7 +74,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-05-20/apple-5b26d4a8ef8f8cba-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -60,7 +88,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-04-17/apple-5d9925f959c8b600-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "Cult of Mac",
@@ -72,34 +100,6 @@
       "display_date": "JUL 13",
       "image_src": "/assets/images/home-briefing/2026-06-12/apple-2d72ee71a71c09a0-thumb.webp",
       "fallback_src": "/assets/images/home-briefing/2026-06-12/apple-2d72ee71a71c09a0-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "semiconductor",
-      "eyebrow": "Semiconductor Breakthroughs",
-      "source_name": "Semiconductor Engineering",
-      "source_url": "https://semiengineering.com/",
-      "title": "Open DRAM Model For PIM Analysis In 3D DRAM (Georgia Tech)",
-      "link": "https://semiengineering.com/open-dram-model-for-pim-analysis-in-3d-dram-georgia-tech/",
-      "summary": "Researchers from Georgia Institute of Technology published a technical paper titled \"Open DRAM Model-Part II: Enabling Processing-in-Memory in 3-D DRAM.\" Abstract Excerpt: \"In this work, we present an \"Open DRAM Model\" that enables...",
-      "published_at": "2026-07-12T18:37:26+00:00",
-      "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-05-14/semiconductor-00806b7f5c62c652-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-14/semiconductor-00806b7f5c62c652-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "semiconductor",
-      "eyebrow": "Semiconductor Breakthroughs",
-      "source_name": "Semiconductor Engineering",
-      "source_url": "https://semiengineering.com/",
-      "title": "Hardware Abstraction Layer Study Targets Software-Defined Vehicles (U. of Stuttgart)",
-      "link": "https://semiengineering.com/hardware-abstraction-layer-study-targets-software-defined-vehicles-u-of-stuttgart/",
-      "summary": "Researchers from University of Stuttgart published a technical paper titled \"Evaluating Hardware Abstraction Layer Concepts for Software Defined Vehicles: Insights into Applicability and Effectiveness.\" Abstract Excerpt: \"The emergence of...",
-      "published_at": "2026-07-12T17:41:56+00:00",
-      "display_date": "JUL 13",
-      "image_src": "/assets/images/home-briefing/2026-07-13/semiconductor-1c5f94fa7ebc2902-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-02/semiconductor-4c11a27f9d41c347-thumb.webp"
     },
     {
       "index": 8,
