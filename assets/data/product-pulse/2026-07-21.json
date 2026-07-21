@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "refreshed_at": "2026-07-21T04:24:56.246747+08:00",
+  "refreshed_at": "2026-07-21T08:32:08.584855+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "Tesla and Starlink say SpaceX's satellite internet is now \"directly integrated\" into the Cybercab, Tesla's dedicated robotaxi. The reveal came through a pair of posts on X on Monday, with a cutaway diagram showing a Starlink antenna...",
       "published_at": "2026-07-21T00:25:21+00:00",
       "display_date": "JUL 21",
-      "image_src": "/assets/images/home-briefing/2026-05-08/industry-1ef1d1f6fea79a9a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/industry-1ef1d1f6fea79a9a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-16/industry-fd5fb1cfcf38d69d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-16/industry-fd5fb1cfcf38d69d-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Apple released iOS 27 beta 4 today, and it comes with a useful new \"Automatic Downloads\" feature in the Apple TV app. Here's how it works.",
       "published_at": "2026-07-21T00:25:03+00:00",
       "display_date": "JUL 21",
-      "image_src": "/assets/images/home-briefing/2026-06-09/apple-999610fac5df4074-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-999610fac5df4074-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-10/apple-bff4c303cb876dcc-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-10/apple-bff4c303cb876dcc-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "The final approval settles one case, but it doesn't resolve the broader issue of using copyrighted works to train AI models.",
       "published_at": "2026-07-21T00:12:24+00:00",
       "display_date": "JUL 21",
-      "image_src": "/assets/images/home-briefing/2026-04-30/industry-b4d6dc46a1ae76e7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-30/industry-b4d6dc46a1ae76e7-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-09/industry-e30000e465f29ca6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/industry-e30000e465f29ca6-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-07-20T16:39:33-07:00",
       "display_date": "JUL 21",
       "image_src": "/assets/images/home-briefing/2026-07-21/apple-78cc932e8510ff00-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-158d4f67bcce74d4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-ad8051c2b51d6099-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-07-20T22:21:04+00:00",
       "display_date": "JUL 21",
       "image_src": "/assets/images/home-briefing/2026-07-21/industry-7c6280c2ab2bf97b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-30/industry-227848b72f96e039-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-29/industry-fffd858b10fa79be-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "Apple is continuing to tweak iOS 27 ahead of its September launch, and the fourth developer beta is available as of today. There are fewer changes than in prior betas, but Apple is still adding new features. TV App In the Settings section...",
       "published_at": "2026-07-20T14:50:52-07:00",
       "display_date": "JUL 21",
-      "image_src": "/assets/images/home-briefing/2026-07-19/apple-08dddd9cf18e8991-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-19/apple-08dddd9cf18e8991-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-19/apple-5c2cf5b5e309c744-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-19/apple-5c2cf5b5e309c744-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-07-20T21:27:16+00:00",
       "display_date": "JUL 21",
       "image_src": "/assets/images/home-briefing/2026-07-21/apple-c18257b423a62f98-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-29/apple-2b8364a5eb046fa9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-30/apple-07cca9ee0164aa3a-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "I have had the pleasure of working with Defacto Technologies for the past 10 years on SemiWiki and I am always impressed with their professionalism and ability to quickly address the challenges of complex SoC design. From my perspective,...",
       "published_at": "2026-07-20T21:00:32+00:00",
       "display_date": "JUL 21",
-      "image_src": "/assets/images/home-briefing/2026-04-27/semiconductor-1bbf03d5d59f9794-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/semiconductor-1bbf03d5d59f9794-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-11/semiconductor-22ee3312b5436ea0-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-11/semiconductor-22ee3312b5436ea0-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-07-20T19:35:42+00:00",
       "display_date": "JUL 21",
       "image_src": "/assets/images/home-briefing/2026-07-21/ai-7041a7aa76509431-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-02/ai-8a8d6c2551fa55b9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-03/ai-5b85e38c3cc81ff7-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-07-17T08:10:05+00:00",
       "display_date": "JUL 17",
       "image_src": "/assets/images/home-briefing/2026-07-21/bluetooth-adce4e0d8e3bf4aa-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-07/bluetooth-be3071695b5a514f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/bluetooth-be3071695b5a514f-thumb.webp"
     }
   ]
 }
