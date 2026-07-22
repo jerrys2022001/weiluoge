@@ -1,7 +1,13 @@
 {
-  "latest_date": "2026-07-21",
-  "updated_at": "2026-07-21T08:32:08.584855+08:00",
+  "latest_date": "2026-07-22",
+  "updated_at": "2026-07-22T08:30:02.625791+08:00",
   "entries": [
+    {
+      "date": "2026-07-22",
+      "path": "/assets/data/product-pulse/2026-07-22.json",
+      "item_count": 10,
+      "refreshed_at": "2026-07-22T08:30:02.625791+08:00"
+    },
     {
       "date": "2026-07-21",
       "path": "/assets/data/product-pulse/2026-07-21.json",
@@ -535,12 +541,6 @@
       "path": "/assets/data/product-pulse/2026-04-24.json",
       "item_count": 10,
       "refreshed_at": "2026-04-24T08:30:02.964993+08:00"
-    },
-    {
-      "date": "2026-04-22",
-      "path": "/assets/data/product-pulse/2026-04-22.json",
-      "item_count": 10,
-      "refreshed_at": "2026-04-22T08:30:02.719403+08:00"
     }
   ]
 }
