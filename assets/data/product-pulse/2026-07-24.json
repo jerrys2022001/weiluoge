@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "refreshed_at": "2026-07-24T06:15:02.510789+08:00",
+  "refreshed_at": "2026-07-24T08:30:02.498877+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-07-23T23:00:00+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/semiconductor-2e3722313a3939f4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/semiconductor-a81af7bd2a88d1c5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-04/semiconductor-6fe17e351713b029-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-07-23T15:02:58-07:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/apple-9b94a7ca309a4825-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-13/apple-abbcf8a6f4ae66a2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-14/apple-e2271a2daf133cb5-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-07-23T22:00:08+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/semiconductor-e3787190cc4de9ea-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-25/semiconductor-1e78880297b517b4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-02/semiconductor-4c11a27f9d41c347-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-07-23T21:57:15+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/industry-1090d9562c897647-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/industry-a1c1cebff1bad276-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/industry-6c1d3cba435ce65b-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-07-23T21:48:46+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/bluetooth-f8889912173d1254-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-28/bluetooth-511af4dc0f02f48f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-29/bluetooth-511af4dc0f02f48f-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-07-23T21:00:37+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/semiconductor-a81af7bd2a88d1c5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-24/semiconductor-2e3722313a3939f4-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-07-23T13:58:38-07:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/apple-8b77144fb60be255-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-15/apple-76d382f7c9b34cd6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/apple-2ca04336e6f22b3c-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Benjamin and Chance talk about the last week in Apple News, including the rumored new 'Apple Upgrade' leasing program, Apple Music price hike, iOS 27 beta 4 changes, an OLED screen roadmap for future Macs and iPads, and next-gen Apple...",
       "published_at": "2026-07-23T20:00:00+00:00",
       "display_date": "JUL 24",
-      "image_src": "/assets/images/home-briefing/2026-06-19/apple-8f59cdccf97a24cd-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-19/apple-8f59cdccf97a24cd-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-20/apple-01845e1b2a381809-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-20/apple-01845e1b2a381809-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-07-23T19:49:23+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/apple-2f35d01c97d974ff-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-02/apple-43011d5c4f92b5b9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-03/apple-c45a6d7933dd8c03-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-07-23T18:30:00+00:00",
       "display_date": "JUL 24",
       "image_src": "/assets/images/home-briefing/2026-07-24/ai-a95bc11d166da6b7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-04-27/ai-8207a04ef5ea1f83-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-04-28/ai-c53450ae1da75ff1-thumb.webp"
     }
   ]
 }
