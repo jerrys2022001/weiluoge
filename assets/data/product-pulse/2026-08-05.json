@@ -1,6 +1,6 @@
 {
   "date": "2026-08-05",
-  "refreshed_at": "2026-08-05T09:12:35.128971+08:00",
+  "refreshed_at": "2026-08-05T09:15:13.141177+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-05T01:00:48+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/apple-262a2def116ea78c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-56662d53aa25a6cd-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-13/apple-abbcf8a6f4ae66a2-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Apple requires all browsers to use WebKit on iPhone, so a report suggests every browser is affected by three separate leaks that can hand off information around a proxy or iCloud Private Relay . WebKit browsers can leak data past proxies...",
       "published_at": "2026-08-05T00:11:10+00:00",
       "display_date": "AUG 05",
-      "image_src": "/assets/images/home-briefing/2026-07-06/apple-d7bb530fbccf3391-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-06/apple-d7bb530fbccf3391-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-09/apple-02a42c61add73148-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-04T16:49:52-07:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/apple-e257735c113fc230-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-19/apple-5d356af1186d6afd-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-04/apple-ba78b34e12464f61-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-08-04T22:30:58+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/industry-b22fdecfeca6ab47-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-04/industry-5ad3975bf84f7b73-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-20/industry-95a6f3457cdd03b6-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-08-04T15:10:13-07:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/apple-ad8105d8c6d302ae-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-06/apple-0a21ca3f9faf4b6b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-13/apple-e851b197fb140beb-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-04T21:10:47+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/industry-12b0a84749be1cdf-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-21/industry-9a466f720e7f2baa-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/industry-250c514da1816ddc-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-04T21:07:26+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/industry-8eea3a3e507f7190-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-04/industry-5ad3975bf84f7b73-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-28/industry-dfdab97454d18a58-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-04T21:00:22+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-05/semiconductor-ff1d09d37a87a3e7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-18/semiconductor-318739bfda418420-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-19/semiconductor-796b60639c344166-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "OpenAI explains recent third-party cybersecurity evaluation incidents and outlines new safeguards to strengthen AI model testing and evaluation.",
       "published_at": "2026-08-04T19:00:00+00:00",
       "display_date": "AUG 05",
-      "image_src": "/assets/images/home-briefing/2026-07-06/ai-cb63b0ce583ade3f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-06/ai-cb63b0ce583ade3f-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-24/ai-d9be8e455fe86e5a-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-24/ai-d9be8e455fe86e5a-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-04T07:25:27+00:00",
       "display_date": "AUG 04",
       "image_src": "/assets/images/home-briefing/2026-08-05/bluetooth-c0ee1ec6dffb44cf-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-11/bluetooth-b2727e38547c0f3e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-12/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
