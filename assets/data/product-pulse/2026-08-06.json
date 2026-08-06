@@ -1,10 +1,38 @@
 {
   "date": "2026-08-06",
-  "refreshed_at": "2026-08-06T07:58:08.962367+08:00",
+  "refreshed_at": "2026-08-06T08:30:02.300720+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Abode launches new Apple Home-compatible sensors for garages, gates,",
+      "link": "https://9to5mac.com/2026/08/05/abode-launches-new-apple-home-compatible-sensors-for-garages-gates-more/",
+      "summary": "DIY smart home security company Abode expanded its Apple Home-compatible lineup today with two new sensors designed to monitor garage doors, gates, sheds, and other entry points. Here are the details.",
+      "published_at": "2026-08-06T00:26:32+00:00",
+      "display_date": "AUG 06",
+      "image_src": "/assets/images/home-briefing/2026-08-06/apple-8ec43c4b17550d11-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-20/apple-08dddd9cf18e8991-thumb.webp"
+    },
+    {
+      "index": 2,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Meta's New Mac Coding Agent Costs Up to 20x Less If You Let Meta Train on Your Data",
+      "link": "https://www.macrumors.com/2026/08/05/meta-muse-code-for-mac/",
+      "summary": "Meta today launched Muse Code , a terminal coding agent available for macOS and Linux. Muse Code is in beta, and it is powered by Muse Spark 1.2, ‌Meta‌'s newest model. ‌Meta‌ CEO Mark Zuckerberg said Muse Code can accomplish complete...",
+      "published_at": "2026-08-05T17:10:28-07:00",
+      "display_date": "AUG 06",
+      "image_src": "/assets/images/home-briefing/2026-08-06/apple-e5690ce19c206572-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/apple-5d356af1186d6afd-thumb.webp"
+    },
+    {
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -15,10 +43,10 @@
       "published_at": "2026-08-05T16:34:16-07:00",
       "display_date": "AUG 06",
       "image_src": "/assets/images/home-briefing/2026-08-06/apple-27fadf2449ad5478-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-08/apple-ab6f0ffdc7c0fd09-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-30/apple-642c6005547538e6-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -28,11 +56,11 @@
       "summary": "Summer Apple Watch sales at Amazon and Walmart deliver discounts of up to $172 off SE 3, Series 11, and Ultra 3 styles. Save up to $172 across the Apple Watch lineup - Image credit: Apple Prices across Apple's wearables line start at $219...",
       "published_at": "2026-08-05T22:49:08+00:00",
       "display_date": "AUG 06",
-      "image_src": "/assets/images/home-briefing/2026-06-07/apple-06f635a27df739e5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-07/apple-06f635a27df739e5-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-24/apple-9b94a7ca309a4825-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-24/apple-9b94a7ca309a4825-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 5,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -43,10 +71,10 @@
       "published_at": "2026-08-05T21:21:28+00:00",
       "display_date": "AUG 06",
       "image_src": "/assets/images/home-briefing/2026-08-06/industry-b610efb5c4df62d0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-02/industry-9204ed0da3b85b70-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-03/industry-45e1c8992d325781-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -57,10 +85,10 @@
       "published_at": "2026-08-05T13:51:29-07:00",
       "display_date": "AUG 06",
       "image_src": "/assets/images/home-briefing/2026-08-06/apple-687e8fdbd6af8605-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-e9e0053b4deb77b2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-21/apple-c18257b423a62f98-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 7,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -71,35 +99,7 @@
       "published_at": "2026-08-05T20:45:27+00:00",
       "display_date": "AUG 06",
       "image_src": "/assets/images/home-briefing/2026-08-06/industry-3d1a4bd3e05db503-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-19/industry-24a79fa274fc4b53-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "These are my favorite Apple Watch accessories of 2026 (so far)",
-      "link": "https://9to5mac.com/2026/08/05/these-are-my-favorite-apple-watch-accessories-of-2026-so-far/",
-      "summary": "9to5Mac is brought to you by Memoket : The Memoket Gem is an 11g AI wearable that slots beside your Apple Watch in a co-wear band. Press once to capture a conversation, and Gem connects it to what you discussed weeks ago - surfacing the...",
-      "published_at": "2026-08-05T20:18:00+00:00",
-      "display_date": "AUG 06",
-      "image_src": "/assets/images/home-briefing/2026-08-06/apple-f537c84fad03e1a7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-16/apple-87e3ec02f55b1131-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Klaviyo acquires Elias Torres' Agency in full-circle reunion for tech founders",
-      "link": "https://techcrunch.com/2026/08/05/klaviyo-acquires-elias-torres-agency-in-full-circle-reunion-for-tech-founders/",
-      "summary": "The serial entrepreneur joins the e-commerce company as CPO to lead its AI agents.",
-      "published_at": "2026-08-05T20:05:00+00:00",
-      "display_date": "AUG 06",
-      "image_src": "/assets/images/home-briefing/2026-06-15/industry-44c8867628f54931-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/industry-44c8867628f54931-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-20/industry-14c61e5353b54b55-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Researchers from RIKEN Center for Computational Science, Keio University, Los Alamos National Laboratory, and Oak Ridge National Laboratory published a technical paper titled \"PIMID: A Full-System Simulator with Intricacy and Diversity for...",
       "published_at": "2026-08-05T17:17:48+00:00",
       "display_date": "AUG 06",
-      "image_src": "/assets/images/home-briefing/2026-07-04/semiconductor-3d3847941c3e330a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-04/semiconductor-3d3847941c3e330a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-07/semiconductor-dc06bb6f9f317a29-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/semiconductor-dc06bb6f9f317a29-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-05T14:48:13+00:00",
       "display_date": "AUG 05",
       "image_src": "/assets/images/home-briefing/2026-08-06/ai-e25a60dbe82060d7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-17/ai-389ebf6b2b5af2fe-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-04/ai-b5df1e6d8a6284a1-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-04T07:25:27+00:00",
       "display_date": "AUG 04",
       "image_src": "/assets/images/home-briefing/2026-08-06/bluetooth-c0ee1ec6dffb44cf-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-12/bluetooth-b2727e38547c0f3e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-13/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
