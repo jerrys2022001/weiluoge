@@ -1,6 +1,6 @@
 {
   "date": "2026-08-08",
-  "refreshed_at": "2026-08-08T08:10:00.066622+08:00",
+  "refreshed_at": "2026-08-08T08:30:02.029380+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-07T21:31:16+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/apple-527988274342f3ee-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-14/apple-613a63bfbf3cd56f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-17/apple-8630939e05d07715-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-08-07T21:30:11+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/industry-fa0bc5ea6d20daa6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-23/industry-857029e8aa8fbf3f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-01/industry-ff3308288e1557e6-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-07T14:27:43-07:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/apple-51db773b4c369aa7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-09/apple-0ae5df165fbaca44-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-07/apple-b5404d635452d89d-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "Actor James Marsden, who recently played billionaire Owen Ashe in the second season of Your Friends & Neighbors , was confirmed this week for his Apple TV third production. Here are the details.",
       "published_at": "2026-08-07T21:17:21+00:00",
       "display_date": "AUG 08",
-      "image_src": "/assets/images/home-briefing/2026-06-13/apple-0a5a58f9850846e2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/apple-0a5a58f9850846e2-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-01/apple-26925ea5865633f8-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-01/apple-26925ea5865633f8-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-08-07T20:27:50+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/apple-5cab366b239d5f7a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-07/apple-776c2148bd1ed770-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-16/apple-0ded9fbec1a5ce3a-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-07T20:19:20+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/industry-d2abfebcf004cd44-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-14/industry-004cc62ba1e8a96f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/industry-c4bd36af7cc638d4-thumb.webp"
     },
     {
       "index": 7,
@@ -98,8 +98,8 @@
       "summary": "In iOS 27, Apple says it took extra care to make its software \"more responsive, reliable, and delightful.\" There are a variety of fixes that should make your iPhone faster , including one update for network transitions.",
       "published_at": "2026-08-07T20:14:05+00:00",
       "display_date": "AUG 08",
-      "image_src": "/assets/images/home-briefing/2026-07-17/apple-39342e8d2d5061f5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-39342e8d2d5061f5-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-31/apple-b998d99ae28dd613-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-31/apple-b998d99ae28dd613-thumb.webp"
     },
     {
       "index": 8,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-07T16:58:22+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-08/ai-c3c3e9898c2577ba-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-14/ai-ab38dd1744ebf182-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-06/ai-b734522e899a13b4-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-07T07:52:06+00:00",
       "display_date": "AUG 07",
       "image_src": "/assets/images/home-briefing/2026-08-08/bluetooth-d64a6f7fbefb423f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/bluetooth-ba429f6d0d25b88c-thumb.webp"
     }
   ]
 }
