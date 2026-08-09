@@ -1,6 +1,6 @@
 {
   "date": "2026-08-09",
-  "refreshed_at": "2026-08-09T08:30:02.704049+08:00",
+  "refreshed_at": "2026-08-09T08:40:01.646282+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "Amazon is again offering steep price cuts on Apple's current MacBook Pro line, with a $500 discount in effect this weekend on a high-end M5 Max model with a spacious 2TB SSD. Save $500 on Apple's M5 Max 14-inch MacBook Pro - Image credit:...",
       "published_at": "2026-08-08T18:49:43+00:00",
       "display_date": "AUG 09",
-      "image_src": "/assets/images/home-briefing/2026-05-20/apple-6780745e801c8d0a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-20/apple-6780745e801c8d0a-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-22/apple-20f2233cf6a036e9-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-22/apple-20f2233cf6a036e9-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-08-08T18:13:25+00:00",
       "display_date": "AUG 09",
       "image_src": "/assets/images/home-briefing/2026-08-09/apple-8fdba5faf51d95cc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-56662d53aa25a6cd-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-29/apple-ac64c1697ec03a57-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "Apple may raise the prices of the iPhone 17 roster on August 10, bringing the smartphones in line with other products affected by the memory pricing crisis. The iPhone 17 will be around for a while longer, but it could soon get a price...",
       "published_at": "2026-08-08T17:28:51+00:00",
       "display_date": "AUG 09",
-      "image_src": "/assets/images/home-briefing/2026-07-17/apple-2746d72f3de747d5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-2746d72f3de747d5-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-17/apple-b2f7adcda3fdee02-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-b2f7adcda3fdee02-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-08-08T16:00:00+00:00",
       "display_date": "AUG 09",
       "image_src": "/assets/images/home-briefing/2026-08-09/industry-1ac6e97419262723-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-13/industry-c1d734b17da17b24-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-02/industry-9204ed0da3b85b70-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-08-08T15:14:01+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-09/apple-1eecf9bc2b9d661c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-16/apple-87e3ec02f55b1131-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-17/apple-93ac9e798d53671c-thumb.webp"
     },
     {
       "index": 6,
@@ -84,8 +84,8 @@
       "summary": "According to reports from Bloomberg , Apple will be skipping its M6 Pro, M6 Max, and M6 Ultra chips to accelerate development of the M7 chip. That means the only chip to be released from the M6 family will be the base M6. Here's why.",
       "published_at": "2026-08-08T14:21:00+00:00",
       "display_date": "AUG 08",
-      "image_src": "/assets/images/home-briefing/2026-06-07/apple-86705609d7a7028e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-07/apple-86705609d7a7028e-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-09/apple-257480a8d619c2d9-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-257480a8d619c2d9-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-08T13:51:24+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-09/ai-9ce53338942b3915-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/ai-b734522e899a13b4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/ai-f49890bcf9cea6aa-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-08T13:00:00+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-09/industry-e555ed064297e98d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-02/industry-a94af351dd67839f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/industry-3bfd82b622c40ed1-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-08T10:24:54+00:00",
       "display_date": "AUG 08",
       "image_src": "/assets/images/home-briefing/2026-08-09/semiconductor-4fbe9ce0662dd9b2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-01/semiconductor-4aa7e529f3477087-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-04/semiconductor-5d913e1198423dc0-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-07T07:52:06+00:00",
       "display_date": "AUG 07",
       "image_src": "/assets/images/home-briefing/2026-08-09/bluetooth-d64a6f7fbefb423f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-07/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-08/bluetooth-ba429f6d0d25b88c-thumb.webp"
     }
   ]
 }
