@@ -1,6 +1,6 @@
 {
   "date": "2026-08-10",
-  "refreshed_at": "2026-08-10T03:39:43.730345+08:00",
+  "refreshed_at": "2026-08-10T08:30:01.932034+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-09T20:35:17+00:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/industry-d5618cd46ee83374-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-30/industry-c779f74d74e283c3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-01/industry-3d50f11d5cc4ec11-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-08-09T18:26:00+00:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/apple-e6e26233109e17a7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-25/apple-8405a41643b8e951-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-a33adb9322afe26f-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-09T17:48:00+00:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-07/apple-06f635a27df739e5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "While the design isn't changing one bit, one expensive and favorite material might return to Apple Watch after a seven-year absence. Apple Watch Series 5 , in ceramic It's been nine years since the Apple Watch Series 2 debuted the...",
       "published_at": "2026-08-09T17:39:10+00:00",
       "display_date": "AUG 10",
-      "image_src": "/assets/images/home-briefing/2026-06-26/apple-fc9bd3fef2aeb9e9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/apple-fc9bd3fef2aeb9e9-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "In my 45 years experience in the semiconductor industry, 43 of that in EDA and IP, I have never seen such a meteoric rise of an EDA company. I do remember money being raised for EDA in the early days but never have I seen such a customer...",
       "published_at": "2026-08-09T17:00:25+00:00",
       "display_date": "AUG 10",
-      "image_src": "/assets/images/home-briefing/2026-07-23/semiconductor-f8e8a8f6670fa169-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-23/semiconductor-f8e8a8f6670fa169-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp"
     },
     {
       "index": 6,
@@ -84,11 +84,25 @@
       "summary": "The iPhone Fold has yet to ship, but Apple's already working on a third-generation foldable it could release in 2028. It's something it's compelled to do. A render of what the first-gen iPhone Fold could look like - Image Credit:...",
       "published_at": "2026-08-09T16:51:49+00:00",
       "display_date": "AUG 10",
-      "image_src": "/assets/images/home-briefing/2026-07-20/apple-16862eef5adf599c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-20/apple-16862eef5adf599c-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp"
     },
     {
       "index": 7,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Ceramic Case Could Return With Apple Watch Series 12",
+      "link": "https://www.macrumors.com/2026/08/09/ceramic-could-return-with-apple-watch-series-12/",
+      "summary": "Apple is planning to reintroduce its striking ceramic Apple Watch casing as soon as this year, Bloomberg 's Mark Gurman reports . The Apple Watch Series 2 's white ceramic case option. Writing in his \"Power On\" newsletter , Gurman...",
+      "published_at": "2026-08-09T09:21:48-07:00",
+      "display_date": "AUG 10",
+      "image_src": "/assets/images/home-briefing/2026-08-10/apple-955021e7316958a2-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-a862bebf239436bb-thumb.webp"
+    },
+    {
+      "index": 8,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -99,21 +113,7 @@
       "published_at": "2026-08-09T15:00:30+00:00",
       "display_date": "AUG 09",
       "image_src": "/assets/images/home-briefing/2026-08-10/semiconductor-35c9b7dcb7552228-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-12/semiconductor-603432577404d504-thumb.webp"
-    },
-    {
-      "index": 8,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Historian Jill Lepore says Silicon Valley misreads science fiction and undermines democracy",
-      "link": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/",
-      "summary": "On the latest episode of Equity, we spoke to Jill Lepore about \"government by machines\" and why Elon Musk is a bad science fiction reader.",
-      "published_at": "2026-08-09T15:00:00+00:00",
-      "display_date": "AUG 09",
-      "image_src": "/assets/images/home-briefing/2026-08-10/industry-9226d3c85adbc468-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-17/industry-9c2d354d7dc94f54-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-13/semiconductor-1c5f94fa7ebc2902-thumb.webp"
     },
     {
       "index": 9,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-07T07:52:06+00:00",
       "display_date": "AUG 07",
       "image_src": "/assets/images/home-briefing/2026-08-10/bluetooth-d64a6f7fbefb423f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-08/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/bluetooth-ba429f6d0d25b88c-thumb.webp"
     }
   ]
 }
