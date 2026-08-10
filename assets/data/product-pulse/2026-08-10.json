@@ -1,6 +1,6 @@
 {
   "date": "2026-08-10",
-  "refreshed_at": "2026-08-10T08:30:01.932034+08:00",
+  "refreshed_at": "2026-08-10T08:40:01.691168+08:00",
   "item_count": 10,
   "items": [
     {
@@ -29,7 +29,7 @@
       "published_at": "2026-08-09T18:26:00+00:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/apple-e6e26233109e17a7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-a33adb9322afe26f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-0f4be83c6c836f79-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-09T17:48:00+00:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "While the design isn't changing one bit, one expensive and favorite material might return to Apple Watch after a seven-year absence. Apple Watch Series 5 , in ceramic It's been nine years since the Apple Watch Series 2 debuted the...",
       "published_at": "2026-08-09T17:39:10+00:00",
       "display_date": "AUG 10",
-      "image_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-27/apple-bce1c2b74cbdba49-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-27/apple-bce1c2b74cbdba49-thumb.webp"
     },
     {
       "index": 5,
@@ -84,8 +84,8 @@
       "summary": "The iPhone Fold has yet to ship, but Apple's already working on a third-generation foldable it could release in 2028. It's something it's compelled to do. A render of what the first-gen iPhone Fold could look like - Image Credit:...",
       "published_at": "2026-08-09T16:51:49+00:00",
       "display_date": "AUG 10",
-      "image_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-08/apple-a70092b76bb903ca-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-20/apple-a889b9ae85b644c1-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-20/apple-a889b9ae85b644c1-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-09T09:21:48-07:00",
       "display_date": "AUG 10",
       "image_src": "/assets/images/home-briefing/2026-08-10/apple-955021e7316958a2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-a862bebf239436bb-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-19/apple-8f59cdccf97a24cd-thumb.webp"
     },
     {
       "index": 8,
