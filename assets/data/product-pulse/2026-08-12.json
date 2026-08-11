@@ -1,6 +1,6 @@
 {
   "date": "2026-08-12",
-  "refreshed_at": "2026-08-12T07:19:33.481774+08:00",
+  "refreshed_at": "2026-08-12T07:21:31.520289+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-11T15:53:16-07:00",
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-08-12/apple-3ad7eade9e732a5d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-46033d7db55e45be-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-392429eec6a59611-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-08-11T15:30:09-07:00",
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-08-12/apple-62efd4108eb6ef35-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-04/apple-afcb86a9588a5109-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/apple-9836004ae9b3e307-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "Eligible students, parents of students, and educators in the United States just got a few extra weeks to claim Apple's 2026 Back to School deals on select Macs and iPads. Here are the details.",
       "published_at": "2026-08-11T21:35:29+00:00",
       "display_date": "AUG 12",
-      "image_src": "/assets/images/home-briefing/2026-05-30/apple-9f02839dcdbba9c0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-30/apple-9f02839dcdbba9c0-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "Apple has extended its unusually limited Back to School series of deals and they are not to be dismissed, but there are far greater discounts to be had from other resellers. Apple's lates Back to School offer is now live - image credit:...",
       "published_at": "2026-08-11T21:21:10+00:00",
       "display_date": "AUG 12",
-      "image_src": "/assets/images/home-briefing/2026-07-08/apple-a33adb9322afe26f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-a33adb9322afe26f-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Apple today extended its 2026 Back to School Promotion until September 24, which means it will last almost a month longer than planned. The extension is applicable in the United States, Canada, Mexico, and multiple countries in Asia . The...",
       "published_at": "2026-08-11T13:52:37-07:00",
       "display_date": "AUG 12",
-      "image_src": "/assets/images/home-briefing/2026-07-13/apple-13ccc9af69a4a9d3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-13/apple-13ccc9af69a4a9d3-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-06/apple-f537c84fad03e1a7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-06/apple-f537c84fad03e1a7-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-11T18:00:00+00:00",
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-08-12/industry-430628c532f28165-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-05/industry-e9571aba61e200c9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-22/industry-e9342da20ac267a4-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-11T17:41:22+00:00",
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-08-12/industry-20b4f9c1369c5f9d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-04/industry-043fe45085d4987c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-21/industry-74170fc5885a8ebc-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-11T17:00:20+00:00",
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-08-12/semiconductor-a7765277ce545c70-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-18/semiconductor-813961548a291e67-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-03/semiconductor-78363d0d548b9d89-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-11T12:03:36+00:00",
       "display_date": "AUG 11",
       "image_src": "/assets/images/home-briefing/2026-08-12/ai-0297693122f92418-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-24/ai-d9be8e455fe86e5a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-25/ai-6419a274587119da-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-07T07:52:06+00:00",
       "display_date": "AUG 07",
       "image_src": "/assets/images/home-briefing/2026-08-12/bluetooth-d64a6f7fbefb423f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-09/bluetooth-ba429f6d0d25b88c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-17/bluetooth-609e8424e2c61cc8-thumb.webp"
     }
   ]
 }
