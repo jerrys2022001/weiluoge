@@ -1,10 +1,38 @@
 {
   "date": "2026-08-12",
-  "refreshed_at": "2026-08-12T07:21:31.520289+08:00",
+  "refreshed_at": "2026-08-12T08:30:02.532080+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Microsoft Edge tests Apple Account sign-in support",
+      "link": "https://9to5mac.com/2026/08/11/microsoft-edge-tests-apple-account-sign-in-support/",
+      "summary": "Microsoft's latest Edge Canary build has added new flags for signing in to the browser with an Apple Account , while Microsoft's release notes indicate the feature is also rolling out to Edge Beta users. Here are the details.",
+      "published_at": "2026-08-12T00:11:30+00:00",
+      "display_date": "AUG 12",
+      "image_src": "/assets/images/home-briefing/2026-08-12/apple-f13d2169f76c9d5f-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-09/apple-1eecf9bc2b9d661c-thumb.webp"
+    },
+    {
+      "index": 2,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Samsung is Starting to Catch Up to Apple on Hearing Health",
+      "link": "https://www.macrumors.com/2026/08/11/samsung-galaxy-buds-hearing-aid/",
+      "summary": "Samsung today said its Galaxy Buds Hearing Aid feature has been cleared by the U.S. FDA, which means hearing aid capabilities will be coming to the Galaxy Buds in the fourth quarter of 2026. Samsung will join Apple in offering...",
+      "published_at": "2026-08-11T17:01:51-07:00",
+      "display_date": "AUG 12",
+      "image_src": "/assets/images/home-briefing/2026-08-12/apple-f99a572383b22a98-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-a862bebf239436bb-thumb.webp"
+    },
+    {
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -18,7 +46,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-392429eec6a59611-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -32,7 +60,7 @@
       "fallback_src": "/assets/images/home-briefing/2026-07-18/apple-9836004ae9b3e307-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -44,34 +72,6 @@
       "display_date": "AUG 12",
       "image_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp",
       "fallback_src": "/assets/images/home-briefing/2026-05-23/apple-87c8b6e4133f94ad-thumb.webp"
-    },
-    {
-      "index": 4,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Apple's Back to School offers have been extended, but you can do much better",
-      "link": "https://appleinsider.com/articles/26/07/16/apples-back-to-school-offers-have-started-but-you-can-do-much-better?utm_source=rss",
-      "summary": "Apple has extended its unusually limited Back to School series of deals and they are not to be dismissed, but there are far greater discounts to be had from other resellers. Apple's lates Back to School offer is now live - image credit:...",
-      "published_at": "2026-08-11T21:21:10+00:00",
-      "display_date": "AUG 12",
-      "image_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "Apple Extends 2026 Back to School Promotion Until September 24",
-      "link": "https://www.macrumors.com/2026/08/11/apple-extends-2026-back-to-school-promo/",
-      "summary": "Apple today extended its 2026 Back to School Promotion until September 24, which means it will last almost a month longer than planned. The extension is applicable in the United States, Canada, Mexico, and multiple countries in Asia . The...",
-      "published_at": "2026-08-11T13:52:37-07:00",
-      "display_date": "AUG 12",
-      "image_src": "/assets/images/home-briefing/2026-08-06/apple-f537c84fad03e1a7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-06/apple-f537c84fad03e1a7-thumb.webp"
     },
     {
       "index": 6,
