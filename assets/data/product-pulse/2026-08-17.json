@@ -1,10 +1,24 @@
 {
   "date": "2026-08-17",
-  "refreshed_at": "2026-08-17T09:01:13.852593+08:00",
+  "refreshed_at": "2026-08-17T09:06:45.055430+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "Samsung Global Newsroom",
+      "source_url": "https://news.samsung.com/global",
+      "title": "Samsung Announces Partnership With Call of Duty(R): Modern Warfare(R) 4",
+      "link": "https://news.samsung.com/global/samsung-announces-partnership-with-call-of-duty-modern-warfare-4",
+      "summary": "Samsung Electronics today announced an exclusive partnership with Activision as the official TV, monitor, soundbar, and Wi-Fi speaker of Call of Duty: Modern Warfare 4, the latest title in one of the world's largest first-person shooter...",
+      "published_at": "2026-08-17T08:00:00+00:00",
+      "display_date": "AUG 17",
+      "image_src": "/assets/images/home-briefing/2026-07-18/industry-89c4433d5b3dae03-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/industry-89c4433d5b3dae03-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -15,10 +29,10 @@
       "published_at": "2026-08-16T20:57:04+00:00",
       "display_date": "AUG 17",
       "image_src": "/assets/images/home-briefing/2026-08-17/industry-7b1536fd98b81a34-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/industry-66ee12a0ef3a6ab0-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-19/industry-b38860d3548709a3-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -29,10 +43,10 @@
       "published_at": "2026-08-16T20:32:01+00:00",
       "display_date": "AUG 17",
       "image_src": "/assets/images/home-briefing/2026-08-17/industry-d5728073475e4c13-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-21/industry-9a466f720e7f2baa-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/industry-6c9376edf0b5a304-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -43,10 +57,10 @@
       "published_at": "2026-08-16T17:33:48+00:00",
       "display_date": "AUG 17",
       "image_src": "/assets/images/home-briefing/2026-08-17/apple-1d87937e2282cc35-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-12/apple-aa4eceb09148d8a2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -57,21 +71,7 @@
       "published_at": "2026-08-16T17:00:37+00:00",
       "display_date": "AUG 17",
       "image_src": "/assets/images/home-briefing/2026-08-17/semiconductor-9b1ae4c9e20a1be3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-09/semiconductor-4fbe9ce0662dd9b2-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Anthropic CEO says AI backlash is 'fundamentally a crisis of trust'",
-      "link": "https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/",
-      "summary": "Dario Amodei is pushing back against the idea that he's been painting an overly pessimistic picture of AI.",
-      "published_at": "2026-08-16T16:53:51+00:00",
-      "display_date": "AUG 17",
-      "image_src": "/assets/images/home-briefing/2026-08-17/industry-132989f8f190a676-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/industry-350aec65f46265ee-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/semiconductor-c89421e6f65b9787-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-16T14:31:33+00:00",
       "display_date": "AUG 16",
       "image_src": "/assets/images/home-briefing/2026-08-17/ai-5922669243617c59-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-02/ai-f6dd02993644c1f5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-06/ai-2840af73164d8a70-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-16T07:18:36-07:00",
       "display_date": "AUG 16",
       "image_src": "/assets/images/home-briefing/2026-08-17/apple-9ef4fefb986d6723-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-07/apple-c7fb267223559888-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/apple-05f3795603c42a3d-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-15T16:08:09+00:00",
       "display_date": "AUG 16",
       "image_src": "/assets/images/home-briefing/2026-08-17/apple-977d7c71b3b91673-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-07/apple-86705609d7a7028e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-27/apple-ad8051c2b51d6099-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "The Epic Games \"Fortnite\" versus Apple's AppStore antitrust trial has completed its last week. Here's what you need to know about the saga, with closing arguments left to go. Between Epic CEO Tim Sweeney's ongoing complaints, the trial,...",
       "published_at": "2026-08-15T14:55:34+00:00",
       "display_date": "AUG 15",
-      "image_src": "/assets/images/home-briefing/2026-06-28/apple-1686848f9fbd6af1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-1686848f9fbd6af1-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-08/apple-eca2921287364d6b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-eca2921287364d6b-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-14T08:45:29+00:00",
       "display_date": "AUG 14",
       "image_src": "/assets/images/home-briefing/2026-08-17/bluetooth-5cfd689aaba57dce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-10/bluetooth-be3071695b5a514f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-11/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
