@@ -1,10 +1,24 @@
 {
   "date": "2026-08-18",
-  "refreshed_at": "2026-08-18T08:17:59.304923+08:00",
+  "refreshed_at": "2026-08-18T08:30:01.665833+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "macOS Tahoe 26.7 beta references several unreleased products like Home Hub",
+      "link": "https://appleinsider.com/articles/26/08/18/macos-tahoe-267-beta-references-several-unreleased-products-like-home-hub?utm_source=rss",
+      "summary": "Apple inadvertently left a lot of feature flags visible in its macOS Tahoe 26.7 release candidate, which include references to products like AirPods with cameras, the OLED iPad mini, and more. References to future iPhone Air, HomePods, and...",
+      "published_at": "2026-08-18T00:25:42+00:00",
+      "display_date": "AUG 18",
+      "image_src": "/assets/images/home-briefing/2026-07-17/apple-c16e4e684c288bd0-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-c16e4e684c288bd0-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -14,11 +28,11 @@
       "summary": "The Dell UltraSharp 32 4K QD-OLED model U3226Q is a color-accurate OLED monitor with a full port hub. It makes a strong case as a Studio Display XDR alternative for Mac users, assuming you're fine with not having a Retina-class display....",
       "published_at": "2026-08-17T23:55:03+00:00",
       "display_date": "AUG 18",
-      "image_src": "/assets/images/home-briefing/2026-07-16/apple-3fcbd7a5214f1309-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-16/apple-3fcbd7a5214f1309-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-15/apple-87963ad31cddf0dd-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-87963ad31cddf0dd-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -29,10 +43,10 @@
       "published_at": "2026-08-17T16:50:34-07:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/apple-b463258b6d7dca82-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-18/apple-5634545ca5e10dc7-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-2746d72f3de747d5-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "AppleInsider",
@@ -42,11 +56,11 @@
       "summary": "Weeks away from a probable launch, Apple has outed its sixth developer betas for iOS 27 , iPadOS 27, tvOS 27, watchOS 27, visionOS 27, and macOS 27. An earlier iOS 27 beta screen The Apple Developer Beta program has now reached the sixth...",
       "published_at": "2026-08-17T23:50:24+00:00",
       "display_date": "AUG 18",
-      "image_src": "/assets/images/home-briefing/2026-06-23/apple-4f4d5d513b0e0752-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-4f4d5d513b0e0752-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-09/apple-aa7463ebcdae8a60-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-09/apple-aa7463ebcdae8a60-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -57,21 +71,7 @@
       "published_at": "2026-08-17T22:12:02+00:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/apple-f746f5bc7a8b07e8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-22/apple-20f2233cf6a036e9-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "MacRumors",
-      "source_url": "https://www.macrumors.com/",
-      "title": "Apple Releases New iOS 27, iPadOS 27, macOS 27, and tvOS 27 Public Betas",
-      "link": "https://www.macrumors.com/2026/08/17/apple-ios-27-public-beta-4/",
-      "summary": "Apple today released the fourth public betas of iOS 27 , iPadOS 27 , tvOS 27, and macOS Golden Gate , allowing anyone with a compatible device to download and test the new software. The fourth betas come a week after Apple seeded the third...",
-      "published_at": "2026-08-17T15:10:03-07:00",
-      "display_date": "AUG 18",
-      "image_src": "/assets/images/home-briefing/2026-08-18/apple-4e9b23b0e6f31396-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-21/apple-9fc967063b8156fd-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-19/apple-5d356af1186d6afd-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-17T21:31:19+00:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/semiconductor-66a96a918caeaec0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-20/semiconductor-9a4c5e8babe6780b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-25/semiconductor-bb59d611bfc8d2eb-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-17T21:27:05+00:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/industry-00b0f294c4d8e177-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-16/industry-19a1d9fba779144c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-29/industry-250c514da1816ddc-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-17T20:18:35+00:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/industry-6d07b131b87f5292-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-15/industry-a5bdc7692c688870-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-15/industry-4198c0bbe7ef91ee-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-17T19:16:09+00:00",
       "display_date": "AUG 18",
       "image_src": "/assets/images/home-briefing/2026-08-18/ai-e6a60eeb4be19431-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-15/ai-f870088aac4dd6ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/ai-adbb3b6a93476f23-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-14T08:45:29+00:00",
       "display_date": "AUG 14",
       "image_src": "/assets/images/home-briefing/2026-08-18/bluetooth-5cfd689aaba57dce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-11/bluetooth-b2727e38547c0f3e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-12/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
