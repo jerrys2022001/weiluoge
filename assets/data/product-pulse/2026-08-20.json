@@ -1,10 +1,80 @@
 {
   "date": "2026-08-20",
-  "refreshed_at": "2026-08-20T08:21:03.315859+08:00",
+  "refreshed_at": "2026-08-20T08:30:01.695924+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "EU Welcomes Apple's App Store Changes, Epic Slams 'Junk Fees'",
+      "link": "https://www.macrumors.com/2026/08/19/ec-epic-apple-app-store-changes/",
+      "summary": "Apple yesterday updated its App Store fees in the EU to comply with the Digital Markets Act and to put an end to its ongoing conflict with the European Commission. Apple cut the Core Technology Fee and simplified its pricing structure, so...",
+      "published_at": "2026-08-19T17:16:36-07:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-20/apple-647f7781d29bf0c7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-28/apple-56662d53aa25a6cd-thumb.webp"
+    },
+    {
+      "index": 2,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "Schlage Sense Pro review: UWB Home Key proves itself again on this sleek smart lock",
+      "link": "https://appleinsider.com/articles/26/08/20/schlage-sense-pro-review-uwb-home-key-proves-itself-again-on-this-sleek-smart-lock?utm_source=rss",
+      "summary": "The Schlage Sense Pro is the latest smart lock to support Apple Home Key via Ultra Wideband, and while it's an impressive solution, it's largely an Apple-only lock at launch. Schlage Sense Pro review: Exterior view of the UWB-powered...",
+      "published_at": "2026-08-20T00:07:22+00:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-12/apple-62efd4108eb6ef35-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-12/apple-62efd4108eb6ef35-thumb.webp"
+    },
+    {
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "AirPods with cameras not coming till 2027, won't take photos",
+      "link": "https://appleinsider.com/articles/26/08/19/airpods-with-cameras-not-coming-till-2027-wont-take-photos?utm_source=rss",
+      "summary": "In spite of a recent demo video leaking, the AirPods with cameras are rumored to not be ready for release until 2027. Also, concerns over them becoming \"pervertpods\" can be set aside. AirPods with cameras won't be able to take photos After...",
+      "published_at": "2026-08-19T23:52:24+00:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-17/apple-1d87937e2282cc35-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-17/apple-1d87937e2282cc35-thumb.webp"
+    },
+    {
+      "index": 4,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Camera-equipped AirPods reportedly won't launch in 2026, despite demo video leak",
+      "link": "https://9to5mac.com/2026/08/19/camera-equipped-airpods-reportedly-wont-launch-in-2026-despite-demo-video-leak/",
+      "summary": "Bloomberg reports that despite Apple's accidental inclusion of a demo video showcasing Visual Intelligence on AirPods, the product \"remains on track for 2027.\" Here are the details.",
+      "published_at": "2026-08-19T23:42:49+00:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-20/apple-ec4d78dff6109394-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-4f4d5d513b0e0752-thumb.webp"
+    },
+    {
+      "index": 5,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Apple's Camera AirPods Not Launching Until 2027 Despite Leaked Video",
+      "link": "https://www.macrumors.com/2026/08/19/airpods-with-cameras-2027-launch/",
+      "summary": "Apple's camera-equipped AirPods will not launch until 2027 despite the demo video MacRumors found earlier this week , reports Bloomberg 's Mark Gurman . On Monday, MacRumors shared a demo video featuring the camera-equipped AirPods in...",
+      "published_at": "2026-08-19T16:42:46-07:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-20/apple-127207dd83157e5c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/apple-9836004ae9b3e307-thumb.webp"
+    },
+    {
+      "index": 6,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -15,10 +85,10 @@
       "published_at": "2026-08-19T23:32:00+00:00",
       "display_date": "AUG 20",
       "image_src": "/assets/images/home-briefing/2026-08-20/industry-9b1517e36c68c194-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/industry-ad4c32ae26847245-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-30/industry-9ce9c0d49aee52bd-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 7,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -29,52 +99,10 @@
       "published_at": "2026-08-19T21:53:47+00:00",
       "display_date": "AUG 20",
       "image_src": "/assets/images/home-briefing/2026-08-20/industry-bdf662493ce045bb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-08/industry-ae4b3cabbbb0ff70-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-25/industry-ffb7e24138a02908-thumb.webp"
     },
     {
-      "index": 3,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Cognition CEO denies report that SpaceX tried to acquire the startup",
-      "link": "https://techcrunch.com/2026/08/19/cognition-ceo-denies-report-that-spacex-tried-to-acquire-the-startup/",
-      "summary": "SpaceX was reportedly in talks to buy AI coding startup Cognition. SpaceX has already acquired Cursor as it races to catch up to rivals like OpenAI and Anthropic in enterprise AI.",
-      "published_at": "2026-08-19T21:51:23+00:00",
-      "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-08-20/industry-18d9049ef11d366d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-20/industry-649ab036d3834f31-thumb.webp"
-    },
-    {
-      "index": 4,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Rillet raises $100M Series C at $1B valuation - 2 years after emerging from stealth",
-      "link": "https://techcrunch.com/2026/08/19/rillet-raises-100m-series-c-at-1b-valuation-2-years-after-emerging-from-stealth/",
-      "summary": "AI-native account startup Rillet became a unicorn, led by Iconiq, after it doubled its ARR in the past three months, it said.",
-      "published_at": "2026-08-19T20:12:33+00:00",
-      "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-08-20/industry-68f49409e839a2ce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-29/industry-6c1d3cba435ce65b-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "AI was supposed to win people over by now - it hasn't",
-      "link": "https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/",
-      "summary": "As AI becomes harder to avoid, consumers are growing more wary of the technology - and Silicon Valley is discovering that widespread adoption doesn't necessarily lead to acceptance.",
-      "published_at": "2026-08-19T19:11:40+00:00",
-      "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-08-20/industry-1e4e51cee37107da-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-15/industry-6a4a291aefbf72c5-thumb.webp"
-    },
-    {
-      "index": 6,
+      "index": 8,
       "slug": "ai",
       "eyebrow": "AI Developments",
       "source_name": "OpenAI News",
@@ -84,50 +112,22 @@
       "summary": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy.",
       "published_at": "2026-08-19T19:00:00+00:00",
       "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-05-24/ai-9ccf43538e134b68-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-24/ai-9ccf43538e134b68-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Google packs Search and Gemini with new AI study tools",
-      "link": "https://techcrunch.com/2026/08/19/google-launches-new-study-tools-for-students-across-search-and-gemini/",
-      "summary": "The launch of the new study features marks Google's latest effort to make Gemini the AI assistant that students turn to when learning and studying, as it continues to compete with companies like OpenAI.",
-      "published_at": "2026-08-19T19:00:00+00:00",
-      "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-08-20/industry-35f4a2a646885794-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/industry-65ac0381edf8a226-thumb.webp"
-    },
-    {
-      "index": 8,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "Heybike Hero mid-drive carbon-fiber all-terrain e-bike at exclusive new 1,049.50 low, EcoFlow power station flash sale,",
-      "link": "https://electrek.co/2026/08/19/heybike-hero-mid-drive-e-bike-exclusive-ecoflow-power-station-flash-sale-more/",
-      "summary": "Our midweek Green Deals is being led by an incredible exclusive deal on the Heybike Hero 750W Mid-Drive Carbon-Fiber All-Terrain e-bike at a new $1,049.50 low . Right behind that, we have EcoFlow's latest 48-hour flash sale with up to...",
-      "published_at": "2026-08-19T18:00:00+00:00",
-      "display_date": "AUG 20",
-      "image_src": "/assets/images/home-briefing/2026-08-20/industry-33f4854d6541db3b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/industry-e9149b3a13e24f41-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-05-26/ai-375202471579bffb-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-05-26/ai-375202471579bffb-thumb.webp"
     },
     {
       "index": 9,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
-      "source_name": "NVIDIA Blog",
-      "source_url": "https://blogs.nvidia.com/",
-      "title": "Securing the Infrastructure of Intelligence",
-      "link": "https://blogs.nvidia.com/blog/securing-the-infrastructure-of-intelligence/",
-      "summary": "AI factories are the defining infrastructure of the AI era - where compute transforms energy and data into intelligence that powers every business, industry and country. In the AI economy, compute is revenue. AI factories require a full...",
-      "published_at": "2026-08-17T12:34:51+00:00",
-      "display_date": "AUG 17",
-      "image_src": "/assets/images/home-briefing/2026-06-26/semiconductor-601b62790191eec6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/semiconductor-601b62790191eec6-thumb.webp"
+      "source_name": "SemiWiki",
+      "source_url": "https://semiwiki.com/",
+      "title": "Latest Savage on Security Webinar Focuses on Gen-AI for Chip Design and Security",
+      "link": "https://semiwiki.com/semiconductor-services/esd-alliance/372333-latest-savage-on-security-webinar-focuses-on-gen-ai-for-chip-design-and-security/",
+      "summary": "Key Takeaways from the webinar: Multi-agent intelligent assistant systems of the future will be architected to automate and augment SoC design and security verification and redefining semiconductor innovation, reshaping design,...",
+      "published_at": "2026-08-19T17:00:36+00:00",
+      "display_date": "AUG 20",
+      "image_src": "/assets/images/home-briefing/2026-08-20/semiconductor-aef5f974a160af57-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-23/semiconductor-f8e8a8f6670fa169-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-14T08:45:29+00:00",
       "display_date": "AUG 14",
       "image_src": "/assets/images/home-briefing/2026-08-20/bluetooth-5cfd689aaba57dce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-13/bluetooth-b2727e38547c0f3e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-14/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
