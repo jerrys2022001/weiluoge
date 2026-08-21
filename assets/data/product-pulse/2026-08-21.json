@@ -1,6 +1,6 @@
 {
   "date": "2026-08-21",
-  "refreshed_at": "2026-08-21T08:40:02.236074+08:00",
+  "refreshed_at": "2026-08-21T08:43:31.697751+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-20T17:33:41-07:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/apple-2c37279fb65af72c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-12/apple-f13d2169f76c9d5f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-36e67ec6383ae475-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-08-21T00:23:36+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/industry-62f6da9406ca7ae1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-27/industry-13d5603dc83de9f1-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-05-28/industry-89e9b7a6c4e44a6b-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-21T00:13:44+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/industry-0160ad99d4c4c2be-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-11/industry-8dd18dc938aab177-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-12/industry-6f0121c7d43655e8-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-08-20T16:41:33-07:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/apple-1b480f0602a65ceb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-06/apple-8ec43c4b17550d11-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-07/apple-101e1de6c0dd9da5-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-08-20T16:12:55-07:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/apple-b5dd9030493d8a40-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-12/apple-8ca049edd4e94b71-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-13/apple-caa24b82dc02bb8e-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-20T22:47:51+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/apple-e62ec71d014a37f0-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-13/apple-13ccc9af69a4a9d3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-14/apple-44b3659af101f62e-thumb.webp"
     },
     {
       "index": 7,
@@ -98,8 +98,8 @@
       "summary": "Businesses are willing to flop back and forth as each lab releases new models, volatility that should give both companies' investors pause about how \"sticky\" enterprise AI spending really is.",
       "published_at": "2026-08-20T22:36:37+00:00",
       "display_date": "AUG 21",
-      "image_src": "/assets/images/home-briefing/2026-06-16/industry-81df7ac883e402ca-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-16/industry-81df7ac883e402ca-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-17/industry-4695a41f08760b14-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-17/industry-4695a41f08760b14-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-08-20T21:00:25+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-21/semiconductor-59f3adfeec69a51c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-06/semiconductor-dc06bb6f9f317a29-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-07/semiconductor-dc06bb6f9f317a29-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-20T15:42:39+00:00",
       "display_date": "AUG 20",
       "image_src": "/assets/images/home-briefing/2026-08-21/ai-cca0588c201dc67f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-13/ai-117afcc7b2ef52f8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-15/ai-39467961d880dc28-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-14T08:45:29+00:00",
       "display_date": "AUG 14",
       "image_src": "/assets/images/home-briefing/2026-08-21/bluetooth-5cfd689aaba57dce-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-14/bluetooth-b2727e38547c0f3e-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-15/bluetooth-b2727e38547c0f3e-thumb.webp"
     }
   ]
 }
