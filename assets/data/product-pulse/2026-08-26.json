@@ -1,10 +1,24 @@
 {
   "date": "2026-08-26",
-  "refreshed_at": "2026-08-26T05:28:23.897098+08:00",
+  "refreshed_at": "2026-08-26T08:30:02.070045+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Apple shares behind-the-scenes video for its fun new Mac mini ad",
+      "link": "https://9to5mac.com/2026/08/25/apple-shares-behind-the-scenes-video-for-its-fun-new-mac-mini-ad/",
+      "summary": "Apple today published a fun commercial promoting the new Mac mini with M6 . Now, the company has shared a short behind-the-scenes video showing some of the (extensive) work that went into producing the ad. Watch it below.",
+      "published_at": "2026-08-25T23:26:35+00:00",
+      "display_date": "AUG 26",
+      "image_src": "/assets/images/home-briefing/2026-08-26/apple-541c56080e760939-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-33392f9359bdfba1-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -14,11 +28,53 @@
       "summary": "The reported move of Amit Gupta, Jeff Dyck, and Ryan Silk from Siemens EDA to Synopsys matters because this is more than a routine transfer of experienced executives and engineers. Together, the three represent a concentrated body of...",
       "published_at": "2026-08-25T23:00:40+00:00",
       "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-06-15/semiconductor-c89421e6f65b9787-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/semiconductor-c89421e6f65b9787-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-02/semiconductor-d5e688125f42e3a0-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-02/semiconductor-d5e688125f42e3a0-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Notability can now organize meeting recordings, transcriptions, and notes around your calendar",
+      "link": "https://9to5mac.com/2026/08/25/notability-can-now-organize-meeting-recordings-transcriptions-and-notes-around-your-calendar/",
+      "summary": "Notability today announced a new desktop workflow that lets Mac users start recording sessions directly from their calendar events, with the resulting notes automatically organized around their schedule. Here are the details.",
+      "published_at": "2026-08-25T22:49:13+00:00",
+      "display_date": "AUG 26",
+      "image_src": "/assets/images/home-briefing/2026-08-26/apple-9dccbaa6d3a332e3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-36e67ec6383ae475-thumb.webp"
+    },
+    {
+      "index": 4,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "9to5Mac Daily: August 25, 2026 - New Mac mini and Mac Studio unveiled",
+      "link": "https://9to5mac.com/2026/08/25/daily-august-25-2026/",
+      "summary": "Listen to a recap of the top stories of the day from 9to5Mac . 9to5Mac Daily is available on iTunes and Apple's Podcasts app , Stitcher , TuneIn , Google Play , or through our dedicated RSS feed for Overcast and other podcast players....",
+      "published_at": "2026-08-25T22:48:14+00:00",
+      "display_date": "AUG 26",
+      "image_src": "/assets/images/home-briefing/2026-08-26/apple-019c14242487d9da-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-18/apple-4e9b23b0e6f31396-thumb.webp"
+    },
+    {
+      "index": 5,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "M6 Mac mini vs M4 Mac mini: Compact powerhouses compared",
+      "link": "https://appleinsider.com/inside/mac-mini/vs/m6-mac-mini-vs-m4-mac-mini-compact-powerhouses-compared?utm_source=rss",
+      "summary": "Apple has refreshed the Mac mini adding the M6, in an unusually timed update. Here's how the new model specs compare against the M4 version it replaces. M6 Mac mini vs M4 Mac mini In a rare move, Apple has updated the Mac mini just before...",
+      "published_at": "2026-08-25T22:20:57+00:00",
+      "display_date": "AUG 26",
+      "image_src": "/assets/images/home-briefing/2026-07-08/apple-df3bebd9ee157117-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-df3bebd9ee157117-thumb.webp"
+    },
+    {
+      "index": 6,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -29,10 +85,24 @@
       "published_at": "2026-08-25T21:47:25+00:00",
       "display_date": "AUG 26",
       "image_src": "/assets/images/home-briefing/2026-08-26/industry-05533d2b4a96b6d3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-21/industry-0160ad99d4c4c2be-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-26/industry-7b14d645ebe183bb-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 7,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "Here are all the Apple devices with full Wi-Fi 7 support",
+      "link": "https://9to5mac.com/2026/08/25/here-are-all-the-apple-devices-with-full-wi-fi-7-support/",
+      "summary": "Today, Apple updated the Mac mini and Mac Studio , bringing Wi-Fi 7 support to both product lines for the first time. Here's the full list of Apple devices that support all Wi-Fi 7 features .",
+      "published_at": "2026-08-25T21:45:10+00:00",
+      "display_date": "AUG 26",
+      "image_src": "/assets/images/home-briefing/2026-08-26/apple-ea89bda2e1a6ab8a-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-06/apple-687e8fdbd6af8605-thumb.webp"
+    },
+    {
+      "index": 8,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "SemiWiki",
@@ -42,11 +112,11 @@
       "summary": "Lance Hacking, Intel Intel Core Series 3, code-named Wildcat Lake, is a mainstream client system-on-chip derived from the Panther Lake-based Core Ultra Series 3 architecture. Its design objective is not maximum feature density, but broad...",
       "published_at": "2026-08-25T21:00:35+00:00",
       "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-25/semiconductor-08abd46fd29cf52e-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-25/semiconductor-08abd46fd29cf52e-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 9,
       "slug": "ai",
       "eyebrow": "AI Developments",
       "source_name": "MIT Technology Review",
@@ -57,77 +127,7 @@
       "published_at": "2026-08-25T21:00:00+00:00",
       "display_date": "AUG 26",
       "image_src": "/assets/images/home-briefing/2026-08-26/ai-1f495522336d3609-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-29/ai-37796130527f4768-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
-      "link": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/",
-      "summary": "The company's new fundraising total now stands at $232 million.",
-      "published_at": "2026-08-25T19:03:47+00:00",
-      "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-08-26/industry-7b14d645ebe183bb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-04/industry-043fe45085d4987c-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "Hot Chips 2026: Samsung makes LPDDR5X smart with logic unit in memory - LPDDR5X-PIM is 3.01x faster than LPDDR5X in AI inference with 8x the bandwidth",
-      "link": "https://www.tomshardware.com/pc-components/dram/hot-chips-2026-samsung-makes-lpddr5x-smart-with-logic-unit-in-memory-lpddr5x-pim-is-3-01x-faster-than-lpddr5x-in-ai-inference-with-8x-the-bandwidth",
-      "summary": "Samsung detailed the industry's first LPDDR5X-PIM at Hot Chips 2026, adding logic directly to memory to speed up data-intensive workloads like AI inference.",
-      "published_at": "2026-08-25T18:31:37+00:00",
-      "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-05-28/ai-35ea0422dc7c272d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-05-28/ai-35ea0422dc7c272d-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "ai",
-      "eyebrow": "AI Developments",
-      "source_name": "Tom's Hardware",
-      "source_url": "https://www.tomshardware.com/",
-      "title": "OpenAI's 700W Jalapeño ASIC outpaces 1,400W Nvidia flagship GPU - claims up to 1.9x throughput per kilowatt and 3.6x lower latency, co-developed with Broadcom",
-      "link": "https://www.tomshardware.com/tech-industry/semiconductors/openai-says-its-jalapeno-chip-beats-nvidias-gb300-in-first-published-benchmarks",
-      "summary": "OpenAI arrived at Hot Chips on Tuesday with benchmarks claiming its first in-house chip beats Nvidia's GB300.",
-      "published_at": "2026-08-25T18:05:23+00:00",
-      "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-08-26/ai-2985c406031a751e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-06/ai-cb63b0ce583ade3f-thumb.webp"
-    },
-    {
-      "index": 8,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "EcoFlow Labor Day power station sale with up to 58% savings, Aventon Aventure 3 e-bike $1,799, Anker SOLIX bundle,",
-      "link": "https://electrek.co/2026/08/25/ecoflow-labor-day-power-station-sale-aventon-aventure-3-e-bike-anker-solix-more/",
-      "summary": "Leading our Tuesday Green Deals is the newly launched EcoFlow Labor Day Sale with up to 58% power station discounts starting from $169 for the rest of August. Right behind that, we're shining a spotlight on Aventon's Aventure 3 Smart...",
-      "published_at": "2026-08-25T18:00:00+00:00",
-      "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-08-26/industry-bf69b843598d905b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-17/industry-d5728073475e4c13-thumb.webp"
-    },
-    {
-      "index": 9,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "EV charging sites with more plugs get more use, Kempower finds",
-      "link": "https://electrek.co/2026/08/25/ev-charging-sites-with-more-plugs-get-more-use-kempower-finds/",
-      "summary": "When it comes to public EV charging, more plugs may matter a whole lot more than bigger power numbers, according to new North American data from Kempower .",
-      "published_at": "2026-08-25T17:51:03+00:00",
-      "display_date": "AUG 26",
-      "image_src": "/assets/images/home-briefing/2026-08-26/industry-9438e82d9f091c5f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-18/industry-fe2bd339f7c2105a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/ai-e4f3c7bf34bca1a3-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-21T07:21:55+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-26/bluetooth-a5b09652a4e6399a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-09/bluetooth-d64a6f7fbefb423f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/bluetooth-d64a6f7fbefb423f-thumb.webp"
     }
   ]
 }
