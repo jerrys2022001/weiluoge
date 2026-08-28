@@ -1,6 +1,6 @@
 {
   "date": "2026-08-28",
-  "refreshed_at": "2026-08-28T08:26:19.460163+08:00",
+  "refreshed_at": "2026-08-28T08:31:32.140162+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-27T23:34:07+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-28/apple-b022a8f275eb3d3c-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-39342e8d2d5061f5-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-e597f630056e4b8c-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "The Pokemon team visited Apple Park on their way to the Pokemon World Championship starting on August 28 in San Francisco, giving Pikachu a chance to explore and meet the next CEO of Apple. Pikachu wonders around Apple Park One of the...",
       "published_at": "2026-08-27T23:19:34+00:00",
       "display_date": "AUG 28",
-      "image_src": "/assets/images/home-briefing/2026-06-23/apple-0aa205347e98adb5-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-23/apple-0aa205347e98adb5-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-08/apple-51db773b4c369aa7-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-08/apple-51db773b4c369aa7-thumb.webp"
     },
     {
       "index": 3,
@@ -42,8 +42,8 @@
       "summary": "At TechCrunch Disrupt 2026, the AI Stage is back to dig into the single hottest topic in the community for the past few years, presented by Google for Startups.",
       "published_at": "2026-08-27T23:16:45+00:00",
       "display_date": "AUG 28",
-      "image_src": "/assets/images/home-briefing/2026-06-24/industry-75018a109663945e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-24/industry-75018a109663945e-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-12/industry-6f0121c7d43655e8-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-12/industry-6f0121c7d43655e8-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-08-27T23:08:40+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-28/apple-85c7b4ce533b6920-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-20/apple-647f7781d29bf0c7-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-16/apple-74ccb940df31dd9b-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-08-27T22:24:41+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-28/apple-ce08e8605716b4e9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-e597f630056e4b8c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-21/apple-c18257b423a62f98-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-27T15:10:19-07:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-28/apple-2fc04033d2cf0901-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-09/apple-c795a403afae2526-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-10/apple-bff4c303cb876dcc-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-27T22:09:42+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-28/industry-85e044a6375b1777-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-16/industry-948e83f3389377bb-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-14/industry-520043b632ca493f-thumb.webp"
     },
     {
       "index": 8,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-27T15:33:14+00:00",
       "display_date": "AUG 27",
       "image_src": "/assets/images/home-briefing/2026-08-28/ai-58592cb88a412917-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-24/ai-d9be8e455fe86e5a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/ai-ae447551e3745849-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-21T07:21:55+00:00",
       "display_date": "AUG 21",
       "image_src": "/assets/images/home-briefing/2026-08-28/bluetooth-a5b09652a4e6399a-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-12/bluetooth-d64a6f7fbefb423f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-13/bluetooth-d64a6f7fbefb423f-thumb.webp"
     }
   ]
 }
