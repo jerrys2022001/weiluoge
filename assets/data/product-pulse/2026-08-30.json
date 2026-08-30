@@ -1,6 +1,6 @@
 {
   "date": "2026-08-30",
-  "refreshed_at": "2026-08-30T09:48:51.467981+08:00",
+  "refreshed_at": "2026-08-30T09:55:58.379682+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-08-29T23:18:38+00:00",
       "display_date": "AUG 30",
       "image_src": "/assets/images/home-briefing/2026-08-30/apple-8cba4de8894cb7cc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-09/apple-aa7463ebcdae8a60-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-13/apple-caa24b82dc02bb8e-thumb.webp"
     },
     {
       "index": 2,
@@ -28,8 +28,8 @@
       "summary": "Earlier this year, rumors were rampant about a revamped Health app coming to iOS 26.4. Then the project was delayed, and iOS 27 came and went, and the revamp still didn't arrive. With the new Apple Watch Series 12 and Ultra 4 debuting next...",
       "published_at": "2026-08-29T21:38:00+00:00",
       "display_date": "AUG 30",
-      "image_src": "/assets/images/home-briefing/2026-06-30/apple-6d455e00f072b2e4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-30/apple-6d455e00f072b2e4-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-04/apple-322d5ae1f6db4c51-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-04/apple-322d5ae1f6db4c51-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-08-29T17:50:00+00:00",
       "display_date": "AUG 30",
       "image_src": "/assets/images/home-briefing/2026-08-30/apple-3893dd71c3922010-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-969fb7aac1788c7a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-09/apple-257480a8d619c2d9-thumb.webp"
     },
     {
       "index": 4,
@@ -57,7 +57,7 @@
       "published_at": "2026-08-29T17:13:20+00:00",
       "display_date": "AUG 30",
       "image_src": "/assets/images/home-briefing/2026-08-30/apple-043c55f9d5e251b4-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-11/apple-24d6253b6584b799-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-18/apple-86e683b180af6c97-thumb.webp"
     },
     {
       "index": 5,
@@ -70,8 +70,8 @@
       "summary": "Researchers from University of Alberta published a technical paper titled \"PPAPlace: Differentiable Cross-Stage Objectives for Chip Placement Optimization.\" Abstract: \"Macro placement significantly affects a chip's post-route performance,...",
       "published_at": "2026-08-29T17:00:22+00:00",
       "display_date": "AUG 30",
-      "image_src": "/assets/images/home-briefing/2026-07-19/semiconductor-813961548a291e67-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-19/semiconductor-813961548a291e67-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-04/semiconductor-5d913e1198423dc0-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-04/semiconductor-5d913e1198423dc0-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-08-29T13:19:10+00:00",
       "display_date": "AUG 29",
       "image_src": "/assets/images/home-briefing/2026-08-30/industry-8fb7ca1949135832-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-21/industry-7c6280c2ab2bf97b-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-16/industry-19a1d9fba779144c-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-08-29T06:00:12-07:00",
       "display_date": "AUG 29",
       "image_src": "/assets/images/home-briefing/2026-08-30/apple-a4f69995e46c3afe-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-e597f630056e4b8c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-02/apple-e0107cb8cb46854b-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "The new generation of data center systems is increasing efficiency with smarter traffic control instead of just more processor cycles.",
       "published_at": "2026-08-29T13:00:00+00:00",
       "display_date": "AUG 29",
-      "image_src": "/assets/images/home-briefing/2026-06-26/industry-03289a04894277c3-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/industry-03289a04894277c3-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-06-20/industry-e3f3d473cc0e1721-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-20/industry-e3f3d473cc0e1721-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-29T11:00:00+00:00",
       "display_date": "AUG 29",
       "image_src": "/assets/images/home-briefing/2026-08-30/ai-47c7a58103cfdc28-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/ai-e554692d97ccd619-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-16/ai-ee987905c5e91bd1-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-28T08:27:34+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-08-30/bluetooth-e518bc7e60db52ac-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-24/bluetooth-dc565014ed75cfc9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-25/bluetooth-dc565014ed75cfc9-thumb.webp"
     }
   ]
 }
