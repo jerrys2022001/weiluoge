@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "refreshed_at": "2026-09-01T04:27:49.222481+08:00",
+  "refreshed_at": "2026-09-01T08:33:51.516902+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,10 +15,38 @@
       "published_at": "2026-09-01T00:13:00+00:00",
       "display_date": "SEP 01",
       "image_src": "/assets/images/home-briefing/2026-09-01/industry-d200c0e6067699e1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/industry-dc22717f82bc6598-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-09/industry-d97274b23042a1b6-thumb.webp"
     },
     {
       "index": 2,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "AppleInsider",
+      "source_url": "https://appleinsider.com/",
+      "title": "uGreen NASync DXP4800 Pro review: Sweet spot of price & performance",
+      "link": "https://appleinsider.com/articles/26/08/31/ugreen-nasync-dxp4800-pro-review-sweet-spot-of-price-performance?utm_source=rss",
+      "summary": "At $679.99, the four-bay uGreen NASync DXP4800 Pro NAS is a capable mid-range NAS for creators and small teams in the Apple ecosystem, with an excellent value proposition. uGreen NASync DXP4800 Pro uGreen has built out its NAS range...",
+      "published_at": "2026-08-31T23:53:04+00:00",
+      "display_date": "SEP 01",
+      "image_src": "/assets/images/home-briefing/2026-06-22/apple-ee596660ad8c43f3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-22/apple-ee596660ad8c43f3-thumb.webp"
+    },
+    {
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Qualcomm Raising Chip Prices Starting Tomorrow",
+      "link": "https://www.macrumors.com/2026/08/31/qualcomm-chip-price-increase/",
+      "summary": "Qualcomm is increasing prices for its chips by double digits starting tomorrow. Qualcomm announced the impending price hike back in July, letting customers know prices would go up for chips shipped after September 1. Qualcomm said it...",
+      "published_at": "2026-08-31T16:39:44-07:00",
+      "display_date": "SEP 01",
+      "image_src": "/assets/images/home-briefing/2026-07-08/apple-df3bebd9ee157117-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-df3bebd9ee157117-thumb.webp"
+    },
+    {
+      "index": 4,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -29,10 +57,10 @@
       "published_at": "2026-08-31T22:29:28+00:00",
       "display_date": "SEP 01",
       "image_src": "/assets/images/home-briefing/2026-09-01/industry-4598ceb16eed4c69-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-05/industry-1722c95a6df1bce9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/industry-9226d3c85adbc468-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 5,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -43,77 +71,49 @@
       "published_at": "2026-08-31T22:14:05+00:00",
       "display_date": "SEP 01",
       "image_src": "/assets/images/home-briefing/2026-09-01/industry-2d955530ba8fa3d7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-05/industry-9c52f103f6bbfc21-thumb.webp"
-    },
-    {
-      "index": 4,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "BYD's electric supercar will beat a Lambo in a race, and it's cheaper than a Porsche [Video]",
-      "link": "https://electrek.co/2026/08/31/byds-ev-supercar-offers-lambo-speed-for-less-than-a-porsche/",
-      "summary": "With three electric motors delivering over 1,500 horsepower, the Denza Z can sprint from 0 to 62 mph in under 2 seconds. It can beat a Lamborghini in a race, and it's cheaper than a Porsche 911 Turbo S.",
-      "published_at": "2026-08-31T21:12:28+00:00",
-      "display_date": "SEP 01",
-      "image_src": "/assets/images/home-briefing/2026-09-01/industry-c245dd3325f52add-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-17/industry-2cfc61224ad6ca30-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "Electrek",
-      "source_url": "https://electrek.co/",
-      "title": "A second Tesla driver died stopped on a freeway with Autopilot/Self-Driving on",
-      "link": "https://electrek.co/2026/08/31/tesla-driver-assist-stopped-freeway-mesa/",
-      "summary": "Weeks after a Tesla Model 3 sat stopped in a live Florida interstate lane and its driver was killed, it happened again - a 2020 Model 3, stopped dead on a Phoenix-area freeway at 3 a.m., rear-ended by a pickup, its driver dead at the...",
-      "published_at": "2026-08-31T20:40:21+00:00",
-      "display_date": "SEP 01",
-      "image_src": "/assets/images/home-briefing/2026-06-13/industry-ad4c32ae26847245-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-13/industry-ad4c32ae26847245-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-12/industry-ac18dd803f93002b-thumb.webp"
     },
     {
       "index": 6,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "The Pentagon now has its own version of ChatGPT and Grok",
-      "link": "https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok/",
-      "summary": "Versions of OpenAI's ChatGPT and SpaceXAI's Grok will join Google's Gemini on the Pentagon's central portal for AI tools.",
-      "published_at": "2026-08-31T20:13:45+00:00",
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "9to5Mac",
+      "source_url": "https://9to5mac.com/",
+      "title": "How I'm using Codex and ChatGPT on my Mac",
+      "link": "https://9to5mac.com/2026/08/31/codex-report-four-months-of-building-joy-on-my-mac-with-chatgpt/",
+      "summary": "9to5Mac is brought to you by Memoket : The Memoket Gem is an 11g AI wearable that slots beside your Apple Watch in a co-wear band. Press once to capture a conversation, and Gem connects it to what you discussed weeks ago - surfacing the...",
+      "published_at": "2026-08-31T22:00:00+00:00",
       "display_date": "SEP 01",
-      "image_src": "/assets/images/home-briefing/2026-09-01/industry-3f2966ef1b251d5b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-04/industry-26be38a5311b7f11-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-09-01/apple-df53c981db905d21-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-392429eec6a59611-thumb.webp"
     },
     {
       "index": 7,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Instagram puts new limits on undisclosed AI profiles",
-      "link": "https://techcrunch.com/2026/08/31/instagram-puts-new-limits-on-undisclosed-ai-profiles/",
-      "summary": "As frustration over AI influencers has been growing, Instagram is limiting the reach of undisclosed AI profiles.",
-      "published_at": "2026-08-31T19:16:59+00:00",
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Apple Releases New iOS 27, iPadOS 27, macOS 27, and tvOS 27 Public Betas",
+      "link": "https://www.macrumors.com/2026/08/31/apple-ios-27-public-beta-6/",
+      "summary": "Apple today released the sixth public betas of iOS 27 , iPadOS 27 , tvOS 27, and macOS Golden Gate , allowing anyone with a compatible device to download and test the new software. The sixth betas come a week after Apple seeded the fifth...",
+      "published_at": "2026-08-31T14:13:29-07:00",
       "display_date": "SEP 01",
-      "image_src": "/assets/images/home-briefing/2026-09-01/industry-dbbe6c36dc264a46-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-10/industry-d5618cd46ee83374-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-09-01/apple-2839dc2233a61fe5-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-16/apple-f081bb65c1c9dec9-thumb.webp"
     },
     {
       "index": 8,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "Apple's top App Store exec, Phil Schiller, follows wave of exits as CEO Tim Cook steps down",
-      "link": "https://techcrunch.com/2026/08/31/apples-top-app-store-exec-phil-schiller-follows-wave-of-exits-as-ceo-tim-cook-steps-down/",
-      "summary": "The longtime executive won't be leaving Apple just yet but staff at the company say it's a step closer to Schiller retiring.",
-      "published_at": "2026-08-31T19:02:06+00:00",
+      "slug": "semiconductor",
+      "eyebrow": "Semiconductor Breakthroughs",
+      "source_name": "SemiWiki",
+      "source_url": "https://semiwiki.com/",
+      "title": "Intel's 14A Is Winning the Race Against Defects",
+      "link": "https://semiwiki.com/semiconductor-manufacturers/intel/372866-intels-14a-is-winning-the-race-against-defects/",
+      "summary": "Intel's next-generation 14A manufacturing process is showing unusually strong early progress, with defect density falling faster than the company expected. The improvement gives Intel a technical boost as it attempts to restore confidence...",
+      "published_at": "2026-08-31T21:00:22+00:00",
       "display_date": "SEP 01",
-      "image_src": "/assets/images/home-briefing/2026-09-01/industry-4748733cd42db182-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-19/industry-a24c8c4f379ed84b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-09-01/semiconductor-40712f3982ccde07-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-22/semiconductor-001a7fef12b59c72-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-08-31T18:00:00+00:00",
       "display_date": "SEP 01",
       "image_src": "/assets/images/home-briefing/2026-09-01/ai-e25468a230b83e5e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-13/ai-117afcc7b2ef52f8-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-15/ai-39467961d880dc28-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-08-28T08:27:34+00:00",
       "display_date": "AUG 28",
       "image_src": "/assets/images/home-briefing/2026-09-01/bluetooth-e518bc7e60db52ac-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/bluetooth-dc565014ed75cfc9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-27/bluetooth-dc565014ed75cfc9-thumb.webp"
     }
   ]
 }
