@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "refreshed_at": "2026-09-05T00:13:18.041206+08:00",
+  "refreshed_at": "2026-09-05T09:31:40.483583+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-09-04T23:36:14+00:00",
       "display_date": "SEP 05",
       "image_src": "/assets/images/home-briefing/2026-09-05/industry-f6259c683d856d3d-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-04/industry-b5259dc5609f6763-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-26/industry-9438e82d9f091c5f-thumb.webp"
     },
     {
       "index": 2,
@@ -29,10 +29,38 @@
       "published_at": "2026-09-04T23:15:11+00:00",
       "display_date": "SEP 05",
       "image_src": "/assets/images/home-briefing/2026-09-05/industry-802c9849aeb62232-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/industry-06bcb0276089fedc-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-20/industry-1e4e51cee37107da-thumb.webp"
     },
     {
       "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "iPhone Ultra, iPhone 18 Pro, and More: Apple's September 9 Event Preview",
+      "link": "https://www.macrumors.com/guide/apple-september-2026-what-to-expect/",
+      "summary": "Apple's September event will take place on Wednesday, September 9 at 10:00 a.m. Pacific Time. Apple will announce its 2026 iPhone lineup, and this year is a big one. Along with the slab-style iPhones we've been using for years, Apple is...",
+      "published_at": "2026-09-04T15:26:17-07:00",
+      "display_date": "SEP 05",
+      "image_src": "/assets/images/home-briefing/2026-09-05/apple-f2adebed6ef1b563-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-09-04/apple-222b77c9721aecb9-thumb.webp"
+    },
+    {
+      "index": 4,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Foldable 'iPhone Ultra' Still Likely to Be Missing These Five Features",
+      "link": "https://www.macrumors.com/2026/09/04/foldable-iphone-likely-to-be-missing-these-features/",
+      "summary": "Apple's first foldable iPhone, dubbed the \" iPhone Ultra ,\" is expected to launch without at least four features that will be present on the iPhone 18 Pro models, despite a price tag of at least $2,000. The iPhone Air lacks Ultra Wide and...",
+      "published_at": "2026-09-04T15:00:14-07:00",
+      "display_date": "SEP 05",
+      "image_src": "/assets/images/home-briefing/2026-09-05/apple-5ebaeec44b9d437d-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-05/apple-e257735c113fc230-thumb.webp"
+    },
+    {
+      "index": 5,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -43,10 +71,10 @@
       "published_at": "2026-09-04T21:51:56+00:00",
       "display_date": "SEP 05",
       "image_src": "/assets/images/home-briefing/2026-09-05/industry-513da0ae452c1649-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-10/industry-9226d3c85adbc468-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-06/industry-3d1a4bd3e05db503-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 6,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -57,49 +85,21 @@
       "published_at": "2026-09-04T21:17:46+00:00",
       "display_date": "SEP 05",
       "image_src": "/assets/images/home-briefing/2026-09-05/apple-94ca74ba1f58a076-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-2746d72f3de747d5-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "watchOS 27 removes three features that Apple Watch users might miss after updating",
-      "link": "https://9to5mac.com/2026/09/04/watchos-27-removes-three-features-that-apple-watch-users-might-miss-after-updating/",
-      "summary": "When watchOS 27 is released later this month, Apple Watch users may notice that some things work a bit differently. The upcoming software update removes three features that users may miss after updating.",
-      "published_at": "2026-09-04T20:36:32+00:00",
-      "display_date": "SEP 05",
-      "image_src": "/assets/images/home-briefing/2026-09-05/apple-f15f02bf742637a7-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-20/apple-2f44d834147f16df-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "Fender MIX headphones now have an iPhone app for tuning your sound",
-      "link": "https://9to5mac.com/2026/09/04/fender-mix-headphones-now-have-an-iphone-app-for-tuning-your-sound/",
-      "summary": "In August, Fender released the $299 MIX wireless headphones. The over-ear headphones come with a replaceable battery and the FWD Tx USB-C wireless transmitter for low-latency, lossless connectivity. Fender MIX headphones also now include...",
-      "published_at": "2026-09-04T19:46:16+00:00",
-      "display_date": "SEP 05",
-      "image_src": "/assets/images/home-briefing/2026-09-05/apple-b1052002f82267e8-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-26/apple-9dccbaa6d3a332e3-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-05/apple-56baf115219b0f6b-thumb.webp"
     },
     {
       "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "New profile of John Ternus offers insight into life and reputation of Apple CEO",
-      "link": "https://9to5mac.com/2026/09/04/new-profile-of-john-ternus-offers-insight-into-life-and-reputation-of-apple-ceo/",
-      "summary": "John Ternus became Apple's new CEO this week, and today the Financial Times published a profile that offers fresh insights into Ternus's life and reputation among Apple employees and partners.",
-      "published_at": "2026-09-04T19:17:00+00:00",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Apple Planning AI Home Security Camera and Service for 2027",
+      "link": "https://www.macrumors.com/2026/09/04/apple-home-security-camera-2027/",
+      "summary": "Apple could release a home security system and service in 2027, according to Bloomberg . The company is designing a privacy-forward home security camera that will \"use AI to monitor the surrounding environment instead of actual video...",
+      "published_at": "2026-09-04T14:05:37-07:00",
       "display_date": "SEP 05",
-      "image_src": "/assets/images/home-briefing/2026-09-05/apple-56baf115219b0f6b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-15/apple-c2c3e5ab20519c44-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-09-05/apple-cbf37ab46b5c7fd3-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-06-12/apple-804c484057c73888-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-09-04T18:39:19+00:00",
       "display_date": "SEP 05",
       "image_src": "/assets/images/home-briefing/2026-09-05/ai-441fe625924828d6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-04/ai-30aaa5b3e8634785-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-04/ai-b5df1e6d8a6284a1-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-09-04T15:00:33+00:00",
       "display_date": "SEP 04",
       "image_src": "/assets/images/home-briefing/2026-09-05/semiconductor-c34148f137a6afe9-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-11/semiconductor-603432577404d504-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-12/semiconductor-603432577404d504-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-09-04T09:20:41+00:00",
       "display_date": "SEP 04",
       "image_src": "/assets/images/home-briefing/2026-09-05/bluetooth-ea75fc14debaa529-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-29/bluetooth-dc565014ed75cfc9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-06-30/bluetooth-63c59d71b383cb2d-thumb.webp"
     }
   ]
 }
