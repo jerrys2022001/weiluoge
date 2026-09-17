@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "refreshed_at": "2026-09-17T08:48:11.513383+08:00",
+  "refreshed_at": "2026-09-17T08:49:50.251156+08:00",
   "item_count": 10,
   "items": [
     {
@@ -14,8 +14,8 @@
       "summary": "Apple Executive Chairman Tim Cook has already been called upon to attend a state dinner with US President Donald Trump and Chinese President Xi Jinping on September 24. Former Apple CEO Tim Cook continues his role as government liaison Tim...",
       "published_at": "2026-09-17T00:10:40+00:00",
       "display_date": "SEP 17",
-      "image_src": "/assets/images/home-briefing/2026-08-31/apple-299ee95dbb236e57-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-31/apple-299ee95dbb236e57-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-08/apple-5cab366b239d5f7a-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-08/apple-5cab366b239d5f7a-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-09-16T23:50:07+00:00",
       "display_date": "SEP 17",
       "image_src": "/assets/images/home-briefing/2026-09-17/industry-948dbbe22eddc613-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-23/industry-0a749ac91badbd0a-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-19/industry-125c085c5e355072-thumb.webp"
     },
     {
       "index": 3,
@@ -43,7 +43,7 @@
       "published_at": "2026-09-16T23:44:59+00:00",
       "display_date": "SEP 17",
       "image_src": "/assets/images/home-briefing/2026-09-17/apple-6ede20f0e39fe186-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-16/apple-977d7c71b3b91673-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-12/apple-bbcd668ed1ab594a-thumb.webp"
     },
     {
       "index": 4,
@@ -56,8 +56,8 @@
       "summary": "In an interview with TechCrunch, Al Gore suggested he isn't losing sleep over AI data center emissions - he's more worried about the AI industry's own warnings about where the technology is headed.",
       "published_at": "2026-09-16T23:43:09+00:00",
       "display_date": "SEP 17",
-      "image_src": "/assets/images/home-briefing/2026-08-28/industry-85e044a6375b1777-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-28/industry-85e044a6375b1777-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-17/industry-2cfc61224ad6ca30-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/industry-2cfc61224ad6ca30-thumb.webp"
     },
     {
       "index": 5,
@@ -71,7 +71,7 @@
       "published_at": "2026-09-16T23:41:11+00:00",
       "display_date": "SEP 17",
       "image_src": "/assets/images/home-briefing/2026-09-17/apple-ba7b318e18b4c313-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-e597f630056e4b8c-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-25/apple-f1c149a821208694-thumb.webp"
     },
     {
       "index": 6,
@@ -85,7 +85,7 @@
       "published_at": "2026-09-16T23:40:00+00:00",
       "display_date": "SEP 17",
       "image_src": "/assets/images/home-briefing/2026-09-17/apple-702c3822ca29dfc2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-09/apple-c795a403afae2526-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-19/apple-6e5857ffcd28e144-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-09-16T22:52:50+00:00",
       "display_date": "SEP 17",
       "image_src": "/assets/images/home-briefing/2026-09-17/apple-9b2c4b4f8e5f5fcb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-20/apple-ec4d78dff6109394-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-22/apple-e099928c40ddf204-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "OpenAI shares a framework for tracking, investigating, and disclosing model misalignment, alongside six reports of unexpected or concerning model behavior.",
       "published_at": "2026-09-16T17:00:00+00:00",
       "display_date": "SEP 17",
-      "image_src": "/assets/images/home-briefing/2026-07-18/ai-ae447551e3745849-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-18/ai-ae447551e3745849-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-06/ai-5d5290c347b23c77-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-06/ai-5d5290c347b23c77-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "System performance, efficient infrastructure scaling and continuous software optimization are key levers that determine AI inference economics. Higher system performance means more tokens generated, resulting in higher revenue. Efficient...",
       "published_at": "2026-09-16T15:00:48+00:00",
       "display_date": "SEP 16",
-      "image_src": "/assets/images/home-briefing/2026-08-04/semiconductor-b8a7ad9f857d84b2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-04/semiconductor-b8a7ad9f857d84b2-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-06/semiconductor-1b0f34a22c4ba23f-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-06/semiconductor-1b0f34a22c4ba23f-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-09-15T17:10:37+00:00",
       "display_date": "SEP 16",
       "image_src": "/assets/images/home-briefing/2026-09-17/bluetooth-71191f51bc09ffdf-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-14/bluetooth-d64a6f7fbefb423f-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-07/bluetooth-c0ee1ec6dffb44cf-thumb.webp"
     }
   ]
 }
