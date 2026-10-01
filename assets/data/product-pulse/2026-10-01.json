@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "refreshed_at": "2026-10-01T10:24:27.356244+08:00",
+  "refreshed_at": "2026-10-01T10:31:00.243642+08:00",
   "item_count": 10,
   "items": [
     {
@@ -85,7 +85,7 @@
       "published_at": "2026-09-30T22:23:50+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/industry-115186fae1a6e610-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-17/industry-d5728073475e4c13-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/industry-d5618cd46ee83374-thumb.webp"
     },
     {
       "index": 7,
@@ -99,7 +99,7 @@
       "published_at": "2026-09-30T21:28:34+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/industry-f91c0e898ba3e398-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-15/industry-9e49f2142d258f32-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-05/industry-5a96001af9aeec58-thumb.webp"
     },
     {
       "index": 8,
