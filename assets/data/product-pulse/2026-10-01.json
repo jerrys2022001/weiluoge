@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "refreshed_at": "2026-10-01T10:17:10.952770+08:00",
+  "refreshed_at": "2026-10-01T10:24:27.356244+08:00",
   "item_count": 10,
   "items": [
     {
@@ -15,7 +15,7 @@
       "published_at": "2026-09-30T23:58:30+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/apple-29aa8ba49b60e332-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-02/apple-43011d5c4f92b5b9-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-05/apple-f2adebed6ef1b563-thumb.webp"
     },
     {
       "index": 2,
@@ -29,7 +29,7 @@
       "published_at": "2026-09-30T23:54:42+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/apple-7266bc5b2a130a58-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-05/apple-f15f02bf742637a7-thumb.webp"
     },
     {
       "index": 3,
@@ -42,25 +42,11 @@
       "summary": "The long-rumored Home Hub tablet device seems to contain an assortment of features from across Apple's ecosystem, and a code sleuth has found a connection between it and iPhone Duo. Apple's upcoming Home Hub will display content based on...",
       "published_at": "2026-09-30T23:40:17+00:00",
       "display_date": "OCT 01",
-      "image_src": "/assets/images/home-briefing/2026-08-04/apple-392429eec6a59611-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-392429eec6a59611-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-08/apple-eca2921287364d6b-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-eca2921287364d6b-thumb.webp"
     },
     {
       "index": 4,
-      "slug": "industry",
-      "eyebrow": "Industry Product Watch",
-      "source_name": "TechCrunch",
-      "source_url": "https://techcrunch.com/",
-      "title": "The Pentagon taps Elon Musk and Palmer Luckey to help decide what the military should do next",
-      "link": "https://techcrunch.com/2026/09/30/the-pentagon-taps-elon-musk-and-palmer-luckey-to-help-decide-what-the-military-should-do-next/",
-      "summary": "Defense Secretary Pete Hegseth just launched a 120-day study on the future of warfare, led by Elon Musk, Palmer Luckey, and Newt Gingrich, and while it makes sense given their ties to the administration, critics could point out that Musk's...",
-      "published_at": "2026-09-30T23:08:00+00:00",
-      "display_date": "OCT 01",
-      "image_src": "/assets/images/home-briefing/2026-07-05/industry-8839c2aa0b0de2c1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-05/industry-8839c2aa0b0de2c1-thumb.webp"
-    },
-    {
-      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "MacRumors",
@@ -70,11 +56,11 @@
       "summary": "Apple's rumored smart home hub will have different faces users can choose from, some of which are similar to StandBy screens planned for the iPhone Duo . Leaker pdfu shared setup screens of the Photo Face said to be for Apple's upcoming...",
       "published_at": "2026-09-30T22:57:11+00:00",
       "display_date": "OCT 01",
-      "image_src": "/assets/images/home-briefing/2026-08-30/apple-8cba4de8894cb7cc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-30/apple-8cba4de8894cb7cc-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-21/apple-b5dd9030493d8a40-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-21/apple-b5dd9030493d8a40-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -84,11 +70,11 @@
       "summary": "Update, 7:37 p.m. ET: Apple says all of the outages have now been resolved, with the exception of Apple TV. Apple is currently reporting issues affecting Apple TV and subscription purchases, while some users are also running into problems...",
       "published_at": "2026-09-30T22:47:35+00:00",
       "display_date": "OCT 01",
-      "image_src": "/assets/images/home-briefing/2026-06-26/apple-ca533beef65ab6bd-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-06-26/apple-ca533beef65ab6bd-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-20/apple-16862eef5adf599c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-20/apple-16862eef5adf599c-thumb.webp"
     },
     {
-      "index": 7,
+      "index": 6,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -99,7 +85,21 @@
       "published_at": "2026-09-30T22:23:50+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/industry-115186fae1a6e610-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-09-09/industry-9f393403590b03ff-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-17/industry-d5728073475e4c13-thumb.webp"
+    },
+    {
+      "index": 7,
+      "slug": "industry",
+      "eyebrow": "Industry Product Watch",
+      "source_name": "Electrek",
+      "source_url": "https://electrek.co/",
+      "title": "Commercial EVs take off as Workhorse announces fresh, 200 truck order",
+      "link": "https://electrek.co/2026/09/30/commercial-ev-demand-takes-off-as-workhorse-announces-fresh-200-truck-order/",
+      "summary": "Commercial delivery operator Gateway Fleets ordered 100 medium-duty electric box vans from Workhorse earlier this year. That experiment seems to be going well, because the company just ordered 200",
+      "published_at": "2026-09-30T21:28:34+00:00",
+      "display_date": "OCT 01",
+      "image_src": "/assets/images/home-briefing/2026-10-01/industry-f91c0e898ba3e398-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-15/industry-9e49f2142d258f32-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-09-30T19:00:19+00:00",
       "display_date": "OCT 01",
       "image_src": "/assets/images/home-briefing/2026-10-01/semiconductor-2325a64436cc61dc-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-10/semiconductor-b8d4e3d33edb91f2-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-24/semiconductor-e3787190cc4de9ea-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "Post-launch Geekbench 7 runs show Debian Linux instead of the leak's Ubuntu.",
       "published_at": "2026-09-30T18:00:39+00:00",
       "display_date": "OCT 01",
-      "image_src": "/assets/images/home-briefing/2026-07-14/ai-269588a61c009d7b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-14/ai-269588a61c009d7b-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-13/ai-117afcc7b2ef52f8-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-13/ai-117afcc7b2ef52f8-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-09-15T17:10:37+00:00",
       "display_date": "SEP 16",
       "image_src": "/assets/images/home-briefing/2026-10-01/bluetooth-71191f51bc09ffdf-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-07/bluetooth-c0ee1ec6dffb44cf-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-21/bluetooth-adce4e0d8e3bf4aa-thumb.webp"
     }
   ]
 }
