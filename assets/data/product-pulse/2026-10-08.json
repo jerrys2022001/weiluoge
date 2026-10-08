@@ -1,10 +1,24 @@
 {
   "date": "2026-10-08",
-  "refreshed_at": "2026-10-08T08:40:06.538931+08:00",
+  "refreshed_at": "2026-10-08T08:46:04.861751+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Microsoft Launches $2,599 Surface Laptop Ultra to Take on MacBook Pro",
+      "link": "https://www.macrumors.com/2026/10/07/microsoft-surface-laptop-ultra/",
+      "summary": "Microsoft today announced launch timing and pricing for the Surface Laptop Ultra that it unveiled earlier this year. The 15-inch Surface Laptop Ultra is priced starting at $2,599, undercutting Apple's $2,999 16-inch MacBook Pro , and it...",
+      "published_at": "2026-10-08T00:45:43+00:00",
+      "display_date": "OCT 08",
+      "image_src": "/assets/images/home-briefing/2026-10-08/apple-1d57690baec23d32-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-12/apple-3ad7eade9e732a5d-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -15,10 +29,24 @@
       "published_at": "2026-10-08T00:00:00+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/apple-656a87fa3132a4a2-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-12/apple-f99a572383b22a98-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-05/apple-94ca74ba1f58a076-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Google's SynthID AI Detector is Now Available to Everyone",
+      "link": "https://www.macrumors.com/2026/10/07/google-synthid-detector/",
+      "summary": "Google today said it is making its SynthID Detector available to everyone for identifying content created using AI. SynthID Detector first rolled out to members of the media last year, and it is now available worldwide in English. SynthID...",
+      "published_at": "2026-10-07T23:42:44+00:00",
+      "display_date": "OCT 08",
+      "image_src": "/assets/images/home-briefing/2026-10-08/apple-bdef45d5fb1473da-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-14/apple-e597f630056e4b8c-thumb.webp"
+    },
+    {
+      "index": 4,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "TechCrunch",
@@ -29,24 +57,38 @@
       "published_at": "2026-10-07T23:36:57+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/industry-a943e9cc27291da1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-15/industry-1f2938ebdd52e88d-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-23/industry-498391e467afd8fc-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Tim Cook, Elton John, King Charles launch Apple x King's Trust Creative Labs",
-      "link": "https://appleinsider.com/articles/26/10/07/apple-x-kings-trust-creative-labs-launch-with-star-studded-meet-and-greet?utm_source=rss",
-      "summary": "Tim Cook , Elton John, and King Charles showed up to Apple Music Hall to meet the young people participating in the newly launched Apple x King's Trust Creative Labs. Elton John, King Charles, Tim Cook, and Skye Newman with Creative Labs...",
-      "published_at": "2026-10-07T21:43:32+00:00",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "ChatGPT Gets GPT-6 and New Intelligent UI With Visual Answers",
+      "link": "https://www.macrumors.com/2026/10/07/chatgpt-intelligent-ui/",
+      "summary": "OpenAI today introduced Intelligent UI, a new feature that will let ChatGPT answer questions with \"fully interactive user interfaces.\" OpenAI says everyday answers will be more visual, and the feature will make it easier for users to...",
+      "published_at": "2026-10-07T22:27:06+00:00",
       "display_date": "OCT 08",
-      "image_src": "/assets/images/home-briefing/2026-10-08/apple-62278eb60468af70-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-30/apple-a4f69995e46c3afe-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-07-17/apple-39342e8d2d5061f5-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-07-17/apple-39342e8d2d5061f5-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 6,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Get AirPods Pro 3 for $179, Apple Watch for $199, and More Before Prime Day Ends Today",
+      "link": "https://www.macrumors.com/2026/10/07/prime-day-ends-today-october-26/",
+      "summary": "Amazon Prime Big Deal Days is coming to a close later today, so we're quickly recapping all of the best Apple and Apple-related deals that are still live on Amazon right now. Since many of these products have been on sale for a few days,...",
+      "published_at": "2026-10-07T22:10:00+00:00",
+      "display_date": "OCT 08",
+      "image_src": "/assets/images/home-briefing/2026-10-08/apple-35f0eab70d1c8c9a-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-20/apple-ec4d78dff6109394-thumb.webp"
+    },
+    {
+      "index": 7,
       "slug": "industry",
       "eyebrow": "Industry Product Watch",
       "source_name": "Electrek",
@@ -57,49 +99,7 @@
       "published_at": "2026-10-07T21:39:34+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/industry-321022a0f9ef9b21-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-27/industry-ee73efe4745c67d2-thumb.webp"
-    },
-    {
-      "index": 5,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "Apple partners with The King's Trust on new Creative Labs initiative in the UK",
-      "link": "https://9to5mac.com/2026/10/07/apple-partners-with-the-kings-trust-on-new-creative-labs-initiative-in-the-uk/",
-      "summary": "Apple and The King's Trust announced today an expansion of their partnership with a new education program that offers workshops to help young people build creative and digital skills. Here are the details.",
-      "published_at": "2026-10-07T21:34:54+00:00",
-      "display_date": "OCT 08",
-      "image_src": "/assets/images/home-briefing/2026-10-08/apple-7457a3c514ae2853-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-22/apple-99eca99fcb254de4-thumb.webp"
-    },
-    {
-      "index": 6,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "First RCs for macOS Sequoia 15.8.2 and macOS Tahoe 26.7.2 now available [U]",
-      "link": "https://9to5mac.com/2026/10/07/first-rcs-for-macos-sequoia-15-8-2-and-macos-tahoe-26-7-2-now-available-to-developers/",
-      "summary": "Update, October 7: Apple has now released both RCs to public beta testers as well. The build numbers are unchanged from the developer RCs. In addition to releasing macOS 27.2 Golden Gate public beta 2 , Apple is now rolling out the first...",
-      "published_at": "2026-10-07T21:01:54+00:00",
-      "display_date": "OCT 08",
-      "image_src": "/assets/images/home-briefing/2026-10-08/apple-c4971fce7e84ca57-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-05/apple-ad8105d8c6d302ae-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "AppleInsider",
-      "source_url": "https://appleinsider.com/",
-      "title": "Apple Home second-party partnerships include more than just LG",
-      "link": "https://appleinsider.com/articles/26/10/07/apple-home-second-party-partnerships-include-more-than-just-lg?utm_source=rss",
-      "summary": "An entirely new category of \"second-party\" Apple Home accessories could be on the way with LG and Schneider as the starting partners. New Apple Home accessories could target Apple's features, specifically A rumor of an unusual partnership...",
-      "published_at": "2026-10-07T20:59:45+00:00",
-      "display_date": "OCT 08",
-      "image_src": "/assets/images/home-briefing/2026-10-08/apple-337535fa742ceb9f-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-08/apple-df3bebd9ee157117-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-07-24/industry-1090d9562c897647-thumb.webp"
     },
     {
       "index": 8,
@@ -113,7 +113,7 @@
       "published_at": "2026-10-07T19:47:59+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/semiconductor-096a3ec49342b54e-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-24/semiconductor-1cbd371565260d64-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-10/semiconductor-35c9b7dcb7552228-thumb.webp"
     },
     {
       "index": 9,
@@ -127,7 +127,7 @@
       "published_at": "2026-10-07T18:07:54+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/ai-9b3f55f806beba31-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-15/ai-39467961d880dc28-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-04/ai-bd1764b271024167-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-10-07T16:16:50+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-08/bluetooth-df02de35905a8531-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-23/bluetooth-adce4e0d8e3bf4aa-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-31/bluetooth-e518bc7e60db52ac-thumb.webp"
     }
   ]
 }
