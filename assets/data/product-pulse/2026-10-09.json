@@ -1,10 +1,24 @@
 {
   "date": "2026-10-09",
-  "refreshed_at": "2026-10-09T16:39:36.767202+08:00",
+  "refreshed_at": "2026-10-09T16:46:16.821430+08:00",
   "item_count": 10,
   "items": [
     {
       "index": 1,
+      "slug": "apple",
+      "eyebrow": "Apple Releases",
+      "source_name": "MacRumors",
+      "source_url": "https://www.macrumors.com/",
+      "title": "Apple Signs Hiring and Licensing Deal With AI Podcast Startup Huxe",
+      "link": "https://www.macrumors.com/2026/10/09/apple-signs-hiring-deal-ai-podcast-startup-huxe/",
+      "summary": "Apple has reached an agreement to recruit employees from Huxe and license the AI audio startup's technology, according to a new European Commission filing . The filing says Apple will have the right to make employment offers to certain...",
+      "published_at": "2026-10-09T08:44:22+00:00",
+      "display_date": "OCT 09",
+      "image_src": "/assets/images/home-briefing/2026-10-09/apple-5f5fd673936ea4c2-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-17/apple-1d87937e2282cc35-thumb.webp"
+    },
+    {
+      "index": 2,
       "slug": "semiconductor",
       "eyebrow": "Semiconductor Breakthroughs",
       "source_name": "Semiconductor Engineering",
@@ -15,10 +29,10 @@
       "published_at": "2026-10-09T07:01:17+00:00",
       "display_date": "OCT 09",
       "image_src": "/assets/images/home-briefing/2026-10-09/semiconductor-dab42b33aebd4b8b-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-12/semiconductor-a7765277ce545c70-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-14/semiconductor-4edd80a697b38fb4-thumb.webp"
     },
     {
-      "index": 2,
+      "index": 3,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -28,11 +42,11 @@
       "summary": "A new Counterpoint Research report says Apple's next-generation MacBook Pro will help drive a 50% increase in OLED notebook display shipments in 2026 alone. Here are the details.",
       "published_at": "2026-10-09T02:21:43+00:00",
       "display_date": "OCT 09",
-      "image_src": "/assets/images/home-briefing/2026-08-04/apple-33392f9359bdfba1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-04/apple-33392f9359bdfba1-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-05/apple-262a2def116ea78c-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-05/apple-262a2def116ea78c-thumb.webp"
     },
     {
-      "index": 3,
+      "index": 4,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -43,10 +57,10 @@
       "published_at": "2026-10-09T02:11:17+00:00",
       "display_date": "OCT 09",
       "image_src": "/assets/images/home-briefing/2026-10-09/apple-737535b8bfdac852-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-25/apple-7689a519ee48db14-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-26/apple-019c14242487d9da-thumb.webp"
     },
     {
-      "index": 4,
+      "index": 5,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -57,10 +71,10 @@
       "published_at": "2026-10-09T01:00:23+00:00",
       "display_date": "OCT 09",
       "image_src": "/assets/images/home-briefing/2026-10-09/apple-86c3860a6472f635-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-09-08/apple-bc9de705f6a6d7f4-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-09/apple-fb39a08ec7dce277-thumb.webp"
     },
     {
-      "index": 5,
+      "index": 6,
       "slug": "ai",
       "eyebrow": "AI Developments",
       "source_name": "MIT Technology Review",
@@ -71,10 +85,10 @@
       "published_at": "2026-10-09T00:08:24+00:00",
       "display_date": "OCT 09",
       "image_src": "/assets/images/home-briefing/2026-10-09/ai-7a4bcf9a2da0bafb-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-10/ai-8825e26a4ee35ad6-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-08-12/ai-0297693122f92418-thumb.webp"
     },
     {
-      "index": 6,
+      "index": 7,
       "slug": "apple",
       "eyebrow": "Apple Releases",
       "source_name": "9to5Mac",
@@ -84,22 +98,8 @@
       "summary": "iVerify released a report today detailing P7 DarkSword, a new variant of the malware associated with the DarkSword iPhone exploit chain uncovered earlier this year. Here are the details.",
       "published_at": "2026-10-08T23:08:18+00:00",
       "display_date": "OCT 09",
-      "image_src": "/assets/images/home-briefing/2026-08-21/apple-b5dd9030493d8a40-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-21/apple-b5dd9030493d8a40-thumb.webp"
-    },
-    {
-      "index": 7,
-      "slug": "apple",
-      "eyebrow": "Apple Releases",
-      "source_name": "9to5Mac",
-      "source_url": "https://9to5mac.com/",
-      "title": "You can now use TextExpander for free across Mac, iPhone, iPad, and",
-      "link": "https://9to5mac.com/2026/10/08/you-can-now-use-textexpander-for-free-across-mac-iphone-ipad-and-more/",
-      "summary": "Incredibly useful keyboard shortcut utility TextExpander now offers a free plan, letting users access its core Snippets feature on the Mac, iPhone, iPad, Windows, and Chrome. Here are the details.",
-      "published_at": "2026-10-08T21:38:06+00:00",
-      "display_date": "OCT 09",
-      "image_src": "/assets/images/home-briefing/2026-10-09/apple-20ef91ef22fc44e6-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-07-24/apple-8b77144fb60be255-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-25/apple-a830b45297ccdea6-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-25/apple-a830b45297ccdea6-thumb.webp"
     },
     {
       "index": 8,
@@ -112,8 +112,8 @@
       "summary": "Turning a simulation idea into a working application means assembling assets, connecting physics and rendering, and checking that the scene behaves as intended. Developers are combining frontier AI models with NVIDIA Omniverse libraries to...",
       "published_at": "2026-10-08T21:06:35+00:00",
       "display_date": "OCT 09",
-      "image_src": "/assets/images/home-briefing/2026-08-10/semiconductor-35c9b7dcb7552228-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-10/semiconductor-35c9b7dcb7552228-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-08-12/semiconductor-a7765277ce545c70-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-08-12/semiconductor-a7765277ce545c70-thumb.webp"
     },
     {
       "index": 9,
@@ -126,8 +126,8 @@
       "summary": "Three fired OpenAI safety researchers dispute allegations of mishandling sensitive information, warning in an open letter that their dismissals are creating a chilling effect on the company's AI safety culture.",
       "published_at": "2026-10-08T20:04:26+00:00",
       "display_date": "OCT 09",
-      "image_src": "/assets/images/home-briefing/2026-10-08/industry-a943e9cc27291da1-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-10-08/industry-a943e9cc27291da1-thumb.webp"
+      "image_src": "/assets/images/home-briefing/2026-09-08/industry-07e4027f3ac6bf80-thumb.webp",
+      "fallback_src": "/assets/images/home-briefing/2026-09-08/industry-07e4027f3ac6bf80-thumb.webp"
     },
     {
       "index": 10,
@@ -141,7 +141,7 @@
       "published_at": "2026-10-07T16:16:50+00:00",
       "display_date": "OCT 08",
       "image_src": "/assets/images/home-briefing/2026-10-09/bluetooth-df02de35905a8531-thumb.webp",
-      "fallback_src": "/assets/images/home-briefing/2026-08-31/bluetooth-e518bc7e60db52ac-thumb.webp"
+      "fallback_src": "/assets/images/home-briefing/2026-09-01/bluetooth-e518bc7e60db52ac-thumb.webp"
     }
   ]
 }
